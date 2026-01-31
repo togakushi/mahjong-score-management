@@ -102,11 +102,11 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
             match x:
                 case "ゲーム数":
                     fmt.append("right")
-                case "通算" | "平均" | "1位" | "2位" | "3位" | "4位" | " 平順" | "トビ":
+                case "通算" | "平均" | "順位差" | "トップ差":
                     fmt.append("right")
-                case "通算" | "順位差" | "トップ差":
+                case "1位" | "2位" | "3位" | "4位" | "トビ":
                     fmt.append("right")
-                case "レート" | "平均順位" | "順位偏差" | "平均素点" | "得点偏差":
+                case "レート" | "平均順位" | "平順" | "順位偏差" | "平均素点" | "得点偏差":
                     fmt.append("right")
                 case _:
                     fmt.append("left")
