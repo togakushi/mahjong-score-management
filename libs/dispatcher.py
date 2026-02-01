@@ -92,8 +92,8 @@ def other_words(word: str, m: "MessageParserProtocol"):
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
     else:  # スコア登録
-        if detection := validator.check_score(m):  # 結果報告フォーマットに一致するポストの処理
-            score = GameResult(**detection)
+        if score_dict := validator.check_score(m):  # 結果報告フォーマットに一致するポストの処理
+            score = GameResult(**score_dict)
             # 名前ブレ修正
             for k, p in score.to_dict().items():
                 if k.endswith("_name"):
@@ -141,6 +141,7 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
 
     if detection.to_dict() == record_data.to_dict():  # スコア比較
         return  # 変更箇所がなければ何もしない
+
     if _thread_check(m):
         if record_data.has_valid_data():
             if record_data.rule_version == g.cfg.mahjong.rule_version:
