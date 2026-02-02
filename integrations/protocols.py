@@ -124,7 +124,7 @@ class PostData(DataMixin):
     """ヘッダ文"""
     message: list[tuple["MessageType", "StyleOptions"]] = field(default_factory=list)
     """本文
-    識別子(タイトルなど)をキーにした辞書型
+    MessageTypeとStyleOptionsのペアのリスト
     """
     thread: bool = field(default=True)
     """スレッドに返す"""
