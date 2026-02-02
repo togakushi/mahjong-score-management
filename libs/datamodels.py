@@ -72,6 +72,8 @@ class GameInfo:
                     g.params["stipulated"] = g.cfg.ranking.stipulated_calculation(self.count)
                 case "report":
                     g.params["stipulated"] = g.cfg.report.stipulated_calculation(self.count)
+                case _:
+                    pass
 
         logging.debug(self)
 
