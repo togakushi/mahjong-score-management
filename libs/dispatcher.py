@@ -92,8 +92,8 @@ def other_words(word: str, m: "MessageParserProtocol"):
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
     else:  # スコア登録
-        if detection := validator.check_score(m):  # 結果報告フォーマットに一致するポストの処理
-            score = GameResult(**detection)
+        if detection_dict := validator.check_score(m):  # 結果報告フォーマットに一致するポストの処理
+            score = GameResult(**detection_dict)
             # 名前ブレ修正
             for k, p in score.to_dict().items():
                 if k.endswith("_name"):
@@ -136,24 +136,32 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
     """
-
     record_data = lookup.exsist_record(m.data.event_ts)
 
-    if detection.to_dict() == record_data.to_dict():  # スコア比較
-        return  # 変更箇所がなければ何もしない
-    if _thread_check(m):
-        if record_data.has_valid_data():
-            if record_data.rule_version == g.cfg.mahjong.rule_version:
-                modify.db_update(detection, m)
-            else:
-                logging.debug("skip (rule_version not match). event_ts=%s", m.data.event_ts)
-        else:
-            modify.db_insert(detection, m)
-            modify.reprocessing_remarks(m)
-    else:
+    # 変更がない場合は終了
+    if detection.to_dict() == record_data.to_dict():
+        return
+
+    # スレッド内チェック → 処理対象外なら終了
+    if not _thread_check(m):
         m.post.ts = m.data.event_ts
         m.set_data(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
         logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+        return
+
+    # 既存データなし → 新規挿入
+    if not record_data.has_valid_data():
+        modify.db_insert(detection, m)
+        modify.reprocessing_remarks(m)
+        return
+
+    # rule_version不一致 → スキップ
+    if record_data.rule_version != g.cfg.mahjong.rule_version:
+        logging.debug("skip (rule_version mismatch). event_ts=%s", m.data.event_ts)
+        return
+
+    # 全条件クリア → 更新実行
+    modify.db_update(detection, m)
 
 
 def message_deleted(m: "MessageParserProtocol"):

@@ -102,11 +102,11 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
             match x:
                 case "ゲーム数":
                     fmt.append("right")
-                case "通算" | "平均" | "1位" | "2位" | "3位" | "4位" | " 平順" | "トビ":
+                case "通算" | "平均" | "順位差" | "トップ差":
                     fmt.append("right")
-                case "通算" | "順位差" | "トップ差":
+                case "1位" | "2位" | "3位" | "4位" | "トビ":
                     fmt.append("right")
-                case "レート" | "平均順位" | "順位偏差" | "平均素点" | "得点偏差":
+                case "レート" | "平均順位" | "平順" | "順位偏差" | "平均素点" | "得点偏差":
                     fmt.append("right")
                 case _:
                     fmt.append("left")
@@ -130,13 +130,13 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
     chk_pattern = [
         target,  # 無加工
-        textutil.str_conv(target, textutil.ConversionType.HtoZ),  # 半角数字 -> 全角数字
-        textutil.str_conv(target, textutil.ConversionType.KtoH),  # カタカナ -> ひらがな
-        textutil.str_conv(target, textutil.ConversionType.HtoK),  # ひらがな -> カタカナ
+        textutil.str_conv(target, textutil.ConversionType.HtoZ),  # 半角 -> 全角
+        textutil.str_conv(target, textutil.ConversionType.KtoH),  # カタ -> ひら
+        textutil.str_conv(target, textutil.ConversionType.HtoK),  # ひら -> カタ
         honor_remove(target),  # 敬称削除
-        honor_remove(textutil.str_conv(target, textutil.ConversionType.HtoZ)),
-        honor_remove(textutil.str_conv(target, textutil.ConversionType.KtoH)),
-        honor_remove(textutil.str_conv(target, textutil.ConversionType.HtoK)),
+        honor_remove(textutil.str_conv(target, textutil.ConversionType.HtoZ)),  # 敬称削除 + 半角 -> 全角
+        honor_remove(textutil.str_conv(target, textutil.ConversionType.KtoH)),  # 敬称削除 + カタ -> ひら
+        honor_remove(textutil.str_conv(target, textutil.ConversionType.HtoK)),  # 敬称削除 + カタ -> ひら
     ]
     chk_pattern = sorted(set(chk_pattern), key=chk_pattern.index)  # 順序を維持したまま重複排除
 

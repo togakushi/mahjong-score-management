@@ -13,7 +13,9 @@ from cls.timekit import ExtendedDatetime as ExtDt
 from libs.utils import formatter, textutil
 
 CommandResult = Mapping[str, Union[str, int, bool, tuple[str, ...]]]
+"""コマンド処理結果の型（パラメータ名とその値のマッピング）"""
 CommandAction = Callable[[Union[str, tuple[str, ...]]], CommandResult]
+"""コマンド処理関数の型（入力文字列を受け取り、結果辞書を返す）"""
 
 
 class CommandSpec(TypedDict, total=False):
@@ -26,18 +28,16 @@ class CommandSpec(TypedDict, total=False):
 
 CommandsDict = dict[str, CommandSpec]
 COMMANDS: CommandsDict = {
-    "guest": {
-        "match": [r"^ゲストナシ$", r"^ゲストアリ$", r"^ゲスト無効$"],
-        "action": lambda w: {
-            "ゲストナシ": {"guest_skip": False, "guest_skip2": False, "unregistered_replace": True},
-            "ゲストアリ": {"guest_skip": True, "guest_skip2": True, "unregistered_replace": True},
-            "ゲスト無効": {"unregistered_replace": False},
-        }[w[0] if isinstance(w, tuple) else w],
+    # --- ゲスト処理
+    "guest_off": {
+        "match": [r"^ゲストナシ$"],
+        "action": lambda _: {"guest_skip": False, "guest_skip2": False, "unregistered_replace": True},
     },
-    "anonymous": {
-        "match": [r"^匿名$", r"^anonymous$"],
-        "action": lambda _: {"anonymous": True},
+    "guest_on": {
+        "match": [r"^ゲストアリ$"],
+        "action": lambda _: {"guest_skip": True, "guest_skip2": True, "unregistered_replace": True},
     },
+    # --- 個人戦/チーム戦
     "individual": {
         "match": [r"^個人$", "^個人成績$"],
         "action": lambda _: {"individual": True},
@@ -57,6 +57,15 @@ COMMANDS: CommandsDict = {
     "b": {
         "match": [r"^(チーム同卓ナシ|コンビナシ)$"],
         "action": lambda _: {"friendly_fire": False},
+    },
+    # --- プレイヤー名変換処理
+    "guest_disable": {
+        "match": [r"^ゲスト無効$"],
+        "action": lambda _: {"unregistered_replace": False},
+    },
+    "anonymous": {
+        "match": [r"^匿名$", r"^anonymous$"],
+        "action": lambda _: {"anonymous": True},
     },
     # --- 動作変更フラグ
     "score_comparisons": {  # 比較
