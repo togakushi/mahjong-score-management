@@ -19,9 +19,9 @@ class Score:
     name: str = field(default="")
     """プレイヤー名"""
     r_str: str = field(default="")
-    """入力された素点情報(文字列)"""
+    """素点(ユーザー入力文字列/未計算)"""
     rpoint: int = field(default=0)
-    """素点(入力文字列評価後)"""
+    """素点(ユーザー入力文字列評価後)"""
     point: float = field(default=0.0)
     """獲得ポイント"""
     rank: int = field(default=0)
