@@ -55,11 +55,11 @@ class GameInfo:
             self.first_comment = ""
             self.last_comment = ""
         else:
-            self.count = int(df["count"].to_string(index=False))
-            self.first_game = ExtDt(df["first_game"].to_string(index=False))
-            self.last_game = ExtDt(df["last_game"].to_string(index=False))
-            self.first_comment = str(df["first_comment"].to_string(index=False))
-            self.last_comment = str(df["last_comment"].to_string(index=False))
+            self.count = int(df["count"].iloc[0])
+            self.first_game = ExtDt(str(df["first_game"].iloc[0]))
+            self.last_game = ExtDt(str(df["last_game"].iloc[0]))
+            self.first_comment = str(df["first_comment"].iloc[0])
+            self.last_comment = str(df["last_comment"].iloc[0])
 
         # 規定打数更新
         if not g.params.get("stipulated", 0):  # 規定打数0はレートから計算
