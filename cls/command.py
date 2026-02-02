@@ -13,7 +13,9 @@ from cls.timekit import ExtendedDatetime as ExtDt
 from libs.utils import formatter, textutil
 
 CommandResult = Mapping[str, Union[str, int, bool, tuple[str, ...]]]
+"""コマンド処理結果の型（パラメータ名とその値のマッピング）"""
 CommandAction = Callable[[Union[str, tuple[str, ...]]], CommandResult]
+"""コマンド処理関数の型（入力文字列を受け取り、結果辞書を返す）"""
 
 
 class CommandSpec(TypedDict, total=False):
