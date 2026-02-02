@@ -14,7 +14,13 @@ if TYPE_CHECKING:
 
 @dataclass
 class Score:
-    """プレイヤー成績"""
+    """プレイヤー成績
+
+    Note:
+        フィールド名の 'r_' プレフィックス (r_str, rpoint など) は、
+        GameResult.to_dict() によって 'p1_', 'p2_', 'p3_', 'p4_' に置換され、
+        DBテーブルのカラム名 (p1_str, p2_str など) として使用する。
+    """
 
     name: str = field(default="")
     """プレイヤー名"""
@@ -35,10 +41,14 @@ class Score:
         """データを辞書で返す
 
         Args:
-            prefix (str): キーに付与する接頭辞
+            prefix (str): キーに付与する接頭辞 (p1, p2, p3, p4)
 
         Returns:
             ScoreDict: 返却する辞書
+
+        Note:
+            フィールド名の 'r_' プレフィックスは、指定された prefix に置換される。
+            例: r_str -> p1_str (prefix='p1' の場合)
         """
 
         return cast(
