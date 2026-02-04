@@ -173,7 +173,7 @@ class StyleOptions:
     - *False*: 削除する
     """
     transpose: bool = False
-    """The transpose of the DataFrame"""
+    """MessageTypeがDataFrameのとき表の縦横を変換する"""
     rename_type: RenameType = field(default=RenameType.NORMAL)
     """カラム名変換パラメータ"""
     data_kind: DataKind = field(default=DataKind.GENERAL)
