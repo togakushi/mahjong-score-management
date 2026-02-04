@@ -12,13 +12,12 @@ from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar
 import pandas as pd
 
 from integrations.protocols import MsgData, PostData, StatusData
-from libs.types import StyleOptions
 
 if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.types import MessageType
+    from libs.types import MessageType, StyleOptions
 
 ConfigT = TypeVar("ConfigT", bound="IntegrationsConfig")
 ApiT = TypeVar("ApiT", bound="APIInterface")
@@ -164,7 +163,7 @@ class MessageParserDataMixin:
     def set_data(
         self,
         data: "MessageType",
-        options: StyleOptions,
+        options: "StyleOptions",
     ):
         """メッセージデータをセット
 
