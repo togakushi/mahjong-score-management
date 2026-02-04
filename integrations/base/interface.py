@@ -11,12 +11,10 @@ from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar
 
 import pandas as pd
 
-from integrations.protocols import MsgData, PostData, StatusData
-
 if TYPE_CHECKING:
     from pathlib import Path
 
-    from integrations.protocols import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol, MsgData, PostData, StatusData
     from libs.types import MessageType, StyleOptions
 
 ConfigT = TypeVar("ConfigT", bound="IntegrationsConfig")
