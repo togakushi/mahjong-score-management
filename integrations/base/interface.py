@@ -169,7 +169,6 @@ class MessageParserDataMixin:
         """メッセージデータをセット
 
         Args:
-            title (str): データ識別子
             data (MessageType): 内容
             options (StyleOptions): 表示オプション
         """
