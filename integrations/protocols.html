@@ -272,7 +272,7 @@
                                 <a class="function" href="#MessageParserProtocol.set_headline">set_headline</a>
                         </li>
                         <li>
-                                <a class="function" href="#MessageParserProtocol.set_data">set_data</a>
+                                <a class="function" href="#MessageParserProtocol.set_message">set_message</a>
                         </li>
                         <li>
                                 <a class="function" href="#MessageParserProtocol.get_remarks">get_remarks</a>
@@ -540,7 +540,7 @@
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_headline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;ヘッドラインメッセージをセット&quot;&quot;&quot;</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット&quot;&quot;&quot;</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_remarks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
@@ -1666,7 +1666,7 @@ MessageTypeとStyleOptionsのペアのリスト</p>
 </span><span id="MessageParserProtocol-230"><a href="#MessageParserProtocol-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_headline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
 </span><span id="MessageParserProtocol-231"><a href="#MessageParserProtocol-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;ヘッドラインメッセージをセット&quot;&quot;&quot;</span>
 </span><span id="MessageParserProtocol-232"><a href="#MessageParserProtocol-232"><span class="linenos">232</span></a>
-</span><span id="MessageParserProtocol-233"><a href="#MessageParserProtocol-233"><span class="linenos">233</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
+</span><span id="MessageParserProtocol-233"><a href="#MessageParserProtocol-233"><span class="linenos">233</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
 </span><span id="MessageParserProtocol-234"><a href="#MessageParserProtocol-234"><span class="linenos">234</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット&quot;&quot;&quot;</span>
 </span><span id="MessageParserProtocol-235"><a href="#MessageParserProtocol-235"><span class="linenos">235</span></a>
 </span><span id="MessageParserProtocol-236"><a href="#MessageParserProtocol-236"><span class="linenos">236</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_remarks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
@@ -1981,19 +1981,19 @@ MessageTypeとStyleOptionsのペアのリスト</p>
 
 
                             </div>
-                            <div id="MessageParserProtocol.set_data" class="classattr">
-                                        <input id="MessageParserProtocol.set_data-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="MessageParserProtocol.set_message" class="classattr">
+                                        <input id="MessageParserProtocol.set_message-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_data</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">options</span><span class="p">:</span> <span class="n"><a href="../libs/types.html#StyleOptions">libs.types.StyleOptions</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_message</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">options</span><span class="p">:</span> <span class="n"><a href="../libs/types.html#StyleOptions">libs.types.StyleOptions</a></span></span><span class="return-annotation">):</span></span>
 
-                <label class="view-source-button" for="MessageParserProtocol.set_data-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="MessageParserProtocol.set_message-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#MessageParserProtocol.set_data"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MessageParserProtocol.set_data-233"><a href="#MessageParserProtocol.set_data-233"><span class="linenos">233</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
-</span><span id="MessageParserProtocol.set_data-234"><a href="#MessageParserProtocol.set_data-234"><span class="linenos">234</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット&quot;&quot;&quot;</span>
+    <a class="headerlink" href="#MessageParserProtocol.set_message"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MessageParserProtocol.set_message-233"><a href="#MessageParserProtocol.set_message-233"><span class="linenos">233</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">):</span>
+</span><span id="MessageParserProtocol.set_message-234"><a href="#MessageParserProtocol.set_message-234"><span class="linenos">234</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット&quot;&quot;&quot;</span>
 </span></pre></div>
 
 

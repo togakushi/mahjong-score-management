@@ -134,7 +134,7 @@
                                 <a class="function" href="#MessageParserDataMixin.set_headline">set_headline</a>
                         </li>
                         <li>
-                                <a class="function" href="#MessageParserDataMixin.set_data">set_data</a>
+                                <a class="function" href="#MessageParserDataMixin.set_message">set_message</a>
                         </li>
                         <li>
                                 <a class="function" href="#MessageParserDataMixin.get_remarks">get_remarks</a>
@@ -385,7 +385,7 @@
 </span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="k">else</span><span class="p">:</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">headline</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="bp">self</span><span class="p">,</span>
 </span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">,</span>
@@ -1177,7 +1177,7 @@
 </span><span id="MessageParserDataMixin-177"><a href="#MessageParserDataMixin-177"><span class="linenos">177</span></a>        <span class="k">else</span><span class="p">:</span>
 </span><span id="MessageParserDataMixin-178"><a href="#MessageParserDataMixin-178"><span class="linenos">178</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">headline</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
 </span><span id="MessageParserDataMixin-179"><a href="#MessageParserDataMixin-179"><span class="linenos">179</span></a>
-</span><span id="MessageParserDataMixin-180"><a href="#MessageParserDataMixin-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span>
+</span><span id="MessageParserDataMixin-180"><a href="#MessageParserDataMixin-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span>
 </span><span id="MessageParserDataMixin-181"><a href="#MessageParserDataMixin-181"><span class="linenos">181</span></a>        <span class="bp">self</span><span class="p">,</span>
 </span><span id="MessageParserDataMixin-182"><a href="#MessageParserDataMixin-182"><span class="linenos">182</span></a>        <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span>
 </span><span id="MessageParserDataMixin-183"><a href="#MessageParserDataMixin-183"><span class="linenos">183</span></a>        <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">,</span>
@@ -1320,34 +1320,34 @@
 
 
                             </div>
-                            <div id="MessageParserDataMixin.set_data" class="classattr">
-                                        <input id="MessageParserDataMixin.set_data-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="MessageParserDataMixin.set_message" class="classattr">
+                                        <input id="MessageParserDataMixin.set_message-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_data</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">options</span><span class="p">:</span> <span class="n"><a href="../../libs/types.html#StyleOptions">libs.types.StyleOptions</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_message</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">options</span><span class="p">:</span> <span class="n"><a href="../../libs/types.html#StyleOptions">libs.types.StyleOptions</a></span></span><span class="return-annotation">):</span></span>
 
-                <label class="view-source-button" for="MessageParserDataMixin.set_data-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="MessageParserDataMixin.set_message-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#MessageParserDataMixin.set_data"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MessageParserDataMixin.set_data-180"><a href="#MessageParserDataMixin.set_data-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span>
-</span><span id="MessageParserDataMixin.set_data-181"><a href="#MessageParserDataMixin.set_data-181"><span class="linenos">181</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="MessageParserDataMixin.set_data-182"><a href="#MessageParserDataMixin.set_data-182"><span class="linenos">182</span></a>        <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span>
-</span><span id="MessageParserDataMixin.set_data-183"><a href="#MessageParserDataMixin.set_data-183"><span class="linenos">183</span></a>        <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">,</span>
-</span><span id="MessageParserDataMixin.set_data-184"><a href="#MessageParserDataMixin.set_data-184"><span class="linenos">184</span></a>    <span class="p">):</span>
-</span><span id="MessageParserDataMixin.set_data-185"><a href="#MessageParserDataMixin.set_data-185"><span class="linenos">185</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット</span>
-</span><span id="MessageParserDataMixin.set_data-186"><a href="#MessageParserDataMixin.set_data-186"><span class="linenos">186</span></a>
-</span><span id="MessageParserDataMixin.set_data-187"><a href="#MessageParserDataMixin.set_data-187"><span class="linenos">187</span></a><span class="sd">        Args:</span>
-</span><span id="MessageParserDataMixin.set_data-188"><a href="#MessageParserDataMixin.set_data-188"><span class="linenos">188</span></a><span class="sd">            data (MessageType): 内容</span>
-</span><span id="MessageParserDataMixin.set_data-189"><a href="#MessageParserDataMixin.set_data-189"><span class="linenos">189</span></a><span class="sd">            options (StyleOptions): 表示オプション</span>
-</span><span id="MessageParserDataMixin.set_data-190"><a href="#MessageParserDataMixin.set_data-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MessageParserDataMixin.set_data-191"><a href="#MessageParserDataMixin.set_data-191"><span class="linenos">191</span></a>
-</span><span id="MessageParserDataMixin.set_data-192"><a href="#MessageParserDataMixin.set_data-192"><span class="linenos">192</span></a>        <span class="c1"># 空データは登録しない</span>
-</span><span id="MessageParserDataMixin.set_data-193"><a href="#MessageParserDataMixin.set_data-193"><span class="linenos">193</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">empty</span><span class="p">):</span>
-</span><span id="MessageParserDataMixin.set_data-194"><a href="#MessageParserDataMixin.set_data-194"><span class="linenos">194</span></a>            <span class="k">return</span>
-</span><span id="MessageParserDataMixin.set_data-195"><a href="#MessageParserDataMixin.set_data-195"><span class="linenos">195</span></a>
-</span><span id="MessageParserDataMixin.set_data-196"><a href="#MessageParserDataMixin.set_data-196"><span class="linenos">196</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">))</span>
+    <a class="headerlink" href="#MessageParserDataMixin.set_message"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MessageParserDataMixin.set_message-180"><a href="#MessageParserDataMixin.set_message-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_message</span><span class="p">(</span>
+</span><span id="MessageParserDataMixin.set_message-181"><a href="#MessageParserDataMixin.set_message-181"><span class="linenos">181</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="MessageParserDataMixin.set_message-182"><a href="#MessageParserDataMixin.set_message-182"><span class="linenos">182</span></a>        <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;MessageType&quot;</span><span class="p">,</span>
+</span><span id="MessageParserDataMixin.set_message-183"><a href="#MessageParserDataMixin.set_message-183"><span class="linenos">183</span></a>        <span class="n">options</span><span class="p">:</span> <span class="s2">&quot;StyleOptions&quot;</span><span class="p">,</span>
+</span><span id="MessageParserDataMixin.set_message-184"><a href="#MessageParserDataMixin.set_message-184"><span class="linenos">184</span></a>    <span class="p">):</span>
+</span><span id="MessageParserDataMixin.set_message-185"><a href="#MessageParserDataMixin.set_message-185"><span class="linenos">185</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;本文メッセージをセット</span>
+</span><span id="MessageParserDataMixin.set_message-186"><a href="#MessageParserDataMixin.set_message-186"><span class="linenos">186</span></a>
+</span><span id="MessageParserDataMixin.set_message-187"><a href="#MessageParserDataMixin.set_message-187"><span class="linenos">187</span></a><span class="sd">        Args:</span>
+</span><span id="MessageParserDataMixin.set_message-188"><a href="#MessageParserDataMixin.set_message-188"><span class="linenos">188</span></a><span class="sd">            data (MessageType): 内容</span>
+</span><span id="MessageParserDataMixin.set_message-189"><a href="#MessageParserDataMixin.set_message-189"><span class="linenos">189</span></a><span class="sd">            options (StyleOptions): 表示オプション</span>
+</span><span id="MessageParserDataMixin.set_message-190"><a href="#MessageParserDataMixin.set_message-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MessageParserDataMixin.set_message-191"><a href="#MessageParserDataMixin.set_message-191"><span class="linenos">191</span></a>
+</span><span id="MessageParserDataMixin.set_message-192"><a href="#MessageParserDataMixin.set_message-192"><span class="linenos">192</span></a>        <span class="c1"># 空データは登録しない</span>
+</span><span id="MessageParserDataMixin.set_message-193"><a href="#MessageParserDataMixin.set_message-193"><span class="linenos">193</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">empty</span><span class="p">):</span>
+</span><span id="MessageParserDataMixin.set_message-194"><a href="#MessageParserDataMixin.set_message-194"><span class="linenos">194</span></a>            <span class="k">return</span>
+</span><span id="MessageParserDataMixin.set_message-195"><a href="#MessageParserDataMixin.set_message-195"><span class="linenos">195</span></a>
+</span><span id="MessageParserDataMixin.set_message-196"><a href="#MessageParserDataMixin.set_message-196"><span class="linenos">196</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="p">))</span>
 </span></pre></div>
 
 
