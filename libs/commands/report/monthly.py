@@ -29,7 +29,7 @@ def plot(m: "MessageParserProtocol"):
     results = df.transpose().to_dict()
 
     if len(results) == 0:
-        m.post.headline = {title: message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title=title))
         m.status.result = False
         return
 

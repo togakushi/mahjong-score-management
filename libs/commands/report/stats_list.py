@@ -37,7 +37,7 @@ def main(m: "MessageParserProtocol"):
     df = loader.read_data("REPORT_RESULTS_LIST").reset_index(drop=True)
     df.index = df.index + 1
     if df.empty:
-        m.post.headline = {"成績一覧": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績一覧"))
         m.status.result = False
         return
 
@@ -71,7 +71,7 @@ def main(m: "MessageParserProtocol"):
         case _:
             file_path = graph_generation(game_info, df, title)
 
-    m.post.headline = {title: message.header(game_info, m)}
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title))
     match g.adapter.interface_type:
         case "slack" | "discord":
             m.set_data(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))

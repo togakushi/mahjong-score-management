@@ -141,24 +141,27 @@ class SvcFunctions(FunctionsInterface):
 
         return ret
 
-    def header_message(self, m: "MessageParserProtocol") -> str:
+    def header_message(self, m: "MessageParserProtocol") -> tuple[str, str]:
         """ヘッダ情報取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
 
         Returns:
-            str: 取得文字列
+            tuple[str, str]: 取得文字列
         """
 
         message = ""
-        if m.post.headline:
-            title, headline = next(iter(m.post.headline.items()))
-            if not title.isnumeric() and title:
-                message = f"<h1>{title}</h1>\n"
-            message += f"<p>\n{headline.replace('\n', '<br>\n')}</p>\n"
+        title = ""
 
-        return message
+        if m.post.headline:
+            header_data, header_option = m.post.headline
+            if title := header_option.title:
+                message = f"<h1>{title}</h1>\n"
+            if isinstance(header_data, str):
+                message += f"<p>\n{header_data.replace('\n', '<br>\n')}</p>\n"
+
+        return title, message
 
     def set_cookie(self, html: str, req: "Request", data: dict) -> "Response":
         """cookie保存

@@ -82,11 +82,14 @@ class AdapterAPI(APIInterface):
         header_title = ""
         header_text = ""
         if m.post.headline:
-            header_title, header_text = next(iter(m.post.headline.items()))
-            if not m.post.message:  # メッセージなし
-                _post_header()
-            elif not all(options.header_hidden for _, options in m.post.message):
-                _post_header()
+            header_data, header_option = m.post.headline
+            header_title = header_option.title
+            if isinstance(header_data, str):
+                header_text = header_data
+        if not m.post.message:  # メッセージなし
+            _post_header()
+        elif not all(options.header_hidden for _, options in m.post.message):
+            _post_header()
 
         # 本文
         options = StyleOptions()

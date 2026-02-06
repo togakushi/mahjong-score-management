@@ -41,7 +41,7 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
         m.data.text = f"{g.cfg.graph.commandword[0]} {text}"
         libs.dispatcher.by_keyword(m)
 
-        message = adapter.functions.header_message(m)
+        _, message = adapter.functions.header_message(m)
 
         for data, options in m.post.message:
             if isinstance(data, PosixPath) and data.exists():

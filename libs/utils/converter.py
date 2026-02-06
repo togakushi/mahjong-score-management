@@ -16,11 +16,13 @@ from libs.utils import formatter, textutil
 if TYPE_CHECKING:
     from pathlib import Path
 
+    from libs.types import MessageType
+
 
 def save_output(
     df: pd.DataFrame,
     options: StyleOptions,
-    headline: Optional[Union[str, dict[str, str]]] = None,
+    headline: Optional[tuple["MessageType", StyleOptions]] = None,
     suffix: Optional[str] = None,
 ) -> Union["Path", None]:
     """指定されたフォーマットでdfを保存する
@@ -28,8 +30,8 @@ def save_output(
     Args:
         df (pd.DataFrame): 保存対象データ
         options (StyleOptions): 詳細オプション
-        headline (Optional[Union[str, dict], optional): 集計情報（ヘッダコメント）. Defaults to None.
-        suffix (Optional[str], optional): 保存ファイル名に追加する文字列. Defaults to None.
+        headline (tuple[MessageType, StyleOptions], optional): ヘッダコメント. Defaults to None.
+        suffix (str, optional): 保存ファイル名に追加する文字列. Defaults to None.
 
     Returns:
         Path: 保存したファイルパス
@@ -62,15 +64,18 @@ def save_output(
         save_file = save_file.with_name(f"{save_file.stem}_{suffix}{save_file.suffix}")
 
     with open(save_file, "w", encoding="utf-8") as writefile:
-        if headline is not None:  # ヘッダ書き込み
-            if isinstance(headline, dict):
-                title, headline = next(iter(headline.items()))
-                if options.key_title:
-                    writefile.writelines(f"# 【{title}】\n")
-            for line in headline.splitlines():
-                writefile.writelines(f"# {line}\n")
-            writefile.writelines("\n")
-        writefile.writelines(data)  # 本文書き込み
+        # ヘッダコメント書き込み
+        if headline:
+            headline_data, headline_option = headline
+            if options.key_title:
+                writefile.writelines(f"# 【{headline_option.title}】\n")
+            if isinstance(headline_data, str):
+                for line in headline_data.splitlines():
+                    writefile.writelines(f"# {line}\n")
+                writefile.writelines("\n")
+
+        # 本文書き込み
+        writefile.writelines(data)
 
     return save_file
 

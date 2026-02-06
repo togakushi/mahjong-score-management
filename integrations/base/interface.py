@@ -158,12 +158,30 @@ class MessageParserDataMixin:
         self.post.reset()
         self.status.reset()
 
+    def set_headline(
+        self,
+        data: "MessageType",
+        options: "StyleOptions",
+    ):
+        """ヘッドラインメッセージをセット
+
+        Args:
+            data (MessageType): 内容
+            options (StyleOptions): 表示オプション
+        """
+
+        # 空データは登録しない
+        if isinstance(data, NoneType) or (isinstance(data, pd.DataFrame) and data.empty):
+            self.post.headline = None
+        else:
+            self.post.headline = (data, options)
+
     def set_data(
         self,
         data: "MessageType",
         options: "StyleOptions",
     ):
-        """メッセージデータをセット
+        """本文メッセージをセット
 
         Args:
             data (MessageType): 内容

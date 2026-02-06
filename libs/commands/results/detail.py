@@ -42,7 +42,7 @@ def aggregation(m: "MessageParserProtocol"):
             }
         )
         if (target_mode := g.params.get("target_mode")) and target_mode != g.cfg.rule.get_mode(rule_version):
-            m.post.headline = {"集計矛盾検出": message.random_reply(m, "rule_mismatch")}
+            m.set_headline(message.random_reply(m, "rule_mismatch"), StyleOptions(title="集計矛盾検出"))
             m.status.result = False
             return
     if g.params["player_name"] in g.cfg.team.lists:
@@ -67,9 +67,9 @@ def aggregation(m: "MessageParserProtocol"):
             msg_data["特記事項"] = "、".join(compose.text_item.remarks())
             msg_data["検索ワード"] = compose.text_item.search_word()
             msg_data["対戦数"] = f"0 戦 (0 勝 0 敗 0 分) {compose.badge.status(0, 0)}"
-            m.post.headline = {title: message_build(msg_data)}
+            m.set_headline(message_build(msg_data), StyleOptions(title=title))
         else:
-            m.post.headline = {title: "登録されていないチームです。"}
+            m.set_headline("登録されていないチームです。", StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -77,7 +77,7 @@ def aggregation(m: "MessageParserProtocol"):
     stats.read(cast(dict, g.params))
 
     if stats.result_df.empty or stats.record_df.empty:
-        m.post.headline = {title: message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -170,7 +170,7 @@ def aggregation(m: "MessageParserProtocol"):
     # 非表示項目を除外
     m.post.message = [(data, options) for data, options in m.post.message if options.title not in g.cfg.dropitems.results]
 
-    m.post.headline = {title: message_build(msg_data)}
+    m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
 
 def comparison(m: "MessageParserProtocol"):
@@ -194,7 +194,7 @@ def comparison(m: "MessageParserProtocol"):
 
     # タイトル
     title = "成績詳細比較"
-    m.post.headline = {title: message.header(game_info, m, "", 1)}
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
 
     if not game_info.count:
         m.status.result = False
@@ -214,7 +214,7 @@ def comparison(m: "MessageParserProtocol"):
         stats_df = pd.concat([stats_df, work_stats.summary])
 
     if stats_df.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -222,7 +222,7 @@ def comparison(m: "MessageParserProtocol"):
     stipulated = g.params.get("stipulated", 1)  # noqa: F841
     stats_df.query("count >= @stipulated", inplace=True)
     if stats_df.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
         m.status.result = False
         return
 

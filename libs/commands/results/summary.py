@@ -48,21 +48,27 @@ def aggregation(m: "MessageParserProtocol"):
 
     add_text = "" if g.cfg.mahjong.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
-    m.post.headline = {headline_title: header_text}
+    m.set_headline(header_text, StyleOptions(title=headline_title))
 
     if df_summary.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
     # 通算ポイント
     options = StyleOptions(
         title="通算ポイント",
-        format_type=g.params["format"],
         codeblock=False,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_TOTAL,
     )
+    match g.params.get("format", "default").lower():
+        case "csv":
+            options.format_type = "csv"
+        case "txt" | "text":
+            options.format_type = "txt"
+        case _:
+            options.format_type = "default"
 
     header_list = ["name", "total_point", "avg_point", "rank_distr3", "rank_distr4", "flying"]
     filter_list = [
@@ -79,6 +85,7 @@ def aggregation(m: "MessageParserProtocol"):
         "rank_avg",
         "flying",
     ]
+
     if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
         header_list.remove("flying")
         filter_list.remove("flying")
@@ -87,9 +94,10 @@ def aggregation(m: "MessageParserProtocol"):
         options.codeblock = True
         data = df_summary.filter(items=header_list)
     else:
+        options.title = headline_title
         options.base_name = "summary"
         df_summary = df_summary.filter(items=filter_list).fillna("*****")
-        data = converter.save_output(df_summary, options, f"【{headline_title}】\n{header_text}", "summary")
+        data = converter.save_output(df_summary, options, m.post.headline, "summary")
     m.set_data(data, StyleOptions(**options.asdict))
 
     # メモ(役満和了)
@@ -103,8 +111,7 @@ def aggregation(m: "MessageParserProtocol"):
             data = df_yakuman
         else:
             options.base_name = "yakuman"
-            data = converter.save_output(df_yakuman, options, f"【役満和了】\n{header_text}", "yakuman")
-
+            data = converter.save_output(df_yakuman, options, m.post.headline, "yakuman")
         m.set_data(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
@@ -122,8 +129,7 @@ def aggregation(m: "MessageParserProtocol"):
             data = df_regulations
         else:
             options.base_name = "regulations"
-            data = converter.save_output(df_regulations, options, f"【卓外清算】\n{header_text}", "regulations")
-
+            data = converter.save_output(df_regulations, options, m.post.headline, "regulations")
         m.set_data(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
@@ -136,8 +142,7 @@ def aggregation(m: "MessageParserProtocol"):
             data = df_others
         else:
             options.base_name = "others"
-            data = converter.save_output(df_others, options, f"【その他】\n{header_text}", "others")
-
+            data = converter.save_output(df_others, options, m.post.headline, "others")
         m.set_data(data, StyleOptions(**options.asdict))
 
 
@@ -171,10 +176,10 @@ def difference(m: "MessageParserProtocol"):
 
     add_text = "" if g.cfg.mahjong.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
-    m.post.headline = {headline_title: header_text}
+    m.set_headline(header_text, StyleOptions(title=headline_title))
 
     if df_summary.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -186,19 +191,21 @@ def difference(m: "MessageParserProtocol"):
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_DIFF,
     )
+    match g.params.get("format", "default").lower():
+        case "csv":
+            options.format_type = "csv"
+        case "txt" | "text":
+            options.format_type = "txt"
+        case _:
+            options.format_type = "default"
 
     # 集計結果
     header_list = ["#", "name", "total_point", "diff_from_above", "diff_from_top"]
     filter_list = ["name", "count", "total_point", "diff_from_above", "diff_from_top"]
-    match g.params.get("format", "default").lower():
-        case "csv":
-            options.format_type = "csv"
-            data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, f"【{headline_title}】\n{header_text}")
-        case "text" | "txt":
-            options.format_type = "txt"
-            data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, f"【{headline_title}】\n{header_text}")
-        case _:
-            options.format_type = "default"
-            data = df_summary.filter(items=header_list)
 
+    if options.format_type == "default":
+        data = df_summary.filter(items=header_list)
+    else:
+        options.title = headline_title
+        data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
     m.set_data(data, StyleOptions(**options.asdict))

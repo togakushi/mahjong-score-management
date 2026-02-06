@@ -31,7 +31,7 @@ def plot(m: "MessageParserProtocol"):
         df = df.rename(columns=mapping_dict, index=mapping_dict)
 
     if df.empty:
-        m.post.headline = {title: message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -42,7 +42,7 @@ def plot(m: "MessageParserProtocol"):
         file_path = textutil.save_file_path("matrix.txt", True)
         df.to_markdown(file_path, tablefmt="outline")
 
-    m.post.headline = {title: message.header(game_info, m, "", 1)}
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
     match g.adapter.interface_type:
         case "slack" | "discord":
             m.set_data(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
