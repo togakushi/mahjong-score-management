@@ -98,7 +98,7 @@ def aggregation(m: "MessageParserProtocol"):
         options.base_name = "summary"
         df_summary = df_summary.filter(items=filter_list).fillna("*****")
         data = converter.save_output(df_summary, options, m.post.headline, "summary")
-    m.set_data(data, StyleOptions(**options.asdict))
+    m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(役満和了)
     if not g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
@@ -112,7 +112,7 @@ def aggregation(m: "MessageParserProtocol"):
         else:
             options.base_name = "yakuman"
             data = converter.save_output(df_yakuman, options, m.post.headline, "yakuman")
-        m.set_data(data, StyleOptions(**options.asdict))
+        m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
     if not g.cfg.dropitems.results & g.cfg.dropitems.regulation:
@@ -130,7 +130,7 @@ def aggregation(m: "MessageParserProtocol"):
         else:
             options.base_name = "regulations"
             data = converter.save_output(df_regulations, options, m.post.headline, "regulations")
-        m.set_data(data, StyleOptions(**options.asdict))
+        m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
     if not g.cfg.dropitems.results & g.cfg.dropitems.other:
@@ -143,7 +143,7 @@ def aggregation(m: "MessageParserProtocol"):
         else:
             options.base_name = "others"
             data = converter.save_output(df_others, options, m.post.headline, "others")
-        m.set_data(data, StyleOptions(**options.asdict))
+        m.set_message(data, StyleOptions(**options.asdict))
 
 
 def difference(m: "MessageParserProtocol"):
@@ -208,4 +208,4 @@ def difference(m: "MessageParserProtocol"):
     else:
         options.title = headline_title
         data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
-    m.set_data(data, StyleOptions(**options.asdict))
+    m.set_message(data, StyleOptions(**options.asdict))

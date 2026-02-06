@@ -131,10 +131,10 @@ def aggregation(m: "MessageParserProtocol"):
         ).replace("-", "▲")
 
     if g.params.get("statistics"):
-        m.set_data(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
-        m.set_data(textwrap.indent(stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
-        m.set_data(textwrap.indent(stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
-        m.set_data(textwrap.indent(balance_data.strip(), "\t"), StyleOptions(title="平均収支"))
+        m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
+        m.set_message(textwrap.indent(stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
+        m.set_message(textwrap.indent(stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
+        m.set_message(textwrap.indent(balance_data.strip(), "\t"), StyleOptions(title="平均収支"))
 
     # レギュレーション
     remarks_df = loader.read_data("REMARKS_INFO")
@@ -143,29 +143,29 @@ def aggregation(m: "MessageParserProtocol"):
 
     if not g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
-        m.set_data(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
+        m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
     if not g.cfg.dropitems.results & g.cfg.dropitems.regulation:
         if g.params.get("individual"):
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
-        m.set_data(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
+        m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
     if not g.cfg.dropitems.results & g.cfg.dropitems.other:
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
-        m.set_data(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
+        m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
     # 対戦結果
     if g.params.get("versus_matrix"):
-        m.set_data(get_versus_matrix(mapping_dict), StyleOptions(title="対戦結果", indent=1))
+        m.set_message(get_versus_matrix(mapping_dict), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
     if g.params.get("game_results"):
         if g.params.get("verbose"):
-            m.set_data(get_results_details(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False))
+            m.set_message(get_results_details(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False))
         else:
-            m.set_data(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
+            m.set_message(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
 
     # 非表示項目を除外
     m.post.message = [(data, options) for data, options in m.post.message if options.title not in g.cfg.dropitems.results]
@@ -258,7 +258,7 @@ def comparison(m: "MessageParserProtocol"):
             options.key_title = False
             data = formatter.df_rename(stats_df, options).T
 
-    m.set_data(data, options)
+    m.set_message(data, options)
     m.post.thread = True
 
 

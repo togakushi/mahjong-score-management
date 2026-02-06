@@ -115,4 +115,4 @@ def aggregation(m: "MessageParserProtocol"):
             options.key_title = False
             data = df
 
-    m.set_data(data, options)
+    m.set_message(data, options)

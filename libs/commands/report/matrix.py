@@ -45,8 +45,8 @@ def plot(m: "MessageParserProtocol"):
     m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
     match g.adapter.interface_type:
         case "slack" | "discord":
-            m.set_data(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
+            m.set_message(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
         case "web":
-            m.set_data(df, StyleOptions(show_index=True))
+            m.set_message(df, StyleOptions(show_index=True))
         case _:
-            m.set_data(df, StyleOptions(show_index=True))
+            m.set_message(df, StyleOptions(show_index=True))

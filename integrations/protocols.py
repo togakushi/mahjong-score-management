@@ -229,7 +229,7 @@ class MessageParserProtocol(Protocol):
     def set_headline(self, data: "MessageType", options: "StyleOptions"):
         """ヘッドラインメッセージをセット"""
 
-    def set_data(self, data: "MessageType", options: "StyleOptions"):
+    def set_message(self, data: "MessageType", options: "StyleOptions"):
         """本文メッセージをセット"""
 
     def get_remarks(self, keyword: str) -> list:

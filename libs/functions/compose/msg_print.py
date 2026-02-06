@@ -31,25 +31,25 @@ def help_message(m: "MessageParserProtocol"):
     )
     g.cfg.rule.status_update(cast(dict, g.params))
 
-    m.set_data(
+    m.set_message(
         "使い方：<呼び出しキーワード> [検索範囲] [対象メンバー] [オプション]",
         StyleOptions(title="機能呼び出し", indent=1),
     )
-    m.set_data(
+    m.set_message(
         textwrap.dedent(f"""\
         呼び出しキーワード：{"、".join(g.cfg.results.commandword)}
         検索範囲デフォルト：{g.cfg.results.aggregation_range}
         """),
         StyleOptions(title="成績サマリ", indent=1),
     )
-    m.set_data(
+    m.set_message(
         textwrap.dedent(f"""\
         呼び出しキーワード：{"、".join(g.cfg.graph.commandword)}
         検索範囲デフォルト：{g.cfg.graph.aggregation_range}
         """),
         StyleOptions(title="成績グラフ", indent=1),
     )
-    m.set_data(
+    m.set_message(
         textwrap.dedent(f"""\
         呼び出しキーワード：{"、".join(g.cfg.ranking.commandword)}
         検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
@@ -58,26 +58,26 @@ def help_message(m: "MessageParserProtocol"):
         """),
         StyleOptions(title="ランキング", indent=1),
     )
-    m.set_data(
+    m.set_message(
         textwrap.dedent(f"""\
         呼び出しキーワード：{"、".join(g.cfg.report.commandword)}
         検索範囲デフォルト：{g.cfg.report.aggregation_range}
         """),
         StyleOptions(title="レポート", indent=1),
     )
-    m.set_data(
+    m.set_message(
         f"呼び出しキーワード：{'、'.join(g.cfg.member.commandword)}",
         StyleOptions(title="メンバー一覧", indent=1),
     )
-    m.set_data(
+    m.set_message(
         f"呼び出しキーワード：{'、'.join(g.cfg.team.commandword)}",
         StyleOptions(title="チーム一覧", indent=1),
     )
-    m.set_data(  # 検索範囲
+    m.set_message(  # 検索範囲
         ExtDt.print_range(),
         StyleOptions(title="検索範囲に指定できるキーワード", indent=1),
     )
-    m.set_data(  # メモ機能
+    m.set_message(  # メモ機能
         textwrap.dedent(f"""\
         使い方：<登録キーワード> <対象メンバー> <登録ワード>
         登録キーワード：{g.cfg.setting.remarks_word}
@@ -87,7 +87,7 @@ def help_message(m: "MessageParserProtocol"):
 
     # レギュレーション
     if words := lookup.regulation_list(2):
-        m.set_data(
+        m.set_message(
             "\n".join(
                 [
                     "{}：{}pt".format(
@@ -101,7 +101,7 @@ def help_message(m: "MessageParserProtocol"):
         )
 
     if words := lookup.regulation_list(3):
-        m.set_data(
+        m.set_message(
             "\n".join(
                 [
                     "{}：{}pt".format(
@@ -118,7 +118,7 @@ def help_message(m: "MessageParserProtocol"):
     if g.cfg.undefined_word == 1:
         words.append("未登録ワードのすべてを個別にカウント")
     if words:
-        m.set_data(
+        m.set_message(
             "、".join(words),
             StyleOptions(title="個別カウントワード", indent=1),
         )
@@ -127,7 +127,7 @@ def help_message(m: "MessageParserProtocol"):
     if g.cfg.undefined_word == 0:
         words.append("未登録ワードのすべてを役満としてカウント")
     if words:
-        m.set_data(
+        m.set_message(
             "、".join(words),
             StyleOptions(title="役満カウントワード", indent=1),
         )
@@ -136,14 +136,14 @@ def help_message(m: "MessageParserProtocol"):
     rule_set: list = []
     for rule_version in g.cfg.rule.rule_list:
         rule_set.append(g.cfg.rule.print(rule_version))
-    m.set_data(
+    m.set_message(
         "\n \n".join(rule_set),
         StyleOptions(title="ルールセット", indent=1, keep_blank=True),
     )
 
     # その他
     channel_config = g.params.get("channel_config")
-    m.set_data(
+    m.set_message(
         textwrap.dedent(f"""\
         チャンネル識別子：{g.params.get("source")}
         チャンネル個別設定：{channel_config.name if channel_config else "---"}

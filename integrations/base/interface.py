@@ -176,7 +176,7 @@ class MessageParserDataMixin:
         else:
             self.post.headline = (data, options)
 
-    def set_data(
+    def set_message(
         self,
         data: "MessageType",
         options: "StyleOptions",

@@ -52,16 +52,16 @@ def main(m: "MessageParserProtocol") -> None:
     check_remarks(results)
     check_total_score(results)
 
-    m.set_data(results.output("headline"), StyleOptions(title="データ突合", key_title=True))
+    m.set_message(results.output("headline"), StyleOptions(title="データ突合", key_title=True))
     if results.pending:
-        m.set_data(results.output("pending"), StyleOptions(title="保留", key_title=False))
-    m.set_data(results.output("mismatch"), StyleOptions(title="不一致", key_title=False))
-    m.set_data(results.output("missing"), StyleOptions(title="取りこぼし", key_title=False))
-    m.set_data(results.output("delete"), StyleOptions(title="削除漏れ", key_title=False))
-    m.set_data(results.output("remark_mod"), StyleOptions(title="メモ更新", key_title=False))
-    m.set_data(results.output("remark_del"), StyleOptions(title="メモ削除", key_title=False))
+        m.set_message(results.output("pending"), StyleOptions(title="保留", key_title=False))
+    m.set_message(results.output("mismatch"), StyleOptions(title="不一致", key_title=False))
+    m.set_message(results.output("missing"), StyleOptions(title="取りこぼし", key_title=False))
+    m.set_message(results.output("delete"), StyleOptions(title="削除漏れ", key_title=False))
+    m.set_message(results.output("remark_mod"), StyleOptions(title="メモ更新", key_title=False))
+    m.set_message(results.output("remark_del"), StyleOptions(title="メモ削除", key_title=False))
     if results.invalid_score:
-        m.set_data(results.output("invalid_score"), StyleOptions(title="供託残り", key_title=False))
+        m.set_message(results.output("invalid_score"), StyleOptions(title="供託残り", key_title=False))
 
     m.post.thread = True
     m.post.ts = m.data.event_ts
