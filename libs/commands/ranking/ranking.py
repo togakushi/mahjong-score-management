@@ -293,7 +293,7 @@ def aggregation(m: "MessageParserProtocol"):
             continue
         if df_data.empty:  # 対象者なし
             continue
-        m.set_data(
+        m.set_message(
             df_data,
             StyleOptions(
                 title=msg,

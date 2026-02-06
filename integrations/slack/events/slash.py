@@ -39,4 +39,4 @@ def command_help(m: "MessageParserProtocol"):
     msg += f"\n\t{m.status.command_name} team_clear                        チームデータをすべて削除"
     msg += "```"
 
-    m.set_data(msg, StyleOptions(title="ヘルプメッセージ"))
+    m.set_message(msg, StyleOptions(title="ヘルプメッセージ"))
