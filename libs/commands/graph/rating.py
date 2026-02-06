@@ -34,7 +34,7 @@ def plot(m: "MessageParserProtocol"):
     title: str = "レーティング推移グラフ"
 
     if g.params.get("mode") == 3 or g.params.get("target_mode") == 3:  # todo: 未実装
-        m.post.headline = {title: message.random_reply(m, "not_implemented")}
+        m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -43,7 +43,7 @@ def plot(m: "MessageParserProtocol"):
     df_ratings = aggregate.calculation_rating()
 
     if df_ratings.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -65,13 +65,13 @@ def plot(m: "MessageParserProtocol"):
         df_sorted = df_sorted.rename(columns=mapping_dict)
 
     if df_sorted.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
     # --- グラフ生成
     graphutil.setup()
-    m.post.headline = {title: message.header(game_info, m)}
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title))
     match g.adapter.conf.plotting_backend:
         case "matplotlib":
             save_file = _graph_generation(game_info, df_sorted, "rating.png")

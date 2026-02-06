@@ -88,14 +88,17 @@ class AdapterAPI(APIInterface):
         header_title = ""
         header_text = ""
         if m.post.headline:
-            header_title, header_text = next(iter(m.post.headline.items()))
+            header_data, header_option = m.post.headline
+            header_title = header_option.title
+            if isinstance(header_data, str):
+                header_text = header_data
             m.post.thread_title = header_title
-            if not m.post.message:
-                thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
-                m.post.thread = True
-            elif not all(options.header_hidden for _, options in m.post.message):
-                thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
-                m.post.thread = True
+        if not m.post.message:
+            thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
+            m.post.thread = True
+        elif not all(options.header_hidden for _, options in m.post.message):
+            thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
+            m.post.thread = True
         elif m.post.thread_title:
             thread_msg = self.response
             m.post.thread = True

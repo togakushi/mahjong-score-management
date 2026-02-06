@@ -33,7 +33,7 @@ def aggregation(m: "MessageParserProtocol"):
     # データ取得
     game_info = GameInfo()
     if not game_info.count:  # 検索結果が0件のとき
-        m.post.headline = {title: message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -50,7 +50,7 @@ def aggregation(m: "MessageParserProtocol"):
     ).copy()
 
     if df.empty:
-        m.post.headline = {title: message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
         m.status.result = False
         return
 
@@ -304,4 +304,4 @@ def aggregation(m: "MessageParserProtocol"):
             ),
         )
 
-    m.post.headline = {title: message.header(game_info, m, "", 1)}
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))

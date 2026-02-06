@@ -29,7 +29,7 @@ def plot(m: "MessageParserProtocol"):
     game_info = GameInfo()
     results_df = loader.read_data("REPORT_WINNER")
     if len(results_df) == 0:
-        m.post.headline = {"成績上位": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績上位"))
         m.status.result = False
         return
 
@@ -56,7 +56,7 @@ def plot(m: "MessageParserProtocol"):
                     str("{:+}".format(v[f"point{x}"])).replace("-", "▲"),
                 )
 
-    m.post.headline = {"成績上位者": message.header(game_info, m)}
+    m.set_headline(message.header(game_info, m), StyleOptions(title="成績上位者"))
 
     # --- グラフ設定
     match g.adapter.conf.plotting_backend:

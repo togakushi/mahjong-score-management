@@ -40,7 +40,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
         m.data.text = f"{g.cfg.report.commandword[0]} {text}"
         libs.dispatcher.by_keyword(m)
 
-        message = adapter.functions.header_message(m)
+        headline_title, message = adapter.functions.header_message(m)
 
         for data, options in m.post.message:
             if not options.title.isnumeric() and options.title:
@@ -48,7 +48,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
-                if {"個人成績一覧", "チーム成績一覧"} & set(m.post.headline):
+                if {"個人成績一覧", "チーム成績一覧"} & set(headline_title):
                     check_column = data.columns.to_list()
                     multi = [
                         ("", "プレイヤー名" if g.params.get("individual", True) else "チーム名"),
@@ -70,7 +70,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                         ("役満", "和了率") if {"役満和了数", "役満和了率"}.issubset(check_column) else None,
                     ]
                     data.columns = pd.MultiIndex.from_tuples([x for x in multi if x is not None])
-                elif "成績上位者" in m.post.headline.keys():
+                elif "成績上位者" in headline_title:
                     name = "名前" if g.params.get("individual", True) else "チーム"
                     check_column = data.columns.to_list()
                     multi = [

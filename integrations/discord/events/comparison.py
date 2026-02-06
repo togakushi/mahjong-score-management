@@ -45,7 +45,7 @@ async def _wrapper(m: "MessageParserProtocol"):
     await check_remarks(results, messages_list)
     await check_total_score(results, messages_list)
 
-    m.post.headline = {m.keyword: results.output("headline")}
+    m.set_headline(results.output("headline"), StyleOptions(title=m.keyword))
     m.set_data(results.output("mismatch"), StyleOptions(title="不一致", key_title=False))
     m.set_data(results.output("missing"), StyleOptions(title="取りこぼし", key_title=False))
     m.set_data(results.output("delete"), StyleOptions(title="削除漏れ", key_title=False))

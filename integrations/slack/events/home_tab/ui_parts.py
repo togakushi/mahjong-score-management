@@ -372,14 +372,11 @@ def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list
         msg (list): 表示テキスト
     """
 
+    text = ""
     if m.post.headline:
-        if isinstance(m.post.headline, dict):
-            k, v = next(iter(m.post.headline.items()))
-            text = f"\n【{k}】\n{v}"
-        else:
-            text = m.post.headline
-    else:
-        text = ""
+        header_data, header_option = m.post.headline
+        if isinstance(header_data, str):
+            text = f"\n【{header_option.title}】\n{header_data}"
 
     adapter.api.appclient.views_update(
         view_id=adapter.conf.tab_var["view_id"],

@@ -382,11 +382,11 @@ def gen_pdf(m: "MessageParserProtocol"):
 
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()
-        m.post.headline = {"": message.random_reply(m, "not_implemented")}
+        m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions())
         return
 
     if not g.params.get("player_name"):  # レポート対象の指定なし
-        m.post.headline = {"成績レポート": message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title="成績レポート"))
         m.status.result = False
         return
 
@@ -395,7 +395,7 @@ def gen_pdf(m: "MessageParserProtocol"):
     logging.debug(target_info)
 
     if not target_info["game_count"]:  # 記録なし
-        m.post.headline = {"成績レポート": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績レポート"))
         m.status.result = False
         return
 

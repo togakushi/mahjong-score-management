@@ -33,7 +33,7 @@ def aggregation(m: "MessageParserProtocol"):
     add_text: str = ""
 
     if g.params.get("mode") == 3 or g.params.get("target_mode") == 3:  # todo: 未実装
-        m.post.headline = {title: message.random_reply(m, "not_implemented")}
+        m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -43,7 +43,7 @@ def aggregation(m: "MessageParserProtocol"):
     ranked = int(g.params.get("ranked", g.cfg.ranking.ranked))  # noqa: F841
 
     if not game_info.count:  # 検索結果が0件のとき
-        m.post.headline = {title: message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -84,7 +84,7 @@ def aggregation(m: "MessageParserProtocol"):
         df["name"] = df["name"].replace(mapping_dict)
 
     if df.empty:
-        m.post.headline = {title: message.random_reply(m, "no_target")}
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
         m.status.result = False
         return
 
@@ -92,7 +92,7 @@ def aggregation(m: "MessageParserProtocol"):
     df = df.query("rank <= @ranked").filter(items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"]).copy()
     df = formatter.df_drop(df, list(g.cfg.dropitems.ranking))
 
-    m.post.headline = {title: message.header(game_info, m, add_text, 1)}
+    m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
     options: StyleOptions = StyleOptions(
         title=title,
         data_kind=StyleOptions.DataKind.RATING,

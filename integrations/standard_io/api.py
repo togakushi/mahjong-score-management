@@ -47,13 +47,14 @@ class AdapterAPI(APIInterface):
 
         # 見出し
         if m.post.headline:
-            title, text = next(iter(m.post.headline.items()))
-            if text:
+            header_data, header_option = m.post.headline
+            if isinstance(header_data, str):
                 print("=" * 80)
-                if not title.isnumeric() and title:
-                    print(f"【{title}】")
-                print(textwrap.dedent(text).rstrip())
-                print("=" * 80)
+                if header_option.title:
+                    print(f"【{header_option.title}】")
+                if isinstance(header_data, str):
+                    print(textwrap.dedent(header_data).rstrip())
+                    print("=" * 80)
 
         # 本文
         for data, options in m.post.message:

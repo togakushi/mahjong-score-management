@@ -4,7 +4,7 @@ integrations/protocols.py
 
 from dataclasses import dataclass, field, fields, is_dataclass
 from enum import StrEnum
-from typing import TYPE_CHECKING, Any, Protocol
+from typing import TYPE_CHECKING, Any, Optional, Protocol
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
@@ -120,7 +120,8 @@ class MsgData(DataMixin):
 class PostData(DataMixin):
     """ポストするデータ"""
 
-    headline: dict[str, str] = field(default_factory=dict)
+    """本文メッセージ"""
+    headline: Optional[tuple["MessageType", "StyleOptions"]] = field(default=None)
     """ヘッダ文"""
     message: list[tuple["MessageType", "StyleOptions"]] = field(default_factory=list)
     """本文
@@ -225,8 +226,11 @@ class MessageParserProtocol(Protocol):
     def ignore_user(self) -> bool:
         """コマンドを拒否するユーザか判定"""
 
+    def set_headline(self, data: "MessageType", options: "StyleOptions"):
+        """ヘッドラインメッセージをセット"""
+
     def set_data(self, data: "MessageType", options: "StyleOptions"):
-        """メッセージデータをセット"""
+        """本文メッセージをセット"""
 
     def get_remarks(self, keyword: str) -> list:
         """本文からメモデータを取り出す"""

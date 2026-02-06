@@ -40,10 +40,10 @@ def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
         m.data.text = f"{g.cfg.ranking.commandword[0]} {text}"
         libs.dispatcher.by_keyword(m)
 
-        message = adapter.functions.header_message(m)
+        _, message = adapter.functions.header_message(m)
 
         for data, options in m.post.message:
-            if not options.title.isnumeric() and options.title:
+            if options.title:
                 message += f"<h2>{options.title}</h2>\n"
 
             if isinstance(data, pd.DataFrame):

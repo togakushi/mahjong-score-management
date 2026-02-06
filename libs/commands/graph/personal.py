@@ -39,7 +39,7 @@ def plot(m: "MessageParserProtocol"):
     df = loader.read_data("SUMMARY_GAMEDATA")
 
     if df.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -60,7 +60,7 @@ def plot(m: "MessageParserProtocol"):
     else:
         title_range = f"({ExtDt(g.params['starttime']).format(Format.YMDHM)} - {ExtDt(g.params['endtime']).format(Format.YMDHM)})"
 
-    m.post.headline = {title_text: message.header(game_info, m)}
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
     m.set_data(
         formatter.df_rename(df.drop(columns=["count", "name"]), StyleOptions()),
         StyleOptions(title="個人成績", header_hidden=True, key_title=False),
@@ -136,7 +136,7 @@ def statistics_plot(m: "MessageParserProtocol"):
     df = loader.read_data("SUMMARY_DETAILS")
 
     if df.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -151,7 +151,7 @@ def statistics_plot(m: "MessageParserProtocol"):
     player_df = df.query("name == @player").reset_index(drop=True)
 
     if player_df.empty:
-        m.post.headline = {"0": message.random_reply(m, "no_hits")}
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -235,7 +235,7 @@ def statistics_plot(m: "MessageParserProtocol"):
     rank_table["4位"] = count_df.apply(lambda row: f"{row['4位(%)']:.2%} ({row['4位']:.0f})", axis=1)
     rank_table["平均順位"] = count_df.apply(lambda row: f"{row['平均順位']:.2f}", axis=1)
 
-    m.post.headline = {f"『{player}』の成績": message.header(game_info, m)}
+    m.set_headline(message.header(game_info, m), StyleOptions(title=f"『{player}』の成績"))
 
     # --- グラフ生成
     graphutil.setup()
