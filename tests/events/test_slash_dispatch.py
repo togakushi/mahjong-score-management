@@ -41,14 +41,14 @@ def test_help(config, keyword, monkeypatch):
     g.command_dispatcher.update({"help": integrations.slack.events.slash.command_help})
     param_data.FAKE_BODY["event"].update(text=f"{keyword}")
 
-    with patch.object(m, "set_data") as mock_set_data:
+    with patch.object(m, "set_message") as mock_set_message:
         m.parser(cast(dict, param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
 
         # fixme
-        # mock_set_data.assert_called_once()
-        _ = mock_set_data
-        # assert mock_set_data.call_args[0][0] == "ヘルプメッセージ"
+        # mock_set_message.assert_called_once()
+        _ = mock_set_message
+        # assert mock_set_message.call_args[0][0] == "ヘルプメッセージ"
 
 
 @pytest.mark.parametrize(
@@ -158,14 +158,14 @@ def test_download(config, keyword, monkeypatch):
     m = _init()
     param_data.FAKE_BODY["event"].update(text=f"{keyword}")
 
-    with patch.object(m, "set_data") as mock_set_data:
+    with patch.object(m, "set_message") as mock_set_message:
         m.parser(cast(dict, param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
 
-        mock_set_data.assert_called_once()
+        mock_set_message.assert_called_once()
         # 引数の検証
-        contents = mock_set_data.call_args[0][0]
-        options = mock_set_data.call_args[0][1]
+        contents = mock_set_message.call_args[0][0]
+        options = mock_set_message.call_args[0][1]
 
         assert contents == g.cfg.setting.database_file
         assert isinstance(options, StyleOptions)
