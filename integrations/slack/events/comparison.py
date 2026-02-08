@@ -187,12 +187,11 @@ def check_remarks(results: ComparisonResults):
         results.remark_mod.append(remark)
 
     if results.remark_mod:
+        work_m.reset()
         for remark in results.remark_mod:
             work_m.data.event_ts = remark["event_ts"]
-            work_m.status.command_type = CommandType.COMPARISON
             work_m.data.channel_id = remark["source"].replace("slack_", "")
-        work_m.status.command_type = CommandType.COMPARISON  # リセットがかかるので再セット
-        work_m.data.channel_id = remark["source"].replace("slack_", "")
+            work_m.status.command_type = CommandType.COMPARISON
         modify.remarks_delete(work_m)
         modify.remarks_append(work_m, results.remark_mod)
 

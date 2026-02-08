@@ -120,13 +120,10 @@ class MsgData(DataMixin):
 class PostData(DataMixin):
     """ポストするデータ"""
 
-    """本文メッセージ"""
     headline: Optional[tuple["MessageType", "StyleOptions"]] = field(default=None)
-    """ヘッダ文"""
+    """ヘッダメッセージ"""
     message: list[tuple["MessageType", "StyleOptions"]] = field(default_factory=list)
-    """本文
-    MessageTypeとStyleOptionsのペアのリスト
-    """
+    """本文メッセージ"""
     thread: bool = field(default=True)
     """スレッドに返す"""
     ts: str = field(default="undetermined")
@@ -231,9 +228,6 @@ class MessageParserProtocol(Protocol):
 
     def set_message(self, data: "MessageType", options: "StyleOptions"):
         """本文メッセージをセット"""
-
-    def get_remarks(self, keyword: str) -> list:
-        """本文からメモデータを取り出す"""
 
     def parser(self, body: Any):
         """メッセージ解析メソッド"""
