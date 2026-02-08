@@ -330,13 +330,8 @@ class SvcFunctions(FunctionsInterface):
             if match.ignore_user:  # 除外ユーザからのポストは破棄
                 logging.info("skip ignore user: %s", match.data.user_id)
                 continue
-
-            if remark := match.get_remarks(g.cfg.setting.remarks_word):
-                match.data.remarks = remark
-            else:  # 不一致は破棄
-                continue
-
-            remarks_matches.append(match)
+            if match.keyword == g.cfg.setting.remarks_word:
+                remarks_matches.append(match)
 
         # イベント詳細取得
         if remarks_matches:
@@ -383,7 +378,6 @@ class SvcFunctions(FunctionsInterface):
                             self.reaction_remove(icon=reaction_ok, ch=m.data.channel_id, ts=ts)
                         if not reaction_data.get("ng"):
                             self.reaction_append(icon=reaction_ng, ch=m.data.channel_id, ts=ts)
-                m.status.reset()
             case ActionStatus.DELETE:
                 for ts in m.status.target_ts:
                     self.reaction_remove(icon=reaction_ok, ch=m.data.channel_id, ts=ts)
