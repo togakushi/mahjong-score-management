@@ -342,7 +342,7 @@ class RuleSet:
             RuntimeError: 重複あり
         """
 
-        chk_word: str | "RuleData"
+        chk_word: str | RuleData
 
         try:
             # ルール識別子チェック
