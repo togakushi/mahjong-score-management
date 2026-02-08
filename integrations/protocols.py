@@ -229,9 +229,6 @@ class MessageParserProtocol(Protocol):
     def set_message(self, data: "MessageType", options: "StyleOptions"):
         """本文メッセージをセット"""
 
-    def get_remarks(self, keyword: str) -> list:
-        """本文からメモデータを取り出す"""
-
     def parser(self, body: Any):
         """メッセージ解析メソッド"""
 

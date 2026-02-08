@@ -2,7 +2,6 @@
 integrations/base/interface.py
 """
 
-import re
 from abc import ABC, abstractmethod
 from configparser import ConfigParser
 from dataclasses import dataclass, field
@@ -193,24 +192,6 @@ class MessageParserDataMixin:
             return
 
         self.post.message.append((data, options))
-
-    def get_remarks(self, keyword: str) -> list:
-        """textからメモを抽出する
-
-        Args:
-            keyword (str): メモ記録キーワード
-
-        Returns:
-            list: 結果
-        """
-
-        ret: list = []
-        if re.match(rf"^{keyword}", self.data.text):  # キーワードが先頭に存在するかチェック
-            text = self.data.text.replace(keyword, "").strip().split()
-            for name, matter in zip(text[0::2], text[1::2]):
-                ret.append([name, matter])
-
-        return ret
 
 
 class MessageParserInterface(ABC):
