@@ -61,7 +61,7 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
                 fmt.append(".2f")
             case "順位差" | "トップ差":
                 fmt.append(".1f")
-            case "平均素点" | "レート":
+            case "平均素点" | "レート" | "rate":
                 fmt.append(".1f")
             case "順位偏差" | "得点偏差":
                 fmt.append(".0f")

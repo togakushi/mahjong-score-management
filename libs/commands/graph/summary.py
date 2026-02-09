@@ -164,8 +164,8 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
         # 足切り
         target_list = list(target_data.query("game_count >= @g.params['stipulated']")["name"])
         _ = target_list  # ignore PEP8 F841
-        target_data = target_data.query("name == @target_list").copy()
-        df = df.query("name == @target_list").copy()
+        target_data = target_data.query("name == @target_list")
+        df = df.query("name == @target_list")
     else:  # チーム集計
         target_data["last_point"] = df.groupby("name").last()["point_sum"]
         target_data["game_count"] = df.groupby("name").max(numeric_only=True)["count"]

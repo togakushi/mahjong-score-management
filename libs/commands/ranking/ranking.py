@@ -47,7 +47,7 @@ def aggregation(m: "MessageParserProtocol"):
         )
         .drop(columns=["first_game", "last_game", "first_comment", "last_comment"])
         .query("count>=@g.params['stipulated']")
-    ).copy()
+    )
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
