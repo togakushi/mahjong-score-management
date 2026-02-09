@@ -70,7 +70,7 @@ class AdapterAPI(APIInterface):
                 text=f"{_header_text(header_title)}{header_text.rstrip()}",
                 thread_ts=m.reply_ts,
             )
-            if res.status_code == 200:  # 見出しがある場合はスレッドにする
+            if res and res.status_code == 200:  # 見出しがある場合はスレッドにする
                 m.post.ts = res.get("ts", "undetermined")
             else:
                 m.post.ts = "undetermined"
@@ -169,6 +169,9 @@ class AdapterAPI(APIInterface):
         res = cast("SlackResponse", {})
         if kwargs["thread_ts"] == "0":
             kwargs.pop("thread_ts")
+
+        if not kwargs.get("text"):
+            return res
 
         try:
             res = self.appclient.chat_postMessage(**kwargs)
