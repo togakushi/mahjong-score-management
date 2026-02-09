@@ -34,7 +34,7 @@ class SvcFunctions(FunctionsInterface):
         """
 
         df = formatter.df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL))
-        df = df.rename(columns={"name": "プレイヤー名", "point": "ポイント", "rank": "順位"}).copy()
+        df = df.rename(columns={"name": "プレイヤー名", "point": "ポイント", "rank": "順位"})
         styled = (
             df.style.format(
                 {

@@ -67,7 +67,7 @@ def calculation_rating() -> pd.DataFrame:
                 last_ratings[player] = 1500.0
                 df_ratings[player] = np.nan
                 df_ratings.loc["initial_rating", player] = 1500.0
-                df_ratings = df_ratings.copy()
+                df_ratings = df_ratings
 
         # 天鳳計算式 (https://tenhou.net/man/#RATING)
         rank_list = (x.p1_rank, x.p2_rank, x.p3_rank, x.p4_rank)

@@ -53,20 +53,20 @@ def aggregation(m: "MessageParserProtocol"):
     # 最終的なレーティング
     final = df_ratings.ffill().tail(1).transpose()
     final.columns = ["rate"]
-    final["name"] = final.copy().index
+    final["name"] = final.index
 
     df = pd.merge(df_results, final, on=["name"]).sort_values(by="rate", ascending=False)
-    df = df.query("count >= @g.params['stipulated']").copy()  # 足切り
+    df = df.query("count >= @g.params['stipulated']")  # 足切り
     df["rank"] = 0  # 順位表示用カラム
 
     # 集計対象外データの削除
     if g.params.get("unregistered_replace"):  # 個人戦
         for player in df.itertuples():
             if player.name not in g.cfg.member.lists:
-                df = df.copy().drop(player.Index)
+                df = df.drop(player.Index)
 
     if not g.params.get("individual"):  # チーム戦
-        df = df.copy().query("name != '未所属'")
+        df = df.query("name != '未所属'")
 
     # 順位偏差 / 得点偏差
     df["point_dev"] = (df["rpoint_avg"] - df["rpoint_avg"].mean()) / df["rpoint_avg"].std(ddof=0) * 10 + 50
@@ -89,7 +89,7 @@ def aggregation(m: "MessageParserProtocol"):
         return
 
     df["rank"] = df["rate"].rank(ascending=False, method="dense").astype("int")
-    df = df.query("rank <= @ranked").filter(items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"]).copy()
+    df = df.query("rank <= @ranked").filter(items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"])
     df = formatter.df_drop(df, list(g.cfg.dropitems.ranking))
 
     m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))

@@ -265,7 +265,7 @@ def statistics_plot(m: "MessageParserProtocol"):
             subplot_table(count_df.filter(items=["ゲーム数", "区間ポイント", "区間平均", "通算ポイント"]), ax_point2)
 
             # 順位データ
-            subplot_rank(count_df.copy(), ax_rank1, total_index)
+            subplot_rank(count_df, ax_rank1, total_index)
             subplot_table(rank_table, ax_rank2)
 
             # 素点データ
