@@ -1,6 +1,6 @@
 [project]
 name = "mahjong-score-management"
-version = "0.9.0"
+version = "0.10.0"
 description = "Mahjong score management tool"
 readme = "README.md"
 license = "MIT"
@@ -11,7 +11,7 @@ dependencies = [
     "slack-sdk",
     "matplotlib",
     "reportlab",
-    "pandas",
+    "pandas>=3.0.0",
     "tabulate[widechars]",
     "table2ascii",
     "tqdm",
