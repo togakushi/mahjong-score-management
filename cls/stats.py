@@ -384,6 +384,8 @@ class StatsInfo:
                     seat_map[seat_id].update_from_dict(row.to_dict())
 
     def set_parameter(self, **kwargs):
+        """パラメータ取り込み"""
+
         if "mode" in kwargs and isinstance(kwargs["mode"], int):
             if kwargs["mode"] in (3, 4):
                 self.mode = kwargs["mode"]  # type: ignore[assignment]
@@ -408,11 +410,7 @@ class StatsInfo:
 
     @property
     def rank_distr_list(self) -> list:
-        """座席別順位分布(平均順位)
-
-        Returns:
-            list: _description_
-        """
+        """座席別順位分布(平均順位)"""
 
         return [
             self.seat1.rank_distr,
@@ -423,11 +421,7 @@ class StatsInfo:
 
     @property
     def rank_distr_list2(self) -> list:
-        """座席別順位分布(ゲーム数)
-
-        Returns:
-            list: _description_
-        """
+        """座席別順位分布(ゲーム数)"""
 
         return [
             self.seat1.rank_distr2,
