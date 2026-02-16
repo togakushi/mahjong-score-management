@@ -6,7 +6,7 @@ import math
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from libs.data import aggregate, lookup
+from libs.data import aggregate, loader
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -87,6 +87,9 @@ def grade(name: str, detail: bool = True) -> str:
         str: 称号
     """
 
+    if name not in g.cfg.member.lists:  # レギュラーメンバー以外
+        return ""
+
     if not g.cfg.badge.grade.table_name or not g.cfg.badge.grade.table:  # テーブル未定義
         return ""
 
@@ -97,7 +100,7 @@ def grade(name: str, detail: bool = True) -> str:
     point: int = 0  # 昇段ポイント
     grade_level: int = 0  # レベル(段位)
 
-    result_df = lookup.get_results_list(name, g.params.get("rule_version", ""))
+    result_df = loader.read_data("SELECT_ALL_RESULTS", cast(dict, g.params))
     addition_expression = g.cfg.badge.grade.table.get("addition_expression", "0")
     for _, data in result_df.iterrows():
         rank = data["rank"]
