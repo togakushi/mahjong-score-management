@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Union, cast
 
 import libs.global_value as g
+from libs.data import lookup
 from libs.utils import dbutil
 
 if TYPE_CHECKING:
@@ -18,7 +19,56 @@ if TYPE_CHECKING:
     from libs.types import GradeTableDict
 
 
-def initialization_resultdb(database_file: Union[str, Path]) -> None:
+def main(init_db: bool):
+    """DB初期化処理
+
+    Args:
+        init_db (bool): setup処理の実行有無
+    """
+
+    if init_db:
+        # メイン設定
+        setup_resultdb(g.cfg.setting.database_file)
+
+        # チャンネル個別設定
+        for section in g.cfg.main_parser.sections():
+            if str(section).startswith(f"{g.adapter.interface_type}_"):
+                if channel_config := g.cfg.main_parser[section].get("channel_config"):
+                    others_db = lookup.get_config_value(
+                        config_file=Path(channel_config),
+                        section="setting",
+                        name="database_file",
+                        val_type=str,
+                        fallback="",
+                    )
+                    if others_db:
+                        setup_resultdb(Path(others_db).absolute())
+
+        read_grade_table()
+
+    # ルールデータ取り込み
+    if g.cfg.mahjong.rule_version:
+        g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
+
+    if g.cfg.main_parser.has_section("keyword_mapping"):
+        for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
+            if not rule_version:
+                g.cfg.rule.keyword_mapping.update({keyword: g.cfg.mahjong.rule_version})
+            elif rule_version in g.cfg.rule.data:
+                g.cfg.rule.keyword_mapping.update({keyword: rule_version})
+
+    if not g.cfg.rule.keyword_mapping:
+        if isinstance(g.cfg.setting.keyword, str):
+            g.cfg.rule.keyword_mapping = {g.cfg.setting.keyword: g.cfg.mahjong.rule_version}
+        else:
+            g.cfg.rule.keyword_mapping = {"終局": g.cfg.mahjong.rule_version}
+
+    g.cfg.rule.status_update(cast(dict, g.params))
+    g.cfg.rule.register_to_database()
+    g.cfg.rule.info()
+
+
+def setup_resultdb(database_file: Union[str, Path]) -> None:
     """DB初期化 & マイグレーション
 
     Args:
@@ -98,7 +148,7 @@ def initialization_resultdb(database_file: Union[str, Path]) -> None:
                     )
                     logging.debug("regulations table(type2): %s, %s", word, ex_point)
 
-    if cast("ConfigParser", getattr(g.cfg, "_parser")).has_section("regulations"):
+    if cast("ConfigParser", getattr(g.cfg, "_parser")).has_section("regulations_team"):
         for k, v in cast("ConfigParser", getattr(g.cfg, "_parser")).items("regulations_team"):
             resultdb.execute(
                 "insert into words(word, type, ex_point) values (?, 3, ?);",
@@ -137,7 +187,6 @@ def initialization_resultdb(database_file: Union[str, Path]) -> None:
     resultdb.commit()
     resultdb.close()
     memdb.close()
-    read_grade_table()
 
 
 def read_grade_table() -> None:
