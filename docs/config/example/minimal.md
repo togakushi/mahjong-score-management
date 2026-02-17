@@ -11,7 +11,7 @@
 ### 設定状況(アプリケーション起動ログから抜粋)
 #### 使用データベースファイル
 ```
-[DEBUG][initialization:initialization_resultdb] /path/to/slack-mahjong-score-management/mahjong.db
+[DEBUG][initialization:setup_resultdb] /path/to/slack-mahjong-score-management/mahjong.db
 ```
 
 #### 呼び出しキーワード
