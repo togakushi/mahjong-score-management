@@ -29,6 +29,7 @@ def main(init_db: bool):
     if init_db:
         # メイン設定
         setup_resultdb(g.cfg.setting.database_file)
+        setup_regulations(g.cfg.setting.database_file)
 
         # チャンネル個別設定
         for section in g.cfg.main_parser.sections():
@@ -43,6 +44,7 @@ def main(init_db: bool):
                     )
                     if others_db:
                         setup_resultdb(Path(others_db).absolute())
+                        setup_regulations(g.cfg.setting.database_file)
 
         read_grade_table()
 
@@ -119,7 +121,49 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     # 追加カラムデータ更新
     resultdb.execute("update result set mode = 4 where mode isnull and p4_name != '' and p4_str != '';")
 
-    # regulationsテーブル情報読み込み
+    # VIEW
+    rows = resultdb.execute("select name from sqlite_master where type = 'view';")
+    for row in rows.fetchall():
+        resultdb.execute(f"drop view if exists '{row['name']}';")
+    resultdb.execute(dbutil.query("CREATE_VIEW_INDIVIDUAL_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
+    resultdb.execute(dbutil.query("CREATE_VIEW_GAME_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
+    resultdb.execute(dbutil.query("CREATE_VIEW_GAME_INFO"))
+    resultdb.execute(dbutil.query("CREATE_VIEW_REGULATIONS").format(undefined_word=g.cfg.undefined_word))
+
+    # INDEX
+    resultdb.execute(dbutil.query("CREATE_INDEX"))
+
+    # ゲスト設定チェック
+    ret = resultdb.execute("select * from member where id=0;")
+    data = ret.fetchall()
+
+    if len(data) == 0:
+        logging.info("ゲスト設定: %s", g.cfg.member.guest_name)
+        sql = "insert into member (id, name) values (0, ?);"
+        resultdb.execute(sql, (g.cfg.member.guest_name,))
+    elif data[0][1] != g.cfg.member.guest_name:
+        logging.warning("ゲスト修正: %s -> %s", data[0][1], g.cfg.member.guest_name)
+        sql = "update member set name=? where id=0;"
+        resultdb.execute(sql, (g.cfg.member.guest_name,))
+
+    resultdb.commit()
+    resultdb.close()
+    memdb.close()
+
+
+def setup_regulations(database_file: Union[str, Path]):
+    """regulationsテーブル情報読み込み
+
+    Args:
+        database_file (Union[str, Path]): データベース接続パス
+    """
+
+    if isinstance(database_file, Path):
+        logging.info(database_file.absolute())
+    else:
+        logging.info(database_file)
+
+    resultdb = dbutil.connection(database_file)
     if cast("ConfigParser", getattr(g.cfg, "_parser")).has_section("regulations"):
         resultdb.execute("delete from words;")
         for k, v in cast("ConfigParser", getattr(g.cfg, "_parser")).items("regulations"):
@@ -159,34 +203,8 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
             )
             logging.debug("regulations table(type3): %s, %s", k.strip(), int(v))
 
-    # VIEW
-    rows = resultdb.execute("select name from sqlite_master where type = 'view';")
-    for row in rows.fetchall():
-        resultdb.execute(f"drop view if exists '{row['name']}';")
-    resultdb.execute(dbutil.query("CREATE_VIEW_INDIVIDUAL_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
-    resultdb.execute(dbutil.query("CREATE_VIEW_GAME_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
-    resultdb.execute(dbutil.query("CREATE_VIEW_GAME_INFO"))
-    resultdb.execute(dbutil.query("CREATE_VIEW_REGULATIONS").format(undefined_word=g.cfg.undefined_word))
-
-    # INDEX
-    resultdb.execute(dbutil.query("CREATE_INDEX"))
-
-    # ゲスト設定チェック
-    ret = resultdb.execute("select * from member where id=0;")
-    data = ret.fetchall()
-
-    if len(data) == 0:
-        logging.info("ゲスト設定: %s", g.cfg.member.guest_name)
-        sql = "insert into member (id, name) values (0, ?);"
-        resultdb.execute(sql, (g.cfg.member.guest_name,))
-    elif data[0][1] != g.cfg.member.guest_name:
-        logging.warning("ゲスト修正: %s -> %s", data[0][1], g.cfg.member.guest_name)
-        sql = "update member set name=? where id=0;"
-        resultdb.execute(sql, (g.cfg.member.guest_name,))
-
     resultdb.commit()
     resultdb.close()
-    memdb.close()
 
 
 def read_grade_table() -> None:
