@@ -100,16 +100,14 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
     else:
         for x in field:
             match x:
-                case "ゲーム数":
-                    fmt.append("right")
-                case "通算" | "平均" | "順位差" | "トップ差":
-                    fmt.append("right")
-                case "1位" | "2位" | "3位" | "4位" | "トビ":
-                    fmt.append("right")
-                case "レート" | "平均順位" | "平順" | "順位偏差" | "平均素点" | "得点偏差":
-                    fmt.append("right")
-                case _:
+                case "name" | "playtime" | "matter" | "grade":
                     fmt.append("left")
+                case "rank_distr" | "rank_distr4":
+                    fmt.append("left")
+                case "rank_avg":
+                    fmt.append("center")
+                case _:
+                    fmt.append("right")
 
     return fmt
 

@@ -72,6 +72,7 @@ class AdapterAPI(APIInterface):
                             index=options.show_index,
                             tablefmt="simple_outline",
                             floatfmt=formatter.floatfmt_adjust(x, index=options.show_index),
+                            colalign=formatter.column_alignment(x, index=options.show_index),
                         )
                         .replace(" nan ", "-----")
                     )
