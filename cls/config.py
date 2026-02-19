@@ -174,6 +174,8 @@ class MahjongSection(BaseSection):
         - *True*: 山分けにする
         - *False*: 席順で決める
         """
+        self.undefined_word = 0
+        """未定義ワードタイプ"""
 
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み

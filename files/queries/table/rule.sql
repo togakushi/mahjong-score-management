@@ -6,5 +6,6 @@ create table if not exists "rule" (
     "rank_point"        TEXT DEFAULT "30 10 -10 -30",
     "ignore_flying"     INTEGER DEFAULT 0,
     "draw_split"        INTEGER DEFAULT 0,
+    "undefined_word"    INTEGER DEFAULT 1,
     PRIMARY KEY("rule_version")
 );

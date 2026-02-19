@@ -42,6 +42,8 @@ class RuleData:
     - *True*: 山分けにする
     - *False*: 席順で決める
     """
+    undefined_word: int = 1
+    """未定義ワードタイプ"""
 
     # ステータス
     first_time: ExtDt = field(default=ExtDt("1900-01-01 00:00:00"))
@@ -88,18 +90,24 @@ class RuleData:
         else:
             self.draw_split = False
 
+        if undefined_word := rule_data.get("undefined_word"):
+            self.undefined_word = int(undefined_word)
+        else:
+            self.undefined_word = 0
+
 
 class RuleSet:
     """ルールセット"""
 
     def __init__(self, config: "Path"):
-        self.config: "Path" = config
-        """ルール設定ファイルパス"""
+        self.config: ConfigParser = ConfigParser()
+        """ルール設定ファイル"""
         self.data: dict[str, RuleData] = {}
         """ルール情報格納辞書"""
         self.keyword_mapping: dict[str, str] = {}
         """登録キーワードとルールバージョン識別子のマッピング"""
 
+        self.config.read(config, encoding="utf-8")
         self.read_config()
 
     def data_set(
@@ -148,12 +156,13 @@ class RuleSet:
     def read_config(self):
         """設定ファイル読み込み"""
 
-        rule_parser = ConfigParser()
-        rule_parser.read(self.config)
+        for section_name in map(str, self.config.sections()):
+            if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
+                continue
+            if section_name.startswith("regulations_team_") or section_name.endswith("_team_regulations"):
+                continue
 
-        for section_name in rule_parser.sections():
-            rule = dict(rule_parser[section_name])
-
+            rule = dict(self.config[section_name])
             if self.data_set(section_name, mode=int(rule.get("mode", 4))):  # type: ignore
                 self.data[section_name].update(rule)
 
@@ -216,6 +225,7 @@ class RuleSet:
                 "rank_point": rule.rank_point,
                 "ignore_flying": rule.ignore_flying,
                 "draw_split": rule.draw_split,
+                "undefined_word": rule.undefined_word,
             }
 
         return {}
@@ -383,9 +393,9 @@ class RuleSet:
                 """
                 insert into
                 rule (
-                    rule_version, mode, origin_point, return_point, rank_point, ignore_flying, draw_split
+                    rule_version, mode, origin_point, return_point, rank_point, ignore_flying, draw_split, undefined_word
                 ) values (
-                    :rule_version, :mode, :origin_point, :return_point, :rank_point, :ignore_flying, :draw_split
+                    :rule_version, :mode, :origin_point, :return_point, :rank_point, :ignore_flying, :draw_split, :undefined_word
                 );
                 """,
                 params,
