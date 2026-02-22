@@ -8,7 +8,8 @@ create view if not exists regulations as
         group_concat(remarks.matter) as word,
         count() as count,
         ifnull(words.type, rule.undefined_word) as type,
-        sum(ifnull(words.ex_point, 0)) as ex_point
+        sum(ifnull(words.ex_point, 0)) as ex_point,
+        rule.rule_version
     from
         remarks
     join result on
