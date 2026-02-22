@@ -267,6 +267,18 @@ class RuleSet:
 
         return int(self.to_dict(version).get("mode", 0))
 
+    def get_undefined_word(self, version: str) -> int:
+        """指定ルールバージョン識別子の未定義ワードタイプを返す
+
+        Args:
+            version (str): ルールバージョン識別子
+
+        Returns:
+            int: 未定義ワードタイプ
+        """
+
+        return int(self.to_dict(version).get("undefined_word", 1))
+
     def print(self, version: str) -> str:
         """指定ルールバージョン識別子の内容を出力する
 
