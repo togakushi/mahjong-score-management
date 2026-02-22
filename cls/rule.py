@@ -330,7 +330,7 @@ class RuleSet:
         logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
             logging.info(
-                "%s: mode=%s, origin_point=%s, return_point=%s, rank_point=%s, draw_split=%s, ignore_flying=%s",
+                "%s: mode=%s, origin_point=%s, return_point=%s, rank_point=%s, draw_split=%s, ignore_flying=%s, undefined_word=%s",
                 rule.rule_version,
                 rule.mode,
                 rule.origin_point,
@@ -338,6 +338,7 @@ class RuleSet:
                 rule.rank_point,
                 rule.draw_split,
                 rule.ignore_flying,
+                rule.undefined_word,
             )
 
     def check(self, chk_commands: set, chk_members: set, default_rule: str):
