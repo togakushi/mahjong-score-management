@@ -93,7 +93,7 @@ class RuleData:
         if undefined_word := rule_data.get("undefined_word"):
             self.undefined_word = int(undefined_word)
         else:
-            self.undefined_word = 0
+            self.undefined_word = 1
 
 
 class RuleSet:
