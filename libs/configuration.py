@@ -276,7 +276,6 @@ def setup(init_db: bool = True):
 
     # DB初期化
     initialization.main(init_db)
-    g.cfg.initialization()
     lookup.read_memberslist()
 
     # キーワード重複チェック
