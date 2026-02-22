@@ -96,6 +96,8 @@ def query(keyword: str) -> str:
         "REMARKS_DELETE_ONE": "general/remarks_delete_one.sql",
         "REMARKS_DELETE_COMPAR": "general/remarks_delete_compar.sql",
         #
+        "WORDS_INSERT": "general/words_insert.sql",
+        #
         "SELECT_ALL_RESULTS": "general/select_all_results.sql",
         "SELECT_GAME_RESULTS": "general/select_game_results.sql",
     }

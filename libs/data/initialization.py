@@ -14,8 +14,6 @@ from libs.data import lookup
 from libs.utils import dbutil
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser
-
     from libs.types import GradeTableDict
 
 
@@ -25,6 +23,10 @@ def main(init_db: bool):
     Args:
         init_db (bool): setup処理の実行有無
     """
+
+    # ルールデータ取り込み
+    if g.cfg.mahjong.rule_version:
+        g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
 
     if init_db:
         # メイン設定
@@ -47,10 +49,6 @@ def main(init_db: bool):
                         setup_regulations(g.cfg.setting.database_file)
 
         read_grade_table()
-
-    # ルールデータ取り込み
-    if g.cfg.mahjong.rule_version:
-        g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
 
     if g.cfg.main_parser.has_section("keyword_mapping"):
         for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
@@ -84,6 +82,9 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
 
     resultdb = dbutil.connection(database_file)
     memdb = dbutil.connection(":memory:")
+
+    # 旧テーブル削除
+    resultdb.execute("drop table words;")
 
     table_list = {
         "member": "CREATE_TABLE_MEMBER",  # メンバー登録テーブル
@@ -128,7 +129,7 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     resultdb.execute(dbutil.query("CREATE_VIEW_INDIVIDUAL_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
     resultdb.execute(dbutil.query("CREATE_VIEW_GAME_RESULTS").replace("<time_adjust>", str(g.cfg.setting.time_adjust)))
     resultdb.execute(dbutil.query("CREATE_VIEW_GAME_INFO"))
-    resultdb.execute(dbutil.query("CREATE_VIEW_REGULATIONS").format(undefined_word=g.cfg.undefined_word))
+    resultdb.execute(dbutil.query("CREATE_VIEW_REGULATIONS"))
 
     # INDEX
     resultdb.execute(dbutil.query("CREATE_INDEX"))
@@ -158,50 +159,79 @@ def setup_regulations(database_file: Union[str, Path]):
         database_file (Union[str, Path]): データベース接続パス
     """
 
+    def _db_set():
+        params: dict = {}
+        for k, v in parser.items(section):
+            match k:
+                case "yakuman_list":
+                    words_list = {x.strip() for x in v.split(",")}
+                    for word in words_list:
+                        params = {"word": word, "type": 0, "ex_point": None, "rule_version": rule}
+                        resultdb.execute(dbutil.query("WORDS_INSERT"), params)
+                    logging.debug("regulations table(type0): %s", words_list)
+                case "word_list":
+                    words_list = {x.strip() for x in v.split(",")}
+                    for word in words_list:
+                        params = {"word": word, "type": 1, "ex_point": None, "rule_version": rule}
+                        resultdb.execute(dbutil.query("WORDS_INSERT"), params)
+                    logging.debug("regulations table(type1): %s", words_list)
+                case _:
+                    params = {"word": k.strip(), "type": regulation_type, "ex_point": int(v), "rule_version": rule}
+                    resultdb.execute(dbutil.query("WORDS_INSERT"), params)
+                    logging.debug("regulations table(type%s): %s, %s", regulation_type, params["word", params["ex_point"]])
+
     if isinstance(database_file, Path):
         logging.info(database_file.absolute())
     else:
         logging.info(database_file)
 
     resultdb = dbutil.connection(database_file)
-    if cast("ConfigParser", getattr(g.cfg, "_parser")).has_section("regulations"):
-        resultdb.execute("delete from words;")
-        for k, v in cast("ConfigParser", getattr(g.cfg, "_parser")).items("regulations"):
-            match k:
-                case "undefined":
-                    g.cfg.undefined_word = int(v)
-                case "yakuman_list":
-                    words_list = {x.strip() for x in v.split(",")}
-                    for word in words_list:
-                        resultdb.execute("insert into words(word, type, ex_point) values (?, 0, NULL);", (word,))
-                    logging.debug("regulations table(type0): %s", words_list)
-                case "word_list":
-                    words_list = {x.strip() for x in v.split(",")}
-                    for word in words_list:
-                        resultdb.execute("insert into words(word, type, ex_point) values (?, 1, NULL);", (word,))
-                    logging.debug("regulations table(type1): %s", words_list)
-                case _:
-                    word = k.strip()
-                    ex_point = int(v)
-                    resultdb.execute(
-                        "insert into words(word, type, ex_point) values (?, 2, ?);",
-                        (
-                            word,
-                            ex_point,
-                        ),
-                    )
-                    logging.debug("regulations table(type2): %s, %s", word, ex_point)
+    resultdb.execute("delete from words;")
 
-    if cast("ConfigParser", getattr(g.cfg, "_parser")).has_section("regulations_team"):
-        for k, v in cast("ConfigParser", getattr(g.cfg, "_parser")).items("regulations_team"):
-            resultdb.execute(
-                "insert into words(word, type, ex_point) values (?, 3, ?);",
-                (
-                    k.strip(),
-                    int(v),
-                ),
-            )
-            logging.debug("regulations table(type3): %s, %s", k.strip(), int(v))
+    for rule in g.cfg.rule.rule_list:
+        regulation_type = 2  # 個人レギュレーション
+        if f"{rule}_regulations" in g.cfg.rule.config.sections():
+            parser = g.cfg.rule.config
+            section = f"{rule}_regulations"
+            _db_set()
+        elif f"regulations_{rule}" in g.cfg.rule.config.sections():
+            parser = g.cfg.rule.config
+            section = f"regulations_{rule}"
+            _db_set()
+        elif f"{rule}_regulations" in g.cfg.main_parser.sections():
+            parser = g.cfg.main_parser
+            section = f"{rule}_regulations"
+            _db_set()
+        elif f"regulations_{rule}" in g.cfg.main_parser.sections():
+            parser = g.cfg.main_parser
+            section = f"regulations_{rule}"
+            _db_set()
+        elif "regulations" in g.cfg.main_parser.sections():
+            parser = g.cfg.main_parser
+            section = "regulations"
+            _db_set()
+        else:
+            pass
+
+        regulation_type = 3  # チームレギュレーション
+        if f"{rule}_regulations_team" in g.cfg.rule.config.sections():
+            parser = g.cfg.rule.config
+            section = f"{rule}_regulations_team"
+            _db_set()
+        elif f"regulations_team_{rule}" in g.cfg.rule.config.sections():
+            parser = g.cfg.rule.config
+            section = f"regulations_team_{rule}"
+            _db_set()
+        elif f"{rule}_regulations_team" in g.cfg.main_parser.sections():
+            parser = g.cfg.main_parser
+            section = f"{rule}_regulations_team"
+            _db_set()
+        elif f"regulations_team_{rule}" in g.cfg.main_parser.sections():
+            parser = g.cfg.main_parser
+            section = f"regulations_team_{rule}"
+            _db_set()
+        else:
+            pass
 
     resultdb.commit()
     resultdb.close()
