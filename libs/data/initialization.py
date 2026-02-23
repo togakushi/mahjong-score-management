@@ -189,49 +189,33 @@ def setup_regulations(database_file: Union[str, Path]):
     resultdb.execute("delete from words;")
 
     for rule in g.cfg.rule.rule_list:
-        regulation_type = 2  # 個人レギュレーション
-        if f"{rule}_regulations" in g.cfg.rule.config.sections():
-            parser = g.cfg.rule.config
-            section = f"{rule}_regulations"
-            _db_set()
-        elif f"regulations_{rule}" in g.cfg.rule.config.sections():
-            parser = g.cfg.rule.config
-            section = f"regulations_{rule}"
-            _db_set()
-        elif f"{rule}_regulations" in g.cfg.main_parser.sections():
-            parser = g.cfg.main_parser
-            section = f"{rule}_regulations"
-            _db_set()
-        elif f"regulations_{rule}" in g.cfg.main_parser.sections():
-            parser = g.cfg.main_parser
-            section = f"regulations_{rule}"
-            _db_set()
-        elif "regulations" in g.cfg.main_parser.sections():
-            parser = g.cfg.main_parser
-            section = "regulations"
-            _db_set()
-        else:
-            pass
+        # 個人レギュレーション
+        regulation_type = 2
+        section_patterns = [
+            (g.cfg.rule.config, f"{rule}_regulations"),
+            (g.cfg.rule.config, f"regulations_{rule}"),
+            (g.cfg.main_parser, f"{rule}_regulations"),
+            (g.cfg.main_parser, f"regulations_{rule}"),
+            (g.cfg.main_parser, "regulations"),
+        ]
+        for parser, section in section_patterns:
+            if section in parser.sections():
+                _db_set()
+                break
 
-        regulation_type = 3  # チームレギュレーション
-        if f"{rule}_regulations_team" in g.cfg.rule.config.sections():
-            parser = g.cfg.rule.config
-            section = f"{rule}_regulations_team"
-            _db_set()
-        elif f"regulations_team_{rule}" in g.cfg.rule.config.sections():
-            parser = g.cfg.rule.config
-            section = f"regulations_team_{rule}"
-            _db_set()
-        elif f"{rule}_regulations_team" in g.cfg.main_parser.sections():
-            parser = g.cfg.main_parser
-            section = f"{rule}_regulations_team"
-            _db_set()
-        elif f"regulations_team_{rule}" in g.cfg.main_parser.sections():
-            parser = g.cfg.main_parser
-            section = f"regulations_team_{rule}"
-            _db_set()
-        else:
-            pass
+        # チームレギュレーション
+        regulation_type = 3
+        section_patterns = [
+            (g.cfg.rule.config, f"{rule}_regulations_team"),
+            (g.cfg.rule.config, f"regulations_team_{rule}"),
+            (g.cfg.main_parser, f"{rule}_regulations_team"),
+            (g.cfg.main_parser, f"regulations_team_{rule}"),
+            (g.cfg.main_parser, "regulations_team"),
+        ]
+        for parser, section in section_patterns:
+            if section in parser.sections():
+                _db_set()
+                break
 
     resultdb.commit()
     resultdb.close()
