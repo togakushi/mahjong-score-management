@@ -159,7 +159,7 @@ class RuleSet:
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
                 continue
-            if section_name.startswith("regulations_team_") or section_name.endswith("_team_regulations"):
+            if section_name.startswith("regulations_team_") or section_name.endswith("_regulations_team"):
                 continue
 
             rule = dict(self.config[section_name])
