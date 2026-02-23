@@ -178,7 +178,7 @@ def setup_regulations(database_file: Union[str, Path]):
                 case _:
                     params = {"word": k.strip(), "type": regulation_type, "ex_point": int(v), "rule_version": rule}
                     resultdb.execute(dbutil.query("WORDS_INSERT"), params)
-                    logging.debug("regulations table(type%s): %s, %s", regulation_type, params["word", params["ex_point"]])
+                    logging.debug("regulations table(type%s): %s, %s", regulation_type, params["word"], params["ex_point"])
 
     if isinstance(database_file, Path):
         logging.info(database_file.absolute())
