@@ -17,8 +17,8 @@ create view if not exists game_results as
         p1_point + sum(case when x1_regulations.type in (2, 3) then x1_regulations.ex_point else 0 end) as t1_point,
         group_concat(case when x1_regulations.type = 0 then x1_regulations.word else null end) as p1_yakuman,
         group_concat(case when x1_regulations.type = 1 then x1_regulations.word else null end) as p1_memo,
-        group_concat(case when x1_regulations.type in (0, 1, 2) then x1_regulations.word else null end) as p1_remarks,
-        group_concat(case when x1_regulations.type in (0, 1, 2, 3) then x1_regulations.word else null end) as t1_remarks,
+        group_concat(case when x1_regulations.type = 2 then x1_regulations.word else null end) as p1_regulations,
+        group_concat(case when x1_regulations.type in (2, 3) then x1_regulations.word else null end) as t1_regulations,
         -- 南家
         p2_name,
         ifnull(p2_team.name, '未所属') as p2_team,
@@ -34,8 +34,8 @@ create view if not exists game_results as
         p2_point + sum(case when x2_regulations.type in (2, 3) then x2_regulations.ex_point else 0 end) as t2_point,
         group_concat(case when x2_regulations.type = 0 then x2_regulations.word else null end) as p2_yakuman,
         group_concat(case when x2_regulations.type = 1 then x2_regulations.word else null end) as p2_memo,
-        group_concat(case when x2_regulations.type in (0, 1, 2) then x2_regulations.word else null end) as p2_remarks,
-        group_concat(case when x2_regulations.type in (0, 1, 2, 3) then x2_regulations.word else null end) as t2_remarks,
+        group_concat(case when x2_regulations.type = 2 then x2_regulations.word else null end) as p2_regulations,
+        group_concat(case when x2_regulations.type in (2, 3) then x2_regulations.word else null end) as t2_regulations,
         -- 西家
         p3_name,
         ifnull(p3_team.name, '未所属') as p3_team,
@@ -51,8 +51,8 @@ create view if not exists game_results as
         p3_point + sum(case when x3_regulations.type in (2, 3) then x3_regulations.ex_point else 0 end) as t3_point,
         group_concat(case when x3_regulations.type = 0 then x3_regulations.word else null end) as p3_yakuman,
         group_concat(case when x3_regulations.type = 1 then x3_regulations.word else null end) as p3_memo,
-        group_concat(case when x3_regulations.type in (0, 1, 2) then x3_regulations.word else null end) as p3_remarks,
-        group_concat(case when x3_regulations.type in (0, 1, 2, 3) then x3_regulations.word else null end) as t3_remarks,
+        group_concat(case when x3_regulations.type = 2 then x3_regulations.word else null end) as p3_regulations,
+        group_concat(case when x3_regulations.type in (2, 3) then x3_regulations.word else null end) as t3_regulations,
         -- 北家
         p4_name,
         ifnull(p4_team.name, '未所属') as p4_team,
@@ -68,8 +68,8 @@ create view if not exists game_results as
         p4_point + sum(case when x4_regulations.type in (2, 3) then x4_regulations.ex_point else 0 end) as t4_point,
         group_concat(case when x4_regulations.type = 0 then x4_regulations.word else null end) as p4_yakuman,
         group_concat(case when x4_regulations.type = 1 then x4_regulations.word else null end) as p4_memo,
-        group_concat(case when x4_regulations.type in (0, 1, 2) then x4_regulations.word else null end) as p4_remarks,
-        group_concat(case when x4_regulations.type in (0, 1, 2, 3) then x4_regulations.word else null end) as t4_remarks,
+        group_concat(case when x4_regulations.type = 2 then x4_regulations.word else null end) as p4_regulations,
+        group_concat(case when x4_regulations.type in (2, 3) then x4_regulations.word else null end) as t4_regulations,
         -- 情報
         deposit,
         date(result.playtime, '-<time_adjust> hours') as collection_daily,
@@ -103,13 +103,21 @@ create view if not exists game_results as
         on p4.team_id = p4_team.id
     -- メモ
     left join regulations as x1_regulations
-        on x1_regulations.thread_ts = result.ts and x1_regulations.name = result.p1_name
+        on x1_regulations.thread_ts = result.ts
+        and x1_regulations.name = result.p1_name
+        and x1_regulations.rule_version = result.rule_version
     left join regulations as x2_regulations
-        on x2_regulations.thread_ts = result.ts and x2_regulations.name = result.p2_name
+        on x2_regulations.thread_ts = result.ts
+        and x2_regulations.name = result.p2_name
+        and x2_regulations.rule_version = result.rule_version
     left join regulations as x3_regulations
-        on x3_regulations.thread_ts = result.ts and x3_regulations.name = result.p3_name
+        on x3_regulations.thread_ts = result.ts
+        and x3_regulations.name = result.p3_name
+        and x3_regulations.rule_version = result.rule_version
     left join regulations as x4_regulations
-        on x4_regulations.thread_ts = result.ts and x4_regulations.name = result.p4_name
+        on x4_regulations.thread_ts = result.ts
+        and x4_regulations.name = result.p4_name
+        and x4_regulations.rule_version = result.rule_version
     group by
         result.playtime
 ;
