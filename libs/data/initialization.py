@@ -84,7 +84,7 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     memdb = dbutil.connection(":memory:")
 
     # 旧テーブル削除
-    resultdb.execute("drop table words;")
+    resultdb.execute("drop table if exists words;")
 
     table_list = {
         "member": "CREATE_TABLE_MEMBER",  # メンバー登録テーブル
