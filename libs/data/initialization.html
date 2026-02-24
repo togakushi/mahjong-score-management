@@ -152,7 +152,7 @@
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">memdb</span> <span class="o">=</span> <span class="n">dbutil</span><span class="o">.</span><span class="n">connection</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="c1"># 旧テーブル削除</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">resultdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop table words;&quot;</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">resultdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop table if exists words;&quot;</span><span class="p">)</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">table_list</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;CREATE_TABLE_MEMBER&quot;</span><span class="p">,</span>  <span class="c1"># メンバー登録テーブル</span>
@@ -447,7 +447,7 @@
 </span><span id="setup_resultdb-85"><a href="#setup_resultdb-85"><span class="linenos"> 85</span></a>    <span class="n">memdb</span> <span class="o">=</span> <span class="n">dbutil</span><span class="o">.</span><span class="n">connection</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
 </span><span id="setup_resultdb-86"><a href="#setup_resultdb-86"><span class="linenos"> 86</span></a>
 </span><span id="setup_resultdb-87"><a href="#setup_resultdb-87"><span class="linenos"> 87</span></a>    <span class="c1"># 旧テーブル削除</span>
-</span><span id="setup_resultdb-88"><a href="#setup_resultdb-88"><span class="linenos"> 88</span></a>    <span class="n">resultdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop table words;&quot;</span><span class="p">)</span>
+</span><span id="setup_resultdb-88"><a href="#setup_resultdb-88"><span class="linenos"> 88</span></a>    <span class="n">resultdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop table if exists words;&quot;</span><span class="p">)</span>
 </span><span id="setup_resultdb-89"><a href="#setup_resultdb-89"><span class="linenos"> 89</span></a>
 </span><span id="setup_resultdb-90"><a href="#setup_resultdb-90"><span class="linenos"> 90</span></a>    <span class="n">table_list</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="setup_resultdb-91"><a href="#setup_resultdb-91"><span class="linenos"> 91</span></a>        <span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;CREATE_TABLE_MEMBER&quot;</span><span class="p">,</span>  <span class="c1"># メンバー登録テーブル</span>
