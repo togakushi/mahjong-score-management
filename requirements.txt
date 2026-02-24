@@ -2,7 +2,7 @@ slack-bolt
 slack-sdk
 matplotlib
 reportlab
-pandas
+pandas>=3.0.0
 tabulate[widechars] # type: ignore
 table2ascii
 tqdm

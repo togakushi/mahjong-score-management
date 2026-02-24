@@ -74,6 +74,21 @@ Python側で *{ name: member }* という辞書を生成するのに利用され
 | id       | PRIMARY KEY     | INTEGER | チームID |
 | name     | NOT NULL UNIQUE | TEXT    | チーム名 |
 
+## rule
+ルールセット保存テーブル。
+
+### 内容
+|    カラム名    |    制約     |   型    |         内容         |
+| -------------- | ----------- | ------- | -------------------- |
+| rule_version   | PRIMARY KEY | TEXT    |                      |
+| mode           |             | INTEGER |                      |
+| origin_point   |             | INTEGER | 配給原点             |
+| return_point   |             | INTEGER | 返し点               |
+| rank_point     |             | TEXT    | 順位点               |
+| ignore_flying  |             | INTEGER | トビの扱い           |
+| draw_split     |             | INTEGER | 同着時の順位点の扱い |
+| undefined_word |             | INTEGER | 未定義ワードの扱い   |
+
 ## remarks
 ゲーム結果に対して残すメモを記録するテーブル。
 
@@ -97,13 +112,12 @@ Python側で *{ name: member }* という辞書を生成するのに利用され
 | ex_point |                 | INTEGER | 卓外ポイントとして追加計算されるポイント |
 
 #### typeの種別
-| type |           内容           |               備考                |
-| ---- | ------------------------ | --------------------------------- |
-| null | 未定義                   | regulationsセクションの設定に従う |
-| 0    | 役満扱い                 |                                   |
-| 1    | ワードのカウントのみ     |                                   |
-| 2    | 卓外ポイント(個人清算)   |                                   |
-| 3    | 卓外ポイント(チーム清算) |                                   |
+| type |           内容           | 備考 |
+| ---- | ------------------------ | ---- |
+| 0    | 役満扱い                 |      |
+| 1    | ワードのカウントのみ     |      |
+| 2    | 卓外ポイント(個人清算)   |      |
+| 3    | 卓外ポイント(チーム清算) |      |
 
 # ビュー
 ## game_results

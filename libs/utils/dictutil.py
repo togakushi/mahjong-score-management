@@ -56,10 +56,7 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
             **subcom.to_dict(),  # デフォルト値
         },
     )
-    if rule_version := ret_dict.get("default_rule"):
-        ret_dict.update({"rule_version": rule_version})
-    else:
-        ret_dict.update({"rule_version": g.cfg.mahjong.rule_version})
+    ret_dict.update({"rule_version": ret_dict.get("default_rule", g.cfg.mahjong.rule_version)})
 
     # always_argumentの処理
     pre_param = parser.analysis_argument(subcom.always_argument)
@@ -175,6 +172,8 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
     elif ret_dict.get("rule_set", {}):
         if rule_version := ret_dict.get("rule_version"):
             ret_dict.update({"rule_set": {rule_version: g.cfg.rule.to_dict(rule_version)}})
+
+    ret_dict.update({"undefined_word": g.cfg.rule.get_undefined_word(ret_dict.get("rule_version", g.cfg.mahjong.rule_version))})
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
         ret_dict.update(

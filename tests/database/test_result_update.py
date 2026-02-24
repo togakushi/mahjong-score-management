@@ -28,7 +28,7 @@ def test_score_insert(draw_split, game_result, get_point, get_rank, monkeypatch)
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    configuration.initialization.initialization_resultdb(g.cfg.setting.database_file)
+    configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter("standard_io", g.cfg)
     g.cfg.selected_service = "standard_io"
 

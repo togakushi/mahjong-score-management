@@ -96,6 +96,8 @@ def query(keyword: str) -> str:
         "REMARKS_DELETE_ONE": "general/remarks_delete_one.sql",
         "REMARKS_DELETE_COMPAR": "general/remarks_delete_compar.sql",
         #
+        "WORDS_INSERT": "general/words_insert.sql",
+        #
         "SELECT_ALL_RESULTS": "general/select_all_results.sql",
         "SELECT_GAME_RESULTS": "general/select_game_results.sql",
     }
@@ -231,20 +233,16 @@ def query_modification(sql: str) -> str:
             sql = sql.replace("<<Calculation Formula>>", ":interval")
         else:
             sql = sql.replace("<<Calculation Formula>>", "(row_number() over (order by total_count desc) - 1) / :interval")
-    if g.params.get("kind") is not None:
-        if g.params.get("kind") == "yakuman":
-            if g.cfg.undefined_word == 0:
-                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
-            else:
-                sql = sql.replace("<<where_string>>", "and words.type = 0")
-        else:
-            match g.cfg.undefined_word:
-                case 1:
-                    sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
-                case 2:
-                    sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
-                case _:
-                    sql = sql.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
+
+    match g.params.get("undefined_word"):
+        case 0:
+            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
+        case 1:
+            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
+        case 2:
+            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
+        case _:
+            sql = sql.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
 
     # SQLコメント削除
     sql = re.sub(r"^ *--\[.*$", "", sql, flags=re.MULTILINE)

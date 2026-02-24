@@ -13,6 +13,7 @@ join game_info on
     game_info.ts = remarks.thread_ts
 left join words on
     remarks.matter = words.word
+    and words.rule_version = game_info.rule_version
 left join member on
     member.name = remarks.name
 left join team on
