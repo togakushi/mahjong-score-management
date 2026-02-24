@@ -345,21 +345,35 @@ class SvcFunctions(FunctionsInterface):
             m (MessageParserProtocol): メッセージデータ
         """
 
-        # リアクション文字
-        reaction_ok = lookup.get_config_value(
-            config_file=g.cfg.config_file,
-            section=m.status.source,
-            name="reaction_ok",
-            val_type=str,
-            fallback=self.conf.reaction_ok,
-        )
-        reaction_ng = lookup.get_config_value(
-            config_file=g.cfg.config_file,
-            section=m.status.source,
-            name="reaction_ng",
-            val_type=str,
-            fallback=self.conf.reaction_ng,
-        )
+        # リアクション文字取得
+        def _resolve_reaction(name: str, fallback: str) -> str:
+            if channel_config := g.params.get("channel_config"):
+                if value := lookup.get_config_value(
+                    config_file=channel_config,
+                    section=m.status.source,
+                    name=name,
+                    val_type=str,
+                ):
+                    return value
+
+            if value := lookup.get_config_value(
+                config_file=g.cfg.config_file,
+                section=m.status.source,
+                name=name,
+                val_type=str,
+            ):
+                return value
+
+            return lookup.get_config_value(
+                config_file=g.cfg.config_file,
+                section="slack",
+                name=name,
+                val_type=str,
+                fallback=fallback,
+            )
+
+        self.conf.reaction_ok = _resolve_reaction("reaction_ok", self.conf.reaction_ok)
+        self.conf.reaction_ng = _resolve_reaction("reaction_ng", self.conf.reaction_ng)
 
         # リアクション処理
         match m.status.action:
@@ -370,16 +384,16 @@ class SvcFunctions(FunctionsInterface):
                     reaction_data = self.reaction_status(ch=m.data.channel_id, ts=ts)
                     if m.status.reaction:  # NGを外してOKを付ける
                         if not reaction_data.get("ok"):
-                            self.reaction_append(icon=reaction_ok, ch=m.data.channel_id, ts=ts)
+                            self.reaction_append(icon=self.conf.reaction_ok, ch=m.data.channel_id, ts=ts)
                         if reaction_data.get("ng"):
-                            self.reaction_remove(icon=reaction_ng, ch=m.data.channel_id, ts=ts)
+                            self.reaction_remove(icon=self.conf.reaction_ng, ch=m.data.channel_id, ts=ts)
                     else:  # OKを外してNGを付ける
                         if reaction_data.get("ok"):
-                            self.reaction_remove(icon=reaction_ok, ch=m.data.channel_id, ts=ts)
+                            self.reaction_remove(icon=self.conf.reaction_ok, ch=m.data.channel_id, ts=ts)
                         if not reaction_data.get("ng"):
-                            self.reaction_append(icon=reaction_ng, ch=m.data.channel_id, ts=ts)
+                            self.reaction_append(icon=self.conf.reaction_ng, ch=m.data.channel_id, ts=ts)
             case ActionStatus.DELETE:
                 for ts in m.status.target_ts:
-                    self.reaction_remove(icon=reaction_ok, ch=m.data.channel_id, ts=ts)
-                    self.reaction_remove(icon=reaction_ng, ch=m.data.channel_id, ts=ts)
+                    self.reaction_remove(icon=self.conf.reaction_ok, ch=m.data.channel_id, ts=ts)
+                    self.reaction_remove(icon=self.conf.reaction_ng, ch=m.data.channel_id, ts=ts)
                 m.status.reset()
