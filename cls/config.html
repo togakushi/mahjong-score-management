@@ -514,9 +514,6 @@
                         <li>
                                 <a class="function" href="#AppConfig.resolve_channel_id">resolve_channel_id</a>
                         </li>
-                        <li>
-                                <a class="function" href="#AppConfig.resolve_separate_flag">resolve_separate_flag</a>
-                        </li>
                 </ul>
 
             </li>
@@ -1484,23 +1481,6 @@
 </span><span id="L-939"><a href="#L-939"><span class="linenos">939</span></a>        <span class="k">if</span> <span class="n">section_name</span><span class="p">:</span>
 </span><span id="L-940"><a href="#L-940"><span class="linenos">940</span></a>            <span class="k">return</span> <span class="n">section_name</span>
 </span><span id="L-941"><a href="#L-941"><span class="linenos">941</span></a>        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-</span><span id="L-942"><a href="#L-942"><span class="linenos">942</span></a>
-</span><span id="L-943"><a href="#L-943"><span class="linenos">943</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_separate_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="L-944"><a href="#L-944"><span class="linenos">944</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定から優先度の高いセパレート設定フラグを取得する</span>
-</span><span id="L-945"><a href="#L-945"><span class="linenos">945</span></a>
-</span><span id="L-946"><a href="#L-946"><span class="linenos">946</span></a><span class="sd">        Args:</span>
-</span><span id="L-947"><a href="#L-947"><span class="linenos">947</span></a><span class="sd">            section_name (Optional[str]): チャンネル個別設定セクション名</span>
-</span><span id="L-948"><a href="#L-948"><span class="linenos">948</span></a>
-</span><span id="L-949"><a href="#L-949"><span class="linenos">949</span></a><span class="sd">        Returns:</span>
-</span><span id="L-950"><a href="#L-950"><span class="linenos">950</span></a><span class="sd">            bool: セパレート設定フラグ</span>
-</span><span id="L-951"><a href="#L-951"><span class="linenos">951</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-952"><a href="#L-952"><span class="linenos">952</span></a>
-</span><span id="L-953"><a href="#L-953"><span class="linenos">953</span></a>        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_service</span><span class="p">,</span> <span class="s2">&quot;setting&quot;</span><span class="p">):</span>
-</span><span id="L-954"><a href="#L-954"><span class="linenos">954</span></a>            <span class="k">if</span> <span class="n">section</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
-</span><span id="L-955"><a href="#L-955"><span class="linenos">955</span></a>                <span class="k">if</span> <span class="n">separate_flg</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;separate&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-</span><span id="L-956"><a href="#L-956"><span class="linenos">956</span></a>                    <span class="k">return</span> <span class="n">separate_flg</span>
-</span><span id="L-957"><a href="#L-957"><span class="linenos">957</span></a>
-</span><span id="L-958"><a href="#L-958"><span class="linenos">958</span></a>        <span class="k">return</span> <span class="kc">False</span>
 </span></pre></div>
 
 
@@ -4900,23 +4880,6 @@
 </span><span id="AppConfig-940"><a href="#AppConfig-940"><span class="linenos">940</span></a>        <span class="k">if</span> <span class="n">section_name</span><span class="p">:</span>
 </span><span id="AppConfig-941"><a href="#AppConfig-941"><span class="linenos">941</span></a>            <span class="k">return</span> <span class="n">section_name</span>
 </span><span id="AppConfig-942"><a href="#AppConfig-942"><span class="linenos">942</span></a>        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-</span><span id="AppConfig-943"><a href="#AppConfig-943"><span class="linenos">943</span></a>
-</span><span id="AppConfig-944"><a href="#AppConfig-944"><span class="linenos">944</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_separate_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="AppConfig-945"><a href="#AppConfig-945"><span class="linenos">945</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定から優先度の高いセパレート設定フラグを取得する</span>
-</span><span id="AppConfig-946"><a href="#AppConfig-946"><span class="linenos">946</span></a>
-</span><span id="AppConfig-947"><a href="#AppConfig-947"><span class="linenos">947</span></a><span class="sd">        Args:</span>
-</span><span id="AppConfig-948"><a href="#AppConfig-948"><span class="linenos">948</span></a><span class="sd">            section_name (Optional[str]): チャンネル個別設定セクション名</span>
-</span><span id="AppConfig-949"><a href="#AppConfig-949"><span class="linenos">949</span></a>
-</span><span id="AppConfig-950"><a href="#AppConfig-950"><span class="linenos">950</span></a><span class="sd">        Returns:</span>
-</span><span id="AppConfig-951"><a href="#AppConfig-951"><span class="linenos">951</span></a><span class="sd">            bool: セパレート設定フラグ</span>
-</span><span id="AppConfig-952"><a href="#AppConfig-952"><span class="linenos">952</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AppConfig-953"><a href="#AppConfig-953"><span class="linenos">953</span></a>
-</span><span id="AppConfig-954"><a href="#AppConfig-954"><span class="linenos">954</span></a>        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_service</span><span class="p">,</span> <span class="s2">&quot;setting&quot;</span><span class="p">):</span>
-</span><span id="AppConfig-955"><a href="#AppConfig-955"><span class="linenos">955</span></a>            <span class="k">if</span> <span class="n">section</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
-</span><span id="AppConfig-956"><a href="#AppConfig-956"><span class="linenos">956</span></a>                <span class="k">if</span> <span class="n">separate_flg</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;separate&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-</span><span id="AppConfig-957"><a href="#AppConfig-957"><span class="linenos">957</span></a>                    <span class="k">return</span> <span class="n">separate_flg</span>
-</span><span id="AppConfig-958"><a href="#AppConfig-958"><span class="linenos">958</span></a>
-</span><span id="AppConfig-959"><a href="#AppConfig-959"><span class="linenos">959</span></a>        <span class="k">return</span> <span class="kc">False</span>
 </span></pre></div>
 
 
@@ -5521,53 +5484,6 @@
 
 <blockquote>
   <p>str: チャンネルID</p>
-</blockquote>
-</div>
-
-
-                            </div>
-                            <div id="AppConfig.resolve_separate_flag" class="classattr">
-                                        <input id="AppConfig.resolve_separate_flag-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">resolve_separate_flag</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
-
-                <label class="view-source-button" for="AppConfig.resolve_separate_flag-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#AppConfig.resolve_separate_flag"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.resolve_separate_flag-944"><a href="#AppConfig.resolve_separate_flag-944"><span class="linenos">944</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_separate_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="AppConfig.resolve_separate_flag-945"><a href="#AppConfig.resolve_separate_flag-945"><span class="linenos">945</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定から優先度の高いセパレート設定フラグを取得する</span>
-</span><span id="AppConfig.resolve_separate_flag-946"><a href="#AppConfig.resolve_separate_flag-946"><span class="linenos">946</span></a>
-</span><span id="AppConfig.resolve_separate_flag-947"><a href="#AppConfig.resolve_separate_flag-947"><span class="linenos">947</span></a><span class="sd">        Args:</span>
-</span><span id="AppConfig.resolve_separate_flag-948"><a href="#AppConfig.resolve_separate_flag-948"><span class="linenos">948</span></a><span class="sd">            section_name (Optional[str]): チャンネル個別設定セクション名</span>
-</span><span id="AppConfig.resolve_separate_flag-949"><a href="#AppConfig.resolve_separate_flag-949"><span class="linenos">949</span></a>
-</span><span id="AppConfig.resolve_separate_flag-950"><a href="#AppConfig.resolve_separate_flag-950"><span class="linenos">950</span></a><span class="sd">        Returns:</span>
-</span><span id="AppConfig.resolve_separate_flag-951"><a href="#AppConfig.resolve_separate_flag-951"><span class="linenos">951</span></a><span class="sd">            bool: セパレート設定フラグ</span>
-</span><span id="AppConfig.resolve_separate_flag-952"><a href="#AppConfig.resolve_separate_flag-952"><span class="linenos">952</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AppConfig.resolve_separate_flag-953"><a href="#AppConfig.resolve_separate_flag-953"><span class="linenos">953</span></a>
-</span><span id="AppConfig.resolve_separate_flag-954"><a href="#AppConfig.resolve_separate_flag-954"><span class="linenos">954</span></a>        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_service</span><span class="p">,</span> <span class="s2">&quot;setting&quot;</span><span class="p">):</span>
-</span><span id="AppConfig.resolve_separate_flag-955"><a href="#AppConfig.resolve_separate_flag-955"><span class="linenos">955</span></a>            <span class="k">if</span> <span class="n">section</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
-</span><span id="AppConfig.resolve_separate_flag-956"><a href="#AppConfig.resolve_separate_flag-956"><span class="linenos">956</span></a>                <span class="k">if</span> <span class="n">separate_flg</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;separate&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-</span><span id="AppConfig.resolve_separate_flag-957"><a href="#AppConfig.resolve_separate_flag-957"><span class="linenos">957</span></a>                    <span class="k">return</span> <span class="n">separate_flg</span>
-</span><span id="AppConfig.resolve_separate_flag-958"><a href="#AppConfig.resolve_separate_flag-958"><span class="linenos">958</span></a>
-</span><span id="AppConfig.resolve_separate_flag-959"><a href="#AppConfig.resolve_separate_flag-959"><span class="linenos">959</span></a>        <span class="k">return</span> <span class="kc">False</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>メイン設定から優先度の高いセパレート設定フラグを取得する</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>section_name (Optional[str]):</strong>  チャンネル個別設定セクション名</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>bool: セパレート設定フラグ</p>
 </blockquote>
 </div>
 
