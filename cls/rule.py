@@ -267,6 +267,18 @@ class RuleSet:
 
         return int(self.to_dict(version).get("mode", 0))
 
+    def get_ignore_flying(self, version: str) -> bool:
+        """指定ルールバージョン識別子のトビカウントフラグを返す
+
+        Args:
+            version (str): ルールバージョン識別子
+
+        Returns:
+            bool: トビカウントフラグ
+        """
+
+        return self.to_dict(version).get("ignore_flying", False)
+
     def get_undefined_word(self, version: str) -> int:
         """指定ルールバージョン識別子の未定義ワードタイプを返す
 

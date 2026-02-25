@@ -46,7 +46,7 @@ def aggregation(m: "MessageParserProtocol"):
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    add_text = "" if g.cfg.mahjong.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    add_text = "" if g.params.get("ignore_flying") else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
     m.set_headline(header_text, StyleOptions(title=headline_title))
 
@@ -86,7 +86,7 @@ def aggregation(m: "MessageParserProtocol"):
         "flying",
     ]
 
-    if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
+    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
         header_list.remove("flying")
         filter_list.remove("flying")
 
@@ -174,7 +174,7 @@ def difference(m: "MessageParserProtocol"):
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    add_text = "" if g.cfg.mahjong.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    add_text = "" if g.params.get("ignore_flying") else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
     m.set_headline(header_text, StyleOptions(title=headline_title))
 
