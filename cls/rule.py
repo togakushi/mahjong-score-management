@@ -277,7 +277,7 @@ class RuleSet:
             bool: トビカウントフラグ
         """
 
-        return self.to_dict(version).get("ignore_flying", False)
+        return bool(self.to_dict(version).get("ignore_flying", False))
 
     def get_undefined_word(self, version: str) -> int:
         """指定ルールバージョン識別子の未定義ワードタイプを返す
