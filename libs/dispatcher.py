@@ -27,7 +27,7 @@ def by_keyword(m: "MessageParserProtocol"):
         {
             "channel_config": g.cfg.read_channel_config(m.status.source),
             "source": g.cfg.resolve_channel_id(m.status.source),
-            "separate": g.cfg.resolve_separate_flag(m.status.source),
+            "separate": lookup.resolve_separate_flag(m),
         }
     )
 
