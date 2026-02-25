@@ -50,7 +50,7 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
             "guest_name": g.cfg.member.guest_name,
             "undefined_word": g.cfg.undefined_word,
             "source": g.cfg.resolve_channel_id(m.status.source),
-            "separate": g.cfg.resolve_separate_flag(m.status.source),
+            "separate": lookup.resolve_separate_flag(m),
             "rule_set": {},
             **g.cfg.setting.to_dict(drop_items=["separate"]),
             **subcom.to_dict(),  # デフォルト値

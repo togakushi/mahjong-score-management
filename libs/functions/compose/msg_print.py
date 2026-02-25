@@ -20,13 +20,13 @@ def help_message(m: "MessageParserProtocol"):
     """チャンネル内呼び出しキーワード用ヘルプ
 
     Args:
-        m (MessageParserProtocol): _description_
+        m (MessageParserProtocol): メッセージデータ
     """
 
     g.params.update(
         {
             "source": g.cfg.resolve_channel_id(m.status.source),
-            "separate": g.cfg.resolve_separate_flag(m.status.source),
+            "separate": lookup.resolve_separate_flag(m),
         }
     )
     g.cfg.rule.status_update(cast(dict, g.params))

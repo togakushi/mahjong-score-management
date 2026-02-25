@@ -42,7 +42,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         elif _body.get("container"):  # Homeタブ
             self.data.user_id = str(cast(dict, _body["user"]).get("id", ""))
             self.data.channel_id = g.adapter.functions.get_dm_channel_id(self.data.user_id)
-            self.data.channel_type = ChannelType.CHANNEL
+            self.data.channel_type = ChannelType.HOME_APP
             self.data.text = "dummy"
         elif _body.get("iid"):  # 検索結果
             if _channel_id := str(cast(dict, _event["channel"]).get("id", "")):
@@ -130,6 +130,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
                 case ChannelType.CHANNEL:  # public channel
                     ret = True
                 case ChannelType.PRIVATE:  # private channel
+                    ret = True
+                case ChannelType.HOME_APP:  # home app
                     ret = True
                 case ChannelType.DIRECT_MESSAGE:  # direct message
                     ret = False

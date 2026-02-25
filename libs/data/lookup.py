@@ -6,18 +6,20 @@ import logging
 from configparser import ConfigParser
 from contextlib import closing
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Union, cast
+from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
 from cls.score import GameResult
 from cls.timekit import ExtendedDatetime as ExtDt
 from cls.timekit import Format
+from integrations.protocols import ChannelType
 from libs.data import loader
 from libs.utils import dbutil
 
 if TYPE_CHECKING:
     from pathlib import Path
 
+    from integrations.protocols import MessageParserProtocol
     from libs.types import MemberDataDict, PlaceholderDict, TeamDataDict
 
 
@@ -65,6 +67,47 @@ def get_config_value(
                 raise TypeError(f"Unsupported val_type: {val_type}")
 
     return value
+
+
+def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
+    """優先度の高いセパレート設定フラグを取得する
+
+    Args:
+        m (MessageParserProtocol): メッセージデータ
+
+    Returns:
+        bool: セパレート設定フラグ
+    """
+
+    separate_flg: Optional[bool] = None
+
+    # DM / HomeApp(slack) はセパレートしない
+    if m.data.channel_type in {ChannelType.DIRECT_MESSAGE, ChannelType.HOME_APP}:
+        return False
+
+    if g.cfg.main_parser.has_section(m.status.source):
+        # チャンネル個別ファイル内設定
+        if channel_config := g.cfg.main_parser[m.status.source].get("channel_config"):
+            separate_flg = get_config_value(config_file=Path(channel_config), section="setting", name="separate", val_type=bool)
+            if separate_flg is not None:
+                return separate_flg
+        # チャンネル設定
+        else:
+            separate_flg = get_config_value(config_file=g.cfg.config_file, section=m.status.source, name="separate", val_type=bool)
+            if separate_flg is not None:
+                return separate_flg
+
+    # サービス別設定
+    separate_flg = get_config_value(config_file=g.cfg.config_file, section=g.adapter.interface_type, name="separate", val_type=bool)
+    if separate_flg is not None:
+        return separate_flg
+
+    # メイン設定
+    separate_flg = get_config_value(config_file=g.cfg.config_file, section="setting", name="separate", val_type=bool)
+    if separate_flg is not None:
+        return separate_flg
+
+    return False
 
 
 def member_info(params: "PlaceholderDict") -> dict[str, Any]:

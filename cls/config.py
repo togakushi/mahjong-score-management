@@ -939,20 +939,3 @@ class AppConfig:
         if section_name:
             return section_name
         return ""
-
-    def resolve_separate_flag(self, section_name: Optional[str] = None) -> bool:
-        """メイン設定から優先度の高いセパレート設定フラグを取得する
-
-        Args:
-            section_name (Optional[str]): チャンネル個別設定セクション名
-
-        Returns:
-            bool: セパレート設定フラグ
-        """
-
-        for section in (section_name, self.selected_service, "setting"):
-            if section and self.main_parser.has_section(section):
-                if separate_flg := self.main_parser[section].getboolean("separate", False):
-                    return separate_flg
-
-        return False
