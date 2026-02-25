@@ -283,7 +283,7 @@ def aggregation(m: "MessageParserProtocol"):
         )
 
     # 項目整理
-    if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.ranking & g.cfg.dropitems.flying:
+    if g.params.get("ignore_flying") or g.cfg.dropitems.ranking & g.cfg.dropitems.flying:
         data.pop("トビ率")
     if g.cfg.dropitems.ranking & g.cfg.dropitems.yakuman:
         data.pop("役満和了率")

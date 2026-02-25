@@ -103,7 +103,7 @@ def aggregation(m: "MessageParserProtocol"):
         }
     )
 
-    if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:
         seat_data.drop(columns=["トビ"], inplace=True)
     if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
         seat_data.drop(columns=["役満和了"], inplace=True)
@@ -232,7 +232,7 @@ def comparison(m: "MessageParserProtocol"):
 
     # 非表示項目
     stats_df = stats_df.drop(columns=[x for x in g.cfg.dropitems.results if x in stats_df.columns.to_list()])
-    if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:
         stats_df = stats_df.drop(columns=["flying_rate-count"])
     if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
         stats_df = stats_df.drop(columns=["yakuman_rate-count"])

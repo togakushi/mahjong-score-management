@@ -99,6 +99,7 @@ def grade(name: str, detail: bool = True) -> str:
     # 初期値
     point: int = 0  # 昇段ポイント
     grade_level: int = 0  # レベル(段位)
+    g.params.update({"player_name": name})
 
     result_df = loader.read_data("SELECT_ALL_RESULTS", cast(dict, g.params))
     addition_expression = g.cfg.badge.grade.table.get("addition_expression", "0")

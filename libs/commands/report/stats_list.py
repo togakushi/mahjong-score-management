@@ -57,7 +57,7 @@ def main(m: "MessageParserProtocol"):
         df.drop(columns=["4th_count", "rank4_rate", "4th_mix"], inplace=True)
 
     # 非表示項目
-    if g.cfg.mahjong.ignore_flying or g.cfg.dropitems.report & g.cfg.dropitems.flying:
+    if g.params.get("ignore_flying") or g.cfg.dropitems.report & g.cfg.dropitems.flying:
         df = df.drop(columns=["flying_mix", "flying_count", "flying_rate"])
     if g.cfg.dropitems.report & g.cfg.dropitems.yakuman:
         df = df.drop(columns=["yakuman_mix", "yakuman_count", "yakuman_rate"])

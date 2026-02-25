@@ -254,6 +254,11 @@ class PlaceholderDict(TypedDict, total=False):
     - *True*: 識別子別に集計
     - *False*: すべて集計
     """
+    ignore_flying: bool
+    """トビカウント表示フラグ
+    - *True*: 表示しない
+    - *False*: 表示する
+    """
 
     # 検索関連
     starttime: Union[str, "ExtendedDatetime", None]

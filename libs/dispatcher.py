@@ -155,11 +155,6 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
         modify.reprocessing_remarks(m)
         return
 
-    # rule_version不一致 → スキップ
-    if record_data.rule_version != g.cfg.mahjong.rule_version:
-        logging.debug("skip (rule_version mismatch). event_ts=%s", m.data.event_ts)
-        return
-
     # 全条件クリア → 更新実行
     modify.db_update(detection, m)
 
