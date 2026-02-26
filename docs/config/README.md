@@ -9,10 +9,9 @@
 ## 各設定ファイル内容説明
 - [メイン設定](./mainconf.md)
   - [サービス個別設定](./integrations.md)
+    - [チャンネル個別設定](./integrations.md#チャンネル個別設定)
   - [レギュレーション設定](./regulations.md)
-  - [ルールセット個別レギュレーション設定](./regulations.md#ルールセット個別レギュレーション設定)
 - [ルールセット設定](./ruleset.md)
-- [チャンネル個別設定](./integrations.md#チャンネル個別設定)
 
 > [!TIP]
 > [設定事例集](./example/README.md)
