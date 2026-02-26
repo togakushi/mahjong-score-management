@@ -7,10 +7,11 @@
 サービス個別設定でチャンネル個別設定が定義されている場合は追加の設定ファイルが読み込まれる。
 
 ## 各設定ファイル内容説明
-- [メイン設定](mainconf.md)
-  - [サービス個別設定](integrations.md)
-- [ルールセット設定](ruleset.md)
-- [チャンネル個別設定](integrations.md#チャンネル個別設定)
+- [メイン設定](./mainconf.md)
+  - [サービス個別設定](./integrations.md)
+    - [チャンネル個別設定](./integrations.md#チャンネル個別設定)
+  - [レギュレーション設定](./regulations.md)
+- [ルールセット設定](./ruleset.md)
 
 > [!TIP]
-> [設定事例集](example/README.md)
+> [設定事例集](./example/README.md)
