@@ -66,6 +66,7 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
     try:
         msg = str(
+            # 文字列置き換え
             msg.format(
                 user_id=m.data.user_id,
                 keyword=g.cfg.setting.keyword,
@@ -75,8 +76,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
                 rpoint_sum=m.status.rpoint_sum * 100,
             )
         )
-    except KeyError as e:
-        logging.warning("[unknown keywords] %s: %s", e, msg)
+    except KeyError as err:
+        logging.warning("[unknown keywords] %s: %s", err, msg)
         msg = msg.replace("{user_id}", m.data.user_id)
 
     return msg
