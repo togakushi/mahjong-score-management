@@ -4,7 +4,8 @@
 
 役満和了やチョンボなど、ゲーム内での出来事を記録する目的で使用する。
 
-`記録キーワード` は 設定ファイルの [`remarks_word`](../setting/customize.md#settingセクション) で定義する。
+## メモ
+`記録キーワード` は 設定ファイルの [regulationsセクション](../config/regulations.md#regulationsセクション) で定義する。
 
 入力例
 ```
@@ -13,10 +14,21 @@
 ゲスト 四暗刻
 ```
 
-## 卓外清算
+## 卓外清算(個人清算)
+個人成績に対する清算。
+
+個人成績サマリ/個人成績詳細表示時に
+
+`記録キーワード` は 設定ファイルの [regulationsセクション](../config/regulations.md#regulationsセクション)  で定義する。
+
 [`words` テーブル](../datedase/schema.md#words)の `type 1` として登録している単語は、祝儀や卓外ペナルティなど、素点とは別要素でポイントを増減させる。
 
-登録される単語は、設定ファイル内の [`regulations` セクション](../setting/customize.md#regulationsセクション)で定義する。
+
+## 卓外清算(チーム清算)
+チーム成績に対する清算。
+
+
+[regulations_teamセクション](../config/regulations.md#regulations_teamセクション) で定義する。
 
 ## 入力ルール/制約事項等
 - [スコア記録](score_record.md) のスレッド内にポストされたものが記録対象になる
