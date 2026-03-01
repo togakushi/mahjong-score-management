@@ -110,48 +110,37 @@ class RuleSet:
         self.config.read(config, encoding="utf-8")
         self.read_config()
 
-    def data_set(
-        self,
-        version: str,
-        mode: Literal[3, 4] = 4,
-        rule_data: Mapping[str, Any] | None = None,
-    ) -> bool:
+    def data_set(self, section_name: str, rule_data: Mapping[str, Any]):
         """ルール登録
 
         Args:
-            version (str): ルールバージョン識別子
-            mode (Literal[3, 4], optional): 四人打ち/三人打ち. Defaults to 四人打ち.
-            rule_data (Mapping, optional): 更新データ情報
-
-        Returns:
-            bool: 登録結果真偽
+            section_name (str): セクション名
+            rule_data (Mapping): 更新データ情報
         """
 
         rule = RuleData()
-        rule.mode = mode
-        rule.rule_version = version
 
-        match rule.mode:
+        # 初期値セット
+        match int(rule_data.get("mode", 4)):
             case 3:
+                rule.mode = 3
                 rule.origin_point = 350
                 rule.return_point = 400
                 rule.rank_point = [30, 0, -30]
             case 4:
+                rule.mode = 4
                 rule.origin_point = 250
                 rule.return_point = 300
                 rule.rank_point = [30, 10, -10, -30]
             case _:
-                logging.warning("Do not register: %s (invalid mode: %s)", version, mode)
-                return False
+                logging.warning("Do not register: %s (invalid mode: %s)", section_name, rule_data.get("mode"))
+                return
 
-        rule.ignore_flying = False
-        rule.draw_split = False
-
-        if rule_data:
-            rule.update(rule_data)
-
-        self.data.update({version: rule})
-        return True
+        # 設定値取り込み
+        rule.update(rule_data)
+        if not rule.rule_version:
+            rule.rule_version = section_name
+        self.data.update({rule.rule_version: rule})
 
     def read_config(self):
         """設定ファイル読み込み"""
@@ -162,9 +151,7 @@ class RuleSet:
             if section_name.startswith("regulations_team_") or section_name.endswith("_regulations_team"):
                 continue
 
-            rule = dict(self.config[section_name])
-            if self.data_set(section_name, mode=int(rule.get("mode", 4))):  # type: ignore
-                self.data[section_name].update(rule)
+            self.data_set(section_name, dict(self.config[section_name]))
 
     def status_update(self, params: dict):
         """ステータス更新
