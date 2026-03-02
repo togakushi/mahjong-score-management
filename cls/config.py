@@ -730,14 +730,10 @@ class AppConfig:
         except Exception as err:
             raise RuntimeError(err) from err
 
-        # 必須セクションチェック
-        for x in ("mahjong", "setting"):
-            if x not in self._parser.sections():
-                logging.critical("Required section not found. (%s)", x)
-                sys.exit(255)
-
-        # オプションセクションチェック
+        # セクションチェック
         option_sections = [
+            "mahjong",
+            "setting",
             "results",
             "graph",
             "ranking",

@@ -347,10 +347,11 @@ class SvcFunctions(FunctionsInterface):
 
         # リアクション文字取得
         def _resolve_reaction(name: str, fallback: str) -> str:
+            section_name = f"slack_{m.data.channel_id}"
             if channel_config := g.params.get("channel_config"):
                 if value := lookup.get_config_value(
                     config_file=channel_config,
-                    section=m.status.source,
+                    section=section_name,
                     name=name,
                     val_type=str,
                 ):
@@ -358,7 +359,7 @@ class SvcFunctions(FunctionsInterface):
 
             if value := lookup.get_config_value(
                 config_file=g.cfg.config_file,
-                section=m.status.source,
+                section=section_name,
                 name=name,
                 val_type=str,
             ):
