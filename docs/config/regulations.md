@@ -29,9 +29,42 @@
 | ------------ | ---------------------------------------------- | -------------------------------- | -------- | --------------------------------------------- |
 | 任意のワード | 卓外清算(チーム)として登録される事前登録ワード | 数値(追加計算される卓外ポイント) |          | キーを単語として登録</br>ポイントは1000点単位 |
 
-<details>
-<summary>卓外清算の設定例</summary>
 
+## ルールセット個別レギュレーション設定
+複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
+
+個別セクション名は [regulationsセクション](#regulationsセクション) / [#regulations_teamセクション](#regulations_teamセクション) の前後のどちらかにルールバージョン識別子が付いた形となる。\
+個別レギュレーションは[メイン設定](../config/mainconf.md)、及び[ルールセット設定](ruleset.md) で定義可能。
+
+
+## 読み込み優先順位
+読み込みには優先順位があり、最初に見つかった設定のみが取り込まれる。\
+個別セクションが無い場合は [regulationsセクション](#regulationsセクション) / [#regulations_teamセクション](#regulations_teamセクション) が読み込まれる。\
+レギュレーション設定が必要ない場合は、空の個別セクションを定義すること。
+
+> [!NOTE]
+> [regulationsセクション](#regulationsセクション) / [#regulations_teamセクション](#regulations_teamセクション) の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
+
+### 個人清算レギュレーション
+| 優先</br>順位 |              定義箇所               |        セクション名        |
+| :-----------: | ----------------------------------- | -------------------------- |
+|       1       | [ルールセット設定](ruleset.md)      | {rule_version}_regulations |
+|       2       | [ルールセット設定](ruleset.md)      | regulations_{rule_version} |
+|       3       | [メイン設定](../config/mainconf.md) | {rule_version}_regulations |
+|       4       | [メイン設定](../config/mainconf.md) | regulations_{rule_version} |
+|       5       | [メイン設定](../config/mainconf.md) | regulations                |
+
+### チーム清算レギュレーション
+| 優先</br>順位 |              定義箇所               |          セクション名           |
+| :-----------: | ----------------------------------- | ------------------------------- |
+|       1       | [ルールセット設定](ruleset.md)      | {rule_version}_regulations_team |
+|       2       | [ルールセット設定](ruleset.md)      | regulations_team_{rule_version} |
+|       3       | [メイン設定](../config/mainconf.md) | {rule_version}_regulations_team |
+|       4       | [メイン設定](../config/mainconf.md) | regulations_team_{rule_version} |
+|       5       | [メイン設定](../config/mainconf.md) | regulations_team                |
+
+# 設定例
+## 卓外清算の設定例
 ```
 [regulations]
 役満祝儀 = 10
@@ -41,7 +74,5 @@
 遅刻 = -100
 ```
 
-</details>
-
-## ルールセット個別レギュレーション設定
-複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
+> [!IMPORTANT]
+> INIファイルの仕様上、セクション名及びキー名の半角英字はすべて小文字として扱われる。
