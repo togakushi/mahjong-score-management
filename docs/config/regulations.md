@@ -39,11 +39,11 @@
 
 ## 読み込み優先順位
 読み込みには優先順位があり、最初に見つかった設定のみが取り込まれる。\
-個別セクションが無い場合は [regulationsセクション](#regulationsセクション) / [#regulations_teamセクション](#regulations_teamセクション) が読み込まれる。\
+個別セクションが無い場合は [regulationsセクション](#regulationsセクション) / [regulations_teamセクション](#regulations_teamセクション) が読み込まれる。\
 レギュレーション設定が必要ない場合は、空の個別セクションを定義すること。
 
 > [!NOTE]
-> [regulationsセクション](#regulationsセクション) / [#regulations_teamセクション](#regulations_teamセクション) の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
+> [regulationsセクション](#regulationsセクション) / [regulations_teamセクション](#regulations_teamセクション) の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
 
 ### 個人清算レギュレーション
 | 優先</br>順位 |              定義箇所               |        セクション名        |
