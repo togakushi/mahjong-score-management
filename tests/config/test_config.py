@@ -14,15 +14,6 @@ from libs import configuration
 def test_empty_config(monkeypatch):
     """空設定チェック"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
-    with pytest.raises(SystemExit) as e:
-        configuration.setup(init_db=False)
-    assert e.type is SystemExit
-    assert e.value.code == 255
-
-
-def test_minimal_config(monkeypatch):
-    """最小構成"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
     configuration.setup(init_db=False)
 
     assert g.cfg.mahjong.origin_point == 250
@@ -42,7 +33,7 @@ def test_minimal_config(monkeypatch):
 @pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report"])
 def test_subcommand_default(input_args, monkeypatch):
     """サブコマンドデフォルト値チェック"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
 
     default = {
         "section": input_args,

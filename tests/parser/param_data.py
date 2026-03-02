@@ -195,8 +195,8 @@ search_range: dict[str, tuple[Any, ...]] = {
         [ExtDt("2026-01-01 12:00:00.000000"), ExtDt().range("今月")[1] + {"hours": 12}],
     ),
     "inclusive": (
-        "今月 先月 今年",
-        [(ExtDt(hours=-12).range("先月") + {"hours": 12}).start, (ExtDt(hours=-12).range("今年") + {"hours": 12}).end],
+        "去年 先月 今年",
+        [(ExtDt(hours=-12).range("去年") + {"hours": 12}).start, (ExtDt(hours=-12).range("今年") + {"hours": 12}).end],
     ),
     "duplication": (
         "今月 先月 今月",
