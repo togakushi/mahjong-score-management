@@ -37,7 +37,7 @@
 > - [dbtools.py](../dbtools.md)によるDBメンテナンス
 
 ### channel_id / separate について
-`channel_id` / `separate` は複数個所で定義できる。\
+`channel_id` / `separate` は複数箇所で定義できる。\
 以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。
 
 | 優先度 |    設定ファイル    |                                     記述セクション                                      |                    設定が有効になる範囲                    |
