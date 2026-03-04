@@ -97,7 +97,10 @@ class BaseSection(CommonMethodMixin):
 
     def initialization(self):
         """設定ファイルから値の取り込み"""
+
         for k in self._section.keys():
+            if k not in self.to_dict():
+                continue  # インスタンス変数と一致しない項目はスキップ
             match type(self.__dict__.get(k)):
                 case v_type if k in self.__dict__ and v_type is str:
                     setattr(self, k, self._section.get(k, fallback=self.get(k)))
