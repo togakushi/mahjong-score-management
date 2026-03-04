@@ -85,8 +85,9 @@ def read_data(keyword: str, params: dict = {}) -> pd.DataFrame:
         params.update({"starttime": cast("ExtDt", starttime).format(Format.SQL)})
     if endtime := params.get("endtime"):
         params.update({"endtime": cast("ExtDt", endtime).format(Format.SQL)})
-    if mode := g.cfg.rule.get_mode(g.params.get("default_rule", "")):
-        params.update({"mode": mode})
+    if "mode" not in params:
+        mode = g.cfg.rule.get_mode(g.params.get("rule_version", ""))
+        params.update({"mode": mode if mode else 4})
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")
