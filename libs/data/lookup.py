@@ -280,7 +280,7 @@ def first_record(rule_list: list[str]) -> ExtDt:
     """最初のゲーム記録時間を返す
 
     Args:
-        rule_list (list[str]): ルールバージョン識別子
+        rule_list (list[str]): ルール識別子
 
     Returns:
         ExtendedDatetime: 最初のゲーム記録時間

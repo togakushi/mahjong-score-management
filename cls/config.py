@@ -157,7 +157,7 @@ class MahjongSection(BaseSection):
         self.mode: Literal[3, 4] = 4
         """ 集計モード切替(四人打ち/三人打ち)"""
         self.rule_version: str = str("default_rule")
-        """ルール判別識別子"""
+        """ルール識別子"""
         self.origin_point: int = int(-1)
         """配給原点"""
         self.return_point: int = int(-1)
@@ -222,7 +222,7 @@ class SettingSection(BaseSection):
     rule_config: Path
     """ルール設定ファイル"""
     default_rule: str
-    """ルールバージョン未指定時に使用される識別子"""
+    """ルール識別子未指定時に使用される識別子"""
     separate: bool
     """スコア入力元識別子別集計フラグ
     - *True*: 識別子別に集計
@@ -285,7 +285,7 @@ class SettingSection(BaseSection):
         if not (isinstance(self.keyword, Path) and self.keyword.exists()):
             self.keyword = str(self.keyword)
 
-        # デフォルトルールバージョン
+        # デフォルトルール識別子
         if not self.default_rule:
             self.default_rule = outer.mahjong.rule_version
 

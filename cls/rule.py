@@ -23,7 +23,7 @@ class RuleData:
 
     # ルール
     rule_version: str = ""
-    """ルールバージョン識別子"""
+    """ルール識別子"""
     mode: Literal[3, 4] = 4
     """ 集計モード切替(四人打ち/三人打ち)"""
     origin_point: int = 250
@@ -105,7 +105,7 @@ class RuleSet:
         self.data: dict[str, RuleData] = {}
         """ルール情報格納辞書"""
         self.keyword_mapping: dict[str, str] = {}
-        """登録キーワードとルールバージョン識別子のマッピング"""
+        """登録キーワードとルール識別子のマッピング"""
 
         self.config.read(config, encoding="utf-8")
         self.read_config()
@@ -194,10 +194,10 @@ class RuleSet:
                     self.data[rule_version].last_time = ExtDt(float(status_data["last_time"]))
 
     def to_dict(self, version: str) -> dict[str, Any]:
-        """指定ルールバージョン識別子の情報を辞書で返す
+        """指定ルール識別子の情報を辞書で返す
 
         Args:
-            version (str): ルールバージョン識別子
+            version (str): ルール識別子
 
         Returns:
             dict[str, Any]: ルール情報
@@ -218,7 +218,7 @@ class RuleSet:
         return {}
 
     def get_version(self, mode: int, mapping: bool = True) -> list[str]:
-        """指定した条件のルールバージョン識別子をリストで返す
+        """指定した条件のルール識別子をリストで返す
 
         Args:
             mode (int): 集計モード
@@ -227,7 +227,7 @@ class RuleSet:
                 - *False*: ルールとして定義されているものすべて
 
         Returns:
-            list[str]: ルールバージョン識別子
+            list[str]: ルール識別子
         """
 
         ret: list[str] = []
@@ -243,10 +243,10 @@ class RuleSet:
         return ret
 
     def get_mode(self, version: str) -> int:
-        """指定ルールバージョン識別子の集計モードを返す
+        """指定ルール識別子の集計モードを返す
 
         Args:
-            version (str): ルールバージョン識別子
+            version (str): ルール識別子
 
         Returns:
             int: 集計モード
@@ -255,10 +255,10 @@ class RuleSet:
         return int(self.to_dict(version).get("mode", 0))
 
     def get_ignore_flying(self, version: str) -> bool:
-        """指定ルールバージョン識別子のトビカウントフラグを返す
+        """指定ルール識別子のトビカウントフラグを返す
 
         Args:
-            version (str): ルールバージョン識別子
+            version (str): ルール識別子
 
         Returns:
             bool: トビカウントフラグ
@@ -267,10 +267,10 @@ class RuleSet:
         return bool(self.to_dict(version).get("ignore_flying", False))
 
     def get_undefined_word(self, version: str) -> int:
-        """指定ルールバージョン識別子の未定義ワードタイプを返す
+        """指定ルール識別子の未定義ワードタイプを返す
 
         Args:
-            version (str): ルールバージョン識別子
+            version (str): ルール識別子
 
         Returns:
             int: 未定義ワードタイプ
@@ -279,10 +279,10 @@ class RuleSet:
         return int(self.to_dict(version).get("undefined_word", 1))
 
     def print(self, version: str) -> str:
-        """指定ルールバージョン識別子の内容を出力する
+        """指定ルール識別子の内容を出力する
 
         Args:
-            version (str): ルールバージョン識別子
+            version (str): ルール識別子
 
         Returns:
             str: 内容
@@ -418,7 +418,7 @@ class RuleSet:
         """定義済みルールセットの列挙
 
         Returns:
-            list[str]: ルールバージョン識別子
+            list[str]: ルール識別子
         """
 
         return [x.rule_version for x in self.data.values()]

@@ -34,7 +34,7 @@
 ## ルールセット個別レギュレーション設定
 複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
 
-個別セクション名は [regulationsセクション](#regulationsセクション) / [regulations_teamセクション](#regulations_teamセクション) の前後のどちらかにルールバージョン識別子が付いた形となる。\
+個別セクション名は [regulationsセクション](#regulationsセクション) / [regulations_teamセクション](#regulations_teamセクション) の前後のどちらかにルール識別子が付いた形となる。\
 個別レギュレーションは[メイン設定](../config/mainconf.md)、及び[ルールセット設定](ruleset.md) で定義可能。
 
 
