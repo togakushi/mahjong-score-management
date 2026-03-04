@@ -57,10 +57,11 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
         },
     )
     rule_version = ret_dict.get("default_rule", g.cfg.mahjong.rule_version)
-    for suffix in ret_dict.get("command_suffix"):
-        if new_rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
-            ret_dict.update({"default_rule": new_rule_version})
-            rule_version = new_rule_version
+    if hasattr(ret_dict, "command_suffix") and isinstance(ret_dict["command_suffix"], list):
+        for suffix in ret_dict.get("command_suffix", []):
+            if new_rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
+                ret_dict.update({"default_rule": new_rule_version})
+                rule_version = new_rule_version
     ret_dict.update(
         {
             "rule_version": rule_version,

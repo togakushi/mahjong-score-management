@@ -4,7 +4,7 @@ cls/types.py
 
 from dataclasses import asdict, dataclass, field
 from enum import Enum, auto
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, TypedDict, Union
+from typing import TYPE_CHECKING, Literal, Optional, TypeAlias, TypedDict, Union
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -197,6 +197,8 @@ class PlaceholderDict(TypedDict, total=False):
 
     command: str
     """コマンド名"""
+    command_suffix: list[str]
+    """コマンドサフィックス"""
 
     # プレイヤー関連
     player_name: str
@@ -306,7 +308,7 @@ class PlaceholderDict(TypedDict, total=False):
     """ルール識別子(設定値)"""
     rule_version: str
     """ルール識別子(指定値)"""
-    rule_set: dict[str, dict[str, Any]]
+    rule_set: dict[str, str]
     """集計対象ルール識別子"""
     mixed: bool
     """ルール識別子の扱い
