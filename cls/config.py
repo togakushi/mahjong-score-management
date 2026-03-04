@@ -608,6 +608,8 @@ class SubCommand(BaseSection):
 
     commandword: list[str]
     """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
     aggregation_range: str
     """検索範囲未指定時に使用される範囲"""
     individual: bool
@@ -662,6 +664,7 @@ class SubCommand(BaseSection):
     def _reset(self, section_name: str):
         self.section = section_name
         self.commandword = []
+        self.command_suffix = []
         self.aggregation_range = str("当日")
         self.individual = bool(True)
         self.all_player = bool(False)
@@ -686,6 +689,16 @@ class SubCommand(BaseSection):
         self.filename = str("")
         self.interval = 80
 
+        match self.section:
+            case "results":
+                self.command_suffix.append("成績")
+            case "graph":
+                self.command_suffix.append("グラフ")
+            case "ranking":
+                self.command_suffix.append("ランキング")
+            case "report":
+                self.command_suffix.append("レポート")
+
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み
 
@@ -702,7 +715,7 @@ class SubCommand(BaseSection):
             "results": "麻雀成績",
             "graph": "麻雀グラフ",
             "ranking": "麻雀ランキング",
-            "report": "麻雀成績レポート",
+            "report": "麻雀レポート",
         }
         self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback=default_word[self.section]).split(",")]
 
