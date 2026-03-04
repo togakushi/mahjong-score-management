@@ -21,7 +21,7 @@ from tests.parser import param_data
 )
 def test_score_report(input_str, result_dict, get_point, monkeypatch):
     """得点入力"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
@@ -62,7 +62,7 @@ def test_score_report(input_str, result_dict, get_point, monkeypatch):
 )
 def test_point_calc_seat(rpoint_list, point_dict, rank_dict, monkeypatch):
     """ポイント計算 (同点席順)"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
@@ -101,7 +101,7 @@ def test_point_calc_seat(rpoint_list, point_dict, rank_dict, monkeypatch):
 )
 def test_point_calc_division(rpoint_list, point_dict, rank_dict, monkeypatch):
     """ポイント計算 (同点山分け)"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
