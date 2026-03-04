@@ -158,20 +158,8 @@ def query_modification(sql: str) -> str:
             sql = sql.replace("--[not_collection] ", "")
 
     # 集計対象ルール
-    rule_list: list = []
-    g.params["mode"] = g.params.get("mode", 4)
-    if target_mode := g.params.get("target_mode"):
-        g.params["mode"] = target_mode
-        rule_list.extend(g.cfg.rule.get_version(g.params["mode"], True))
-    if g.params.get("mixed"):
-        rule_list.extend(g.cfg.rule.get_version(g.params["mode"], False))
-    if (rule_version := g.params.get("rule_version")) and g.cfg.rule.to_dict(rule_version):
-        if g.params["mode"] == g.cfg.rule.get_mode(rule_version):
-            rule_list.append(rule_version)
-    if not rule_list:
-        rule_list = list(g.cfg.rule.keyword_mapping.values())
-    g.params["rule_set"] = {f"rule_{idx}": name for idx, name in enumerate(set(rule_list))}
-    sql = sql.replace("<<rule_list>>", ":" + ", :".join(g.params["rule_set"]))
+    if g.params.get("rule_set"):
+        sql = sql.replace("<<rule_list>>", ":" + ", :".join(g.params["rule_set"]))
 
     # 集計モード
     match g.params.get("mode"):
