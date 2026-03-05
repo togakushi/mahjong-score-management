@@ -1,5 +1,5 @@
 """
-cls/stats.py
+libs/domain/stats.py
 """
 
 import textwrap

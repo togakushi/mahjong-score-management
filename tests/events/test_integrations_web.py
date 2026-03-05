@@ -13,7 +13,7 @@ from flask_httpauth import HTTPBasicAuth  # type: ignore
 import libs.global_value as g
 from integrations import factory
 from integrations.web.events import create_bp
-from libs import configuration
+from libs.bootstrap import configuration
 
 
 @pytest.fixture(scope="module", autouse=True)

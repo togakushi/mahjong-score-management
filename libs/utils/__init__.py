@@ -8,4 +8,5 @@
 - `libs.utils.textutil`: テキストツール
 - `libs.utils.validator`: バリデータ
 - `libs.utils.graphutil`: グラフツール
+- `libs.utils.timekit`: datetime拡張
 """

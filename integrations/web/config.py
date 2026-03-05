@@ -8,8 +8,8 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Literal
 
 import libs.global_value as g
-from cls.config import BaseSection
 from integrations.base.interface import IntegrationsConfig
+from libs.bootstrap.config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

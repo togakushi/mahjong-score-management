@@ -29,7 +29,7 @@ import sys
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from libs import configuration
+from libs.bootstrap import configuration
 
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter as discord_adapter

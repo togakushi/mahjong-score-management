@@ -12,8 +12,8 @@ from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
-    from cls.config import SubCommand
     from integrations.protocols import MessageParserProtocol
+    from libs.bootstrap.config import SubCommand
     from libs.types import PlaceholderDict
 
 

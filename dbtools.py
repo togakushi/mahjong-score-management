@@ -31,7 +31,7 @@ help:
 """
 
 import libs.global_value as g
-from libs import configuration
+from libs.bootstrap import configuration
 from libs.functions import tools as t
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.commands import ranking
+from libs.commands.ranking import ranking, rating
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
@@ -24,7 +24,7 @@ def main(m: "MessageParserProtocol"):
 
     if g.params.get("rating"):  # レーティング
         m.status.command_type = CommandType.RATING
-        ranking.rating.aggregation(m)
+        rating.aggregation(m)
     else:  # ランキング
         m.status.command_type = CommandType.RANKING
-        ranking.ranking.aggregation(m)
+        ranking.aggregation(m)

@@ -1,5 +1,5 @@
 """
-libs/configuration.py
+libs/bootstrap/configuration.py
 """
 
 import argparse
@@ -16,16 +16,16 @@ import libs.commands.ranking.entry
 import libs.commands.report.entry
 import libs.commands.results.entry
 import libs.global_value as g
-from cls.config import AppConfig
 from integrations import factory
+from libs.bootstrap.config import AppConfig
+from libs.commands.registry import member, team
 from libs.data import initialization, lookup
 from libs.functions import compose
-from libs.registry import member, team
 from libs.types import Args, StyleOptions
 
 if TYPE_CHECKING:
-    from cls.config import SubCommand
     from integrations.protocols import MessageParserProtocol
+    from libs.bootstrap.config import SubCommand
 
 
 def set_loglevel():

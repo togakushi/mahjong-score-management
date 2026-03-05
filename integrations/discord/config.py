@@ -6,9 +6,9 @@ import logging
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Optional
 
-from cls.config import BaseSection
 from integrations.base.interface import IntegrationsConfig
 from integrations.discord.events import comparison
+from libs.bootstrap.config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

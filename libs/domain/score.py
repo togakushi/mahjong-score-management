@@ -1,5 +1,5 @@
 """
-cls/score.py
+libs/domain/score.py
 """
 
 import re

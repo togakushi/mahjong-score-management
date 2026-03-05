@@ -12,9 +12,14 @@ from pprint import pprint
 
 import libs.global_value as g
 from integrations import factory
-from libs import configuration
-from libs.commands import graph, ranking, report, results
-from libs.configuration import arg_parser
+from libs.bootstrap import configuration
+from libs.bootstrap.configuration import arg_parser
+from libs.commands.graph import personal as graph_personal
+from libs.commands.graph import rating as graph_rating
+from libs.commands.graph import summary as graph_summary
+from libs.commands.ranking import ranking
+from libs.commands.report import stats_list, stats_report
+from libs.commands.results import summary as results_summary
 from libs.domain.command import CommandParser
 from libs.functions import compose
 from libs.utils import dictutil
@@ -37,17 +42,17 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             pprint(
                 [
                     "exec: graph.personal.plot()",
-                    graph.personal.plot(m),
+                    graph_personal.plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
             )
         else:
-            graph.summary.point_plot(m)
+            graph_summary.point_plot(m)
             pprint(
                 [
                     "exec: graph.summary.point_plot()",
-                    graph.summary.point_plot(m),
+                    graph_summary.point_plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -58,7 +63,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
         pprint(
             [
                 "exec: graph.summary.rank_plot()",
-                graph.summary.point_plot(m),
+                graph_summary.point_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -69,7 +74,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
         pprint(
             [
                 "exec: graph.personal.statistics_plot()",
-                graph.personal.statistics_plot(m),
+                graph_personal.statistics_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -125,7 +130,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(
                     [
                         "exec: results.summary.aggregate()",
-                        results.summary.aggregation(m),
+                        results_summary.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -174,7 +179,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(
                     [
                         "exec: ranking.ranking.aggregation()",
-                        ranking.ranking.aggregation(m),
+                        ranking.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -186,7 +191,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(
                     [
                         "exec: report.results_list.main()",
-                        report.stats_list.main(m),
+                        stats_list.main(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -198,7 +203,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(
                     [
                         "exec: report.slackpost.results_report.gen_pdf()",
-                        report.stats_report.gen_pdf(m),
+                        stats_report.gen_pdf(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -210,7 +215,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(
                     [
                         "exec: graph.rating.plot()",
-                        graph.rating.plot(m),
+                        graph_rating.plot(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,

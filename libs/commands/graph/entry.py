@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.commands import graph
+from libs.commands.graph import personal, rating, summary
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
@@ -25,14 +25,14 @@ def main(m: "MessageParserProtocol"):
 
     if len(g.params["player_list"]) == 1:  # 対象がひとり
         if g.params.get("statistics"):
-            graph.personal.statistics_plot(m)
+            personal.statistics_plot(m)
         else:
-            graph.personal.plot(m)
+            personal.plot(m)
     else:  # 対象が複数
         if g.params.get("rating"):  # レーティング
-            graph.rating.plot(m)
+            rating.plot(m)
         else:
             if g.params.get("order"):
-                graph.summary.rank_plot(m)
+                summary.rank_plot(m)
             else:
-                graph.summary.point_plot(m)
+                summary.point_plot(m)

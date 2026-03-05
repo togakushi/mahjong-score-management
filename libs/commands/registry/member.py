@@ -1,5 +1,5 @@
 """
-libs/registry/member.py
+libs/commands/registry/member.py
 """
 
 import logging

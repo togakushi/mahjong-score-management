@@ -12,8 +12,8 @@ from integrations.web.adapter import ServiceAdapter as web_adapter
 if TYPE_CHECKING:
     from configparser import ConfigParser
 
-    from cls.config import AppConfig
     from integrations.base.interface import AdapterInterface
+    from libs.bootstrap.config import AppConfig
 
 
 @overload
