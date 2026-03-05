@@ -115,8 +115,8 @@ def help_message(m: "MessageParserProtocol"):
         )
 
     words = [word for word, _ in lookup.regulation_list(1)]
-    if g.cfg.undefined_word == 1:
-        words.append("未登録ワードのすべてを個別にカウント")
+    # if g.cfg.undefined_word == 1:
+    #    words.append("未登録ワードのすべてを個別にカウント")
     if words:
         m.set_message(
             "、".join(words),
@@ -124,8 +124,8 @@ def help_message(m: "MessageParserProtocol"):
         )
 
     words = [word for word, _ in lookup.regulation_list(0)]
-    if g.cfg.undefined_word == 0:
-        words.append("未登録ワードのすべてを役満としてカウント")
+    # if g.cfg.undefined_word == 0:
+    #    words.append("未登録ワードのすべてを役満としてカウント")
     if words:
         m.set_message(
             "、".join(words),

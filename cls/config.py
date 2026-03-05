@@ -803,8 +803,6 @@ class AppConfig:
         """reportセクション設定値"""
 
         # 共通設定値
-        self.undefined_word: int = 0
-        """レギュレーションワードテーブルに登録されていないワードの種別"""
         self.aggregate_unit: Literal["A", "M", "Y", None] = None
         """レポート生成用日付範囲デフォルト値(レポート生成用)
         - *A*: 全期間

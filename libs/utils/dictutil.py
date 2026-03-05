@@ -48,7 +48,7 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
         {
             "command": subcom.section,
             "guest_name": g.cfg.member.guest_name,
-            "undefined_word": g.cfg.undefined_word,
+            "undefined_word": 1,
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
             "rule_set": {},
