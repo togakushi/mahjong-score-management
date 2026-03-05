@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.commands import report
+from libs.commands.report import matrix, monthly, stats_list, stats_report, winner
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
@@ -24,12 +24,12 @@ def main(m: "MessageParserProtocol"):
     g.params = dictutil.placeholder(g.cfg.report, m)
 
     if len(g.params["player_list"]) == 1:  # 成績レポート
-        report.stats_report.gen_pdf(m)
+        stats_report.gen_pdf(m)
     elif g.params.get("order"):
-        report.winner.plot(m)
+        winner.plot(m)
     elif g.params.get("statistics"):
-        report.monthly.plot(m)
+        monthly.plot(m)
     elif g.params.get("versus_matrix") or len(g.params["player_list"]) >= 2:  # 対局対戦マトリックス
-        report.matrix.plot(m)
+        matrix.plot(m)
     else:
-        report.stats_list.main(m)
+        stats_list.main(m)
