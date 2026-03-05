@@ -21,15 +21,15 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDocTemplate, Spacer, TableStyle
 
 import libs.global_value as g
-from cls.timekit import Format
 from libs.data import lookup
 from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
-    from cls.timekit import ExtendedDatetime as ExtDt
     from integrations.protocols import MessageParserProtocol
+    from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 def get_game_results() -> list:

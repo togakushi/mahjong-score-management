@@ -8,10 +8,10 @@ import sys
 from typing import TYPE_CHECKING, cast
 
 import libs.dispatcher
-from cls.timekit import Delimiter, Format
-from cls.timekit import ExtendedDatetime as ExtDt
 from integrations.slack.events.handler_registry import register, register_all
 from integrations.slack.events.home_tab import home
+from libs.utils.timekit import Delimiter, Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from slack_bolt import App

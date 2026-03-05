@@ -6,9 +6,9 @@ import re
 from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
 from libs.domain.command import CommandParser
 from libs.utils import formatter, textutil
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol

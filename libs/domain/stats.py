@@ -8,8 +8,8 @@ from typing import Literal, Optional, Union, get_type_hints
 
 import pandas as pd
 
-from cls.timekit import ExtendedDatetime as ExtDt
 from libs.data import loader
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 @dataclass

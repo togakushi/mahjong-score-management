@@ -12,12 +12,12 @@ from typing import cast
 from tqdm import tqdm
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from libs.data import loader, lookup
 from libs.domain.score import GameResult
 from libs.functions.tools import score_simulator
 from libs.utils import dbutil
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 
 def main(season_times: int = 1):

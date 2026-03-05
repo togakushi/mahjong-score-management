@@ -13,11 +13,11 @@ from typing import TYPE_CHECKING, Any, cast
 import pandas as pd
 
 import libs.global_value as g
-from cls.timekit import Format
 from libs.utils import dbutil
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
-    from cls.timekit import ExtendedDatetime as ExtDt
+    from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 def execute(sql: str, params: dict = {}) -> list[dict[str, Any]]:

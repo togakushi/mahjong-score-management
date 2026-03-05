@@ -10,10 +10,10 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from integrations.protocols import CommandType
 from libs.functions import compose
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol

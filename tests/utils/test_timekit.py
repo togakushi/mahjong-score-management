@@ -4,7 +4,7 @@ tests/utils/test_timekit.py
 
 import pytest
 
-from cls.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 from tests.utils import param_data
 
 

@@ -4,8 +4,8 @@
 
 from typing import Any
 
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 # フラグ更新
 flag_test_case_01: dict[str, tuple[Any, ...]] = {

@@ -8,9 +8,9 @@ from typing import TYPE_CHECKING, cast
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
 from libs.data import lookup
 from libs.types import StyleOptions
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol

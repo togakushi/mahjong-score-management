@@ -9,8 +9,8 @@ from typing import Any, Callable, Literal, TypedDict, Union
 
 import pandas as pd
 
-from cls.timekit import ExtendedDatetime as ExtDt
 from libs.utils import formatter, textutil
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 CommandResult = Mapping[str, Union[str, int, bool, tuple[str, ...]]]
 """コマンド処理結果の型（パラメータ名とその値のマッピング）"""

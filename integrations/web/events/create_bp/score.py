@@ -9,12 +9,12 @@ import pandas as pd
 from flask import Blueprint, abort, current_app, render_template, request
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from libs.data import modify
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.web.adapter import ServiceAdapter

@@ -12,12 +12,12 @@ import pandas as pd
 from table2ascii import PresetStyle, table2ascii
 
 import integrations.discord.events.audioop as _audioop
-from cls.timekit import Delimiter, Format
-from cls.timekit import ExtendedDatetime as ExtDt
 from integrations.base.interface import APIInterface
 from integrations.protocols import CommandType
 from libs.types import StyleOptions
 from libs.utils import converter, formatter, textutil
+from libs.utils.timekit import Delimiter, Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 sys.modules["audioop"] = _audioop
 

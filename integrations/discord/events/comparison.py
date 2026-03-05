@@ -11,14 +11,14 @@ from discord import Message
 from discord.channel import TextChannel
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from integrations.protocols import ActionStatus, CommandType
 from libs.data import modify, search
 from libs.datamodels import ComparisonResults
 from libs.domain.score import GameResult
 from libs.types import RemarkDict, StyleOptions
 from libs.utils import formatter, validator
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter

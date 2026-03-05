@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
     import pandas as pd
 
-    from cls.timekit import ExtendedDatetime
+    from libs.utils.timekit import ExtendedDatetime
 
 
 @dataclass

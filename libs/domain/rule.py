@@ -8,10 +8,10 @@ from typing import TYPE_CHECKING, Any, Literal, Mapping
 
 from table2ascii import Alignment, PresetStyle, table2ascii
 
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from libs.data import loader
 from libs.domain.command import CommandParser
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path

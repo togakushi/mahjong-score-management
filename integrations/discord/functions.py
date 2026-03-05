@@ -7,9 +7,9 @@ from typing import TYPE_CHECKING, cast
 from discord import Forbidden, NotFound
 from discord.channel import TextChannel
 
-from cls.timekit import ExtendedDatetime as ExtDt
 from integrations.base.interface import FunctionsInterface
 from integrations.protocols import ActionStatus
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from discord import ClientUser, Message

@@ -8,13 +8,13 @@ from contextlib import closing
 import pytest
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from integrations import factory
 from libs import configuration
 from libs.data import modify
 from libs.domain.score import GameResult
 from libs.utils import dbutil, validator
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 from tests.database import param_data
 
 
