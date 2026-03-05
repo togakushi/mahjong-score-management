@@ -98,12 +98,12 @@
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">libs.global_value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">g</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">cls.score</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameResult</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">cls.timekit</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtendedDatetime</span> <span class="k">as</span> <span class="n">ExtDt</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">cls.timekit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Format</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChannelType</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">loader</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dbutil</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChannelType</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">loader</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.domain.score</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameResult</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dbutil</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.utils.timekit</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtendedDatetime</span> <span class="k">as</span> <span class="n">ExtDt</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.utils.timekit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Format</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -369,7 +369,7 @@
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;最初のゲーム記録時間を返す</span>
 </span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>
 </span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">    Args:</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        rule_list (list[str]): ルールバージョン識別子</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        rule_list (list[str]): ルール識別子</span>
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">    Returns:</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        ExtendedDatetime: 最初のゲーム記録時間</span>
@@ -868,7 +868,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">exsist_record</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">ts</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="bp"><a href="../../cls/score.html#GameResult">cls.score.GameResult</a></span>:</span></span>
+        <span class="name">exsist_record</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">ts</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="../domain/score.html#GameResult">libs.domain.score.GameResult</a></span>:</span></span>
 
                 <label class="view-source-button" for="exsist_record-view-source"><span>View Source</span></label>
 
@@ -918,7 +918,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">first_record</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">rule_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="bp"><a href="../../cls/timekit.html#ExtendedDatetime">cls.timekit.ExtendedDatetime</a></span>:</span></span>
+        <span class="name">first_record</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">rule_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="../utils/timekit.html#ExtendedDatetime">libs.utils.timekit.ExtendedDatetime</a></span>:</span></span>
 
                 <label class="view-source-button" for="first_record-view-source"><span>View Source</span></label>
 
@@ -928,7 +928,7 @@
 </span><span id="first_record-281"><a href="#first_record-281"><span class="linenos">281</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;最初のゲーム記録時間を返す</span>
 </span><span id="first_record-282"><a href="#first_record-282"><span class="linenos">282</span></a>
 </span><span id="first_record-283"><a href="#first_record-283"><span class="linenos">283</span></a><span class="sd">    Args:</span>
-</span><span id="first_record-284"><a href="#first_record-284"><span class="linenos">284</span></a><span class="sd">        rule_list (list[str]): ルールバージョン識別子</span>
+</span><span id="first_record-284"><a href="#first_record-284"><span class="linenos">284</span></a><span class="sd">        rule_list (list[str]): ルール識別子</span>
 </span><span id="first_record-285"><a href="#first_record-285"><span class="linenos">285</span></a>
 </span><span id="first_record-286"><a href="#first_record-286"><span class="linenos">286</span></a><span class="sd">    Returns:</span>
 </span><span id="first_record-287"><a href="#first_record-287"><span class="linenos">287</span></a><span class="sd">        ExtendedDatetime: 最初のゲーム記録時間</span>
@@ -960,7 +960,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>rule_list (list[str]):</strong>  ルールバージョン識別子</li>
+<li><strong>rule_list (list[str]):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
