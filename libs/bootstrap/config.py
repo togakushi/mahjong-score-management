@@ -45,6 +45,7 @@ class CommonMethodMixin:
     """共通メソッド"""
 
     _section: "SectionProxy"
+    """読み込み先(パーサー + セクション名)"""
 
     def get(self, key: str, fallback: Any = None) -> Any:
         """値の取得"""
@@ -62,9 +63,9 @@ class CommonMethodMixin:
         """真偽値の取得"""
         return self._section.getboolean(key, fallback)
 
-    def getlist(self, key: str) -> list[str]:
+    def getlist(self, key: str, fallback: str = "") -> list[str]:
         """リストの取得"""
-        return [x.strip() for x in self._section.get(key, "").split(",")]
+        return [x.strip() for x in self._section.get(key, fallback).split(",")]
 
     def keys(self) -> list[str]:
         """キーリストの返却"""
@@ -105,29 +106,29 @@ class BaseSection(CommonMethodMixin):
                 continue  # インスタンス変数と一致しない項目はスキップ
             match type(self.__dict__.get(k)):
                 case v_type if k in self.__dict__ and v_type is str:
-                    setattr(self, k, self._section.get(k, fallback=self.get(k)))
+                    setattr(self, k, self.get(k))
                 case v_type if k in self.__dict__ and v_type is int:
-                    setattr(self, k, self._section.getint(k, fallback=self.get(k)))
+                    setattr(self, k, self.getint(k))
                 case v_type if k in self.__dict__ and v_type is float:
-                    setattr(self, k, self._section.getfloat(k, fallback=self.get(k)))
+                    setattr(self, k, self.getfloat(k))
                 case v_type if v_type is bool:
-                    setattr(self, k, self._section.getboolean(k, fallback=self.get(k)))
+                    setattr(self, k, self._section.getboolean(k))
                 case v_type if k in self.__dict__ and v_type is list:
-                    v_list = [x.strip() for x in self._section.get(k, fallback=self.get(k)).split(",")]
+                    v_list = self.getlist(k)
                     current_list = getattr(self, k)
                     if isinstance(current_list, list) and current_list:  # 設定済みリストは追加
                         current_list.extend(v_list)
                     else:
                         setattr(self, k, v_list)
                 case v_type if k in self.__dict__ and v_type is Optional[str]:  # 文字列 or None(未定義)
-                    setattr(self, k, self._section.get(k, fallback=self.get(k)))
+                    setattr(self, k, self.get(k))
                 case v_type if k in self.__dict__ and v_type is PosixPath:
-                    setattr(self, k, Path(self._section.get(k, fallback=self.get(k))))
+                    setattr(self, k, Path(self.get(k)))
                 case v_type if k in self.__dict__ and v_type is NoneType:
                     if k in ["backup_dir"]:  # ディレクトリを指定する設定はPathで格納
-                        setattr(self, k, Path(self._section.get(k, fallback=self.get(k))))
+                        setattr(self, k, Path(self.get(k)))
                     else:
-                        setattr(self, k, self._section.get(k, fallback=self.get(k)))
+                        setattr(self, k, self.get(k))
                 case _:
                     setattr(self, k, self.__dict__.get(k))
 
@@ -616,6 +617,7 @@ class SubCommand(BaseSection, CommandAttrs):
         """
 
         self._parser = outer._parser
+        self._section = outer._parser[self.section]
         self.default_reset(self.section)
         super().__init__(self, self.section)
 
@@ -626,7 +628,7 @@ class SubCommand(BaseSection, CommandAttrs):
             "ranking": "麻雀ランキング",
             "report": "麻雀レポート",
         }
-        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback=default_word[self.section]).split(",")]
+        self.commandword = [x.strip() for x in self.getlist("commandword", default_word[self.section])]
 
         logging.debug("%s: %s", self.section, self)
 
