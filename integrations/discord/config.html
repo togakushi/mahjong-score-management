@@ -92,9 +92,9 @@
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">cls.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSection</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.base.interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntegrationsConfig</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.discord.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">comparison</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.base.interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntegrationsConfig</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.discord.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">comparison</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.bootstrap.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSection</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>  <span class="c1"># noqa: F401</span>
@@ -160,7 +160,7 @@
                     <div class="decorator decorator-dataclass">@dataclass</div>
 
     <span class="def">class</span>
-    <span class="name">SvcConfig</span><wbr>(<span class="base"><a href="../../cls/config.html#BaseSection">cls.config.BaseSection</a></span>, <span class="base"><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></span>):
+    <span class="name">SvcConfig</span><wbr>(<span class="base"><a href="../../libs/bootstrap/config.html#BaseSection">libs.bootstrap.config.BaseSection</a></span>, <span class="base"><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></span>):
 
                 <label class="view-source-button" for="SvcConfig-view-source"><span>View Source</span></label>
 
@@ -333,21 +333,21 @@
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt><a href="../../cls/config.html#BaseSection">cls.config.BaseSection</a></dt>
-                                <dd id="SvcConfig.section" class="variable"><a href="../../cls/config.html#BaseSection.section">section</a></dd>
-                <dd id="SvcConfig.initialization" class="function"><a href="../../cls/config.html#BaseSection.initialization">initialization</a></dd>
-                <dd id="SvcConfig.to_dict" class="function"><a href="../../cls/config.html#BaseSection.to_dict">to_dict</a></dd>
+                                    <div><dt><a href="../../libs/bootstrap/config.html#BaseSection">libs.bootstrap.config.BaseSection</a></dt>
+                                <dd id="SvcConfig.section" class="variable"><a href="../../libs/bootstrap/config.html#BaseSection.section">section</a></dd>
+                <dd id="SvcConfig.initialization" class="function"><a href="../../libs/bootstrap/config.html#BaseSection.initialization">initialization</a></dd>
+                <dd id="SvcConfig.to_dict" class="function"><a href="../../libs/bootstrap/config.html#BaseSection.to_dict">to_dict</a></dd>
 
             </div>
-            <div><dt><a href="../../cls/config.html#CommonMethodMixin">cls.config.CommonMethodMixin</a></dt>
-                                <dd id="SvcConfig.get" class="function"><a href="../../cls/config.html#CommonMethodMixin.get">get</a></dd>
-                <dd id="SvcConfig.getint" class="function"><a href="../../cls/config.html#CommonMethodMixin.getint">getint</a></dd>
-                <dd id="SvcConfig.getfloat" class="function"><a href="../../cls/config.html#CommonMethodMixin.getfloat">getfloat</a></dd>
-                <dd id="SvcConfig.getboolean" class="function"><a href="../../cls/config.html#CommonMethodMixin.getboolean">getboolean</a></dd>
-                <dd id="SvcConfig.getlist" class="function"><a href="../../cls/config.html#CommonMethodMixin.getlist">getlist</a></dd>
-                <dd id="SvcConfig.keys" class="function"><a href="../../cls/config.html#CommonMethodMixin.keys">keys</a></dd>
-                <dd id="SvcConfig.values" class="function"><a href="../../cls/config.html#CommonMethodMixin.values">values</a></dd>
-                <dd id="SvcConfig.items" class="function"><a href="../../cls/config.html#CommonMethodMixin.items">items</a></dd>
+            <div><dt><a href="../../libs/bootstrap/config.html#CommonMethodMixin">libs.bootstrap.config.CommonMethodMixin</a></dt>
+                                <dd id="SvcConfig.get" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.get">get</a></dd>
+                <dd id="SvcConfig.getint" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.getint">getint</a></dd>
+                <dd id="SvcConfig.getfloat" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.getfloat">getfloat</a></dd>
+                <dd id="SvcConfig.getboolean" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.getboolean">getboolean</a></dd>
+                <dd id="SvcConfig.getlist" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.getlist">getlist</a></dd>
+                <dd id="SvcConfig.keys" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.keys">keys</a></dd>
+                <dd id="SvcConfig.values" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.values">values</a></dd>
+                <dd id="SvcConfig.items" class="function"><a href="../../libs/bootstrap/config.html#CommonMethodMixin.items">items</a></dd>
 
             </div>
             <div><dt><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></dt>
