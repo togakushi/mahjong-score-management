@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, cast
 import pytest
 
 import libs.global_value as g
-from libs import configuration
+from libs.bootstrap import configuration
 from tests.config import param_data
 
 if TYPE_CHECKING:

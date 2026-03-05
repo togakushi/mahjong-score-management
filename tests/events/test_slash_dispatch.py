@@ -11,7 +11,7 @@ import pytest
 import libs.dispatcher
 import libs.global_value as g
 from integrations import factory
-from libs import configuration
+from libs.bootstrap import configuration
 from libs.types import StyleOptions
 from tests.events import param_data
 
@@ -61,7 +61,7 @@ def test_results(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.libs.commands.results.entry.main") as mock_slash_results,
+        patch("libs.bootstrap.configuration.libs.commands.results.entry.main") as mock_slash_results,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -80,7 +80,7 @@ def test_graph(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.libs.commands.graph.entry.main") as mock_slash_graph,
+        patch("libs.bootstrap.configuration.libs.commands.graph.entry.main") as mock_slash_graph,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -99,7 +99,7 @@ def test_ranking(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.libs.commands.ranking.entry.main") as mock_slash_ranking,
+        patch("libs.bootstrap.configuration.libs.commands.ranking.entry.main") as mock_slash_ranking,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -118,7 +118,7 @@ def test_report(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.libs.commands.report.entry.main") as mock_slash_report,
+        patch("libs.bootstrap.configuration.libs.commands.report.entry.main") as mock_slash_report,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -182,7 +182,7 @@ def test_member_list(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.compose.msg_print.get_members_list") as mock_slash_member_list,
+        patch("libs.bootstrap.configuration.compose.msg_print.get_members_list") as mock_slash_member_list,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -201,7 +201,7 @@ def test_member_add(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.member.append") as mock_slash_member_add,
+        patch("libs.bootstrap.configuration.member.append") as mock_slash_member_add,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -220,7 +220,7 @@ def test_member_del(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.member.remove") as mock_slash_member_del,
+        patch("libs.bootstrap.configuration.member.remove") as mock_slash_member_del,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -239,7 +239,7 @@ def test_team_create(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.team.create") as mock_slash_team_create,
+        patch("libs.bootstrap.configuration.team.create") as mock_slash_team_create,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -258,7 +258,7 @@ def test_team_del(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.team.delete") as mock_slash_team_del,
+        patch("libs.bootstrap.configuration.team.delete") as mock_slash_team_del,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -277,7 +277,7 @@ def test_team_add(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.team.append") as mock_slash_team_add,
+        patch("libs.bootstrap.configuration.team.append") as mock_slash_team_add,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -296,7 +296,7 @@ def test_team_remove(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.team.remove") as mock_slash_team_remove,
+        patch("libs.bootstrap.configuration.team.remove") as mock_slash_team_remove,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -315,7 +315,7 @@ def test_team_list(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.compose.msg_print.get_team_list") as mock_slash_team_list,
+        patch("libs.bootstrap.configuration.compose.msg_print.get_team_list") as mock_slash_team_list,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -334,7 +334,7 @@ def test_team_clear(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.team.clear") as mock_slash_team_clear,
+        patch("libs.bootstrap.configuration.team.clear") as mock_slash_team_clear,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")

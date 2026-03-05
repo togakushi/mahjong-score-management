@@ -1,5 +1,5 @@
 """
-libs/configuration.py
+libs/bootstrap/configuration.py
 """
 
 import argparse

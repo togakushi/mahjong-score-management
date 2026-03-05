@@ -11,7 +11,7 @@ import libs.dispatcher
 import libs.global_value as g
 from integrations import factory
 from integrations.protocols import MessageStatus
-from libs import configuration
+from libs.bootstrap import configuration
 from tests.events import param_data
 
 
@@ -35,7 +35,7 @@ def test_help_event(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.configuration.compose.msg_print.help_message") as mock_help_event,
+        patch("libs.bootstrap.configuration.compose.msg_print.help_message") as mock_help_event,
     ):
         m = _init()
         m.data.text = keyword
@@ -56,7 +56,7 @@ def test_keyword_event(module, config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch(f"libs.configuration.libs.commands.{module}.entry.main") as mock_keyword_event,
+        patch(f"libs.bootstrap.configuration.libs.commands.{module}.entry.main") as mock_keyword_event,
     ):
         m = _init()
         m.data.text = keyword

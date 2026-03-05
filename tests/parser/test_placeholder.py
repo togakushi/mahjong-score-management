@@ -8,7 +8,7 @@ import pytest
 
 import libs.global_value as g
 from integrations import factory
-from libs import configuration
+from libs.bootstrap import configuration
 from libs.data import lookup
 from libs.utils import dictutil, formatter
 from tests.parser import param_data

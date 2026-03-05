@@ -9,7 +9,7 @@ import pytest
 
 import libs.global_value as g
 from integrations import factory
-from libs import configuration
+from libs.bootstrap import configuration
 from libs.data import modify
 from libs.domain.score import GameResult
 from libs.utils import dbutil, validator
