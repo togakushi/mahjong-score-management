@@ -1,4 +1,6 @@
-"""cls/rule.py"""
+"""
+libs/domain/rule.py
+"""
 
 import logging
 import sys

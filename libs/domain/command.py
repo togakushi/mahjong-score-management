@@ -1,5 +1,5 @@
 """
-cls/command.py
+libs/domain/command.py
 """
 
 import re

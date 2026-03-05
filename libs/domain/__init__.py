@@ -1,4 +1,4 @@
-"""ドメイン管理
+"""アプリケーションロジック
 
 - `libs.domain.command`: コマンド引数解析
 - `libs.domain.score`: スコア解析
