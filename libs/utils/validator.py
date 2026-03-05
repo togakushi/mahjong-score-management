@@ -6,8 +6,8 @@ import re
 from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
-from cls.command import CommandParser
 from cls.timekit import ExtendedDatetime as ExtDt
+from libs.domain.command import CommandParser
 from libs.utils import formatter, textutil
 
 if TYPE_CHECKING:

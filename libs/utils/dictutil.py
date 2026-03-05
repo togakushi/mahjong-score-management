@@ -6,9 +6,9 @@ import logging
 from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
-from cls.command import CommandParser
 from cls.timekit import ExtendedDatetime as ExtDt
 from libs.data import lookup
+from libs.domain.command import CommandParser
 from libs.utils import formatter
 
 if TYPE_CHECKING:
