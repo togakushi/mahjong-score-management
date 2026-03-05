@@ -689,16 +689,6 @@ class SubCommand(BaseSection):
         self.filename = str("")
         self.interval = 80
 
-        match self.section:
-            case "results":
-                self.command_suffix.append("成績")
-            case "graph":
-                self.command_suffix.append("グラフ")
-            case "ranking":
-                self.command_suffix.append("ランキング")
-            case "report":
-                self.command_suffix.append("レポート")
-
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み
 
