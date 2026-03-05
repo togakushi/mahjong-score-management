@@ -10,9 +10,9 @@ import pandas as pd
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
-from cls.stats import StatsInfo
 from libs.data import loader
 from libs.datamodels import GameInfo
+from libs.domain.stats import StatsInfo
 from libs.functions import compose, message
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
