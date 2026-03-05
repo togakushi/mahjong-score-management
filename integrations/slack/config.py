@@ -6,9 +6,9 @@ import logging
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from cls.config import BaseSection
 from integrations.base.interface import IntegrationsConfig
 from integrations.slack.events import comparison, slash
+from libs.bootstrap.config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
