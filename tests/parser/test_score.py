@@ -7,9 +7,9 @@ import sys
 import pytest
 
 import libs.global_value as g
-from cls.score import GameResult
 from integrations import factory
 from libs import configuration
+from libs.domain.score import GameResult
 from libs.utils import validator
 from tests.parser import param_data
 

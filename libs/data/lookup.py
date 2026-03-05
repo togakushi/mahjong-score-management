@@ -9,11 +9,11 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from cls.score import GameResult
 from cls.timekit import ExtendedDatetime as ExtDt
 from cls.timekit import Format
 from integrations.protocols import ChannelType
 from libs.data import loader
+from libs.domain.score import GameResult
 from libs.utils import dbutil
 
 if TYPE_CHECKING:

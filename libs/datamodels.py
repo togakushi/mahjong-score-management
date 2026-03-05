@@ -12,8 +12,8 @@ from cls.timekit import Format
 from libs.data import loader
 
 if TYPE_CHECKING:
-    from cls.score import GameResult
     from integrations.base.interface import MessageParserProtocol
+    from libs.domain.score import GameResult
     from libs.types import RemarkDict
 
 

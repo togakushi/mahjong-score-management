@@ -9,10 +9,10 @@ import pandas as pd
 from flask import Blueprint, abort, current_app, render_template, request
 
 import libs.global_value as g
-from cls.score import GameResult
 from cls.timekit import ExtendedDatetime as ExtDt
 from cls.timekit import Format
 from libs.data import modify
+from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
 

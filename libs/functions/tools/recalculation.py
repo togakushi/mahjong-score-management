@@ -6,8 +6,8 @@ import logging
 from contextlib import closing
 
 import libs.global_value as g
-from cls.score import GameResult
 from libs.data import modify
+from libs.domain.score import GameResult
 from libs.utils import dbutil, dictutil
 
 

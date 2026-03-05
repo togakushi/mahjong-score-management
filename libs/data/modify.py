@@ -20,8 +20,8 @@ from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
 
 if TYPE_CHECKING:
-    from cls.score import GameResult
     from integrations.protocols import MessageParserProtocol
+    from libs.domain.score import GameResult
     from libs.types import RemarkDict
 
 
