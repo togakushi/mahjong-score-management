@@ -1,11 +1,12 @@
 """共通ライブラリ/モジュール
 
-ライブラリ:
-- `libs.commands`: サブコマンド
-- `libs.data`: データ操作モジュール
 - `libs.domain`: アプリケーションロジック
-- `libs.functions`: 共通処理モジュール
+- `libs.commands`: サブコマンド
 - `libs.registry`: メンバー管理モジュール
+
+ライブラリ:
+- `libs.data`: データ操作ライブラリ
+- `libs.functions`: 共通処理ライブラリ
 - `libs.utils`: ユーティリティ
 
 モジュール:
