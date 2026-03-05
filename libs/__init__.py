@@ -2,7 +2,6 @@
 
 - `libs.domain`: アプリケーションロジック
 - `libs.commands`: サブコマンド
-- `libs.registry`: メンバー管理モジュール
 
 ライブラリ:
 - `libs.data`: データ操作ライブラリ

@@ -18,9 +18,9 @@ import libs.commands.results.entry
 import libs.global_value as g
 from cls.config import AppConfig
 from integrations import factory
+from libs.commands.registry import member, team
 from libs.data import initialization, lookup
 from libs.functions import compose
-from libs.registry import member, team
 from libs.types import Args, StyleOptions
 
 if TYPE_CHECKING:

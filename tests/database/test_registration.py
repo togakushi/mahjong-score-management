@@ -7,7 +7,7 @@ from contextlib import closing
 import pytest
 
 import libs.global_value as g
-from libs.registry import member, team
+from libs.commands.registry import member, team
 from libs.utils import dbutil
 from tests.database import param_data
 

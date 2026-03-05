@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 
 from flask import Blueprint, abort, current_app, render_template, request
 
+from libs.commands.registry import member, team
 from libs.data import loader, lookup
-from libs.registry import member, team
 
 if TYPE_CHECKING:
     from integrations.web.adapter import ServiceAdapter
