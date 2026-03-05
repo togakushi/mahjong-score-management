@@ -6,12 +6,12 @@ import logging
 import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
-from math import ceil
 from pathlib import Path, PosixPath
 from types import NoneType
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
 
 from libs.data.lookup import read_memberslist
+from libs.datamodels import CommandAttrs
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
@@ -82,7 +82,10 @@ class CommonMethodMixin:
 class BaseSection(CommonMethodMixin):
     """共通処理"""
 
+    section: str
+
     def __init__(self, outer: SubClassType, section_name: str):
+        self.section = section_name  # セクション名保持
         parser = outer._parser
         assert parser
         if section_name not in parser:
@@ -90,7 +93,6 @@ class BaseSection(CommonMethodMixin):
         self._section = parser[section_name]
 
         self.initialization()
-        self.section = section_name  # セクション名保持
 
     def __repr__(self) -> str:
         return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
@@ -600,94 +602,11 @@ class BadgeDisplay(BaseSection):
         self.grade.table_name = self._parser.get("grade", "table_name", fallback="")
 
 
-class SubCommand(BaseSection):
+class SubCommand(BaseSection, CommandAttrs):
     """サブコマンドセクション処理"""
 
-    section: str
-    """サブコマンドセクション名"""
-
-    commandword: list[str]
-    """呼び出しキーワード"""
-    command_suffix: list[str]
-    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-    aggregation_range: str
-    """検索範囲未指定時に使用される範囲"""
-    individual: bool
-    """個人/チーム集計切替フラグ
-    - *True*: 個人集計
-    - *False*: チーム集計
-    """
-    all_player: bool
-    daily: bool
-    fourfold: bool
-    game_results: bool
-    guest_skip: bool
-    """ゲストアリ/ナシフラグ(サマリ集計用)"""
-    guest_skip2: bool
-    """ゲストアリ/ナシフラグ(詳細集計用)"""
-    ranked: int
-    """ランキング/レーティングで表示する順位"""
-    score_comparisons: bool
-    """スコア比較"""
-    statistics: bool
-    """統計情報表示"""
-    stipulated: int
-    """規定打数指定"""
-    stipulated_rate: float
-    """規定打数計算レート"""
-    unregistered_replace: bool
-    """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
-    - *True*: 置き換える
-    - *False*: 置き換えない
-    """
-    anonymous: bool
-    """匿名化フラグ"""
-    verbose: bool
-    """詳細情報出力フラグ"""
-    versus_matrix: bool
-    """対戦マトリックス表示"""
-    collection: str
-    always_argument: list
-    """オプションとして常に付与される文字列"""
-    target_mode: int
-    """集計対象モードの指定
-    - *0*: settingのデフォルトに従う
-    - *not 0*: 指定値でmodeを上書き
-    """
-    format: str
-    filename: str
-    interval: int
-
     def __init__(self, section_name: str):
-        self._reset(section_name)
-
-    def _reset(self, section_name: str):
-        self.section = section_name
-        self.commandword = []
-        self.command_suffix = []
-        self.aggregation_range = str("当日")
-        self.individual = bool(True)
-        self.all_player = bool(False)
-        self.daily = bool(True)
-        self.fourfold = bool(True)
-        self.game_results = bool(False)
-        self.guest_skip = bool(True)
-        self.guest_skip2 = bool(True)
-        self.ranked = int(3)
-        self.score_comparisons = bool(False)
-        self.statistics = bool(False)
-        self.stipulated = int(0)
-        self.stipulated_rate = 0.05
-        self.unregistered_replace = bool(True)
-        self.anonymous = bool(False)
-        self.verbose = bool(False)
-        self.versus_matrix = bool(False)
-        self.collection = str("")
-        self.always_argument = []
-        self.target_mode = int(0)
-        self.format = str("")
-        self.filename = str("")
-        self.interval = 80
+        self.default_reset(section_name)
 
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み
@@ -697,7 +616,7 @@ class SubCommand(BaseSection):
         """
 
         self._parser = outer._parser
-        self._reset(self.section)
+        self.default_reset(self.section)
         super().__init__(self, self.section)
 
         # 呼び出しキーワード取り込み
@@ -710,18 +629,6 @@ class SubCommand(BaseSection):
         self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback=default_word[self.section]).split(",")]
 
         logging.debug("%s: %s", self.section, self)
-
-    def stipulated_calculation(self, game_count: int) -> int:
-        """規定打数をゲーム数から計算
-
-        Args:
-            game_count (int): 指定ゲーム数
-
-        Returns:
-            int: 規定ゲーム数
-        """
-
-        return int(ceil(game_count * self.stipulated_rate) + 1)
 
 
 class AppConfig:
