@@ -9,12 +9,12 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from cls.score import GameResult
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from integrations.protocols import ChannelType
 from libs.data import loader
+from libs.domain.score import GameResult
 from libs.utils import dbutil
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -280,7 +280,7 @@ def first_record(rule_list: list[str]) -> ExtDt:
     """最初のゲーム記録時間を返す
 
     Args:
-        rule_list (list[str]): ルールバージョン識別子
+        rule_list (list[str]): ルール識別子
 
     Returns:
         ExtendedDatetime: 最初のゲーム記録時間

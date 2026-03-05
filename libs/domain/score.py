@@ -87,7 +87,7 @@ class GameResult:
         self.mode: Literal[3, 4] = 4
         """集計モード(三人打ち/四人打ち)"""
         self.rule_version: str = ""
-        """ルールバージョン"""
+        """ルール識別子"""
         self.origin_point: int = 250
         """配給原点"""
         self.return_point: int = 300

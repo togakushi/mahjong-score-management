@@ -13,11 +13,11 @@ from typing import TYPE_CHECKING, Any, cast
 import pandas as pd
 
 import libs.global_value as g
-from cls.timekit import Format
 from libs.utils import dbutil
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
-    from cls.timekit import ExtendedDatetime as ExtDt
+    from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 def execute(sql: str, params: dict = {}) -> list[dict[str, Any]]:
@@ -85,6 +85,9 @@ def read_data(keyword: str, params: dict = {}) -> pd.DataFrame:
         params.update({"starttime": cast("ExtDt", starttime).format(Format.SQL)})
     if endtime := params.get("endtime"):
         params.update({"endtime": cast("ExtDt", endtime).format(Format.SQL)})
+    if "mode" not in params:
+        mode = g.cfg.rule.get_mode(g.params.get("rule_version", ""))
+        params.update({"mode": mode if mode else 4})
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")

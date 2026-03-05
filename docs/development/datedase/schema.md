@@ -33,7 +33,7 @@
 | p4_rank      |             | INTEGER   | 北家順位                       |
 | p4_point     |             | INTEGER   | 北家が獲得したポイント         |
 | deposit      |             | INTEGER   | 供託(配給原点と素点合計の差分) |
-| rule_version |             | TEXT      | ルールバージョンを示す文字列   |
+| rule_version |             | TEXT      | ルール識別子を示す文字列   |
 | comment      |             | TEXT      | ゲームコメント                 |
 | source       |             | TEXT      | スコア入力元識別子             |
 | mode         |             | INTEGER   | 集計モード                     |
@@ -199,7 +199,7 @@ Python側で *{ name: member }* という辞書を生成するのに利用され
 | comment          | result.comment       | コメント                                         |
 | guest_count      |                      | ゲーム内のゲストの合計人数                       |
 | same_team        |                      | `1`=チーム同卓あり                               |
-| rule_version     | result.rule_version  | ルールバージョンを示す文字列                     |
+| rule_version     | result.rule_version  | ルール識別子を示す文字列                     |
 | mode             | result.mode          | 集計モード                                       |
 
 ## individual_results
@@ -229,7 +229,7 @@ Python側で *{ name: member }* という辞書を生成するのに利用され
 | team_point       | result.p?_point      | チーム獲得ポイント(卓外ポイント込み)           |
 | team_remarks     | regulations.word     | チームメモすべて(type=`0`,`1`,`2`,`3`のワード) |
 | collection_daily |                      | 集計対象年月日(YYYY-MM-DD)                     |
-| rule_version     | result.rule_version  | ルールバージョンを示す文字列                   |
+| rule_version     | result.rule_version  | ルール識別子を示す文字列                   |
 | comment          | result.comment       | ゲームコメント                                 |
 | mode             | result.mode          | 集計モード                                     |
 
@@ -241,7 +241,7 @@ Python側で *{ name: member }* という辞書を生成するのに利用され
 | ts           | result.ts           | ゲーム結果が記録された時間                     |
 | guest_count  |                     | ゲーム内のゲストの人数                         |
 | same_team    |                     | ゲーム内に同じチームのメンバーが存在すれば `1` |
-| rule_version | result.rule_version | ルールバージョンを示す文字列                   |
+| rule_version | result.rule_version | ルール識別子を示す文字列                   |
 | comment      | result.comment      | ゲームコメント                                 |
 | mode         | result.mode         | 集計モード                                     |
 

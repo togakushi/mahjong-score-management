@@ -5,8 +5,8 @@ libs/functions/compose/text_item.py
 from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
-from cls.timekit import Delimiter, Format
-from cls.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Delimiter, Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from libs.datamodels import GameInfo

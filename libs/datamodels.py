@@ -7,13 +7,13 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Literal, Optional, Union
 
 import libs.global_value as g
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from libs.data import loader
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
-    from cls.score import GameResult
     from integrations.base.interface import MessageParserProtocol
+    from libs.domain.score import GameResult
     from libs.types import RemarkDict
 
 

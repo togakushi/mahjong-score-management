@@ -6,14 +6,14 @@ import logging
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from cls.timekit import Delimiter, Format
-from cls.timekit import ExtendedDatetime as ExtDt
 from integrations.protocols import CommandType
 from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
 from libs.commands import results
 from libs.utils import dictutil
+from libs.utils.timekit import Delimiter, Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol

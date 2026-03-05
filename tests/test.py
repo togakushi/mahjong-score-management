@@ -11,11 +11,11 @@ from pathlib import Path
 from pprint import pprint
 
 import libs.global_value as g
-from cls.command import CommandParser
 from integrations import factory
 from libs import configuration
 from libs.commands import graph, ranking, report, results
 from libs.configuration import arg_parser
+from libs.domain.command import CommandParser
 from libs.functions import compose
 from libs.utils import dictutil
 

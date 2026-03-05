@@ -11,8 +11,8 @@ from pathlib import Path, PosixPath
 from types import NoneType
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
 
-from cls.rule import RuleSet
 from libs.data.lookup import read_memberslist
+from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
@@ -97,7 +97,10 @@ class BaseSection(CommonMethodMixin):
 
     def initialization(self):
         """設定ファイルから値の取り込み"""
+
         for k in self._section.keys():
+            if k not in self.to_dict():
+                continue  # インスタンス変数と一致しない項目はスキップ
             match type(self.__dict__.get(k)):
                 case v_type if k in self.__dict__ and v_type is str:
                     setattr(self, k, self._section.get(k, fallback=self.get(k)))
@@ -157,7 +160,7 @@ class MahjongSection(BaseSection):
         self.mode: Literal[3, 4] = 4
         """ 集計モード切替(四人打ち/三人打ち)"""
         self.rule_version: str = str("default_rule")
-        """ルール判別識別子"""
+        """ルール識別子"""
         self.origin_point: int = int(-1)
         """配給原点"""
         self.return_point: int = int(-1)
@@ -222,7 +225,7 @@ class SettingSection(BaseSection):
     rule_config: Path
     """ルール設定ファイル"""
     default_rule: str
-    """ルールバージョン未指定時に使用される識別子"""
+    """ルール識別子未指定時に使用される識別子"""
     separate: bool
     """スコア入力元識別子別集計フラグ
     - *True*: 識別子別に集計
@@ -285,7 +288,7 @@ class SettingSection(BaseSection):
         if not (isinstance(self.keyword, Path) and self.keyword.exists()):
             self.keyword = str(self.keyword)
 
-        # デフォルトルールバージョン
+        # デフォルトルール識別子
         if not self.default_rule:
             self.default_rule = outer.mahjong.rule_version
 
@@ -605,6 +608,8 @@ class SubCommand(BaseSection):
 
     commandword: list[str]
     """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
     aggregation_range: str
     """検索範囲未指定時に使用される範囲"""
     individual: bool
@@ -659,6 +664,7 @@ class SubCommand(BaseSection):
     def _reset(self, section_name: str):
         self.section = section_name
         self.commandword = []
+        self.command_suffix = []
         self.aggregation_range = str("当日")
         self.individual = bool(True)
         self.all_player = bool(False)
@@ -683,6 +689,16 @@ class SubCommand(BaseSection):
         self.filename = str("")
         self.interval = 80
 
+        match self.section:
+            case "results":
+                self.command_suffix.append("成績")
+            case "graph":
+                self.command_suffix.append("グラフ")
+            case "ranking":
+                self.command_suffix.append("ランキング")
+            case "report":
+                self.command_suffix.append("レポート")
+
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み
 
@@ -699,7 +715,7 @@ class SubCommand(BaseSection):
             "results": "麻雀成績",
             "graph": "麻雀グラフ",
             "ranking": "麻雀ランキング",
-            "report": "麻雀成績レポート",
+            "report": "麻雀レポート",
         }
         self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback=default_word[self.section]).split(",")]
 
@@ -787,8 +803,6 @@ class AppConfig:
         """reportセクション設定値"""
 
         # 共通設定値
-        self.undefined_word: int = 0
-        """レギュレーションワードテーブルに登録されていないワードの種別"""
         self.aggregate_unit: Literal["A", "M", "Y", None] = None
         """レポート生成用日付範囲デフォルト値(レポート生成用)
         - *A*: 全期間

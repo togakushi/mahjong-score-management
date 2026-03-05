@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
-from cls.timekit import Format
 from libs.data import aggregate, loader
 from libs.datamodels import GameInfo
 from libs.functions import compose, message
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path

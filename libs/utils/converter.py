@@ -55,7 +55,7 @@ def save_output(
                 tablefmt="outline",
                 floatfmt=formatter.floatfmt_adjust(df, index=options.show_index),
                 colalign=formatter.column_alignment(df, index=options.show_index),
-                # headersalign=column_alignment(df, True),  # ToDo: python-tabulate >= 0.10.0
+                headersalign=formatter.column_alignment(df, True),
             )
 
     # 保存

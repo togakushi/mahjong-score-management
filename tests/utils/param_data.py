@@ -4,7 +4,7 @@
 
 from typing import Any
 
-from cls.timekit import Delimiter, Format
+from libs.utils.timekit import Delimiter, Format
 
 date_range: dict[str, tuple[Any, ...]] = {
     # date, keyword_list, period

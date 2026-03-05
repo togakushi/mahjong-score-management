@@ -38,6 +38,7 @@ def test_subcommand_default(input_args, monkeypatch):
     default = {
         "section": input_args,
         "commandword": [],
+        "command_suffix": [],
         "aggregation_range": "当日",
         "individual": True,
         "all_player": False,
@@ -62,6 +63,16 @@ def test_subcommand_default(input_args, monkeypatch):
         "filename": "",
         "interval": 80,
     }
+
+    match input_args:
+        case "results":
+            default["command_suffix"].append("成績")
+        case "graph":
+            default["command_suffix"].append("グラフ")
+        case "ranking":
+            default["command_suffix"].append("ランキング")
+        case "report":
+            default["command_suffix"].append("レポート")
 
     sub_command = SubCommand(input_args)
     assert sub_command.to_dict() == default

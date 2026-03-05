@@ -8,13 +8,13 @@ from contextlib import closing
 import pytest
 
 import libs.global_value as g
-from cls.score import GameResult
-from cls.timekit import ExtendedDatetime as ExtDt
-from cls.timekit import Format
 from integrations import factory
 from libs import configuration
 from libs.data import modify
+from libs.domain.score import GameResult
 from libs.utils import dbutil, validator
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+from libs.utils.timekit import Format
 from tests.database import param_data
 
 
@@ -25,7 +25,7 @@ from tests.database import param_data
 )
 def test_score_insert(draw_split, game_result, get_point, get_rank, monkeypatch):
     """スコア登録テスト"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/minimal.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     configuration.initialization.setup_resultdb(g.cfg.setting.database_file)

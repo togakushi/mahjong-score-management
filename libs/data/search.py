@@ -7,8 +7,8 @@ from contextlib import closing
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from cls.score import GameResult
 from libs.data import loader
+from libs.domain.score import GameResult
 from libs.utils import dbutil
 
 if TYPE_CHECKING:

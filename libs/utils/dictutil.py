@@ -6,10 +6,10 @@ import logging
 from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
-from cls.command import CommandParser
-from cls.timekit import ExtendedDatetime as ExtDt
 from libs.data import lookup
+from libs.domain.command import CommandParser
 from libs.utils import formatter
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from cls.config import SubCommand
@@ -33,7 +33,7 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
     # 初期化
     g.params = {}
     g.cfg.initialization()
-    rule_version: str | None
+    rule_version: str | None = None
 
     # 設定周りのパラメータの取り込み
     g.cfg.read_channel_config(m.status.source)
@@ -48,7 +48,7 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
         {
             "command": subcom.section,
             "guest_name": g.cfg.member.guest_name,
-            "undefined_word": g.cfg.undefined_word,
+            "undefined_word": 1,
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
             "rule_set": {},
@@ -56,7 +56,20 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
             **subcom.to_dict(),  # デフォルト値
         },
     )
-    ret_dict.update({"rule_version": ret_dict.get("default_rule", g.cfg.mahjong.rule_version)})
+    default_rule = ret_dict.get("default_rule", g.cfg.mahjong.rule_version)
+    if "command_suffix" in ret_dict and isinstance(ret_dict["command_suffix"], list):
+        for suffix in ret_dict.get("command_suffix", []):
+            if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
+                ret_dict.update({"default_rule": rule_version})
+    rule_version = rule_version if rule_version else default_rule
+    ret_dict.update(
+        {
+            "rule_version": rule_version,
+            "target_mode": g.cfg.rule.get_mode(rule_version),
+            "undefined_word": g.cfg.rule.get_undefined_word(rule_version),
+            "ignore_flying": g.cfg.rule.get_ignore_flying(rule_version),
+        }
+    )
 
     # always_argumentの処理
     pre_param = parser.analysis_argument(subcom.always_argument)
@@ -88,27 +101,26 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
     # どのオプションにも該当しないキーワード
     check_list: list[str] = param.unknown + pre_param.unknown
 
-    for name in list(check_list):  # ルール識別子
-        rule_version = None
-        if name in g.cfg.rule.keyword_mapping:
+    # 追加ルール識別子
+    rule_list: list[str] = []
+    for name in list(check_list):
+        if name in g.cfg.rule.keyword_mapping or name in g.cfg.rule.keyword_mapping.values():  # マッピング済みルール識別子
+            rule_list.append(name)
             check_list.remove(name)
-            rule_version = g.cfg.rule.keyword_mapping[name]
-        elif name in g.cfg.rule.rule_list:
+        elif name in g.cfg.rule.rule_list:  # マッピングされていないルール識別子
             check_list.remove(name)
-            rule_version = name
+    if ret_dict.get("mixed"):
+        for rule in g.cfg.rule.rule_list:  # 全ルール追加
+            if g.cfg.rule.get_mode(rule) == ret_dict.get("target_mode"):
+                rule_list.append(rule)
+    else:
+        rule_list.append(ret_dict["default_rule"])
+    ret_dict["rule_set"] = {f"rule_{idx}": rule for idx, rule in enumerate(list(set(rule_list)))}
 
-        if rule_version:
-            ret_dict.update(
-                {
-                    "mode": g.cfg.rule.get_mode(rule_version),
-                    "rule_version": rule_version,
-                    "mixed": False,
-                }
-            )
-
+    # プレイヤー名
     player_name: str = str()
     target_player: list = []
-    if ret_dict.get("individual"):  # プレイヤー名
+    if ret_dict.get("individual"):
         if ret_dict.get("all_player"):
             check_list.extend(g.cfg.member.lists)
         for name in check_list:
@@ -164,21 +176,6 @@ def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "Placeholde
             ret_dict.update({"stipulated": 0})
         else:
             ret_dict.update({"stipulated": 1})
-
-    # 集計ルール更新
-    if mode := ret_dict.get("target_mode"):
-        for rule_version in g.cfg.rule.get_version(mode=mode, mapping=not (ret_dict.get("mixed", False))):
-            ret_dict["rule_set"].update({rule_version: g.cfg.rule.to_dict(rule_version)})
-    elif ret_dict.get("rule_set", {}):
-        if rule_version := ret_dict.get("rule_version"):
-            ret_dict.update({"rule_set": {rule_version: g.cfg.rule.to_dict(rule_version)}})
-
-    ret_dict.update(
-        {
-            "undefined_word": g.cfg.rule.get_undefined_word(ret_dict.get("rule_version", g.cfg.mahjong.rule_version)),
-            "ignore_flying": g.cfg.rule.get_ignore_flying(ret_dict.get("rule_version", g.cfg.mahjong.rule_version)),
-        }
-    )
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
         ret_dict.update(

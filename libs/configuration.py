@@ -248,7 +248,6 @@ def setup(init_db: bool = True):
         g.cfg.selected_service = "standard_io"
 
     g.adapter = factory.select_adapter(g.cfg.selected_service, g.cfg)
-    register()
 
     # 設定情報
     logging.info("config: %s", g.cfg.config_file.absolute())
@@ -284,6 +283,8 @@ def setup(init_db: bool = True):
         chk_members=set(lookup.enumeration_all_members()),
         default_rule=g.cfg.setting.default_rule,
     )
+
+    register()
 
 
 def register():
@@ -353,8 +354,13 @@ def register():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
             sub_command = cast("SubCommand", getattr(g.cfg, command))
-            for alias in sub_command.commandword:
-                g.keyword_dispatcher.update({alias: ep})
+            for commandword in sub_command.commandword:
+                g.keyword_dispatcher.update({commandword: ep})
+        # コマンドサフィックス登録
+        if hasattr(sub_command, "command_suffix"):
+            for keyword in g.cfg.rule.keyword_mapping:
+                for suffix in sub_command.command_suffix:
+                    g.keyword_dispatcher.update({f"{keyword}{suffix}": ep})
         # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
             for alias in cast(list, getattr(g.cfg.alias, command)):
