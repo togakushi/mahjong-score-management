@@ -1,10 +1,10 @@
 """
-cls/types.py
+libs/types.py
 """
 
 from dataclasses import asdict, dataclass, field
 from enum import Enum, auto
-from typing import TYPE_CHECKING, Literal, Optional, TypeAlias, TypedDict, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, TypedDict, Union
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -22,31 +22,40 @@ if TYPE_CHECKING:
     from libs.commands.results.configuration import ResultsConfig
     from libs.utils.timekit import ExtendedDatetime
 
-ServiceClassType: TypeAlias = Union[
-    "SlackConfig",
-    "DiscordConfig",
-    "WebConfig",
-    "StdConfig",
-]
+if TYPE_CHECKING:
+    ServiceClassType: TypeAlias = Union[
+        "SlackConfig",
+        "DiscordConfig",
+        "WebConfig",
+        "StdConfig",
+    ]
+else:
+    ServiceClassType: TypeAlias = Any
 """連携サービスクラス"""
 
-SettingClassType: TypeAlias = Union[
-    "MahjongSection",
-    "SettingSection",
-    "MemberSection",
-    "TeamSection",
-    "AliasSection",
-    "DropItems",
-    "BadgeDisplay",
-]
+if TYPE_CHECKING:
+    SettingClassType: TypeAlias = Union[
+        "MahjongSection",
+        "SettingSection",
+        "MemberSection",
+        "TeamSection",
+        "AliasSection",
+        "DropItems",
+        "BadgeDisplay",
+    ]
+else:
+    SettingClassType: TypeAlias = Any
 """設定関連クラス"""
 
-SubCommandsConfigType: TypeAlias = Union[
-    "ResultsConfig",
-    "GraphConfig",
-    "RankingConfig",
-    "ReportConfig",
-]
+if TYPE_CHECKING:
+    SubCommandsConfigType: TypeAlias = Union[
+        "ResultsConfig",
+        "GraphConfig",
+        "RankingConfig",
+        "ReportConfig",
+    ]
+else:
+    SubCommandsConfigType: TypeAlias = Any
 """サブコマンド設定クラス"""
 
 
