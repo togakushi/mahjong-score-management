@@ -9,7 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.data import loader
-from libs.functions import compose
+from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
 
@@ -157,8 +157,8 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
         f"""\
         \tプレイヤー名：{my_name}
         \t対戦相手：{vs_name}
-        \t集計範囲：{compose.text_item.search_range()}
-        \t{compose.text_item.remarks(True)}
+        \t集計範囲：{text_item.search_range()}
+        \t{text_item.remarks(True)}
         """
     ).rstrip()
 

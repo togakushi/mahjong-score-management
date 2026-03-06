@@ -13,7 +13,8 @@ import libs.global_value as g
 from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.domain.stats import StatsInfo
-from libs.functions import compose, message
+from libs.functions import message
+from libs.functions.compose import badge, text_item
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
 
@@ -63,10 +64,10 @@ def aggregation(m: "MessageParserProtocol"):
 
     if game_info.count == 0:
         if g.params.get("individual"):
-            msg_data["検索範囲"] = f"{compose.text_item.search_range(time_pattern='time')}"
-            msg_data["特記事項"] = "、".join(compose.text_item.remarks())
-            msg_data["検索ワード"] = compose.text_item.search_word()
-            msg_data["対戦数"] = f"0 戦 (0 勝 0 敗 0 分) {compose.badge.status(0, 0)}"
+            msg_data["検索範囲"] = f"{text_item.search_range(time_pattern='time')}"
+            msg_data["特記事項"] = "、".join(text_item.remarks())
+            msg_data["検索ワード"] = text_item.search_word()
+            msg_data["対戦数"] = f"0 戦 (0 勝 0 敗 0 分) {badge.status(0, 0)}"
             m.set_headline(message_build(msg_data), StyleOptions(title=title))
         else:
             m.set_headline("登録されていないチームです。", StyleOptions(title=title))
@@ -277,18 +278,18 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
     ret: dict = {}
 
     if g.params.get("individual"):
-        ret["プレイヤー名"] = f"{player_name} {compose.badge.degree(data.seat0.count)}"
+        ret["プレイヤー名"] = f"{player_name} {badge.degree(data.seat0.count)}"
         if team_name := g.cfg.team.which(g.params["player_name"]):
             ret["所属チーム"] = team_name
     else:
-        ret["チーム名"] = f"{g.params['player_name']} {compose.badge.degree(data.seat0.count)}"
+        ret["チーム名"] = f"{g.params['player_name']} {badge.degree(data.seat0.count)}"
         ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params["player_name"]))
 
-    badge_status = compose.badge.status(data.seat0.count, data.seat0.win)
-    ret["検索範囲"] = compose.text_item.search_range(time_pattern="time")
-    ret["集計範囲"] = str(compose.text_item.aggregation_range(game_info))
-    ret["特記事項"] = "、".join(compose.text_item.remarks())
-    ret["検索ワード"] = compose.text_item.search_word()
+    badge_status = badge.status(data.seat0.count, data.seat0.win)
+    ret["検索範囲"] = text_item.search_range(time_pattern="time")
+    ret["集計範囲"] = str(text_item.aggregation_range(game_info))
+    ret["特記事項"] = "、".join(text_item.remarks())
+    ret["検索ワード"] = text_item.search_word()
     ret["対戦数"] = f"{data.seat0.war_record()} {badge_status}"
     ret["_blank1"] = True
 
@@ -311,7 +312,7 @@ def get_totalization(data: StatsInfo) -> dict:
     ret["平均ポイント"] = f"{data.seat0.avg_point:+.1f}pt".replace("-", "▲")
     ret["平均順位"] = f"{data.seat0.rank_avg:1.2f}"
     if g.params.get("individual") and g.adapter.conf.badge_grade:
-        ret["段位"] = compose.badge.grade(g.params["player_name"])
+        ret["段位"] = badge.grade(g.params["player_name"])
     ret["_blank2"] = True
     ret["1位"] = f"{data.seat0.rank1:2} 回 ({data.seat0.rank1_rate:7.2%})"
     ret["2位"] = f"{data.seat0.rank2:2} 回 ({data.seat0.rank2_rate:7.2%})"

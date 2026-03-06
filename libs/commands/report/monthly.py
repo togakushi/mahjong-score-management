@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 
 import libs.global_value as g
 from libs.data import loader
-from libs.functions import compose, message
+from libs.functions import message
+from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
 
@@ -93,7 +94,7 @@ def plot(m: "MessageParserProtocol"):
             fig.text(
                 0.01,
                 0.02,  # 表示位置(左下0,0 右下0,1)
-                f"[検索範囲：{compose.text_item.search_range()}] [特記：すべてのゲーム結果を含む]",
+                f"[検索範囲：{text_item.search_range()}] [特記：すべてのゲーム結果を含む]",
                 transform=fig.transFigure,
                 fontsize=6,
             )

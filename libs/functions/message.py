@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.functions import compose
+from libs.functions.compose import text_item
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format
 
@@ -107,7 +107,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", inden
     else:
         game_range1 = f"最初のゲーム：{game_info.first_game.format(Format.YMDHMS)}\n"
         game_range1 += f"最後のゲーム：{game_info.last_game.format(Format.YMDHMS)}\n"
-    game_range2 = f"集計範囲：{compose.text_item.aggregation_range(game_info)}\n"
+    game_range2 = f"集計範囲：{text_item.aggregation_range(game_info)}\n"
 
     # ゲーム数
     if game_info.count == 0:
@@ -119,7 +119,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", inden
                     msg += game_range1
                     msg += f"集計対象：{game_info.count} ゲーム {add_text}\n"
                 else:
-                    msg += f"検索範囲：{str(compose.text_item.search_range(time_pattern='time'))}\n"
+                    msg += f"検索範囲：{str(text_item.search_range(time_pattern='time'))}\n"
                     msg += game_range1
                     msg += f"集計対象：{game_info.count} ゲーム {add_text}\n"
             case CommandType.RANKING | CommandType.REPORT:
@@ -129,9 +129,9 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", inden
                 msg += game_range2
                 msg += f"集計対象：{game_info.count} ゲーム\n"
 
-        if remarks_text := compose.text_item.remarks(True):
+        if remarks_text := text_item.remarks(True):
             msg += f"{remarks_text}\n"
-        if word_text := compose.text_item.search_word(True):
+        if word_text := text_item.search_word(True):
             msg += f"{word_text}\n"
 
     return textwrap.indent(msg, "\t" * indent)
