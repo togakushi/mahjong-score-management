@@ -492,8 +492,6 @@ class AppConfig:
             "alias",
             "member",
             "team",
-            "regulations",
-            "regulations_team",
             "keyword_mapping",
         ]
         for x in option_sections:
