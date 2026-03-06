@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, cast
 import libs.global_value as g
 from integrations.protocols import ActionStatus, CommandType
 from libs.data import lookup, modify, search
-from libs.datamodels import ComparisonResults
+from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import formatter, validator

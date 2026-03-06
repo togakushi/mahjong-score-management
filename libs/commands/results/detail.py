@@ -11,7 +11,7 @@ from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
 from libs.data import loader
-from libs.datamodels import GameInfo
+from libs.domain.datamodels import GameInfo
 from libs.domain.stats import StatsInfo
 from libs.functions import compose, message
 from libs.types import StyleOptions

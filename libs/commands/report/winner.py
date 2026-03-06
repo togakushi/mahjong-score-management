@@ -9,7 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.data import loader
-from libs.datamodels import GameInfo
+from libs.domain.datamodels import GameInfo
 from libs.functions import compose, message
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil

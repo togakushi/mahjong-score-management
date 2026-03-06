@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING
 
 from libs.bootstrap.app_config import BaseSection
-from libs.datamodels import CommandAttrs
+from libs.domain.datamodels import CommandAttrs
 
 if TYPE_CHECKING:
     from libs.bootstrap.app_config import AppConfig

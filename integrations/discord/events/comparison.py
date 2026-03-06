@@ -13,7 +13,7 @@ from discord.channel import TextChannel
 import libs.global_value as g
 from integrations.protocols import ActionStatus, CommandType
 from libs.data import modify, search
-from libs.datamodels import ComparisonResults
+from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
 from libs.types import RemarkDict, StyleOptions
 from libs.utils import formatter, validator

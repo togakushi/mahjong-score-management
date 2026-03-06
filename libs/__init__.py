@@ -6,7 +6,6 @@
 
 アプリケーションモジュール:
 - `libs.types`: 共通型定義
-- `libs.datamodels`: データモデル
 - `libs.global_value`: モジュール間共通変数
 - `libs.dispatcher`: コマンドディスパッチャ
 

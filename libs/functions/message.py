@@ -17,7 +17,7 @@ from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.datamodels import GameInfo
+    from libs.domain.datamodels import GameInfo
 
 
 def random_reply(m: "MessageParserProtocol", message_type: str) -> str:

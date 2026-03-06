@@ -9,7 +9,7 @@ from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
-    from libs.datamodels import GameInfo
+    from libs.domain.datamodels import GameInfo
 
 
 def remarks(headword=False) -> str | list:
