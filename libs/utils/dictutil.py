@@ -13,15 +13,14 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.config import SubCommand
-    from libs.types import PlaceholderDict
+    from libs.types import PlaceholderDict, SubCommandsConfigType
 
 
-def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "PlaceholderDict":
+def placeholder(subcom: "SubCommandsConfigType", m: "MessageParserProtocol") -> "PlaceholderDict":
     """プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommand): パラメータ
+        subcom (SubCommandsConfigType): サブコマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:

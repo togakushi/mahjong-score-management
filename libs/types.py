@@ -11,7 +11,43 @@ if TYPE_CHECKING:
 
     import pandas as pd
 
+    from integrations.discord.config import SvcConfig as DiscordConfig
+    from integrations.slack.config import SvcConfig as SlackConfig
+    from integrations.standard_io.config import SvcConfig as StdConfig
+    from integrations.web.config import SvcConfig as WebConfig
+    from libs.bootstrap.config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
+    from libs.commands.graph.configuration import GraphConfig
+    from libs.commands.ranking.configuration import RankingConfig
+    from libs.commands.report.configuration import ReportConfig
+    from libs.commands.results.configuration import ResultsConfig
     from libs.utils.timekit import ExtendedDatetime
+
+ServiceClassType: TypeAlias = Union[
+    "SlackConfig",
+    "DiscordConfig",
+    "WebConfig",
+    "StdConfig",
+]
+"""連携サービスクラス"""
+
+SettingClassType: TypeAlias = Union[
+    "MahjongSection",
+    "SettingSection",
+    "MemberSection",
+    "TeamSection",
+    "AliasSection",
+    "DropItems",
+    "BadgeDisplay",
+]
+"""設定関連クラス"""
+
+SubCommandsConfigType: TypeAlias = Union[
+    "ResultsConfig",
+    "GraphConfig",
+    "RankingConfig",
+    "ReportConfig",
+]
+"""サブコマンド設定クラス"""
 
 
 @dataclass

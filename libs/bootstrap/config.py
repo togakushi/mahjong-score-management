@@ -6,154 +6,20 @@ import logging
 import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
-from pathlib import Path, PosixPath
-from types import NoneType
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
+from pathlib import Path
+from typing import TYPE_CHECKING, Literal, Optional, Union
 
+from libs.bootstrap.base_section import BaseSection
+from libs.commands.graph.configuration import GraphConfig
+from libs.commands.ranking.configuration import RankingConfig
+from libs.commands.report.configuration import ReportConfig
+from libs.commands.results.configuration import ResultsConfig
 from libs.data.lookup import read_memberslist
-from libs.datamodels import CommandAttrs
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
-    from configparser import SectionProxy
-
-    from integrations.discord.config import SvcConfig as DiscordConfig
-    from integrations.slack.config import SvcConfig as SlackConfig
-    from integrations.standard_io.config import SvcConfig as StdConfig
-    from integrations.web.config import SvcConfig as WebConfig
     from libs.types import MemberDataDict, TeamDataDict
-
-SubClassType: TypeAlias = Union[
-    "MahjongSection",
-    "SettingSection",
-    "MemberSection",
-    "TeamSection",
-    "AliasSection",
-    "DropItems",
-    "BadgeDisplay",
-    "SubCommand",
-    # サービス個別設定
-    "SlackConfig",
-    "DiscordConfig",
-    "WebConfig",
-    "StdConfig",
-]
-
-
-class CommonMethodMixin:
-    """共通メソッド"""
-
-    _section: "SectionProxy"
-    """読み込み先(パーサー + セクション名)"""
-
-    def get(self, key: str, fallback: Any = None) -> Any:
-        """値の取得"""
-        return self._section.get(key, fallback)
-
-    def getint(self, key: str, fallback: int = 0) -> int:
-        """整数値の取得"""
-        return self._section.getint(key, fallback)
-
-    def getfloat(self, key: str, fallback: float = 0.0) -> float:
-        """数値の取得"""
-        return self._section.getfloat(key, fallback)
-
-    def getboolean(self, key: str, fallback: bool = False) -> bool:
-        """真偽値の取得"""
-        return self._section.getboolean(key, fallback)
-
-    def getlist(self, key: str, fallback: str = "") -> list[str]:
-        """リストの取得"""
-        return [x.strip() for x in self._section.get(key, fallback).split(",")]
-
-    def keys(self) -> list[str]:
-        """キーリストの返却"""
-        return list(self._section.keys())
-
-    def values(self) -> list:
-        """値リストの返却"""
-        return list(self._section.values())
-
-    def items(self) -> list[tuple]:
-        """ItemsViewを返却"""
-        return list(self._section.items())
-
-
-class BaseSection(CommonMethodMixin):
-    """共通処理"""
-
-    section: str
-
-    def __init__(self, outer: SubClassType, section_name: str):
-        self.section = section_name  # セクション名保持
-        parser = outer._parser
-        assert parser
-        if section_name not in parser:
-            return
-        self._section = parser[section_name]
-
-        self.initialization()
-
-    def __repr__(self) -> str:
-        return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
-
-    def initialization(self):
-        """設定ファイルから値の取り込み"""
-
-        for k in self._section.keys():
-            if k not in self.to_dict():
-                continue  # インスタンス変数と一致しない項目はスキップ
-            match type(self.__dict__.get(k)):
-                case v_type if k in self.__dict__ and v_type is str:
-                    setattr(self, k, self.get(k))
-                case v_type if k in self.__dict__ and v_type is int:
-                    setattr(self, k, self.getint(k))
-                case v_type if k in self.__dict__ and v_type is float:
-                    setattr(self, k, self.getfloat(k))
-                case v_type if v_type is bool:
-                    setattr(self, k, self._section.getboolean(k))
-                case v_type if k in self.__dict__ and v_type is list:
-                    v_list = self.getlist(k)
-                    current_list = getattr(self, k)
-                    if isinstance(current_list, list) and current_list:  # 設定済みリストは追加
-                        current_list.extend(v_list)
-                    else:
-                        setattr(self, k, v_list)
-                case v_type if k in self.__dict__ and v_type is Optional[str]:  # 文字列 or None(未定義)
-                    setattr(self, k, self.get(k))
-                case v_type if k in self.__dict__ and v_type is PosixPath:
-                    setattr(self, k, Path(self.get(k)))
-                case v_type if k in self.__dict__ and v_type is NoneType:
-                    if k in ["backup_dir"]:  # ディレクトリを指定する設定はPathで格納
-                        setattr(self, k, Path(self.get(k)))
-                    else:
-                        setattr(self, k, self.get(k))
-                case _:
-                    setattr(self, k, self.__dict__.get(k))
-
-    def to_dict(self, drop_items: Optional[list[str]] = None) -> dict[str, str]:
-        """必要なパラメータを辞書型で返す
-
-        Args:
-            drop_items (Optional[list[str]], optional): _description_. Defaults to None.
-
-        Returns:
-             dict[str, str]: 返却値
-        """
-
-        ret_dict: dict[str, str] = {}
-        for key in vars(self):
-            if key.startswith("_"):
-                continue
-            ret_dict[key] = getattr(self, key)
-
-        if drop_items:
-            for item in drop_items:
-                if item in ret_dict:
-                    ret_dict.pop(item)
-
-        return ret_dict
 
 
 class MahjongSection(BaseSection):
@@ -603,36 +469,6 @@ class BadgeDisplay(BaseSection):
         self.grade.table_name = self._parser.get("grade", "table_name", fallback="")
 
 
-class SubCommand(BaseSection, CommandAttrs):
-    """サブコマンドセクション処理"""
-
-    def __init__(self, section_name: str):
-        self.default_reset(section_name)
-
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
-
-        Args:
-            outer (AppConfig): 設定クラスオブジェクト
-        """
-
-        self._parser = outer._parser
-        self._section = outer._parser[self.section]
-        self.default_reset(self.section)
-        super().__init__(self, self.section)
-
-        # 呼び出しキーワード取り込み
-        default_word = {
-            "results": "麻雀成績",
-            "graph": "麻雀グラフ",
-            "ranking": "麻雀ランキング",
-            "report": "麻雀レポート",
-        }
-        self.commandword = [x.strip() for x in self.getlist("commandword", default_word[self.section])]
-
-        logging.debug("%s: %s", self.section, self)
-
-
 class AppConfig:
     """コンフィグ解析クラス"""
 
@@ -692,13 +528,13 @@ class AppConfig:
         """バッジ設定"""
 
         # サブコマンド
-        self.results = SubCommand("results")
+        self.results = ResultsConfig()
         """resultsセクション設定値"""
-        self.graph = SubCommand("graph")
+        self.graph = GraphConfig()
         """graphセクション設定値"""
-        self.ranking = SubCommand("ranking")
+        self.ranking = RankingConfig()
         """rankingセクション設定値"""
-        self.report = SubCommand("report")
+        self.report = ReportConfig()
         """reportセクション設定値"""
 
         # 共通設定値
