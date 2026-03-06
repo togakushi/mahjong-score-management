@@ -17,11 +17,11 @@ from libs.bootstrap.configuration import arg_parser
 from libs.commands.graph import personal as graph_personal
 from libs.commands.graph import rating as graph_rating
 from libs.commands.graph import summary as graph_summary
+from libs.commands.help.entry import help_message
 from libs.commands.ranking import ranking
 from libs.commands.report import stats_list, stats_report
 from libs.commands.results import summary as results_summary
 from libs.domain.command import CommandParser
-from libs.functions import compose
 from libs.utils import dictutil
 
 
@@ -122,7 +122,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(g.cfg.team.info)
 
             case "help":
-                pprint(compose.msg_print.help_message(m), width=200)
+                pprint(help_message(m), width=200)
 
             case "summary":
                 m.data.text = f"{g.cfg.results.commandword[0]} {' '.join(add_argument)}"
