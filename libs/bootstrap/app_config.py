@@ -11,6 +11,7 @@ from typing import Literal, Optional, Union
 
 from libs.bootstrap.base_section import BaseSection
 from libs.commands.graph.configuration import GraphConfig
+from libs.commands.help.configuration import HelpConfig
 from libs.commands.ranking.configuration import RankingConfig
 from libs.commands.registry.configuration import MemberSection, TeamSection
 from libs.commands.report.configuration import ReportConfig
@@ -308,6 +309,7 @@ class AppConfig:
             "graph",
             "ranking",
             "report",
+            "help",
             "alias",
             "member",
             "team",
@@ -353,6 +355,8 @@ class AppConfig:
         """rankingセクション設定値"""
         self.report = ReportConfig()
         """reportセクション設定値"""
+        self.help = HelpConfig()
+        """helpセクション設定値"""
 
         # 共通設定値
         self.aggregate_unit: Literal["A", "M", "Y", None] = None
@@ -383,6 +387,7 @@ class AppConfig:
         self.graph.config_load(self)
         self.ranking.config_load(self)
         self.report.config_load(self)
+        self.help.config_load(self)
 
     def word_list(self) -> list[str]:
         """設定されている値、キーワードをリスト化する

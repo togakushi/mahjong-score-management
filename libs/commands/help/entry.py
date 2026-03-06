@@ -1,0 +1,169 @@
+"""
+libs/commands/help/entry.py
+"""
+
+import textwrap
+from typing import TYPE_CHECKING, cast
+
+import libs.global_value as g
+from integrations.protocols import CommandType
+from libs.data import lookup
+from libs.types import StyleOptions
+from libs.utils import dictutil
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from integrations.protocols import MessageParserProtocol
+
+
+def main(m: "MessageParserProtocol"):
+    """ヘルプ処理エントリーポイント
+
+    Args:
+        m (MessageParserProtocol): メッセージデータ
+    """
+
+    m.status.command_type = CommandType.HELP
+    g.params = dictutil.placeholder(g.cfg.help, m)
+
+    help_message(m)
+    m.post.ts = m.data.event_ts
+    m.post.thread_title = "ヘルプメッセージ"
+
+
+def help_message(m: "MessageParserProtocol"):
+    """チャンネル内呼び出しキーワード用ヘルプ
+
+    Args:
+        m (MessageParserProtocol): メッセージデータ
+    """
+
+    g.params.update(
+        {
+            "source": g.cfg.resolve_channel_id(m.status.source),
+            "separate": lookup.resolve_separate_flag(m),
+        }
+    )
+    g.cfg.rule.status_update(cast(dict, g.params))
+
+    m.set_message(
+        "使い方：<呼び出しキーワード> [検索範囲] [対象メンバー] [オプション]",
+        StyleOptions(title="機能呼び出し", indent=1),
+    )
+    m.set_message(
+        textwrap.dedent(f"""\
+        呼び出しキーワード：{"、".join(g.cfg.results.commandword)}
+        検索範囲デフォルト：{g.cfg.results.aggregation_range}
+        """),
+        StyleOptions(title="成績サマリ", indent=1),
+    )
+    m.set_message(
+        textwrap.dedent(f"""\
+        呼び出しキーワード：{"、".join(g.cfg.graph.commandword)}
+        検索範囲デフォルト：{g.cfg.graph.aggregation_range}
+        """),
+        StyleOptions(title="成績グラフ", indent=1),
+    )
+    m.set_message(
+        textwrap.dedent(f"""\
+        呼び出しキーワード：{"、".join(g.cfg.ranking.commandword)}
+        検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
+        規定打数デフォルト：全体ゲーム数 × {g.cfg.ranking.stipulated_rate} ＋ 1
+        出力制限デフォルト：上位 {g.cfg.ranking.ranked} 名
+        """),
+        StyleOptions(title="ランキング", indent=1),
+    )
+    m.set_message(
+        textwrap.dedent(f"""\
+        呼び出しキーワード：{"、".join(g.cfg.report.commandword)}
+        検索範囲デフォルト：{g.cfg.report.aggregation_range}
+        """),
+        StyleOptions(title="レポート", indent=1),
+    )
+    m.set_message(
+        f"呼び出しキーワード：{'、'.join(g.cfg.member.commandword)}",
+        StyleOptions(title="メンバー一覧", indent=1),
+    )
+    m.set_message(
+        f"呼び出しキーワード：{'、'.join(g.cfg.team.commandword)}",
+        StyleOptions(title="チーム一覧", indent=1),
+    )
+    m.set_message(  # 検索範囲
+        ExtDt.print_range(),
+        StyleOptions(title="検索範囲に指定できるキーワード", indent=1),
+    )
+    m.set_message(  # メモ機能
+        textwrap.dedent(f"""\
+        使い方：<登録キーワード> <対象メンバー> <登録ワード>
+        登録キーワード：{g.cfg.setting.remarks_word}
+        """),
+        StyleOptions(title="メモ機能", indent=1),
+    )
+
+    # レギュレーション
+    if words := lookup.regulation_list(2):
+        m.set_message(
+            "\n".join(
+                [
+                    "{}：{}pt".format(
+                        word,
+                        str(f"{ex_point:.1f}").replace("-", "▲"),
+                    )
+                    for word, ex_point in words
+                ]
+            ),
+            StyleOptions(title="卓外清算ワード(個人)", indent=1),
+        )
+
+    if words := lookup.regulation_list(3):
+        m.set_message(
+            "\n".join(
+                [
+                    "{}：{}pt".format(
+                        word,
+                        str(f"{ex_point:.1f}").replace("-", "▲"),
+                    )
+                    for word, ex_point in words
+                ]
+            ),
+            StyleOptions(title="卓外清算ワード(チーム)", indent=1),
+        )
+
+    words = [word for word, _ in lookup.regulation_list(1)]
+    # if g.cfg.undefined_word == 1:
+    #    words.append("未登録ワードのすべてを個別にカウント")
+    if words:
+        m.set_message(
+            "、".join(words),
+            StyleOptions(title="個別カウントワード", indent=1),
+        )
+
+    words = [word for word, _ in lookup.regulation_list(0)]
+    # if g.cfg.undefined_word == 0:
+    #    words.append("未登録ワードのすべてを役満としてカウント")
+    if words:
+        m.set_message(
+            "、".join(words),
+            StyleOptions(title="役満カウントワード", indent=1),
+        )
+
+    # ルールセット
+    rule_set: list = []
+    for rule_version in g.cfg.rule.rule_list:
+        rule_set.append(g.cfg.rule.print(rule_version))
+    m.set_message(
+        "\n \n".join(rule_set),
+        StyleOptions(title="ルールセット", indent=1, keep_blank=True),
+    )
+
+    # その他
+    channel_config = g.params.get("channel_config")
+    m.set_message(
+        textwrap.dedent(f"""\
+        チャンネル識別子：{g.params.get("source")}
+        チャンネル個別設定：{channel_config.name if channel_config else "---"}
+        セパレート機能：{"有効" if g.params.get("separate", False) else "無効"}
+        データベースファイル：{g.cfg.setting.database_file}
+        """),
+        StyleOptions(title="チャンネル設定情報", indent=1),
+    )
