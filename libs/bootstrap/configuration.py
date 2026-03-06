@@ -17,7 +17,7 @@ import libs.commands.report.entry
 import libs.commands.results.entry
 import libs.global_value as g
 from integrations import factory
-from libs.bootstrap.config import AppConfig
+from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.data import initialization, lookup
 from libs.functions import compose
@@ -25,7 +25,7 @@ from libs.types import Args, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.config import SubCommand
+    from libs.types import SubCommandsConfigType
 
 
 def set_loglevel():
@@ -353,7 +353,7 @@ def register():
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
-            sub_command = cast("SubCommand", getattr(g.cfg, command))
+            sub_command = cast("SubCommandsConfigType", getattr(g.cfg, command))
             for commandword in sub_command.commandword:
                 g.keyword_dispatcher.update({commandword: ep})
         # コマンドサフィックス登録

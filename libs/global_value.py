@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from integrations.slack.adapter import ServiceAdapter as slack_adapter
     from integrations.standard_io.adapter import ServiceAdapter as std_adapter
     from integrations.web.adapter import ServiceAdapter as web_adapter
-    from libs.bootstrap.config import AppConfig
+    from libs.bootstrap.app_config import AppConfig
     from libs.types import Args, PlaceholderDict
 
 # --- グローバル変数 ---

@@ -6,151 +6,18 @@ import logging
 import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
-from math import ceil
-from pathlib import Path, PosixPath
-from types import NoneType
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
+from pathlib import Path
+from typing import Literal, Optional, Union
 
+from libs.bootstrap.base_section import BaseSection
+from libs.commands.graph.configuration import GraphConfig
+from libs.commands.ranking.configuration import RankingConfig
+from libs.commands.registry.configuration import MemberSection, TeamSection
+from libs.commands.report.configuration import ReportConfig
+from libs.commands.results.configuration import ResultsConfig
 from libs.data.lookup import read_memberslist
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
-
-if TYPE_CHECKING:
-    from configparser import SectionProxy
-
-    from integrations.discord.config import SvcConfig as DiscordConfig
-    from integrations.slack.config import SvcConfig as SlackConfig
-    from integrations.standard_io.config import SvcConfig as StdConfig
-    from integrations.web.config import SvcConfig as WebConfig
-    from libs.types import MemberDataDict, TeamDataDict
-
-SubClassType: TypeAlias = Union[
-    "MahjongSection",
-    "SettingSection",
-    "MemberSection",
-    "TeamSection",
-    "AliasSection",
-    "DropItems",
-    "BadgeDisplay",
-    "SubCommand",
-    # サービス個別設定
-    "SlackConfig",
-    "DiscordConfig",
-    "WebConfig",
-    "StdConfig",
-]
-
-
-class CommonMethodMixin:
-    """共通メソッド"""
-
-    _section: "SectionProxy"
-
-    def get(self, key: str, fallback: Any = None) -> Any:
-        """値の取得"""
-        return self._section.get(key, fallback)
-
-    def getint(self, key: str, fallback: int = 0) -> int:
-        """整数値の取得"""
-        return self._section.getint(key, fallback)
-
-    def getfloat(self, key: str, fallback: float = 0.0) -> float:
-        """数値の取得"""
-        return self._section.getfloat(key, fallback)
-
-    def getboolean(self, key: str, fallback: bool = False) -> bool:
-        """真偽値の取得"""
-        return self._section.getboolean(key, fallback)
-
-    def getlist(self, key: str) -> list[str]:
-        """リストの取得"""
-        return [x.strip() for x in self._section.get(key, "").split(",")]
-
-    def keys(self) -> list[str]:
-        """キーリストの返却"""
-        return list(self._section.keys())
-
-    def values(self) -> list:
-        """値リストの返却"""
-        return list(self._section.values())
-
-    def items(self) -> list[tuple]:
-        """ItemsViewを返却"""
-        return list(self._section.items())
-
-
-class BaseSection(CommonMethodMixin):
-    """共通処理"""
-
-    def __init__(self, outer: SubClassType, section_name: str):
-        parser = outer._parser
-        assert parser
-        if section_name not in parser:
-            return
-        self._section = parser[section_name]
-
-        self.initialization()
-        self.section = section_name  # セクション名保持
-
-    def __repr__(self) -> str:
-        return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
-
-    def initialization(self):
-        """設定ファイルから値の取り込み"""
-
-        for k in self._section.keys():
-            if k not in self.to_dict():
-                continue  # インスタンス変数と一致しない項目はスキップ
-            match type(self.__dict__.get(k)):
-                case v_type if k in self.__dict__ and v_type is str:
-                    setattr(self, k, self._section.get(k, fallback=self.get(k)))
-                case v_type if k in self.__dict__ and v_type is int:
-                    setattr(self, k, self._section.getint(k, fallback=self.get(k)))
-                case v_type if k in self.__dict__ and v_type is float:
-                    setattr(self, k, self._section.getfloat(k, fallback=self.get(k)))
-                case v_type if v_type is bool:
-                    setattr(self, k, self._section.getboolean(k, fallback=self.get(k)))
-                case v_type if k in self.__dict__ and v_type is list:
-                    v_list = [x.strip() for x in self._section.get(k, fallback=self.get(k)).split(",")]
-                    current_list = getattr(self, k)
-                    if isinstance(current_list, list) and current_list:  # 設定済みリストは追加
-                        current_list.extend(v_list)
-                    else:
-                        setattr(self, k, v_list)
-                case v_type if k in self.__dict__ and v_type is Optional[str]:  # 文字列 or None(未定義)
-                    setattr(self, k, self._section.get(k, fallback=self.get(k)))
-                case v_type if k in self.__dict__ and v_type is PosixPath:
-                    setattr(self, k, Path(self._section.get(k, fallback=self.get(k))))
-                case v_type if k in self.__dict__ and v_type is NoneType:
-                    if k in ["backup_dir"]:  # ディレクトリを指定する設定はPathで格納
-                        setattr(self, k, Path(self._section.get(k, fallback=self.get(k))))
-                    else:
-                        setattr(self, k, self._section.get(k, fallback=self.get(k)))
-                case _:
-                    setattr(self, k, self.__dict__.get(k))
-
-    def to_dict(self, drop_items: Optional[list[str]] = None) -> dict[str, str]:
-        """必要なパラメータを辞書型で返す
-
-        Args:
-            drop_items (Optional[list[str]], optional): _description_. Defaults to None.
-
-        Returns:
-             dict[str, str]: 返却値
-        """
-
-        ret_dict: dict[str, str] = {}
-        for key in vars(self):
-            if key.startswith("_"):
-                continue
-            ret_dict[key] = getattr(self, key)
-
-        if drop_items:
-            for item in drop_items:
-                if item in ret_dict:
-                    ret_dict.pop(item)
-
-        return ret_dict
 
 
 class MahjongSection(BaseSection):
@@ -314,185 +181,6 @@ class SettingSection(BaseSection):
         logging.debug("%s: %s", _section_name, self)
 
 
-class MemberSection(BaseSection):
-    """memberセクション処理"""
-
-    info: list["MemberDataDict"]
-    """メンバー情報"""
-    registration_limit: int
-    """登録メンバー上限数"""
-    character_limit: int
-    """名前に使用できる文字数"""
-    alias_limit: int
-    """別名登録上限数"""
-    guest_name: str
-    """未登録メンバー名称"""
-
-    def __init__(self):
-        self._reset()
-
-    def _reset(self):
-        self.info = []
-        self.registration_limit = int(255)
-        self.character_limit = int(8)
-        self.alias_limit = int(16)
-        self.guest_name = str("ゲスト")
-
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
-
-        Args:
-            outer (AppConfig): 設定クラスオブジェクト
-        """
-
-        _section_name: str = "member"
-        self._parser = outer._parser
-        self._reset()
-        super().__init__(self, _section_name)
-
-        # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(_section_name, "commandword", fallback="メンバー一覧").split(",")]
-
-        logging.debug("%s: %s", _section_name, self)
-
-    def resolve_name(self, name: str) -> str:
-        """別名からメンバー名を逆引き
-
-        Args:
-            name (str): 変換する名前
-
-        Returns:
-            str: メンバー名(見つからない場合は空欄)
-        """
-
-        for x in self.info:
-            if name in x["alias"]:
-                return x["name"]
-
-        return ""
-
-    def alias(self, name: str) -> list[str]:
-        """指定メンバーの別名をリストで返す
-
-        Args:
-            name (str): メンバー名
-
-        Returns:
-            list[str]: 別名リスト
-        """
-
-        for x in self.info:
-            if x.get("name") == name:
-                return x.get("alias")
-        return []
-
-    @property
-    def lists(self) -> list[str]:
-        """メンバー名一覧をリストで返す"""
-
-        return [x.get("name") for x in self.info]
-
-    @property
-    def all_lists(self) -> list[str]:
-        """メンバー名、別名をすべてリストで返す
-
-        Returns:
-            list[str]: メンバー名、別名のリスト
-        """
-
-        ret: list[str] = []
-        for name in self.lists:
-            ret.append(name)
-            ret.extend(self.alias(name))
-
-        return list(set(ret))
-
-
-class TeamSection(BaseSection):
-    """teamセクション処理"""
-
-    info: list["TeamDataDict"]
-    """チーム情報"""
-    registration_limit: int
-    """登録チーム上限数"""
-    character_limit: int
-    """チーム名に使用できる文字数"""
-    member_limit: int
-    """チームに所属できるメンバー上限"""
-    friendly_fire: bool
-    """チームメイトが同卓しているゲームを集計対象に含めるか"""
-
-    def __init__(self):
-        self._reset()
-
-    def _reset(self):
-        self.info = []
-        self.registration_limit = int(255)
-        self.character_limit = int(16)
-        self.member_limit = int(16)
-        self.friendly_fire = bool(True)
-
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
-
-        Args:
-            outer (AppConfig): 設定クラスオブジェクト
-        """
-
-        _section_name: str = "team"
-        self._parser = outer._parser
-        self._reset()
-        super().__init__(self, _section_name)
-
-        # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(_section_name, "commandword", fallback="チーム一覧").split(",")]
-
-        logging.debug("%s: %s", _section_name, self)
-
-    def member(self, team: str) -> list[str]:
-        """チーム所属メンバーをリストで返す
-
-        Args:
-            team (str): チーム名
-
-        Returns:
-            list[str]: 所属メンバーリスト
-        """
-
-        for x in self.info:
-            if x.get("team") == team:
-                return x.get("member")
-        return []
-
-    def which(self, name: str) -> str | None:
-        """指定メンバーの所属チームを返す
-
-        Args:
-            name (str): チェック対象のメンバー名
-
-        Returns:
-            Union[str, None]:
-            - str: 所属しているチーム名
-            - None: 未所属
-        """
-
-        for team in self.lists:
-            if name in self.member(team):
-                return team
-
-        return None
-
-    @property
-    def lists(self) -> list[str]:
-        """チーム名一覧をリストで返す
-
-        Returns:
-            list[str]: チーム名一覧
-        """
-
-        return [x.get("team") for x in self.info]
-
-
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
@@ -600,140 +288,6 @@ class BadgeDisplay(BaseSection):
         self.grade.table_name = self._parser.get("grade", "table_name", fallback="")
 
 
-class SubCommand(BaseSection):
-    """サブコマンドセクション処理"""
-
-    section: str
-    """サブコマンドセクション名"""
-
-    commandword: list[str]
-    """呼び出しキーワード"""
-    command_suffix: list[str]
-    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-    aggregation_range: str
-    """検索範囲未指定時に使用される範囲"""
-    individual: bool
-    """個人/チーム集計切替フラグ
-    - *True*: 個人集計
-    - *False*: チーム集計
-    """
-    all_player: bool
-    daily: bool
-    fourfold: bool
-    game_results: bool
-    guest_skip: bool
-    """ゲストアリ/ナシフラグ(サマリ集計用)"""
-    guest_skip2: bool
-    """ゲストアリ/ナシフラグ(詳細集計用)"""
-    ranked: int
-    """ランキング/レーティングで表示する順位"""
-    score_comparisons: bool
-    """スコア比較"""
-    statistics: bool
-    """統計情報表示"""
-    stipulated: int
-    """規定打数指定"""
-    stipulated_rate: float
-    """規定打数計算レート"""
-    unregistered_replace: bool
-    """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
-    - *True*: 置き換える
-    - *False*: 置き換えない
-    """
-    anonymous: bool
-    """匿名化フラグ"""
-    verbose: bool
-    """詳細情報出力フラグ"""
-    versus_matrix: bool
-    """対戦マトリックス表示"""
-    collection: str
-    always_argument: list
-    """オプションとして常に付与される文字列"""
-    target_mode: int
-    """集計対象モードの指定
-    - *0*: settingのデフォルトに従う
-    - *not 0*: 指定値でmodeを上書き
-    """
-    format: str
-    filename: str
-    interval: int
-
-    def __init__(self, section_name: str):
-        self._reset(section_name)
-
-    def _reset(self, section_name: str):
-        self.section = section_name
-        self.commandword = []
-        self.command_suffix = []
-        self.aggregation_range = str("当日")
-        self.individual = bool(True)
-        self.all_player = bool(False)
-        self.daily = bool(True)
-        self.fourfold = bool(True)
-        self.game_results = bool(False)
-        self.guest_skip = bool(True)
-        self.guest_skip2 = bool(True)
-        self.ranked = int(3)
-        self.score_comparisons = bool(False)
-        self.statistics = bool(False)
-        self.stipulated = int(0)
-        self.stipulated_rate = 0.05
-        self.unregistered_replace = bool(True)
-        self.anonymous = bool(False)
-        self.verbose = bool(False)
-        self.versus_matrix = bool(False)
-        self.collection = str("")
-        self.always_argument = []
-        self.target_mode = int(0)
-        self.format = str("")
-        self.filename = str("")
-        self.interval = 80
-
-        match self.section:
-            case "results":
-                self.command_suffix.append("成績")
-            case "graph":
-                self.command_suffix.append("グラフ")
-            case "ranking":
-                self.command_suffix.append("ランキング")
-            case "report":
-                self.command_suffix.append("レポート")
-
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
-
-        Args:
-            outer (AppConfig): 設定クラスオブジェクト
-        """
-
-        self._parser = outer._parser
-        self._reset(self.section)
-        super().__init__(self, self.section)
-
-        # 呼び出しキーワード取り込み
-        default_word = {
-            "results": "麻雀成績",
-            "graph": "麻雀グラフ",
-            "ranking": "麻雀ランキング",
-            "report": "麻雀レポート",
-        }
-        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback=default_word[self.section]).split(",")]
-
-        logging.debug("%s: %s", self.section, self)
-
-    def stipulated_calculation(self, game_count: int) -> int:
-        """規定打数をゲーム数から計算
-
-        Args:
-            game_count (int): 指定ゲーム数
-
-        Returns:
-            int: 規定ゲーム数
-        """
-
-        return int(ceil(game_count * self.stipulated_rate) + 1)
-
-
 class AppConfig:
     """コンフィグ解析クラス"""
 
@@ -757,8 +311,6 @@ class AppConfig:
             "alias",
             "member",
             "team",
-            "regulations",
-            "regulations_team",
             "keyword_mapping",
         ]
         for x in option_sections:
@@ -793,13 +345,13 @@ class AppConfig:
         """バッジ設定"""
 
         # サブコマンド
-        self.results = SubCommand("results")
+        self.results = ResultsConfig()
         """resultsセクション設定値"""
-        self.graph = SubCommand("graph")
+        self.graph = GraphConfig()
         """graphセクション設定値"""
-        self.ranking = SubCommand("ranking")
+        self.ranking = RankingConfig()
         """rankingセクション設定値"""
-        self.report = SubCommand("report")
+        self.report = ReportConfig()
         """reportセクション設定値"""
 
         # 共通設定値

@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 
 from integrations.base.interface import IntegrationsConfig
 from integrations.slack.events import comparison, slash
-from libs.bootstrap.config import BaseSection
+from libs.bootstrap.app_config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

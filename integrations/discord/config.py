@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Optional
 
 from integrations.base.interface import IntegrationsConfig
 from integrations.discord.events import comparison
-from libs.bootstrap.config import BaseSection
+from libs.bootstrap.app_config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

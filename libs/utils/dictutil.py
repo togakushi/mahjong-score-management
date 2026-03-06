@@ -3,7 +3,7 @@ libs/utils/dictutil.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any, Protocol, cast
 
 import libs.global_value as g
 from libs.data import lookup
@@ -13,15 +13,24 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.config import SubCommand
     from libs.types import PlaceholderDict
 
 
-def placeholder(subcom: "SubCommand", m: "MessageParserProtocol") -> "PlaceholderDict":
+class SubCommandLike(Protocol):
+    """placeholder生成に必要なサブコマンド設定の最小インターフェース"""
+
+    section: str
+    always_argument: list
+    aggregation_range: str
+
+    def to_dict(self, drop_items: list[str] | None = None) -> dict[str, Any]: ...
+
+
+def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "PlaceholderDict":
     """プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommand): パラメータ
+        subcom (SubCommandLike): サブコマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:

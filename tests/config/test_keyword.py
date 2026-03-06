@@ -12,7 +12,7 @@ from libs.bootstrap import configuration
 from tests.config import param_data
 
 if TYPE_CHECKING:
-    from libs.bootstrap.config import SubCommand
+    from libs.types import SubCommandsConfigType
 
 
 @pytest.mark.parametrize(
@@ -25,7 +25,7 @@ def test_keyword(parameter, config, word, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
 
-    conf = cast("SubCommand", getattr(g.cfg, parameter, ""))
+    conf = cast("SubCommandsConfigType", getattr(g.cfg, parameter, ""))
     assert word in conf.commandword
 
 
