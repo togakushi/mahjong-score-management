@@ -3,12 +3,19 @@ tests/config/test_config.py
 """
 
 import sys
+from typing import TYPE_CHECKING
 
 import pytest
 
 import libs.global_value as g
 from libs.bootstrap import configuration
-from libs.bootstrap.config import SubCommand
+from libs.commands.graph.configuration import GraphConfig
+from libs.commands.ranking.configuration import RankingConfig
+from libs.commands.report.configuration import ReportConfig
+from libs.commands.results.configuration import ResultsConfig
+
+if TYPE_CHECKING:
+    from libs.types import SubCommandsConfigType
 
 
 def test_empty_config(monkeypatch):
@@ -34,6 +41,7 @@ def test_empty_config(monkeypatch):
 def test_subcommand_default(input_args, monkeypatch):
     """サブコマンドデフォルト値チェック"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    configuration.setup(init_db=False)
 
     default = {
         "section": input_args,
@@ -64,15 +72,15 @@ def test_subcommand_default(input_args, monkeypatch):
         "interval": 80,
     }
 
+    sub_command: SubCommandsConfigType
     match input_args:
         case "results":
-            default["command_suffix"].append("成績")
+            sub_command = ResultsConfig()
         case "graph":
-            default["command_suffix"].append("グラフ")
+            sub_command = GraphConfig()
         case "ranking":
-            default["command_suffix"].append("ランキング")
+            sub_command = RankingConfig()
         case "report":
-            default["command_suffix"].append("レポート")
+            sub_command = ReportConfig()
 
-    sub_command = SubCommand(input_args)
     assert sub_command.to_dict() == default
