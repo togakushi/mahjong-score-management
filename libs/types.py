@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from integrations.web.config import SvcConfig as WebConfig
     from libs.bootstrap.app_config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
     from libs.commands.graph.configuration import GraphConfig
+    from libs.commands.help.configuration import HelpConfig
     from libs.commands.ranking.configuration import RankingConfig
     from libs.commands.report.configuration import ReportConfig
     from libs.commands.results.configuration import ResultsConfig
@@ -53,10 +54,19 @@ if TYPE_CHECKING:
         "GraphConfig",
         "RankingConfig",
         "ReportConfig",
+        "HelpConfig",
     ]
 else:
     SubCommandsConfigType: TypeAlias = Any
 """サブコマンド設定クラス"""
+
+MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
+"""メッセージ型
+- *None*: 空データ(なにもしない)
+- *str*: 文字列型データ(そのまま表示)
+- *Path*: ファイルパス(アップロード処理)
+- *DataFrame*: 表データ
+"""
 
 
 @dataclass
@@ -117,15 +127,6 @@ class TeamDataDict(TypedDict):
     """チーム名"""
     member: list[str]
     """所属メンバーリスト"""
-
-
-MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
-"""メッセージ型
-- *None*: 空データ(なにもしない)
-- *str*: 文字列型データ(そのまま表示)
-- *Path*: ファイルパス(アップロード処理)
-- *DataFrame*: 表データ
-"""
 
 
 @dataclass
