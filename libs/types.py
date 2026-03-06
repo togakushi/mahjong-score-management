@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
+    from libs.bootstrap.app_config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
     from libs.commands.graph.configuration import GraphConfig
     from libs.commands.ranking.configuration import RankingConfig
     from libs.commands.report.configuration import ReportConfig

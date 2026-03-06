@@ -5,11 +5,11 @@ libs/commands/ranking/configuration.py
 import logging
 from typing import TYPE_CHECKING
 
-from libs.bootstrap.config import BaseSection
+from libs.bootstrap.app_config import BaseSection
 from libs.datamodels import CommandAttrs
 
 if TYPE_CHECKING:
-    from libs.bootstrap.config import AppConfig
+    from libs.bootstrap.app_config import AppConfig
 
 
 class RankingConfig(BaseSection, CommandAttrs):

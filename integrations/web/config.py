@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Literal
 
 import libs.global_value as g
 from integrations.base.interface import IntegrationsConfig
-from libs.bootstrap.config import BaseSection
+from libs.bootstrap.app_config import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

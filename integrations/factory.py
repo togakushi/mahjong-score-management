@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from configparser import ConfigParser
 
     from integrations.base.interface import AdapterInterface
-    from libs.bootstrap.config import AppConfig
+    from libs.bootstrap.app_config import AppConfig
 
 
 @overload
