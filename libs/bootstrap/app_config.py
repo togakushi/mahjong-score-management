@@ -7,7 +7,7 @@ import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Literal, Optional, Union
+from typing import TYPE_CHECKING, Literal, Optional, Union
 
 from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, SettingSection
 from libs.commands.graph.entry import GraphConfig
@@ -20,6 +20,9 @@ from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
+
+if TYPE_CHECKING:
+    from libs.bootstrap.section import SubCommands
 
 
 class DropItems(BaseSection):
@@ -92,7 +95,7 @@ class AppConfig:
         """メイン設定ファイルパス"""
 
         try:
-            self.main_parser = ConfigParser()
+            self.main_parser: ConfigParser = ConfigParser()
             self.main_parser.read(self.config_file, encoding="utf-8")
         except Exception as err:
             raise RuntimeError(err) from err
@@ -116,9 +119,9 @@ class AppConfig:
                 self.main_parser.add_section(x)
 
         # 基本設定
-        self.script_dir = Path(sys.argv[0]).absolute().parent
+        self.script_dir: Path = Path(sys.argv[0]).absolute().parent
         """スクリプトが保存されているディレクトリパス"""
-        self.config_dir = self.config_file.absolute().parent
+        self.config_dir: Path = self.config_file.absolute().parent
         """設定ファイルが保存されているディレクトリパス"""
         self.selected_service: Literal["slack", "discord", "web", "standard_io"] = "slack"
         """連携先サービス"""
@@ -143,15 +146,15 @@ class AppConfig:
         """バッジ設定"""
 
         # サブコマンド
-        self.results: ResultsConfig = ResultsConfig()
+        self.results: "SubCommands" = ResultsConfig()
         """resultsセクション設定値"""
-        self.graph: GraphConfig = GraphConfig()
+        self.graph: "SubCommands" = GraphConfig()
         """graphセクション設定値"""
-        self.ranking: RankingConfig = RankingConfig()
+        self.ranking: "SubCommands" = RankingConfig()
         """rankingセクション設定値"""
-        self.report: ReportConfig = ReportConfig()
+        self.report: "SubCommands" = ReportConfig()
         """reportセクション設定値"""
-        self.help: HelpConfig = HelpConfig()
+        self.help: "SubCommands" = HelpConfig()
         """helpセクション設定値"""
 
         # 共通設定値
