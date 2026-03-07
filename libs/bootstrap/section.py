@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
 from libs.domain.datamodels import CommandAttrs
 
 if TYPE_CHECKING:
-    from configparser import SectionProxy
+    from configparser import ConfigParser, SectionProxy
 
     from libs.bootstrap.app_config import AppConfig
     from libs.types import ServiceClassType, SettingClassType
@@ -26,40 +26,40 @@ SubClassType: TypeAlias = Union[
 class CommonMethodMixin:
     """共通メソッド"""
 
-    _section: "SectionProxy"
+    section_proxy: "SectionProxy"
     """読み込み先(パーサー + セクション名)"""
 
     def get(self, key: str, fallback: Any = None) -> Any:
         """値の取得"""
-        return self._section.get(key, fallback)
+        return self.section_proxy.get(key, fallback)
 
     def getint(self, key: str, fallback: int = 0) -> int:
         """整数値の取得"""
-        return self._section.getint(key, fallback)
+        return self.section_proxy.getint(key, fallback)
 
     def getfloat(self, key: str, fallback: float = 0.0) -> float:
         """数値の取得"""
-        return self._section.getfloat(key, fallback)
+        return self.section_proxy.getfloat(key, fallback)
 
     def getboolean(self, key: str, fallback: bool = False) -> bool:
         """真偽値の取得"""
-        return self._section.getboolean(key, fallback)
+        return self.section_proxy.getboolean(key, fallback)
 
     def getlist(self, key: str, fallback: str = "") -> list[str]:
         """リストの取得"""
-        return [x.strip() for x in self._section.get(key, fallback).split(",")]
+        return [x.strip() for x in self.section_proxy.get(key, fallback).split(",")]
 
     def keys(self) -> list[str]:
         """キーリストの返却"""
-        return list(self._section.keys())
+        return list(self.section_proxy.keys())
 
     def values(self) -> list:
         """値リストの返却"""
-        return list(self._section.values())
+        return list(self.section_proxy.values())
 
     def items(self) -> list[tuple]:
         """ItemsViewを返却"""
-        return list(self._section.items())
+        return list(self.section_proxy.items())
 
 
 class BaseSection(CommonMethodMixin):
@@ -67,13 +67,17 @@ class BaseSection(CommonMethodMixin):
 
     section: str
     """セクション名"""
+    main_parser: "ConfigParser"
+    """設定パーサー"""
+    section_proxy: "SectionProxy"
+    """読み込み先(パーサー + セクション名)"""
 
     def __init__(self, outer: SubClassType):
         self.main_parser = outer.main_parser
         assert self.main_parser
         if not hasattr(self, "section") or self.section not in self.main_parser:
             return
-        self._section = self.main_parser[self.section]
+        self.section_proxy = self.main_parser[self.section]
 
         self.initialization()
 
@@ -83,7 +87,7 @@ class BaseSection(CommonMethodMixin):
     def initialization(self):
         """設定ファイルから値の取り込み"""
 
-        for k in self._section.keys():
+        for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
             match type(self.__dict__.get(k)):
@@ -94,7 +98,7 @@ class BaseSection(CommonMethodMixin):
                 case v_type if k in self.__dict__ and v_type is float:
                     setattr(self, k, self.getfloat(k))
                 case v_type if v_type is bool:
-                    setattr(self, k, self._section.getboolean(k))
+                    setattr(self, k, self.section_proxy.getboolean(k))
                 case v_type if k in self.__dict__ and v_type is list:
                     v_list = self.getlist(k)
                     current_list = getattr(self, k)
@@ -375,7 +379,7 @@ class SubCommands(BaseSection, CommandAttrs):
         """
 
         self.main_parser = outer.main_parser
-        self._section = outer.main_parser[self.section]
+        self.section_proxy = outer.main_parser[self.section]
         self.default_reset()
         super().__init__(self)
 

@@ -25,27 +25,43 @@ from libs.types import GradeTableDict
 class DropItems(BaseSection):
     """非表示項目リスト"""
 
+    section: str
+    results: set[str]
+    """成績サマリ非表示項目"""
+    ranking: set[str]
+    """ランキング/レーティング非表示項目"""
+    report: set[str]
+    """レポート非表示項目"""
+    flying: set[str]
+    """トビ関連データ非表示指定ワード"""
+    yakuman: set[str]
+    """役満和了関連データ非表示指定ワード"""
+    regulation: set[str]
+    """卓外清算関連データ非表示指定ワード"""
+    other: set[str]
+    """メモ関連データ非表示指定ワード"""
+
     def __init__(self, outer: "AppConfig"):
         self.main_parser = outer.main_parser
 
         # 設定値取り込み
-        super().__init__(self)
-        self.results: set = {x.strip() for x in self.main_parser.get("results", "dropitems", fallback="").split(",")}
-        """成績サマリ非表示項目"""
-        self.ranking: set = {x.strip() for x in self.main_parser.get("ranking", "dropitems", fallback="").split(",")}
-        """ランキング/レーティング非表示項目"""
-        self.report: set = {x.strip() for x in self.main_parser.get("report", "dropitems", fallback="").split(",")}
-        """レポート非表示項目"""
+        self.section = "results"
+        self.section_proxy = self.main_parser[self.section]
+        self.results = set(self.getlist("dropitems", fallback=""))
+
+        self.section = "ranking"
+        self.section_proxy = self.main_parser[self.section]
+        self.ranking = set(self.getlist("dropitems", fallback=""))
+
+        self.section = "report"
+        self.section_proxy = self.main_parser[self.section]
+        self.report = set(self.getlist("dropitems", fallback=""))
 
         # 固定ワード
         self.flying = {"トビ", "トビ率"}
-        """トビ関連データ非表示指定ワード"""
         self.yakuman = {"役満", "役満和了", "役満和了率"}
-        """役満和了関連データ非表示指定ワード"""
         self.regulation = {"卓外", "卓外清算", "卓外ポイント"}
-        """卓外清算関連データ非表示指定ワード"""
         self.other = {"その他", "メモ"}
-        """メモ関連データ非表示指定ワード"""
 
 
 class BadgeDisplay(BaseSection):
@@ -72,11 +88,12 @@ class AppConfig:
     """アプリケーション設定"""
 
     def __init__(self, config_file: Path):
-        self.config_file = config_file
+        self.config_file: Path = config_file
+        """メイン設定ファイルパス"""
+
         try:
             self.main_parser = ConfigParser()
             self.main_parser.read(self.config_file, encoding="utf-8")
-            self._parser = self.main_parser
         except Exception as err:
             raise RuntimeError(err) from err
 
@@ -95,8 +112,8 @@ class AppConfig:
             "keyword_mapping",
         ]
         for x in option_sections:
-            if x not in self._parser.sections():
-                self._parser.add_section(x)
+            if x not in self.main_parser.sections():
+                self.main_parser.add_section(x)
 
         # 基本設定
         self.script_dir = Path(sys.argv[0]).absolute().parent
@@ -107,34 +124,34 @@ class AppConfig:
         """連携先サービス"""
 
         # 設定値
-        self.setting = SettingSection()
+        self.setting: SettingSection = SettingSection()
         """settingセクション設定値"""
-        self.mahjong = MahjongSection()
+        self.mahjong: MahjongSection = MahjongSection()
         """mahjongセクション設定値"""
-        self.alias = AliasSection()
+        self.alias: AliasSection = AliasSection()
         """aliasセクション設定値"""
 
-        self.member = MemberSection(self)
+        self.member: MemberSection = MemberSection(self)
         """memberセクション設定値"""
-        self.team = TeamSection(self)
+        self.team: TeamSection = TeamSection(self)
         """teamセクション設定値"""
 
-        self.dropitems = DropItems(self)
+        self.dropitems: DropItems = DropItems(self)
         """非表示項目"""
 
-        self.badge = BadgeDisplay(self)
+        self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
 
         # サブコマンド
-        self.results = ResultsConfig()
+        self.results: ResultsConfig = ResultsConfig()
         """resultsセクション設定値"""
-        self.graph = GraphConfig()
+        self.graph: GraphConfig = GraphConfig()
         """graphセクション設定値"""
-        self.ranking = RankingConfig()
+        self.ranking: RankingConfig = RankingConfig()
         """rankingセクション設定値"""
-        self.report = ReportConfig()
+        self.report: ReportConfig = ReportConfig()
         """reportセクション設定値"""
-        self.help = HelpConfig()
+        self.help: HelpConfig = HelpConfig()
         """helpセクション設定値"""
 
         # 共通設定値
@@ -153,8 +170,6 @@ class AppConfig:
 
     def initialization(self):
         """設定ファイル読み込み"""
-
-        self._parser = self.main_parser
 
         self.mahjong.config_load(self)
         self.setting.config_load(self)
@@ -204,8 +219,8 @@ class AppConfig:
             return
 
         try:
-            self._parser = ConfigParser()
-            self._parser.read([self.config_file, additional_config], encoding="utf-8")
+            self.additional_config_parser = ConfigParser()
+            self.additional_config_parser.read([self.config_file, additional_config], encoding="utf-8")
         except Exception as err:
             logging.error(err)
             return

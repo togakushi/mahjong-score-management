@@ -59,12 +59,11 @@ class TeamSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
         self._reset()
         super().__init__(self)
 
         # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback="チーム一覧").split(",")]
+        self.commandword = self.getlist("commandword", fallback="チーム一覧")
 
         logging.debug("%s: %s", self.section, self)
 

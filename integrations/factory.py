@@ -2,7 +2,7 @@
 integrations/factory.py
 """
 
-from typing import TYPE_CHECKING, Literal, cast, overload
+from typing import TYPE_CHECKING, Literal, overload
 
 from integrations.discord.adapter import ServiceAdapter as discord_adapter
 from integrations.slack.adapter import ServiceAdapter as slack_adapter
@@ -10,8 +10,6 @@ from integrations.standard_io.adapter import ServiceAdapter as std_adapter
 from integrations.web.adapter import ServiceAdapter as web_adapter
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser
-
     from integrations.base.interface import AdapterInterface
     from libs.bootstrap.app_config import AppConfig
 
@@ -46,16 +44,14 @@ def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterfac
         AdapterType: アダプタインターフェース
     """
 
-    parser = cast("ConfigParser", getattr(conf, "_parser"))
-
     match selected_service:
         case "slack":
-            return slack_adapter(parser)
+            return slack_adapter(conf.main_parser)
         case "discord":
-            return discord_adapter(parser)
+            return discord_adapter(conf.main_parser)
         case "web":
-            return web_adapter(parser)
+            return web_adapter(conf.main_parser)
         case "standard_io":
-            return std_adapter(parser)
+            return std_adapter(conf.main_parser)
         case _:
             raise ValueError(f"Unknown service: {selected_service}")
