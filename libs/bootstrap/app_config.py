@@ -10,12 +10,12 @@ from pathlib import Path
 from typing import Literal, Optional, Union
 
 from libs.bootstrap.base_section import BaseSection
-from libs.commands.graph.configuration import GraphConfig
-from libs.commands.help.configuration import HelpConfig
-from libs.commands.ranking.configuration import RankingConfig
+from libs.commands.graph.entry import GraphConfig
+from libs.commands.help.entry import HelpConfig
+from libs.commands.ranking.entry import RankingConfig
 from libs.commands.registry.configuration import MemberSection, TeamSection
-from libs.commands.report.configuration import ReportConfig
-from libs.commands.results.configuration import ResultsConfig
+from libs.commands.report.entry import ReportConfig
+from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
@@ -55,9 +55,9 @@ class MahjongSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        _section_name: str = "mahjong"
+        self.section: str = "mahjong"
         self._parser = outer._parser
-        super().__init__(self, _section_name)
+        super().__init__(self)
 
         # デフォルト値
         match self.mode:
@@ -78,7 +78,7 @@ class MahjongSection(BaseSection):
 
         self.rank_point = self.rank_point[: self.mode]
 
-        logging.debug("%s: %s", _section_name, self)
+        logging.debug("%s: %s", self.section, self)
 
 
 class SettingSection(BaseSection):
@@ -147,10 +147,10 @@ class SettingSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        _section_name: str = "setting"
+        self.section: str = "setting"
         self._parser = outer._parser
         self._reset()
-        super().__init__(self, _section_name)
+        super().__init__(self)
 
         # 成績登録キーワード
         if not (isinstance(self.keyword, Path) and self.keyword.exists()):
@@ -179,7 +179,7 @@ class SettingSection(BaseSection):
         if isinstance(self.database_file, Path) and not self.database_file.exists():
             self.database_file = outer.config_dir / str(self.database_file)
 
-        logging.debug("%s: %s", _section_name, self)
+        logging.debug("%s: %s", self.section, self)
 
 
 class AliasSection(BaseSection):
@@ -232,16 +232,16 @@ class AliasSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        _section_name: str = "alias"
+        self.section: str = "alias"
         self._parser = outer._parser
         self._reset()
-        super().__init__(self, _section_name)
+        super().__init__(self)
 
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
         list_data = [x.strip() for x in str(self._parser.get("alias", "del", fallback="del")).split(",")]
         self.delete.extend(list_data)
 
-        logging.debug("%s: %s", _section_name, self)
+        logging.debug("%s: %s", self.section, self)
 
 
 class DropItems(BaseSection):
@@ -251,7 +251,7 @@ class DropItems(BaseSection):
         self._parser = outer._parser
 
         # 設定値取り込み
-        super().__init__(self, "")
+        super().__init__(self)
         self.results: set = {x.strip() for x in self._parser.get("results", "dropitems", fallback="").split(",")}
         """成績サマリ非表示項目"""
         self.ranking: set = {x.strip() for x in self._parser.get("ranking", "dropitems", fallback="").split(",")}
@@ -284,7 +284,7 @@ class BadgeDisplay(BaseSection):
 
     def __init__(self, outer: "AppConfig"):
         self._parser = outer._parser
-        super().__init__(self, "")
+        super().__init__(self)
 
         self.grade.table_name = self._parser.get("grade", "table_name", fallback="")
 

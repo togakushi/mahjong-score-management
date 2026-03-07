@@ -2,13 +2,17 @@
 libs/bootstrap/base_section.py
 """
 
+import logging
 from pathlib import Path, PosixPath
 from types import NoneType
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
+from libs.domain.datamodels import CommandAttrs
+
 if TYPE_CHECKING:
     from configparser import SectionProxy
 
+    from libs.bootstrap.app_config import AppConfig
     from libs.types import ServiceClassType, SettingClassType, SubCommandsConfigType
 
 SubClassType: TypeAlias = Union[
@@ -62,13 +66,12 @@ class BaseSection(CommonMethodMixin):
 
     section: str
 
-    def __init__(self, outer: SubClassType, section_name: str):
-        self.section = section_name  # セクション名保持
+    def __init__(self, outer: SubClassType):
         parser = outer._parser
         assert parser
-        if section_name not in parser:
+        if not hasattr(self, "section") or self.section not in parser:
             return
-        self._section = parser[section_name]
+        self._section = parser[self.section]
 
         self.initialization()
 
@@ -131,3 +134,29 @@ class BaseSection(CommonMethodMixin):
                     ret_dict.pop(item)
 
         return ret_dict
+
+
+class SubCommands(BaseSection, CommandAttrs):
+    """サブコマンドセクション処理"""
+
+    default_commandword: str
+    """コマンドワードデフォルト値"""
+    section: str
+    """読み込みセクション"""
+
+    def config_load(self, outer: "AppConfig"):
+        """設定値取り込み
+
+        Args:
+            outer (AppConfig): 設定クラスオブジェクト
+        """
+
+        self._parser = outer._parser
+        self._section = outer._parser[self.section]
+        self.default_reset()
+        super().__init__(self)
+
+        # 呼び出しキーワード取り込み
+        self.commandword = self.getlist("commandword", self.default_commandword)
+
+        logging.debug("%s: %s", self.section, self)

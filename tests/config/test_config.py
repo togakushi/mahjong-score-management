@@ -9,10 +9,10 @@ import pytest
 
 import libs.global_value as g
 from libs.bootstrap import configuration
-from libs.commands.graph.configuration import GraphConfig
-from libs.commands.ranking.configuration import RankingConfig
-from libs.commands.report.configuration import ReportConfig
-from libs.commands.results.configuration import ResultsConfig
+from libs.commands.graph.entry import GraphConfig
+from libs.commands.ranking.entry import RankingConfig
+from libs.commands.report.entry import ReportConfig
+from libs.commands.results.entry import ResultsConfig
 
 if TYPE_CHECKING:
     from libs.types import SubCommandsConfigType

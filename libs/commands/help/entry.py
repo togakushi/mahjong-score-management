@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from integrations.protocols import CommandType
+from libs.bootstrap.base_section import SubCommands
 from libs.data import lookup
 from libs.types import StyleOptions
 from libs.utils import dictutil
@@ -14,6 +15,15 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+
+class HelpConfig(SubCommands):
+    """helpセクション処理"""
+
+    def __init__(self):
+        self.default_commandword = "麻雀ヘルプ"
+        self.section = "help"
+        self.default_reset()
 
 
 def main(m: "MessageParserProtocol"):

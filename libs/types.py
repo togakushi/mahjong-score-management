@@ -16,11 +16,11 @@ if TYPE_CHECKING:
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
     from libs.bootstrap.app_config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
-    from libs.commands.graph.configuration import GraphConfig
-    from libs.commands.help.configuration import HelpConfig
-    from libs.commands.ranking.configuration import RankingConfig
-    from libs.commands.report.configuration import ReportConfig
-    from libs.commands.results.configuration import ResultsConfig
+    from libs.commands.graph.entry import GraphConfig
+    from libs.commands.help.entry import HelpConfig
+    from libs.commands.ranking.entry import RankingConfig
+    from libs.commands.report.entry import ReportConfig
+    from libs.commands.results.entry import ResultsConfig
     from libs.utils.timekit import ExtendedDatetime
 
 if TYPE_CHECKING:
