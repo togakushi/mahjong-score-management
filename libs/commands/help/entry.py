@@ -42,7 +42,7 @@ def main(m: "MessageParserProtocol"):
 
 
 def help_message(m: "MessageParserProtocol"):
-    """チャンネル内呼び出しキーワード用ヘルプ
+    """呼び出しキーワードヘルプメッセージ
 
     Args:
         m (MessageParserProtocol): メッセージデータ

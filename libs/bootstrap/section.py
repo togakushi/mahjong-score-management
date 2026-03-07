@@ -1,5 +1,5 @@
 """
-libs/bootstrap/base_section.py
+libs/bootstrap/section.py
 """
 
 import logging
@@ -63,9 +63,10 @@ class CommonMethodMixin:
 
 
 class BaseSection(CommonMethodMixin):
-    """共通処理"""
+    """基底クラス"""
 
     section: str
+    """セクション名"""
 
     def __init__(self, outer: SubClassType):
         parser = outer._parser
@@ -141,6 +142,7 @@ class MahjongSection(BaseSection):
     """mahjongセクション処理"""
 
     def __init__(self):
+        self.section: str = "mahjong"
         self.mode: Literal[3, 4] = 4
         """ 集計モード切替(四人打ち/三人打ち)"""
         self.rule_version: str = str("default_rule")
@@ -171,7 +173,6 @@ class MahjongSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self.section: str = "mahjong"
         self._parser = outer._parser
         super().__init__(self)
 
@@ -234,6 +235,7 @@ class SettingSection(BaseSection):
     work_dir: Path
 
     def __init__(self):
+        self.section: str = "setting"
         self._reset()
 
     def _reset(self):
@@ -261,7 +263,6 @@ class SettingSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self.section: str = "setting"
         self._parser = outer._parser
         self._reset()
         super().__init__(self)
@@ -299,6 +300,7 @@ class SettingSection(BaseSection):
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
+    section: str
     results: list
     """成績サマリ出力コマンド"""
     graph: list
@@ -321,6 +323,7 @@ class AliasSection(BaseSection):
     team_clear: list
 
     def __init__(self):
+        self.section = "alias"
         self._reset()
 
     def _reset(self):
@@ -346,7 +349,6 @@ class AliasSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self.section: str = "alias"
         self._parser = outer._parser
         self._reset()
         super().__init__(self)
@@ -361,10 +363,10 @@ class AliasSection(BaseSection):
 class SubCommands(BaseSection, CommandAttrs):
     """サブコマンドセクション処理"""
 
-    default_commandword: str
-    """コマンドワードデフォルト値"""
     section: str
     """読み込みセクション"""
+    default_commandword: str
+    """コマンドワードデフォルト値"""
 
     def config_load(self, outer: "AppConfig"):
         """設定値取り込み

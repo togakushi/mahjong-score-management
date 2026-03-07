@@ -3,12 +3,14 @@ integrations/web/events/member.py
 """
 
 from dataclasses import asdict
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from flask import Blueprint, abort, current_app, render_template, request
 
+import libs.global_value as g
 from libs.commands.registry import member, team
 from libs.data import loader, lookup
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.web.adapter import ServiceAdapter
@@ -30,6 +32,9 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
     def mgt_member():
         if not adapter.conf.management_member:
             abort(403)
+
+        m = adapter.parser()
+        g.params = dictutil.placeholder(g.cfg.help, m)
 
         padding = current_app.config["padding"]
         data: dict = asdict(adapter.conf)
@@ -58,7 +63,7 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             lookup.read_memberslist()
 
-        member_df = loader.read_data("MEMBER_INFO")
+        member_df = loader.read_data("MEMBER_INFO", cast(dict, g.params))
         if member_df.empty:
             data.update(member_table="<p>登録済みメンバーはいません。</p>")
         else:

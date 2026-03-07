@@ -19,6 +19,7 @@ create view if not exists game_results as
         group_concat(case when x1_regulations.type = 1 then x1_regulations.word else null end) as p1_memo,
         group_concat(case when x1_regulations.type = 2 then x1_regulations.word else null end) as p1_regulations,
         group_concat(case when x1_regulations.type in (2, 3) then x1_regulations.word else null end) as t1_regulations,
+        group_concat(x1_regulations.word) as p1_remarks,
         -- 南家
         p2_name,
         ifnull(p2_team.name, '未所属') as p2_team,
@@ -36,6 +37,7 @@ create view if not exists game_results as
         group_concat(case when x2_regulations.type = 1 then x2_regulations.word else null end) as p2_memo,
         group_concat(case when x2_regulations.type = 2 then x2_regulations.word else null end) as p2_regulations,
         group_concat(case when x2_regulations.type in (2, 3) then x2_regulations.word else null end) as t2_regulations,
+        group_concat(x2_regulations.word) as p2_remarks,
         -- 西家
         p3_name,
         ifnull(p3_team.name, '未所属') as p3_team,
@@ -53,6 +55,7 @@ create view if not exists game_results as
         group_concat(case when x3_regulations.type = 1 then x3_regulations.word else null end) as p3_memo,
         group_concat(case when x3_regulations.type = 2 then x3_regulations.word else null end) as p3_regulations,
         group_concat(case when x3_regulations.type in (2, 3) then x3_regulations.word else null end) as t3_regulations,
+        group_concat(x3_regulations.word) as p3_remarks,
         -- 北家
         p4_name,
         ifnull(p4_team.name, '未所属') as p4_team,
@@ -70,6 +73,7 @@ create view if not exists game_results as
         group_concat(case when x4_regulations.type = 1 then x4_regulations.word else null end) as p4_memo,
         group_concat(case when x4_regulations.type = 2 then x4_regulations.word else null end) as p4_regulations,
         group_concat(case when x4_regulations.type in (2, 3) then x4_regulations.word else null end) as t4_regulations,
+        group_concat(x4_regulations.word) as p4_remarks,
         -- 情報
         deposit,
         date(result.playtime, '-<time_adjust> hours') as collection_daily,

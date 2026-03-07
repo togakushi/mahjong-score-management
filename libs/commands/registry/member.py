@@ -3,10 +3,125 @@ libs/commands/registry/member.py
 """
 
 import logging
+from typing import TYPE_CHECKING, TypedDict
 
 import libs.global_value as g
+from libs.bootstrap.app_config import BaseSection
 from libs.data import lookup, modify
 from libs.utils import dbutil, textutil, validator
+
+if TYPE_CHECKING:
+    from libs.bootstrap.app_config import AppConfig
+
+
+class MemberDataDict(TypedDict):
+    """メンバー情報格納辞書"""
+
+    id: int
+    """メンバーID"""
+
+    name: str
+    """メンバー名"""
+
+    alias: list[str]
+    """別名リスト"""
+
+
+class MemberSection(BaseSection):
+    """memberセクション処理"""
+
+    section: str
+    info: list[MemberDataDict]
+    """メンバー情報"""
+    registration_limit: int
+    """登録メンバー上限数"""
+    character_limit: int
+    """名前に使用できる文字数"""
+    alias_limit: int
+    """別名登録上限数"""
+    guest_name: str
+    """未登録メンバー名称"""
+
+    def __init__(self):
+        self.section = "member"
+        self._reset()
+
+    def _reset(self):
+        self.info = []
+        self.registration_limit = int(255)
+        self.character_limit = int(8)
+        self.alias_limit = int(16)
+        self.guest_name = str("ゲスト")
+
+    def config_load(self, outer: "AppConfig"):
+        """設定値取り込み
+
+        Args:
+            outer (AppConfig): 設定クラスオブジェクト
+        """
+
+        self._parser = outer._parser
+        self._reset()
+        super().__init__(
+            self,
+        )
+
+        # 呼び出しキーワード取り込み
+        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback="メンバー一覧").split(",")]
+
+        logging.debug("%s: %s", self.section, self)
+
+    def resolve_name(self, name: str) -> str:
+        """別名からメンバー名を逆引き
+
+        Args:
+            name (str): 変換する名前
+
+        Returns:
+            str: メンバー名(見つからない場合は空欄)
+        """
+
+        for x in self.info:
+            if name in x["alias"]:
+                return x["name"]
+
+        return ""
+
+    def alias(self, name: str) -> list[str]:
+        """指定メンバーの別名をリストで返す
+
+        Args:
+            name (str): メンバー名
+
+        Returns:
+            list[str]: 別名リスト
+        """
+
+        for x in self.info:
+            if x.get("name") == name:
+                return x.get("alias")
+        return []
+
+    @property
+    def lists(self) -> list[str]:
+        """メンバー名一覧をリストで返す"""
+
+        return [x.get("name") for x in self.info]
+
+    @property
+    def all_lists(self) -> list[str]:
+        """メンバー名、別名をすべてリストで返す
+
+        Returns:
+            list[str]: メンバー名、別名のリスト
+        """
+
+        ret: list[str] = []
+        for name in self.lists:
+            ret.append(name)
+            ret.extend(self.alias(name))
+
+        return list(set(ret))
 
 
 def append(argument: list) -> str:

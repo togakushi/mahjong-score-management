@@ -1,5 +1,5 @@
 """
-libs/bootstrap/config.py
+libs/bootstrap/app_config.py
 """
 
 import logging
@@ -13,7 +13,8 @@ from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, Se
 from libs.commands.graph.entry import GraphConfig
 from libs.commands.help.entry import HelpConfig
 from libs.commands.ranking.entry import RankingConfig
-from libs.commands.registry.configuration import MemberSection, TeamSection
+from libs.commands.registry.member import MemberSection
+from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
@@ -57,14 +58,14 @@ class BadgeDisplay(BaseSection):
         table_name: str = field(default=str())
         table: GradeTableDict = field(default_factory=GradeTableDict)
 
+    section: str
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
 
     def __init__(self, outer: "AppConfig"):
-        self.section: str = "grade"
+        self.section = "grade"
         self._parser = outer._parser
-        super().__init__(self)
 
-        self.grade.table_name = self.get("table_name", fallback="")
+        self.grade.table_name = self._parser.get(self.section, "table_name", fallback="")
 
 
 class AppConfig:

@@ -20,7 +20,9 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.types import MemberDataDict, PlaceholderDict, TeamDataDict
+    from libs.commands.registry.member import MemberDataDict
+    from libs.commands.registry.team import TeamDataDict
+    from libs.types import PlaceholderDict
 
 
 def get_config_value(

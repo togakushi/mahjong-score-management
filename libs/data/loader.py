@@ -79,15 +79,15 @@ def read_data(keyword: str, params: dict = {}) -> pd.DataFrame:
     if not params:
         params = cast(dict, g.params)
 
-    sql = dbutil.query_modification(dbutil.query(keyword))
-
+    if "mode" not in params:
+        mode = g.cfg.rule.get_mode(g.cfg.mahjong.rule_version)
+        params.update({"mode": mode if mode else 4})
     if starttime := params.get("starttime"):
         params.update({"starttime": cast("ExtDt", starttime).format(Format.SQL)})
     if endtime := params.get("endtime"):
         params.update({"endtime": cast("ExtDt", endtime).format(Format.SQL)})
-    if "mode" not in params:
-        mode = g.cfg.rule.get_mode(g.params.get("rule_version", ""))
-        params.update({"mode": mode if mode else 4})
+
+    sql = dbutil.query_modification(dbutil.query(keyword))
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")

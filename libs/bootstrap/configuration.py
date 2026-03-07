@@ -195,7 +195,7 @@ def arg_parser() -> Args:
 
 
 def setup(init_db: bool = True):
-    """設定ファイル読み込み
+    """設定ファイル読み込み処理
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
