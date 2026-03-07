@@ -368,7 +368,7 @@ def get_results_details(mapping_dict: dict) -> pd.DataFrame:
 
     target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)  # noqa: F841
 
-    df = loader.read_data("SUMMARY_DETAILS2", g.params).fillna(value="")
+    df = loader.read_data("SUMMARY_DETAILS2", cast(dict, g.params)).fillna(value="")
     if g.params.get("anonymous"):
         name_list: list = []
         name_list.extend(df["p1_name"].unique().tolist())

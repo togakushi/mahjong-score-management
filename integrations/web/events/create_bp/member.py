@@ -3,7 +3,7 @@ integrations/web/events/member.py
 """
 
 from dataclasses import asdict
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from flask import Blueprint, abort, current_app, render_template, request
 
@@ -63,7 +63,7 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             lookup.read_memberslist()
 
-        member_df = loader.read_data("MEMBER_INFO", g.params)
+        member_df = loader.read_data("MEMBER_INFO", cast(dict, g.params))
         if member_df.empty:
             data.update(member_table="<p>登録済みメンバーはいません。</p>")
         else:
