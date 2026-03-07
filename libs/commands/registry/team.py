@@ -11,6 +11,8 @@ from libs.data import initialization, loader, modify
 from libs.utils import dbutil, formatter, textutil, validator
 
 if TYPE_CHECKING:
+    from configparser import ConfigParser
+
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -41,8 +43,9 @@ class TeamSection(BaseSection):
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
     def __init__(self, outer: "AppConfig"):
+        self.default_commandword: str = "チーム一覧"
         self.section = "team"
-        self.main_parser = outer.main_parser
+        self.main_parser: "ConfigParser" = outer.main_parser
         self._reset()
 
     def _reset(self):
@@ -63,15 +66,15 @@ class TeamSection(BaseSection):
         super().__init__(self)
 
         # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", fallback="チーム一覧")
+        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.debug("%s: %s", self.section, self)
 
     def member(self, team: str) -> list[str]:
-        """チーム所属メンバーをリストで返す
+        """指定チームの所属メンバーをリストで返す
 
         Args:
-            team (str): チーム名
+            team (str): 対象チーム名
 
         Returns:
             list[str]: 所属メンバーリスト
@@ -86,7 +89,7 @@ class TeamSection(BaseSection):
         """指定メンバーの所属チームを返す
 
         Args:
-            name (str): チェック対象のメンバー名
+            name (str): 対象メンバー名
 
         Returns:
             Union[str, None]:

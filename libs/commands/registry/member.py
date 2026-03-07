@@ -11,6 +11,8 @@ from libs.data import loader, modify
 from libs.utils import dbutil, textutil, validator
 
 if TYPE_CHECKING:
+    from configparser import ConfigParser
+
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -49,8 +51,9 @@ class MemberSection(BaseSection):
     """未登録メンバー名称"""
 
     def __init__(self, outer: "AppConfig"):
+        self.default_commandword: str = "メンバー一覧"
         self.section = "member"
-        self.main_parser = outer.main_parser
+        self.main_parser: "ConfigParser" = outer.main_parser
         self._reset()
 
     def _reset(self):
@@ -73,7 +76,7 @@ class MemberSection(BaseSection):
         )
 
         # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", fallback="メンバー一覧")
+        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.debug("%s: %s", self.section, self)
 
