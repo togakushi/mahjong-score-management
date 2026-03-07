@@ -348,6 +348,8 @@ def register():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
             sub_command = cast("SubCommandsConfigType", getattr(g.cfg, command))
+            if hasattr(sub_command, "default_commandword"):
+                print(">", command, sub_command.default_commandword, sub_command.commandword)
             for commandword in sub_command.commandword:
                 g.keyword_dispatcher.update({commandword: ep})
         # コマンドサフィックス登録

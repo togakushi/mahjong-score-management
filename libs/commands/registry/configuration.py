@@ -43,15 +43,17 @@ class MemberSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        _section_name: str = "member"
+        self.section: str = "member"
         self._parser = outer._parser
         self._reset()
-        super().__init__(self, _section_name)
+        super().__init__(
+            self,
+        )
 
         # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(_section_name, "commandword", fallback="メンバー一覧").split(",")]
+        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback="メンバー一覧").split(",")]
 
-        logging.debug("%s: %s", _section_name, self)
+        logging.debug("%s: %s", self.section, self)
 
     def resolve_name(self, name: str) -> str:
         """別名からメンバー名を逆引き
@@ -137,15 +139,15 @@ class TeamSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        _section_name: str = "team"
+        self.section: str = "team"
         self._parser = outer._parser
         self._reset()
-        super().__init__(self, _section_name)
+        super().__init__(self)
 
         # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(_section_name, "commandword", fallback="チーム一覧").split(",")]
+        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback="チーム一覧").split(",")]
 
-        logging.debug("%s: %s", _section_name, self)
+        logging.debug("%s: %s", self.section, self)
 
     def member(self, team: str) -> list[str]:
         """チーム所属メンバーをリストで返す
