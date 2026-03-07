@@ -9,13 +9,14 @@ import pytest
 
 import libs.global_value as g
 from libs.bootstrap import configuration
-from libs.commands.graph.configuration import GraphConfig
-from libs.commands.ranking.configuration import RankingConfig
-from libs.commands.report.configuration import ReportConfig
-from libs.commands.results.configuration import ResultsConfig
+from libs.commands.graph.entry import GraphConfig
+from libs.commands.help.entry import HelpConfig
+from libs.commands.ranking.entry import RankingConfig
+from libs.commands.report.entry import ReportConfig
+from libs.commands.results.entry import ResultsConfig
 
 if TYPE_CHECKING:
-    from libs.types import SubCommandsConfigType
+    from libs.bootstrap.section import SubCommands
 
 
 def test_empty_config(monkeypatch):
@@ -37,7 +38,7 @@ def test_empty_config(monkeypatch):
     assert "del" in g.cfg.alias.delete
 
 
-@pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report"])
+@pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report", "help"])
 def test_subcommand_default(input_args, monkeypatch):
     """サブコマンドデフォルト値チェック"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
@@ -45,6 +46,7 @@ def test_subcommand_default(input_args, monkeypatch):
 
     default = {
         "section": input_args,
+        "default_commandword": "",
         "commandword": [],
         "command_suffix": [],
         "aggregation_range": "当日",
@@ -72,15 +74,22 @@ def test_subcommand_default(input_args, monkeypatch):
         "interval": 80,
     }
 
-    sub_command: SubCommandsConfigType
+    sub_command: SubCommands
     match input_args:
         case "results":
             sub_command = ResultsConfig()
+            default.update(default_commandword="麻雀成績")
         case "graph":
             sub_command = GraphConfig()
+            default.update(default_commandword="麻雀グラフ")
         case "ranking":
             sub_command = RankingConfig()
+            default.update(default_commandword="麻雀ランキング")
         case "report":
             sub_command = ReportConfig()
+            default.update(default_commandword="麻雀レポート")
+        case "help":
+            sub_command = HelpConfig()
+            default.update(default_commandword="麻雀ヘルプ")
 
     assert sub_command.to_dict() == default

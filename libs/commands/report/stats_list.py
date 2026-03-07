@@ -8,8 +8,9 @@ import matplotlib.pyplot as plt
 
 import libs.global_value as g
 from libs.data import loader
-from libs.datamodels import GameInfo
-from libs.functions import compose, message
+from libs.domain.datamodels import GameInfo
+from libs.functions import message
+from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
 
@@ -165,9 +166,9 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
             tb[j, i].set_text_props(ha="center")
 
     # 追加テキスト
-    remark_text = "".join(compose.text_item.remarks(True)) + compose.text_item.search_word(True)
+    remark_text = "".join(text_item.remarks(True)) + text_item.search_word(True)
     add_text = "[検索範囲：{}] [総ゲーム数：{}] {}".format(
-        compose.text_item.search_range(time_pattern="time"),
+        text_item.search_range(time_pattern="time"),
         game_info.count,
         f"[{remark_text}]" if remark_text else "",
     )

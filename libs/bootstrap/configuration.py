@@ -12,20 +12,21 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 import libs.commands.graph.entry
+import libs.commands.help.entry
 import libs.commands.ranking.entry
 import libs.commands.report.entry
 import libs.commands.results.entry
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap.app_config import AppConfig
+from libs.bootstrap.section import SubCommands
 from libs.commands.registry import member, team
 from libs.data import initialization, lookup
-from libs.functions import compose
+from libs.functions.compose import text_item
 from libs.types import Args, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.types import SubCommandsConfigType
 
 
 def set_loglevel():
@@ -290,21 +291,16 @@ def setup(init_db: bool = True):
 def register():
     """ディスパッチテーブル登録"""
 
-    def dispatch_help(m: "MessageParserProtocol"):
-        compose.msg_print.help_message(m)
-        m.post.ts = m.data.event_ts
-        m.post.thread_title = "ヘルプメッセージ"
-
     def dispatch_download(m: "MessageParserProtocol"):
         m.set_message(g.cfg.setting.database_file, StyleOptions(title="成績記録DB"))
 
     def dispatch_members_list(m: "MessageParserProtocol"):
-        m.set_message(compose.msg_print.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
+        m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
         m.post.ts = m.data.event_ts
         m.post.thread_title = "登録済みメンバー"
 
     def dispatch_team_list(m: "MessageParserProtocol"):
-        m.set_message(compose.msg_print.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
+        m.set_message(text_item.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
         m.post.ts = m.data.event_ts
         m.post.thread_title = "登録済みチーム"
 
@@ -334,6 +330,7 @@ def register():
         "graph": libs.commands.graph.entry.main,
         "ranking": libs.commands.ranking.entry.main,
         "report": libs.commands.report.entry.main,
+        "help": libs.commands.help.entry.main,
         "member": dispatch_members_list,
         "team": dispatch_team_list,
         "team_list": dispatch_team_list,
@@ -347,20 +344,16 @@ def register():
         "team_clear": dispatch_team_clear,
     }
 
-    # ヘルプ登録
-    g.keyword_dispatcher.update({g.cfg.setting.help: dispatch_help})
-
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
-            sub_command = cast("SubCommandsConfigType", getattr(g.cfg, command))
-            for commandword in sub_command.commandword:
-                g.keyword_dispatcher.update({commandword: ep})
-        # コマンドサフィックス登録
-        if hasattr(sub_command, "command_suffix"):
-            for keyword in g.cfg.rule.keyword_mapping:
-                for suffix in sub_command.command_suffix:
-                    g.keyword_dispatcher.update({f"{keyword}{suffix}": ep})
+            sub_command = getattr(g.cfg, command)
+            if isinstance(sub_command, SubCommands):
+                for commandword in sub_command.commandword:
+                    g.keyword_dispatcher.update({commandword: ep})
+                for keyword in g.cfg.rule.keyword_mapping:  # コマンドサフィックス登録
+                    for suffix in sub_command.command_suffix:
+                        g.keyword_dispatcher.update({f"{keyword}{suffix}": ep})
         # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
             for alias in cast(list, getattr(g.cfg.alias, command)):

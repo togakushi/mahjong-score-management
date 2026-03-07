@@ -9,8 +9,9 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.data import loader
-from libs.datamodels import GameInfo
-from libs.functions import compose, message
+from libs.domain.datamodels import GameInfo
+from libs.functions import message
+from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
 
@@ -115,9 +116,9 @@ def plot(m: "MessageParserProtocol"):
                     tb[i, j].set_text_props(ha="center")
 
             # 追加テキスト
-            remark_text = "".join(compose.text_item.remarks(True)) + compose.text_item.search_word(True)
+            remark_text = "".join(text_item.remarks(True)) + text_item.search_word(True)
             add_text = "{} {}".format(
-                f"[検索範囲：{compose.text_item.search_range()}]",
+                f"[検索範囲：{text_item.search_range()}]",
                 f"[{remark_text}]" if remark_text else "",
             )
 

@@ -26,27 +26,6 @@ def _init():
 
 
 @pytest.mark.parametrize(
-    "config, keyword",
-    list(param_data.message_help.values()),
-    ids=list(param_data.message_help.keys()),
-)
-def test_help_event(config, keyword, monkeypatch):
-    """キーワード呼び出しテスト(help)"""
-    monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
-
-    with (
-        patch("libs.bootstrap.configuration.compose.msg_print.help_message") as mock_help_event,
-    ):
-        m = _init()
-        m.data.text = keyword
-        m.data.status = MessageStatus.APPEND
-        m.set_command_flag(False)
-
-        libs.dispatcher.by_keyword(m)
-        mock_help_event.assert_called_once()
-
-
-@pytest.mark.parametrize(
     "module, config, keyword",
     list(param_data.message_event.values()),
     ids=list(param_data.message_event.keys()),

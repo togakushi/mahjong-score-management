@@ -182,7 +182,7 @@ def test_member_list(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.bootstrap.configuration.compose.msg_print.get_members_list") as mock_slash_member_list,
+        patch("libs.bootstrap.configuration.text_item.get_members_list") as mock_slash_member_list,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -315,7 +315,7 @@ def test_team_list(config, keyword, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch("libs.bootstrap.configuration.compose.msg_print.get_team_list") as mock_slash_team_list,
+        patch("libs.bootstrap.configuration.text_item.get_team_list") as mock_slash_team_list,
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")

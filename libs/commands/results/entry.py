@@ -6,11 +6,21 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
+from libs.bootstrap.section import SubCommands
 from libs.commands.results import detail, summary, versus
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+
+class ResultsConfig(SubCommands):
+    """resultsセクション処理"""
+
+    def __init__(self):
+        self.default_commandword = "麻雀成績"
+        self.section = "results"
+        self.default_reset()
 
 
 def main(m: "MessageParserProtocol"):

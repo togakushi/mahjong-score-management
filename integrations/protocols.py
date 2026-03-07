@@ -59,6 +59,8 @@ class CommandType(StrEnum):
     """レーティング"""
     REPORT = "report"
     """レポート"""
+    HELP = "help"
+    """ヘルプ"""
     COMPARISON = "comparison"
     """突合処理"""
     UNKNOWN = "unknown"

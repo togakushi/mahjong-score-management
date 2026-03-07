@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter as discord_adapter
     from integrations.protocols import MessageParserProtocol
     from integrations.slack.adapter import ServiceAdapter as slack_adapter
-    from libs.datamodels import ComparisonResults
+    from libs.domain.datamodels import ComparisonResults
 
 
 def main():

@@ -11,8 +11,9 @@ import plotly.express as px  # type: ignore
 
 import libs.global_value as g
 from libs.data import loader
-from libs.datamodels import GameInfo
-from libs.functions import compose, message
+from libs.domain.datamodels import GameInfo
+from libs.functions import message
+from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
 from libs.utils.timekit import Format
@@ -430,21 +431,21 @@ def _graph_title(graph_params: GraphParams):
             graph_params.update(
                 {
                     "ylabel_text": "通算ポイント",
-                    "title_text": compose.text_item.date_range(kind, "通算ポイント", "ポイント推移"),
+                    "title_text": text_item.date_range(kind, "通算ポイント", "ポイント推移"),
                 }
             )
         case "rank":
             graph_params.update(
                 {
                     "ylabel_text": "順位 (通算ポイント順)",
-                    "title_text": compose.text_item.date_range(kind, "順位", "順位変動"),
+                    "title_text": text_item.date_range(kind, "順位", "順位変動"),
                 }
             )
         case "point_hbar":
             graph_params.update(
                 {
                     "ylabel_text": None,
-                    "title_text": compose.text_item.date_range(kind, "通算ポイント", "通算ポイント"),
+                    "title_text": text_item.date_range(kind, "通算ポイント", "通算ポイント"),
                 }
             )
             if graph_params["total_game_count"] == 1:

@@ -9,8 +9,9 @@ import pandas as pd
 import libs.global_value as g
 from integrations.protocols import CommandType
 from libs.data import aggregate, loader
-from libs.datamodels import GameInfo
-from libs.functions import compose, message
+from libs.domain.datamodels import GameInfo
+from libs.functions import message
+from libs.functions.compose import badge
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
 
@@ -76,7 +77,7 @@ def aggregation(m: "MessageParserProtocol"):
     if g.adapter.conf.badge_grade:
         for idx in df.index:
             name = str(df.at[idx, "name"]).replace(f"({g.cfg.setting.guest_mark})", "")
-            df.at[idx, "grade"] = compose.badge.grade(name, False)
+            df.at[idx, "grade"] = badge.grade(name, False)
 
     # 表示
     if g.params.get("anonymous"):

@@ -6,11 +6,21 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
+from libs.bootstrap.section import SubCommands
 from libs.commands.ranking import ranking, rating
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+
+class RankingConfig(SubCommands):
+    """rankingセクション処理"""
+
+    def __init__(self):
+        self.default_commandword = "麻雀ランキング"
+        self.section = "ranking"
+        self.default_reset()
 
 
 def main(m: "MessageParserProtocol"):

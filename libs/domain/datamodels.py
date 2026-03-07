@@ -1,5 +1,5 @@
 """
-libs/datamodels.py
+libs/domain/command.py
 """
 
 import logging
@@ -77,14 +77,9 @@ class CommandAttrs:
     filename: str
     interval: int
 
-    def default_reset(self, section_name: str):
-        """デフォルト値にリセット
+    def default_reset(self):
+        """デフォルト値にリセット"""
 
-        Args:
-            section_name (str): 引き継ぐセクション名
-        """
-
-        self.section = section_name
         self.commandword = []
         self.command_suffix = []
         self.aggregation_range = str("当日")
