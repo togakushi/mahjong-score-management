@@ -90,30 +90,6 @@ class Args:
     testcase: Optional["Path"]
 
 
-class MemberDataDict(TypedDict):
-    """メンバー情報格納辞書"""
-
-    id: int
-    """メンバーID"""
-
-    name: str
-    """メンバー名"""
-
-    alias: list[str]
-    """別名リスト"""
-
-
-class TeamDataDict(TypedDict):
-    """チーム情報格納辞書"""
-
-    id: int
-    """チームID"""
-    team: str
-    """チーム名"""
-    member: list[str]
-    """所属メンバーリスト"""
-
-
 @dataclass
 class StyleOptions:
     """表示オプション"""

@@ -13,7 +13,8 @@ from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, Se
 from libs.commands.graph.entry import GraphConfig
 from libs.commands.help.entry import HelpConfig
 from libs.commands.ranking.entry import RankingConfig
-from libs.commands.registry.configuration import MemberSection, TeamSection
+from libs.commands.registry.member import MemberSection
+from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
