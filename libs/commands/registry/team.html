@@ -50,6 +50,9 @@
                     <a class="class" href="#TeamSection">TeamSection</a>
                             <ul class="memberlist">
                         <li>
+                                <a class="function" href="#TeamSection.__init__">TeamSection</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#TeamSection.section">section</a>
                         </li>
                         <li>
@@ -66,6 +69,9 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TeamSection.friendly_fire">friendly_fire</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TeamSection.main_parser">main_parser</a>
                         </li>
                         <li>
                                 <a class="function" href="#TeamSection.config_load">config_load</a>
@@ -162,30 +168,30 @@
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">friendly_fire</span><span class="p">:</span> <span class="nb">bool</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームメイトが同卓しているゲームを集計対象に含めるか&quot;&quot;&quot;</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;team&quot;</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">friendly_fire</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        Args:</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">friendly_fire</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        Args:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
@@ -529,30 +535,30 @@
 </span><span id="TeamSection-41"><a href="#TeamSection-41"><span class="linenos"> 41</span></a>    <span class="n">friendly_fire</span><span class="p">:</span> <span class="nb">bool</span>
 </span><span id="TeamSection-42"><a href="#TeamSection-42"><span class="linenos"> 42</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームメイトが同卓しているゲームを集計対象に含めるか&quot;&quot;&quot;</span>
 </span><span id="TeamSection-43"><a href="#TeamSection-43"><span class="linenos"> 43</span></a>
-</span><span id="TeamSection-44"><a href="#TeamSection-44"><span class="linenos"> 44</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="TeamSection-44"><a href="#TeamSection-44"><span class="linenos"> 44</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
 </span><span id="TeamSection-45"><a href="#TeamSection-45"><span class="linenos"> 45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;team&quot;</span>
-</span><span id="TeamSection-46"><a href="#TeamSection-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="TeamSection-47"><a href="#TeamSection-47"><span class="linenos"> 47</span></a>
-</span><span id="TeamSection-48"><a href="#TeamSection-48"><span class="linenos"> 48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="TeamSection-49"><a href="#TeamSection-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="TeamSection-50"><a href="#TeamSection-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-</span><span id="TeamSection-51"><a href="#TeamSection-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="TeamSection-52"><a href="#TeamSection-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="TeamSection-53"><a href="#TeamSection-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">friendly_fire</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="TeamSection-54"><a href="#TeamSection-54"><span class="linenos"> 54</span></a>
-</span><span id="TeamSection-55"><a href="#TeamSection-55"><span class="linenos"> 55</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="TeamSection-56"><a href="#TeamSection-56"><span class="linenos"> 56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="TeamSection-57"><a href="#TeamSection-57"><span class="linenos"> 57</span></a>
-</span><span id="TeamSection-58"><a href="#TeamSection-58"><span class="linenos"> 58</span></a><span class="sd">        Args:</span>
-</span><span id="TeamSection-59"><a href="#TeamSection-59"><span class="linenos"> 59</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="TeamSection-60"><a href="#TeamSection-60"><span class="linenos"> 60</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TeamSection-61"><a href="#TeamSection-61"><span class="linenos"> 61</span></a>
-</span><span id="TeamSection-62"><a href="#TeamSection-62"><span class="linenos"> 62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+</span><span id="TeamSection-46"><a href="#TeamSection-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="TeamSection-47"><a href="#TeamSection-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span><span id="TeamSection-48"><a href="#TeamSection-48"><span class="linenos"> 48</span></a>
+</span><span id="TeamSection-49"><a href="#TeamSection-49"><span class="linenos"> 49</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="TeamSection-50"><a href="#TeamSection-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="TeamSection-51"><a href="#TeamSection-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+</span><span id="TeamSection-52"><a href="#TeamSection-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="TeamSection-53"><a href="#TeamSection-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="TeamSection-54"><a href="#TeamSection-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">friendly_fire</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="TeamSection-55"><a href="#TeamSection-55"><span class="linenos"> 55</span></a>
+</span><span id="TeamSection-56"><a href="#TeamSection-56"><span class="linenos"> 56</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="TeamSection-57"><a href="#TeamSection-57"><span class="linenos"> 57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="TeamSection-58"><a href="#TeamSection-58"><span class="linenos"> 58</span></a>
+</span><span id="TeamSection-59"><a href="#TeamSection-59"><span class="linenos"> 59</span></a><span class="sd">        Args:</span>
+</span><span id="TeamSection-60"><a href="#TeamSection-60"><span class="linenos"> 60</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="TeamSection-61"><a href="#TeamSection-61"><span class="linenos"> 61</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TeamSection-62"><a href="#TeamSection-62"><span class="linenos"> 62</span></a>
 </span><span id="TeamSection-63"><a href="#TeamSection-63"><span class="linenos"> 63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="TeamSection-64"><a href="#TeamSection-64"><span class="linenos"> 64</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="TeamSection-65"><a href="#TeamSection-65"><span class="linenos"> 65</span></a>
 </span><span id="TeamSection-66"><a href="#TeamSection-66"><span class="linenos"> 66</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="TeamSection-67"><a href="#TeamSection-67"><span class="linenos"> 67</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="TeamSection-67"><a href="#TeamSection-67"><span class="linenos"> 67</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span>
 </span><span id="TeamSection-68"><a href="#TeamSection-68"><span class="linenos"> 68</span></a>
 </span><span id="TeamSection-69"><a href="#TeamSection-69"><span class="linenos"> 69</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span><span id="TeamSection-70"><a href="#TeamSection-70"><span class="linenos"> 70</span></a>
@@ -605,6 +611,26 @@
 </div>
 
 
+                            <div id="TeamSection.__init__" class="classattr">
+                                        <input id="TeamSection.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="name">TeamSection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">outer</span><span class="p">:</span> <span class="n"><a href="../../bootstrap/app_config.html#AppConfig">libs.bootstrap.app_config.AppConfig</a></span></span>)</span>
+
+                <label class="view-source-button" for="TeamSection.__init__-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#TeamSection.__init__"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TeamSection.__init__-44"><a href="#TeamSection.__init__-44"><span class="linenos">44</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="TeamSection.__init__-45"><a href="#TeamSection.__init__-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;team&quot;</span>
+</span><span id="TeamSection.__init__-46"><a href="#TeamSection.__init__-46"><span class="linenos">46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="TeamSection.__init__-47"><a href="#TeamSection.__init__-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
                             <div id="TeamSection.section" class="classattr">
                                 <div class="attr variable">
             <span class="name">section</span><span class="annotation">: str</span>
@@ -683,6 +709,19 @@
 
 
                             </div>
+                            <div id="TeamSection.main_parser" class="classattr">
+                                <div class="attr variable">
+            <span class="name">main_parser</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TeamSection.main_parser"></a>
+    
+            <div class="docstring"><p>設定パーサー</p>
+</div>
+
+
+                            </div>
                             <div id="TeamSection.config_load" class="classattr">
                                         <input id="TeamSection.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -694,19 +733,18 @@
 
     </div>
     <a class="headerlink" href="#TeamSection.config_load"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TeamSection.config_load-55"><a href="#TeamSection.config_load-55"><span class="linenos">55</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="TeamSection.config_load-56"><a href="#TeamSection.config_load-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="TeamSection.config_load-57"><a href="#TeamSection.config_load-57"><span class="linenos">57</span></a>
-</span><span id="TeamSection.config_load-58"><a href="#TeamSection.config_load-58"><span class="linenos">58</span></a><span class="sd">        Args:</span>
-</span><span id="TeamSection.config_load-59"><a href="#TeamSection.config_load-59"><span class="linenos">59</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="TeamSection.config_load-60"><a href="#TeamSection.config_load-60"><span class="linenos">60</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TeamSection.config_load-61"><a href="#TeamSection.config_load-61"><span class="linenos">61</span></a>
-</span><span id="TeamSection.config_load-62"><a href="#TeamSection.config_load-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TeamSection.config_load-56"><a href="#TeamSection.config_load-56"><span class="linenos">56</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="TeamSection.config_load-57"><a href="#TeamSection.config_load-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="TeamSection.config_load-58"><a href="#TeamSection.config_load-58"><span class="linenos">58</span></a>
+</span><span id="TeamSection.config_load-59"><a href="#TeamSection.config_load-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
+</span><span id="TeamSection.config_load-60"><a href="#TeamSection.config_load-60"><span class="linenos">60</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="TeamSection.config_load-61"><a href="#TeamSection.config_load-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TeamSection.config_load-62"><a href="#TeamSection.config_load-62"><span class="linenos">62</span></a>
 </span><span id="TeamSection.config_load-63"><a href="#TeamSection.config_load-63"><span class="linenos">63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="TeamSection.config_load-64"><a href="#TeamSection.config_load-64"><span class="linenos">64</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="TeamSection.config_load-65"><a href="#TeamSection.config_load-65"><span class="linenos">65</span></a>
 </span><span id="TeamSection.config_load-66"><a href="#TeamSection.config_load-66"><span class="linenos">66</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="TeamSection.config_load-67"><a href="#TeamSection.config_load-67"><span class="linenos">67</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="TeamSection.config_load-67"><a href="#TeamSection.config_load-67"><span class="linenos">67</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;チーム一覧&quot;</span><span class="p">)</span>
 </span><span id="TeamSection.config_load-68"><a href="#TeamSection.config_load-68"><span class="linenos">68</span></a>
 </span><span id="TeamSection.config_load-69"><a href="#TeamSection.config_load-69"><span class="linenos">69</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
@@ -857,7 +895,8 @@
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="../../bootstrap/section.html#BaseSection">libs.bootstrap.section.BaseSection</a></dt>
-                                <dd id="TeamSection.initialization" class="function"><a href="../../bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
+                                <dd id="TeamSection.section_proxy" class="variable"><a href="../../bootstrap/section.html#BaseSection.section_proxy">section_proxy</a></dd>
+                <dd id="TeamSection.initialization" class="function"><a href="../../bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
                 <dd id="TeamSection.to_dict" class="function"><a href="../../bootstrap/section.html#BaseSection.to_dict">to_dict</a></dd>
 
             </div>

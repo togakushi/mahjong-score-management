@@ -50,6 +50,9 @@
                     <a class="class" href="#MemberSection">MemberSection</a>
                             <ul class="memberlist">
                         <li>
+                                <a class="function" href="#MemberSection.__init__">MemberSection</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#MemberSection.section">section</a>
                         </li>
                         <li>
@@ -66,6 +69,9 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MemberSection.guest_name">guest_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MemberSection.main_parser">main_parser</a>
                         </li>
                         <li>
                                 <a class="function" href="#MemberSection.config_load">config_load</a>
@@ -158,32 +164,32 @@
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>    <span class="n">guest_name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;未登録メンバー名称&quot;&quot;&quot;</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;member&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">alias_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ゲスト&quot;</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        Args:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">alias_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ゲスト&quot;</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        Args:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>            <span class="bp">self</span><span class="p">,</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="p">)</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
 </span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>
@@ -495,32 +501,32 @@
 </span><span id="MemberSection-43"><a href="#MemberSection-43"><span class="linenos"> 43</span></a>    <span class="n">guest_name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="MemberSection-44"><a href="#MemberSection-44"><span class="linenos"> 44</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;未登録メンバー名称&quot;&quot;&quot;</span>
 </span><span id="MemberSection-45"><a href="#MemberSection-45"><span class="linenos"> 45</span></a>
-</span><span id="MemberSection-46"><a href="#MemberSection-46"><span class="linenos"> 46</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="MemberSection-46"><a href="#MemberSection-46"><span class="linenos"> 46</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
 </span><span id="MemberSection-47"><a href="#MemberSection-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;member&quot;</span>
-</span><span id="MemberSection-48"><a href="#MemberSection-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="MemberSection-49"><a href="#MemberSection-49"><span class="linenos"> 49</span></a>
-</span><span id="MemberSection-50"><a href="#MemberSection-50"><span class="linenos"> 50</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="MemberSection-51"><a href="#MemberSection-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="MemberSection-52"><a href="#MemberSection-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-</span><span id="MemberSection-53"><a href="#MemberSection-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-</span><span id="MemberSection-54"><a href="#MemberSection-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">alias_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</span><span id="MemberSection-55"><a href="#MemberSection-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ゲスト&quot;</span><span class="p">)</span>
-</span><span id="MemberSection-56"><a href="#MemberSection-56"><span class="linenos"> 56</span></a>
-</span><span id="MemberSection-57"><a href="#MemberSection-57"><span class="linenos"> 57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="MemberSection-58"><a href="#MemberSection-58"><span class="linenos"> 58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="MemberSection-59"><a href="#MemberSection-59"><span class="linenos"> 59</span></a>
-</span><span id="MemberSection-60"><a href="#MemberSection-60"><span class="linenos"> 60</span></a><span class="sd">        Args:</span>
-</span><span id="MemberSection-61"><a href="#MemberSection-61"><span class="linenos"> 61</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="MemberSection-62"><a href="#MemberSection-62"><span class="linenos"> 62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MemberSection-63"><a href="#MemberSection-63"><span class="linenos"> 63</span></a>
-</span><span id="MemberSection-64"><a href="#MemberSection-64"><span class="linenos"> 64</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+</span><span id="MemberSection-48"><a href="#MemberSection-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="MemberSection-49"><a href="#MemberSection-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span><span id="MemberSection-50"><a href="#MemberSection-50"><span class="linenos"> 50</span></a>
+</span><span id="MemberSection-51"><a href="#MemberSection-51"><span class="linenos"> 51</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="MemberSection-52"><a href="#MemberSection-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="MemberSection-53"><a href="#MemberSection-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">registration_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+</span><span id="MemberSection-54"><a href="#MemberSection-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">character_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span><span id="MemberSection-55"><a href="#MemberSection-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">alias_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span><span id="MemberSection-56"><a href="#MemberSection-56"><span class="linenos"> 56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ゲスト&quot;</span><span class="p">)</span>
+</span><span id="MemberSection-57"><a href="#MemberSection-57"><span class="linenos"> 57</span></a>
+</span><span id="MemberSection-58"><a href="#MemberSection-58"><span class="linenos"> 58</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="MemberSection-59"><a href="#MemberSection-59"><span class="linenos"> 59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="MemberSection-60"><a href="#MemberSection-60"><span class="linenos"> 60</span></a>
+</span><span id="MemberSection-61"><a href="#MemberSection-61"><span class="linenos"> 61</span></a><span class="sd">        Args:</span>
+</span><span id="MemberSection-62"><a href="#MemberSection-62"><span class="linenos"> 62</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="MemberSection-63"><a href="#MemberSection-63"><span class="linenos"> 63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MemberSection-64"><a href="#MemberSection-64"><span class="linenos"> 64</span></a>
 </span><span id="MemberSection-65"><a href="#MemberSection-65"><span class="linenos"> 65</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="MemberSection-66"><a href="#MemberSection-66"><span class="linenos"> 66</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="MemberSection-67"><a href="#MemberSection-67"><span class="linenos"> 67</span></a>            <span class="bp">self</span><span class="p">,</span>
 </span><span id="MemberSection-68"><a href="#MemberSection-68"><span class="linenos"> 68</span></a>        <span class="p">)</span>
 </span><span id="MemberSection-69"><a href="#MemberSection-69"><span class="linenos"> 69</span></a>
 </span><span id="MemberSection-70"><a href="#MemberSection-70"><span class="linenos"> 70</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="MemberSection-71"><a href="#MemberSection-71"><span class="linenos"> 71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="MemberSection-71"><a href="#MemberSection-71"><span class="linenos"> 71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span>
 </span><span id="MemberSection-72"><a href="#MemberSection-72"><span class="linenos"> 72</span></a>
 </span><span id="MemberSection-73"><a href="#MemberSection-73"><span class="linenos"> 73</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span><span id="MemberSection-74"><a href="#MemberSection-74"><span class="linenos"> 74</span></a>
@@ -582,6 +588,26 @@
 </div>
 
 
+                            <div id="MemberSection.__init__" class="classattr">
+                                        <input id="MemberSection.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="name">MemberSection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">outer</span><span class="p">:</span> <span class="n"><a href="../../bootstrap/app_config.html#AppConfig">libs.bootstrap.app_config.AppConfig</a></span></span>)</span>
+
+                <label class="view-source-button" for="MemberSection.__init__-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#MemberSection.__init__"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MemberSection.__init__-46"><a href="#MemberSection.__init__-46"><span class="linenos">46</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="MemberSection.__init__-47"><a href="#MemberSection.__init__-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;member&quot;</span>
+</span><span id="MemberSection.__init__-48"><a href="#MemberSection.__init__-48"><span class="linenos">48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
+</span><span id="MemberSection.__init__-49"><a href="#MemberSection.__init__-49"><span class="linenos">49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
                             <div id="MemberSection.section" class="classattr">
                                 <div class="attr variable">
             <span class="name">section</span><span class="annotation">: str</span>
@@ -660,6 +686,19 @@
 
 
                             </div>
+                            <div id="MemberSection.main_parser" class="classattr">
+                                <div class="attr variable">
+            <span class="name">main_parser</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MemberSection.main_parser"></a>
+    
+            <div class="docstring"><p>設定パーサー</p>
+</div>
+
+
+                            </div>
                             <div id="MemberSection.config_load" class="classattr">
                                         <input id="MemberSection.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -671,21 +710,20 @@
 
     </div>
     <a class="headerlink" href="#MemberSection.config_load"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MemberSection.config_load-57"><a href="#MemberSection.config_load-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
-</span><span id="MemberSection.config_load-58"><a href="#MemberSection.config_load-58"><span class="linenos">58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
-</span><span id="MemberSection.config_load-59"><a href="#MemberSection.config_load-59"><span class="linenos">59</span></a>
-</span><span id="MemberSection.config_load-60"><a href="#MemberSection.config_load-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="MemberSection.config_load-61"><a href="#MemberSection.config_load-61"><span class="linenos">61</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
-</span><span id="MemberSection.config_load-62"><a href="#MemberSection.config_load-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MemberSection.config_load-63"><a href="#MemberSection.config_load-63"><span class="linenos">63</span></a>
-</span><span id="MemberSection.config_load-64"><a href="#MemberSection.config_load-64"><span class="linenos">64</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">_parser</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MemberSection.config_load-58"><a href="#MemberSection.config_load-58"><span class="linenos">58</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="MemberSection.config_load-59"><a href="#MemberSection.config_load-59"><span class="linenos">59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み</span>
+</span><span id="MemberSection.config_load-60"><a href="#MemberSection.config_load-60"><span class="linenos">60</span></a>
+</span><span id="MemberSection.config_load-61"><a href="#MemberSection.config_load-61"><span class="linenos">61</span></a><span class="sd">        Args:</span>
+</span><span id="MemberSection.config_load-62"><a href="#MemberSection.config_load-62"><span class="linenos">62</span></a><span class="sd">            outer (AppConfig): 設定クラスオブジェクト</span>
+</span><span id="MemberSection.config_load-63"><a href="#MemberSection.config_load-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MemberSection.config_load-64"><a href="#MemberSection.config_load-64"><span class="linenos">64</span></a>
 </span><span id="MemberSection.config_load-65"><a href="#MemberSection.config_load-65"><span class="linenos">65</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
 </span><span id="MemberSection.config_load-66"><a href="#MemberSection.config_load-66"><span class="linenos">66</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="MemberSection.config_load-67"><a href="#MemberSection.config_load-67"><span class="linenos">67</span></a>            <span class="bp">self</span><span class="p">,</span>
 </span><span id="MemberSection.config_load-68"><a href="#MemberSection.config_load-68"><span class="linenos">68</span></a>        <span class="p">)</span>
 </span><span id="MemberSection.config_load-69"><a href="#MemberSection.config_load-69"><span class="linenos">69</span></a>
 </span><span id="MemberSection.config_load-70"><a href="#MemberSection.config_load-70"><span class="linenos">70</span></a>        <span class="c1"># 呼び出しキーワード取り込み</span>
-</span><span id="MemberSection.config_load-71"><a href="#MemberSection.config_load-71"><span class="linenos">71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</span><span id="MemberSection.config_load-71"><a href="#MemberSection.config_load-71"><span class="linenos">71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">commandword</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;commandword&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;メンバー一覧&quot;</span><span class="p">)</span>
 </span><span id="MemberSection.config_load-72"><a href="#MemberSection.config_load-72"><span class="linenos">72</span></a>
 </span><span id="MemberSection.config_load-73"><a href="#MemberSection.config_load-73"><span class="linenos">73</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
@@ -856,7 +894,8 @@
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="../../bootstrap/section.html#BaseSection">libs.bootstrap.section.BaseSection</a></dt>
-                                <dd id="MemberSection.initialization" class="function"><a href="../../bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
+                                <dd id="MemberSection.section_proxy" class="variable"><a href="../../bootstrap/section.html#BaseSection.section_proxy">section_proxy</a></dd>
+                <dd id="MemberSection.initialization" class="function"><a href="../../bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
                 <dd id="MemberSection.to_dict" class="function"><a href="../../bootstrap/section.html#BaseSection.to_dict">to_dict</a></dd>
 
             </div>

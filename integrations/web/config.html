@@ -178,7 +178,7 @@
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;web&quot;</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;web: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -265,7 +265,7 @@
 </span><span id="SvcConfig-63"><a href="#SvcConfig-63"><span class="linenos">63</span></a>
 </span><span id="SvcConfig-64"><a href="#SvcConfig-64"><span class="linenos">64</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="SvcConfig-65"><a href="#SvcConfig-65"><span class="linenos">65</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="SvcConfig-66"><a href="#SvcConfig-66"><span class="linenos">66</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
+</span><span id="SvcConfig-66"><a href="#SvcConfig-66"><span class="linenos">66</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
 </span><span id="SvcConfig-67"><a href="#SvcConfig-67"><span class="linenos">67</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;web&quot;</span>
 </span><span id="SvcConfig-68"><a href="#SvcConfig-68"><span class="linenos">68</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="SvcConfig-69"><a href="#SvcConfig-69"><span class="linenos">69</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;web: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -551,6 +551,8 @@
                                 <dl>
                                     <div><dt><a href="../../libs/bootstrap/section.html#BaseSection">libs.bootstrap.section.BaseSection</a></dt>
                                 <dd id="SvcConfig.section" class="variable"><a href="../../libs/bootstrap/section.html#BaseSection.section">section</a></dd>
+                <dd id="SvcConfig.main_parser" class="variable"><a href="../../libs/bootstrap/section.html#BaseSection.main_parser">main_parser</a></dd>
+                <dd id="SvcConfig.section_proxy" class="variable"><a href="../../libs/bootstrap/section.html#BaseSection.section_proxy">section_proxy</a></dd>
                 <dd id="SvcConfig.initialization" class="function"><a href="../../libs/bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
                 <dd id="SvcConfig.to_dict" class="function"><a href="../../libs/bootstrap/section.html#BaseSection.to_dict">to_dict</a></dd>
 
