@@ -3,11 +3,11 @@ libs/registry/team.py
 """
 
 import logging
-from typing import TYPE_CHECKING, TypedDict
+from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.app_config import BaseSection
-from libs.data import initialization, lookup, modify
+from libs.data import initialization, loader, modify
 from libs.utils import dbutil, formatter, textutil, validator
 
 if TYPE_CHECKING:
@@ -21,7 +21,7 @@ class TeamDataDict(TypedDict):
     """チームID"""
     team: str
     """チーム名"""
-    member: list[str]
+    members: list[str]
     """所属メンバーリスト"""
 
 
@@ -30,7 +30,7 @@ class TeamSection(BaseSection):
 
     section: str
     info: list[TeamDataDict]
-    """チーム情報"""
+    """チーム情報(キャッシュデータ)"""
     registration_limit: int
     """登録チーム上限数"""
     character_limit: int
@@ -79,7 +79,7 @@ class TeamSection(BaseSection):
 
         for x in self.info:
             if x.get("team") == team:
-                return x.get("member")
+                return x.get("members")
         return []
 
     def which(self, name: str) -> str | None:
@@ -110,6 +110,20 @@ class TeamSection(BaseSection):
 
         return [x.get("team") for x in self.info]
 
+    @property
+    def get_info(self) -> list[TeamDataDict]:
+        """全チーム情報取得
+
+        Returns:
+            list[TeamDataDict]: チーム情報
+        """
+
+        ret = loader.read_data("TEAM_INFO", cast(dict, g.params)).to_dict(orient="records")
+        for row in ret:
+            row.update(members=str(row["members"]).split(","))
+
+        return cast(list[TeamDataDict], ret)
+
 
 def create(argument: list) -> str:
     """チーム作成
@@ -138,7 +152,7 @@ def create(argument: list) -> str:
                 )
                 resultdb.commit()
                 resultdb.close()
-                g.cfg.team.info = lookup.get_team_info()
+                g.cfg.team.info = g.cfg.team.get_info
                 msg = f"チーム「{team_name}」を登録しました。"
                 logging.info("add new team: %s", team_name)
 
@@ -172,7 +186,7 @@ def delete(argument: list) -> str:
             )
             resultdb.commit()
             resultdb.close()
-            g.cfg.team.info = lookup.get_team_info()
+            g.cfg.team.info = g.cfg.team.get_info
             msg += f"\nチーム「{team_name}」を削除しました。"
             logging.info("team delete: %s", team_name)
 
@@ -230,7 +244,7 @@ def append(argument: list) -> str:
             )
             resultdb.commit()
             resultdb.close()
-            g.cfg.team.info = lookup.get_team_info()
+            g.cfg.team.info = g.cfg.team.get_info
             msg = f"チーム「{team_name}」に「{player_name}」を所属させました。"
             logging.info("team participation: %s -> %s", team_name, player_name)
 
@@ -282,7 +296,7 @@ def remove(argument: list) -> str:
             )
             resultdb.commit()
             resultdb.close()
-            g.cfg.team.info = lookup.get_team_info()
+            g.cfg.team.info = g.cfg.team.get_info
             msg = f"チーム「{team_name}」から「{player_name}」を離脱させました。"
             logging.info("team breakaway: %s -> %s", team_name, player_name)
 
@@ -306,7 +320,7 @@ def clear() -> str:
     resultdb.close()
 
     initialization.setup_resultdb(g.cfg.setting.database_file)
-    g.cfg.member.info = lookup.get_member_info()
-    g.cfg.team.info = lookup.get_team_info()
+    g.cfg.member.info = g.cfg.member.get_info
+    g.cfg.team.info = g.cfg.team.get_info
 
     return msg

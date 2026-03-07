@@ -20,8 +20,6 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.commands.registry.member import MemberDataDict
-    from libs.commands.registry.team import TeamDataDict
     from libs.types import PlaceholderDict
 
 
@@ -164,72 +162,6 @@ def get_guest() -> str:
     return guest_name
 
 
-def get_member_info() -> list["MemberDataDict"]:
-    """メンバー情報取得
-
-    Returns:
-        list[MemberDataDict]: メンバー情報
-    """
-
-    ret: list["MemberDataDict"] = []
-
-    with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
-        rows = conn.execute("select name, id from member where id != 0;")
-        id_list = dict(rows.fetchall())
-
-    with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
-        rows = conn.execute("select name, member from alias")
-        alias_list = dict(rows.fetchall())
-
-    for name, id in id_list.items():
-        ret.append(
-            {
-                "id": id,
-                "name": name,
-                "alias": [k for k, v in alias_list.items() if v == name],
-            }
-        )
-
-    return ret
-
-
-def get_team_info() -> list["TeamDataDict"]:
-    """チーム情報取得
-
-    Returns:
-        list[TeamDataDict]: チーム情報
-    """
-
-    ret: list["TeamDataDict"] = []
-
-    with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
-        rows = conn.execute(
-            """
-                select
-                    team.id as id,
-                    team.name as team,
-                    group_concat(member.name) as member
-                from
-                    team
-                left join member on
-                    team.id == member.team_id
-                group by
-                    team.id
-            """
-        )
-
-        for row in rows.fetchall():
-            ret.append(
-                {
-                    "id": int(row["id"]),
-                    "team": str(row["team"]),
-                    "member": str(row["member"]).split(","),
-                }
-            )
-
-    return ret
-
-
 def regulation_list(word_type: int = 0) -> list:
     """登録済みワードリストを取得する
 
@@ -312,8 +244,8 @@ def read_memberslist():
     """メンバー情報/チーム情報の読み込み"""
 
     g.cfg.member.guest_name = get_guest()
-    g.cfg.member.info = get_member_info()
-    g.cfg.team.info = get_team_info()
+    g.cfg.member.info = g.cfg.member.get_info
+    g.cfg.team.info = g.cfg.team.get_info
 
     logging.debug("guest_name: %s", g.cfg.member.guest_name)
     logging.debug("member_list: %s", g.cfg.member.lists)
@@ -327,20 +259,11 @@ def enumeration_all_members() -> list[str]:
         list[str]: メンバー名(別名含む)/チーム名のリスト
     """
 
-    member_list: list["MemberDataDict"] = get_member_info()
-    team_list: list["TeamDataDict"] = get_team_info()
     ret_list: list[str] = []
 
-    # チャンネル個別設定探索
-    for section_name in g.cfg.main_parser.sections():
-        if channel_config := g.cfg.main_parser[section_name].get("channel_config"):
-            g.cfg.overwrite(Path(channel_config), "setting")
-            member_list.extend(get_member_info())
-            team_list.extend(get_team_info())
-
-    for member in member_list:
+    for member in g.cfg.member.info:
         ret_list.append(member.get("name"))
         ret_list.extend(member.get("alias"))
-    ret_list.extend([team.get("team") for team in team_list])
+    ret_list.extend([team.get("team") for team in g.cfg.team.info])
 
     return list(set(ret_list))
