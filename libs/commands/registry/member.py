@@ -19,12 +19,18 @@ class MemberDataDict(TypedDict):
 
     id: int
     """メンバーID"""
-
     name: str
     """メンバー名"""
-
     alias: list[str]
     """別名リスト"""
+    team: str
+    """所属チーム"""
+    last_update: int
+    """最終更新日"""
+    elapsed_day: int
+    """経過日数"""
+    game_count: int
+    """プレイゲーム数"""
 
 
 class MemberSection(BaseSection):
