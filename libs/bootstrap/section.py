@@ -1,5 +1,5 @@
 """
-libs/bootstrap/base_section.py
+libs/bootstrap/section.py
 """
 
 import logging

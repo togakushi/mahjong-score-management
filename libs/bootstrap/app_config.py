@@ -1,5 +1,5 @@
 """
-libs/bootstrap/config.py
+libs/bootstrap/app_config.py
 """
 
 import logging
