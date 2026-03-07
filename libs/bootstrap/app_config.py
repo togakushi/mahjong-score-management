@@ -22,6 +22,8 @@ from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
+    from configparser import SectionProxy
+
     from libs.bootstrap.section import SubCommands
 
 
@@ -29,6 +31,8 @@ class DropItems(BaseSection):
     """非表示項目リスト"""
 
     section: str
+    main_parser: ConfigParser
+    section_proxy: "SectionProxy"
     results: set[str]
     """成績サマリ非表示項目"""
     ranking: set[str]
@@ -78,6 +82,8 @@ class BadgeDisplay(BaseSection):
         table: GradeTableDict = field(default_factory=GradeTableDict)
 
     section: str
+    main_parser: ConfigParser
+    section_proxy: "SectionProxy"
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
 
     def __init__(self, outer: "AppConfig"):
