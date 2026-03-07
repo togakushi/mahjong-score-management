@@ -42,8 +42,9 @@ class MemberSection(BaseSection):
     guest_name: str
     """未登録メンバー名称"""
 
-    def __init__(self):
+    def __init__(self, outer: "AppConfig"):
         self.section = "member"
+        self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
@@ -60,14 +61,13 @@ class MemberSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
         self._reset()
         super().__init__(
             self,
         )
 
         # 呼び出しキーワード取り込み
-        self.commandword = [x.strip() for x in self._parser.get(self.section, "commandword", fallback="メンバー一覧").split(",")]
+        self.commandword = self.getlist("commandword", fallback="メンバー一覧")
 
         logging.debug("%s: %s", self.section, self)
 
