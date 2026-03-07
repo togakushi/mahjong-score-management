@@ -21,8 +21,8 @@ class HelpConfig(SubCommands):
     """helpセクション処理"""
 
     def __init__(self):
-        self.default_commandword = "麻雀ヘルプ"
-        self.section = "help"
+        self.default_commandword: str = "麻雀ヘルプ"
+        self.section: str = "help"
         self.default_reset()
 
 

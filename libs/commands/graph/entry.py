@@ -18,8 +18,8 @@ class GraphConfig(SubCommands):
     """graphセクション処理"""
 
     def __init__(self):
-        self.default_commandword = "麻雀グラフ"
-        self.section = "graph"
+        self.default_commandword: str = "麻雀グラフ"
+        self.section: str = "graph"
         self.default_reset()
 
 

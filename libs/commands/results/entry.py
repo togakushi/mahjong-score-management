@@ -18,8 +18,8 @@ class ResultsConfig(SubCommands):
     """resultsセクション処理"""
 
     def __init__(self):
-        self.default_commandword = "麻雀成績"
-        self.section = "results"
+        self.default_commandword: str = "麻雀成績"
+        self.section: str = "results"
         self.default_reset()
 
 
