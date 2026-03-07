@@ -42,8 +42,9 @@ class MemberSection(BaseSection):
     guest_name: str
     """未登録メンバー名称"""
 
-    def __init__(self):
+    def __init__(self, outer: "AppConfig"):
         self.section = "member"
+        self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):

@@ -69,11 +69,11 @@ class BaseSection(CommonMethodMixin):
     """セクション名"""
 
     def __init__(self, outer: SubClassType):
-        parser = outer._parser
-        assert parser
-        if not hasattr(self, "section") or self.section not in parser:
+        self.main_parser = outer.main_parser
+        assert self.main_parser
+        if not hasattr(self, "section") or self.section not in self.main_parser:
             return
-        self._section = parser[self.section]
+        self._section = self.main_parser[self.section]
 
         self.initialization()
 
@@ -173,7 +173,7 @@ class MahjongSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
+        self.main_parser = outer.main_parser
         super().__init__(self)
 
         # デフォルト値
@@ -263,7 +263,7 @@ class SettingSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
+        self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
 
@@ -349,13 +349,12 @@ class AliasSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
+        self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
 
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
-        list_data = [x.strip() for x in str(self._parser.get("alias", "del", fallback="del")).split(",")]
-        self.delete.extend(list_data)
+        self.delete.extend(self.getlist("del", fallback="del"))
 
         logging.debug("%s: %s", self.section, self)
 
@@ -375,8 +374,8 @@ class SubCommands(BaseSection, CommandAttrs):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self._parser = outer._parser
-        self._section = outer._parser[self.section]
+        self.main_parser = outer.main_parser
+        self._section = outer.main_parser[self.section]
         self.default_reset()
         super().__init__(self)
 

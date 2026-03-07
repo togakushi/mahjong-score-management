@@ -26,15 +26,15 @@ class DropItems(BaseSection):
     """非表示項目リスト"""
 
     def __init__(self, outer: "AppConfig"):
-        self._parser = outer._parser
+        self.main_parser = outer.main_parser
 
         # 設定値取り込み
         super().__init__(self)
-        self.results: set = {x.strip() for x in self._parser.get("results", "dropitems", fallback="").split(",")}
+        self.results: set = {x.strip() for x in self.main_parser.get("results", "dropitems", fallback="").split(",")}
         """成績サマリ非表示項目"""
-        self.ranking: set = {x.strip() for x in self._parser.get("ranking", "dropitems", fallback="").split(",")}
+        self.ranking: set = {x.strip() for x in self.main_parser.get("ranking", "dropitems", fallback="").split(",")}
         """ランキング/レーティング非表示項目"""
-        self.report: set = {x.strip() for x in self._parser.get("report", "dropitems", fallback="").split(",")}
+        self.report: set = {x.strip() for x in self.main_parser.get("report", "dropitems", fallback="").split(",")}
         """レポート非表示項目"""
 
         # 固定ワード
@@ -63,13 +63,13 @@ class BadgeDisplay(BaseSection):
 
     def __init__(self, outer: "AppConfig"):
         self.section = "grade"
-        self._parser = outer._parser
+        self.main_parser = outer.main_parser
 
-        self.grade.table_name = self._parser.get(self.section, "table_name", fallback="")
+        self.grade.table_name = self.main_parser.get(self.section, "table_name", fallback="")
 
 
 class AppConfig:
-    """コンフィグ解析クラス"""
+    """アプリケーション設定"""
 
     def __init__(self, config_file: Path):
         self.config_file = config_file
@@ -114,9 +114,9 @@ class AppConfig:
         self.alias = AliasSection()
         """aliasセクション設定値"""
 
-        self.member = MemberSection()
+        self.member = MemberSection(self)
         """memberセクション設定値"""
-        self.team = TeamSection()
+        self.team = TeamSection(self)
         """teamセクション設定値"""
 
         self.dropitems = DropItems(self)

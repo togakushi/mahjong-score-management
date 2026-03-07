@@ -63,7 +63,7 @@ class SvcConfig(BaseSection, IntegrationsConfig):
 
     def __post_init__(self):
         assert self.main_conf
-        self._parser = self.main_conf
+        self.main_parser = self.main_conf
         self.section = "slack"
         super().__init__(self)
         logging.debug("slack: %s", self)

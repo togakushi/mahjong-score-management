@@ -20,6 +20,6 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     def __post_init__(self):
         assert self.main_conf
         self.section = "standard_io"
-        self._parser = self.main_conf
+        self.main_parser = self.main_conf
         super().__init__(self)
         logging.debug("standard_io: %s", self)

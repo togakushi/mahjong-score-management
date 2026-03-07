@@ -40,8 +40,9 @@ class TeamSection(BaseSection):
     friendly_fire: bool
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
-    def __init__(self):
+    def __init__(self, outer: "AppConfig"):
         self.section = "team"
+        self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
