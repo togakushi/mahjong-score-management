@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.bootstrap.base_section import SubCommands
+from libs.bootstrap.section import SubCommands
 from libs.data import lookup
 from libs.types import StyleOptions
 from libs.utils import dictutil

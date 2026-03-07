@@ -16,7 +16,7 @@ from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 
 if TYPE_CHECKING:
-    from libs.types import SubCommandsConfigType
+    from libs.bootstrap.section import SubCommands
 
 
 def test_empty_config(monkeypatch):
@@ -74,7 +74,7 @@ def test_subcommand_default(input_args, monkeypatch):
         "interval": 80,
     }
 
-    sub_command: SubCommandsConfigType
+    sub_command: SubCommands
     match input_args:
         case "results":
             sub_command = ResultsConfig()

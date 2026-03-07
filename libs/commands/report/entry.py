@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations.protocols import CommandType
-from libs.bootstrap.base_section import SubCommands
+from libs.bootstrap.section import SubCommands
 from libs.commands.report import matrix, monthly, stats_list, stats_report, winner
 from libs.utils import dictutil
 

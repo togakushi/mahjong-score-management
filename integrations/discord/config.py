@@ -46,7 +46,8 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     def __post_init__(self):
         assert self.main_conf
         self._parser = self.main_conf
-        super().__init__(self, "discord")
+        self.section = "discord"
+        super().__init__(self)
         logging.debug("discord: %s", self)
 
         # 先頭にスラッシュが付いている場合は除去

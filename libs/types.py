@@ -15,12 +15,8 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import AliasSection, BadgeDisplay, DropItems, MahjongSection, MemberSection, SettingSection, TeamSection
-    from libs.commands.graph.entry import GraphConfig
-    from libs.commands.help.entry import HelpConfig
-    from libs.commands.ranking.entry import RankingConfig
-    from libs.commands.report.entry import ReportConfig
-    from libs.commands.results.entry import ResultsConfig
+    from libs.bootstrap.app_config import BadgeDisplay, DropItems, MemberSection, TeamSection
+    from libs.bootstrap.section import AliasSection, MahjongSection, SettingSection
     from libs.utils.timekit import ExtendedDatetime
 
 if TYPE_CHECKING:
@@ -48,17 +44,6 @@ else:
     SettingClassType: TypeAlias = Any
 """設定関連クラス"""
 
-if TYPE_CHECKING:
-    SubCommandsConfigType: TypeAlias = Union[
-        "ResultsConfig",
-        "GraphConfig",
-        "RankingConfig",
-        "ReportConfig",
-        "HelpConfig",
-    ]
-else:
-    SubCommandsConfigType: TypeAlias = Any
-"""サブコマンド設定クラス"""
 
 MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
 """メッセージ型
