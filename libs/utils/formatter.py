@@ -230,6 +230,10 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
         "p2": "南家",
         "p3": "西家",
         "p4": "北家",
+        "alias": "別名",
+        "members": "所属メンバー",
+        "last_update": "最終更新日",
+        "elapsed_day": "経過日数",
         #
         "playtime": "日時",
         "rate": "レート",
