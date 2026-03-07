@@ -60,10 +60,11 @@ class BadgeDisplay(BaseSection):
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
 
     def __init__(self, outer: "AppConfig"):
+        self.section: str = "grade"
         self._parser = outer._parser
         super().__init__(self)
 
-        self.grade.table_name = self._parser.get("grade", "table_name", fallback="")
+        self.grade.table_name = self.get("table_name", fallback="")
 
 
 class AppConfig:
