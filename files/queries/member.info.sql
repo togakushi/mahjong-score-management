@@ -24,13 +24,13 @@ group by
     member
 )
 select
-    -- member.id,
-    member.name as '名前',
-    alias_list as '別名',
-    ifnull(team.name, '未所属') as '所属チーム',
-    last_update as '最終更新日',
-    elapsed_day as '経過日数',
-    game_count as 'プレイ回数'
+    member.id,
+    member.name as name,
+    alias_list as alias,
+    ifnull(team.name, '未所属') as team,
+    last_update,
+    elapsed_day,
+    game_count
 from
     member
 left join team on

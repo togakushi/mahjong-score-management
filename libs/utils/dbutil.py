@@ -160,6 +160,9 @@ def query_modification(sql: str) -> str:
     # 集計対象ルール
     if g.params.get("rule_set"):
         sql = sql.replace("<<rule_list>>", ":" + ", :".join(g.params["rule_set"]))
+    else:
+        sql = sql.replace("and rule_version in (<<rule_list>>)", "")
+        sql = sql.replace("and results.rule_version in (<<rule_list>>)", "")
 
     # 集計モード
     match g.params.get("mode"):

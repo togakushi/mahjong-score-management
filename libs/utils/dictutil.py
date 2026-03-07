@@ -49,8 +49,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
 
     # メンバー情報更新
     g.cfg.member.guest_name = lookup.get_guest()
-    g.cfg.member.info = lookup.get_member_info()
-    g.cfg.team.info = lookup.get_team_info()
+    g.cfg.member.info = g.cfg.member.get_info
+    g.cfg.team.info = g.cfg.team.get_info
 
     ret_dict: "PlaceholderDict" = cast(
         "PlaceholderDict",

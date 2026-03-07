@@ -18,8 +18,8 @@ class RankingConfig(SubCommands):
     """rankingセクション処理"""
 
     def __init__(self):
-        self.default_commandword = "麻雀ランキング"
-        self.section = "ranking"
+        self.default_commandword: str = "麻雀ランキング"
+        self.section: str = "ranking"
         self.default_reset()
 
 

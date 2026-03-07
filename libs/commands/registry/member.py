@@ -3,11 +3,11 @@ libs/commands/registry/member.py
 """
 
 import logging
-from typing import TYPE_CHECKING, TypedDict
+from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.app_config import BaseSection
-from libs.data import lookup, modify
+from libs.data import loader, modify
 from libs.utils import dbutil, textutil, validator
 
 if TYPE_CHECKING:
@@ -32,7 +32,7 @@ class MemberSection(BaseSection):
 
     section: str
     info: list[MemberDataDict]
-    """メンバー情報"""
+    """メンバー情報(キャッシュデータ)"""
     registration_limit: int
     """登録メンバー上限数"""
     character_limit: int
@@ -122,6 +122,20 @@ class MemberSection(BaseSection):
             ret.extend(self.alias(name))
 
         return list(set(ret))
+
+    @property
+    def get_info(self) -> list[MemberDataDict]:
+        """全メンバー情報取得
+
+        Returns:
+            list[MemberDataDict]: メンバー情報
+        """
+
+        ret = loader.read_data("MEMBER_INFO", cast(dict, g.params)).to_dict(orient="records")
+        for row in ret:
+            row.update(alias=str(row["alias"]).split(","))
+
+        return cast(list[MemberDataDict], ret)
 
 
 def append(argument: list) -> str:
@@ -227,7 +241,8 @@ def append(argument: list) -> str:
     resultdb.commit()
     resultdb.close()
 
-    g.cfg.member.info = lookup.get_member_info()
+    g.cfg.member.info = g.cfg.member.get_info
+
     return msg
 
 
@@ -278,5 +293,6 @@ def remove(argument: list) -> str:
     resultdb.commit()
     resultdb.close()
 
-    g.cfg.member.info = lookup.get_member_info()
+    g.cfg.member.info = g.cfg.member.get_info
+
     return msg

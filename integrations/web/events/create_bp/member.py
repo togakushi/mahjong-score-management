@@ -67,13 +67,13 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
         if member_df.empty:
             data.update(member_table="<p>登録済みメンバーはいません。</p>")
         else:
-            data.update(member_table=adapter.functions.to_styled_html(member_df, padding))
+            data.update(member_table=adapter.functions.to_styled_html(member_df.drop(columns=["id"]), padding))
 
-        team_df = loader.read_data("TEAM_INFO")
+        team_df = loader.read_data("TEAM_INFO", cast(dict, g.params))
         if team_df.empty:
             data.update(team_table="<p>登録済みチームはありません。</p>")
         else:
-            data.update(team_table=adapter.functions.to_styled_html(team_df, padding))
+            data.update(team_table=adapter.functions.to_styled_html(team_df.drop(columns=["id"]), padding))
 
         return render_template("registry.html", **data)
 
