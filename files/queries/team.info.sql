@@ -1,8 +1,8 @@
 -- team.info.sql
 select
-    -- team.id,
-    team.name as 'チーム名',
-    group_concat(member.name) as '所属メンバー'
+    team.id,
+    team.name as team,
+    group_concat(member.name) as members
 from
     team
 left join member on
