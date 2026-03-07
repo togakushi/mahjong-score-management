@@ -58,14 +58,14 @@ class BadgeDisplay(BaseSection):
         table_name: str = field(default=str())
         table: GradeTableDict = field(default_factory=GradeTableDict)
 
+    section: str
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
 
     def __init__(self, outer: "AppConfig"):
         self.section = "grade"
         self._parser = outer._parser
-        super().__init__(self)
 
-        self.grade.table_name = self.get("table_name", fallback="")
+        self.grade.table_name = self._parser.get(self.section, "table_name", fallback="")
 
 
 class AppConfig:
