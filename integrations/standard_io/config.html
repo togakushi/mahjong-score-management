@@ -84,9 +84,10 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;standard_io&quot;</span><span class="p">)</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;standard_io: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;standard_io&quot;</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;standard_io: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -97,7 +98,7 @@
                     <div class="decorator decorator-dataclass">@dataclass</div>
 
     <span class="def">class</span>
-    <span class="name">SvcConfig</span><wbr>(<span class="base"><a href="../../libs/bootstrap/base_section.html#BaseSection">libs.bootstrap.base_section.BaseSection</a></span>, <span class="base"><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></span>):
+    <span class="name">SvcConfig</span><wbr>(<span class="base"><a href="../../libs/bootstrap/section.html#BaseSection">libs.bootstrap.section.BaseSection</a></span>, <span class="base"><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></span>):
 
                 <label class="view-source-button" for="SvcConfig-view-source"><span>View Source</span></label>
 
@@ -109,9 +110,10 @@
 </span><span id="SvcConfig-20"><a href="#SvcConfig-20"><span class="linenos">20</span></a>
 </span><span id="SvcConfig-21"><a href="#SvcConfig-21"><span class="linenos">21</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="SvcConfig-22"><a href="#SvcConfig-22"><span class="linenos">22</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="SvcConfig-23"><a href="#SvcConfig-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
-</span><span id="SvcConfig-24"><a href="#SvcConfig-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;standard_io&quot;</span><span class="p">)</span>
-</span><span id="SvcConfig-25"><a href="#SvcConfig-25"><span class="linenos">25</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;standard_io: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span id="SvcConfig-23"><a href="#SvcConfig-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;standard_io&quot;</span>
+</span><span id="SvcConfig-24"><a href="#SvcConfig-24"><span class="linenos">24</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_conf</span>
+</span><span id="SvcConfig-25"><a href="#SvcConfig-25"><span class="linenos">25</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span id="SvcConfig-26"><a href="#SvcConfig-26"><span class="linenos">26</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;standard_io: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -134,21 +136,21 @@
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt><a href="../../libs/bootstrap/base_section.html#BaseSection">libs.bootstrap.base_section.BaseSection</a></dt>
-                                <dd id="SvcConfig.section" class="variable"><a href="../../libs/bootstrap/base_section.html#BaseSection.section">section</a></dd>
-                <dd id="SvcConfig.initialization" class="function"><a href="../../libs/bootstrap/base_section.html#BaseSection.initialization">initialization</a></dd>
-                <dd id="SvcConfig.to_dict" class="function"><a href="../../libs/bootstrap/base_section.html#BaseSection.to_dict">to_dict</a></dd>
+                                    <div><dt><a href="../../libs/bootstrap/section.html#BaseSection">libs.bootstrap.section.BaseSection</a></dt>
+                                <dd id="SvcConfig.section" class="variable"><a href="../../libs/bootstrap/section.html#BaseSection.section">section</a></dd>
+                <dd id="SvcConfig.initialization" class="function"><a href="../../libs/bootstrap/section.html#BaseSection.initialization">initialization</a></dd>
+                <dd id="SvcConfig.to_dict" class="function"><a href="../../libs/bootstrap/section.html#BaseSection.to_dict">to_dict</a></dd>
 
             </div>
-            <div><dt><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin">libs.bootstrap.base_section.CommonMethodMixin</a></dt>
-                                <dd id="SvcConfig.get" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.get">get</a></dd>
-                <dd id="SvcConfig.getint" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.getint">getint</a></dd>
-                <dd id="SvcConfig.getfloat" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.getfloat">getfloat</a></dd>
-                <dd id="SvcConfig.getboolean" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.getboolean">getboolean</a></dd>
-                <dd id="SvcConfig.getlist" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.getlist">getlist</a></dd>
-                <dd id="SvcConfig.keys" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.keys">keys</a></dd>
-                <dd id="SvcConfig.values" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.values">values</a></dd>
-                <dd id="SvcConfig.items" class="function"><a href="../../libs/bootstrap/base_section.html#CommonMethodMixin.items">items</a></dd>
+            <div><dt><a href="../../libs/bootstrap/section.html#CommonMethodMixin">libs.bootstrap.section.CommonMethodMixin</a></dt>
+                                <dd id="SvcConfig.get" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.get">get</a></dd>
+                <dd id="SvcConfig.getint" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.getint">getint</a></dd>
+                <dd id="SvcConfig.getfloat" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.getfloat">getfloat</a></dd>
+                <dd id="SvcConfig.getboolean" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.getboolean">getboolean</a></dd>
+                <dd id="SvcConfig.getlist" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.getlist">getlist</a></dd>
+                <dd id="SvcConfig.keys" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.keys">keys</a></dd>
+                <dd id="SvcConfig.values" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.values">values</a></dd>
+                <dd id="SvcConfig.items" class="function"><a href="../../libs/bootstrap/section.html#CommonMethodMixin.items">items</a></dd>
 
             </div>
             <div><dt><a href="../base/interface.html#IntegrationsConfig">integrations.base.interface.IntegrationsConfig</a></dt>

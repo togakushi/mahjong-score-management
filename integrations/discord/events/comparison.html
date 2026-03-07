@@ -84,7 +84,7 @@
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">libs.global_value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">g</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">integrations.protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">ActionStatus</span><span class="p">,</span> <span class="n">CommandType</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">modify</span><span class="p">,</span> <span class="n">search</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.datamodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComparisonResults</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.domain.datamodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComparisonResults</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.domain.score</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameResult</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">RemarkDict</span><span class="p">,</span> <span class="n">StyleOptions</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">formatter</span><span class="p">,</span> <span class="n">validator</span>
@@ -347,7 +347,7 @@
 <div class="attr function">
             
         <span class="def">async def</span>
-        <span class="name">search_messages</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/datamodels.html#ComparisonResults">libs.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
+        <span class="name">search_messages</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/domain/datamodels.html#ComparisonResults">libs.domain.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="search_messages-view-source"><span>View Source</span></label>
 
@@ -409,7 +409,7 @@
 <div class="attr function">
             
         <span class="def">async def</span>
-        <span class="name">check_omission</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/datamodels.html#ComparisonResults">libs.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
+        <span class="name">check_omission</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/domain/datamodels.html#ComparisonResults">libs.domain.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="check_omission-view-source"><span>View Source</span></label>
 
@@ -490,7 +490,7 @@
 <div class="attr function">
             
         <span class="def">async def</span>
-        <span class="name">check_remarks</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/datamodels.html#ComparisonResults">libs.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
+        <span class="name">check_remarks</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/domain/datamodels.html#ComparisonResults">libs.domain.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="check_remarks-view-source"><span>View Source</span></label>
 
@@ -578,7 +578,7 @@
 <div class="attr function">
             
         <span class="def">async def</span>
-        <span class="name">check_total_score</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/datamodels.html#ComparisonResults">libs.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
+        <span class="name">check_total_score</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">results</span><span class="p">:</span> <span class="n"><a href="../../../libs/domain/datamodels.html#ComparisonResults">libs.domain.datamodels.ComparisonResults</a></span>,</span><span class="param">	<span class="n">messages_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="../../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="check_total_score-view-source"><span>View Source</span></label>
 
