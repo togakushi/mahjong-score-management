@@ -66,6 +66,7 @@ class BaseSection(CommonMethodMixin):
     """共通処理"""
 
     section: str
+    """セクション名"""
 
     def __init__(self, outer: SubClassType):
         parser = outer._parser
@@ -141,6 +142,7 @@ class MahjongSection(BaseSection):
     """mahjongセクション処理"""
 
     def __init__(self):
+        self.section = "mahjong"
         self.mode: Literal[3, 4] = 4
         """ 集計モード切替(四人打ち/三人打ち)"""
         self.rule_version: str = str("default_rule")
@@ -171,7 +173,6 @@ class MahjongSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self.section: str = "mahjong"
         self._parser = outer._parser
         super().__init__(self)
 
@@ -234,6 +235,7 @@ class SettingSection(BaseSection):
     work_dir: Path
 
     def __init__(self):
+        self.section = "setting"
         self._reset()
 
     def _reset(self):
@@ -261,7 +263,6 @@ class SettingSection(BaseSection):
             outer (AppConfig): 設定クラスオブジェクト
         """
 
-        self.section: str = "setting"
         self._parser = outer._parser
         self._reset()
         super().__init__(self)

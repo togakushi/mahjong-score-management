@@ -60,7 +60,7 @@ class BadgeDisplay(BaseSection):
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
 
     def __init__(self, outer: "AppConfig"):
-        self.section: str = "grade"
+        self.section = "grade"
         self._parser = outer._parser
         super().__init__(self)
 
