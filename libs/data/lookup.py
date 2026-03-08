@@ -249,7 +249,6 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
         case _:
             return []
 
-    print(">>>", commandwords)
     return [x for x in g.keyword_dispatcher if x in commandwords]
 
 

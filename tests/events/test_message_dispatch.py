@@ -10,8 +10,8 @@ import pytest
 import libs.dispatcher
 import libs.global_value as g
 from integrations import factory
-from integrations.protocols import MessageStatus
 from libs.bootstrap import configuration
+from libs.domain.datamodels import MessageStatus
 from tests.events import param_data
 
 

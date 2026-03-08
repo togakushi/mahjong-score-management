@@ -6,9 +6,9 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from integrations.protocols import CommandType
 from libs.bootstrap.app_config import BaseSection
 from libs.data import loader, modify
+from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, textutil, validator
 
 if TYPE_CHECKING:

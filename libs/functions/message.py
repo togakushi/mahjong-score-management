@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from integrations.protocols import CommandType
+from libs.domain.datamodels import CommandType
 from libs.functions.compose import text_item
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format

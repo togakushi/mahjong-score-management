@@ -11,8 +11,8 @@ from contextlib import closing
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from integrations.protocols import ActionStatus, MessageStatus
 from libs.data import lookup
+from libs.domain.datamodels import ActionStatus, MessageStatus
 from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter

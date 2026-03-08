@@ -5,9 +5,9 @@ libs/commands/results/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from integrations.protocols import CommandType
 from libs.bootstrap.section import SubCommands
 from libs.commands.results import detail, summary, versus
+from libs.domain.datamodels import CommandType
 from libs.utils import dictutil
 
 if TYPE_CHECKING:

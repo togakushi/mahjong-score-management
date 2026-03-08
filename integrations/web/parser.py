@@ -3,7 +3,8 @@ integrations/web/parser.py
 """
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
-from integrations.protocols import MessageStatus, MsgData, PostData, StatusData
+from integrations.protocols import MsgData, PostData, StatusData
+from libs.domain.datamodels import MessageStatus
 
 
 class MessageParser(MessageParserDataMixin, MessageParserInterface):

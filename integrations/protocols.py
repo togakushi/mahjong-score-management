@@ -3,8 +3,9 @@ integrations/protocols.py
 """
 
 from dataclasses import dataclass, field, fields, is_dataclass
-from enum import StrEnum
 from typing import TYPE_CHECKING, Any, Optional, Protocol
+
+from libs.domain.datamodels import ActionStatus, ChannelType, CommandType, MessageStatus
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
@@ -12,74 +13,6 @@ if TYPE_CHECKING:
     import pandas as pd  # noqa: F401
 
     from libs.types import MessageType, StyleOptions
-
-
-class MessageStatus(StrEnum):
-    """メッセージステータス"""
-
-    APPEND = "message_append"
-    """新規ポストイベント"""
-    CHANGED = "message_changed"
-    """編集イベント"""
-    DELETED = "message_deleted"
-    """削除イベント"""
-    DO_NOTHING = "do_nothing"
-    """何もしなくてよいイベント"""
-    UNDETERMINED = "undetermined"
-    """未定義状態"""
-
-
-class ChannelType(StrEnum):
-    """チャンネルタイプ"""
-
-    CHANNEL = "normal"
-    """通常チャンネル"""
-    PRIVATE = "private"
-    """プライベートチャンネル"""
-    DIRECT_MESSAGE = "direct_message"
-    """ダイレクトメッセージ"""
-    HOME_APP = "home_app"
-    """Slackのホームアプリ"""
-    SEARCH = "search_api"
-    """検索API"""
-    UNDETERMINED = "undetermined"
-    """未定義状態"""
-
-
-class CommandType(StrEnum):
-    """実行(する/した)サブコマンド"""
-
-    RESULTS = "results"
-    """成績サマリ"""
-    GRAPH = "graph"
-    """グラフ生成"""
-    RANKING = "ranking"
-    """ランキング"""
-    RATING = "rating"
-    """レーティング"""
-    REPORT = "report"
-    """レポート"""
-    MEMBER_LIST = "member"
-    """メンバー一覧"""
-    TEAM_LIST = "team"
-    """チーム一覧"""
-    HELP = "help"
-    """ヘルプ"""
-    COMPARISON = "comparison"
-    """突合処理"""
-    UNKNOWN = "unknown"
-    """未定義"""
-
-
-class ActionStatus(StrEnum):
-    """DBに対する操作"""
-
-    CHANGE = "change"
-    """insert/updateが実行された"""
-    DELETE = "delete"
-    """deleteが実行された"""
-    NOTHING = "nothing"
-    """何もしてない"""
 
 
 class DataMixin:
