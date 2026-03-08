@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from integrations.protocols import ChannelType
+from integrations.protocols import ChannelType, CommandType
 from libs.data import loader
 from libs.domain.score import GameResult
 from libs.utils import dbutil
@@ -201,6 +201,56 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
             ret.append(f"{word}")
 
     return ret
+
+
+def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
+    """ルール識別子で割り当てられているコマンドワードを返す
+
+    Args:
+        rule_version (str): ルール識別子
+        command_type (CommandType): コマンド種別
+
+    Returns:
+        list[str]: コマンドワード
+    """
+
+    keywords: list = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
+    commandwords: list = []
+
+    match command_type:
+        case CommandType.RESULTS:
+            commandwords.append(g.cfg.results.default_commandword)
+            commandwords.extend(g.cfg.results.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.results.command_suffix for command in keywords])
+        case CommandType.GRAPH:
+            commandwords.append(g.cfg.graph.default_commandword)
+            commandwords.extend(g.cfg.graph.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.graph.command_suffix for command in keywords])
+        case CommandType.RANKING:
+            commandwords.append(g.cfg.ranking.default_commandword)
+            commandwords.extend(g.cfg.ranking.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.ranking.command_suffix for command in keywords])
+        case CommandType.REPORT:
+            commandwords.append(g.cfg.report.default_commandword)
+            commandwords.extend(g.cfg.report.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.report.command_suffix for command in keywords])
+        case CommandType.MEMBER_LIST:
+            commandwords.append(g.cfg.member.default_commandword)
+            commandwords.extend(g.cfg.member.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.member.command_suffix for command in keywords])
+        case CommandType.TEAM_LIST:
+            commandwords.append(g.cfg.team.default_commandword)
+            commandwords.extend(g.cfg.team.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.team.command_suffix for command in keywords])
+        case CommandType.HELP:
+            commandwords.append(g.cfg.help.default_commandword)
+            commandwords.extend(g.cfg.help.commandword)
+            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.help.command_suffix for command in keywords])
+        case _:
+            return []
+
+    print(">>>", commandwords)
+    return [x for x in g.keyword_dispatcher if x in commandwords]
 
 
 def exsist_record(ts: str) -> GameResult:
