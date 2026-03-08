@@ -353,17 +353,17 @@
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>                <span class="k">if</span> <span class="s2">&quot;last_time&quot;</span> <span class="ow">in</span> <span class="n">status_data</span><span class="p">:</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">rule_version</span><span class="p">]</span><span class="o">.</span><span class="n">last_time</span> <span class="o">=</span> <span class="n">ExtDt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">status_data</span><span class="p">[</span><span class="s2">&quot;last_time&quot;</span><span class="p">]))</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の情報を辞書で返す</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        Args:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        Returns:</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            dict[str, Any]: ルール情報</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="k">return</span> <span class="p">{</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>                <span class="s2">&quot;rule_version&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">,</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>                <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
@@ -402,47 +402,47 @@
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の集計モードを返す</span>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        Args:</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
 </span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">        Returns:</span>
 </span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">            int: 集計モード</span>
 </span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子のトビカウントフラグを返す</span>
 </span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>
 </span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">        Args:</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>
 </span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        Returns:</span>
 </span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">            bool: トビカウントフラグ</span>
 </span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の未定義ワードタイプを返す</span>
 </span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        Args:</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">        Returns:</span>
 </span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">            int: 未定義ワードタイプ</span>
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の内容を出力する</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        Args:</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        Returns:</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">            str: 内容</span>
@@ -451,7 +451,7 @@
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="n">ret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>        <span class="n">body_data</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>            <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;ルールバージョン&quot;</span><span class="p">,</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">])</span>
 </span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>
 </span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>            <span class="c1"># 集計モード</span>
@@ -472,7 +472,7 @@
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>            <span class="p">)</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="c1"># マッピング情報</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">rule_version</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">rule_version</span> <span class="o">==</span> <span class="n">version</span><span class="p">]:</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">mapping_rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">mapping_rule</span> <span class="o">==</span> <span class="n">rule_version</span><span class="p">]:</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;、&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="p">)])</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>            <span class="k">else</span><span class="p">:</span>
 </span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;---&quot;</span><span class="p">])</span>
@@ -1032,17 +1032,17 @@
 </span><span id="RuleSet-196"><a href="#RuleSet-196"><span class="linenos">196</span></a>                <span class="k">if</span> <span class="s2">&quot;last_time&quot;</span> <span class="ow">in</span> <span class="n">status_data</span><span class="p">:</span>
 </span><span id="RuleSet-197"><a href="#RuleSet-197"><span class="linenos">197</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">rule_version</span><span class="p">]</span><span class="o">.</span><span class="n">last_time</span> <span class="o">=</span> <span class="n">ExtDt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">status_data</span><span class="p">[</span><span class="s2">&quot;last_time&quot;</span><span class="p">]))</span>
 </span><span id="RuleSet-198"><a href="#RuleSet-198"><span class="linenos">198</span></a>
-</span><span id="RuleSet-199"><a href="#RuleSet-199"><span class="linenos">199</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="RuleSet-199"><a href="#RuleSet-199"><span class="linenos">199</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="RuleSet-200"><a href="#RuleSet-200"><span class="linenos">200</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の情報を辞書で返す</span>
 </span><span id="RuleSet-201"><a href="#RuleSet-201"><span class="linenos">201</span></a>
 </span><span id="RuleSet-202"><a href="#RuleSet-202"><span class="linenos">202</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet-203"><a href="#RuleSet-203"><span class="linenos">203</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet-203"><a href="#RuleSet-203"><span class="linenos">203</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet-204"><a href="#RuleSet-204"><span class="linenos">204</span></a>
 </span><span id="RuleSet-205"><a href="#RuleSet-205"><span class="linenos">205</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet-206"><a href="#RuleSet-206"><span class="linenos">206</span></a><span class="sd">            dict[str, Any]: ルール情報</span>
 </span><span id="RuleSet-207"><a href="#RuleSet-207"><span class="linenos">207</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet-208"><a href="#RuleSet-208"><span class="linenos">208</span></a>
-</span><span id="RuleSet-209"><a href="#RuleSet-209"><span class="linenos">209</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="RuleSet-209"><a href="#RuleSet-209"><span class="linenos">209</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="RuleSet-210"><a href="#RuleSet-210"><span class="linenos">210</span></a>            <span class="k">return</span> <span class="p">{</span>
 </span><span id="RuleSet-211"><a href="#RuleSet-211"><span class="linenos">211</span></a>                <span class="s2">&quot;rule_version&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">,</span>
 </span><span id="RuleSet-212"><a href="#RuleSet-212"><span class="linenos">212</span></a>                <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
@@ -1081,47 +1081,47 @@
 </span><span id="RuleSet-245"><a href="#RuleSet-245"><span class="linenos">245</span></a>
 </span><span id="RuleSet-246"><a href="#RuleSet-246"><span class="linenos">246</span></a>        <span class="k">return</span> <span class="n">ret</span>
 </span><span id="RuleSet-247"><a href="#RuleSet-247"><span class="linenos">247</span></a>
-</span><span id="RuleSet-248"><a href="#RuleSet-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="RuleSet-248"><a href="#RuleSet-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="RuleSet-249"><a href="#RuleSet-249"><span class="linenos">249</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の集計モードを返す</span>
 </span><span id="RuleSet-250"><a href="#RuleSet-250"><span class="linenos">250</span></a>
 </span><span id="RuleSet-251"><a href="#RuleSet-251"><span class="linenos">251</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet-252"><a href="#RuleSet-252"><span class="linenos">252</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet-252"><a href="#RuleSet-252"><span class="linenos">252</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet-253"><a href="#RuleSet-253"><span class="linenos">253</span></a>
 </span><span id="RuleSet-254"><a href="#RuleSet-254"><span class="linenos">254</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet-255"><a href="#RuleSet-255"><span class="linenos">255</span></a><span class="sd">            int: 集計モード</span>
 </span><span id="RuleSet-256"><a href="#RuleSet-256"><span class="linenos">256</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet-257"><a href="#RuleSet-257"><span class="linenos">257</span></a>
-</span><span id="RuleSet-258"><a href="#RuleSet-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="RuleSet-258"><a href="#RuleSet-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </span><span id="RuleSet-259"><a href="#RuleSet-259"><span class="linenos">259</span></a>
-</span><span id="RuleSet-260"><a href="#RuleSet-260"><span class="linenos">260</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="RuleSet-260"><a href="#RuleSet-260"><span class="linenos">260</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="RuleSet-261"><a href="#RuleSet-261"><span class="linenos">261</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子のトビカウントフラグを返す</span>
 </span><span id="RuleSet-262"><a href="#RuleSet-262"><span class="linenos">262</span></a>
 </span><span id="RuleSet-263"><a href="#RuleSet-263"><span class="linenos">263</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet-264"><a href="#RuleSet-264"><span class="linenos">264</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet-264"><a href="#RuleSet-264"><span class="linenos">264</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet-265"><a href="#RuleSet-265"><span class="linenos">265</span></a>
 </span><span id="RuleSet-266"><a href="#RuleSet-266"><span class="linenos">266</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet-267"><a href="#RuleSet-267"><span class="linenos">267</span></a><span class="sd">            bool: トビカウントフラグ</span>
 </span><span id="RuleSet-268"><a href="#RuleSet-268"><span class="linenos">268</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet-269"><a href="#RuleSet-269"><span class="linenos">269</span></a>
-</span><span id="RuleSet-270"><a href="#RuleSet-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+</span><span id="RuleSet-270"><a href="#RuleSet-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </span><span id="RuleSet-271"><a href="#RuleSet-271"><span class="linenos">271</span></a>
-</span><span id="RuleSet-272"><a href="#RuleSet-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="RuleSet-272"><a href="#RuleSet-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="RuleSet-273"><a href="#RuleSet-273"><span class="linenos">273</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の未定義ワードタイプを返す</span>
 </span><span id="RuleSet-274"><a href="#RuleSet-274"><span class="linenos">274</span></a>
 </span><span id="RuleSet-275"><a href="#RuleSet-275"><span class="linenos">275</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet-276"><a href="#RuleSet-276"><span class="linenos">276</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet-276"><a href="#RuleSet-276"><span class="linenos">276</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet-277"><a href="#RuleSet-277"><span class="linenos">277</span></a>
 </span><span id="RuleSet-278"><a href="#RuleSet-278"><span class="linenos">278</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet-279"><a href="#RuleSet-279"><span class="linenos">279</span></a><span class="sd">            int: 未定義ワードタイプ</span>
 </span><span id="RuleSet-280"><a href="#RuleSet-280"><span class="linenos">280</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet-281"><a href="#RuleSet-281"><span class="linenos">281</span></a>
-</span><span id="RuleSet-282"><a href="#RuleSet-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="RuleSet-282"><a href="#RuleSet-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span><span id="RuleSet-283"><a href="#RuleSet-283"><span class="linenos">283</span></a>
-</span><span id="RuleSet-284"><a href="#RuleSet-284"><span class="linenos">284</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="RuleSet-284"><a href="#RuleSet-284"><span class="linenos">284</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="RuleSet-285"><a href="#RuleSet-285"><span class="linenos">285</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の内容を出力する</span>
 </span><span id="RuleSet-286"><a href="#RuleSet-286"><span class="linenos">286</span></a>
 </span><span id="RuleSet-287"><a href="#RuleSet-287"><span class="linenos">287</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet-288"><a href="#RuleSet-288"><span class="linenos">288</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet-288"><a href="#RuleSet-288"><span class="linenos">288</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet-289"><a href="#RuleSet-289"><span class="linenos">289</span></a>
 </span><span id="RuleSet-290"><a href="#RuleSet-290"><span class="linenos">290</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet-291"><a href="#RuleSet-291"><span class="linenos">291</span></a><span class="sd">            str: 内容</span>
@@ -1130,7 +1130,7 @@
 </span><span id="RuleSet-294"><a href="#RuleSet-294"><span class="linenos">294</span></a>        <span class="n">ret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="RuleSet-295"><a href="#RuleSet-295"><span class="linenos">295</span></a>        <span class="n">body_data</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="RuleSet-296"><a href="#RuleSet-296"><span class="linenos">296</span></a>
-</span><span id="RuleSet-297"><a href="#RuleSet-297"><span class="linenos">297</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="RuleSet-297"><a href="#RuleSet-297"><span class="linenos">297</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="RuleSet-298"><a href="#RuleSet-298"><span class="linenos">298</span></a>            <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;ルールバージョン&quot;</span><span class="p">,</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">])</span>
 </span><span id="RuleSet-299"><a href="#RuleSet-299"><span class="linenos">299</span></a>
 </span><span id="RuleSet-300"><a href="#RuleSet-300"><span class="linenos">300</span></a>            <span class="c1"># 集計モード</span>
@@ -1151,7 +1151,7 @@
 </span><span id="RuleSet-315"><a href="#RuleSet-315"><span class="linenos">315</span></a>            <span class="p">)</span>
 </span><span id="RuleSet-316"><a href="#RuleSet-316"><span class="linenos">316</span></a>
 </span><span id="RuleSet-317"><a href="#RuleSet-317"><span class="linenos">317</span></a>            <span class="c1"># マッピング情報</span>
-</span><span id="RuleSet-318"><a href="#RuleSet-318"><span class="linenos">318</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">rule_version</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">rule_version</span> <span class="o">==</span> <span class="n">version</span><span class="p">]:</span>
+</span><span id="RuleSet-318"><a href="#RuleSet-318"><span class="linenos">318</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">mapping_rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">mapping_rule</span> <span class="o">==</span> <span class="n">rule_version</span><span class="p">]:</span>
 </span><span id="RuleSet-319"><a href="#RuleSet-319"><span class="linenos">319</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;、&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="p">)])</span>
 </span><span id="RuleSet-320"><a href="#RuleSet-320"><span class="linenos">320</span></a>            <span class="k">else</span><span class="p">:</span>
 </span><span id="RuleSet-321"><a href="#RuleSet-321"><span class="linenos">321</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;---&quot;</span><span class="p">])</span>
@@ -1488,23 +1488,23 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">to_dict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>:</span></span>
+        <span class="name">to_dict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="RuleSet.to_dict-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#RuleSet.to_dict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.to_dict-199"><a href="#RuleSet.to_dict-199"><span class="linenos">199</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.to_dict-199"><a href="#RuleSet.to_dict-199"><span class="linenos">199</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="RuleSet.to_dict-200"><a href="#RuleSet.to_dict-200"><span class="linenos">200</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の情報を辞書で返す</span>
 </span><span id="RuleSet.to_dict-201"><a href="#RuleSet.to_dict-201"><span class="linenos">201</span></a>
 </span><span id="RuleSet.to_dict-202"><a href="#RuleSet.to_dict-202"><span class="linenos">202</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet.to_dict-203"><a href="#RuleSet.to_dict-203"><span class="linenos">203</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet.to_dict-203"><a href="#RuleSet.to_dict-203"><span class="linenos">203</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet.to_dict-204"><a href="#RuleSet.to_dict-204"><span class="linenos">204</span></a>
 </span><span id="RuleSet.to_dict-205"><a href="#RuleSet.to_dict-205"><span class="linenos">205</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet.to_dict-206"><a href="#RuleSet.to_dict-206"><span class="linenos">206</span></a><span class="sd">            dict[str, Any]: ルール情報</span>
 </span><span id="RuleSet.to_dict-207"><a href="#RuleSet.to_dict-207"><span class="linenos">207</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet.to_dict-208"><a href="#RuleSet.to_dict-208"><span class="linenos">208</span></a>
-</span><span id="RuleSet.to_dict-209"><a href="#RuleSet.to_dict-209"><span class="linenos">209</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="RuleSet.to_dict-209"><a href="#RuleSet.to_dict-209"><span class="linenos">209</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="RuleSet.to_dict-210"><a href="#RuleSet.to_dict-210"><span class="linenos">210</span></a>            <span class="k">return</span> <span class="p">{</span>
 </span><span id="RuleSet.to_dict-211"><a href="#RuleSet.to_dict-211"><span class="linenos">211</span></a>                <span class="s2">&quot;rule_version&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">,</span>
 </span><span id="RuleSet.to_dict-212"><a href="#RuleSet.to_dict-212"><span class="linenos">212</span></a>                <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
@@ -1525,7 +1525,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>version (str):</strong>  ルール識別子</li>
+<li><strong>rule_version (str):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -1602,23 +1602,23 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_mode</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+        <span class="name">get_mode</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
 
                 <label class="view-source-button" for="RuleSet.get_mode-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#RuleSet.get_mode"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_mode-248"><a href="#RuleSet.get_mode-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_mode-248"><a href="#RuleSet.get_mode-248"><span class="linenos">248</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="RuleSet.get_mode-249"><a href="#RuleSet.get_mode-249"><span class="linenos">249</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の集計モードを返す</span>
 </span><span id="RuleSet.get_mode-250"><a href="#RuleSet.get_mode-250"><span class="linenos">250</span></a>
 </span><span id="RuleSet.get_mode-251"><a href="#RuleSet.get_mode-251"><span class="linenos">251</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet.get_mode-252"><a href="#RuleSet.get_mode-252"><span class="linenos">252</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet.get_mode-252"><a href="#RuleSet.get_mode-252"><span class="linenos">252</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet.get_mode-253"><a href="#RuleSet.get_mode-253"><span class="linenos">253</span></a>
 </span><span id="RuleSet.get_mode-254"><a href="#RuleSet.get_mode-254"><span class="linenos">254</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet.get_mode-255"><a href="#RuleSet.get_mode-255"><span class="linenos">255</span></a><span class="sd">            int: 集計モード</span>
 </span><span id="RuleSet.get_mode-256"><a href="#RuleSet.get_mode-256"><span class="linenos">256</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet.get_mode-257"><a href="#RuleSet.get_mode-257"><span class="linenos">257</span></a>
-</span><span id="RuleSet.get_mode-258"><a href="#RuleSet.get_mode-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="RuleSet.get_mode-258"><a href="#RuleSet.get_mode-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -1627,7 +1627,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>version (str):</strong>  ルール識別子</li>
+<li><strong>rule_version (str):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -1644,23 +1644,23 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_ignore_flying</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">get_ignore_flying</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
                 <label class="view-source-button" for="RuleSet.get_ignore_flying-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#RuleSet.get_ignore_flying"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_ignore_flying-260"><a href="#RuleSet.get_ignore_flying-260"><span class="linenos">260</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_ignore_flying-260"><a href="#RuleSet.get_ignore_flying-260"><span class="linenos">260</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_ignore_flying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="RuleSet.get_ignore_flying-261"><a href="#RuleSet.get_ignore_flying-261"><span class="linenos">261</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子のトビカウントフラグを返す</span>
 </span><span id="RuleSet.get_ignore_flying-262"><a href="#RuleSet.get_ignore_flying-262"><span class="linenos">262</span></a>
 </span><span id="RuleSet.get_ignore_flying-263"><a href="#RuleSet.get_ignore_flying-263"><span class="linenos">263</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet.get_ignore_flying-264"><a href="#RuleSet.get_ignore_flying-264"><span class="linenos">264</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet.get_ignore_flying-264"><a href="#RuleSet.get_ignore_flying-264"><span class="linenos">264</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet.get_ignore_flying-265"><a href="#RuleSet.get_ignore_flying-265"><span class="linenos">265</span></a>
 </span><span id="RuleSet.get_ignore_flying-266"><a href="#RuleSet.get_ignore_flying-266"><span class="linenos">266</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet.get_ignore_flying-267"><a href="#RuleSet.get_ignore_flying-267"><span class="linenos">267</span></a><span class="sd">            bool: トビカウントフラグ</span>
 </span><span id="RuleSet.get_ignore_flying-268"><a href="#RuleSet.get_ignore_flying-268"><span class="linenos">268</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet.get_ignore_flying-269"><a href="#RuleSet.get_ignore_flying-269"><span class="linenos">269</span></a>
-</span><span id="RuleSet.get_ignore_flying-270"><a href="#RuleSet.get_ignore_flying-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+</span><span id="RuleSet.get_ignore_flying-270"><a href="#RuleSet.get_ignore_flying-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ignore_flying&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -1669,7 +1669,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>version (str):</strong>  ルール識別子</li>
+<li><strong>rule_version (str):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -1686,23 +1686,23 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_undefined_word</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+        <span class="name">get_undefined_word</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
 
                 <label class="view-source-button" for="RuleSet.get_undefined_word-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#RuleSet.get_undefined_word"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_undefined_word-272"><a href="#RuleSet.get_undefined_word-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.get_undefined_word-272"><a href="#RuleSet.get_undefined_word-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_undefined_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="RuleSet.get_undefined_word-273"><a href="#RuleSet.get_undefined_word-273"><span class="linenos">273</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の未定義ワードタイプを返す</span>
 </span><span id="RuleSet.get_undefined_word-274"><a href="#RuleSet.get_undefined_word-274"><span class="linenos">274</span></a>
 </span><span id="RuleSet.get_undefined_word-275"><a href="#RuleSet.get_undefined_word-275"><span class="linenos">275</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet.get_undefined_word-276"><a href="#RuleSet.get_undefined_word-276"><span class="linenos">276</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet.get_undefined_word-276"><a href="#RuleSet.get_undefined_word-276"><span class="linenos">276</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet.get_undefined_word-277"><a href="#RuleSet.get_undefined_word-277"><span class="linenos">277</span></a>
 </span><span id="RuleSet.get_undefined_word-278"><a href="#RuleSet.get_undefined_word-278"><span class="linenos">278</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet.get_undefined_word-279"><a href="#RuleSet.get_undefined_word-279"><span class="linenos">279</span></a><span class="sd">            int: 未定義ワードタイプ</span>
 </span><span id="RuleSet.get_undefined_word-280"><a href="#RuleSet.get_undefined_word-280"><span class="linenos">280</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RuleSet.get_undefined_word-281"><a href="#RuleSet.get_undefined_word-281"><span class="linenos">281</span></a>
-</span><span id="RuleSet.get_undefined_word-282"><a href="#RuleSet.get_undefined_word-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="RuleSet.get_undefined_word-282"><a href="#RuleSet.get_undefined_word-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">rule_version</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;undefined_word&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -1711,7 +1711,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>version (str):</strong>  ルール識別子</li>
+<li><strong>rule_version (str):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -1728,17 +1728,17 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">print</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+        <span class="name">print</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
 
                 <label class="view-source-button" for="RuleSet.print-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#RuleSet.print"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.print-284"><a href="#RuleSet.print-284"><span class="linenos">284</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="RuleSet.print-284"><a href="#RuleSet.print-284"><span class="linenos">284</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="RuleSet.print-285"><a href="#RuleSet.print-285"><span class="linenos">285</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;指定ルール識別子の内容を出力する</span>
 </span><span id="RuleSet.print-286"><a href="#RuleSet.print-286"><span class="linenos">286</span></a>
 </span><span id="RuleSet.print-287"><a href="#RuleSet.print-287"><span class="linenos">287</span></a><span class="sd">        Args:</span>
-</span><span id="RuleSet.print-288"><a href="#RuleSet.print-288"><span class="linenos">288</span></a><span class="sd">            version (str): ルール識別子</span>
+</span><span id="RuleSet.print-288"><a href="#RuleSet.print-288"><span class="linenos">288</span></a><span class="sd">            rule_version (str): ルール識別子</span>
 </span><span id="RuleSet.print-289"><a href="#RuleSet.print-289"><span class="linenos">289</span></a>
 </span><span id="RuleSet.print-290"><a href="#RuleSet.print-290"><span class="linenos">290</span></a><span class="sd">        Returns:</span>
 </span><span id="RuleSet.print-291"><a href="#RuleSet.print-291"><span class="linenos">291</span></a><span class="sd">            str: 内容</span>
@@ -1747,7 +1747,7 @@
 </span><span id="RuleSet.print-294"><a href="#RuleSet.print-294"><span class="linenos">294</span></a>        <span class="n">ret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="RuleSet.print-295"><a href="#RuleSet.print-295"><span class="linenos">295</span></a>        <span class="n">body_data</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="RuleSet.print-296"><a href="#RuleSet.print-296"><span class="linenos">296</span></a>
-</span><span id="RuleSet.print-297"><a href="#RuleSet.print-297"><span class="linenos">297</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">):</span>
+</span><span id="RuleSet.print-297"><a href="#RuleSet.print-297"><span class="linenos">297</span></a>        <span class="k">if</span> <span class="n">rule</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule_version</span><span class="p">):</span>
 </span><span id="RuleSet.print-298"><a href="#RuleSet.print-298"><span class="linenos">298</span></a>            <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;ルールバージョン&quot;</span><span class="p">,</span> <span class="n">rule</span><span class="o">.</span><span class="n">rule_version</span><span class="p">])</span>
 </span><span id="RuleSet.print-299"><a href="#RuleSet.print-299"><span class="linenos">299</span></a>
 </span><span id="RuleSet.print-300"><a href="#RuleSet.print-300"><span class="linenos">300</span></a>            <span class="c1"># 集計モード</span>
@@ -1768,7 +1768,7 @@
 </span><span id="RuleSet.print-315"><a href="#RuleSet.print-315"><span class="linenos">315</span></a>            <span class="p">)</span>
 </span><span id="RuleSet.print-316"><a href="#RuleSet.print-316"><span class="linenos">316</span></a>
 </span><span id="RuleSet.print-317"><a href="#RuleSet.print-317"><span class="linenos">317</span></a>            <span class="c1"># マッピング情報</span>
-</span><span id="RuleSet.print-318"><a href="#RuleSet.print-318"><span class="linenos">318</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">rule_version</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">rule_version</span> <span class="o">==</span> <span class="n">version</span><span class="p">]:</span>
+</span><span id="RuleSet.print-318"><a href="#RuleSet.print-318"><span class="linenos">318</span></a>            <span class="k">if</span> <span class="n">keyword</span> <span class="o">:=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">mapping_rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyword_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">mapping_rule</span> <span class="o">==</span> <span class="n">rule_version</span><span class="p">]:</span>
 </span><span id="RuleSet.print-319"><a href="#RuleSet.print-319"><span class="linenos">319</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;、&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="p">)])</span>
 </span><span id="RuleSet.print-320"><a href="#RuleSet.print-320"><span class="linenos">320</span></a>            <span class="k">else</span><span class="p">:</span>
 </span><span id="RuleSet.print-321"><a href="#RuleSet.print-321"><span class="linenos">321</span></a>                <span class="n">body_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;成績登録キーワード&quot;</span><span class="p">,</span> <span class="s2">&quot;---&quot;</span><span class="p">])</span>
@@ -1798,7 +1798,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>version (str):</strong>  ルール識別子</li>
+<li><strong>rule_version (str):</strong>  ルール識別子</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
