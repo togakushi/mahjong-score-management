@@ -46,11 +46,6 @@ class AdapterAPI(APIInterface):
             m (MessageParserProtocol): メッセージデータ
         """
 
-        def _header_text(title: str) -> str:
-            if not title.isnumeric() and title:  # 数値のキーはヘッダにしない
-                return f"*【{title}】*\n"
-            return ""
-
         def _table_data(data: dict) -> list:
             ret_list: list = []
             text_data = iter(data.values())
@@ -67,7 +62,7 @@ class AdapterAPI(APIInterface):
         def _post_header():
             res = self._call_chat_post_message(
                 channel=m.data.channel_id,
-                text=f"{_header_text(header_title)}{header_text.rstrip()}",
+                text=f"{header_title}{header_text.rstrip()}",
                 thread_ts=m.reply_ts,
             )
             if res and res.status_code == 200:  # 見出しがある場合はスレッドにする
@@ -97,7 +92,7 @@ class AdapterAPI(APIInterface):
             header = ""
 
             if isinstance(data, PosixPath) and data.exists():
-                comment = textwrap.dedent(f"{_header_text(header_title)}{header_text.rstrip()}") if options.use_comment else ""
+                comment = textwrap.dedent(f"{options.print_title}\n{header_text.rstrip()}") if options.use_comment else ""
                 self._call_files_upload(
                     channel=m.data.channel_id,
                     title=options.title,
@@ -109,13 +104,13 @@ class AdapterAPI(APIInterface):
 
             if isinstance(data, str):
                 if options.key_title and (options.title != header_title):
-                    header = _header_text(options.title)
+                    header = options.print_title
                 text_body = textwrap.indent(data.rstrip(), "\t" * options.indent)
-                post_msg.append(f"{header}```\n{text_body}\n```\n" if options.codeblock else f"{header}{text_body}\n")
+                post_msg.append(f"{header}```\n{text_body}\n```\n" if options.codeblock else f"{header}\n{text_body}\n")
 
             if isinstance(data, pd.DataFrame):
                 if options.key_title and (options.title != header_title):
-                    header = _header_text(options.title)
+                    header = options.print_title
                 match options.data_kind:
                     case StyleOptions.DataKind.POINTS_TOTAL | StyleOptions.DataKind.POINTS_DIFF:
                         post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))
