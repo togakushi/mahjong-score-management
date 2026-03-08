@@ -22,7 +22,7 @@ class HelpConfig(SubCommands):
 
     def __init__(self):
         self.default_commandword: str = "麻雀ヘルプ"
-        self.section: str = "help"
+        self.section: str = str(CommandType.HELP)
         self.default_reset()
 
 
@@ -56,115 +56,102 @@ def help_message(m: "MessageParserProtocol"):
     )
     g.cfg.rule.status_update(cast(dict, g.params))
 
+    rule_version = g.params.get("default_rule")
+
     m.set_message(
         "使い方：<呼び出しキーワード> [検索範囲] [対象メンバー] [オプション]",
-        StyleOptions(title="機能呼び出し", indent=1),
+        StyleOptions(title="機能呼び出し"),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(g.cfg.results.commandword)}
+        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RESULTS))}
         検索範囲デフォルト：{g.cfg.results.aggregation_range}
         """),
-        StyleOptions(title="成績サマリ", indent=1),
+        StyleOptions(title="成績サマリ", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(g.cfg.graph.commandword)}
+        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.GRAPH))}
         検索範囲デフォルト：{g.cfg.graph.aggregation_range}
         """),
-        StyleOptions(title="成績グラフ", indent=1),
+        StyleOptions(title="成績グラフ", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(g.cfg.ranking.commandword)}
+        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RANKING))}
         検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
         規定打数デフォルト：全体ゲーム数 × {g.cfg.ranking.stipulated_rate} ＋ 1
         出力制限デフォルト：上位 {g.cfg.ranking.ranked} 名
         """),
-        StyleOptions(title="ランキング", indent=1),
+        StyleOptions(title="ランキング", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(g.cfg.report.commandword)}
+        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.REPORT))}
         検索範囲デフォルト：{g.cfg.report.aggregation_range}
         """),
-        StyleOptions(title="レポート", indent=1),
+        StyleOptions(title="レポート", indent=1, sub_title=True),
     )
     m.set_message(
-        f"呼び出しキーワード：{'、'.join(g.cfg.member.commandword)}",
-        StyleOptions(title="メンバー一覧", indent=1),
+        f"呼び出しキーワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.MEMBER_LIST))}",
+        StyleOptions(title="メンバー一覧", indent=1, sub_title=True),
     )
     m.set_message(
-        f"呼び出しキーワード：{'、'.join(g.cfg.team.commandword)}",
-        StyleOptions(title="チーム一覧", indent=1),
+        f"呼び出しキーワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.TEAM_LIST))}",
+        StyleOptions(title="チーム一覧", indent=1, sub_title=True),
     )
     m.set_message(  # 検索範囲
         ExtDt.print_range(),
-        StyleOptions(title="検索範囲に指定できるキーワード", indent=1),
+        StyleOptions(title="検索範囲に指定できるキーワード"),
     )
-    m.set_message(  # メモ機能
+
+    # メモ機能
+    remarks_type1: str = ""
+    if words := lookup.regulation_list(1):
+        remarks_type1 += "個別カウントワード：" + "、".join(words)
+    else:
+        if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 1:
+            remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
+
+    remarks_type0: str = ""
+    if words := lookup.regulation_list(0):
+        remarks_type0 += "役満カウントワード：" + "、".join(words)
+    else:
+        if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 0:
+            remarks_type0 += "役満カウントワード：未登録ワードのすべてを役満としてカウント"
+
+    m.set_message(
         textwrap.dedent(f"""\
         使い方：<登録キーワード> <対象メンバー> <登録ワード>
         登録キーワード：{g.cfg.setting.remarks_word}
+
+        {remarks_type1}
+        {remarks_type0}
         """),
-        StyleOptions(title="メモ機能", indent=1),
+        StyleOptions(title="メモ機能", keep_blank=True),
+    )
+
+    # ルールセット
+    m.set_message(
+        g.cfg.rule.print(str(g.params.get("default_rule"))),
+        StyleOptions(title="ルールセット"),
     )
 
     # レギュレーション
+    regulation: str = ""
     if words := lookup.regulation_list(2):
-        m.set_message(
-            "\n".join(
-                [
-                    "{}：{}pt".format(
-                        word,
-                        str(f"{ex_point:.1f}").replace("-", "▲"),
-                    )
-                    for word, ex_point in words
-                ]
-            ),
-            StyleOptions(title="卓外清算ワード(個人)", indent=1),
-        )
+        regulation += "卓外清算ワード(個人)：\n"
+        for word in words:
+            regulation += f"\t{word}\n"
+        regulation += "\n"
 
     if words := lookup.regulation_list(3):
-        m.set_message(
-            "\n".join(
-                [
-                    "{}：{}pt".format(
-                        word,
-                        str(f"{ex_point:.1f}").replace("-", "▲"),
-                    )
-                    for word, ex_point in words
-                ]
-            ),
-            StyleOptions(title="卓外清算ワード(チーム)", indent=1),
-        )
-
-    words = [word for word, _ in lookup.regulation_list(1)]
-    # if g.cfg.undefined_word == 1:
-    #    words.append("未登録ワードのすべてを個別にカウント")
-    if words:
-        m.set_message(
-            "、".join(words),
-            StyleOptions(title="個別カウントワード", indent=1),
-        )
-
-    words = [word for word, _ in lookup.regulation_list(0)]
-    # if g.cfg.undefined_word == 0:
-    #    words.append("未登録ワードのすべてを役満としてカウント")
-    if words:
-        m.set_message(
-            "、".join(words),
-            StyleOptions(title="役満カウントワード", indent=1),
-        )
-
-    # ルールセット
-    rule_set: list = []
-    for rule_version in g.cfg.rule.rule_list:
-        rule_set.append(g.cfg.rule.print(rule_version))
-    m.set_message(
-        "\n \n".join(rule_set),
-        StyleOptions(title="ルールセット", indent=1, keep_blank=True),
-    )
+        regulation += "卓外清算ワード(チーム)：\n"
+        for word in words:
+            regulation += f"\t{word}\n"
+        regulation += "\n"
+    if regulation:
+        m.set_message(regulation, StyleOptions(title="レギュレーション", keep_blank=True, keep_indent=True))
 
     # その他
     channel_config = g.params.get("channel_config")
@@ -175,5 +162,5 @@ def help_message(m: "MessageParserProtocol"):
         セパレート機能：{"有効" if g.params.get("separate", False) else "無効"}
         データベースファイル：{g.cfg.setting.database_file}
         """),
-        StyleOptions(title="チャンネル設定情報", indent=1),
+        StyleOptions(title="チャンネル設定情報"),
     )
