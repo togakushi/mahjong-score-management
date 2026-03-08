@@ -18,6 +18,7 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
+from libs.domain.datamodels import CommandType
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
@@ -192,20 +193,33 @@ class AppConfig:
         self.report.config_load(self)
         self.help.config_load(self)
 
-    def word_list(self) -> list[str]:
+    def word_list(self, add_words: list | None = None) -> list[str]:
         """設定されている値、キーワードをリスト化する
+
+        Args:
+            add_words (list | None, optional): リストに追加するワード. Defaults to None.
 
         Returns:
             list: リスト化されたキーワード
         """
 
         words: list[str] = []
-        words.extend(self.results.commandword)
-        words.extend(self.graph.commandword)
-        words.extend(self.ranking.commandword)
-        words.extend(self.report.commandword)
+
+        if add_words:
+            words.extend(add_words)
+
         words.extend(list(self.rule.keyword_mapping.keys()))
         words.extend([self.setting.remarks_word])
+
+        for command_name in CommandType:
+            if hasattr(self, str(command_name)):
+                command = getattr(self, str(command_name))
+                if hasattr(command, "default_commandword"):
+                    words.append(command.default_commandword)
+                if hasattr(command, "commandword"):
+                    words.extend(command.commandword)
+                if hasattr(command, "command_suffix"):
+                    words.extend(command.command_suffix)
 
         for k, v in self.alias.to_dict().items():
             if isinstance(v, list):
