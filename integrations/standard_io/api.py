@@ -33,7 +33,8 @@ class AdapterAPI(APIInterface):
         ret: str = ""
         for line in text.splitlines():
             line = line.replace("<@>", "")
-            line = textwrap.dedent(line)
+            if not style.keep_indent:
+                line = textwrap.dedent(line)
             if line or style.keep_blank:
                 ret += textwrap.indent(f"{line}\n", "\t" * style.indent)
         return ret.rstrip()
@@ -59,7 +60,7 @@ class AdapterAPI(APIInterface):
         # 本文
         for data, options in m.post.message:
             if options.key_title and options.title:
-                print(f"【{options.title}】")
+                print(options.print_title)
 
             match data:
                 case x if isinstance(x, str):

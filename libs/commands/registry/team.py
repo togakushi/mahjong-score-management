@@ -6,11 +6,14 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
+from integrations.protocols import CommandType
 from libs.bootstrap.app_config import BaseSection
 from libs.data import initialization, loader, modify
 from libs.utils import dbutil, formatter, textutil, validator
 
 if TYPE_CHECKING:
+    from configparser import ConfigParser
+
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -28,7 +31,16 @@ class TeamDataDict(TypedDict):
 class TeamSection(BaseSection):
     """teamセクション処理"""
 
+    default_commandword: str
+    """コマンドワードデフォルト値"""
+    commandword: list[str]
+    """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
     section: str
+    main_parser: "ConfigParser"
+
     info: list[TeamDataDict]
     """チーム情報(キャッシュデータ)"""
     registration_limit: int
@@ -41,12 +53,15 @@ class TeamSection(BaseSection):
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
     def __init__(self, outer: "AppConfig"):
-        self.section = "team"
+        self.default_commandword = "チーム一覧"
+        self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
         self.info = []
+        self.commandword = []
+        self.command_suffix = []
         self.registration_limit = int(255)
         self.character_limit = int(16)
         self.member_limit = int(16)
@@ -63,15 +78,15 @@ class TeamSection(BaseSection):
         super().__init__(self)
 
         # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", fallback="チーム一覧")
+        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.debug("%s: %s", self.section, self)
 
     def member(self, team: str) -> list[str]:
-        """チーム所属メンバーをリストで返す
+        """指定チームの所属メンバーをリストで返す
 
         Args:
-            team (str): チーム名
+            team (str): 対象チーム名
 
         Returns:
             list[str]: 所属メンバーリスト
@@ -86,7 +101,7 @@ class TeamSection(BaseSection):
         """指定メンバーの所属チームを返す
 
         Args:
-            name (str): チェック対象のメンバー名
+            name (str): 対象メンバー名
 
         Returns:
             Union[str, None]:

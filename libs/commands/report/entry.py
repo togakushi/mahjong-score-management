@@ -19,7 +19,7 @@ class ReportConfig(SubCommands):
 
     def __init__(self):
         self.default_commandword: str = "麻雀レポート"
-        self.section: str = "report"
+        self.section: str = str(CommandType.REPORT)
         self.default_reset()
 
 

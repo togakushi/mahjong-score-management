@@ -6,11 +6,14 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
+from integrations.protocols import CommandType
 from libs.bootstrap.app_config import BaseSection
 from libs.data import loader, modify
 from libs.utils import dbutil, textutil, validator
 
 if TYPE_CHECKING:
+    from configparser import ConfigParser
+
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -19,18 +22,33 @@ class MemberDataDict(TypedDict):
 
     id: int
     """メンバーID"""
-
     name: str
     """メンバー名"""
-
     alias: list[str]
     """別名リスト"""
+    team: str
+    """所属チーム"""
+    last_update: int
+    """最終更新日"""
+    elapsed_day: int
+    """経過日数"""
+    game_count: int
+    """プレイゲーム数"""
 
 
 class MemberSection(BaseSection):
     """memberセクション処理"""
 
+    default_commandword: str
+    """コマンドワードデフォルト値"""
+    commandword: list[str]
+    """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
     section: str
+    main_parser: "ConfigParser"
+
     info: list[MemberDataDict]
     """メンバー情報(キャッシュデータ)"""
     registration_limit: int
@@ -43,12 +61,15 @@ class MemberSection(BaseSection):
     """未登録メンバー名称"""
 
     def __init__(self, outer: "AppConfig"):
-        self.section = "member"
+        self.default_commandword = "メンバー一覧"
+        self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
         self.info = []
+        self.commandword = []
+        self.command_suffix = []
         self.registration_limit = int(255)
         self.character_limit = int(8)
         self.alias_limit = int(16)
@@ -67,7 +88,7 @@ class MemberSection(BaseSection):
         )
 
         # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", fallback="メンバー一覧")
+        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.debug("%s: %s", self.section, self)
 

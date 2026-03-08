@@ -19,7 +19,7 @@ class ResultsConfig(SubCommands):
 
     def __init__(self):
         self.default_commandword: str = "麻雀成績"
-        self.section: str = "results"
+        self.section: str = str(CommandType.RESULTS)
         self.default_reset()
 
 

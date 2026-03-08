@@ -63,18 +63,13 @@ class AdapterAPI(APIInterface):
 
         self.response = cast("Message", self.response)
 
-        def _header_text(title: str) -> str:
-            if not title.isnumeric() and title:  # 数値のキーはヘッダにしない
-                return f"**【{title}】**\n"
-            return ""
-
         def _table_data(data: dict) -> list:
             ret_list: list = []
             text_data = iter(data.values())
             # 先頭ブロックの処理(ヘッダ追加)
             v = next(text_data)
 
-            ret_list.append(f"{header}```\n{v}\n```\n" if options.codeblock else f"{header}{v}\n")
+            ret_list.append(f"{header}\n```\n{v}\n```\n" if options.codeblock else f"{header}\n{v}\n")
             # 残りのブロック
             for v in text_data:
                 ret_list.append(f"```\n{v}\n```\n" if options.codeblock else f"{v}\n")
@@ -89,15 +84,15 @@ class AdapterAPI(APIInterface):
         header_text = ""
         if m.post.headline:
             header_data, header_option = m.post.headline
-            header_title = header_option.title
+            header_title = f"{header_option.print_title}"
             if isinstance(header_data, str):
                 header_text = header_data
             m.post.thread_title = header_title
         if not m.post.message:
-            thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
+            thread_msg = await self.response.reply(f"{header_title}\n{header_text.rstrip()}")
             m.post.thread = True
         elif not all(options.header_hidden for _, options in m.post.message):
-            thread_msg = await self.response.reply(f"{_header_text(header_title)}{header_text.rstrip()}")
+            thread_msg = await self.response.reply(f"{m.post.thread_title}\n{header_text.rstrip()}")
             m.post.thread = True
         elif m.post.thread_title:
             thread_msg = self.response
@@ -110,7 +105,7 @@ class AdapterAPI(APIInterface):
             header = ""
 
             if isinstance(data, PosixPath) and data.exists():
-                comment = textwrap.dedent(f"{_header_text(header_title)}{header_text.rstrip()}") if options.use_comment else ""
+                comment = textwrap.dedent(f"{header_title}\n{header_text.rstrip()}") if options.use_comment else ""
                 file = self.discord_file(
                     str(data),
                     description=comment,
@@ -119,13 +114,13 @@ class AdapterAPI(APIInterface):
 
             if isinstance(data, str):
                 if options.key_title and (options.title != header_title):
-                    header = _header_text(options.title)
+                    header = f"{options.print_title}"
                 message_text = textwrap.indent(data.rstrip().replace("<@>", f"<@{self.response.author.id}>"), "\t" * options.indent)
-                post_msg.append(f"{header}```\n{message_text}\n```\n" if options.codeblock else f"{header}{message_text}\n")
+                post_msg.append(f"{header}\n```\n{message_text}\n```\n" if options.codeblock else f"{header}\n{message_text}\n")
 
             if isinstance(data, pd.DataFrame):
                 if options.key_title and (options.title != header_title):
-                    header = _header_text(options.title)
+                    header = f"** {options.print_title} **"
                 match options.data_kind:
                     case StyleOptions.DataKind.POINTS_TOTAL | StyleOptions.DataKind.POINTS_DIFF:
                         post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))

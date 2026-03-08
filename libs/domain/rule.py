@@ -195,17 +195,17 @@ class RuleSet:
                 if "last_time" in status_data:
                     self.data[rule_version].last_time = ExtDt(float(status_data["last_time"]))
 
-    def to_dict(self, version: str) -> dict[str, Any]:
+    def to_dict(self, rule_version: str) -> dict[str, Any]:
         """指定ルール識別子の情報を辞書で返す
 
         Args:
-            version (str): ルール識別子
+            rule_version (str): ルール識別子
 
         Returns:
             dict[str, Any]: ルール情報
         """
 
-        if rule := self.data.get(version):
+        if rule := self.data.get(rule_version):
             return {
                 "rule_version": rule.rule_version,
                 "mode": rule.mode,
@@ -244,47 +244,47 @@ class RuleSet:
 
         return ret
 
-    def get_mode(self, version: str) -> int:
+    def get_mode(self, rule_version: str) -> int:
         """指定ルール識別子の集計モードを返す
 
         Args:
-            version (str): ルール識別子
+            rule_version (str): ルール識別子
 
         Returns:
             int: 集計モード
         """
 
-        return int(self.to_dict(version).get("mode", 0))
+        return int(self.to_dict(rule_version).get("mode", 0))
 
-    def get_ignore_flying(self, version: str) -> bool:
+    def get_ignore_flying(self, rule_version: str) -> bool:
         """指定ルール識別子のトビカウントフラグを返す
 
         Args:
-            version (str): ルール識別子
+            rule_version (str): ルール識別子
 
         Returns:
             bool: トビカウントフラグ
         """
 
-        return bool(self.to_dict(version).get("ignore_flying", False))
+        return bool(self.to_dict(rule_version).get("ignore_flying", False))
 
-    def get_undefined_word(self, version: str) -> int:
+    def get_undefined_word(self, rule_version: str) -> int:
         """指定ルール識別子の未定義ワードタイプを返す
 
         Args:
-            version (str): ルール識別子
+            rule_version (str): ルール識別子
 
         Returns:
             int: 未定義ワードタイプ
         """
 
-        return int(self.to_dict(version).get("undefined_word", 1))
+        return int(self.to_dict(rule_version).get("undefined_word", 1))
 
-    def print(self, version: str) -> str:
+    def print(self, rule_version: str) -> str:
         """指定ルール識別子の内容を出力する
 
         Args:
-            version (str): ルール識別子
+            rule_version (str): ルール識別子
 
         Returns:
             str: 内容
@@ -293,7 +293,7 @@ class RuleSet:
         ret: str = ""
         body_data: list = []
 
-        if rule := self.data.get(version):
+        if rule := self.data.get(rule_version):
             body_data.append(["ルールバージョン", rule.rule_version])
 
             # 集計モード
@@ -314,7 +314,7 @@ class RuleSet:
             )
 
             # マッピング情報
-            if keyword := [word for word, rule_version in self.keyword_mapping.items() if rule_version == version]:
+            if keyword := [word for word, mapping_rule in self.keyword_mapping.items() if mapping_rule == rule_version]:
                 body_data.append(["成績登録キーワード", "、".join(keyword)])
             else:
                 body_data.append(["成績登録キーワード", "---"])
