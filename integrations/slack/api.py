@@ -52,7 +52,7 @@ class AdapterAPI(APIInterface):
             # 先頭ブロックの処理(ヘッダ追加)
             v = next(text_data)
 
-            ret_list.append(f"{header}```\n{v}\n```\n" if options.codeblock else f"{header}{v}\n")
+            ret_list.append(f"{header}\n```{v}\n```\n" if options.codeblock else f"{header}\n{v}\n")
             # 残りのブロック
             for v in text_data:
                 ret_list.append(f"```\n{v}\n```\n" if options.codeblock else f"{v}\n")
@@ -106,7 +106,7 @@ class AdapterAPI(APIInterface):
                 if options.key_title and (options.title != header_title):
                     header = options.print_title
                 text_body = textwrap.indent(data.rstrip(), "\t" * options.indent)
-                post_msg.append(f"{header}```\n{text_body}\n```\n" if options.codeblock else f"{header}\n{text_body}\n")
+                post_msg.append(f"{header}\n```\n{text_body}\n```\n" if options.codeblock else f"{header}\n{text_body}\n")
 
             if isinstance(data, pd.DataFrame):
                 if options.key_title and (options.title != header_title):
