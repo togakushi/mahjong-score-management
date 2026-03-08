@@ -6,11 +6,11 @@ import logging
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from integrations.protocols import CommandType
 from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
 from libs.commands.results import versus
+from libs.domain.datamodels import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt

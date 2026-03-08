@@ -5,9 +5,9 @@ libs/commands/report/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from integrations.protocols import CommandType
 from libs.bootstrap.section import SubCommands
 from libs.commands.report import matrix, monthly, stats_list, stats_report, winner
+from libs.domain.datamodels import CommandType
 from libs.utils import dictutil
 
 if TYPE_CHECKING:

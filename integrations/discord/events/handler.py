@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 
 import integrations.discord.events.audioop as _audioop
 import libs.dispatcher
-from integrations.protocols import MessageStatus
+from libs.domain.datamodels import MessageStatus
 
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter

@@ -6,9 +6,9 @@ import textwrap
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from integrations.protocols import CommandType
 from libs.bootstrap.section import SubCommands
 from libs.data import lookup
+from libs.domain.datamodels import CommandType
 from libs.types import StyleOptions
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt

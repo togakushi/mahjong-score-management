@@ -1,9 +1,10 @@
 """
-libs/domain/command.py
+libs/domain/datamodels.py
 """
 
 import logging
 from dataclasses import dataclass, field
+from enum import StrEnum
 from math import ceil
 from typing import TYPE_CHECKING, Literal, Optional, Union
 
@@ -16,6 +17,74 @@ if TYPE_CHECKING:
     from integrations.base.interface import MessageParserProtocol
     from libs.domain.score import GameResult
     from libs.types import RemarkDict
+
+
+class CommandType(StrEnum):
+    """実行(する/した)サブコマンド"""
+
+    RESULTS = "results"
+    """成績サマリ"""
+    GRAPH = "graph"
+    """グラフ生成"""
+    RANKING = "ranking"
+    """ランキング"""
+    RATING = "rating"
+    """レーティング"""
+    REPORT = "report"
+    """レポート"""
+    MEMBER_LIST = "member"
+    """メンバー一覧"""
+    TEAM_LIST = "team"
+    """チーム一覧"""
+    HELP = "help"
+    """ヘルプ"""
+    COMPARISON = "comparison"
+    """突合処理"""
+    UNKNOWN = "unknown"
+    """未定義"""
+
+
+class MessageStatus(StrEnum):
+    """メッセージステータス"""
+
+    APPEND = "message_append"
+    """新規ポストイベント"""
+    CHANGED = "message_changed"
+    """編集イベント"""
+    DELETED = "message_deleted"
+    """削除イベント"""
+    DO_NOTHING = "do_nothing"
+    """何もしなくてよいイベント"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
+
+
+class ActionStatus(StrEnum):
+    """DBに対する操作"""
+
+    CHANGE = "change"
+    """insert/updateが実行された"""
+    DELETE = "delete"
+    """deleteが実行された"""
+    NOTHING = "nothing"
+    """何もしてない"""
+
+
+class ChannelType(StrEnum):
+    """チャンネルタイプ"""
+
+    CHANNEL = "normal"
+    """通常チャンネル"""
+    PRIVATE = "private"
+    """プライベートチャンネル"""
+    DIRECT_MESSAGE = "direct_message"
+    """ダイレクトメッセージ"""
+    HOME_APP = "home_app"
+    """Slackのホームアプリ"""
+    SEARCH = "search_api"
+    """検索API"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
 
 
 @dataclass

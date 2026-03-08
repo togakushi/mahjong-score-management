@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations import factory
-from integrations.protocols import MessageStatus
 from libs.data import lookup, modify
+from libs.domain.datamodels import MessageStatus
 from libs.domain.score import GameResult
 from libs.functions import message
 from libs.types import StyleOptions

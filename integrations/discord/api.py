@@ -13,7 +13,7 @@ from table2ascii import PresetStyle, table2ascii
 
 import integrations.discord.events.audioop as _audioop
 from integrations.base.interface import APIInterface
-from integrations.protocols import CommandType
+from libs.domain.datamodels import CommandType
 from libs.types import StyleOptions
 from libs.utils import converter, formatter, textutil
 from libs.utils.timekit import Delimiter, Format
