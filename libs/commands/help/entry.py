@@ -56,7 +56,7 @@ def help_message(m: "MessageParserProtocol"):
     )
     g.cfg.rule.status_update(cast(dict, g.params))
 
-    rule_version = g.params.get("default_rule")
+    rule_version = g.params.get("default_rule", g.cfg.mahjong.rule_version)
 
     m.set_message(
         "使い方：<呼び出しキーワード> [検索範囲] [対象メンバー] [オプション]",
