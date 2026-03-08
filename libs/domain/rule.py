@@ -314,7 +314,7 @@ class RuleSet:
             )
 
             # マッピング情報
-            if keyword := [word for word, rule_version in self.keyword_mapping.items() if rule_version == rule_version]:
+            if keyword := [word for word, mapping_rule in self.keyword_mapping.items() if mapping_rule == rule_version]:
                 body_data.append(["成績登録キーワード", "、".join(keyword)])
             else:
                 body_data.append(["成績登録キーワード", "---"])
