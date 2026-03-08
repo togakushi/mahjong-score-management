@@ -136,6 +136,8 @@ class StyleOptions:
 
     title: str = ""
     """出力タイトル"""
+    sub_title: bool = False
+    """サブタイトル化"""
     format_type: Literal["default", "csv", "txt"] = "default"
     """出力フォーマット"""
 
@@ -179,12 +181,33 @@ class StyleOptions:
     - *True*: 削除しない
     - *False*: 削除する
     """
+    keep_indent: bool = False
+    """出力前のdedent"""
     transpose: bool = False
     """MessageTypeがDataFrameのとき表の縦横を変換する"""
     rename_type: RenameType = field(default=RenameType.NORMAL)
     """カラム名変換パラメータ"""
     data_kind: DataKind = field(default=DataKind.GENERAL)
     """データ種別"""
+
+    @property
+    def print_title(self) -> str:
+        """タイトル表示
+
+        Returns:
+            str: タイトル文字列
+        """
+
+        ret: str = ""
+
+        if self.title:
+            tab = "\t" * (self.indent - 1)
+            if self.sub_title:
+                ret = f"{tab}{self.title}："
+            else:
+                ret = f"{tab}【{self.title}】"
+
+        return ret
 
     @property
     def filename(self) -> str:
