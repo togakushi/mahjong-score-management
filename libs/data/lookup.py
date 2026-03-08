@@ -162,18 +162,24 @@ def get_guest() -> str:
     return guest_name
 
 
-def regulation_list(word_type: int = 0) -> list:
+def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list:
     """登録済みワードリストを取得する
 
     Args:
         word_type (int, optional): 取得するタイプ. Defaults to 0.
+        rule_version (str, optional): ルール識別子
 
     Returns:
         list: 取得結果
     """
 
+    ret: list = []
+
+    if not rule_version and not (rule_version := g.params.get("default_rule")):
+        return []
+
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
-        ret = cur.execute(
+        rows = cur.execute(
             """
             select
                 word,
@@ -182,9 +188,17 @@ def regulation_list(word_type: int = 0) -> list:
                 words
             where
                 type=?
+                and rule_version=?
             """,
-            (word_type,),
+            (word_type, rule_version),
         ).fetchall()
+
+    for word, ex_point in rows:
+        if ex_point:
+            point = f"{ex_point:.1f}".replace("-", "▲")
+            ret.append(f"{word}:{point}pt")
+        else:
+            ret.append(f"{word}")
 
     return ret
 
