@@ -19,7 +19,6 @@ import libs.commands.results.entry
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap.app_config import AppConfig
-from libs.bootstrap.section import SubCommands
 from libs.commands.registry import member, team
 from libs.data import initialization, lookup
 from libs.functions.compose import text_item
@@ -344,16 +343,21 @@ def register():
         "team_clear": dispatch_team_clear,
     }
 
+    commandword_list: list
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
             sub_command = getattr(g.cfg, command)
-            if isinstance(sub_command, SubCommands):
-                for commandword in sub_command.commandword:
-                    g.keyword_dispatcher.update({commandword: ep})
-                for keyword in g.cfg.rule.keyword_mapping:  # コマンドサフィックス登録
+            commandword_list = []
+            if hasattr(sub_command, "command_suffix"):  # コマンドサフィックス登録
+                for keyword in g.cfg.rule.keyword_mapping:
                     for suffix in sub_command.command_suffix:
-                        g.keyword_dispatcher.update({f"{keyword}{suffix}": ep})
+                        commandword_list.append(f"{keyword}{suffix}")
+            if hasattr(sub_command, "commandword") and not commandword_list:
+                for commandword in sub_command.commandword:
+                    commandword_list.append(commandword)
+            for commandword in commandword_list:
+                g.keyword_dispatcher.update({commandword: ep})
         # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
             for alias in cast(list, getattr(g.cfg.alias, command)):
