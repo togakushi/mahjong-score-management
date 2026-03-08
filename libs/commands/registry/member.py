@@ -38,7 +38,16 @@ class MemberDataDict(TypedDict):
 class MemberSection(BaseSection):
     """memberセクション処理"""
 
+    default_commandword: str
+    """コマンドワードデフォルト値"""
+    commandword: list[str]
+    """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
     section: str
+    main_parser: "ConfigParser"
+
     info: list[MemberDataDict]
     """メンバー情報(キャッシュデータ)"""
     registration_limit: int
@@ -51,13 +60,15 @@ class MemberSection(BaseSection):
     """未登録メンバー名称"""
 
     def __init__(self, outer: "AppConfig"):
-        self.default_commandword: str = "メンバー一覧"
+        self.default_commandword = "メンバー一覧"
         self.section = "member"
-        self.main_parser: "ConfigParser" = outer.main_parser
+        self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
         self.info = []
+        self.commandword = []
+        self.command_suffix = []
         self.registration_limit = int(255)
         self.character_limit = int(8)
         self.alias_limit = int(16)

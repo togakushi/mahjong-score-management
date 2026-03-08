@@ -30,7 +30,16 @@ class TeamDataDict(TypedDict):
 class TeamSection(BaseSection):
     """teamセクション処理"""
 
+    default_commandword: str
+    """コマンドワードデフォルト値"""
+    commandword: list[str]
+    """呼び出しキーワード"""
+    command_suffix: list[str]
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
     section: str
+    main_parser: "ConfigParser"
+
     info: list[TeamDataDict]
     """チーム情報(キャッシュデータ)"""
     registration_limit: int
@@ -43,13 +52,15 @@ class TeamSection(BaseSection):
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
     def __init__(self, outer: "AppConfig"):
-        self.default_commandword: str = "チーム一覧"
+        self.default_commandword = "チーム一覧"
         self.section = "team"
-        self.main_parser: "ConfigParser" = outer.main_parser
+        self.main_parser = outer.main_parser
         self._reset()
 
     def _reset(self):
         self.info = []
+        self.commandword = []
+        self.command_suffix = []
         self.registration_limit = int(255)
         self.character_limit = int(16)
         self.member_limit = int(16)
