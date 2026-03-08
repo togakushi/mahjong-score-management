@@ -19,7 +19,7 @@ class GraphConfig(SubCommands):
 
     def __init__(self):
         self.default_commandword: str = "麻雀グラフ"
-        self.section: str = "graph"
+        self.section: str = str(CommandType.GRAPH)
         self.default_reset()
 
 

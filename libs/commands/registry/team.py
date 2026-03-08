@@ -6,6 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
+from integrations.protocols import CommandType
 from libs.bootstrap.app_config import BaseSection
 from libs.data import initialization, loader, modify
 from libs.utils import dbutil, formatter, textutil, validator
@@ -53,7 +54,7 @@ class TeamSection(BaseSection):
 
     def __init__(self, outer: "AppConfig"):
         self.default_commandword = "チーム一覧"
-        self.section = "team"
+        self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 

@@ -6,6 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
+from integrations.protocols import CommandType
 from libs.bootstrap.app_config import BaseSection
 from libs.data import loader, modify
 from libs.utils import dbutil, textutil, validator
@@ -61,7 +62,7 @@ class MemberSection(BaseSection):
 
     def __init__(self, outer: "AppConfig"):
         self.default_commandword = "メンバー一覧"
-        self.section = "member"
+        self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
