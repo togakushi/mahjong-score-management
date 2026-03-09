@@ -84,9 +84,10 @@ class BadgeDisplay(BaseSection):
     def __init__(self, outer: "AppConfig"):
         self.section = "grade"
         self.main_parser = outer.main_parser
-        super().__init__(self)
 
-        self.grade.table_name = self.get("table_name", fallback="")
+        if self.main_parser.has_section(self.section):
+            self.section_proxy = self.main_parser[self.section]
+            self.grade.table_name = self.get("table_name", fallback="")
 
 
 class AppConfig:
