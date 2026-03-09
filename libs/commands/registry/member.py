@@ -83,9 +83,7 @@ class MemberSection(BaseSection):
         """
 
         self._reset()
-        super().__init__(
-            self,
-        )
+        super().__init__(self)
 
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", fallback=self.default_commandword)
