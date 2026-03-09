@@ -70,7 +70,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
         for suffix in ret_dict.get("command_suffix", []):
             if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
                 break
-    rule_version = rule_version if rule_version else ret_dict.get("default_rule", g.cfg.mahjong.rule_version)
+    rule_version = rule_version if rule_version else ret_dict.get("default_rule", g.cfg.setting.default_rule)
 
     ret_dict.update(
         {

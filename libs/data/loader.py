@@ -80,7 +80,7 @@ def read_data(keyword: str, params: dict = {}) -> pd.DataFrame:
         params = cast(dict, g.params)
 
     if "mode" not in params:
-        mode = g.cfg.rule.get_mode(g.cfg.mahjong.rule_version)
+        mode = g.cfg.rule.get_mode(g.cfg.setting.default_rule)
         params.update({"mode": mode if mode else 4})
     if starttime := params.get("starttime"):
         params.update({"starttime": cast("ExtDt", starttime).format(Format.SQL)})

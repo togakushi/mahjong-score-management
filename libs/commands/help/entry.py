@@ -56,7 +56,7 @@ def help_message(m: "MessageParserProtocol"):
     )
     g.cfg.rule.status_update(cast(dict, g.params))
 
-    rule_version = g.params.get("default_rule", g.cfg.mahjong.rule_version)
+    rule_version = g.params.get("rule_version", g.cfg.setting.default_rule)
 
     m.set_message(
         "使い方：<呼び出しワード> [検索範囲] [対象メンバー] [オプション]",
@@ -107,14 +107,14 @@ def help_message(m: "MessageParserProtocol"):
 
     # メモ機能
     remarks_type1: str = ""
-    if words := lookup.regulation_list(1):
+    if words := lookup.regulation_list(1, rule_version):
         remarks_type1 += "個別カウントワード：" + "、".join(words)
     else:
         if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 1:
             remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
 
     remarks_type0: str = ""
-    if words := lookup.regulation_list(0):
+    if words := lookup.regulation_list(0, rule_version):
         remarks_type0 += "役満カウントワード：" + "、".join(words)
     else:
         if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 0:
@@ -123,7 +123,7 @@ def help_message(m: "MessageParserProtocol"):
     m.set_message(
         textwrap.dedent(f"""\
         使い方：<メモ記録ワード> <対象メンバー> <内容>
-        メモ記録ワード：{g.cfg.setting.remarks_word}
+        メモ記録ワード：{"、".join(g.cfg.rule.data[rule_version].remarks_words)}
 
         {remarks_type1}
         {remarks_type0}
@@ -133,19 +133,19 @@ def help_message(m: "MessageParserProtocol"):
 
     # ルールセット
     m.set_message(
-        g.cfg.rule.print(str(g.params.get("default_rule"))),
+        g.cfg.rule.print(rule_version),
         StyleOptions(title="ルールセット情報"),
     )
 
     # レギュレーション
     regulation: str = ""
-    if words := lookup.regulation_list(2):
+    if words := lookup.regulation_list(2, rule_version):
         regulation += "卓外清算ワード(個人)：\n"
         for word in words:
             regulation += f"\t{word}\n"
         regulation += "\n"
 
-    if words := lookup.regulation_list(3):
+    if words := lookup.regulation_list(3, rule_version):
         regulation += "卓外清算ワード(チーム)：\n"
         for word in words:
             regulation += f"\t{word}\n"
