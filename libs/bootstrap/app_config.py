@@ -23,8 +23,6 @@ from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
-    from configparser import SectionProxy
-
     from libs.bootstrap.section import SubCommands
     from libs.types import PlaceholderDict
 
@@ -32,9 +30,6 @@ if TYPE_CHECKING:
 class DropItems(BaseSection):
     """非表示項目リスト"""
 
-    section: str
-    main_parser: ConfigParser
-    section_proxy: "SectionProxy"
     results: set[str]
     """成績サマリ非表示項目"""
     ranking: set[str]
@@ -83,16 +78,15 @@ class BadgeDisplay(BaseSection):
         table_name: str = field(default=str())
         table: GradeTableDict = field(default_factory=GradeTableDict)
 
-    section: str
-    main_parser: ConfigParser
-    section_proxy: "SectionProxy"
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
+    """段位情報"""
 
     def __init__(self, outer: "AppConfig"):
         self.section = "grade"
         self.main_parser = outer.main_parser
+        super().__init__(self)
 
-        self.grade.table_name = self.main_parser.get(self.section, "table_name", fallback="")
+        self.grade.table_name = self.get("table_name", fallback="")
 
 
 class AppConfig:
@@ -252,9 +246,9 @@ class AppConfig:
         protected_values: Union[str, list]
         match section_name:
             case "setting":
-                protected_values = self.setting.help  # 上書き保護
+                protected_values = self.setting.remarks_word  # 上書き保護
                 self.setting.config_load(self)
-                self.setting.help = protected_values
+                self.setting.remarks_word = protected_values
             case "results":
                 protected_values = self.results.commandword  # 上書き保護
                 self.results.config_load(self)
