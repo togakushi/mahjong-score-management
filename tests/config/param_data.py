@@ -21,6 +21,6 @@ keyword_test: dict[str, tuple[Any, ...]] = {
 # ヘルプキーワード
 help_word: dict[str, tuple[Any, ...]] = {
     # config, word
-    "help_default": ("empty.ini", "麻雀成績ヘルプ"),
+    "help_default": ("empty.ini", "麻雀ヘルプ"),
     "help_override": ("commandword.ini", "ヘルプの別名"),
 }

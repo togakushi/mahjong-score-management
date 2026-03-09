@@ -25,7 +25,7 @@ def by_keyword(m: "MessageParserProtocol"):
     # チャンネル個別設定切替
     g.params.update(
         {
-            "channel_config": g.cfg.read_channel_config(m.status.source),
+            "channel_config": g.cfg.read_channel_config(m.status.source, g.params),
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
         }
@@ -88,7 +88,7 @@ def other_words(word: str, m: "MessageParserProtocol"):
         m (MessageParserProtocol): メッセージデータ
     """
 
-    if re.match(rf"^{g.cfg.setting.remarks_word}$", word) and m.in_thread:  # 追加メモ
+    if word in g.cfg.rule.remarks_words and m.in_thread:  # 追加メモ
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
     else:  # スコア登録

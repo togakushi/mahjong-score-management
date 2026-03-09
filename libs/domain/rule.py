@@ -47,6 +47,9 @@ class RuleData:
     undefined_word: int = 1
     """未定義ワードタイプ"""
 
+    remarks_words: list[str] = field(default_factory=list)
+    """メモ記録用ワード"""
+
     # ステータス
     first_time: ExtDt = field(default=ExtDt("1900-01-01 00:00:00"))
     """記録開始日時"""
@@ -294,7 +297,7 @@ class RuleSet:
         body_data: list = []
 
         if rule := self.data.get(rule_version):
-            body_data.append(["ルールバージョン", rule.rule_version])
+            body_data.append(["ルール識別子", rule.rule_version])
 
             # 集計モード
             match rule.mode:
@@ -307,7 +310,7 @@ class RuleSet:
 
             body_data.extend(
                 [
-                    ["点数", f"{rule.origin_point * 100}点持ち / {rule.return_point * 100}点返し"],
+                    ["素点", f"{rule.origin_point * 100}点持ち / {rule.return_point * 100}点返し"],
                     ["順位点", " / ".join([f"{pt}pt".replace("-", "▲") for pt in rule.rank_point])],
                     ["同点時", "順位点山分け" if rule.draw_split else "席順"],
                 ]
@@ -315,9 +318,9 @@ class RuleSet:
 
             # マッピング情報
             if keyword := [word for word, mapping_rule in self.keyword_mapping.items() if mapping_rule == rule_version]:
-                body_data.append(["成績登録キーワード", "、".join(keyword)])
+                body_data.append(["成績登録ワード", "、".join(keyword)])
             else:
-                body_data.append(["成績登録キーワード", "---"])
+                body_data.append(["成績登録ワード", "---"])
 
             # 記録時間
             body_data.append(["記録数", f"{rule.count} ゲーム"])
@@ -417,10 +420,25 @@ class RuleSet:
 
     @property
     def rule_list(self) -> list[str]:
-        """定義済みルールセットの列挙
+        """定義済みルール識別子の列挙
 
         Returns:
             list[str]: ルール識別子
         """
 
         return [x.rule_version for x in self.data.values()]
+
+    @property
+    def remarks_words(self) -> list[str]:
+        """全ルールセットのメモ記録ワードを列挙
+
+        Returns:
+            list[str]: メモ記録ワード
+        """
+
+        ret: list[str] = []
+
+        for rule, data in self.data.items():
+            ret.extend(data.remarks_words)
+
+        return list(set(ret))

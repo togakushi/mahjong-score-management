@@ -44,9 +44,6 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
     g.cfg.initialization()
     rule_version: str | None = None
 
-    # 設定周りのパラメータの取り込み
-    g.cfg.read_channel_config(m.status.source)
-
     # メンバー情報更新
     g.cfg.member.guest_name = lookup.get_guest()
     g.cfg.member.info = g.cfg.member.get_info
@@ -65,12 +62,16 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
             **subcom.to_dict(),  # デフォルト値
         },
     )
-    default_rule = ret_dict.get("default_rule", g.cfg.mahjong.rule_version)
+
+    # チャンネル個別設定取り込み
+    g.cfg.read_channel_config(m.status.source, ret_dict)
+
     if "command_suffix" in ret_dict and isinstance(ret_dict["command_suffix"], list):
         for suffix in ret_dict.get("command_suffix", []):
             if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
-                ret_dict.update({"default_rule": rule_version})
-    rule_version = rule_version if rule_version else default_rule
+                break
+    rule_version = rule_version if rule_version else ret_dict.get("default_rule", g.cfg.setting.default_rule)
+
     ret_dict.update(
         {
             "rule_version": rule_version,
@@ -122,8 +123,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
         for rule in g.cfg.rule.rule_list:  # 全ルール追加
             if g.cfg.rule.get_mode(rule) == ret_dict.get("target_mode"):
                 rule_list.append(rule)
-    else:
-        rule_list.append(ret_dict["default_rule"])
+    if not rule_list:
+        rule_list.append(rule_version)
     ret_dict["rule_set"] = {f"rule_{idx}": rule for idx, rule in enumerate(list(set(rule_list)))}
 
     # プレイヤー名

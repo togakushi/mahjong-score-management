@@ -18,21 +18,18 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
+from libs.domain.datamodels import CommandType
 from libs.domain.rule import RuleSet
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
-    from configparser import SectionProxy
-
     from libs.bootstrap.section import SubCommands
+    from libs.types import PlaceholderDict
 
 
 class DropItems(BaseSection):
     """非表示項目リスト"""
 
-    section: str
-    main_parser: ConfigParser
-    section_proxy: "SectionProxy"
     results: set[str]
     """成績サマリ非表示項目"""
     ranking: set[str]
@@ -81,16 +78,16 @@ class BadgeDisplay(BaseSection):
         table_name: str = field(default=str())
         table: GradeTableDict = field(default_factory=GradeTableDict)
 
-    section: str
-    main_parser: ConfigParser
-    section_proxy: "SectionProxy"
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
+    """段位情報"""
 
     def __init__(self, outer: "AppConfig"):
         self.section = "grade"
         self.main_parser = outer.main_parser
 
-        self.grade.table_name = self.main_parser.get(self.section, "table_name", fallback="")
+        if self.main_parser.has_section(self.section):
+            self.section_proxy = self.main_parser[self.section]
+            self.grade.table_name = self.get("table_name", fallback="")
 
 
 class AppConfig:
@@ -192,20 +189,33 @@ class AppConfig:
         self.report.config_load(self)
         self.help.config_load(self)
 
-    def word_list(self) -> list[str]:
+    def word_list(self, add_words: list | None = None) -> list[str]:
         """設定されている値、キーワードをリスト化する
+
+        Args:
+            add_words (list | None, optional): リストに追加するワード. Defaults to None.
 
         Returns:
             list: リスト化されたキーワード
         """
 
         words: list[str] = []
-        words.extend(self.results.commandword)
-        words.extend(self.graph.commandword)
-        words.extend(self.ranking.commandword)
-        words.extend(self.report.commandword)
+
+        if add_words:
+            words.extend(add_words)
+
         words.extend(list(self.rule.keyword_mapping.keys()))
         words.extend([self.setting.remarks_word])
+
+        for command_name in CommandType:
+            if hasattr(self, str(command_name)):
+                command = getattr(self, str(command_name))
+                if hasattr(command, "default_commandword"):
+                    words.append(command.default_commandword)
+                if hasattr(command, "commandword"):
+                    words.extend(command.commandword)
+                if hasattr(command, "command_suffix"):
+                    words.extend(command.command_suffix)
 
         for k, v in self.alias.to_dict().items():
             if isinstance(v, list):
@@ -237,9 +247,9 @@ class AppConfig:
         protected_values: Union[str, list]
         match section_name:
             case "setting":
-                protected_values = self.setting.help  # 上書き保護
+                protected_values = self.setting.remarks_word  # 上書き保護
                 self.setting.config_load(self)
-                self.setting.help = protected_values
+                self.setting.remarks_word = protected_values
             case "results":
                 protected_values = self.results.commandword  # 上書き保護
                 self.results.config_load(self)
@@ -259,11 +269,12 @@ class AppConfig:
             case _:
                 return
 
-    def read_channel_config(self, section_name: str) -> Optional[Path]:
+    def read_channel_config(self, section_name: str, ret_dict: "PlaceholderDict") -> Optional[Path]:
         """チャンネル個別設定読み込み
 
         Args:
-            section_name (str): セクション名
+            section_name (str): チャンネル個別設定セクション名
+            ret_dict (PlaceholderDict): パラメータ
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
@@ -275,6 +286,8 @@ class AppConfig:
         self.initialization()
 
         if self.main_parser.has_section(section_name):
+            if default_rule := self.main_parser[section_name].get("default_rule"):
+                ret_dict.update({"default_rule": default_rule})
             if channel_config := self.main_parser[section_name].get("channel_config"):
                 config_path = Path(channel_config)
                 if config_path.exists():

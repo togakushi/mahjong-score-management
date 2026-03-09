@@ -209,6 +209,8 @@ class SettingSection(BaseSection):
     """成績記録キーワード(プライマリ)"""
     remarks_word: str
     """メモ記録用キーワード"""
+    remarks_suffix: list[str]
+    """メモ記録用キーワードサフィックス"""
     rule_config: Path
     """ルール設定ファイル"""
     default_rule: str
@@ -243,9 +245,9 @@ class SettingSection(BaseSection):
         self._reset()
 
     def _reset(self):
-        self.help = str("麻雀成績ヘルプ")
         self.keyword = str("終局")
-        self.remarks_word = str("麻雀成績メモ")
+        self.remarks_word = str("麻雀メモ")
+        self.remarks_suffix = []
         self.rule_config = Path("files/default_rule.ini")
         self.time_adjust = int(12)
         self.default_rule = str("")
@@ -304,7 +306,6 @@ class SettingSection(BaseSection):
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
-    section: str
     results: list
     """成績サマリ出力コマンド"""
     graph: list
@@ -366,8 +367,6 @@ class AliasSection(BaseSection):
 class SubCommands(BaseSection, CommandAttrs):
     """サブコマンドセクション処理"""
 
-    section: str
-    """読み込みセクション"""
     default_commandword: str
     """コマンドワードデフォルト値"""
 

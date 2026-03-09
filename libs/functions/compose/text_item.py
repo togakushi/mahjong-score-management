@@ -55,9 +55,9 @@ def remarks(headword=False) -> str | list:
             case _:
                 remark_list.append("集計対象ルール すべて")
     elif len(g.params.get("rule_set", {})) > 1:
-        remark_list.append(f"集計対象ルール {'、'.join(map(str, g.params['rule_set'].values()))}")
+        remark_list.append(f"集計対象ルール {'、'.join(g.params['rule_set'].values())}")
     elif g.params.get("rule_version") != g.params.get("default_rule"):
-        remark_list.append(f"集計対象ルール {g.params['rule_version']}")
+        remark_list.append(f"集計対象ルール {'、'.join(g.params['rule_set'].values())}")
 
     if headword:
         if remark_list:

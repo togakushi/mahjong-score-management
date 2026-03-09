@@ -39,4 +39,4 @@ def test_help(config, word, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
 
-    assert g.cfg.setting.help == word
+    assert word in g.cfg.help.commandword

@@ -3,7 +3,7 @@ libs/domain/datamodels.py
 """
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import MISSING, dataclass, field, fields
 from enum import StrEnum
 from math import ceil
 from typing import TYPE_CHECKING, Literal, Optional, Union
@@ -91,89 +91,66 @@ class ChannelType(StrEnum):
 class CommandAttrs:
     """サブコマンド設定パラメータ"""
 
-    section: str
-    """サブコマンドセクション名"""
-
-    commandword: list[str]
+    commandword: list[str] = field(default_factory=list)
     """呼び出しキーワード"""
-    command_suffix: list[str]
+    command_suffix: list[str] = field(default_factory=list)
     """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-    aggregation_range: str
+    aggregation_range: str = field(default="当日")
     """検索範囲未指定時に使用される範囲"""
-    individual: bool
+    individual: bool = field(default=True)
     """個人/チーム集計切替フラグ
     - *True*: 個人集計
     - *False*: チーム集計
     """
-    all_player: bool
-    daily: bool
-    fourfold: bool
-    game_results: bool
-    guest_skip: bool
+    all_player: bool = field(default=False)
+    daily: bool = field(default=True)
+    fourfold: bool = field(default=True)
+    game_results: bool = field(default=False)
+    guest_skip: bool = field(default=True)
     """ゲストアリ/ナシフラグ(サマリ集計用)"""
-    guest_skip2: bool
+    guest_skip2: bool = field(default=True)
     """ゲストアリ/ナシフラグ(詳細集計用)"""
-    ranked: int
+    ranked: int = field(default=3)
     """ランキング/レーティングで表示する順位"""
-    score_comparisons: bool
+    score_comparisons: bool = field(default=False)
     """スコア比較"""
-    statistics: bool
+    statistics: bool = field(default=False)
     """統計情報表示"""
-    stipulated: int
+    stipulated: int = field(default=0)
     """規定打数指定"""
-    stipulated_rate: float
+    stipulated_rate: float = field(default=0.05)
     """規定打数計算レート"""
-    unregistered_replace: bool
+    unregistered_replace: bool = field(default=True)
     """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
     - *True*: 置き換える
     - *False*: 置き換えない
     """
-    anonymous: bool
+    anonymous: bool = field(default=False)
     """匿名化フラグ"""
-    verbose: bool
+    verbose: bool = field(default=False)
     """詳細情報出力フラグ"""
-    versus_matrix: bool
+    versus_matrix: bool = field(default=False)
     """対戦マトリックス表示"""
-    collection: str
-    always_argument: list
+    collection: str = field(default="")
+    always_argument: list = field(default_factory=list)
     """オプションとして常に付与される文字列"""
-    target_mode: int
+    target_mode: int = field(default=0)
     """集計対象モードの指定
     - *0*: settingのデフォルトに従う
     - *not 0*: 指定値でmodeを上書き
     """
-    format: str
-    filename: str
-    interval: int
+    format: str = field(default="")
+    filename: str = field(default="")
+    interval: int = field(default=80)
 
     def default_reset(self):
         """デフォルト値にリセット"""
 
-        self.commandword = []
-        self.command_suffix = []
-        self.aggregation_range = str("当日")
-        self.individual = bool(True)
-        self.all_player = bool(False)
-        self.daily = bool(True)
-        self.fourfold = bool(True)
-        self.game_results = bool(False)
-        self.guest_skip = bool(True)
-        self.guest_skip2 = bool(True)
-        self.ranked = int(3)
-        self.score_comparisons = bool(False)
-        self.statistics = bool(False)
-        self.stipulated = int(0)
-        self.stipulated_rate = 0.05
-        self.unregistered_replace = bool(True)
-        self.anonymous = bool(False)
-        self.verbose = bool(False)
-        self.versus_matrix = bool(False)
-        self.collection = str("")
-        self.always_argument = []
-        self.target_mode = int(0)
-        self.format = str("")
-        self.filename = str("")
-        self.interval = 80
+        for f in fields(self):
+            if f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
 
     def stipulated_calculation(self, game_count: int) -> int:
         """規定打数をゲーム数から計算
@@ -211,7 +188,7 @@ class GameInfo:
 
         # グローバルパラメータチェック
         if "rule_version" not in g.params:
-            g.params.update({"rule_version": g.cfg.mahjong.rule_version})
+            g.params.update({"rule_version": g.cfg.setting.default_rule})
         if "starttime" not in g.params:
             g.params.update({"starttime": ExtDt().range("全部").start})
         if "endtime" not in g.params:

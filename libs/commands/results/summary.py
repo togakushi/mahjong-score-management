@@ -30,6 +30,11 @@ def aggregation(m: "MessageParserProtocol"):
     df_game = loader.read_data("SUMMARY_DETAILS")
     df_remarks = loader.read_data("REMARKS_INFO")
 
+    current_rule: str = ""
+    if rule_set := g.params.get("rule_set"):
+        for rule in rule_set.values():
+            current_rule = rule
+
     # インデックスの振りなおし
     df_summary.reset_index(inplace=True, drop=True)
     df_summary.index += 1
@@ -46,7 +51,8 @@ def aggregation(m: "MessageParserProtocol"):
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    add_text = "" if g.params.get("ignore_flying") else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    # ルール別
+    add_text = "" if g.cfg.rule.get_ignore_flying(current_rule) else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
     m.set_headline(header_text, StyleOptions(title=headline_title))
 
@@ -86,7 +92,7 @@ def aggregation(m: "MessageParserProtocol"):
         "flying",
     ]
 
-    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
+    if g.cfg.rule.get_ignore_flying(current_rule) or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
         header_list.remove("flying")
         filter_list.remove("flying")
 

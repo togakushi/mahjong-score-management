@@ -56,29 +56,29 @@ def help_message(m: "MessageParserProtocol"):
     )
     g.cfg.rule.status_update(cast(dict, g.params))
 
-    rule_version = g.params.get("default_rule", g.cfg.mahjong.rule_version)
+    rule_version = g.params.get("rule_version", g.cfg.setting.default_rule)
 
     m.set_message(
-        "使い方：<呼び出しキーワード> [検索範囲] [対象メンバー] [オプション]",
+        "使い方：<呼び出しワード> [検索範囲] [対象メンバー] [オプション]",
         StyleOptions(title="機能呼び出し"),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RESULTS))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RESULTS))}
         検索範囲デフォルト：{g.cfg.results.aggregation_range}
         """),
         StyleOptions(title="成績サマリ", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.GRAPH))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.GRAPH))}
         検索範囲デフォルト：{g.cfg.graph.aggregation_range}
         """),
         StyleOptions(title="成績グラフ", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RANKING))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.RANKING))}
         検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
         規定打数デフォルト：全体ゲーム数 × {g.cfg.ranking.stipulated_rate} ＋ 1
         出力制限デフォルト：上位 {g.cfg.ranking.ranked} 名
@@ -87,34 +87,34 @@ def help_message(m: "MessageParserProtocol"):
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しキーワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.REPORT))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(rule_version, CommandType.REPORT))}
         検索範囲デフォルト：{g.cfg.report.aggregation_range}
         """),
         StyleOptions(title="レポート", indent=1, sub_title=True),
     )
     m.set_message(
-        f"呼び出しキーワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.MEMBER_LIST))}",
+        f"呼び出しワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.MEMBER_LIST))}",
         StyleOptions(title="メンバー一覧", indent=1, sub_title=True),
     )
     m.set_message(
-        f"呼び出しキーワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.TEAM_LIST))}",
+        f"呼び出しワード：{'、'.join(lookup.resolve_commands(rule_version, CommandType.TEAM_LIST))}",
         StyleOptions(title="チーム一覧", indent=1, sub_title=True),
     )
     m.set_message(  # 検索範囲
         ExtDt.print_range(),
-        StyleOptions(title="検索範囲に指定できるキーワード"),
+        StyleOptions(title="検索範囲に指定できるワード"),
     )
 
     # メモ機能
     remarks_type1: str = ""
-    if words := lookup.regulation_list(1):
+    if words := lookup.regulation_list(1, rule_version):
         remarks_type1 += "個別カウントワード：" + "、".join(words)
     else:
         if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 1:
             remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
 
     remarks_type0: str = ""
-    if words := lookup.regulation_list(0):
+    if words := lookup.regulation_list(0, rule_version):
         remarks_type0 += "役満カウントワード：" + "、".join(words)
     else:
         if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 0:
@@ -122,8 +122,8 @@ def help_message(m: "MessageParserProtocol"):
 
     m.set_message(
         textwrap.dedent(f"""\
-        使い方：<登録キーワード> <対象メンバー> <登録ワード>
-        登録キーワード：{g.cfg.setting.remarks_word}
+        使い方：<メモ記録ワード> <対象メンバー> <内容>
+        メモ記録ワード：{"、".join(g.cfg.rule.data[rule_version].remarks_words)}
 
         {remarks_type1}
         {remarks_type0}
@@ -133,19 +133,19 @@ def help_message(m: "MessageParserProtocol"):
 
     # ルールセット
     m.set_message(
-        g.cfg.rule.print(str(g.params.get("default_rule"))),
-        StyleOptions(title="ルールセット"),
+        g.cfg.rule.print(rule_version),
+        StyleOptions(title="ルールセット情報"),
     )
 
     # レギュレーション
     regulation: str = ""
-    if words := lookup.regulation_list(2):
+    if words := lookup.regulation_list(2, rule_version):
         regulation += "卓外清算ワード(個人)：\n"
         for word in words:
             regulation += f"\t{word}\n"
         regulation += "\n"
 
-    if words := lookup.regulation_list(3):
+    if words := lookup.regulation_list(3, rule_version):
         regulation += "卓外清算ワード(チーム)：\n"
         for word in words:
             regulation += f"\t{word}\n"

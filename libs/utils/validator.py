@@ -42,7 +42,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
     ret_flg: bool = True
     ret_msg: str = "OK"
 
-    # 名前チェック
+    # 同名チェック
     check_list = _pattern_gen(g.cfg.member.all_lists)  # メンバーチェック
     if ret_flg and any(x in check_list for x in check_pattern):
         ret_flg, ret_msg = False, f"「{name}」は存在するメンバーです。"
@@ -68,7 +68,8 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
     if ret_flg and CommandParser().is_valid_command(name):
         ret_flg, ret_msg = False, "オプションに使用される単語では登録できません。"
 
-    if ret_flg and name in set(list(g.keyword_dispatcher) + list(g.command_dispatcher) + g.cfg.word_list()):
+    # コマンドチェック
+    if ret_flg and name in g.cfg.word_list(list(g.keyword_dispatcher) + list(g.command_dispatcher)):
         ret_flg, ret_msg = False, "コマンドに使用される単語では登録できません。"
 
     return (ret_flg, ret_msg)
