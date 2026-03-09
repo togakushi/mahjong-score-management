@@ -91,9 +91,6 @@ class ChannelType(StrEnum):
 class CommandAttrs:
     """サブコマンド設定パラメータ"""
 
-    section: str
-    """サブコマンドセクション名"""
-
     commandword: list[str]
     """呼び出しキーワード"""
     command_suffix: list[str]
