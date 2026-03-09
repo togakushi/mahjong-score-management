@@ -8,7 +8,7 @@ import sqlite3
 import textwrap
 from contextlib import closing
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any, Optional, cast
 
 import pandas as pd
 
@@ -20,12 +20,12 @@ if TYPE_CHECKING:
     from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def execute(sql: str, params: dict | None = None) -> list[dict[str, Any]]:
+def execute(sql: str, params: Optional[dict] = None) -> list[dict[str, Any]]:
     """クエリ実行
 
     Args:
         sql (str): 実行クエリ
-        params (dict | None, optional): プレースホルダ
+        params (Optional[dict]): プレースホルダ
 
     Returns:
         list[dict[str, Any]]: 実行結果
@@ -66,12 +66,12 @@ def execute(sql: str, params: dict | None = None) -> list[dict[str, Any]]:
     return ret
 
 
-def read_data(keyword: str, params: dict | None = None) -> pd.DataFrame:
+def read_data(keyword: str, params: Optional[dict] = None) -> pd.DataFrame:
     """データベースからデータを取得する
 
     Args:
         keyword (str): SQL選択キーワード
-        params (dict | None, optional): プレースホルダ
+        params (Optional[dict]): プレースホルダ
 
     Returns:
         pd.DataFrame: 集計結果
