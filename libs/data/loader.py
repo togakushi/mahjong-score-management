@@ -20,17 +20,18 @@ if TYPE_CHECKING:
     from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def execute(sql: str, params: dict = {}) -> list[dict[str, Any]]:
+def execute(sql: str, params: dict | None = None) -> list[dict[str, Any]]:
     """クエリ実行
 
     Args:
         sql (str): 実行クエリ
-        params (dict): プレースホルダ
+        params (dict | None, optional): プレースホルダ
 
     Returns:
         list[dict[str, Any]]: 実行結果
     """
 
+    params = {} if params is None else dict(params)
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql)
 
@@ -65,17 +66,18 @@ def execute(sql: str, params: dict = {}) -> list[dict[str, Any]]:
     return ret
 
 
-def read_data(keyword: str, params: dict = {}) -> pd.DataFrame:
+def read_data(keyword: str, params: dict | None = None) -> pd.DataFrame:
     """データベースからデータを取得する
 
     Args:
         keyword (str): SQL選択キーワード
-        params (dict): プレースホルダ
+        params (dict | None, optional): プレースホルダ
 
     Returns:
         pd.DataFrame: 集計結果
     """
 
+    params = {} if params is None else dict(params)
     if not params:
         params = cast(dict, g.params)
 
