@@ -196,7 +196,7 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
     for word, ex_point in rows:
         if ex_point:
             point = f"{ex_point:.1f}".replace("-", "▲")
-            ret.append(f"{word}:{point}pt")
+            ret.append(f"{word}\t{point}pt")
         else:
             ret.append(f"{word}")
 

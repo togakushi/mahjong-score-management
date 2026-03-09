@@ -294,7 +294,7 @@ class RuleSet:
         body_data: list = []
 
         if rule := self.data.get(rule_version):
-            body_data.append(["ルールバージョン", rule.rule_version])
+            body_data.append(["ルール識別子", rule.rule_version])
 
             # 集計モード
             match rule.mode:
@@ -307,7 +307,7 @@ class RuleSet:
 
             body_data.extend(
                 [
-                    ["点数", f"{rule.origin_point * 100}点持ち / {rule.return_point * 100}点返し"],
+                    ["素点", f"{rule.origin_point * 100}点持ち / {rule.return_point * 100}点返し"],
                     ["順位点", " / ".join([f"{pt}pt".replace("-", "▲") for pt in rule.rank_point])],
                     ["同点時", "順位点山分け" if rule.draw_split else "席順"],
                 ]
@@ -315,9 +315,9 @@ class RuleSet:
 
             # マッピング情報
             if keyword := [word for word, mapping_rule in self.keyword_mapping.items() if mapping_rule == rule_version]:
-                body_data.append(["成績登録キーワード", "、".join(keyword)])
+                body_data.append(["成績登録ワード", "、".join(keyword)])
             else:
-                body_data.append(["成績登録キーワード", "---"])
+                body_data.append(["成績登録ワード", "---"])
 
             # 記録時間
             body_data.append(["記録数", f"{rule.count} ゲーム"])
