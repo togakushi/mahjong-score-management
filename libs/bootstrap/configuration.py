@@ -277,14 +277,31 @@ def setup(init_db: bool = True):
     initialization.main(init_db)
     lookup.read_memberslist()
 
+    register()
+
+    # メモ記録ワード登録
+    if g.cfg.setting.remarks_suffix:
+        for rule_version in g.cfg.rule.rule_list:
+            keywords = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
+            if keywords:
+                g.cfg.rule.data[rule_version].remarks_words.extend([f"{rule}{suffix}" for rule in keywords for suffix in g.cfg.setting.remarks_suffix])
+    else:
+        for rule_version in g.cfg.rule.rule_list:
+            g.cfg.rule.data[rule_version].remarks_words.append(g.cfg.setting.remarks_word)
+
     # キーワード重複チェック
     g.cfg.rule.check(
-        chk_commands=set(g.cfg.results.commandword + g.cfg.graph.commandword + g.cfg.ranking.commandword + g.cfg.report.commandword),
+        chk_commands=set(
+            g.cfg.results.commandword
+            + g.cfg.graph.commandword
+            + g.cfg.ranking.commandword
+            + g.cfg.report.commandword
+            + g.cfg.help.commandword
+            + list(g.keyword_dispatcher)
+        ),
         chk_members=set(lookup.enumeration_all_members()),
         default_rule=g.cfg.setting.default_rule,
     )
-
-    register()
 
 
 def register():
