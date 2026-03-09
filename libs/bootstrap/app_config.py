@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from configparser import SectionProxy
 
     from libs.bootstrap.section import SubCommands
+    from libs.types import PlaceholderDict
 
 
 class DropItems(BaseSection):
@@ -273,11 +274,12 @@ class AppConfig:
             case _:
                 return
 
-    def read_channel_config(self, section_name: str) -> Optional[Path]:
+    def read_channel_config(self, section_name: str, ret_dict: "PlaceholderDict") -> Optional[Path]:
         """チャンネル個別設定読み込み
 
         Args:
-            section_name (str): セクション名
+            section_name (str): チャンネル個別設定セクション名
+            ret_dict (PlaceholderDict): パラメータ
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
@@ -289,6 +291,8 @@ class AppConfig:
         self.initialization()
 
         if self.main_parser.has_section(section_name):
+            if default_rule := self.main_parser[section_name].get("default_rule"):
+                ret_dict.update({"default_rule": default_rule})
             if channel_config := self.main_parser[section_name].get("channel_config"):
                 config_path = Path(channel_config)
                 if config_path.exists():

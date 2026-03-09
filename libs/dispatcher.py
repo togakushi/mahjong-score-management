@@ -25,7 +25,7 @@ def by_keyword(m: "MessageParserProtocol"):
     # チャンネル個別設定切替
     g.params.update(
         {
-            "channel_config": g.cfg.read_channel_config(m.status.source),
+            "channel_config": g.cfg.read_channel_config(m.status.source, g.params),
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
         }
