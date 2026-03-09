@@ -70,10 +70,10 @@ def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
     """戦績(詳細)はマルチカラムで表示
 
     Args:
-        df (pd.DataFrame): _description_
+        df (pd.DataFrame): 戦績データ
 
     Returns:
-        pd.DataFrame: _description_
+        pd.DataFrame: マルチカラム変換
     """
 
     if not isinstance(df.columns, pd.MultiIndex):
