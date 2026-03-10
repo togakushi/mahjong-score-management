@@ -76,7 +76,7 @@ def aggregation(m: "MessageParserProtocol"):
         return
 
     stats = StatsInfo()
-    stats.read(cast(dict, g.params))
+    stats.read(g.params)
 
     if stats.result_df.empty or stats.record_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))

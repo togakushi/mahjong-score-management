@@ -4,12 +4,15 @@ libs/domain/stats.py
 
 import textwrap
 from dataclasses import dataclass, field, fields
-from typing import Literal, Optional, Union, get_type_hints
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union, cast, get_type_hints
 
 import pandas as pd
 
 from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from libs.types import PlaceholderDict
 
 
 @dataclass
@@ -218,12 +221,12 @@ class StatsDetailed:
             return round(self.yakuman / self.count, 4)
         return 0.0
 
-    def update_from_dict(self, data: dict) -> None:
+    def update_from_dict(self, data: dict[Any, Any]) -> None:
         """
         辞書から値を更新
 
         Args:
-            data (dict): 更新データ（キーはフィールド名）
+            data (dict[Any, Any]): 更新データ（キーはフィールド名）
 
         """
         type_hints = get_type_hints(self.__class__)
@@ -329,7 +332,7 @@ class StatsInfo:
     # 検索条件
     mode: Literal[3, 4] = field(default=4)
     """集計モード"""
-    rule_version: list = field(default_factory=list)
+    rule_version: list[str] = field(default_factory=list)
     """ルールセット"""
     # 検索範囲
     starttime: ExtDt = field(default=ExtDt("1900-01-01 00:00:00"))
@@ -342,16 +345,16 @@ class StatsInfo:
     result_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
-    def read(self, params: dict):
+    def read(self, params: "PlaceholderDict") -> None:
         """
         データ読み込み
 
         Args:
-            params (dict): プレースホルダ
+            params (PlaceholderDict): プレースホルダ
 
         """
-        self.result_df = loader.read_data("RESULTS_INFO", params)
-        self.record_df = loader.read_data("RECORD_INFO", params)
+        self.result_df = loader.read_data("RESULTS_INFO", cast(dict, params))
+        self.record_df = loader.read_data("RECORD_INFO", cast(dict, params))
 
         if self.result_df.empty or self.record_df.empty:
             return
@@ -360,7 +363,7 @@ class StatsInfo:
         self.set_data(self.result_df)
         self.set_data(self.record_df)
 
-    def set_data(self, df: "pd.DataFrame"):
+    def set_data(self, df: "pd.DataFrame") -> None:
         """
         集計結果取り込み
 
@@ -376,7 +379,7 @@ class StatsInfo:
                 if isinstance(seat_id, int) and seat_id in seat_map:
                     seat_map[seat_id].update_from_dict(row.to_dict())
 
-    def set_parameter(self, **kwargs):
+    def set_parameter(self, **kwargs) -> None:
         """パラメータ取り込み"""
         if "mode" in kwargs and isinstance(kwargs["mode"], int):
             if kwargs["mode"] in (3, 4):
@@ -401,7 +404,7 @@ class StatsInfo:
             self.search_word = kwargs["search_word"]
 
     @property
-    def rank_distr_list(self) -> list:
+    def rank_distr_list(self) -> list[str]:
         """座席別順位分布(平均順位)"""
         return [
             self.seat1.rank_distr,
@@ -411,7 +414,7 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def rank_distr_list2(self) -> list:
+    def rank_distr_list2(self) -> list[str]:
         """座席別順位分布(ゲーム数)"""
         return [
             self.seat1.rank_distr2,
@@ -421,7 +424,7 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def rank_avg_list(self) -> list:
+    def rank_avg_list(self) -> list[float]:
         """座席別平均順位"""
         return [
             self.seat1.rank_avg,
@@ -431,7 +434,7 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def flying_list(self) -> list:
+    def flying_list(self) -> list[int]:
         """座席別トビ率"""
         return [
             self.seat1.flying,
@@ -441,7 +444,7 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def yakuman_list(self) -> list:
+    def yakuman_list(self) -> list[int]:
         """座席別役満和了率"""
         return [
             self.seat1.yakuman,
