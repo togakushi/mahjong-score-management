@@ -11,7 +11,7 @@ from libs.data import modify
 from libs.utils import dbutil
 
 
-def main():
+def main() -> None:
     """vacuum実行"""
     g.cfg.initialization()
 
@@ -32,7 +32,7 @@ def main():
     logging.info("freelist_count: %s -> %s", before_freelist, after_freelist)
 
 
-def db_info(cur, kind):
+def db_info(cur, kind) -> int:
     """
     page_countを取得
 

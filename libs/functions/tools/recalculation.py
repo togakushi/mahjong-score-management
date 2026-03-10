@@ -11,7 +11,7 @@ from libs.domain.score import GameResult
 from libs.utils import dbutil, dictutil
 
 
-def main():
+def main() -> None:
     """ポイント再計算"""
     g.cfg.initialization()
 

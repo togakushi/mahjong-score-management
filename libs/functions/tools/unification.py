@@ -10,7 +10,7 @@ from libs.data import lookup, modify
 from libs.utils import dbutil, textutil, validator
 
 
-def main():
+def main() -> None:
     """ゲストメンバーの名前を統一する"""
     g.cfg.initialization()
 

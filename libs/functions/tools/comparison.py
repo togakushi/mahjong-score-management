@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from libs.domain.datamodels import ComparisonResults
 
 
-def main():
+def main() -> None:
     """データ突合処理"""
     g.cfg.initialization()
 
