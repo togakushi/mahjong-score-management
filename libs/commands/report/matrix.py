@@ -1,4 +1,5 @@
-"""libs/commands/report/matrix.py
+"""
+libs/commands/report/matrix.py
 """
 
 from typing import TYPE_CHECKING
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """対局対戦マトリックスの表示
+    """
+    対局対戦マトリックスの表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ

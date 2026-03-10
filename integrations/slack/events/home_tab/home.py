@@ -1,4 +1,5 @@
-"""integrations/slack/events/home_tab/home.py
+"""
+integrations/slack/events/home_tab/home.py
 """
 
 import logging
@@ -9,7 +10,8 @@ from integrations.slack.events.home_tab import ui_parts
 
 
 def build_main_menu(adapter: ServiceAdapter):
-    """メインメニューを生成する
+    """
+    メインメニューを生成する
 
     Args:
         adapter (ServiceAdapter): インターフェースアダプタ
@@ -30,7 +32,8 @@ def register_home_handlers(app, adapter: ServiceAdapter):
 
     @app.action("actionId-back")
     def handle_action(ack, body):
-        """戻るボタン
+        """
+        戻るボタン
 
         Args:
             ack (_type_): ack
@@ -48,7 +51,8 @@ def register_home_handlers(app, adapter: ServiceAdapter):
 
     @app.action("modal-open-period")
     def handle_open_modal_button_clicks(ack, body):
-        """検索範囲設定選択イベント
+        """
+        検索範囲設定選択イベント
 
         Args:
             ack (_type_): ack

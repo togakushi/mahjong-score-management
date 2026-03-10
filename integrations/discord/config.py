@@ -1,4 +1,5 @@
-"""integrations/discord/config.py
+"""
+integrations/discord/config.py
 """
 
 import logging

@@ -1,4 +1,5 @@
-"""libs/utils/dbutil.py
+"""
+libs/utils/dbutil.py
 """
 
 import re
@@ -13,7 +14,8 @@ if TYPE_CHECKING:
 
 
 def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
-    """DB接続共通処理
+    """
+    DB接続共通処理
 
     Args:
         database_path (Union[Path, str]): データベースファイル
@@ -33,7 +35,8 @@ def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
 
 
 def query(keyword: str) -> str:
-    """SQLクエリを返す
+    """
+    SQLクエリを返す
 
     Args:
         keyword (str): SQL選択キーワード
@@ -109,7 +112,8 @@ def query(keyword: str) -> str:
 
 
 def query_modification(sql: str) -> str:
-    """クエリをオプションの内容で修正する
+    """
+    クエリをオプションの内容で修正する
 
     Args:
         sql (str): 修正するクエリ
@@ -242,7 +246,8 @@ def query_modification(sql: str) -> str:
 
 
 def table_info(conn: sqlite3.Connection, table_name: str) -> dict:
-    """テーブルのスキーマを取得して辞書で返す
+    """
+    テーブルのスキーマを取得して辞書で返す
 
     Args:
         conn (sqlite3.Connection): オブジェクト

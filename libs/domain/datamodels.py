@@ -1,4 +1,5 @@
-"""libs/domain/datamodels.py
+"""
+libs/domain/datamodels.py
 """
 
 import logging
@@ -151,7 +152,8 @@ class CommandAttrs:
                 setattr(self, f.name, f.default_factory())
 
     def stipulated_calculation(self, game_count: int) -> int:
-        """規定打数をゲーム数から計算
+        """
+        規定打数をゲーム数から計算
 
         Args:
             game_count (int): 指定ゲーム数
@@ -287,7 +289,8 @@ class ComparisonResults:
             "invalid_score",
         ],
     ) -> str:
-        """出力メッセージ生成
+        """
+        出力メッセージ生成
 
         Args:
             kind (Literal[summary, headline, pending, mismatch, missing, delete, remark_mod, remark_del, invalid_score]): 種類

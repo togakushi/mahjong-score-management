@@ -1,4 +1,5 @@
-"""integrations/discord/functions.py
+"""
+integrations/discord/functions.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -30,7 +31,8 @@ class SvcFunctions(FunctionsInterface):
         """個別設定"""
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理（非同期処理ラッパー）
+        """
+        後処理（非同期処理ラッパー）
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -45,7 +47,8 @@ class SvcFunctions(FunctionsInterface):
                 self.api.bot.loop.create_task(self.delete_reaction(m))
 
     async def update_reaction(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -92,7 +95,8 @@ class SvcFunctions(FunctionsInterface):
                 await m.discord_msg.add_reaction(emoji["ng"])
 
     async def delete_reaction(self, m: "MessageParserProtocol"):
-        """botが付けたリアクションをすべて削除する
+        """
+        botが付けたリアクションをすべて削除する
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -127,7 +131,8 @@ class SvcFunctions(FunctionsInterface):
                     await reaction.remove(user)
 
     async def is_deleted_message(self, message: "Message") -> bool:
-        """メッセージが削除済みか調べる
+        """
+        メッセージが削除済みか調べる
 
         Args:
             message (Message): discordオブジェクト

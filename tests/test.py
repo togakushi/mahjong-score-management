@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""test.py
+"""
+test.py
 """
 
 import configparser
@@ -25,7 +26,8 @@ from libs.utils import dictutil
 
 
 def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: str):
-    """テストケース実行
+    """
+    テストケース実行
 
     Args:
         flag (dict): フラグ格納辞書

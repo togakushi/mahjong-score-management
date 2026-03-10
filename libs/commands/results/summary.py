@@ -1,4 +1,5 @@
-"""libs/commands/results/summary.py
+"""
+libs/commands/results/summary.py
 """
 
 from typing import TYPE_CHECKING
@@ -16,7 +17,8 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """各プレイヤーの通算ポイントを表示
+    """
+    各プレイヤーの通算ポイントを表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -152,7 +154,8 @@ def aggregation(m: "MessageParserProtocol"):
 
 
 def difference(m: "MessageParserProtocol"):
-    """各プレイヤーのポイント差分を表示
+    """
+    各プレイヤーのポイント差分を表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ

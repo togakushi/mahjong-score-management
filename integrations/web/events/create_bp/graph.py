@@ -1,4 +1,5 @@
-"""integrations/web/events/graph.py
+"""
+integrations/web/events/graph.py
 """
 
 from dataclasses import asdict
@@ -16,7 +17,8 @@ if TYPE_CHECKING:
 
 
 def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """グラフ表示ページ用Blueprint
+    """
+    グラフ表示ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

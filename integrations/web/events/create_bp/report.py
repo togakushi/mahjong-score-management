@@ -1,4 +1,5 @@
-"""integrations/web/events/report.py
+"""
+integrations/web/events/report.py
 """
 
 from dataclasses import asdict
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def report_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """レポートページ用Blueprint
+    """
+    レポートページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

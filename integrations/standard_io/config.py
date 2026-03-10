@@ -1,4 +1,5 @@
-"""integrations/standard_io/config.py
+"""
+integrations/standard_io/config.py
 """
 
 import logging

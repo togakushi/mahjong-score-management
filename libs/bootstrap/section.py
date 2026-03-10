@@ -1,4 +1,5 @@
-"""libs/bootstrap/section.py
+"""
+libs/bootstrap/section.py
 """
 
 import logging
@@ -117,7 +118,8 @@ class BaseSection(CommonMethodMixin):
                     setattr(self, k, self.__dict__.get(k))
 
     def to_dict(self, drop_items: Optional[list[str]] = None) -> dict[str, str]:
-        """必要なパラメータを辞書型で返す
+        """
+        必要なパラメータを辞書型で返す
 
         Args:
             drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.
@@ -169,7 +171,8 @@ class MahjongSection(BaseSection):
         """未定義ワードタイプ"""
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
@@ -261,7 +264,8 @@ class SettingSection(BaseSection):
         self.work_dir = Path("work")
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
@@ -346,7 +350,8 @@ class AliasSection(BaseSection):
         self.team_clear = ["team_clear"]
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
@@ -369,7 +374,8 @@ class SubCommands(BaseSection, CommandAttrs):
     """コマンドワードデフォルト値"""
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト

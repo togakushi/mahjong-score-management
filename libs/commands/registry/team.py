@@ -1,4 +1,5 @@
-"""libs/registry/team.py
+"""
+libs/registry/team.py
 """
 
 import logging
@@ -67,7 +68,8 @@ class TeamSection(BaseSection):
         self.friendly_fire = bool(True)
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
@@ -82,7 +84,8 @@ class TeamSection(BaseSection):
         logging.debug("%s: %s", self.section, self)
 
     def member(self, team: str) -> list[str]:
-        """指定チームの所属メンバーをリストで返す
+        """
+        指定チームの所属メンバーをリストで返す
 
         Args:
             team (str): 対象チーム名
@@ -97,7 +100,8 @@ class TeamSection(BaseSection):
         return []
 
     def which(self, name: str) -> str | None:
-        """指定メンバーの所属チームを返す
+        """
+        指定メンバーの所属チームを返す
 
         Args:
             name (str): 対象メンバー名
@@ -116,7 +120,8 @@ class TeamSection(BaseSection):
 
     @property
     def lists(self) -> list[str]:
-        """チーム名一覧をリストで返す
+        """
+        チーム名一覧をリストで返す
 
         Returns:
             list[str]: チーム名一覧
@@ -126,7 +131,8 @@ class TeamSection(BaseSection):
 
     @property
     def get_info(self) -> list[TeamDataDict]:
-        """全チーム情報取得
+        """
+        全チーム情報取得
 
         Returns:
             list[TeamDataDict]: チーム情報
@@ -140,7 +146,8 @@ class TeamSection(BaseSection):
 
 
 def create(argument: list) -> str:
-    """チーム作成
+    """
+    チーム作成
 
     Args:
         argument (list): 作成するチーム名
@@ -174,7 +181,8 @@ def create(argument: list) -> str:
 
 
 def delete(argument: list) -> str:
-    """チーム削除
+    """
+    チーム削除
 
     Args:
         argument (list): 削除するチーム名
@@ -208,7 +216,8 @@ def delete(argument: list) -> str:
 
 
 def append(argument: list) -> str:
-    """チーム所属
+    """
+    チーム所属
 
     Args:
         argument (list): 登録情報
@@ -266,7 +275,8 @@ def append(argument: list) -> str:
 
 
 def remove(argument: list) -> str:
-    """チームから除名
+    """
+    チームから除名
 
     Args:
         argument (list): 登録情報
@@ -318,7 +328,8 @@ def remove(argument: list) -> str:
 
 
 def clear() -> str:
-    """全チーム削除
+    """
+    全チーム削除
 
     Returns:
         str: 処理結果

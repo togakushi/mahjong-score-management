@@ -1,4 +1,5 @@
-"""libs/commands/graph/personal.py
+"""
+libs/commands/graph/personal.py
 """
 
 from typing import TYPE_CHECKING
@@ -27,7 +28,8 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """個人成績のグラフを生成する
+    """
+    個人成績のグラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -124,7 +126,8 @@ def plot(m: "MessageParserProtocol"):
 
 
 def statistics_plot(m: "MessageParserProtocol"):
-    """個人成績の統計グラフを生成する
+    """
+    個人成績の統計グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -279,7 +282,8 @@ def statistics_plot(m: "MessageParserProtocol"):
 
 
 def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
-    """データフレームを指定範囲で分割する
+    """
+    データフレームを指定範囲で分割する
 
     Args:
         df (pd.Series): 分割するデータ
@@ -305,7 +309,8 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
 
 
 def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
-    """箱ひげ図を生成する
+    """
+    箱ひげ図を生成する
 
     Args:
         df (pd.DataFrame): プロットデータ
@@ -334,7 +339,8 @@ def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
 
 
 def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
-    """テーブルを生成する
+    """
+    テーブルを生成する
 
     Args:
         df (pd.DataFrame): プロットデータ
@@ -370,7 +376,8 @@ def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
 
 
 def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
-    """ポイントデータ
+    """
+    ポイントデータ
 
     Args:
         df (pd.Series): プロットデータ
@@ -397,7 +404,8 @@ def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
 
 
 def subplot_rank(df: pd.DataFrame, ax: plt.Axes, total_index: str) -> None:
-    """順位データ
+    """
+    順位データ
 
     Args:
         df (pd.DataFrame): プロットデータ
@@ -448,7 +456,8 @@ def subplot_rank(df: pd.DataFrame, ax: plt.Axes, total_index: str) -> None:
 
 
 def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "Path":
-    """獲得ポイントグラフ(plotly用)
+    """
+    獲得ポイントグラフ(plotly用)
 
     Args:
         df (pd.DataFrame): プロットするデータ
@@ -513,7 +522,8 @@ def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "
 
 
 def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "Path":
-    """獲得順位グラフ(plotly用)
+    """
+    獲得順位グラフ(plotly用)
 
     Args:
         df (pd.DataFrame): プロットするデータ
@@ -589,7 +599,8 @@ def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "P
 
 
 def plotly_line(title_text: str, df: pd.Series) -> "Path":
-    """通算ポイント推移グラフ生成(plotly用)
+    """
+    通算ポイント推移グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル
@@ -637,7 +648,8 @@ def plotly_line(title_text: str, df: pd.Series) -> "Path":
 
 
 def plotly_box(title_text: str, df: pd.DataFrame) -> "Path":
-    """素点分布グラフ生成(plotly用)
+    """
+    素点分布グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル
@@ -683,7 +695,8 @@ def plotly_box(title_text: str, df: pd.DataFrame) -> "Path":
 
 
 def plotly_bar(title_text: str, df: pd.DataFrame) -> "Path":
-    """順位分布グラフ生成(plotly用)
+    """
+    順位分布グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル

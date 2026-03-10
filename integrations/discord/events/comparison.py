@@ -1,4 +1,5 @@
-"""integrations/discord/events/comparison.py
+"""
+integrations/discord/events/comparison.py
 """
 
 import asyncio
@@ -25,7 +26,8 @@ if TYPE_CHECKING:
 
 
 def main(m: "MessageParserProtocol"):
-    """突合処理(非同期関数呼び出しラッパー)
+    """
+    突合処理(非同期関数呼び出しラッパー)
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -59,7 +61,8 @@ async def _wrapper(m: "MessageParserProtocol"):
 
 
 async def search_messages(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """メッセージ全検索
+    """
+    メッセージ全検索
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -97,7 +100,8 @@ async def search_messages(results: ComparisonResults, messages_list: list["Messa
 
 
 async def check_omission(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """スコア突合
+    """
+    スコア突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -154,7 +158,8 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
 
 
 async def check_remarks(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """メモ突合
+    """
+    メモ突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -218,7 +223,8 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
 
 
 async def check_total_score(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """素点合計の再チェック
+    """
+    素点合計の再チェック
 
     Args:
         results (ComparisonResults): 結果格納データクラス

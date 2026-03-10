@@ -1,4 +1,5 @@
-"""integrations/slack/functions.py
+"""
+integrations/slack/functions.py
 """
 
 import logging
@@ -40,7 +41,8 @@ class SvcFunctions(FunctionsInterface):
         """個別設定"""
 
     def get_messages(self, word: str) -> list["MessageParserProtocol"]:
-        """slackログからメッセージを検索して返す
+        """
+        slackログからメッセージを検索して返す
 
         Args:
             word (str): 検索するワード
@@ -75,7 +77,8 @@ class SvcFunctions(FunctionsInterface):
         return data
 
     def get_message_details(self, matches: list["MessageParserProtocol"]) -> list["MessageParserProtocol"]:
-        """メッセージ詳細情報取得
+        """
+        メッセージ詳細情報取得
 
         Args:
             matches (list[MessageParserProtocol]): 対象データ
@@ -107,7 +110,8 @@ class SvcFunctions(FunctionsInterface):
         return new_matches
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """スレッド情報の取得
+        """
+        スレッド情報の取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -125,7 +129,8 @@ class SvcFunctions(FunctionsInterface):
             return {}
 
     def get_reactions_list(self, msg: dict) -> tuple[list, list]:
-        """botが付けたリアクションを取得
+        """
+        botが付けたリアクションを取得
 
         Args:
             msg (dict): メッセージ内容
@@ -151,7 +156,8 @@ class SvcFunctions(FunctionsInterface):
         return (reaction_ok, reaction_ng)
 
     def get_channel_id(self) -> str:
-        """チャンネルIDを取得する
+        """
+        チャンネルIDを取得する
 
         Returns:
             str: チャンネルID
@@ -178,7 +184,8 @@ class SvcFunctions(FunctionsInterface):
         return channel_id
 
     def get_dm_channel_id(self, user_id: str) -> str:
-        """DMのチャンネルIDを取得する
+        """
+        DMのチャンネルIDを取得する
 
         Args:
             user_id (str): DMの相手
@@ -198,7 +205,8 @@ class SvcFunctions(FunctionsInterface):
         return channel_id
 
     def reaction_status(self, ch=str, ts=str) -> dict[str, list]:
-        """botが付けたリアクションの種類を返す
+        """
+        botが付けたリアクションの種類を返す
 
         Args:
             ch (str): チャンネルID
@@ -232,7 +240,8 @@ class SvcFunctions(FunctionsInterface):
         return icon
 
     def reaction_append(self, icon: str, ch: str, ts: str):
-        """リアクション追加
+        """
+        リアクション追加
 
         Args:
             icon (str): リアクション文字
@@ -260,7 +269,8 @@ class SvcFunctions(FunctionsInterface):
                     logging.error("ts=%s, ch=%s, icon=%s", ts, ch, icon)
 
     def reaction_remove(self, icon: str, ch: str, ts: str):
-        """リアクション削除
+        """
+        リアクション削除
 
         Args:
             icon (str): リアクション文字
@@ -292,7 +302,8 @@ class SvcFunctions(FunctionsInterface):
                     logging.error("ch=%s, ts=%s, icon=%s", ch, ts, icon)
 
     def pickup_score(self) -> list["MessageParserProtocol"]:
-        """過去ログからスコア記録を検索して返す
+        """
+        過去ログからスコア記録を検索して返す
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
@@ -316,7 +327,8 @@ class SvcFunctions(FunctionsInterface):
         return score_matches
 
     def pickup_remarks(self) -> list["MessageParserProtocol"]:
-        """slackログからメモを検索して返す
+        """
+        slackログからメモを検索して返す
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
@@ -338,7 +350,8 @@ class SvcFunctions(FunctionsInterface):
         return remarks_matches
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ

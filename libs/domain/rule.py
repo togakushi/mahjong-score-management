@@ -1,4 +1,5 @@
-"""libs/domain/rule.py
+"""
+libs/domain/rule.py
 """
 
 import logging
@@ -58,7 +59,8 @@ class RuleData:
     """記録回数"""
 
     def update(self, rule_data: Mapping[str, Any]):
-        """ルール更新
+        """
+        ルール更新
 
         Args:
             rule_data (Mapping): 更新データ
@@ -115,7 +117,8 @@ class RuleSet:
         self.read_config()
 
     def data_set(self, section_name: str, rule_data: Mapping[str, Any]):
-        """ルール登録
+        """
+        ルール登録
 
         Args:
             section_name (str): セクション名
@@ -157,7 +160,8 @@ class RuleSet:
             self.data_set(section_name, dict(self.config[section_name]))
 
     def status_update(self, params: dict):
-        """ステータス更新
+        """
+        ステータス更新
 
         Args:
             params (dict): プレースホルダ
@@ -197,7 +201,8 @@ class RuleSet:
                     self.data[rule_version].last_time = ExtDt(float(status_data["last_time"]))
 
     def to_dict(self, rule_version: str) -> dict[str, Any]:
-        """指定ルール識別子の情報を辞書で返す
+        """
+        指定ルール識別子の情報を辞書で返す
 
         Args:
             rule_version (str): ルール識別子
@@ -221,7 +226,8 @@ class RuleSet:
         return {}
 
     def get_version(self, mode: int, mapping: bool = True) -> list[str]:
-        """指定した条件のルール識別子をリストで返す
+        """
+        指定した条件のルール識別子をリストで返す
 
         Args:
             mode (int): 集計モード
@@ -246,7 +252,8 @@ class RuleSet:
         return ret
 
     def get_mode(self, rule_version: str) -> int:
-        """指定ルール識別子の集計モードを返す
+        """
+        指定ルール識別子の集計モードを返す
 
         Args:
             rule_version (str): ルール識別子
@@ -258,7 +265,8 @@ class RuleSet:
         return int(self.to_dict(rule_version).get("mode", 0))
 
     def get_ignore_flying(self, rule_version: str) -> bool:
-        """指定ルール識別子のトビカウントフラグを返す
+        """
+        指定ルール識別子のトビカウントフラグを返す
 
         Args:
             rule_version (str): ルール識別子
@@ -270,7 +278,8 @@ class RuleSet:
         return bool(self.to_dict(rule_version).get("ignore_flying", False))
 
     def get_undefined_word(self, rule_version: str) -> int:
-        """指定ルール識別子の未定義ワードタイプを返す
+        """
+        指定ルール識別子の未定義ワードタイプを返す
 
         Args:
             rule_version (str): ルール識別子
@@ -282,7 +291,8 @@ class RuleSet:
         return int(self.to_dict(rule_version).get("undefined_word", 1))
 
     def print(self, rule_version: str) -> str:
-        """指定ルール識別子の内容を出力する
+        """
+        指定ルール識別子の内容を出力する
 
         Args:
             rule_version (str): ルール識別子
@@ -355,7 +365,8 @@ class RuleSet:
             )
 
     def check(self, chk_commands: set, chk_members: set, default_rule: str):
-        """キーワード重複チェック
+        """
+        キーワード重複チェック
 
         Args:
             chk_commands (set): チェック対象コマンド名
@@ -416,7 +427,8 @@ class RuleSet:
 
     @property
     def rule_list(self) -> list[str]:
-        """定義済みルール識別子の列挙
+        """
+        定義済みルール識別子の列挙
 
         Returns:
             list[str]: ルール識別子
@@ -426,7 +438,8 @@ class RuleSet:
 
     @property
     def remarks_words(self) -> list[str]:
-        """全ルールセットのメモ記録ワードを列挙
+        """
+        全ルールセットのメモ記録ワードを列挙
 
         Returns:
             list[str]: メモ記録ワード

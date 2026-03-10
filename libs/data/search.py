@@ -1,4 +1,5 @@
-"""libs/data/search.py
+"""
+libs/data/search.py
 """
 
 import logging
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def for_db_score(first_ts: float) -> list[GameResult]:
-    """データベースからスコアを検索して返す
+    """
+    データベースからスコアを検索して返す
 
     Args:
         first_ts (float): 検索を開始する時刻
@@ -38,7 +40,8 @@ def for_db_score(first_ts: float) -> list[GameResult]:
 
 
 def for_db_remarks(first_ts: float) -> list["RemarkDict"]:
-    """データベースからメモを検索して返す
+    """
+    データベースからメモを検索して返す
 
     Args:
         first_ts (float): 検索を開始する時刻

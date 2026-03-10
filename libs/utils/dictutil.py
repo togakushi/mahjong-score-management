@@ -1,4 +1,5 @@
-"""libs/utils/dictutil.py
+"""
+libs/utils/dictutil.py
 """
 
 import logging
@@ -26,7 +27,8 @@ class SubCommandLike(Protocol):
 
 
 def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "PlaceholderDict":
-    """プレースホルダに使用する辞書を生成
+    """
+    プレースホルダに使用する辞書を生成
 
     Args:
         subcom (SubCommandLike): サブコマンド設定
@@ -202,7 +204,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
 
 
 def merge_dicts(dict1: Any, dict2: Any) -> dict:
-    """辞書の内容をマージする
+    """
+    辞書の内容をマージする
 
     Args:
         dict1 (Any): 1つ目の辞書

@@ -1,4 +1,5 @@
-"""libs/functions/tools/vacuum.py
+"""
+libs/functions/tools/vacuum.py
 """
 
 import logging
@@ -32,7 +33,8 @@ def main():
 
 
 def db_info(cur, kind):
-    """page_countを取得
+    """
+    page_countを取得
 
     Args:
         cur (sqlite3.Cursor): カーソルオブジェクト

@@ -1,4 +1,5 @@
-"""integrations/slack/api.py
+"""
+integrations/slack/api.py
 """
 
 import logging
@@ -39,7 +40,8 @@ class AdapterAPI(APIInterface):
             raise ModuleNotFoundError(err.msg) from None
 
     def post(self, m: "MessageParserProtocol"):
-        """メッセージをポストする
+        """
+        メッセージをポストする
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -153,7 +155,8 @@ class AdapterAPI(APIInterface):
                 )
 
     def _call_chat_post_message(self, **kwargs) -> "SlackResponse":
-        """slackにメッセージをポストする
+        """
+        slackにメッセージをポストする
 
         Returns:
             SlackResponse: API response
@@ -175,7 +178,8 @@ class AdapterAPI(APIInterface):
         return res
 
     def _call_files_upload(self, **kwargs) -> "SlackResponse":
-        """slackにファイルをアップロードする
+        """
+        slackにファイルをアップロードする
 
         Returns:
             SlackResponse | Any: API response

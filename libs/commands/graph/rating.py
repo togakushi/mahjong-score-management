@@ -1,4 +1,5 @@
-"""libs/commands/graph/rating.py
+"""
+libs/commands/graph/rating.py
 """
 
 from typing import TYPE_CHECKING
@@ -24,7 +25,8 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """レーティング推移グラフを生成する
+    """
+    レーティング推移グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -82,7 +84,8 @@ def plot(m: "MessageParserProtocol"):
 
 
 def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) -> "Path":
-    """レーティング推移グラフ生成(matplotlib)
+    """
+    レーティング推移グラフ生成(matplotlib)
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -126,7 +129,8 @@ def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) ->
 
 
 def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: str) -> "Path":
-    """レーティング推移グラフ生成(plotly)
+    """
+    レーティング推移グラフ生成(plotly)
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -187,7 +191,8 @@ def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: 
 
 
 def _graph_title(game_info: GameInfo) -> tuple[str, str]:
-    """グラフタイトル/ラベル生成
+    """
+    グラフタイトル/ラベル生成
 
     Args:
         game_info (GameInfo): ゲームデータ

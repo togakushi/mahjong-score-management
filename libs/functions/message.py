@@ -1,4 +1,5 @@
-"""libs/functions/message.py
+"""
+libs/functions/message.py
 """
 
 import logging
@@ -20,7 +21,8 @@ if TYPE_CHECKING:
 
 
 def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
-    """メッセージをランダムに返す
+    """
+    メッセージをランダムに返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -83,7 +85,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
 
 def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", indent=1):
-    """見出し生成
+    """
+    見出し生成
 
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報

@@ -1,4 +1,5 @@
-"""libs/commands/results/entry.py
+"""
+libs/commands/results/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,8 @@ class ResultsConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """成績集計処理エントリーポイント
+    """
+    成績集計処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ

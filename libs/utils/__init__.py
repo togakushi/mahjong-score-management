@@ -1,4 +1,5 @@
-"""ユーティリティ
+"""
+ユーティリティ
 
 - `libs.utils.dbutil`: DB操作
 - `libs.utils.dictutil`: 辞書操作

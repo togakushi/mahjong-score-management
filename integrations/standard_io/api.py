@@ -1,4 +1,5 @@
-"""integrations/standard_io/api.py
+"""
+integrations/standard_io/api.py
 """
 
 import textwrap
@@ -19,7 +20,8 @@ class AdapterAPI(APIInterface):
     """インターフェースAPI操作クラス"""
 
     def _text_formatter(self, text: str, style: StyleOptions) -> str:
-        """テキスト整形
+        """
+        テキスト整形
 
         Args:
             text (str): 対象テキスト
@@ -39,7 +41,8 @@ class AdapterAPI(APIInterface):
         return ret.rstrip()
 
     def post(self, m: "MessageParserProtocol"):
-        """メッセージ出力
+        """
+        メッセージ出力
 
         Args:
             m (MessageParserProtocol): メッセージデータ

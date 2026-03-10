@@ -1,4 +1,5 @@
-"""integrations/base/interface.py
+"""
+integrations/base/interface.py
 """
 
 from abc import ABC, abstractmethod
@@ -87,7 +88,8 @@ class IntegrationsConfig(ABC):
 
     @property
     def command_dispatcher(self) -> dict:
-        """コマンドディスパッチテーブルを辞書で取得
+        """
+        コマンドディスパッチテーブルを辞書で取得
 
         Returns:
             dict: コマンドディスパッチテーブル
@@ -97,7 +99,8 @@ class IntegrationsConfig(ABC):
 
     @property
     def keyword_dispatcher(self) -> dict:
-        """キーワードディスパッチテーブルを辞書で取得
+        """
+        キーワードディスパッチテーブルを辞書で取得
 
         Returns:
             dict: キーワードディスパッチテーブル
@@ -111,7 +114,8 @@ class FunctionsInterface(ABC):
 
     @abstractmethod
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -120,7 +124,8 @@ class FunctionsInterface(ABC):
 
     @abstractmethod
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """スレッド情報の取得
+        """
+        スレッド情報の取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -137,7 +142,8 @@ class APIInterface(ABC):
 
     @abstractmethod
     def post(self, m: "MessageParserProtocol"):
-        """メッセージを出力する
+        """
+        メッセージを出力する
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -163,7 +169,8 @@ class MessageParserDataMixin:
         data: "MessageType",
         options: "StyleOptions",
     ):
-        """ヘッドラインメッセージをセット
+        """
+        ヘッドラインメッセージをセット
 
         Args:
             data (MessageType): 内容
@@ -181,7 +188,8 @@ class MessageParserDataMixin:
         data: "MessageType",
         options: "StyleOptions",
     ):
-        """本文メッセージをセット
+        """
+        本文メッセージをセット
 
         Args:
             data (MessageType): 内容
@@ -204,7 +212,8 @@ class MessageParserInterface(ABC):
 
     @abstractmethod
     def parser(self, body: Any):
-        """メッセージ解析
+        """
+        メッセージ解析
 
         Args:
             body (Any): 解析データ
@@ -214,7 +223,8 @@ class MessageParserInterface(ABC):
     @property
     @abstractmethod
     def in_thread(self) -> bool:
-        """元メッセージへのリプライとなっているか
+        """
+        元メッセージへのリプライとなっているか
 
         Returns:
             bool: 真偽値
@@ -226,7 +236,8 @@ class MessageParserInterface(ABC):
     @property
     @abstractmethod
     def is_bot(self) -> bool:
-        """botのポストかチェック
+        """
+        botのポストかチェック
 
         Returns:
             bool: 真偽値
@@ -238,7 +249,8 @@ class MessageParserInterface(ABC):
     @property
     @abstractmethod
     def check_updatable(self) -> bool:
-        """DB操作の許可チェック
+        """
+        DB操作の許可チェック
 
         Returns:
             bool: 真偽値
@@ -250,7 +262,8 @@ class MessageParserInterface(ABC):
     @property
     @abstractmethod
     def ignore_user(self) -> bool:
-        """ignore_useridに存在するユーザかチェック
+        """
+        ignore_useridに存在するユーザかチェック
 
         Returns:
             bool: 真偽値
@@ -261,7 +274,8 @@ class MessageParserInterface(ABC):
 
     @property
     def is_command(self) -> bool:
-        """コマンドで実行されているかチェック
+        """
+        コマンドで実行されているかチェック
 
         Returns:
             bool: 真偽値
@@ -273,7 +287,8 @@ class MessageParserInterface(ABC):
 
     @property
     def keyword(self) -> str:
-        """コマンドとして認識している文字列を返す
+        """
+        コマンドとして認識している文字列を返す
 
         Returns:
             str: コマンド名
@@ -285,7 +300,8 @@ class MessageParserInterface(ABC):
 
     @property
     def argument(self) -> list:
-        """コマンド引数として認識している文字列をリストで返す
+        """
+        コマンド引数として認識している文字列をリストで返す
 
         Returns:
             list: 引数リスト
@@ -297,7 +313,8 @@ class MessageParserInterface(ABC):
 
     @property
     def reply_ts(self) -> str:
-        """リプライ先のタイムスタンプを取得する
+        """
+        リプライ先のタイムスタンプを取得する
 
         Returns:
             str: タイムスタンプ

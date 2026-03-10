@@ -1,4 +1,5 @@
-"""integrations/web/events/score.py
+"""
+integrations/web/events/score.py
 """
 
 from dataclasses import asdict
@@ -20,7 +21,8 @@ if TYPE_CHECKING:
 
 
 def score_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """スコア管理ページ用Blueprint
+    """
+    スコア管理ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

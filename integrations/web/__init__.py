@@ -1,4 +1,5 @@
-"""Web出力
+"""
+Web出力
 
 - `integrations.web.adapter`: サービスアダプタ定義
 - `integrations.web.api`: インターフェースAPI

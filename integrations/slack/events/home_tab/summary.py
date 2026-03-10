@@ -1,4 +1,5 @@
-"""integrations/slack/events/home_tab/summary.py
+"""
+integrations/slack/events/home_tab/summary.py
 """
 
 import logging
@@ -80,7 +81,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
 
     @app.action("summary_menu")
     def handle_menu_action(ack, body):
-        """メニュー項目生成
+        """
+        メニュー項目生成
 
         Args:
             ack (_type_): ack
@@ -102,7 +104,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
 
     @app.action("summary_aggregation")
     def handle_aggregation_action(ack, body):
-        """成績サマリ集計
+        """
+        成績サマリ集計
 
         Args:
             ack (_type_): ack
@@ -152,7 +155,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
 
     @app.view("SummaryMenu_ModalPeriodSelection")
     def handle_view_submission(ack, view):
-        """view更新
+        """
+        view更新
 
         Args:
             ack (_type_): ack

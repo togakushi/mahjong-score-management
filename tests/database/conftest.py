@@ -1,4 +1,5 @@
-"""tests/database/conftest.py
+"""
+tests/database/conftest.py
 
 テスト共通前処理
 """

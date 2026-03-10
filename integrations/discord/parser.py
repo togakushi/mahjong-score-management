@@ -1,4 +1,5 @@
-"""integrations/discord/parser.py
+"""
+integrations/discord/parser.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -39,7 +40,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
 
     @property
     def in_thread(self) -> bool:
-        """リプライメッセージか判定
+        """
+        リプライメッセージか判定
 
         Returns:
             bool: 真偽値

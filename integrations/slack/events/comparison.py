@@ -1,4 +1,5 @@
-"""integrations/slack/events/comparison.py
+"""
+integrations/slack/events/comparison.py
 """
 
 import logging
@@ -21,7 +22,8 @@ if TYPE_CHECKING:
 
 
 def main(m: "MessageParserProtocol") -> None:
-    """突合処理
+    """
+    突合処理
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -69,7 +71,8 @@ def main(m: "MessageParserProtocol") -> None:
 
 
 def check_omission(results: ComparisonResults):
-    """スコア突合
+    """
+    スコア突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -133,7 +136,8 @@ def check_omission(results: ComparisonResults):
 
 
 def check_remarks(results: ComparisonResults):
-    """メモ突合
+    """
+    メモ突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -203,7 +207,8 @@ def check_remarks(results: ComparisonResults):
 
 
 def check_total_score(results: ComparisonResults):
-    """素点合計の再チェック
+    """
+    素点合計の再チェック
 
     Args:
         results (ComparisonResults): 結果格納データクラス
@@ -220,7 +225,8 @@ def check_total_score(results: ComparisonResults):
 
 
 def check_pending(m: "MessageParserProtocol") -> bool:
-    """保留チェック
+    """
+    保留チェック
 
     Args:
         m (MessageParserProtocol): メッセージデータ

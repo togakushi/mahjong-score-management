@@ -1,4 +1,5 @@
-"""libs/utils/textutil.py
+"""
+libs/utils/textutil.py
 """
 
 import os
@@ -26,7 +27,8 @@ class ConversionType(Enum):
 
 
 def str_conv(text: str, kind: ConversionType) -> str:
-    """文字列変換
+    """
+    文字列変換
 
     Args:
         text (str): 変換対象文字列
@@ -57,7 +59,8 @@ def str_conv(text: str, kind: ConversionType) -> str:
 
 
 def save_file_path(filename: str, delete: bool = False) -> "Path":
-    """保存ファイルのフルパスを取得
+    """
+    保存ファイルのフルパスを取得
 
     Args:
         filename (str): デフォルトファイル名
@@ -78,7 +81,8 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
 
 
 def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> list:
-    """リストデータを指定個数で分割
+    """
+    リストデータを指定個数で分割
 
     Args:
         data (list): 対象データ
@@ -128,7 +132,8 @@ def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> lis
 
 
 def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
-    """指定文字数でテキストを行単位で分割してリストにする
+    """
+    指定文字数でテキストを行単位で分割してリストにする
 
     Args:
         text (str): 対象文字列

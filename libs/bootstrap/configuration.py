@@ -1,4 +1,5 @@
-"""libs/bootstrap/configuration.py
+"""
+libs/bootstrap/configuration.py
 """
 
 import argparse
@@ -42,7 +43,8 @@ def set_loglevel():
 
 
 def arg_parser() -> Args:
-    """コマンドライン解析
+    """
+    コマンドライン解析
 
     Returns:
         Args : ArgumentParserオブジェクト
@@ -199,7 +201,8 @@ def arg_parser() -> Args:
 
 
 def setup(init_db: bool = True):
-    """設定ファイル読み込み処理
+    """
+    設定ファイル読み込み処理
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.

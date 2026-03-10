@@ -1,4 +1,5 @@
-"""libs/commands/report/winner.py
+"""
+libs/commands/report/winner.py
 """
 
 from typing import TYPE_CHECKING
@@ -19,7 +20,8 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """成績上位者を一覧化
+    """
+    成績上位者を一覧化
 
     Args:
         m (MessageParserProtocol): メッセージデータ

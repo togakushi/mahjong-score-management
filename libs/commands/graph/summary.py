@@ -1,4 +1,5 @@
-"""libs/commands/graph/summary.py
+"""
+libs/commands/graph/summary.py
 """
 
 import logging
@@ -38,7 +39,8 @@ class GraphParams(TypedDict, total=False):
 
 
 def point_plot(m: "MessageParserProtocol"):
-    """ポイント推移グラフを生成する
+    """
+    ポイント推移グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -88,7 +90,8 @@ def point_plot(m: "MessageParserProtocol"):
 
 
 def rank_plot(m: "MessageParserProtocol"):
-    """順位変動グラフを生成する
+    """
+    順位変動グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -139,7 +142,8 @@ def rank_plot(m: "MessageParserProtocol"):
 
 
 def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
-    """データ収集
+    """
+    データ収集
 
     Returns:
         tuple[pd.DataFrame, pd.DataFrame]:
@@ -190,7 +194,8 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def _graph_generation(graph_params: GraphParams) -> "Path":
-    """グラフ生成共通処理(matplotlib用)
+    """
+    グラフ生成共通処理(matplotlib用)
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
@@ -286,7 +291,8 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
 
 
 def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
-    """グラフ生成共通処理(plotly用)
+    """
+    グラフ生成共通処理(plotly用)
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
@@ -383,7 +389,8 @@ def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
 
 
 def _graph_title(graph_params: GraphParams):
-    """グラフタイトル生成
+    """
+    グラフタイトル生成
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ

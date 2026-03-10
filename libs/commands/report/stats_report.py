@@ -1,4 +1,5 @@
-"""libs/commands/report/results_report.py
+"""
+libs/commands/report/results_report.py
 """
 
 import logging
@@ -32,7 +33,8 @@ if TYPE_CHECKING:
 
 
 def get_game_results() -> list:
-    """月/年単位のゲーム結果集計
+    """
+    月/年単位のゲーム結果集計
 
     Returns:
         list: 集計結果のリスト
@@ -103,7 +105,8 @@ def get_game_results() -> list:
 
 
 def get_count_results(game_count: int) -> list:
-    """指定間隔区切りのゲーム結果集計
+    """
+    指定間隔区切りのゲーム結果集計
 
     Args:
         game_count (int): 区切るゲーム数
@@ -175,7 +178,8 @@ def get_count_results(game_count: int) -> list:
 
 
 def get_count_moving(game_count: int) -> list:
-    """移動平均を取得する
+    """
+    移動平均を取得する
 
     Args:
         game_count (int): 平滑化するゲーム数
@@ -203,7 +207,8 @@ def get_count_moving(game_count: int) -> list:
 
 
 def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
-    """平均順位の折れ線グラフを生成
+    """
+    平均順位の折れ線グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -255,7 +260,8 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
 
 
 def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
-    """通算ポイント推移の折れ線グラフを生成
+    """
+    通算ポイント推移の折れ線グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -328,7 +334,8 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
 
 
 def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
-    """順位分布の棒グラフを生成
+    """
+    順位分布の棒グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -373,7 +380,8 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
 
 
 def gen_pdf(m: "MessageParserProtocol"):
-    """成績レポートを生成する
+    """
+    成績レポートを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -437,7 +445,8 @@ def gen_pdf(m: "MessageParserProtocol"):
 
 
 def cover_page(style: dict, target_info: dict) -> list:
-    """表紙生成
+    """
+    表紙生成
 
     Args:
         style (dict): レイアウトスタイル
@@ -480,7 +489,8 @@ def cover_page(style: dict, target_info: dict) -> list:
 
 
 def entire_aggregate(style: dict) -> list:
-    """全期間
+    """
+    全期間
 
     Args:
         style (dict): レイアウトスタイル
@@ -577,7 +587,8 @@ def entire_aggregate(style: dict) -> list:
 
 
 def periodic_aggregation(style: dict) -> list:
-    """期間集計
+    """
+    期間集計
 
     Args:
         style (dict): レイアウトスタイル
@@ -655,7 +666,8 @@ def periodic_aggregation(style: dict) -> list:
 
 
 def sectional_aggregate(style: dict, target_info: dict) -> list:
-    """区間集計
+    """
+    区間集計
 
     Args:
         style (dict): レイアウトスタイル

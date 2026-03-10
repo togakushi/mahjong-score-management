@@ -1,4 +1,5 @@
-"""integrations/discord/api.py
+"""
+integrations/discord/api.py
 """
 
 import asyncio
@@ -42,7 +43,8 @@ class AdapterAPI(APIInterface):
         self.response: Union["Message", "ApplicationContext"]
 
     def post(self, m: "MessageParserProtocol"):
-        """メッセージをポストする（非同期処理ラッパー）
+        """
+        メッセージをポストする（非同期処理ラッパー）
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -54,7 +56,8 @@ class AdapterAPI(APIInterface):
             asyncio.create_task(self.post_async(m))
 
     async def post_async(self, m: "MessageParserProtocol"):
-        """メッセージをポストする
+        """
+        メッセージをポストする
 
         Args:
             m (MessageParserProtocol): メッセージデータ
@@ -167,7 +170,8 @@ class AdapterAPI(APIInterface):
                     await self.response.reply(split_msg)
 
     async def command_respond(self, m: "MessageParserProtocol"):
-        """スラッシュコマンド応答
+        """
+        スラッシュコマンド応答
 
         Args:
             m (MessageParserProtocol): メッセージデータ

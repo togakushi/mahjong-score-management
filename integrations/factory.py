@@ -1,4 +1,5 @@
-"""integrations/factory.py
+"""
+integrations/factory.py
 """
 
 from typing import TYPE_CHECKING, Literal, overload
@@ -30,7 +31,8 @@ def select_adapter(selected_service: Literal["standard_io"], conf: "AppConfig") 
 
 
 def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterface":
-    """インターフェース選択
+    """
+    インターフェース選択
 
     Args:
         selected_service (str): 選択サービス

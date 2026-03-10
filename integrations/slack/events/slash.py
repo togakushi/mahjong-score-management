@@ -1,4 +1,5 @@
-"""integrations/slack/events/slash.py
+"""
+integrations/slack/events/slash.py
 """
 
 from typing import TYPE_CHECKING
@@ -10,7 +11,8 @@ if TYPE_CHECKING:
 
 
 def command_help(m: "MessageParserProtocol"):
-    """スラッシュコマンド用ヘルプ
+    """
+    スラッシュコマンド用ヘルプ
 
     Args:
         m (MessageParserProtocol): メッセージデータ

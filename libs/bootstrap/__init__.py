@@ -1,4 +1,5 @@
-"""アプリケーション起動処理
+"""
+アプリケーション起動処理
 
 - `libs.bootstrap.configuration`: 初期設定関数
 - `libs.bootstrap.app_config`: アプリケーション設定関連

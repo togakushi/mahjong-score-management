@@ -1,4 +1,5 @@
-"""libs/data/loader.py
+"""
+libs/data/loader.py
 """
 
 import logging
@@ -20,7 +21,8 @@ if TYPE_CHECKING:
 
 
 def execute(sql: str, params: Optional[dict] = None) -> list[dict[str, Any]]:
-    """クエリ実行
+    """
+    クエリ実行
 
     Args:
         sql (str): 実行クエリ
@@ -66,7 +68,8 @@ def execute(sql: str, params: Optional[dict] = None) -> list[dict[str, Any]]:
 
 
 def read_data(keyword: str, params: Optional[dict] = None) -> pd.DataFrame:
-    """データベースからデータを取得する
+    """
+    データベースからデータを取得する
 
     Args:
         keyword (str): SQL選択キーワード
@@ -122,7 +125,8 @@ def read_data(keyword: str, params: Optional[dict] = None) -> pd.DataFrame:
 
 
 def named_query(query: str, params: dict) -> str:
-    """クエリにパラメータをバインドして返す
+    """
+    クエリにパラメータをバインドして返す
 
     Args:
         query (str): SQL

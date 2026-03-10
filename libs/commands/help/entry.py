@@ -1,4 +1,5 @@
-"""libs/commands/help/entry.py
+"""
+libs/commands/help/entry.py
 """
 
 import textwrap
@@ -26,7 +27,8 @@ class HelpConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """ヘルプ処理エントリーポイント
+    """
+    ヘルプ処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -41,7 +43,8 @@ def main(m: "MessageParserProtocol"):
 
 
 def help_message(m: "MessageParserProtocol"):
-    """呼び出しキーワードヘルプメッセージ
+    """
+    呼び出しキーワードヘルプメッセージ
 
     Args:
         m (MessageParserProtocol): メッセージデータ

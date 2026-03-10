@@ -1,4 +1,5 @@
-"""libs/dispatcher.py
+"""
+libs/dispatcher.py
 """
 
 import logging
@@ -79,7 +80,8 @@ def by_keyword(m: "MessageParserProtocol"):
 
 
 def other_words(word: str, m: "MessageParserProtocol"):
-    """コマンド以外のワードの処理
+    """
+    コマンド以外のワードの処理
 
     Args:
         word (str): 入力ワード
@@ -112,7 +114,8 @@ def other_words(word: str, m: "MessageParserProtocol"):
 
 
 def message_append(detection: GameResult, m: "MessageParserProtocol"):
-    """メッセージの追加処理
+    """
+    メッセージの追加処理
 
     Args:
         detection (GameResult): スコアデータ
@@ -128,7 +131,8 @@ def message_append(detection: GameResult, m: "MessageParserProtocol"):
 
 
 def message_changed(detection: GameResult, m: "MessageParserProtocol"):
-    """メッセージの変更処理
+    """
+    メッセージの変更処理
 
     Args:
         detection (GameResult): スコアデータ
@@ -159,7 +163,8 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
 
 
 def message_deleted(m: "MessageParserProtocol"):
-    """メッセージの削除処理
+    """
+    メッセージの削除処理
 
     Args:
         m (MessageParserProtocol): メッセージデータ

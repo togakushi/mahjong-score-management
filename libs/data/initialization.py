@@ -1,4 +1,5 @@
-"""libs/data/initialization.py
+"""
+libs/data/initialization.py
 """
 
 import json
@@ -17,7 +18,8 @@ if TYPE_CHECKING:
 
 
 def main(init_db: bool):
-    """DB初期化処理
+    """
+    DB初期化処理
 
     Args:
         init_db (bool): setup処理の実行有無
@@ -68,7 +70,8 @@ def main(init_db: bool):
 
 
 def setup_resultdb(database_file: Union[str, Path]) -> None:
-    """DB初期化 & マイグレーション
+    """
+    DB初期化 & マイグレーション
 
     Args:
         database_file (Union[str, Path]): データベース接続パス
@@ -152,7 +155,8 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
 
 
 def setup_regulations(database_file: Union[str, Path]):
-    """regulationsテーブル情報読み込み
+    """
+    regulationsテーブル情報読み込み
 
     Args:
         database_file (Union[str, Path]): データベース接続パス

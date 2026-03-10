@@ -1,4 +1,5 @@
-"""libs/commands/report/entry.py
+"""
+libs/commands/report/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,8 @@ class ReportConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """レポート生成処理エントリーポイント
+    """
+    レポート生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ

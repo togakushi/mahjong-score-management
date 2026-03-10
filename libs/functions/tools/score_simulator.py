@@ -1,4 +1,5 @@
-"""libs/functions/tools/score_simulator.py
+"""
+libs/functions/tools/score_simulator.py
 
 得点シミュレーター
 
@@ -39,7 +40,8 @@ HAN_POINTS: dict[int, dict[str, Union[int, tuple[int, ...]]]] = {
 
 
 def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
-    """和了打点を決める
+    """
+    和了打点を決める
 
     Args:
         is_parent (bool): 親フラグ
@@ -62,7 +64,8 @@ def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
 
 
 def determine_winner(k: int) -> tuple[list[int], list[int]]:
-    """和了役を抽選し、放銃役候補と分けてリストを返す
+    """
+    和了役を抽選し、放銃役候補と分けてリストを返す
 
     Args:
         k (int): 和了役に選ばれる人数
@@ -79,7 +82,8 @@ def determine_winner(k: int) -> tuple[list[int], list[int]]:
 
 
 def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
-    """連チャンの判定を行う
+    """
+    連チャンの判定を行う
 
     Args:
         winners (list): 和了者のリスト（流局時は空リスト）

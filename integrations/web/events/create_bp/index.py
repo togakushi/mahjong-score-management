@@ -1,4 +1,5 @@
-"""integrations/web/events/index.py
+"""
+integrations/web/events/index.py
 """
 
 from dataclasses import asdict
@@ -11,7 +12,8 @@ if TYPE_CHECKING:
 
 
 def index_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """index用Blueprint
+    """
+    index用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

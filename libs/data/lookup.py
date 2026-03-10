@@ -1,4 +1,5 @@
-"""libs/data/lookup.py
+"""
+libs/data/lookup.py
 """
 
 import logging
@@ -29,7 +30,8 @@ def get_config_value(
     val_type: type,
     fallback: Union[bool, int, float, str, list, None] = None,
 ) -> Any:
-    """設定値取得
+    """
+    設定値取得
 
     Args:
         config_file (Path): 設定ファイルパス
@@ -69,7 +71,8 @@ def get_config_value(
 
 
 def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
-    """優先度の高いセパレート設定フラグを取得する
+    """
+    優先度の高いセパレート設定フラグを取得する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -110,7 +113,8 @@ def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
 
 
 def member_info(params: "PlaceholderDict") -> dict[str, Any]:
-    """指定メンバーの記録情報を返す
+    """
+    指定メンバーの記録情報を返す
 
     Args:
         params (PlaceholderDict): 対象メンバー
@@ -147,7 +151,8 @@ def member_info(params: "PlaceholderDict") -> dict[str, Any]:
 
 
 def get_guest() -> str:
-    """ゲスト名取得
+    """
+    ゲスト名取得
 
     Returns:
         str: ゲスト名
@@ -162,7 +167,8 @@ def get_guest() -> str:
 
 
 def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list:
-    """登録済みワードリストを取得する
+    """
+    登録済みワードリストを取得する
 
     Args:
         word_type (int, optional): 取得するタイプ. Defaults to 0.
@@ -203,7 +209,8 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
 
 
 def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
-    """ルール識別子で割り当てられているコマンドワードを返す
+    """
+    ルール識別子で割り当てられているコマンドワードを返す
 
     Args:
         rule_version (str): ルール識別子
@@ -252,7 +259,8 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
 
 
 def exsist_record(ts: str) -> GameResult:
-    """記録されているゲーム結果を返す
+    """
+    記録されているゲーム結果を返す
 
     Args:
         ts (str): 検索するタイムスタンプ
@@ -273,7 +281,8 @@ def exsist_record(ts: str) -> GameResult:
 
 
 def first_record(rule_list: list[str]) -> ExtDt:
-    """最初のゲーム記録時間を返す
+    """
+    最初のゲーム記録時間を返す
 
     Args:
         rule_list (list[str]): ルール識別子
@@ -314,7 +323,8 @@ def read_memberslist():
 
 
 def enumeration_all_members() -> list[str]:
-    """メンバーとチームをすべて列挙する
+    """
+    メンバーとチームをすべて列挙する
 
     Returns:
         list[str]: メンバー名(別名含む)/チーム名のリスト

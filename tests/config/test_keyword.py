@@ -1,4 +1,5 @@
-"""tests/config/test_keyword.py
+"""
+tests/config/test_keyword.py
 """
 
 import sys

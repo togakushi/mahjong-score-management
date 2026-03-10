@@ -1,4 +1,5 @@
-"""integrations/web/parser.py
+"""
+integrations/web/parser.py
 """
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface

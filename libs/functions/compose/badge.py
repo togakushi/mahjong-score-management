@@ -1,4 +1,5 @@
-"""libs/functions/compose/badge.py
+"""
+libs/functions/compose/badge.py
 """
 
 import math
@@ -12,7 +13,8 @@ if TYPE_CHECKING:
 
 
 def degree(game_count: int = 0) -> str:
-    """プレイしたゲーム数に対して表示される称号を返す
+    """
+    プレイしたゲーム数に対して表示される称号を返す
 
     Args:
         game_count (int, optional): ゲーム数. Defaults to 0.
@@ -38,7 +40,8 @@ def degree(game_count: int = 0) -> str:
 
 
 def status(game_count: int = 0, win: int = 0) -> str:
-    """勝率に対して付く調子バッジを返す
+    """
+    勝率に対して付く調子バッジを返す
 
     Args:
         game_count (int, optional): ゲーム数. Defaults to 0.
@@ -76,7 +79,8 @@ def status(game_count: int = 0, win: int = 0) -> str:
 
 
 def grade(name: str, detail: bool = True) -> str:
-    """段位表示
+    """
+    段位表示
 
     Args:
         name (str): 対象プレイヤー名

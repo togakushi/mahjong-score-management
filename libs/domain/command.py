@@ -1,4 +1,5 @@
-"""libs/domain/command.py
+"""
+libs/domain/command.py
 """
 
 import re
@@ -196,7 +197,8 @@ class CommandParser:
 
     @classmethod
     def is_valid_command(cls, word: str) -> bool:
-        """引数がコマンド名と一致するか判定する
+        """
+        引数がコマンド名と一致するか判定する
 
         Args:
             word (str): チェック文字列
@@ -217,7 +219,8 @@ class CommandParser:
         return False
 
     def analysis_argument(self, argument: list[str]) -> ParsedCommand:
-        """コマンドライン引数を解析する
+        """
+        コマンドライン引数を解析する
 
         Args:
             argument (list[str]): 引数
@@ -265,7 +268,8 @@ class CommandParser:
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 
     def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict:
-        """コマンド名に一致したときの処理
+        """
+        コマンド名に一致したときの処理
 
         Args:
             cmd (CommandSpec): コマンドマップ

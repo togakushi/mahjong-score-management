@@ -1,4 +1,5 @@
-"""integrations/protocols.py
+"""
+integrations/protocols.py
 """
 
 from dataclasses import dataclass, field, fields, is_dataclass
@@ -125,7 +126,8 @@ class MessageParserProtocol(Protocol):
 
     @property
     def is_command(self) -> bool:
-        """コマンドとして実行されたかチェック
+        """
+        コマンドとして実行されたかチェック
 
         Returns:
             bool: 真偽値
@@ -136,7 +138,8 @@ class MessageParserProtocol(Protocol):
 
     @property
     def is_bot(self) -> bool:
-        """botによる操作かチェック
+        """
+        botによる操作かチェック
 
         Returns:
             bool: 真偽値

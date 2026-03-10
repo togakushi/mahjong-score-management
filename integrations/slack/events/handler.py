@@ -1,4 +1,5 @@
-"""integrations/slack/events/handler.py
+"""
+integrations/slack/events/handler.py
 """
 
 import logging
@@ -20,7 +21,8 @@ if TYPE_CHECKING:
 
 
 def main(adapter: "ServiceAdapter"):
-    """メイン処理
+    """
+    メイン処理
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -65,7 +67,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
 
     @app.event("message")
     def handle_message_events(body):
-        """メッセージイベント
+        """
+        メッセージイベント
 
         Args:
             body (dict): ポストされたデータ
@@ -77,7 +80,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
 
     @app.command(adapter.conf.slash_command)
     def slash_command(ack, body):
-        """スラッシュコマンド
+        """
+        スラッシュコマンド
 
         Args:
             ack (_type_): ack
@@ -91,7 +95,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
 
     @app.event("app_home_opened")
     def handle_home_events(event):
-        """ホームタブオープン
+        """
+        ホームタブオープン
 
         Args:
             event (dict): イベント内容

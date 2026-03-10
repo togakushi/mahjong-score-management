@@ -1,4 +1,5 @@
-"""libs/commands/results/versus.py
+"""
+libs/commands/results/versus.py
 """
 
 import textwrap
@@ -18,7 +19,8 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """直接対戦結果を集計して返す
+    """
+    直接対戦結果を集計して返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -143,7 +145,8 @@ def aggregation(m: "MessageParserProtocol"):
 
 
 def tmpl_header(my_name: str, vs_name: str) -> str:
-    """ヘッダテンプレート
+    """
+    ヘッダテンプレート
 
     Args:
         my_name (str): 自分の名前
@@ -166,7 +169,8 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
 
 
 def tmpl_vs_table(data: dict) -> str:
-    """直接対決結果表示テンプレート
+    """
+    直接対決結果表示テンプレート
 
     Args:
         data (dict): 結果データ

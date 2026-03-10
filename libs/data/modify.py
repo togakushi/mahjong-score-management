@@ -1,4 +1,5 @@
-"""libs/data/modify.py
+"""
+libs/data/modify.py
 """
 
 import logging
@@ -25,7 +26,8 @@ if TYPE_CHECKING:
 
 
 def db_insert(detection: "GameResult", m: "MessageParserProtocol") -> int:
-    """スコアデータをDBに追加する
+    """
+    スコアデータをDBに追加する
 
     Args:
         detection (GameResult): スコアデータ
@@ -64,7 +66,8 @@ def db_insert(detection: "GameResult", m: "MessageParserProtocol") -> int:
 
 
 def db_update(detection: "GameResult", m: "MessageParserProtocol") -> int:
-    """スコアデータを変更する
+    """
+    スコアデータを変更する
 
     Args:
         detection (GameResult): スコアデータ
@@ -101,7 +104,8 @@ def db_update(detection: "GameResult", m: "MessageParserProtocol") -> int:
 
 
 def db_delete(m: "MessageParserProtocol"):
-    """スコアデータを削除する
+    """
+    スコアデータを削除する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -128,7 +132,8 @@ def db_delete(m: "MessageParserProtocol"):
 
 
 def db_backup() -> str:
-    """データベースのバックアップ
+    """
+    データベースのバックアップ
 
     Returns:
         str: 動作結果メッセージ
@@ -162,7 +167,8 @@ def db_backup() -> str:
 
 
 def remarks_append(m: "MessageParserProtocol", remarks: list["RemarkDict"]) -> None:
-    """メモをDBに記録する
+    """
+    メモをDBに記録する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -195,7 +201,8 @@ def remarks_append(m: "MessageParserProtocol", remarks: list["RemarkDict"]) -> N
 
 
 def remarks_delete(m: "MessageParserProtocol"):
-    """DBからメモを削除する
+    """
+    DBからメモを削除する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -214,7 +221,8 @@ def remarks_delete(m: "MessageParserProtocol"):
 
 
 def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> None:
-    """DBからメモを削除する(突合)
+    """
+    DBからメモを削除する(突合)
 
     Args:
         para (dict): パラメータ
@@ -237,7 +245,8 @@ def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> Non
 
 
 def check_remarks(m: "MessageParserProtocol") -> None:
-    """メモの内容を拾ってDBに格納する
+    """
+    メモの内容を拾ってDBに格納する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -270,7 +279,8 @@ def check_remarks(m: "MessageParserProtocol") -> None:
 
 
 def reprocessing_remarks(m: "MessageParserProtocol") -> None:
-    """スレッドの内容を再処理
+    """
+    スレッドの内容を再処理
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -300,7 +310,8 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
 
 
 def _score_check(detection: "GameResult", m: "MessageParserProtocol"):
-    """スコアデータ格納状態を記録する
+    """
+    スコアデータ格納状態を記録する
 
     Args:
         detection (GameResult): スコアデータ

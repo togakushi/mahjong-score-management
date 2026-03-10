@@ -1,4 +1,5 @@
-"""libs/commands/ranking/entry.py
+"""
+libs/commands/ranking/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,8 @@ class RankingConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """ランキング生成処理エントリーポイント
+    """
+    ランキング生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ

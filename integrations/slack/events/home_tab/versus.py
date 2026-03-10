@@ -1,4 +1,5 @@
-"""integrations/slack/events/home_tab/versus.py
+"""
+integrations/slack/events/home_tab/versus.py
 """
 
 import logging
@@ -80,7 +81,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
 
     @app.action("versus_menu")
     def handle_menu_action(ack, body):
-        """メニュー項目生成
+        """
+        メニュー項目生成
 
         Args:
             ack (_type_): ack
@@ -102,7 +104,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
 
     @app.action("versus_aggregation")
     def handle_aggregation_action(ack, body):
-        """メニュー項目生成
+        """
+        メニュー項目生成
 
         Args:
             ack (_type_): ack
@@ -142,7 +145,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
 
     @app.view("VersusMenu_ModalPeriodSelection")
     def handle_view_submission(ack, view):
-        """view更新
+        """
+        view更新
 
         Args:
             ack (_type_): ack

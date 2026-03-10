@@ -1,4 +1,5 @@
-"""timekit - datetime 拡張ユーティリティ
+"""
+timekit - datetime 拡張ユーティリティ
 
 - `ExtendedDatetime`: 柔軟な初期化と書式変換ができる datetime 拡張クラス
 - `ExtendedDatetimeList`: ExtendedDatetimeを要素とする日付リストを扱う補助クラス
@@ -212,7 +213,8 @@ class ExtendedDatetime:
     """
 
     def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs):
-        """ExtendedDatetimeの初期化
+        """
+        ExtendedDatetimeの初期化
 
         Args:
             value (Optional[AcceptedType], optional): 引数. Defaults to None.
@@ -289,7 +291,8 @@ class ExtendedDatetime:
         self._dt = self.convert(value)
 
     def set(self, value: AcceptedType) -> None:
-        """渡された値をdatetime型に変換して保持
+        """
+        渡された値をdatetime型に変換して保持
 
         Args:
             value (AcceptedType): 入力値
@@ -298,7 +301,8 @@ class ExtendedDatetime:
         self._dt = self.convert(value)
 
     def format(self, fmt: Format, delimiter: Delimiter = Delimiter.UNDEFINED) -> str:
-        """フォーマット変換
+        """
+        フォーマット変換
 
         Args:
             fmt (Format): 変換形式
@@ -415,7 +419,8 @@ class ExtendedDatetime:
         return ret
 
     def range(self, value: str | list) -> "ExtendedDatetimeList":
-        """キーワードが示す範囲をリストで返す
+        """
+        キーワードが示す範囲をリストで返す
 
         Args:
             value (str | list): 範囲取得キーワード
@@ -451,7 +456,8 @@ class ExtendedDatetime:
 
     @classmethod
     def valid_keywords(cls) -> list[str]:
-        """有効なキーワード一覧
+        """
+        有効なキーワード一覧
 
         Returns:
             list[str]: キーワード一覧
@@ -465,7 +471,8 @@ class ExtendedDatetime:
 
     @classmethod
     def print_range(cls) -> str:
-        """指定可能キーワードで取得できる範囲の一覧
+        """
+        指定可能キーワードで取得できる範囲の一覧
 
         Returns:
             str: 出力メッセージ
@@ -483,7 +490,8 @@ class ExtendedDatetime:
 
     @staticmethod
     def convert(value: AcceptedType) -> datetime:
-        """引数の型を判定してdatetimeへ変換
+        """
+        引数の型を判定してdatetimeへ変換
 
         Args:
             value (AcceptedType): 変換対象
@@ -544,7 +552,8 @@ class ExtendedDatetimeList(list):
         return [min_dt, max_dt]
 
     def format(self, fmt: Format = Format.SQL, delimiter: Delimiter = Delimiter.UNDEFINED) -> list[str]:
-        """全要素にformatを適用した文字列リストを返す
+        """
+        全要素にformatを適用した文字列リストを返す
 
         Args:
             fmt (Format, optional): フォーマット変換. Defaults to "sql".
@@ -557,7 +566,8 @@ class ExtendedDatetimeList(list):
         return [dt.format(fmt, delimiter) for dt in self if isinstance(dt, ExtendedDatetime)]
 
     def dict_format(self, fmt: Format = Format.SQL, delimiter: Delimiter = Delimiter.UNDEFINED) -> dict[str, str]:
-        """全要素にformatを適用し、最小日付と最大日付を辞書で返す
+        """
+        全要素にformatを適用し、最小日付と最大日付を辞書で返す
 
         Args:
             fmt (Format, optional): フォーマット変換. Defaults to "sql".

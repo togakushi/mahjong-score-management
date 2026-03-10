@@ -1,4 +1,5 @@
-"""integrations/slack/events/home_tab/personal.py
+"""
+integrations/slack/events/home_tab/personal.py
 """
 
 import logging
@@ -19,7 +20,8 @@ if TYPE_CHECKING:
 
 
 def build_personal_menu(adapter: ServiceAdapter):
-    """個人成績メニュー作成
+    """
+    個人成績メニュー作成
 
     Args:
         adapter (ServiceAdapter): インターフェースアダプタ
@@ -84,7 +86,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
 
     @app.action("personal_menu")
     def handle_menu_action(ack, body):
-        """メニュー項目生成
+        """
+        メニュー項目生成
 
         Args:
             ack (_type_): ack
@@ -106,7 +109,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
 
     @app.action("personal_aggregation")
     def handle_aggregation_action(ack, body):
-        """メニュー項目生成
+        """
+        メニュー項目生成
 
         Args:
             ack (_type_): ack
@@ -143,7 +147,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
 
     @app.view("PersonalMenu_ModalPeriodSelection")
     def handle_view_submission(ack, view):
-        """view更新
+        """
+        view更新
 
         Args:
             ack (_type_): ack

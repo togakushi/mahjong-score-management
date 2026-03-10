@@ -1,4 +1,5 @@
-"""libs/commands/ranking/ranking.py
+"""
+libs/commands/ranking/ranking.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -17,7 +18,8 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """ランキングデータを生成
+    """
+    ランキングデータを生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ

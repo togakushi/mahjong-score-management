@@ -1,4 +1,5 @@
-"""integrations/web/events/summary.py
+"""
+integrations/web/events/summary.py
 """
 
 from dataclasses import asdict
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """成績サマリページ用Blueprint
+    """
+    成績サマリページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
@@ -65,7 +67,8 @@ def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
 
 
 def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
-    """戦績(詳細)はマルチカラムで表示
+    """
+    戦績(詳細)はマルチカラムで表示
 
     Args:
         df (pd.DataFrame): 戦績データ

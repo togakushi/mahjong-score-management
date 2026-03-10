@@ -1,4 +1,5 @@
-"""libs/domain/stats.py
+"""
+libs/domain/stats.py
 """
 
 import textwrap
@@ -100,7 +101,8 @@ class StatsDetailed:
     """最後の記録時間のコメント"""
 
     def avg_balance(self, pattern: str) -> float:
-        """平均収支計算
+        """
+        平均収支計算
 
         Args:
             pattern (str): 計算パターン
@@ -217,7 +219,8 @@ class StatsDetailed:
         return 0.0
 
     def update_from_dict(self, data: dict) -> None:
-        """辞書から値を更新
+        """
+        辞書から値を更新
 
         Args:
             data (dict): 更新データ（キーはフィールド名）
@@ -282,7 +285,8 @@ class StatsDetailed:
         return ret.strip()
 
     def _work(self, c_num: int, m_num: int) -> str:
-        """単位設定
+        """
+        単位設定
 
         Args:
             c_num (int): 現在値
@@ -339,7 +343,8 @@ class StatsInfo:
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
     def read(self, params: dict):
-        """データ読み込み
+        """
+        データ読み込み
 
         Args:
             params (dict): プレースホルダ
@@ -356,7 +361,8 @@ class StatsInfo:
         self.set_data(self.record_df)
 
     def set_data(self, df: "pd.DataFrame"):
-        """集計結果取り込み
+        """
+        集計結果取り込み
 
         Args:
             df (pd.DataFrame): 集計結果

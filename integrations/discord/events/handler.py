@@ -1,4 +1,5 @@
-"""integrations/discord/events/handler.py
+"""
+integrations/discord/events/handler.py
 """
 
 import logging
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def main(adapter: "ServiceAdapter"):
-    """メイン処理
+    """
+    メイン処理
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース

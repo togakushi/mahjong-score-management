@@ -1,4 +1,5 @@
-"""libs/utils/converter.py
+"""
+libs/utils/converter.py
 """
 
 import textwrap
@@ -24,7 +25,8 @@ def save_output(
     headline: Optional[tuple["MessageType", StyleOptions]] = None,
     suffix: Optional[str] = None,
 ) -> Union["Path", None]:
-    """指定されたフォーマットでdfを保存する
+    """
+    指定されたフォーマットでdfを保存する
 
     Args:
         df (pd.DataFrame): 保存対象データ
@@ -80,7 +82,8 @@ def save_output(
 
 
 def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) -> dict:
-    """DataFrameからテキストテーブルの生成
+    """
+    DataFrameからテキストテーブルの生成
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -153,7 +156,8 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
 
 
 def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> dict:
-    """DataFrameからテキストテーブルの生成(縦横変換)
+    """
+    DataFrameからテキストテーブルの生成(縦横変換)
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -219,7 +223,8 @@ def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
 
 
 def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> dict:
-    """戦績(詳細)データをテキスト変換
+    """
+    戦績(詳細)データをテキスト変換
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -265,7 +270,8 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
 
 
 def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> dict:
-    """戦績(簡易)データをテキスト変換
+    """
+    戦績(簡易)データをテキスト変換
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -292,7 +298,8 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
 
 
 def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict:
-    """DataFrameからランキングテーブルを生成
+    """
+    DataFrameからランキングテーブルを生成
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -496,7 +503,8 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict:
 
 
 def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict:
-    """DataFrameからメモテーブルを生成
+    """
+    DataFrameからメモテーブルを生成
 
     Args:
         df (pd.DataFrame): 対象データ
@@ -536,7 +544,8 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict:
 
 
 def df_to_seat_data(df: pd.DataFrame, options: StyleOptions) -> dict:
-    """座席データ生成
+    """
+    座席データ生成
 
     Args:
         df (pd.DataFrame): 対象データ

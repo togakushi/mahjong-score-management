@@ -1,4 +1,5 @@
-"""integrations/web/events/ranking.py
+"""
+integrations/web/events/ranking.py
 """
 
 from dataclasses import asdict
@@ -15,7 +16,8 @@ if TYPE_CHECKING:
 
 
 def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """ランキングページ用Blueprint
+    """
+    ランキングページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

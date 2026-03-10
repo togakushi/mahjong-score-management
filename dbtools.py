@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""dbtools.py - DB管理補助ツール
+"""
+dbtools.py - DB管理補助ツール
 
 help:
     usage: dbtools.py [-h] ...

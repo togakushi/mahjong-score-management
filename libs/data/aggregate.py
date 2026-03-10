@@ -1,4 +1,5 @@
-"""libs/data/aggregate.py
+"""
+libs/data/aggregate.py
 """
 
 from typing import Optional
@@ -15,7 +16,8 @@ def game_summary(
     filter_items: Optional[list] = None,
     drop_items: Optional[list] = None,
 ) -> pd.DataFrame:
-    """ゲーム結果をサマライズする
+    """
+    ゲーム結果をサマライズする
 
     Args:
         filter_items (Optional[list], optional): 抽出するカラム. Defaults to None.
@@ -45,7 +47,8 @@ def game_summary(
 
 
 def calculation_rating() -> pd.DataFrame:
-    """レーティング集計
+    """
+    レーティング集計
 
     Returns:
         pd.DataFrame: 集計結果
@@ -112,7 +115,8 @@ def calculation_rating() -> pd.DataFrame:
 
 
 def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int, int]:
-    """昇段チェック
+    """
+    昇段チェック
 
     Args:
         grade_level (int): 現在のレベル(段位)
@@ -140,7 +144,8 @@ def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int,
 
 # レポート
 def matrix_table() -> pd.DataFrame:
-    """対局対戦マトリックス表の作成
+    """
+    対局対戦マトリックス表の作成
 
     Returns:
         pd.DataFrame: 集計結果

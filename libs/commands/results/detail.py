@@ -1,4 +1,5 @@
-"""libs/commands/results/detail.py
+"""
+libs/commands/results/detail.py
 """
 
 import textwrap
@@ -23,7 +24,8 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """成績詳細を集計
+    """
+    成績詳細を集計
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -174,7 +176,8 @@ def aggregation(m: "MessageParserProtocol"):
 
 
 def comparison(m: "MessageParserProtocol"):
-    """成績詳細を比較
+    """
+    成績詳細を比較
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -263,7 +266,8 @@ def comparison(m: "MessageParserProtocol"):
 
 
 def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict:
-    """ヘッダメッセージ生成
+    """
+    ヘッダメッセージ生成
 
     Args:
         data (dict): 生成内容が格納された辞書
@@ -296,7 +300,8 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
 
 
 def get_totalization(data: StatsInfo) -> dict:
-    """集計トータルメッセージ生成
+    """
+    集計トータルメッセージ生成
 
     Args:
         data (StatsInfo): 成績情報
@@ -325,7 +330,8 @@ def get_totalization(data: StatsInfo) -> dict:
 
 
 def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
-    """戦績(簡易)データ取得
+    """
+    戦績(簡易)データ取得
 
     Args:
         mapping_dict (dict): 匿名化オプション用マップ
@@ -356,7 +362,8 @@ def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
 
 
 def get_results_details(mapping_dict: dict) -> pd.DataFrame:
-    """戦績(詳細)データ取得
+    """
+    戦績(詳細)データ取得
 
     Args:
         mapping_dict (dict): 匿名化オプション用マップ
@@ -405,7 +412,8 @@ def get_results_details(mapping_dict: dict) -> pd.DataFrame:
 
 
 def get_versus_matrix(mapping_dict: dict) -> str:
-    """対戦結果データ出力用メッセージ生成
+    """
+    対戦結果データ出力用メッセージ生成
 
     Returns:
         str: 出力メッセージ
@@ -437,7 +445,8 @@ def get_versus_matrix(mapping_dict: dict) -> str:
 
 
 def message_build(data: dict) -> str:
-    """表示する内容をテキストに起こす
+    """
+    表示する内容をテキストに起こす
 
     Args:
         data (dict): 内容

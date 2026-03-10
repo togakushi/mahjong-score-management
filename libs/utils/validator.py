@@ -1,4 +1,5 @@
-"""libs/utils/validator.py
+"""
+libs/utils/validator.py
 """
 
 import re
@@ -14,7 +15,8 @@ if TYPE_CHECKING:
 
 
 def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool, str]:
-    """登録制限チェック
+    """
+    登録制限チェック
 
     Args:
         name (str): チェックする名前
@@ -76,7 +78,8 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
 
 
 def check_score(m: "MessageParserProtocol") -> dict:
-    """スコアチェック
+    """
+    スコアチェック
 
     Args:
         m (MessageParserProtocol): メッセージデータ

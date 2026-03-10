@@ -1,4 +1,5 @@
-"""integrations/slack/parser.py
+"""
+integrations/slack/parser.py
 """
 
 import logging

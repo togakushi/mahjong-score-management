@@ -1,4 +1,5 @@
-"""libs/types.py
+"""
+libs/types.py
 """
 
 from dataclasses import asdict, dataclass, field
@@ -191,7 +192,8 @@ class StyleOptions:
 
     @property
     def print_title(self) -> str:
-        """タイトル表示
+        """
+        タイトル表示
 
         Returns:
             str: タイトル文字列

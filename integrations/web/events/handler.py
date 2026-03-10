@@ -1,4 +1,5 @@
-"""integrations/web/events/handler.py
+"""
+integrations/web/events/handler.py
 """
 
 import os

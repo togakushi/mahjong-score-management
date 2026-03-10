@@ -1,4 +1,5 @@
-"""libs/functions/tools/recalculation.py
+"""
+libs/functions/tools/recalculation.py
 """
 
 import logging

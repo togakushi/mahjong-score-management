@@ -1,4 +1,5 @@
-"""libs/functions/tools/gen_test_data.py
+"""
+libs/functions/tools/gen_test_data.py
 """
 
 import itertools
@@ -20,7 +21,8 @@ from libs.utils.timekit import Format
 
 
 def main(season_times: int = 1):
-    """テスト用ゲーム結果生成処理
+    """
+    テスト用ゲーム結果生成処理
 
     Args:
         season_times (int, optional): 総当たり回数. Defaults to 1.

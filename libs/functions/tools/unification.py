@@ -1,4 +1,5 @@
-"""libs/functions/tools/unification.py
+"""
+libs/functions/tools/unification.py
 """
 
 import configparser

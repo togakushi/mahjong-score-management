@@ -1,4 +1,5 @@
-"""integrations/web/events/member.py
+"""
+integrations/web/events/member.py
 """
 
 from dataclasses import asdict
@@ -16,7 +17,8 @@ if TYPE_CHECKING:
 
 
 def member_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """メンバー管理ページ用Blueprint
+    """
+    メンバー管理ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ

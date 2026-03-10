@@ -1,4 +1,5 @@
-"""slack連携
+"""
+slack連携
 
 - `integrations.slack.events`: イベント処理
 - `integrations.slack.adapter`: サービスアダプタ定義

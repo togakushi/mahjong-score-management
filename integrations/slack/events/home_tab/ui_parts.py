@@ -1,4 +1,5 @@
-"""integrations/slack/events/home_tab/ui_parts.py
+"""
+integrations/slack/events/home_tab/ui_parts.py
 """
 
 import logging
@@ -13,7 +14,8 @@ if TYPE_CHECKING:
 
 
 def plain_text(msg: str) -> dict:
-    """プレーンテキストの埋め込み
+    """
+    プレーンテキストの埋め込み
 
     Args:
         msg (str): テキスト
@@ -30,7 +32,8 @@ def plain_text(msg: str) -> dict:
 
 
 def divider(adapter: "ServiceAdapter") -> None:
-    """境界線を引く
+    """
+    境界線を引く
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -45,7 +48,8 @@ def divider(adapter: "ServiceAdapter") -> None:
 
 
 def header(adapter: "ServiceAdapter", text: str = "dummy") -> None:
-    """ヘッダ生成
+    """
+    ヘッダ生成
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -58,7 +62,8 @@ def header(adapter: "ServiceAdapter", text: str = "dummy") -> None:
 
 
 def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bool = False) -> None:
-    """ボタン配置
+    """
+    ボタン配置
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -84,7 +89,8 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
 
 
 def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict) -> None:
-    """オプション選択メニュー
+    """
+    オプション選択メニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -114,7 +120,8 @@ def checkboxes(
     flag: Optional[dict] = None,
     initial: Optional[list] = None,
 ) -> None:
-    """チェックボックス選択メニュー
+    """
+    チェックボックス選択メニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -152,7 +159,8 @@ def user_select_pulldown(
     text: str = "dummy",
     add_list: Optional[list] = None,
 ) -> None:
-    """プレイヤー選択プルダウンメニュー
+    """
+    プレイヤー選択プルダウンメニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -192,7 +200,8 @@ def multi_select_pulldown(
     text: str = "dummy",
     add_list: Optional[list] = None,
 ) -> None:
-    """複数プレイヤー選択プルダウンメニュー
+    """
+    複数プレイヤー選択プルダウンメニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -228,7 +237,8 @@ def multi_select_pulldown(
 
 
 def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> None:
-    """ランキング上限入力テキストボックス
+    """
+    ランキング上限入力テキストボックス
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -251,7 +261,8 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
 
 
 def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
-    """日付選択
+    """
+    日付選択
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -283,7 +294,8 @@ def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
 
 
 def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, list, dict]:
-    """選択オプションの内容のフラグをセット
+    """
+    選択オプションの内容のフラグをセット
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -363,7 +375,8 @@ def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, lis
 
 
 def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list):
-    """viewを更新する
+    """
+    viewを更新する
 
     Args:
         adapter (ServiceAdapter): アダプター

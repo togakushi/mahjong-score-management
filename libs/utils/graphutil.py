@@ -1,4 +1,5 @@
-"""libs/utils/graphutil.py
+"""
+libs/utils/graphutil.py
 """
 
 import logging
@@ -50,7 +51,8 @@ def setup():
 
 
 def gen_xlabel(game_count: int) -> str:
-    """X軸ラベル生成
+    """
+    X軸ラベル生成
 
     Args:
         game_count (int): ゲーム数
@@ -82,7 +84,8 @@ def gen_xlabel(game_count: int) -> str:
 
 
 def xticks_parameter(days_list: list) -> dict:
-    """X軸(xticks)に渡すパラメータを生成
+    """
+    X軸(xticks)に渡すパラメータを生成
 
     Args:
         days_list (list): 日付リスト

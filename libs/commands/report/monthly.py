@@ -1,4 +1,5 @@
-"""libs/commands/report/monthly.py
+"""
+libs/commands/report/monthly.py
 """
 
 from typing import TYPE_CHECKING
@@ -17,7 +18,8 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """月別ゲーム統計表の生成
+    """
+    月別ゲーム統計表の生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ

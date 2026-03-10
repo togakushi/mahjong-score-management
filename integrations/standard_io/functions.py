@@ -1,4 +1,5 @@
-"""integrations/standard_io/functions.py
+"""
+integrations/standard_io/functions.py
 """
 
 from typing import TYPE_CHECKING
@@ -14,7 +15,8 @@ class SvcFunctions(FunctionsInterface):
     """標準入出力専用関数"""
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ

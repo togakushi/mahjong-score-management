@@ -1,4 +1,5 @@
-"""libs/functions/compose/text_item.py
+"""
+libs/functions/compose/text_item.py
 """
 
 from typing import TYPE_CHECKING, Literal, Optional
@@ -14,7 +15,8 @@ if TYPE_CHECKING:
 
 
 def remarks(headword=False) -> str | list:
-    """引数で指定された集計方法を注記にまとめる
+    """
+    引数で指定された集計方法を注記にまとめる
 
     Args:
         headword (bool, optional): 見出しを付ける. Defaults to False.
@@ -67,7 +69,8 @@ def remarks(headword=False) -> str | list:
 
 
 def search_word(headword=False) -> str:
-    """キーワード検索条件を返す
+    """
+    キーワード検索条件を返す
 
     Args:
         headword (bool, optional): 見出しを付ける. Defaults to False.
@@ -91,7 +94,8 @@ def search_word(headword=False) -> str:
 
 
 def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> list | str:
-    """検索範囲を返す（ヘッダ出力用）
+    """
+    検索範囲を返す（ヘッダ出力用）
 
     Args:
         kind (str): 返値のタイプ. Defaults to str.
@@ -128,7 +132,8 @@ def aggregation_range(
     game_info: "GameInfo",
     kind: Literal["list", "str"] = "str",
 ) -> list | str:
-    """集計範囲を返す（ヘッダ出力用）
+    """
+    集計範囲を返す（ヘッダ出力用）
 
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報
@@ -164,7 +169,8 @@ def date_range(
     prefix_a: Optional[str] = None,
     prefix_b: Optional[str] = None,
 ) -> str:
-    """日付範囲文字列
+    """
+    日付範囲文字列
 
     Args:
         kind (Format): ExtendedDatetimeのformatメソッドに渡す引数
@@ -204,7 +210,8 @@ def date_range(
 
 
 def get_members_list() -> str:
-    """登録済みのメンバー一覧を取得する
+    """
+    登録済みのメンバー一覧を取得する
 
     Returns:
         str: メンバーリスト
@@ -228,7 +235,8 @@ def get_members_list() -> str:
 
 
 def get_team_list() -> str:
-    """チームの登録状況を取得する
+    """
+    チームの登録状況を取得する
 
     Returns:
         str: チームリスト

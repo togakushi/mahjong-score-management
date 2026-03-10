@@ -1,4 +1,5 @@
-"""レポート生成モジュール
+"""
+レポート生成モジュール
 
 - `libs.commands.report.matrix`: 直接対戦マトリックス生成
 - `libs.commands.report.monthly`: 月間成績集計

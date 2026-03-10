@@ -1,4 +1,5 @@
-"""libs/commands/graph/entry.py
+"""
+libs/commands/graph/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,8 @@ class GraphConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """グラフ生成処理エントリーポイント
+    """
+    グラフ生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ

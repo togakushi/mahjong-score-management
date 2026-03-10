@@ -1,4 +1,5 @@
-"""libs/commands/ranking/rating.py
+"""
+libs/commands/ranking/rating.py
 """
 
 from typing import TYPE_CHECKING
@@ -19,7 +20,8 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """レーティングを集計して返す
+    """
+    レーティングを集計して返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ

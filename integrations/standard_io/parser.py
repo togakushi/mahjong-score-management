@@ -1,4 +1,5 @@
-"""integrations/standard_io/parser.py
+"""
+integrations/standard_io/parser.py
 """
 
 from datetime import datetime
@@ -39,7 +40,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             self.data.channel_id = body.get("channel_id", "")
 
     def set_command_flag(self, flg: bool):
-        """スラッシュコマンドフラグを上書き
+        """
+        スラッシュコマンドフラグを上書き
 
         Args:
             flg (bool): フラグ

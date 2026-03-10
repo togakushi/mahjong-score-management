@@ -1,4 +1,5 @@
-"""標準出力
+"""
+標準出力
 
 - `integrations.standard_io.adapter`: サービスアダプタ定義
 - `integrations.standard_io.api`: インターフェースAPI

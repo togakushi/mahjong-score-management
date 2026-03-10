@@ -1,4 +1,5 @@
-"""tests/events/test_slash_dispatch.py
+"""
+tests/events/test_slash_dispatch.py
 """
 
 import sys

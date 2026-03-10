@@ -1,4 +1,5 @@
-"""integrations/standard_io/adapter.py
+"""
+integrations/standard_io/adapter.py
 """
 
 from typing import TYPE_CHECKING

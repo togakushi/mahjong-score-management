@@ -1,4 +1,5 @@
-"""libs/utils/formatter.py
+"""
+libs/utils/formatter.py
 """
 
 import random
@@ -12,7 +13,8 @@ from libs.utils import textutil
 
 
 def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
-    """カラム名に応じたfloatfmtのリストを返す
+    """
+    カラム名に応じたfloatfmtのリストを返す
 
     Args:
         df (pd.DataFrame): チェックするデータ
@@ -75,7 +77,8 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
 
 
 def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False) -> list:
-    """カラム位置
+    """
+    カラム位置
 
     Args:
         df (pd.DataFrame): チェックするデータ
@@ -112,7 +115,8 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
 
 
 def name_replace(target: str, add_mark: bool = False, not_replace: bool = False) -> str:
-    """表記ブレ修正(正規化)
+    """
+    表記ブレ修正(正規化)
 
     Args:
         target (str): 対象プレイヤー名
@@ -160,7 +164,8 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
 
 def honor_remove(name: str) -> str:
-    """敬称削除
+    """
+    敬称削除
 
     Args:
         name (str): 対象の名前
@@ -178,7 +183,8 @@ def honor_remove(name: str) -> str:
 
 
 def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
-    """名前リストから変換用辞書を生成
+    """
+    名前リストから変換用辞書を生成
 
     Args:
         name_list (list): 名前リスト
@@ -213,7 +219,8 @@ def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
 
 
 def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
-    """カラム名をリネームする
+    """
+    カラム名をリネームする
 
     Args:
         df (pd.DataFrame): 対象データフレーム
@@ -427,7 +434,8 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
 
 
 def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
-    """非表示項目をドロップ
+    """
+    非表示項目をドロップ
 
     Args:
         df (pd.DataFrame): ターゲット
@@ -446,7 +454,8 @@ def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
 
 
 def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
-    """指定文字数まで改行で連結
+    """
+    指定文字数まで改行で連結
 
     Args:
         lines (list[str]): 連結対象
@@ -485,7 +494,8 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
 
 
 def split_strings(msg: str, limit: int = 3000) -> list[str]:
-    """指定文字数で分割
+    """
+    指定文字数で分割
 
     Args:
         msg (str): 分割対象

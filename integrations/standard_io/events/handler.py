@@ -1,4 +1,5 @@
-"""integrations/standard_io/events/handler.py
+"""
+integrations/standard_io/events/handler.py
 """
 
 from typing import TYPE_CHECKING

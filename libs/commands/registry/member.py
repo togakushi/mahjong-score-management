@@ -1,4 +1,5 @@
-"""libs/commands/registry/member.py
+"""
+libs/commands/registry/member.py
 """
 
 import logging
@@ -75,7 +76,8 @@ class MemberSection(BaseSection):
         self.guest_name = str("ゲスト")
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
@@ -90,7 +92,8 @@ class MemberSection(BaseSection):
         logging.debug("%s: %s", self.section, self)
 
     def resolve_name(self, name: str) -> str:
-        """別名からメンバー名を逆引き
+        """
+        別名からメンバー名を逆引き
 
         Args:
             name (str): 変換する名前
@@ -106,7 +109,8 @@ class MemberSection(BaseSection):
         return ""
 
     def alias(self, name: str) -> list[str]:
-        """指定メンバーの別名をリストで返す
+        """
+        指定メンバーの別名をリストで返す
 
         Args:
             name (str): メンバー名
@@ -127,7 +131,8 @@ class MemberSection(BaseSection):
 
     @property
     def all_lists(self) -> list[str]:
-        """メンバー名、別名をすべてリストで返す
+        """
+        メンバー名、別名をすべてリストで返す
 
         Returns:
             list[str]: メンバー名、別名のリスト
@@ -142,7 +147,8 @@ class MemberSection(BaseSection):
 
     @property
     def get_info(self) -> list[MemberDataDict]:
-        """全メンバー情報取得
+        """
+        全メンバー情報取得
 
         Returns:
             list[MemberDataDict]: メンバー情報
@@ -156,7 +162,8 @@ class MemberSection(BaseSection):
 
 
 def append(argument: list) -> str:
-    """メンバー追加
+    """
+    メンバー追加
 
     Args:
         argument (list): 登録情報
@@ -264,7 +271,8 @@ def append(argument: list) -> str:
 
 
 def remove(argument: list) -> str:
-    """メンバー削除
+    """
+    メンバー削除
 
     Args:
         argument (list): 削除情報

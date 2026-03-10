@@ -1,4 +1,5 @@
-"""データ操作モジュール
+"""
+データ操作モジュール
 
 - `libs.data.aggregate`: データ集計
 - `libs.data.initialization`: データベース初期化

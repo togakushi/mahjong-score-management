@@ -1,4 +1,5 @@
-"""イベント処理
+"""
+イベント処理
 
 - `integrations.web.events.handler`: イベントハンドラ
 """

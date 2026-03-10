@@ -1,4 +1,5 @@
-"""libs/functions/tools/comparison.py
+"""
+libs/functions/tools/comparison.py
 """
 
 import os
@@ -42,7 +43,8 @@ def main():
 
 
 def slack_comparison(m: "MessageParserProtocol"):
-    """突合処理(slack)
+    """
+    突合処理(slack)
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -75,7 +77,8 @@ def slack_comparison(m: "MessageParserProtocol"):
 
 
 def discord_comparison(m: "MessageParserProtocol"):
-    """突合処理(discord)
+    """
+    突合処理(discord)
 
     Args:
         m (MessageParserProtocol): メッセージデータ

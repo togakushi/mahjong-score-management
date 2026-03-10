@@ -1,4 +1,5 @@
-"""tests/name_check/test_name.py
+"""
+tests/name_check/test_name.py
 """
 
 import sys

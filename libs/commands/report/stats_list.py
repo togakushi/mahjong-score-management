@@ -1,4 +1,5 @@
-"""libs/commands/report/results_list.py
+"""
+libs/commands/report/results_list.py
 """
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,8 @@ if TYPE_CHECKING:
 
 
 def main(m: "MessageParserProtocol"):
-    """成績一覧表を生成する
+    """
+    成績一覧表を生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -85,7 +87,8 @@ def main(m: "MessageParserProtocol"):
 
 
 def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "MessageType":
-    """グラフ生成処理
+    """
+    グラフ生成処理
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -185,7 +188,8 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
 
 
 def text_generation(df: "pd.DataFrame") -> "MessageType":
-    """テキストテーブル生成
+    """
+    テキストテーブル生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -226,7 +230,8 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
 
 
 def csv_generation(df: "pd.DataFrame") -> "MessageType":
-    """CSV生成
+    """
+    CSV生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -275,7 +280,8 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
 
 
 def df_generation(df: "pd.DataFrame") -> "MessageType":
-    """テキストテーブル生成
+    """
+    テキストテーブル生成
 
     Args:
         df (pd.DataFrame): 描写データ
