@@ -3,7 +3,7 @@ libs/utils/converter.py
 """
 
 import textwrap
-from typing import TYPE_CHECKING, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 
 import pandas as pd
 from table2ascii import Alignment, PresetStyle, table2ascii
@@ -114,8 +114,8 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
                 alignments.append(Alignment.RIGHT)
 
     # 表データ
-    body: list = []
-    data: list = []
+    body: list[list[Any]] = []
+    data: list[str] = []
     for row in df.to_dict(orient="records"):
         data.clear()
         for k, v in row.items():
@@ -311,7 +311,7 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict:
 
     """
     # 表示内容
-    body: list = []
+    body: list[list[Any]] = []
     alignments: list = []
     match title:
         case "ゲーム参加率":

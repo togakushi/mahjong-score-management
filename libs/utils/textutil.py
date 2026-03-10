@@ -5,7 +5,7 @@ libs/utils/textutil.py
 import os
 from enum import Enum, auto
 from math import ceil, floor
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import libs.global_value as g
 
@@ -80,17 +80,17 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
     return file_path
 
 
-def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> list:
+def split_balanced(data: list[list[Any]], target_size: int, tolerance: float = 0.15) -> list[list[Any]]:
     """
     リストデータを指定個数で分割
 
     Args:
-        data (list): 対象データ
+        data (list[list[Any]]): 対象データ
         target_size (int): 分割サイズ
         tolerance (float, optional): 個数誤差. Defaults to 0.15.
 
     Returns:
-        list: 分割したリスト
+        list[list[Any]]: 分割したリスト
 
     """
     # 分割サイズに0が指定されている場合は何もしない
@@ -121,7 +121,7 @@ def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> lis
     base_size = n // num_blocks
     remainder = n % num_blocks
 
-    result: list = []
+    result: list[list[Any]] = []
     start = 0
     for i in range(num_blocks):
         end = start + base_size + (1 if i < remainder else 0)
@@ -143,7 +143,7 @@ def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
         list[str]: 分割リスト
 
     """
-    blocks = []
+    blocks: list[str] = []
     current_data = ""
     buffer_data = ""
     in_code = False
