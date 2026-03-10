@@ -129,10 +129,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "summary":
                 m.data.text = f"{g.cfg.results.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.results, m)
+                results_summary.aggregation(m)
                 pprint(
                     [
                         "exec: results.summary.aggregate()",
-                        results_summary.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -145,6 +145,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                     save_filename = g.params["filename"]
                     g.params.update({"filename": f"{save_filename}_point"})
                     graph_point(m)
+
                     g.params.update({"filename": f"{save_filename}_rank"})
                     graph_rank(m)
                     if g.params.get("statistics"):
@@ -177,11 +178,11 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "ranking":
                 m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.ranking, m)
+                ranking.aggregation(m)
 
                 pprint(
                     [
                         "exec: ranking.ranking.aggregation()",
-                        ranking.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -190,10 +191,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "report":
                 m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.report, m)
+                stats_list.main(m)
                 pprint(
                     [
                         "exec: report.results_list.main()",
-                        stats_list.main(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -202,10 +203,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "pdf":
                 m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.report, m)
+                stats_report.gen_pdf(m)
                 pprint(
                     [
                         "exec: report.slackpost.results_report.gen_pdf()",
-                        stats_report.gen_pdf(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -214,10 +215,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "rating":
                 m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.results, m)
+                graph_rating.plot(m)
                 pprint(
                     [
                         "exec: graph.rating.plot()",
-                        graph_rating.plot(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
