@@ -38,7 +38,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
         PlaceholderDict: プレースホルダ用辞書
 
     """
-    parser = CommandParser()
+    parser: CommandParser = CommandParser()
 
     # 初期化
     g.params = {}

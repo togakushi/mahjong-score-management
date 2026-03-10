@@ -186,7 +186,7 @@ class ParsedCommand:
 class CommandParser:
     """引数解析クラス"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.day_format = re.compile(r"^([0-9]{8}|[0-9/.-]{8,10})$")
         """日付文字列判定用正規表現
         - *yyyymmdd*

@@ -174,7 +174,7 @@ class AppConfig:
         self.rule: RuleSet = RuleSet(self.setting.rule_config)
         """ルール情報"""
 
-    def initialization(self):
+    def initialization(self) -> None:
         """設定ファイル読み込み"""
         self.mahjong.config_load(self)
         self.setting.config_load(self)
