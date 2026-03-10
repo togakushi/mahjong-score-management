@@ -45,8 +45,8 @@ class IntegrationsConfig(ABC):
     _parser: Optional[ConfigParser] = field(default=None)
 
     # ディスパッチテーブル用
-    _command_dispatcher: dict = field(default_factory=dict)
-    _keyword_dispatcher: dict = field(default_factory=dict)
+    _command_dispatcher: dict[str, Any] = field(default_factory=dict)
+    _keyword_dispatcher: dict[str, Any] = field(default_factory=dict)
 
     # 共通設定
     main_conf: Optional[ConfigParser] = field(default=None)
@@ -87,23 +87,23 @@ class IntegrationsConfig(ABC):
     """グラフ描写ライブラリ"""
 
     @property
-    def command_dispatcher(self) -> dict:
+    def command_dispatcher(self) -> dict[str, Any]:
         """
         コマンドディスパッチテーブルを辞書で取得
 
         Returns:
-            dict: コマンドディスパッチテーブル
+            dict[str, Any]: コマンドディスパッチテーブル
 
         """
         return self._command_dispatcher
 
     @property
-    def keyword_dispatcher(self) -> dict:
+    def keyword_dispatcher(self) -> dict[str, Any]:
         """
         キーワードディスパッチテーブルを辞書で取得
 
         Returns:
-            dict: キーワードディスパッチテーブル
+            dict[str, Any]: キーワードディスパッチテーブル
 
         """
         return self._keyword_dispatcher
@@ -113,7 +113,7 @@ class FunctionsInterface(ABC):
     """個別関数インターフェース"""
 
     @abstractmethod
-    def post_processing(self, m: "MessageParserProtocol"):
+    def post_processing(self, m: "MessageParserProtocol") -> None:
         """
         後処理
 
@@ -141,7 +141,7 @@ class APIInterface(ABC):
     """アダプタAPIインターフェース"""
 
     @abstractmethod
-    def post(self, m: "MessageParserProtocol"):
+    def post(self, m: "MessageParserProtocol") -> None:
         """
         メッセージを出力する
 
@@ -168,7 +168,7 @@ class MessageParserDataMixin:
         self,
         data: "MessageType",
         options: "StyleOptions",
-    ):
+    ) -> None:
         """
         ヘッドラインメッセージをセット
 
@@ -187,7 +187,7 @@ class MessageParserDataMixin:
         self,
         data: "MessageType",
         options: "StyleOptions",
-    ):
+    ) -> None:
         """
         本文メッセージをセット
 
@@ -211,7 +211,7 @@ class MessageParserInterface(ABC):
     status: "StatusData"
 
     @abstractmethod
-    def parser(self, body: Any):
+    def parser(self, body: Any) -> None:
         """
         メッセージ解析
 
@@ -299,12 +299,12 @@ class MessageParserInterface(ABC):
         return self.data.text
 
     @property
-    def argument(self) -> list:
+    def argument(self) -> list[str]:
         """
         コマンド引数として認識している文字列をリストで返す
 
         Returns:
-            list: 引数リスト
+            list[str]: 引数リスト
 
         """
         if ret := self.data.text.split():
