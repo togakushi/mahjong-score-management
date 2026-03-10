@@ -43,6 +43,10 @@ pythonpath = "."
 [tool.uv]
 default-groups = ["dev"]
 
+[tool.mypy]
+explicit_package_bases = true
+check_untyped_defs = true
+
 [tool.pyrefly]
 project-includes = [
     "**/*.py",
