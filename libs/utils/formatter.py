@@ -4,6 +4,7 @@ libs/utils/formatter.py
 
 import random
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -12,7 +13,7 @@ from libs.types import StyleOptions
 from libs.utils import textutil
 
 
-def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
+def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
     """
     カラム名に応じたfloatfmtのリストを返す
 
@@ -21,19 +22,19 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
         index (bool, optional): リストにIndexを含める. Defaults to False.
 
     Returns:
-        list: floatfmtに指定するリスト
+        list[str]: floatfmtに指定するリスト
 
     """
-    fmt: list = []
+    fmt: list[str] = []
     if df.empty:
         return fmt
 
-    field: list = df.columns.tolist()
+    field: list[Any] = df.columns.tolist()
     if index:
         field.insert(0, df.index.name)
 
     for x in field:
-        match x:
+        match str(x):
             case "ゲーム数" | "game_count":
                 fmt.append(".0f")
             case "win" | "lose" | "draw" | "top2" | "top3" | "yakuman_count":
@@ -76,7 +77,7 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
     return fmt
 
 
-def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False) -> list:
+def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False) -> list[str]:
     """
     カラム位置
 
@@ -86,14 +87,14 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
         index (bool, optional): リストにIndexを含める. Defaults to False.
 
     Returns:
-        list: colalignに指定するリスト
+        list[str]: colalignに指定するリスト
 
     """
-    fmt: list = []  # global, right, center, left, decimal, None
+    fmt: list[str] = []  # global, right, center, left, decimal, None
     if df.empty:
         return fmt
 
-    field: list = df.columns.tolist()
+    field: list[Any] = df.columns.tolist()
     if index:
         field.insert(0, df.index.name)
 
@@ -101,7 +102,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
         fmt = ["left"] * len(field)
     else:
         for x in field:
-            match x:
+            match str(x):
                 case "name" | "playtime" | "matter" | "grade":
                     fmt.append("left")
                 case "rank_distr" | "rank_distr4":
@@ -182,19 +183,19 @@ def honor_remove(name: str) -> str:
     return name
 
 
-def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
+def anonymous_mapping(name_list: list[str], initial: int = 0) -> dict[str, str]:
     """
     名前リストから変換用辞書を生成
 
     Args:
-        name_list (list): 名前リスト
+        name_list (list[str]): 名前リスト
         initial (int, optional): インデックス初期値. Defaults to 0.
 
     Returns:
-        dict: マッピング用辞書
+        dict[str, str]: マッピング用辞書
 
     """
-    ret: dict = {}
+    ret: dict[str, str] = {}
 
     if g.params.get("individual", True):
         prefix = "Player"
@@ -230,7 +231,7 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
         pd.DataFrame: リネーム後のデータフレーム
 
     """
-    rename_dict: dict = {
+    rename_dict: dict[str, str] = {
         #
         "p1": "東家",
         "p2": "南家",
@@ -433,7 +434,7 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
     return df.rename(columns=rename_dict)
 
 
-def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
+def df_drop(df: pd.DataFrame, drop_items: list[str]) -> pd.DataFrame:
     """
     非表示項目をドロップ
 
@@ -465,8 +466,8 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
         list[str]: 連結結果
 
     """
-    result: list = []
-    buffer: list = []
+    result: list[str] = []
+    buffer: list[str] = []
 
     for i, line in enumerate(lines):
         is_last = i == len(lines) - 1  # 最終ブロック判定
@@ -505,8 +506,8 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
         list[str]: 分割結果
 
     """
-    result: list = []
-    buffer: list = []
+    result: list[str] = []
+    buffer: list[str] = []
     codeblock: bool = False
 
     for line in msg.splitlines(keepends=True):
