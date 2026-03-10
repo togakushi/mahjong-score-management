@@ -4,7 +4,7 @@ libs/domain/score.py
 
 import re
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Literal, Optional, cast
+from typing import TYPE_CHECKING, Any, Literal, Optional, cast
 
 import pandas as pd
 
@@ -69,7 +69,7 @@ class Score:
 class GameResult:
     """スコアデータ"""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         # ゲーム結果
         self.ts: str = ""
         """タイムスタンプ"""
@@ -95,7 +95,7 @@ class GameResult:
         """配給原点"""
         self.return_point: int = 300
         """返し点"""
-        self.rank_point: list = [30, 10, -10, -30]
+        self.rank_point: list[int] = [30, 10, -10, -30]
         """順位点"""
         self.draw_split: bool = False
         """同着時に順位点を山分けにするか"""
@@ -107,7 +107,7 @@ class GameResult:
     def __bool__(self) -> bool:
         return all(self.to_list("name") + self.to_list("str"))
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         if not isinstance(other, GameResult):
             return NotImplemented
 
@@ -129,7 +129,7 @@ class GameResult:
             ]
         )
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> bool:
         if not isinstance(other, GameResult):
             return NotImplemented
         return self.ts < other.ts
@@ -311,7 +311,7 @@ class GameResult:
             list[str | int | float]: リスト
 
         """
-        ret_list: list = []
+        ret_list: list[str | int | float] = []
         match kind:
             case "name":
                 ret_list = [self.p1.name, self.p2.name, self.p3.name, self.p4.name]
@@ -328,7 +328,7 @@ class GameResult:
 
         return ret_list[: self.mode]
 
-    def calc(self, **kwargs):
+    def calc(self, **kwargs) -> None:
         """獲得ポイント計算"""
         if kwargs:
             self.set(**kwargs)
@@ -355,7 +355,7 @@ class GameResult:
             int: 計算結果
 
         """
-        normalized: list = []
+        normalized: list[str] = []
 
         for token in re.findall(r"\d+|[+\-*/]", expr):
             if isinstance(token, str):
@@ -364,14 +364,14 @@ class GameResult:
                 else:
                     normalized.append(token)
 
-        return eval("".join(normalized))
+        return int(eval("".join(normalized)))
 
-    def _calculation_point3(self) -> dict:
+    def _calculation_point3(self) -> dict[str, Any]:
         """
         獲得ポイントと順位を計算する(三人打ち)
 
         Returns:
-            dict: 更新用辞書(順位と獲得ポイントのデータ)
+            dict[str, Any]: 更新用辞書(順位と獲得ポイントのデータ)
 
         """
         # 計算用データフレーム
@@ -394,24 +394,24 @@ class GameResult:
 
         return ret_dict
 
-    def _calculation_point4(self) -> dict:
+    def _calculation_point4(self) -> dict[str, Any]:
         """
         獲得ポイントと順位を計算する(四人打ち)
 
         Returns:
-            dict: 更新用辞書(順位と獲得ポイントのデータ)
+            dict[str, Any]: 更新用辞書(順位と獲得ポイントのデータ)
 
         """
 
-        def point_split(point: list) -> list:
+        def point_split(point: list[int]) -> list[int]:
             """
             順位点を山分けする
 
             Args:
-                point (list): 山分けするポイントのリスト
+                point (list[int]): 山分けするポイントのリスト
 
             Returns:
-                list: 山分けした結果
+                list[int]: 山分けした結果
 
             """
             new_point = [int(sum(point) / len(point))] * len(point)
