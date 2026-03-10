@@ -6,7 +6,7 @@ import logging
 from dataclasses import MISSING, dataclass, field, fields
 from enum import StrEnum
 from math import ceil
-from typing import TYPE_CHECKING, Literal, Optional, Union
+from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
 from libs.data import loader
@@ -14,7 +14,7 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
-    from integrations.base.interface import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol
     from libs.domain.score import GameResult
     from libs.types import RemarkDict
 
@@ -132,7 +132,7 @@ class CommandAttrs:
     versus_matrix: bool = field(default=False)
     """対戦マトリックス表示"""
     collection: str = field(default="")
-    always_argument: list = field(default_factory=list)
+    always_argument: list[str] = field(default_factory=list)
     """オプションとして常に付与される文字列"""
     target_mode: int = field(default=0)
     """集計対象モードの指定
@@ -143,7 +143,7 @@ class CommandAttrs:
     filename: str = field(default="")
     interval: int = field(default=80)
 
-    def default_reset(self):
+    def default_reset(self) -> None:
         """デフォルト値にリセット"""
         for f in fields(self):
             if f.default is not MISSING:
@@ -180,10 +180,10 @@ class GameInfo:
     last_comment: Optional[str] = field(default=None)
     """集計範囲の最後のゲームコメント"""
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.get()
 
-    def get(self):
+    def get(self) -> None:
         """指定条件を満たすゲーム数のカウント、最初と最後の時刻とコメントを取得"""
         # グローバルパラメータチェック
         if "rule_version" not in g.params:
@@ -224,7 +224,7 @@ class GameInfo:
 
         logging.debug(self)
 
-    def clear(self):
+    def clear(self) -> None:
         """情報削除"""
         self.count = 0
         self.first_game = None
@@ -232,7 +232,7 @@ class GameInfo:
         self.last_game = None
         self.last_comment = None
 
-    def conditions(self) -> dict:
+    def conditions(self) -> dict[str, str | ExtDt | None]:
         """検索条件を返す"""
         return {
             "rule_version": g.params.get("rule_version"),
@@ -300,7 +300,6 @@ class ComparisonResults:
 
         """  # noqa: E501
         ret: str = ""
-        score: Union[dict, "GameResult"]
         match kind:
             case "summary":
                 ret += f"pending:{len(self.pending)} "
@@ -318,10 +317,10 @@ class ComparisonResults:
                     ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
             case "mismatch":
                 ret += f"＊ 不一致：{len(self.mismatch)}件\n"
-                for score in self.mismatch:
-                    ret += f"{ExtDt(float(score['before'].ts)).format(Format.YMDHMS)}\n"
-                    ret += f"\t修正前：{score['before'].to_text()}\n"
-                    ret += f"\t修正後：{score['after'].to_text()}\n"
+                for score_dict in self.mismatch:
+                    ret += f"{ExtDt(float(score_dict['before'].ts)).format(Format.YMDHMS)}\n"
+                    ret += f"\t修正前：{score_dict['before'].to_text()}\n"
+                    ret += f"\t修正後：{score_dict['after'].to_text()}\n"
             case "missing":
                 ret += f"＊ 取りこぼし：{len(self.missing)}件\n"
                 for score in self.missing:
