@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from libs.domain.datamodels import GameInfo
 
 
-def remarks(headword=False) -> str | list:
+def remarks(headword: bool = False) -> str | list[str]:
     """
     引数で指定された集計方法を注記にまとめる
 
@@ -27,7 +27,7 @@ def remarks(headword=False) -> str | list:
         - `headword` がある場合は文字列で返す
 
     """
-    remark_list: list = []
+    remark_list: list[str] = []
 
     if g.params.get("individual"):  # 個人集計時のみ表示
         if not g.params.get("unregistered_replace"):
@@ -68,7 +68,7 @@ def remarks(headword=False) -> str | list:
     return remark_list
 
 
-def search_word(headword=False) -> str:
+def search_word(headword: bool = False) -> str:
     """
     キーワード検索条件を返す
 
@@ -93,7 +93,7 @@ def search_word(headword=False) -> str:
     return ret
 
 
-def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> list | str:
+def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[str] = None) -> list[str] | str:
     """
     検索範囲を返す（ヘッダ出力用）
 
@@ -131,7 +131,7 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> lis
 def aggregation_range(
     game_info: "GameInfo",
     kind: Literal["list", "str"] = "str",
-) -> list | str:
+) -> list[Optional[str]] | str:
     """
     集計範囲を返す（ヘッダ出力用）
 
@@ -217,7 +217,7 @@ def get_members_list() -> str:
         str: メンバーリスト
 
     """
-    name_list: list = []
+    name_list: list[list[str]] = []
     for pname in g.cfg.member.lists:
         name_list.append([pname, ", ".join(g.cfg.member.alias(pname))])
 
@@ -242,7 +242,7 @@ def get_team_list() -> str:
         str: チームリスト
 
     """
-    team_list: list = []
+    team_list: list[list[str]] = []
     for team_name in g.cfg.team.lists:
         if member := ", ".join(g.cfg.team.member(team_name)):
             team_list.append([team_name, member])
