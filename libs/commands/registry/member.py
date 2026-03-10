@@ -1,5 +1,4 @@
-"""
-libs/commands/registry/member.py
+"""libs/commands/registry/member.py
 """
 
 import logging
@@ -80,8 +79,8 @@ class MemberSection(BaseSection):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self._reset()
         super().__init__(self)
 
@@ -98,8 +97,8 @@ class MemberSection(BaseSection):
 
         Returns:
             str: メンバー名(見つからない場合は空欄)
-        """
 
+        """
         for x in self.info:
             if name in x["alias"]:
                 return x["name"]
@@ -114,8 +113,8 @@ class MemberSection(BaseSection):
 
         Returns:
             list[str]: 別名リスト
-        """
 
+        """
         for x in self.info:
             if x.get("name") == name:
                 return x.get("alias")
@@ -124,7 +123,6 @@ class MemberSection(BaseSection):
     @property
     def lists(self) -> list[str]:
         """メンバー名一覧をリストで返す"""
-
         return [x.get("name") for x in self.info]
 
     @property
@@ -133,8 +131,8 @@ class MemberSection(BaseSection):
 
         Returns:
             list[str]: メンバー名、別名のリスト
-        """
 
+        """
         ret: list[str] = []
         for name in self.lists:
             ret.append(name)
@@ -148,8 +146,8 @@ class MemberSection(BaseSection):
 
         Returns:
             list[MemberDataDict]: メンバー情報
-        """
 
+        """
         ret = loader.read_data("MEMBER_INFO", cast(dict, g.params)).to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
@@ -167,8 +165,8 @@ def append(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
 
     ret: bool = False
@@ -275,8 +273,8 @@ def remove(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     msg = "使い方が間違っています。"
 

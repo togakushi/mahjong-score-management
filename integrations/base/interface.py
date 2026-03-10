@@ -1,5 +1,4 @@
-"""
-integrations/base/interface.py
+"""integrations/base/interface.py
 """
 
 from abc import ABC, abstractmethod
@@ -92,8 +91,8 @@ class IntegrationsConfig(ABC):
 
         Returns:
             dict: コマンドディスパッチテーブル
-        """
 
+        """
         return self._command_dispatcher
 
     @property
@@ -102,8 +101,8 @@ class IntegrationsConfig(ABC):
 
         Returns:
             dict: キーワードディスパッチテーブル
-        """
 
+        """
         return self._keyword_dispatcher
 
 
@@ -116,6 +115,7 @@ class FunctionsInterface(ABC):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
     @abstractmethod
@@ -127,6 +127,7 @@ class FunctionsInterface(ABC):
 
         Returns:
             dict: API response
+
         """
         return {}
 
@@ -140,6 +141,7 @@ class APIInterface(ABC):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
 
@@ -152,7 +154,6 @@ class MessageParserDataMixin:
 
     def reset(self) -> None:
         """初期化"""
-
         self.data.reset()
         self.post.reset()
         self.status.reset()
@@ -167,8 +168,8 @@ class MessageParserDataMixin:
         Args:
             data (MessageType): 内容
             options (StyleOptions): 表示オプション
-        """
 
+        """
         # 空データは登録しない
         if isinstance(data, NoneType) or (isinstance(data, pd.DataFrame) and data.empty):
             self.post.headline = None
@@ -185,8 +186,8 @@ class MessageParserDataMixin:
         Args:
             data (MessageType): 内容
             options (StyleOptions): 表示オプション
-        """
 
+        """
         # 空データは登録しない
         if isinstance(data, NoneType) or (isinstance(data, pd.DataFrame) and data.empty):
             return
@@ -207,6 +208,7 @@ class MessageParserInterface(ABC):
 
         Args:
             body (Any): 解析データ
+
         """
 
     @property
@@ -218,6 +220,7 @@ class MessageParserInterface(ABC):
             bool: 真偽値
             - *True*: リプライの形（リプライ／スレッドなど）
             - *False*: 通常メッセージ
+
         """
 
     @property
@@ -229,6 +232,7 @@ class MessageParserInterface(ABC):
             bool: 真偽値
             - *True*: botのポスト
             - *False*: ユーザのポスト
+
         """
 
     @property
@@ -240,6 +244,7 @@ class MessageParserInterface(ABC):
             bool: 真偽値
             - *True*: 許可
             - *False*: 禁止
+
         """
 
     @property
@@ -251,6 +256,7 @@ class MessageParserInterface(ABC):
             bool: 真偽値
             - *True*: 存在する(操作禁止ユーザ)
             - *False*: 存在しない
+
         """
 
     @property
@@ -261,8 +267,8 @@ class MessageParserInterface(ABC):
             bool: 真偽値
             - *True*: コマンド実行
             - *False*: 非コマンド(キーワード呼び出し)
-        """
 
+        """
         return self.status.command_flg
 
     @property
@@ -271,8 +277,8 @@ class MessageParserInterface(ABC):
 
         Returns:
             str: コマンド名
-        """
 
+        """
         if ret := self.data.text.split():
             return ret[0]
         return self.data.text
@@ -283,8 +289,8 @@ class MessageParserInterface(ABC):
 
         Returns:
             list: 引数リスト
-        """
 
+        """
         if ret := self.data.text.split():
             return ret[1:]
         return ret
@@ -295,8 +301,8 @@ class MessageParserInterface(ABC):
 
         Returns:
             str: タイムスタンプ
-        """
 
+        """
         ret_ts: str = "0"
 
         # tsが指定されていれば最優先

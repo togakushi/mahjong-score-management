@@ -1,5 +1,4 @@
-"""
-libs/commands/results/versus.py
+"""libs/commands/results/versus.py
 """
 
 import textwrap
@@ -23,8 +22,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -152,6 +151,7 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
 
     Returns:
         str: 出力データ
+
     """
     ret = textwrap.dedent(
         f"""\
@@ -173,8 +173,8 @@ def tmpl_vs_table(data: dict) -> str:
 
     Returns:
         str: 出力データ
-    """
 
+    """
     ret = textwrap.indent(
         "".join(
             [

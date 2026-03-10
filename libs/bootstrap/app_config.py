@@ -1,5 +1,4 @@
-"""
-libs/bootstrap/app_config.py
+"""libs/bootstrap/app_config.py
 """
 
 import logging
@@ -176,7 +175,6 @@ class AppConfig:
 
     def initialization(self):
         """設定ファイル読み込み"""
-
         self.mahjong.config_load(self)
         self.setting.config_load(self)
         self.alias.config_load(self)
@@ -197,8 +195,8 @@ class AppConfig:
 
         Returns:
             list: リスト化されたキーワード
-        """
 
+        """
         words: list[str] = []
 
         if add_words:
@@ -232,8 +230,8 @@ class AppConfig:
         Args:
             additional_config (Path): 追加設定ファイルパス
             section_name (str): セクション名
-        """
 
+        """
         if not additional_config.exists():
             return
 
@@ -280,8 +278,8 @@ class AppConfig:
             Optional[Path]: 個別設定読み込み結果
                 - *Path*: 読み込んだ設定ファイルパス
                 - *None*: 読み込める設定ファイルがない
-        """
 
+        """
         config_path: Optional[Path] = None
         self.initialization()
 
@@ -312,8 +310,8 @@ class AppConfig:
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         for section in (section_name, self.selected_service, "setting"):
             if section and self.main_parser.has_section(section):
                 if channel_id := self.main_parser[section].get("channel_id"):

@@ -1,10 +1,10 @@
-"""
-libs/functions/tools/score_simulator.py
+"""libs/functions/tools/score_simulator.py
 
 得点シミュレーター
 
 Returns:
     list: ゲーム終了時点の素点リスト
+
 """
 
 import random
@@ -47,8 +47,8 @@ def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
 
     Returns:
         int | tuple: 打点
-    """
 
+    """
     rank = 1
     while rank < 15:
         success_prob = max([0, 0.6 - 0.02 * rank])
@@ -69,8 +69,8 @@ def determine_winner(k: int) -> tuple[list[int], list[int]]:
 
     Returns:
         tuple[list, list]: 抽選結果
-    """
 
+    """
     member = list(range(4))
     winners = random.sample(member, k=k)  # 和了役
     losers = [i for i in member if i not in winners]
@@ -94,8 +94,8 @@ def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, 
         - int: 判定後の局数
         - int: 判定後の連チャン数
         - int: 次の親
-    """
 
+    """
     flg: bool = False
     if winners:
         flg = parent in winners  # 和了時: 親が和了していれば連チャン

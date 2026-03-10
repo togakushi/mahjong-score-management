@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/home_tab/versus.py
+"""integrations/slack/events/home_tab/versus.py
 """
 
 import logging
@@ -21,7 +20,6 @@ if TYPE_CHECKING:
 
 def build_versus_menu(adapter: ServiceAdapter):
     """対戦結果メニュー生成"""
-
     adapter.conf.tab_var["screen"] = "VersusMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -87,8 +85,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             body (dict): イベント内容
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -109,8 +107,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             body (dict): イベント内容
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -150,8 +148,8 @@ def register_versus_handlers(app, adapter: ServiceAdapter):
             ack (_type_): ack
             view (dict): 描写内容
             client (slack_bolt.App.client): slack_boltオブジェクト
-        """
 
+        """
         ack()
 
         for i in view["state"]["values"].keys():

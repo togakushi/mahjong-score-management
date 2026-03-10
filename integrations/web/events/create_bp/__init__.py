@@ -1,5 +1,4 @@
-"""
-ルート設定
+"""ルート設定
 """
 
 from integrations.web.events.create_bp.detail import detail_bp

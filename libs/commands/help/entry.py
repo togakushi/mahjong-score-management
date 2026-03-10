@@ -1,5 +1,4 @@
-"""
-libs/commands/help/entry.py
+"""libs/commands/help/entry.py
 """
 
 import textwrap
@@ -31,8 +30,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.HELP
     g.params = dictutil.placeholder(g.cfg.help, m)
 
@@ -46,8 +45,8 @@ def help_message(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.params.update(
         {
             "source": g.cfg.resolve_channel_id(m.status.source),

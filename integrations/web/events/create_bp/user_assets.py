@@ -1,5 +1,4 @@
-"""
-integrations/web/events/user_assets.py
+"""integrations/web/events/user_assets.py
 """
 
 import os
@@ -21,8 +20,8 @@ def user_assets_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint(
         "user_assets",
         __name__,

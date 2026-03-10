@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-test.py
+"""test.py
 """
 
 import configparser
@@ -34,6 +33,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
         sec (str): 定義セクション
         pattern (str): 実行パターン
         argument (str): コマンドライン引数
+
     """
 
     def graph_point(m):
@@ -224,7 +224,6 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
 def main():
     """メイン処理"""
-
     g.args = arg_parser()
     assert isinstance(g.args.testcase, Path)
 

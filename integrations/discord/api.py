@@ -1,5 +1,4 @@
-"""
-integrations/discord/api.py
+"""integrations/discord/api.py
 """
 
 import asyncio
@@ -47,8 +46,8 @@ class AdapterAPI(APIInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         if m.status.command_flg:
             asyncio.create_task(self.command_respond(m))
         else:
@@ -59,8 +58,8 @@ class AdapterAPI(APIInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         self.response = cast("Message", self.response)
 
         def _table_data(data: dict) -> list:
@@ -172,8 +171,8 @@ class AdapterAPI(APIInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         self.response = cast("ApplicationContext", self.response)
 
         for data, options in m.post.message:

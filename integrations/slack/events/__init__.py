@@ -1,5 +1,4 @@
-"""
-イベント処理
+"""イベント処理
 
 - `integrations.slack.events.handler`: イベントハンドラ
 - `integrations.slack.events.handler_registry`: ハンドラ遅延登録処理

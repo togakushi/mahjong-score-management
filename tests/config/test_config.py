@@ -1,5 +1,4 @@
-"""
-tests/config/test_config.py
+"""tests/config/test_config.py
 """
 
 import sys

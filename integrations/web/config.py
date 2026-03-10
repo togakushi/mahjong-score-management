@@ -1,5 +1,4 @@
-"""
-integrations/web/config.py
+"""integrations/web/config.py
 """
 
 import logging

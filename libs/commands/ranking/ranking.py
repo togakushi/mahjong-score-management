@@ -1,5 +1,4 @@
-"""
-libs/commands/ranking/ranking.py
+"""libs/commands/ranking/ranking.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -22,8 +21,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 情報ヘッダ
     if g.params.get("individual"):  # 個人集計
         title = "ランキング"

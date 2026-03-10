@@ -1,5 +1,4 @@
-"""
-libs/registry/team.py
+"""libs/registry/team.py
 """
 
 import logging
@@ -72,8 +71,8 @@ class TeamSection(BaseSection):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self._reset()
         super().__init__(self)
 
@@ -90,8 +89,8 @@ class TeamSection(BaseSection):
 
         Returns:
             list[str]: 所属メンバーリスト
-        """
 
+        """
         for x in self.info:
             if x.get("team") == team:
                 return x.get("members")
@@ -107,8 +106,8 @@ class TeamSection(BaseSection):
             Union[str, None]:
             - str: 所属しているチーム名
             - None: 未所属
-        """
 
+        """
         for team in self.lists:
             if name in self.member(team):
                 return team
@@ -121,8 +120,8 @@ class TeamSection(BaseSection):
 
         Returns:
             list[str]: チーム名一覧
-        """
 
+        """
         return [x.get("team") for x in self.info]
 
     @property
@@ -131,8 +130,8 @@ class TeamSection(BaseSection):
 
         Returns:
             list[TeamDataDict]: チーム情報
-        """
 
+        """
         ret = loader.read_data("TEAM_INFO", cast(dict, g.params)).to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
@@ -148,8 +147,8 @@ def create(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     ret = False
     msg = "使い方が間違っています。"
 
@@ -182,8 +181,8 @@ def delete(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     if len(argument) == 1:  # 新規追加
@@ -218,8 +217,8 @@ def append(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     if len(argument) == 1:  # 新規作成
@@ -276,8 +275,8 @@ def remove(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)
@@ -323,8 +322,8 @@ def clear() -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = modify.db_backup()
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)

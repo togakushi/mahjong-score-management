@@ -1,5 +1,4 @@
-"""
-integrations/discord/functions.py
+"""integrations/discord/functions.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -35,8 +34,8 @@ class SvcFunctions(FunctionsInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         match m.status.action:
             case ActionStatus.NOTHING:
                 return
@@ -50,8 +49,8 @@ class SvcFunctions(FunctionsInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         m = cast("MessageParser", m)
         self.conf.bot_name = cast("ClientUser", self.conf.bot_name)
 
@@ -97,8 +96,8 @@ class SvcFunctions(FunctionsInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         m = cast("MessageParser", m)
 
         if hasattr(m, "discord_msg"):
@@ -135,6 +134,7 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             bool: 真偽
+
         """
         try:
             await message.channel.fetch_message(message.id)

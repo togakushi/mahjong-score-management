@@ -1,5 +1,4 @@
-"""
-libs/commands/ranking/entry.py
+"""libs/commands/ranking/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -28,8 +27,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.params = dictutil.placeholder(g.cfg.ranking, m)
 
     if g.params.get("rating"):  # レーティング

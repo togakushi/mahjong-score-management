@@ -1,5 +1,4 @@
-"""
-グラフ生成モジュール
+"""グラフ生成モジュール
 
 - `libs.commands.graph.personal`: 個人/チーム/統計グラフ生成
 - `libs.commands.graph.rating`: レーティング推移グラフ生成

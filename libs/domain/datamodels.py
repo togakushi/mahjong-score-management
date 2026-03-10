@@ -1,5 +1,4 @@
-"""
-libs/domain/datamodels.py
+"""libs/domain/datamodels.py
 """
 
 import logging
@@ -145,7 +144,6 @@ class CommandAttrs:
 
     def default_reset(self):
         """デフォルト値にリセット"""
-
         for f in fields(self):
             if f.default is not MISSING:
                 setattr(self, f.name, f.default)
@@ -160,8 +158,8 @@ class CommandAttrs:
 
         Returns:
             int: 規定ゲーム数
-        """
 
+        """
         return int(ceil(game_count * self.stipulated_rate) + 1)
 
 
@@ -185,7 +183,6 @@ class GameInfo:
 
     def get(self):
         """指定条件を満たすゲーム数のカウント、最初と最後の時刻とコメントを取得"""
-
         # グローバルパラメータチェック
         if "rule_version" not in g.params:
             g.params.update({"rule_version": g.cfg.setting.default_rule})
@@ -227,7 +224,6 @@ class GameInfo:
 
     def clear(self):
         """情報削除"""
-
         self.count = 0
         self.first_game = None
         self.first_comment = None
@@ -236,7 +232,6 @@ class GameInfo:
 
     def conditions(self) -> dict:
         """検索条件を返す"""
-
         return {
             "rule_version": g.params.get("rule_version"),
             "starttime": g.params.get("starttime"),
@@ -299,8 +294,8 @@ class ComparisonResults:
 
         Returns:
             str: 生成文字列
-        """  # noqa: E501
 
+        """  # noqa: E501
         ret: str = ""
         score: Union[dict, "GameResult"]
         match kind:

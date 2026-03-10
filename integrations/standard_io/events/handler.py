@@ -1,5 +1,4 @@
-"""
-integrations/standard_io/events/handler.py
+"""integrations/standard_io/events/handler.py
 """
 
 from typing import TYPE_CHECKING
@@ -13,7 +12,6 @@ if TYPE_CHECKING:
 
 def main(adapter: "ServiceAdapter"):
     """メイン処理"""
-
     m = adapter.parser()
     m.parser({"event": {"text": g.args.text}})
 

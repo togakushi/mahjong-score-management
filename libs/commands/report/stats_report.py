@@ -1,5 +1,4 @@
-"""
-libs/commands/report/results_report.py
+"""libs/commands/report/results_report.py
 """
 
 import logging
@@ -37,8 +36,8 @@ def get_game_results() -> list:
 
     Returns:
         list: 集計結果のリスト
-    """
 
+    """
     if "starttime" in g.params:
         g.params.update({"starttime": cast("ExtDt", g.params["starttime"]).format(Format.SQL)})
     if "endtime" in g.params:
@@ -111,8 +110,8 @@ def get_count_results(game_count: int) -> list:
 
     Returns:
         list: 集計結果のリスト
-    """
 
+    """
     g.params.update({"interval": game_count})
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
@@ -183,8 +182,8 @@ def get_count_moving(game_count: int) -> list:
 
     Returns:
         list: 集計結果のリスト
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.update({"interval": game_count})
     rows = resultdb.execute(
@@ -215,8 +214,8 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
 
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     if whole:
@@ -266,8 +265,8 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
             - *False*: 指定範囲集計
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     if whole:
@@ -337,8 +336,8 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
 
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     df.plot(
@@ -378,8 +377,8 @@ def gen_pdf(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions())
@@ -446,8 +445,8 @@ def cover_page(style: dict, target_info: dict) -> list:
 
     Returns:
         list: 生成内容
-    """
 
+    """
     elements: list = []
 
     first_game = datetime.fromtimestamp(  # 最初のゲーム日時
@@ -488,8 +487,8 @@ def entire_aggregate(style: dict) -> list:
 
     Returns:
         list: 生成内容
-    """
 
+    """
     elements: list = []
 
     elements.append(Paragraph("全期間", style["Left"]))
@@ -585,8 +584,8 @@ def periodic_aggregation(style: dict) -> list:
 
     Returns:
         list: 生成内容
-    """
 
+    """
     elements: list = []
 
     pattern: list[tuple[str, str, Literal["A", "M", "Y"]]] = [
@@ -664,8 +663,8 @@ def sectional_aggregate(style: dict, target_info: dict) -> list:
 
     Returns:
         list: 生成内容
-    """
 
+    """
     elements: list = []
 
     pattern: list[tuple[int, int, str]] = [

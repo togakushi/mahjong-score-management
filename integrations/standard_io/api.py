@@ -1,5 +1,4 @@
-"""
-integrations/standard_io/api.py
+"""integrations/standard_io/api.py
 """
 
 import textwrap
@@ -28,8 +27,8 @@ class AdapterAPI(APIInterface):
 
         Returns:
             str: 整形済みテキスト
-        """
 
+        """
         ret: str = ""
         for line in text.splitlines():
             line = line.replace("<@>", "")
@@ -44,8 +43,8 @@ class AdapterAPI(APIInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         # 見出し
         if m.post.headline:
             header_data, header_option = m.post.headline

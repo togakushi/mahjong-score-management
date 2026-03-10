@@ -1,5 +1,4 @@
-"""
-libs/types.py
+"""libs/types.py
 """
 
 from dataclasses import asdict, dataclass, field
@@ -196,8 +195,8 @@ class StyleOptions:
 
         Returns:
             str: タイトル文字列
-        """
 
+        """
         ret: str = ""
 
         if self.title:

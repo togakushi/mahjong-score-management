@@ -1,5 +1,4 @@
-"""
-libs/domain/rule.py
+"""libs/domain/rule.py
 """
 
 import logging
@@ -63,8 +62,8 @@ class RuleData:
 
         Args:
             rule_data (Mapping): 更新データ
-        """
 
+        """
         if "rule_version" in rule_data:
             self.rule_version = str(rule_data["rule_version"])
         if "origin_point" in rule_data:
@@ -121,8 +120,8 @@ class RuleSet:
         Args:
             section_name (str): セクション名
             rule_data (Mapping): 更新データ情報
-        """
 
+        """
         rule = RuleData()
 
         # 初期値セット
@@ -149,7 +148,6 @@ class RuleSet:
 
     def read_config(self):
         """設定ファイル読み込み"""
-
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
                 continue
@@ -163,8 +161,8 @@ class RuleSet:
 
         Args:
             params (dict): プレースホルダ
-        """
 
+        """
         # ステータスリセット
         for rule_version in self.rule_list:
             self.data[rule_version].count = 0
@@ -206,8 +204,8 @@ class RuleSet:
 
         Returns:
             dict[str, Any]: ルール情報
-        """
 
+        """
         if rule := self.data.get(rule_version):
             return {
                 "rule_version": rule.rule_version,
@@ -233,8 +231,8 @@ class RuleSet:
 
         Returns:
             list[str]: ルール識別子
-        """
 
+        """
         ret: list[str] = []
 
         for keyword, rule in self.data.items():
@@ -255,8 +253,8 @@ class RuleSet:
 
         Returns:
             int: 集計モード
-        """
 
+        """
         return int(self.to_dict(rule_version).get("mode", 0))
 
     def get_ignore_flying(self, rule_version: str) -> bool:
@@ -267,8 +265,8 @@ class RuleSet:
 
         Returns:
             bool: トビカウントフラグ
-        """
 
+        """
         return bool(self.to_dict(rule_version).get("ignore_flying", False))
 
     def get_undefined_word(self, rule_version: str) -> int:
@@ -279,8 +277,8 @@ class RuleSet:
 
         Returns:
             int: 未定義ワードタイプ
-        """
 
+        """
         return int(self.to_dict(rule_version).get("undefined_word", 1))
 
     def print(self, rule_version: str) -> str:
@@ -291,8 +289,8 @@ class RuleSet:
 
         Returns:
             str: 内容
-        """
 
+        """
         ret: str = ""
         body_data: list = []
 
@@ -342,7 +340,6 @@ class RuleSet:
 
     def info(self):
         """定義ルールをログに出力する"""
-
         logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
             logging.info(
@@ -367,8 +364,8 @@ class RuleSet:
 
         Raises:
             RuntimeError: 重複あり
-        """
 
+        """
         chk_word: str | RuleData
 
         try:
@@ -401,7 +398,6 @@ class RuleSet:
 
     def register_to_database(self):
         """ルールセット情報をDBに登録する"""
-
         loader.execute("delete from rule;")
         for rule in self.rule_list:
             params = self.to_dict(rule)
@@ -424,8 +420,8 @@ class RuleSet:
 
         Returns:
             list[str]: ルール識別子
-        """
 
+        """
         return [x.rule_version for x in self.data.values()]
 
     @property
@@ -434,8 +430,8 @@ class RuleSet:
 
         Returns:
             list[str]: メモ記録ワード
-        """
 
+        """
         ret: list[str] = []
 
         for rule, data in self.data.items():

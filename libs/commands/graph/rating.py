@@ -1,5 +1,4 @@
-"""
-libs/commands/graph/rating.py
+"""libs/commands/graph/rating.py
 """
 
 from typing import TYPE_CHECKING
@@ -29,8 +28,8 @@ def plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 情報ヘッダ
     title: str = "レーティング推移グラフ"
 
@@ -92,8 +91,8 @@ def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) ->
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(filename)
     title_text, xlabel_text = _graph_title(game_info)
     legend_text = []
@@ -136,8 +135,8 @@ def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: 
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(filename)
     # グラフタイトル/ラベル
     title_text, xlabel_text = _graph_title(game_info)
@@ -195,8 +194,8 @@ def _graph_title(game_info: GameInfo) -> tuple[str, str]:
 
     Returns:
         tuple[str, str]: タイトル文字列
-    """
 
+    """
     match g.params.get("collection"):
         case "daily":
             kind = Format.YMD_O

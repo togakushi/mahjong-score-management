@@ -1,5 +1,4 @@
-"""
-テスト用パラメータ
+"""テスト用パラメータ
 """
 
 from typing import Any

@@ -1,5 +1,4 @@
-"""
-libs/commands/results/detail.py
+"""libs/commands/results/detail.py
 """
 
 import textwrap
@@ -28,8 +27,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- パラメータ更新
     g.params.update({"guest_skip": g.params["guest_skip2"]})  # 検索動作を合わせる
 
@@ -179,8 +178,8 @@ def comparison(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -273,8 +272,8 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
 
     Returns:
         dict: 集計データ
-    """
 
+    """
     ret: dict = {}
 
     if g.params.get("individual"):
@@ -304,8 +303,8 @@ def get_totalization(data: StatsInfo) -> dict:
 
     Returns:
         dict: 生成メッセージ
-    """
 
+    """
     ret: dict = {}
 
     ret["通算ポイント"] = f"{data.seat0.total_point:+.1f}pt".replace("-", "▲")
@@ -333,8 +332,8 @@ def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 戦績データ
-    """
 
+    """
     target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)
 
     df = loader.read_data("SUMMARY_DETAILS").fillna(value="")
@@ -364,8 +363,8 @@ def get_results_details(mapping_dict: dict) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 戦績データ
-    """
 
+    """
     target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)  # noqa: F841
 
     df = loader.read_data("SUMMARY_DETAILS2", cast(dict, g.params)).fillna(value="")
@@ -410,8 +409,8 @@ def get_versus_matrix(mapping_dict: dict) -> str:
 
     Returns:
         str: 出力メッセージ
-    """
 
+    """
     df = loader.read_data("SUMMARY_VERSUS_MATRIX")
 
     if df.empty:
@@ -445,8 +444,8 @@ def message_build(data: dict) -> str:
 
     Returns:
         str: 表示するテキスト
-    """
 
+    """
     msg = ""
     for k, v in data.items():
         if not v:  # 値がない項目は削除

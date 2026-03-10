@@ -1,5 +1,4 @@
-"""
-libs/functions/tools/gen_test_data.py
+"""libs/functions/tools/gen_test_data.py
 """
 
 import itertools
@@ -25,8 +24,8 @@ def main(season_times: int = 1):
 
     Args:
         season_times (int, optional): 総当たり回数. Defaults to 1.
-    """
 
+    """
     g.cfg.initialization()
     lookup.read_memberslist()
 

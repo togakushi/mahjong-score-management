@@ -1,5 +1,4 @@
-"""
-integrations/web/functions.py
+"""integrations/web/functions.py
 """
 
 import re
@@ -31,8 +30,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             str: HTML表
-        """
 
+        """
         df = formatter.df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL))
         df = df.rename(columns={"name": "プレイヤー名", "point": "ポイント", "rank": "順位"})
         styled = (
@@ -132,8 +131,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             str: 返還後
-        """
 
+        """
         ret: str = "<p>\n"
         for line in text.splitlines():
             ret += f"{line.strip()}<br>\n"
@@ -149,8 +148,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             tuple[str, str]: 取得文字列
-        """
 
+        """
         message = ""
         title = ""
 
@@ -173,8 +172,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             Response: Response
-        """
 
+        """
         page = make_response(render_template(html, **data))
         if req.method == "POST":
             if req.form.get("action") == "reset":  # cookie削除
@@ -196,8 +195,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             dict: cookieデータ
-        """
 
+        """
         initial_value: dict = {
             "range": "",
             "guest": "ゲストなし",
@@ -229,12 +228,10 @@ class SvcFunctions(FunctionsInterface):
         return {k: v for k, v in cookie_data.items() if k in target_keys}
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m
         return {}
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m

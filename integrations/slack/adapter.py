@@ -1,5 +1,4 @@
-"""
-integrations/slack/adapter.py
+"""integrations/slack/adapter.py
 """
 
 from typing import TYPE_CHECKING

@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/home_tab/personal.py
+"""integrations/slack/events/home_tab/personal.py
 """
 
 import logging
@@ -24,8 +23,8 @@ def build_personal_menu(adapter: ServiceAdapter):
 
     Args:
         adapter (ServiceAdapter): インターフェースアダプタ
-    """
 
+    """
     adapter.conf.tab_var["screen"] = "PersonalMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -90,8 +89,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             body (dict): イベント内容
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -112,8 +111,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             body (dict): イベント内容
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -149,8 +148,8 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             view (dict): 描写内容
-        """
 
+        """
         ack()
 
         for i in view["state"]["values"].keys():

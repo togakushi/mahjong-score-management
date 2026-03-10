@@ -1,5 +1,4 @@
-"""
-libs/utils/dbutil.py
+"""libs/utils/dbutil.py
 """
 
 import re
@@ -21,8 +20,8 @@ def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
 
     Returns:
         sqlite3.Connection: オブジェクト
-    """
 
+    """
     conn = sqlite3.connect(
         database=f"file:{database_path}",
         # detect_types=sqlite3.PARSE_DECLTYPES,
@@ -44,8 +43,8 @@ def query(keyword: str) -> str:
 
     Returns:
         str: SQL文
-    """
 
+    """
     sql_tables: dict[str, str] = {
         # テーブル作成
         "CREATE_TABLE_MEMBER": "table/member.sql",
@@ -117,8 +116,8 @@ def query_modification(sql: str) -> str:
 
     Returns:
         str: 修正後のクエリ
-    """
 
+    """
     if g.params.get("individual"):  # 個人集計
         sql = sql.replace("--[individual] ", "")
         # ゲスト関連フラグ
@@ -251,8 +250,8 @@ def table_info(conn: sqlite3.Connection, table_name: str) -> dict:
 
     Returns:
         dict: スキーマ
-    """
 
+    """
     rows = conn.execute(f"pragma table_info('{table_name}');")
     schema = {row["name"]: dict(row) for row in rows.fetchall()}
 

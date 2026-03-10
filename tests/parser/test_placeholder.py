@@ -1,5 +1,4 @@
-"""
-tests/parser/test_placeholder.py
+"""tests/parser/test_placeholder.py
 """
 
 import sys
@@ -39,7 +38,6 @@ def parser_instance():
 )
 def test_command_check(input_args, player_name, player_list, competition_list, parser_instance):
     """コマンド認識状態チェック"""
-
     m = parser_instance.parser()
     param = dictutil.placeholder(g.cfg.results, m)
 
@@ -56,7 +54,6 @@ def test_command_check(input_args, player_name, player_list, competition_list, p
 )
 def test_player_check(input_args, player_name, player_list, competition_list, parser_instance):
     """プレイヤー名"""
-
     m = parser_instance.parser()
     m.parser({"text": f"{g.cfg.setting.keyword} {input_args}"})
     param = dictutil.placeholder(g.cfg.results, m)
@@ -74,7 +71,6 @@ def test_player_check(input_args, player_name, player_list, competition_list, pa
 )
 def test_team_check(input_args, player_name, player_list, competition_list, parser_instance):
     """チーム名"""
-
     m = parser_instance.parser()
     m.parser({"event": {"text": f"{g.cfg.setting.keyword} {input_args}"}})
     param = dictutil.placeholder(g.cfg.results, m)
@@ -92,7 +88,6 @@ def test_team_check(input_args, player_name, player_list, competition_list, pars
 )
 def test_guest_check(input_args, player_name, replace_name, parser_instance):
     """ゲストチェック"""
-
     m = parser_instance.parser()
     m.parser({"text": f"{g.cfg.setting.keyword} {input_args}"})
     g.params = dictutil.placeholder(g.cfg.results, m)

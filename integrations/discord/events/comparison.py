@@ -1,5 +1,4 @@
-"""
-integrations/discord/events/comparison.py
+"""integrations/discord/events/comparison.py
 """
 
 import asyncio
@@ -30,8 +29,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     asyncio.create_task(_wrapper(m))
 
 
@@ -65,8 +64,8 @@ async def search_messages(results: ComparisonResults, messages_list: list["Messa
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     for ch in g.adapter.api.bot.get_all_channels():
@@ -103,8 +102,8 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     discord_score: list[GameResult] = []
 
@@ -160,8 +159,8 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     discord_remarks: list[RemarkDict] = []
     score_list: dict[str, GameResult] = {}
@@ -224,8 +223,8 @@ async def check_total_score(results: ComparisonResults, messages_list: list["Mes
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     for work_m in messages_list:
         if detection := validator.check_score(work_m):
             score = GameResult(**detection)

@@ -1,5 +1,4 @@
-"""
-libs/domain/command.py
+"""libs/domain/command.py
 """
 
 import re
@@ -204,8 +203,8 @@ class CommandParser:
 
         Returns:
             bool: 真偽
-        """
 
+        """
         for cmd in COMMANDS.values():
             for pattern in cmd["match"]:
                 m = re.match(pattern, word)
@@ -225,8 +224,8 @@ class CommandParser:
 
         Returns:
             ParsedCommand: 結果
-        """
 
+        """
         ret: dict = {}
         unknown: list = []
         args: list = []
@@ -274,8 +273,8 @@ class CommandParser:
 
         Returns:
             dict: 更新用辞書
-        """
 
+        """
         ret: dict = {}
 
         def with_arguments(tmp: dict):

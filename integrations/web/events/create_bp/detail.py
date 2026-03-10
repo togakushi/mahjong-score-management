@@ -1,5 +1,4 @@
-"""
-integrations/web/events/detail.py
+"""integrations/web/events/detail.py
 """
 
 from dataclasses import asdict
@@ -23,8 +22,8 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("detail", __name__, url_prefix="/detail")
 
     @bp.route("/", methods=["GET", "POST"])
@@ -74,8 +73,8 @@ def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: マルチカラム変換
-    """
 
+    """
     if not isinstance(df.columns, pd.MultiIndex):
         new_columns = [tuple(col.split("_")) if len(col.split("_")) != 1 else ("", col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_columns, names=["座席", "項目"])

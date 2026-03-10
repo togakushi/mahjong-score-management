@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/handler.py
+"""integrations/slack/events/handler.py
 """
 
 import logging
@@ -28,8 +27,8 @@ def main(adapter: "ServiceAdapter"):
 
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
-    """
 
+    """
     try:
         from slack_bolt import App
         from slack_bolt.adapter.socket_mode import SocketModeHandler
@@ -62,7 +61,6 @@ def main(adapter: "ServiceAdapter"):
 @register
 def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
     """イベントAPI"""
-
     m = cast("MessageParserProtocol", adapter.parser())
 
     @app.event("message")
@@ -71,8 +69,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
 
         Args:
             body (dict): ポストされたデータ
-        """
 
+        """
         m.reset()
         m.parser(body)
         libs.dispatcher.by_keyword(m)
@@ -84,8 +82,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
         Args:
             ack (_type_): ack
             body (dict): ポストされたデータ
-        """
 
+        """
         ack()
         m.reset()
         m.parser(body)
@@ -97,8 +95,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
 
         Args:
             event (dict): イベント内容
-        """
 
+        """
         adapter.conf.tab_var = {
             "view": {},
             "no": 0,

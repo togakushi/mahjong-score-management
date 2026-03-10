@@ -1,5 +1,4 @@
-"""
-integrations/slack/config.py
+"""integrations/slack/config.py
 """
 
 import logging

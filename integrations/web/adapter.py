@@ -1,5 +1,4 @@
-"""
-integrations/web/adapter.py
+"""integrations/web/adapter.py
 """
 
 from typing import TYPE_CHECKING

@@ -1,5 +1,4 @@
-"""
-libs/commands/results/summary.py
+"""libs/commands/results/summary.py
 """
 
 from typing import TYPE_CHECKING
@@ -21,8 +20,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ収集
     data: "MessageType"
     game_info = GameInfo()
@@ -157,8 +156,8 @@ def difference(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     data: "MessageType"
     game_info = GameInfo()

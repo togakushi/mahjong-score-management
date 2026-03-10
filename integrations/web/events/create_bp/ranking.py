@@ -1,5 +1,4 @@
-"""
-integrations/web/events/ranking.py
+"""integrations/web/events/ranking.py
 """
 
 from dataclasses import asdict
@@ -23,8 +22,8 @@ def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("ranking", __name__, url_prefix="/ranking")
 
     @bp.route("/", methods=["GET", "POST"])

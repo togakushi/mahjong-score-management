@@ -1,5 +1,4 @@
-"""
-libs/dispatcher.py
+"""libs/dispatcher.py
 """
 
 import logging
@@ -21,7 +20,6 @@ if TYPE_CHECKING:
 
 def by_keyword(m: "MessageParserProtocol"):
     """メイン処理"""
-
     # チャンネル個別設定切替
     g.params.update(
         {
@@ -86,8 +84,8 @@ def other_words(word: str, m: "MessageParserProtocol"):
     Args:
         word (str): 入力ワード
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if word in g.cfg.rule.remarks_words and m.in_thread:  # 追加メモ
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
@@ -119,8 +117,8 @@ def message_append(detection: GameResult, m: "MessageParserProtocol"):
     Args:
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if _thread_check(m):
         modify.db_insert(detection, m)
     else:
@@ -135,6 +133,7 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
     Args:
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
+
     """
     record_data = lookup.exsist_record(m.data.event_ts)
 
@@ -164,8 +163,8 @@ def message_deleted(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if re.match(rf"^{g.cfg.setting.remarks_word}", m.keyword):  # 追加メモ
         modify.remarks_delete(m)
     else:
@@ -174,7 +173,6 @@ def message_deleted(m: "MessageParserProtocol"):
 
 def _thread_check(m: "MessageParserProtocol") -> bool:
     """スレッド内判定関数"""
-
     if isinstance(g.adapter, factory.slack_adapter):
         if not m.in_thread or (m.in_thread == g.adapter.conf.thread_report):
             return True

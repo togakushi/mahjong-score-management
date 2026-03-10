@@ -1,5 +1,4 @@
-"""
-discord連携
+"""discord連携
 
 - `integrations.discord.events`: イベント処理
 - `integrations.discord.adapter`: サービスアダプタ定義

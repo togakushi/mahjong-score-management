@@ -1,5 +1,4 @@
-"""
-integrations/discord/parser.py
+"""integrations/discord/parser.py
 """
 
 from typing import TYPE_CHECKING, cast
@@ -46,8 +45,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             bool: 真偽値
 
         Note: slackに合わせてプロパティ名に`in_thread`を使う
-        """
 
+        """
         if self.status.command_flg:
             return False
 

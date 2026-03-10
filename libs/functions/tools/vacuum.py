@@ -1,5 +1,4 @@
-"""
-libs/functions/tools/vacuum.py
+"""libs/functions/tools/vacuum.py
 """
 
 import logging
@@ -13,7 +12,6 @@ from libs.utils import dbutil
 
 def main():
     """vacuum実行"""
-
     g.cfg.initialization()
 
     modify.db_backup()
@@ -42,8 +40,8 @@ def db_info(cur, kind):
 
     Returns:
         int: page_count / freelist_count
-    """
 
+    """
     match kind:
         case "page_count":
             count = cur.execute("pragma page_count;").fetchone()[0]

@@ -1,5 +1,4 @@
-"""
-libs/utils/graphutil.py
+"""libs/utils/graphutil.py
 """
 
 import logging
@@ -14,7 +13,6 @@ import libs.global_value as g
 
 def setup():
     """グラフ設定初期化"""
-
     pd.options.plotting.backend = g.adapter.conf.plotting_backend
     match g.adapter.conf.plotting_backend:
         case "plotly":
@@ -59,8 +57,8 @@ def gen_xlabel(game_count: int) -> str:
 
     Returns:
         str: X軸ラベル
-    """
 
+    """
     if g.params.get("target_count"):
         xlabel = f"直近 {game_count} ゲーム"
     else:
@@ -91,8 +89,8 @@ def xticks_parameter(days_list: list) -> dict:
 
     Returns:
         dict: パラメータ
-    """
 
+    """
     days_list = [str(x).replace("-", "/") for x in days_list]
 
     thresholds = [

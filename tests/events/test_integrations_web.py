@@ -1,5 +1,4 @@
-"""
-tests/events/test_integrations_web.py
+"""tests/events/test_integrations_web.py
 """
 
 import os

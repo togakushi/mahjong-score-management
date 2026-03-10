@@ -1,5 +1,4 @@
-"""
-libs/commands/ranking/rating.py
+"""libs/commands/ranking/rating.py
 """
 
 from typing import TYPE_CHECKING
@@ -24,8 +23,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.RATING  # 更新
 
     # 情報ヘッダ

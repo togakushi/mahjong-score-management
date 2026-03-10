@@ -1,5 +1,4 @@
-"""
-libs/utils/converter.py
+"""libs/utils/converter.py
 """
 
 import textwrap
@@ -36,8 +35,8 @@ def save_output(
     Returns:
         Path: 保存したファイルパス
         None: ファイル出力なし
-    """
 
+    """
     # カラムリネーム
     options.rename_type = StyleOptions.RenameType.NORMAL
     df = formatter.df_rename(df, options)
@@ -90,8 +89,8 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
 
     Returns:
         dict: 生成テーブル
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     # ヘッダ/位置
@@ -163,8 +162,8 @@ def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
 
     Returns:
         dict: 生成テーブル
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     # 表生成/分割
@@ -229,8 +228,8 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
 
     Returns:
         dict: 整形テキスト
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     data_list: list = []
@@ -275,8 +274,8 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
 
     Returns:
         dict: 整形テキスト
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     data_list: list = []
@@ -302,8 +301,8 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict:
 
     Returns:
         dict: 整形テキスト
-    """
 
+    """
     # 表示内容
     body: list = []
     alignments: list = []
@@ -505,8 +504,8 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict:
 
     Returns:
         dict: 整形テキスト
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     key_name = "名前" if g.params.get("individual") else "チーム"
@@ -545,8 +544,8 @@ def df_to_seat_data(df: pd.DataFrame, options: StyleOptions) -> dict:
 
     Returns:
         dict: 整形テキスト
-    """
 
+    """
     df = formatter.df_rename(df, options)
 
     # 表示加工

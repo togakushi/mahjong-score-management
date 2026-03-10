@@ -1,5 +1,4 @@
-"""
-libs/data/search.py
+"""libs/data/search.py
 """
 
 import logging
@@ -23,8 +22,8 @@ def for_db_score(first_ts: float) -> list[GameResult]:
 
     Returns:
         list[GameResult]: 検索した結果
-    """
 
+    """
     data: list = []
     rows = loader.execute(
         "select * from result where ts >= :first_ts and source like :source",
@@ -46,8 +45,8 @@ def for_db_remarks(first_ts: float) -> list["RemarkDict"]:
 
     Returns:
         list[RemarkDict]: 検索した結果
-    """
 
+    """
     data: list["RemarkDict"] = []
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
         # 記録済みメモ内容

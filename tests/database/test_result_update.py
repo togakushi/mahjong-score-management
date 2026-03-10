@@ -1,5 +1,4 @@
-"""
-tests/database/test_result_update.py
+"""tests/database/test_result_update.py
 """
 
 import sys

@@ -1,5 +1,4 @@
-"""
-libs/functions/compose/text_item.py
+"""libs/functions/compose/text_item.py
 """
 
 from typing import TYPE_CHECKING, Literal, Optional
@@ -24,8 +23,8 @@ def remarks(headword=False) -> str | list:
         Union[list, str]:
         - `headword` がない場合はリストで返す
         - `headword` がある場合は文字列で返す
-    """
 
+    """
     remark_list: list = []
 
     if g.params.get("individual"):  # 個人集計時のみ表示
@@ -75,8 +74,8 @@ def search_word(headword=False) -> str:
 
     Returns:
         str: 条件をまとめた文字列
-    """
 
+    """
     if ret := str(g.params.get("search_word", "")).replace("%", ""):
         # 集約条件
         if g.params.get("group_length"):
@@ -102,8 +101,8 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> lis
         Union[list, str]:
         - `kind` にlistが指定されている場合はリスト
         - `kind` にstrが指定されている場合は文字列
-    """
 
+    """
     starttime: str
     endtime: str
 
@@ -141,8 +140,8 @@ def aggregation_range(
         Union[list, str]:
         - `kind` にlistが指定されている場合はリストで返す
         - `kind` にstrが指定されている場合は文字列で返す
-    """
 
+    """
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
 
@@ -174,8 +173,8 @@ def date_range(
 
     Returns:
         str: 生成文字列
-    """
 
+    """
     ret: str
     str_st: str
     str_et: str
@@ -209,8 +208,8 @@ def get_members_list() -> str:
 
     Returns:
         str: メンバーリスト
-    """
 
+    """
     name_list: list = []
     for pname in g.cfg.member.lists:
         name_list.append([pname, ", ".join(g.cfg.member.alias(pname))])
@@ -233,8 +232,8 @@ def get_team_list() -> str:
 
     Returns:
         str: チームリスト
-    """
 
+    """
     team_list: list = []
     for team_name in g.cfg.team.lists:
         if member := ", ".join(g.cfg.team.member(team_name)):

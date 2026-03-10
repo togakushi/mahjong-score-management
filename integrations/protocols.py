@@ -1,5 +1,4 @@
-"""
-integrations/protocols.py
+"""integrations/protocols.py
 """
 
 from dataclasses import dataclass, field, fields, is_dataclass
@@ -132,6 +131,7 @@ class MessageParserProtocol(Protocol):
             bool: 真偽値
             - *True*: スラッシュコマンド
             - *False*: チャンネル内呼び出しキーワード
+
         """
 
     @property
@@ -142,6 +142,7 @@ class MessageParserProtocol(Protocol):
             bool: 真偽値
             - *True*: botが操作
             - *False*: ユーザが操作
+
         """
 
     @property

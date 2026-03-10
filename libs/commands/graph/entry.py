@@ -1,5 +1,4 @@
-"""
-libs/commands/graph/entry.py
+"""libs/commands/graph/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -28,8 +27,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.GRAPH
     g.params = dictutil.placeholder(g.cfg.graph, m)
 

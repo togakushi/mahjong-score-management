@@ -1,5 +1,4 @@
-"""
-integrations/slack/functions.py
+"""integrations/slack/functions.py
 """
 
 import logging
@@ -48,8 +47,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         g.adapter = cast("ServiceAdapter", g.adapter)
 
         # 検索クエリ
@@ -83,8 +82,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             list[MessageParserProtocol]: 詳細情報追加データ
-        """
 
+        """
         new_matches: list["MessageParserProtocol"] = []
 
         # 詳細情報取得
@@ -115,8 +114,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             dict: API response
-        """
 
+        """
         try:
             res = self.api.appclient.conversations_replies(channel=m.data.channel_id, ts=m.data.event_ts)
             logging.trace(res.validate())  # type: ignore
@@ -135,8 +134,8 @@ class SvcFunctions(FunctionsInterface):
             tuple[list,list]:
             - reaction_ok: okが付いているメッセージのタイムスタンプ
             - reaction_ng: ngが付いているメッセージのタイムスタンプ
-        """
 
+        """
         reaction_ok: list = []
         reaction_ng: list = []
 
@@ -156,8 +155,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         channel_id = ""
 
         try:
@@ -186,8 +185,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         channel_id = ""
 
         try:
@@ -209,8 +208,8 @@ class SvcFunctions(FunctionsInterface):
             dict[str,list]: リアクション
             - str: "oK" or "ng"
             - list: タイムスタンプ
-        """
 
+        """
         icon: dict[str, list] = {
             "ok": [],
             "ng": [],
@@ -239,8 +238,8 @@ class SvcFunctions(FunctionsInterface):
             icon (str): リアクション文字
             ch (str): チャンネルID
             ts (str): メッセージのタイムスタンプ
-        """
 
+        """
         if not all([icon, ch, ts]):
             logging.warning("deficiency: ts=%s, ch=%s, icon=%s", ts, ch, icon)
             return
@@ -267,8 +266,8 @@ class SvcFunctions(FunctionsInterface):
             icon (str): リアクション文字
             ch (str): チャンネルID
             ts (str): メッセージのタイムスタンプ
-        """
 
+        """
         if not all([icon, ch, ts]):
             logging.warning("deficiency: ts=%s, ch=%s, icon=%s", ts, ch, icon)
             return
@@ -297,8 +296,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         # ゲーム結果の抽出
         score_matches: list["MessageParserProtocol"] = []
         for keyword in g.cfg.rule.keyword_mapping.keys():
@@ -321,8 +320,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         remarks_matches: list["MessageParserProtocol"] = []
 
         # メモの抽出
@@ -343,6 +342,7 @@ class SvcFunctions(FunctionsInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
         # リアクション文字取得

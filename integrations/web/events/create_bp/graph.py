@@ -1,5 +1,4 @@
-"""
-integrations/web/events/graph.py
+"""integrations/web/events/graph.py
 """
 
 from dataclasses import asdict
@@ -24,8 +23,8 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("graph", __name__, url_prefix="/graph")
 
     @bp.route("/", methods=["GET", "POST"])

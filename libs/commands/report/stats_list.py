@@ -1,5 +1,4 @@
-"""
-libs/commands/report/results_list.py
+"""libs/commands/report/results_list.py
 """
 
 from typing import TYPE_CHECKING
@@ -28,8 +27,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -95,8 +94,8 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     if g.adapter.conf.plotting_backend == "plotly":
         return None
 
@@ -193,8 +192,8 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.txt" if g.params.get("filename") else "report.txt")
 
     df = df.filter(
@@ -234,8 +233,8 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.csv" if g.params.get("filename") else "report.csv")
 
     df = df.filter(
@@ -283,8 +282,8 @@ def df_generation(df: "pd.DataFrame") -> "MessageType":
 
     Returns:
         MessageType: 整形データ
-    """
 
+    """
     df = df.filter(
         items=[
             "player",

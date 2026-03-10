@@ -1,5 +1,4 @@
-"""
-libs/utils/dictutil.py
+"""libs/utils/dictutil.py
 """
 
 import logging
@@ -35,8 +34,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
 
     Returns:
         PlaceholderDict: プレースホルダ用辞書
-    """
 
+    """
     parser = CommandParser()
 
     # 初期化
@@ -211,8 +210,8 @@ def merge_dicts(dict1: Any, dict2: Any) -> dict:
 
     Returns:
         dict: マージされた辞書
-    """
 
+    """
     merged: dict = {}
 
     for key in set(dict1) | set(dict2):

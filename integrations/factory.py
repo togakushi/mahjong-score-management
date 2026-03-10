@@ -1,5 +1,4 @@
-"""
-integrations/factory.py
+"""integrations/factory.py
 """
 
 from typing import TYPE_CHECKING, Literal, overload
@@ -42,8 +41,8 @@ def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterfac
 
     Returns:
         AdapterType: アダプタインターフェース
-    """
 
+    """
     match selected_service:
         case "slack":
             return slack_adapter(conf.main_parser)

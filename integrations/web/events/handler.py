@@ -1,5 +1,4 @@
-"""
-integrations/web/events/handler.py
+"""integrations/web/events/handler.py
 """
 
 import os
@@ -17,7 +16,6 @@ if TYPE_CHECKING:
 
 def main(adapter: "ServiceAdapter"):
     """メイン処理"""
-
     app = Flask(
         __name__,
         static_folder=os.path.join(g.cfg.script_dir, "files/html/static"),

@@ -1,5 +1,4 @@
-"""
-libs/commands/report/matrix.py
+"""libs/commands/report/matrix.py
 """
 
 from typing import TYPE_CHECKING
@@ -20,8 +19,8 @@ def plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ集計
     title: str = "対局対戦マトリックス"
     game_info = GameInfo()

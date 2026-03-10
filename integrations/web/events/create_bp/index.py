@@ -1,5 +1,4 @@
-"""
-integrations/web/events/index.py
+"""integrations/web/events/index.py
 """
 
 from dataclasses import asdict
@@ -19,8 +18,8 @@ def index_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("index", __name__, url_prefix="/")
 
     @bp.route("/", methods=["GET", "POST"])

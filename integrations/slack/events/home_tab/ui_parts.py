@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/home_tab/ui_parts.py
+"""integrations/slack/events/home_tab/ui_parts.py
 """
 
 import logging
@@ -21,8 +20,8 @@ def plain_text(msg: str) -> dict:
 
     Returns:
         dict: ブロック要素
-    """
 
+    """
     view: dict = {"type": "home", "blocks": []}
     view["blocks"].append({"type": "section", "text": {}})
     view["blocks"][0]["text"] = {"type": "mrkdwn", "text": msg}
@@ -35,8 +34,8 @@ def divider(adapter: "ServiceAdapter") -> None:
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append(
         {
             "type": "divider",
@@ -51,8 +50,8 @@ def header(adapter: "ServiceAdapter", text: str = "dummy") -> None:
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): ヘッダテキスト. Defaults to "dummy".
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "header", "text": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["text"] = {"type": "plain_text", "text": text}
     adapter.conf.tab_var["no"] += 1
@@ -66,8 +65,8 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
         text (str, optional): 表示テキスト
         action_id (str): action_id
         style (str | bool, optional): 表示スタイル. Defaults to False.
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "actions", "elements": [{}]})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["elements"][0] = {
         "type": "button",
@@ -92,8 +91,8 @@ def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: d
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
         flag (dict, optional): 表示する選択項目
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": f"bid-{id_suffix}", "element": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["label"] = {"type": "plain_text", "text": title}
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"]["type"] = "radio_buttons"
@@ -123,8 +122,8 @@ def checkboxes(
         title (str): 表示タイトル
         flag (Optional[dict], optional): 表示する選択項目. Defaults to None.
         initial (Optional[list], optional): チェック済み項目. Defaults to None.
-    """
 
+    """
     if flag is None:
         flag = {}
 
@@ -159,8 +158,8 @@ def user_select_pulldown(
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
         add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
-    """
 
+    """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-user_select", "element": {}})
@@ -199,8 +198,8 @@ def multi_select_pulldown(
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
         add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
-    """
 
+    """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-multi_select", "element": {}})
@@ -234,8 +233,8 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         block_id (str | bool, optional): block_id. Defaults to False.
-    """
 
+    """
     if block_id:
         adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": block_id, "element": {}, "label": {}})
     else:
@@ -259,8 +258,8 @@ def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
 
     Returns:
         dict: ブロック要素
-    """
 
+    """
     view: dict = {"type": "modal", "callback_id": f"{adapter.conf.tab_var['screen']}_ModalPeriodSelection"}
     view["title"] = {"type": "plain_text", "text": "検索範囲指定"}
     view["submit"] = {"type": "plain_text", "text": "決定"}
@@ -295,8 +294,8 @@ def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, lis
         - list: コマンドに追加する文字列
         - list: viewに表示するメッセージ
         - dict: 変更されるフラグ
-    """
 
+    """
     update_flag: dict = {}
 
     # 検索設定
@@ -370,8 +369,8 @@ def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list
         adapter (ServiceAdapter): アダプター
         m (MessageParserProtocol): メッセージデータ
         msg (list): 表示テキスト
-    """
 
+    """
     text = ""
     if m.post.headline:
         header_data, header_option = m.post.headline

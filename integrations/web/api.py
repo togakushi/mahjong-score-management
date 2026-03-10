@@ -1,5 +1,4 @@
-"""
-integrations/web/api.py
+"""integrations/web/api.py
 """
 
 from typing import TYPE_CHECKING
@@ -14,6 +13,5 @@ class AdapterAPI(APIInterface):
     """ダミークラス"""
 
     def post(self, m: "MessageParserProtocol"):
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m

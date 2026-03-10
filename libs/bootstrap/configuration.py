@@ -1,5 +1,4 @@
-"""
-libs/bootstrap/configuration.py
+"""libs/bootstrap/configuration.py
 """
 
 import argparse
@@ -30,7 +29,6 @@ if TYPE_CHECKING:
 
 def set_loglevel():
     """ログレベル追加"""
-
     # DEBUG : 10
     # INFO : 20
     # WARNING : 30
@@ -48,8 +46,8 @@ def arg_parser() -> Args:
 
     Returns:
         Args : ArgumentParserオブジェクト
-    """
 
+    """
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
@@ -205,8 +203,8 @@ def setup(init_db: bool = True):
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
-    """
 
+    """
     set_loglevel()
 
     g.args = arg_parser()

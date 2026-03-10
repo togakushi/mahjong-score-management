@@ -1,5 +1,4 @@
-"""
-libs/data/loader.py
+"""libs/data/loader.py
 """
 
 import logging
@@ -29,8 +28,8 @@ def execute(sql: str, params: Optional[dict] = None) -> list[dict[str, Any]]:
 
     Returns:
         list[dict[str, Any]]: 実行結果
-    """
 
+    """
     params = {} if params is None else dict(params)
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql)
@@ -75,8 +74,8 @@ def read_data(keyword: str, params: Optional[dict] = None) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 集計結果
-    """
 
+    """
     params = {} if params is None else dict(params)
     if not params:
         params = cast(dict, g.params)
@@ -131,8 +130,8 @@ def named_query(query: str, params: dict) -> str:
 
     Returns:
         str: バインド済みSQL
-    """
 
+    """
     params.update(
         **g.params.get("rule_set", {}),
         **g.params.get("player_list", {}),

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-app.py - 麻雀のスコアを記録し、集計して表示するツール
+"""app.py - 麻雀のスコアを記録し、集計して表示するツール
 
 help:
     usage: app.py [-h] ...

@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/comparison.py
+"""integrations/slack/events/comparison.py
 """
 
 import logging
@@ -26,8 +25,8 @@ def main(m: "MessageParserProtocol") -> None:
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     if g.cfg.main_parser.has_section(m.status.source):
@@ -74,8 +73,8 @@ def check_omission(results: ComparisonResults):
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     slack_score: list[GameResult] = []
 
@@ -138,8 +137,8 @@ def check_remarks(results: ComparisonResults):
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     slack_remarks: list["RemarkDict"] = []
     score_list: dict[str, GameResult] = {}
@@ -208,8 +207,8 @@ def check_total_score(results: ComparisonResults):
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     for loop_m in results.score_list.values():
         if detection := validator.check_score(loop_m):
             score = GameResult(**detection)
@@ -230,8 +229,8 @@ def check_pending(m: "MessageParserProtocol") -> bool:
         bool: 真偽
         - *True*: 保留中
         - *False*: チェック開始
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     now_ts = float(ExtDt().format(Format.TS))

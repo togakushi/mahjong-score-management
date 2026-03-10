@@ -1,5 +1,4 @@
-"""
-イベント処理
+"""イベント処理
 
 - `integrations.discord.events.handler`: イベントハンドラ
 """

@@ -1,5 +1,4 @@
-"""
-libs/functions/tools/recalculation.py
+"""libs/functions/tools/recalculation.py
 """
 
 import logging
@@ -13,7 +12,6 @@ from libs.utils import dbutil, dictutil
 
 def main():
     """ポイント再計算"""
-
     g.cfg.initialization()
 
     modify.db_backup()

@@ -1,5 +1,4 @@
-"""
-integrations/discord/events/audioop.py
+"""integrations/discord/events/audioop.py
 
 - audioop.py - ダミーモジュール（音声機能を使用しないため空実装）
 """

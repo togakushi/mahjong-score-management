@@ -1,5 +1,4 @@
-"""
-libs/commands/report/winner.py
+"""libs/commands/report/winner.py
 """
 
 from typing import TYPE_CHECKING
@@ -24,8 +23,8 @@ def plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ取得
     game_info = GameInfo()
     results_df = loader.read_data("REPORT_WINNER")

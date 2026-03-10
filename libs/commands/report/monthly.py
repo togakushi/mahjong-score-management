@@ -1,5 +1,4 @@
-"""
-libs/commands/report/monthly.py
+"""libs/commands/report/monthly.py
 """
 
 from typing import TYPE_CHECKING
@@ -22,8 +21,8 @@ def plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ収集
     title: str = "月別ゲーム統計"
     df = loader.read_data("REPORT_MONTHLY")

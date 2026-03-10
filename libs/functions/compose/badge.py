@@ -1,5 +1,4 @@
-"""
-libs/functions/compose/badge.py
+"""libs/functions/compose/badge.py
 """
 
 import math
@@ -20,8 +19,8 @@ def degree(game_count: int = 0) -> str:
 
     Returns:
         str: 表示する称号
-    """
 
+    """
     badge: str = ""
 
     if g.adapter.conf.badge_degree:
@@ -47,8 +46,8 @@ def status(game_count: int = 0, win: int = 0) -> str:
 
     Returns:
         str: 表示する称号
-    """
 
+    """
     badge: str = ""
 
     if g.adapter.conf.badge_status:
@@ -85,8 +84,8 @@ def grade(name: str, detail: bool = True) -> str:
 
     Returns:
         str: 称号
-    """
 
+    """
     if name not in g.cfg.member.lists:  # レギュラーメンバー以外
         return ""
 

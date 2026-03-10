@@ -1,5 +1,4 @@
-"""
-libs/utils/textutil.py
+"""libs/utils/textutil.py
 """
 
 import os
@@ -35,8 +34,8 @@ def str_conv(text: str, kind: ConversionType) -> str:
 
     Returns:
         str: 変換後の文字列
-    """
 
+    """
     zen = "".join(chr(0xFF10 + i) for i in range(10))
     han = "".join(chr(0x30 + i) for i in range(10))
     hira = "".join(chr(0x3041 + i) for i in range(86))
@@ -66,8 +65,8 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
 
     Returns:
         Path: 保存ファイルパス
-    """
 
+    """
     _, file_ext = os.path.splitext(filename)
     file_name = f"{g.params['filename']}{file_ext}" if g.params.get("filename") else f"{filename}"
     file_path = g.cfg.setting.work_dir / file_name
@@ -88,8 +87,8 @@ def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> lis
 
     Returns:
         list: 分割したリスト
-    """
 
+    """
     # 分割サイズに0が指定されている場合は何もしない
     if not target_size:
         return data
@@ -137,8 +136,8 @@ def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
 
     Returns:
         list[str]: 分割リスト
-    """
 
+    """
     blocks = []
     current_data = ""
     buffer_data = ""

@@ -1,5 +1,4 @@
-"""
-tests/database/test_registration.py
+"""tests/database/test_registration.py
 """
 
 from contextlib import closing

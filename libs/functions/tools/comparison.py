@@ -1,5 +1,4 @@
-"""
-libs/functions/tools/comparison.py
+"""libs/functions/tools/comparison.py
 """
 
 import os
@@ -19,7 +18,6 @@ if TYPE_CHECKING:
 
 def main():
     """データ突合処理"""
-
     g.cfg.initialization()
 
     # 結果の出力先(standard_io)
@@ -52,8 +50,8 @@ def slack_comparison(m: "MessageParserProtocol"):
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
         RuntimeError: 接続エラー
-    """
 
+    """
     try:
         from slack_bolt import App
         from slack_sdk import WebClient
@@ -81,8 +79,8 @@ def discord_comparison(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.adapter = cast("discord_adapter", g.adapter)
 
     m.status.message = "未実装"

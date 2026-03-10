@@ -1,5 +1,4 @@
-"""
-libs/data/initialization.py
+"""libs/data/initialization.py
 """
 
 import json
@@ -22,8 +21,8 @@ def main(init_db: bool):
 
     Args:
         init_db (bool): setup処理の実行有無
-    """
 
+    """
     # ルールデータ取り込み
     if g.cfg.mahjong.rule_version:
         g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
@@ -73,8 +72,8 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
 
     Args:
         database_file (Union[str, Path]): データベース接続パス
-    """
 
+    """
     if isinstance(database_file, Path):
         logging.info(database_file.absolute())
     else:
@@ -157,6 +156,7 @@ def setup_regulations(database_file: Union[str, Path]):
 
     Args:
         database_file (Union[str, Path]): データベース接続パス
+
     """
 
     def _db_set():
@@ -223,7 +223,6 @@ def setup_regulations(database_file: Union[str, Path]):
 
 def read_grade_table() -> None:
     """段位テーブル読み込み"""
-
     # テーブル選択
     match table_name := g.cfg.badge.grade.table_name:
         case "":

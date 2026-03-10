@@ -1,5 +1,4 @@
-"""
-integrations/web/events/member.py
+"""integrations/web/events/member.py
 """
 
 from dataclasses import asdict
@@ -24,8 +23,8 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("member", __name__, url_prefix="/member")
 
     @bp.route("/", methods=["GET", "POST"])

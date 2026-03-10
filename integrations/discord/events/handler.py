@@ -1,5 +1,4 @@
-"""
-integrations/discord/events/handler.py
+"""integrations/discord/events/handler.py
 """
 
 import logging
@@ -23,8 +22,8 @@ def main(adapter: "ServiceAdapter"):
 
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
-    """
 
+    """
     try:
         sys.modules["audioop"] = _audioop
         import discord

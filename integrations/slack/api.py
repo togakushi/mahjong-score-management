@@ -1,5 +1,4 @@
-"""
-integrations/slack/api.py
+"""integrations/slack/api.py
 """
 
 import logging
@@ -44,6 +43,7 @@ class AdapterAPI(APIInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
         def _table_data(data: dict) -> list:
@@ -157,8 +157,8 @@ class AdapterAPI(APIInterface):
 
         Returns:
             SlackResponse: API response
-        """
 
+        """
         res = cast("SlackResponse", {})
         if kwargs["thread_ts"] == "0":
             kwargs.pop("thread_ts")
@@ -179,8 +179,8 @@ class AdapterAPI(APIInterface):
 
         Returns:
             SlackResponse | Any: API response
-        """
 
+        """
         res = cast("SlackResponse", {})
         if kwargs.get("thread_ts", "0") == "0":
             kwargs.pop("thread_ts")

@@ -1,5 +1,4 @@
-"""
-tests/parser/test_parser.py
+"""tests/parser/test_parser.py
 """
 
 import sys

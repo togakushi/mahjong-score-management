@@ -1,5 +1,4 @@
-"""
-libs/bootstrap/section.py
+"""libs/bootstrap/section.py
 """
 
 import logging
@@ -86,7 +85,6 @@ class BaseSection(CommonMethodMixin):
 
     def initialization(self):
         """設定ファイルから値の取り込み"""
-
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
@@ -126,8 +124,8 @@ class BaseSection(CommonMethodMixin):
 
         Returns:
              dict[str, str]: 返却値
-        """
 
+        """
         ret_dict: dict[str, str] = {}
         for key in vars(self):
             if key.startswith("_"):
@@ -175,8 +173,8 @@ class MahjongSection(BaseSection):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         super().__init__(self)
 
@@ -267,8 +265,8 @@ class SettingSection(BaseSection):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
@@ -352,8 +350,8 @@ class AliasSection(BaseSection):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
@@ -375,8 +373,8 @@ class SubCommands(BaseSection, CommandAttrs):
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self.section_proxy = outer.main_parser[self.section]
         self.default_reset()

@@ -1,5 +1,4 @@
-"""
-libs/commands/graph/summary.py
+"""libs/commands/graph/summary.py
 """
 
 import logging
@@ -43,8 +42,8 @@ def point_plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
@@ -93,8 +92,8 @@ def rank_plot(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
@@ -146,8 +145,8 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
         tuple[pd.DataFrame, pd.DataFrame]:
         - pd.DataFrame: 収集したデータのサマリ
         - pd.DataFrame: 集計範囲のデータ
-    """
 
+    """
     # データ収集
     g.params.update({"fourfold": True})  # 直近Nは4倍する(縦持ちなので4人分)
 
@@ -198,8 +197,8 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(graph_params["save_file"])
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
@@ -294,8 +293,8 @@ def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(graph_params["save_file"])
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
@@ -388,8 +387,8 @@ def _graph_title(graph_params: GraphParams):
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
-    """
 
+    """
     if g.params.get("target_count"):
         kind = Format.YMD_O
         graph_params.update({"xlabel_text": f"集計日（{graph_params['total_game_count']} ゲーム）"})

@@ -1,5 +1,4 @@
-"""
-libs/domain/score.py
+"""libs/domain/score.py
 """
 
 import re
@@ -20,6 +19,7 @@ class Score:
         フィールド名の 'r_' プレフィックス (r_str, rpoint など) は、
         GameResult.to_dict() によって 'p1_', 'p2_', 'p3_', 'p4_' に置換され、
         DBテーブルのカラム名 (p1_str, p2_str など) として使用する。
+
     """
 
     name: str = field(default="")
@@ -49,8 +49,8 @@ class Score:
         Note:
             フィールド名の 'r_' プレフィックスは、指定された prefix に置換される。
             例: r_str -> p1_str (prefix='p1' の場合)
-        """
 
+        """
         return cast(
             "ScoreDict",
             {
@@ -133,7 +133,6 @@ class GameResult:
 
     def has_valid_data(self) -> bool:
         """DB更新に必要なデータを持っているかチェック"""
-
         # スコアデータ
         match self.mode:
             case 3:
@@ -169,6 +168,7 @@ class GameResult:
 
             Returns:
                 str: 正規化後の文字列
+
             """
             s = s.strip()
             s = re.sub(r"(-)+|(\+)+", r"\1\2", s)  # 連続した符号を集約
@@ -185,6 +185,7 @@ class GameResult:
                 prefix (str): プレイヤーポジション (p1-p4)
                 key (str): 属性名
                 value (object): 設定値
+
             """
             match key:
                 case "name":
@@ -236,8 +237,8 @@ class GameResult:
 
         Returns:
             ScoreDict: スコアデータ
-        """
 
+        """
         return {
             "ts": self.ts,
             **self.p1.to_dict("p1"),
@@ -262,8 +263,8 @@ class GameResult:
 
         Returns:
             str: スコアデータ
-        """
 
+        """
         ret_text: str = ""
         match kind:
             case "simple":
@@ -300,8 +301,8 @@ class GameResult:
 
         Returns:
             list[str | int | float]: リスト
-        """
 
+        """
         ret_list: list = []
         match kind:
             case "name":
@@ -321,7 +322,6 @@ class GameResult:
 
     def calc(self, **kwargs):
         """獲得ポイント計算"""
-
         if kwargs:
             self.set(**kwargs)
 
@@ -344,8 +344,8 @@ class GameResult:
 
         Returns:
             int: 計算結果
-        """
 
+        """
         normalized: list = []
 
         for token in re.findall(r"\d+|[+\-*/]", expr):
@@ -362,8 +362,8 @@ class GameResult:
 
         Returns:
             dict: 更新用辞書(順位と獲得ポイントのデータ)
-        """
 
+        """
         # 計算用データフレーム
         score_df = pd.DataFrame({"rpoint": [self._normalized_expression(str(x)) for x in self.to_list("str")]}, index=["p1", "p2", "p3"])
 
@@ -389,6 +389,7 @@ class GameResult:
 
         Returns:
             dict: 更新用辞書(順位と獲得ポイントのデータ)
+
         """
 
         def point_split(point: list) -> list:
@@ -399,8 +400,8 @@ class GameResult:
 
             Returns:
                 list: 山分けした結果
-            """
 
+            """
             new_point = [int(sum(point) / len(point))] * len(point)
             if sum(point) % len(point):
                 new_point[0] += sum(point) % len(point)
@@ -474,8 +475,8 @@ class GameResult:
 
         Returns:
             int: 素点合計
-        """
 
+        """
         if not all(self.to_list("rank")):  # 順位が確定していない場合は先に計算
             self.calc()
 

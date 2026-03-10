@@ -1,5 +1,4 @@
-"""
-libs/utils/formatter.py
+"""libs/utils/formatter.py
 """
 
 import random
@@ -21,8 +20,8 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
 
     Returns:
         list: floatfmtに指定するリスト
-    """
 
+    """
     fmt: list = []
     if df.empty:
         return fmt
@@ -85,8 +84,8 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
 
     Returns:
         list: colalignに指定するリスト
-    """
 
+    """
     fmt: list = []  # global, right, center, left, decimal, None
     if df.empty:
         return fmt
@@ -124,8 +123,8 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
     Returns:
         str: 表記ブレ修正後のプレイヤー名
-    """
 
+    """
     chk_pattern = [
         target,  # 無加工
         textutil.str_conv(target, textutil.ConversionType.HtoZ),  # 半角 -> 全角
@@ -168,8 +167,8 @@ def honor_remove(name: str) -> str:
 
     Returns:
         str: 敬称を削除した名前
-    """
 
+    """
     honor = r"(くん|さん|ちゃん|クン|サン|チャン|君)$"
     if re.match(rf".*{honor}", name):
         if not re.match(rf".*(っ|ッ|ー){honor}", name):
@@ -187,8 +186,8 @@ def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
 
     Returns:
         dict: マッピング用辞書
-    """
 
+    """
     ret: dict = {}
 
     if g.params.get("individual", True):
@@ -222,8 +221,8 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: リネーム後のデータフレーム
-    """
 
+    """
     rename_dict: dict = {
         #
         "p1": "東家",
@@ -436,8 +435,8 @@ def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 加工後
-    """
 
+    """
     original = df.columns.to_list()
     columns = df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL)).columns.to_list()  # カラム名変換
     position = [columns.index(item) for item in drop_items if item in columns]
@@ -455,8 +454,8 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
 
     Returns:
         list[str]: 連結結果
-    """
 
+    """
     result: list = []
     buffer: list = []
 
@@ -494,8 +493,8 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
 
     Returns:
         list[str]: 分割結果
-    """
 
+    """
     result: list = []
     buffer: list = []
     codeblock: bool = False

@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/home_tab/summary.py
+"""integrations/slack/events/home_tab/summary.py
 """
 
 import logging
@@ -23,7 +22,6 @@ if TYPE_CHECKING:
 
 def build_summary_menu(adapter: ServiceAdapter):
     """サマリメニュー生成"""
-
     adapter.conf.tab_var["screen"] = "SummaryMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -87,8 +85,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
         Args:
             ack (_type_): ack
             body (dict): イベント内容
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -110,8 +108,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
             ack (_type_): ack
             body (dict): イベント内容
             client (slack_bolt.App.client): slack_boltオブジェクト
-        """
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -160,8 +158,8 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
             ack (_type_): ack
             view (dict): 描写内容
             client (slack_bolt.App.client): slack_boltオブジェクト
-        """
 
+        """
         ack()
 
         for i in view["state"]["values"].keys():

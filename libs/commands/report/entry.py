@@ -1,5 +1,4 @@
-"""
-libs/commands/report/entry.py
+"""libs/commands/report/entry.py
 """
 
 from typing import TYPE_CHECKING
@@ -28,8 +27,8 @@ def main(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.REPORT
     g.params = dictutil.placeholder(g.cfg.report, m)
 

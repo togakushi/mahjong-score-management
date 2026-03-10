@@ -1,5 +1,4 @@
-"""
-tests/name_check/test_name.py
+"""tests/name_check/test_name.py
 """
 
 import sys
@@ -35,7 +34,6 @@ def parser_instance():
 )
 def test_name_permit(input_args, expected_flags, parser_instance):
     """メンバー登録テスト(OK)"""
-
     flg, reason = validator.check_namepattern(input_args, "member")
     print(" -->", flg, reason)
     assert flg == expected_flags
@@ -48,6 +46,5 @@ def test_name_permit(input_args, expected_flags, parser_instance):
 )
 def test_name_refusal(input_args, expected_flags, parser_instance):
     """メンバー登録テスト(NG)"""
-
     flg, _ = validator.check_namepattern(input_args, "member")
     assert flg == expected_flags

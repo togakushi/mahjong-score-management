@@ -1,5 +1,4 @@
-"""
-libs/data/modify.py
+"""libs/data/modify.py
 """
 
 import logging
@@ -34,8 +33,8 @@ def db_insert(detection: "GameResult", m: "MessageParserProtocol") -> int:
 
     Returns:
         int: DB更新レコード数
-    """
 
+    """
     changes: int = 0
 
     if m.check_updatable:
@@ -73,8 +72,8 @@ def db_update(detection: "GameResult", m: "MessageParserProtocol") -> int:
 
     Returns:
         int: DB更新レコード数
-    """
 
+    """
     detection.calc()
     changes: int = int(0)
 
@@ -106,8 +105,8 @@ def db_delete(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if m.check_updatable:
         with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
             # ゲーム結果の削除
@@ -133,8 +132,8 @@ def db_backup() -> str:
 
     Returns:
         str: 動作結果メッセージ
-    """
 
+    """
     if not g.cfg.setting.backup_dir:  # バックアップ設定がされていない場合は何もしない
         return ""
 
@@ -168,8 +167,8 @@ def remarks_append(m: "MessageParserProtocol", remarks: list["RemarkDict"]) -> N
     Args:
         m (MessageParserProtocol): メッセージデータ
         remarks (list[RemarkDict]): メモに残す内容
-    """
 
+    """
     if m.check_updatable:
         with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
             for para in remarks:
@@ -200,8 +199,8 @@ def remarks_delete(m: "MessageParserProtocol"):
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if m.check_updatable:
         with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
             cur.execute(dbutil.query("REMARKS_DELETE_ONE"), (m.data.event_ts,))
@@ -220,8 +219,8 @@ def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> Non
     Args:
         para (dict): パラメータ
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
         cur.execute(dbutil.query("REMARKS_DELETE_COMPAR"), para)
         cur.commit()
@@ -244,7 +243,6 @@ def check_remarks(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-
     game_result = lookup.exsist_record(m.data.thread_ts)
     if game_result.has_valid_data():  # ゲーム結果のスレッドになっているか
         remarks: list["RemarkDict"] = []
@@ -276,8 +274,8 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     res = g.adapter.functions.get_conversations(m)
     msg = cast(dict, res.get("messages"))
 
@@ -307,8 +305,8 @@ def _score_check(detection: "GameResult", m: "MessageParserProtocol"):
     Args:
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 結果
     m.status.action = ActionStatus.CHANGE
     m.status.target_ts.append(m.data.event_ts)

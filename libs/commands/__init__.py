@@ -1,5 +1,4 @@
-"""
-コマンドモジュール
+"""コマンドモジュール
 
 - `libs.commands.results`: 成績集計
 - `libs.commands.graph`: グラフ描写

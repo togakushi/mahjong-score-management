@@ -1,5 +1,4 @@
-"""
-integrations/slack/events/handler_registry.py
+"""integrations/slack/events/handler_registry.py
 """
 
 import logging

@@ -1,5 +1,4 @@
-"""
-integrations/web/events/summary.py
+"""integrations/web/events/summary.py
 """
 
 from dataclasses import asdict
@@ -23,8 +22,8 @@ def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("summary", __name__, url_prefix="/summary")
 
     @bp.route("/", methods=["GET", "POST"])
@@ -73,8 +72,8 @@ def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: マルチカラム化
-    """
 
+    """
     if not isinstance(df.columns, pd.MultiIndex):
         if not g.params.get("individual", True):  # チーム戦
             df.rename(

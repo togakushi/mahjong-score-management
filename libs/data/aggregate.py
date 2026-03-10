@@ -1,5 +1,4 @@
-"""
-libs/data/aggregate.py
+"""libs/data/aggregate.py
 """
 
 from typing import Optional
@@ -24,8 +23,8 @@ def game_summary(
 
     Returns:
         pd.DataFrame: 集計結果
-    """
 
+    """
     # データ収集
     df = loader.read_data("SUMMARY_TOTAL")
 
@@ -50,8 +49,8 @@ def calculation_rating() -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 集計結果
-    """
 
+    """
     # データ収集
     df_results = loader.read_data("RANKING_RATINGS").set_index("playtime")
     df_ratings = pd.DataFrame(index=["initial_rating"] + df_results.index.to_list())  # 記録用
@@ -122,8 +121,8 @@ def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int,
 
     Returns:
         tuple[int, int]: チェック後の昇段ポイント, チェック後のレベル(段位)
-    """
 
+    """
     tbl_data = g.cfg.badge.grade.table["table"]
     new_point = point + int(tbl_data[grade_level]["acquisition"][rank - 1])
 
@@ -145,8 +144,8 @@ def matrix_table() -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 集計結果
-    """
 
+    """
     # データ収集
     df = loader.read_data("REPORT_MATRIX_TABLE").set_index("playtime")
 

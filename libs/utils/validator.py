@@ -1,5 +1,4 @@
-"""
-libs/utils/validator.py
+"""libs/utils/validator.py
 """
 
 import re
@@ -27,6 +26,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
         tuple[bool, str]: 判定結果
         - bool: 制限チェック結果真偽
         - str: 制限理由
+
     """
 
     def _pattern_gen(check_list: list[str]) -> list[str]:
@@ -83,8 +83,8 @@ def check_score(m: "MessageParserProtocol") -> dict:
 
     Returns:
         dict: 結果
-    """
 
+    """
     text = m.data.text
     ret: dict = {}
 

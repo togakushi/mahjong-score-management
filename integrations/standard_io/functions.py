@@ -1,5 +1,4 @@
-"""
-integrations/standard_io/functions.py
+"""integrations/standard_io/functions.py
 """
 
 from typing import TYPE_CHECKING
@@ -19,12 +18,11 @@ class SvcFunctions(FunctionsInterface):
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         print(ExtDt(float(m.data.event_ts)), m.status.message)
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m
         return {}

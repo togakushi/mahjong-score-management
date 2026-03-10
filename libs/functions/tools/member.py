@@ -1,5 +1,4 @@
-"""
-libs/functions/tools/member.py
+"""libs/functions/tools/member.py
 """
 
 import logging
@@ -13,7 +12,6 @@ from libs.utils import dbutil
 
 def export_data():
     """メンバー情報エクスポート"""
-
     g.cfg.initialization()
 
     if g.args.export_data:
@@ -37,7 +35,6 @@ def export_data():
 
 def import_data():
     """メンバー情報インポート"""
-
     g.cfg.initialization()
 
     if g.args.import_data:

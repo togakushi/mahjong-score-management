@@ -1,5 +1,4 @@
-"""
-libs/functions/message.py
+"""libs/functions/message.py
 """
 
 import logging
@@ -29,8 +28,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
     Returns:
         str: 応答メッセージ
-    """
 
+    """
     parser = ConfigParser()
     parser.read(g.cfg.config_file, encoding="utf-8")
 
@@ -94,8 +93,8 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", inden
 
     Returns:
         str: 生成した見出し
-    """
 
+    """
     msg = ""
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)

@@ -1,5 +1,4 @@
-"""
-integrations/standard_io/parser.py
+"""integrations/standard_io/parser.py
 """
 
 from datetime import datetime
@@ -44,8 +43,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
 
         Args:
             flg (bool): フラグ
-        """
 
+        """
         self.status.command_flg = flg
 
     @property
