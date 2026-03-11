@@ -36,7 +36,7 @@ Examples:
 from datetime import datetime
 from enum import StrEnum
 from functools import total_ordering
-from typing import Callable, List, Optional, TypeAlias, TypedDict, Union, cast
+from typing import Any, Callable, Optional, TypeAlias, TypedDict, Union
 
 from dateutil.relativedelta import MO, SU, relativedelta
 
@@ -212,7 +212,7 @@ class ExtendedDatetime:
     - **datetime** / **ExtendedDatetime**: オブジェクトをそのまま利用
     """
 
-    def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs):
+    def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs: Any):
         """
         ExtendedDatetimeの初期化
 
@@ -232,7 +232,7 @@ class ExtendedDatetime:
     def __repr__(self) -> str:
         return self.format(Format.SQL)
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         if isinstance(other, ExtendedDatetime):
             return self.dt == other.dt
         if isinstance(other, datetime):
@@ -241,14 +241,14 @@ class ExtendedDatetime:
             return self.format(Format.SQL) == other
         return NotImplemented
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> bool:
         if isinstance(other, ExtendedDatetime):
             return self.dt < other.dt
         if isinstance(other, datetime):
             return self.dt < other
         return NotImplemented
 
-    def __add__(self, other: Union[relativedelta, dict]) -> "ExtendedDatetime":
+    def __add__(self, other: Union[relativedelta, dict[Any, Any]]) -> "ExtendedDatetime":
         if isinstance(other, dict):
             delta = relativedelta(**other)
         elif isinstance(other, relativedelta):
@@ -258,7 +258,7 @@ class ExtendedDatetime:
 
         return ExtendedDatetime(self._dt + delta)
 
-    def __sub__(self, other: Union[relativedelta, dict]) -> "ExtendedDatetime":
+    def __sub__(self, other: Union[relativedelta, dict[Any, Any]]) -> "ExtendedDatetime":
         if isinstance(other, dict):
             delta = relativedelta(**other)
         elif isinstance(other, relativedelta):
@@ -268,16 +268,16 @@ class ExtendedDatetime:
 
         return ExtendedDatetime(self._dt - delta)
 
-    def __radd__(self, other: Union[relativedelta, dict]) -> "ExtendedDatetime":
+    def __radd__(self, other: Union[relativedelta, dict[Any, Any]]) -> "ExtendedDatetime":
         return self.__add__(other)
 
-    def __rsub__(self, other: Union[relativedelta, dict]) -> "ExtendedDatetime":
+    def __rsub__(self, other: Union[relativedelta, dict[Any, Any]]) -> "ExtendedDatetime":
         return self.__sub__(other)
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.dt)
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         return getattr(self._dt, name)
 
     @property
@@ -418,14 +418,19 @@ class ExtendedDatetime:
 
         return ret
 
-    def range(self, value: str | list) -> "ExtendedDatetimeList":
+    def range(
+        self,
+        value: Union[str, list[str], list["ExtendedDatetime"], "ExtendedDatetimeList"],
+    ) -> "ExtendedDatetimeList":
         """
         キーワードが示す範囲をリストで返す
 
         Args:
-            value (str | list): 範囲取得キーワード
+            value (Union[...]): 範囲取得キーワード
                 - str: スペース区切りで分割してリスト化
                 - list: スペース区切りで再分割
+                - list[ExtendedDatetime]: リスト化されたExtendedDatetime型
+                - ExtendedDatetimeList: ExtendedDatetimeList型
 
         Returns:
             ExtendedDatetimeList: 日付リスト
@@ -439,7 +444,7 @@ class ExtendedDatetime:
         ret: list[datetime] = []
         for word in check_list:
             for _, range_map in DATE_RANGE_MAP.items():
-                if word in cast(list, range_map["keyword"]):
+                if word in range_map["keyword"]:
                     ret.extend(range_map["range"](self._dt))
                     break
             else:
@@ -463,9 +468,9 @@ class ExtendedDatetime:
             list[str]: キーワード一覧
 
         """
-        ret: list = []
+        ret: list[str] = []
         for _, range_map in DATE_RANGE_MAP.items():
-            ret.extend(cast(list, range_map["keyword"]))
+            ret.extend(range_map["keyword"])
 
         return ret
 
@@ -523,12 +528,12 @@ class ExtendedDatetimeList(list):
 
     Delimiter: TypeAlias = Delimiter
 
-    def __add__(self, other):
+    def __add__(self, other: Any) -> "ExtendedDatetimeList":
         if isinstance(other, dict):
             return ExtendedDatetimeList([dt + other for dt in self])
         return NotImplemented
 
-    def __sub__(self, other):
+    def __sub__(self, other: Any) -> "ExtendedDatetimeList":
         if isinstance(other, dict):
             return ExtendedDatetimeList([dt - other for dt in self])
         return NotImplemented
@@ -544,7 +549,7 @@ class ExtendedDatetimeList(list):
         return max(self) if self else None
 
     @property
-    def period(self) -> List[ExtendedDatetime | None]:
+    def period(self) -> list[ExtendedDatetime | None]:
         """最小値と最大値をリストで返す"""
         min_dt = min(self) if self else None
         max_dt = max(self) if self else None
