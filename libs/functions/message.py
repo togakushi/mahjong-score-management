@@ -84,7 +84,7 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
     return msg
 
 
-def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", indent=1) -> str:
+def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = "", indent: int = 1) -> str:
     """
     見出し生成
 
