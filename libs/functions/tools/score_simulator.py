@@ -30,16 +30,11 @@ HAN_POINTS: dict[int, dict[str, Union[int, tuple[int, ...]]]] = {
     12: {"ron_child": 24000, "ron_parent": 36000, "tsumo_child": (6000, 12000), "tsumo_parent": (12000,)},
     13: {"ron_child": 32000, "ron_parent": 48000, "tsumo_child": (8000, 16000), "tsumo_parent": (16000,)},
     14: {"ron_child": 32000, "ron_parent": 48000, "tsumo_child": (8000, 16000), "tsumo_parent": (16000,)},
-    15: {  # ダブル役満扱い
-        "ron_child": 64000,
-        "ron_parent": 96000,
-        "tsumo_child": (16000, 32000),
-        "tsumo_parent": (32000,),
-    },
+    15: {"ron_child": 64000, "ron_parent": 96000, "tsumo_child": (16000, 32000), "tsumo_parent": (32000,)},  # ダブル役満扱い
 }
 
 
-def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
+def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple[int, ...]:
     """
     和了打点を決める
 
@@ -71,17 +66,17 @@ def determine_winner(k: int) -> tuple[list[int], list[int]]:
         k (int): 和了役に選ばれる人数
 
     Returns:
-        tuple[list, list]: 抽選結果
+        tuple[list[int], list[int]]: 抽選結果
 
     """
-    member = list(range(4))
-    winners = random.sample(member, k=k)  # 和了役
-    losers = [i for i in member if i not in winners]
+    member: list[int] = list(range(4))
+    winners: list[int] = random.sample(member, k=k)  # 和了役
+    losers: list[int] = [i for i in member if i not in winners]
 
     return (winners, losers)
 
 
-def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
+def should_renchan(winners: list[int], parent: int, tenpai: list, total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
     """
     連チャンの判定を行う
 
