@@ -96,7 +96,7 @@
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">integrations.protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageParserProtocol</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_loglevel</span><span class="p">():</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_loglevel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ログレベル追加&quot;&quot;&quot;</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="c1"># DEBUG : 10</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="c1"># INFO : 20</span>
@@ -268,7 +268,7 @@
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Args</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="n">Args</span><span class="p">))</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    設定ファイル読み込み処理</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>
@@ -380,7 +380,7 @@
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="p">)</span>
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ディスパッチテーブル登録&quot;&quot;&quot;</span>
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dispatch_download</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
@@ -471,13 +471,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_loglevel</span><span class="signature pdoc-code condensed">(<span class="return-annotation">):</span></span>
+        <span class="name">set_loglevel</span><span class="signature pdoc-code condensed">(<span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="set_loglevel-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#set_loglevel"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="set_loglevel-32"><a href="#set_loglevel-32"><span class="linenos">32</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_loglevel</span><span class="p">():</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="set_loglevel-32"><a href="#set_loglevel-32"><span class="linenos">32</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_loglevel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="set_loglevel-33"><a href="#set_loglevel-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ログレベル追加&quot;&quot;&quot;</span>
 </span><span id="set_loglevel-34"><a href="#set_loglevel-34"><span class="linenos">34</span></a>    <span class="c1"># DEBUG : 10</span>
 </span><span id="set_loglevel-35"><a href="#set_loglevel-35"><span class="linenos">35</span></a>    <span class="c1"># INFO : 20</span>
@@ -683,13 +683,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">setup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">):</span></span>
+        <span class="name">setup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="setup-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#setup"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="setup-204"><a href="#setup-204"><span class="linenos">204</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="setup-204"><a href="#setup-204"><span class="linenos">204</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="setup-205"><a href="#setup-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="setup-206"><a href="#setup-206"><span class="linenos">206</span></a><span class="sd">    設定ファイル読み込み処理</span>
 </span><span id="setup-207"><a href="#setup-207"><span class="linenos">207</span></a>
@@ -818,13 +818,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">register</span><span class="signature pdoc-code condensed">(<span class="return-annotation">):</span></span>
+        <span class="name">register</span><span class="signature pdoc-code condensed">(<span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="register-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#register"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="register-316"><a href="#register-316"><span class="linenos">316</span></a><span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="register-316"><a href="#register-316"><span class="linenos">316</span></a><span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="register-317"><a href="#register-317"><span class="linenos">317</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ディスパッチテーブル登録&quot;&quot;&quot;</span>
 </span><span id="register-318"><a href="#register-318"><span class="linenos">318</span></a>
 </span><span id="register-319"><a href="#register-319"><span class="linenos">319</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dispatch_download</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>

@@ -252,7 +252,7 @@
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">guest_name</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="k">def</span><span class="w"> </span><span class="nf">regulation_list</span><span class="p">(</span><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="k">def</span><span class="w"> </span><span class="nf">regulation_list</span><span class="p">(</span><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    登録済みワードリストを取得する</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
@@ -261,10 +261,10 @@
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        rule_version (str, optional): ルール識別子</span>
 </span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    Returns:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        list: 取得結果</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        list[str]: 取得結果</span>
 </span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">rule_version</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">rule_version</span> <span class="o">:=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default_rule&quot;</span><span class="p">)):</span>
 </span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="k">return</span> <span class="p">[]</span>
@@ -397,7 +397,7 @@
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_memberslist</span><span class="p">():</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_memberslist</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバー情報/チーム情報の読み込み&quot;&quot;&quot;</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="n">get_guest</span><span class="p">()</span>
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">get_info</span>
@@ -697,13 +697,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">regulation_list</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">list</span>:</span></span>
+        <span class="name">regulation_list</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>, </span><span class="param"><span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="regulation_list-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#regulation_list"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="regulation_list-170"><a href="#regulation_list-170"><span class="linenos">170</span></a><span class="k">def</span><span class="w"> </span><span class="nf">regulation_list</span><span class="p">(</span><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="regulation_list-170"><a href="#regulation_list-170"><span class="linenos">170</span></a><span class="k">def</span><span class="w"> </span><span class="nf">regulation_list</span><span class="p">(</span><span class="n">word_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rule_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="regulation_list-171"><a href="#regulation_list-171"><span class="linenos">171</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="regulation_list-172"><a href="#regulation_list-172"><span class="linenos">172</span></a><span class="sd">    登録済みワードリストを取得する</span>
 </span><span id="regulation_list-173"><a href="#regulation_list-173"><span class="linenos">173</span></a>
@@ -712,10 +712,10 @@
 </span><span id="regulation_list-176"><a href="#regulation_list-176"><span class="linenos">176</span></a><span class="sd">        rule_version (str, optional): ルール識別子</span>
 </span><span id="regulation_list-177"><a href="#regulation_list-177"><span class="linenos">177</span></a>
 </span><span id="regulation_list-178"><a href="#regulation_list-178"><span class="linenos">178</span></a><span class="sd">    Returns:</span>
-</span><span id="regulation_list-179"><a href="#regulation_list-179"><span class="linenos">179</span></a><span class="sd">        list: 取得結果</span>
+</span><span id="regulation_list-179"><a href="#regulation_list-179"><span class="linenos">179</span></a><span class="sd">        list[str]: 取得結果</span>
 </span><span id="regulation_list-180"><a href="#regulation_list-180"><span class="linenos">180</span></a>
 </span><span id="regulation_list-181"><a href="#regulation_list-181"><span class="linenos">181</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="regulation_list-182"><a href="#regulation_list-182"><span class="linenos">182</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="regulation_list-182"><a href="#regulation_list-182"><span class="linenos">182</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="regulation_list-183"><a href="#regulation_list-183"><span class="linenos">183</span></a>
 </span><span id="regulation_list-184"><a href="#regulation_list-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">rule_version</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">rule_version</span> <span class="o">:=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default_rule&quot;</span><span class="p">)):</span>
 </span><span id="regulation_list-185"><a href="#regulation_list-185"><span class="linenos">185</span></a>        <span class="k">return</span> <span class="p">[]</span>
@@ -758,7 +758,7 @@
 <h6 id="returns">Returns:</h6>
 
 <blockquote>
-  <p>list: 取得結果</p>
+  <p>list[str]: 取得結果</p>
 </blockquote>
 </div>
 
@@ -960,13 +960,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">read_memberslist</span><span class="signature pdoc-code condensed">(<span class="return-annotation">):</span></span>
+        <span class="name">read_memberslist</span><span class="signature pdoc-code condensed">(<span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="read_memberslist-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#read_memberslist"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="read_memberslist-315"><a href="#read_memberslist-315"><span class="linenos">315</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_memberslist</span><span class="p">():</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="read_memberslist-315"><a href="#read_memberslist-315"><span class="linenos">315</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_memberslist</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="read_memberslist-316"><a href="#read_memberslist-316"><span class="linenos">316</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバー情報/チーム情報の読み込み&quot;&quot;&quot;</span>
 </span><span id="read_memberslist-317"><a href="#read_memberslist-317"><span class="linenos">317</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">guest_name</span> <span class="o">=</span> <span class="n">get_guest</span><span class="p">()</span>
 </span><span id="read_memberslist-318"><a href="#read_memberslist-318"><span class="linenos">318</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">get_info</span>

@@ -62,7 +62,7 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask_httpauth</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPBasicAuth</span>  <span class="c1"># type: ignore</span>
@@ -103,7 +103,7 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="kc">False</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="nd">@app</span><span class="o">.</span><span class="n">before_request</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">require_auth</span><span class="p">():</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">require_auth</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="n">adapter</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">require_auth</span><span class="p">:</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>            <span class="k">return</span> <span class="n">auth</span><span class="o">.</span><span class="n">login_required</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">)()</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="kc">None</span>
@@ -164,7 +164,7 @@
 </span><span id="main-45"><a href="#main-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="kc">False</span>
 </span><span id="main-46"><a href="#main-46"><span class="linenos">46</span></a>
 </span><span id="main-47"><a href="#main-47"><span class="linenos">47</span></a>    <span class="nd">@app</span><span class="o">.</span><span class="n">before_request</span>
-</span><span id="main-48"><a href="#main-48"><span class="linenos">48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">require_auth</span><span class="p">():</span>
+</span><span id="main-48"><a href="#main-48"><span class="linenos">48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">require_auth</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="main-49"><a href="#main-49"><span class="linenos">49</span></a>        <span class="k">if</span> <span class="n">adapter</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">require_auth</span><span class="p">:</span>
 </span><span id="main-50"><a href="#main-50"><span class="linenos">50</span></a>            <span class="k">return</span> <span class="n">auth</span><span class="o">.</span><span class="n">login_required</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">)()</span>
 </span><span id="main-51"><a href="#main-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="kc">None</span>
