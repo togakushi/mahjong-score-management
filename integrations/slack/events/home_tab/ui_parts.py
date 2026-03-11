@@ -88,7 +88,7 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
     adapter.conf.tab_var["no"] += 1
 
 
-def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict) -> None:
+def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict[str, Any]) -> None:
     """
     オプション選択メニュー
 
@@ -96,7 +96,7 @@ def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: d
         adapter (ServiceAdapter): アダプタインターフェース
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
-        flag (dict, optional): 表示する選択項目
+        flag (dict[str, Any]): 表示する選択項目
 
     """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": f"bid-{id_suffix}", "element": {}})
