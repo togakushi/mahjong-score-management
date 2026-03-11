@@ -4,10 +4,11 @@ tests/events/test_integrations_web.py
 
 import os
 import sys
+from typing import Any, cast
 from unittest.mock import patch
 
 import pytest
-from flask import Flask
+from flask import Flask, testing
 from flask_httpauth import HTTPBasicAuth  # type: ignore
 
 import libs.global_value as g
@@ -17,7 +18,7 @@ from libs.bootstrap import configuration
 
 
 @pytest.fixture(scope="module", autouse=True)
-def patch_by_keyword():
+def patch_by_keyword() -> Any:
     """libs.dispatcher.by_keyword を全テストでモック"""
     with patch("libs.dispatcher.by_keyword") as mock_by_keyword:
         mock_by_keyword.return_value = None
@@ -25,7 +26,7 @@ def patch_by_keyword():
 
 
 @pytest.fixture(name="flask_client")
-def client(request):
+def client(request) -> Any:
     """Flask テストクライアント"""
     config_path = request.param
     sys.argv = ["app.py", "--service=web", f"--config=tests/testdata/{config_path}"]
@@ -55,13 +56,13 @@ def client(request):
     auth = HTTPBasicAuth()
 
     @auth.verify_password
-    def verify_password(username, password):
+    def verify_password(username: str, password: str) -> bool:
         if username == adapter.conf.username and password == adapter.conf.password:
             return True
         return False
 
     @app.before_request
-    def require_auth():
+    def require_auth() -> Any:
         if adapter.conf.require_auth:
             return auth.login_required(lambda: None)()
         return None
@@ -113,9 +114,9 @@ def client(request):
     ],
     indirect=["flask_client"],
 )
-def test_route_access(flask_client, url, expected_status):
+def test_route_access(flask_client: str, url: str, expected_status: int) -> None:
     """ルート選択テスト"""
     print("-->", url)
 
-    response = flask_client.get(url)
+    response = cast(testing.FlaskClient, flask_client).get(url)
     assert response.status_code == expected_status

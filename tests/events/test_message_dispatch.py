@@ -34,7 +34,7 @@ def _init() -> "MessageParserProtocol":
     list(param_data.message_event.values()),
     ids=list(param_data.message_event.keys()),
 )
-def test_keyword_event(module, config, keyword, monkeypatch):
+def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """キーワード呼び出しテスト(サブコマンド)"""
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
