@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
+def plot(m: "MessageParserProtocol") -> None:
     """
     個人成績のグラフを生成する
 
@@ -125,7 +125,7 @@ def plot(m: "MessageParserProtocol"):
             m.set_message(save_file, StyleOptions(title=f"『{player}』の成績", use_comment=True, header_hidden=True, key_title=False))
 
 
-def statistics_plot(m: "MessageParserProtocol"):
+def statistics_plot(m: "MessageParserProtocol") -> None:
     """
     個人成績の統計グラフを生成する
 

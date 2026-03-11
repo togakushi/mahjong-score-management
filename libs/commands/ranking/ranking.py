@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def aggregation(m: "MessageParserProtocol"):
+def aggregation(m: "MessageParserProtocol") -> None:
     """
     ランキングデータを生成
 

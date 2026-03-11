@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
+def plot(m: "MessageParserProtocol") -> None:
     """
     レーティング推移グラフを生成する
 

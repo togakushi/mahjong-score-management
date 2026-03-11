@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from libs.bootstrap.app_config import BaseSection
+from libs.bootstrap.section import BaseSection
 from libs.data import loader, modify
 from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, textutil, validator
@@ -60,13 +60,13 @@ class MemberSection(BaseSection):
     guest_name: str
     """未登録メンバー名称"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.default_commandword = "メンバー一覧"
         self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -75,7 +75,7 @@ class MemberSection(BaseSection):
         self.alias_limit = int(16)
         self.guest_name = str("ゲスト")
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 

@@ -174,8 +174,8 @@ class MessageParserProtocol(Protocol):
     def set_message(self, data: "MessageType", options: "StyleOptions"):
         """本文メッセージをセット"""
 
-    def parser(self, body: Any):
+    def parser(self, body: Any) -> None:
         """メッセージ解析メソッド"""
 
-    def reset(self):
+    def reset(self) -> None:
         """状態リセット"""

@@ -9,8 +9,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from integrations.protocols import ChannelType, CommandType
 from libs.data import loader
+from libs.domain.datamodels import ChannelType, CommandType
 from libs.domain.score import GameResult
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt

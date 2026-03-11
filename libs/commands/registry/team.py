@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from libs.bootstrap.app_config import BaseSection
+from libs.bootstrap.section import BaseSection
 from libs.data import initialization, loader, modify
 from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, formatter, textutil, validator
@@ -52,13 +52,13 @@ class TeamSection(BaseSection):
     friendly_fire: bool
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.default_commandword = "チーム一覧"
         self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -67,7 +67,7 @@ class TeamSection(BaseSection):
         self.member_limit = int(16)
         self.friendly_fire = bool(True)
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 

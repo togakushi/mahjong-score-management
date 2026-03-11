@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def main(m: "MessageParserProtocol"):
+def main(m: "MessageParserProtocol") -> None:
     """
     成績一覧表を生成する
 

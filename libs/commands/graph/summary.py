@@ -38,7 +38,7 @@ class GraphParams(TypedDict, total=False):
     save_file: str
 
 
-def point_plot(m: "MessageParserProtocol"):
+def point_plot(m: "MessageParserProtocol") -> None:
     """
     ポイント推移グラフを生成する
 
@@ -89,7 +89,7 @@ def point_plot(m: "MessageParserProtocol"):
     m.set_message(save_file, StyleOptions(title=file_title, use_comment=True, header_hidden=True, key_title=False))
 
 
-def rank_plot(m: "MessageParserProtocol"):
+def rank_plot(m: "MessageParserProtocol") -> None:
     """
     順位変動グラフを生成する
 
@@ -388,7 +388,7 @@ def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
     return save_file
 
 
-def _graph_title(graph_params: GraphParams):
+def _graph_title(graph_params: GraphParams) -> None:
     """
     グラフタイトル生成
 

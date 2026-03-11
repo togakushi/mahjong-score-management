@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
+def aggregation(m: "MessageParserProtocol") -> None:
     """
     レーティングを集計して返す
 

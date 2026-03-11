@@ -20,13 +20,13 @@ if TYPE_CHECKING:
 class HelpConfig(SubCommands):
     """helpセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀ヘルプ"
         self.section: str = str(CommandType.HELP)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
+def main(m: "MessageParserProtocol") -> None:
     """
     ヘルプ処理エントリーポイント
 
@@ -42,7 +42,7 @@ def main(m: "MessageParserProtocol"):
     m.post.thread_title = "ヘルプメッセージ"
 
 
-def help_message(m: "MessageParserProtocol"):
+def help_message(m: "MessageParserProtocol") -> None:
     """
     呼び出しキーワードヘルプメッセージ
 

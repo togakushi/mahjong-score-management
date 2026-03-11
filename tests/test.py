@@ -41,10 +41,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
     def graph_point(m):
         """ポイント推移グラフ"""
         if len(g.params["player_list"]) == 1:
+            graph_personal.plot(m)
             pprint(
                 [
                     "exec: graph.personal.plot()",
-                    graph_personal.plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -54,7 +54,6 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             pprint(
                 [
                     "exec: graph.summary.point_plot()",
-                    graph_summary.point_plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -62,10 +61,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     def graph_rank(m):
         """順位変動グラフ"""
+        graph_summary.point_plot(m)
         pprint(
             [
                 "exec: graph.summary.rank_plot()",
-                graph_summary.point_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -73,10 +72,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     def graph_statistics(m):
         """統計グラフ"""
+        graph_personal.statistics_plot(m)
         pprint(
             [
                 "exec: graph.personal.statistics_plot()",
-                graph_personal.statistics_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -124,7 +123,14 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(g.cfg.team.info)
 
             case "help":
-                pprint(help_message(m), width=200)
+                help_message(m)
+                pprint(
+                    [
+                        "exec: help.help_message()",
+                        f"{g.params=}" if flag.get("dump") else "g.params={...}",
+                    ],
+                    width=120,
+                )
 
             case "summary":
                 m.data.text = f"{g.cfg.results.commandword[0]} {' '.join(add_argument)}"

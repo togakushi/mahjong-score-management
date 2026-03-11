@@ -8,16 +8,16 @@ from discord import Forbidden, NotFound
 from discord.channel import TextChannel
 
 from integrations.base.interface import FunctionsInterface
-from integrations.protocols import ActionStatus
+from libs.domain.datamodels import ActionStatus
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from discord import ClientUser, Message
 
-    from integrations.base.interface import MessageParserProtocol
     from integrations.discord.api import AdapterAPI
     from integrations.discord.config import SvcConfig
     from integrations.discord.parser import MessageParser
+    from integrations.protocols import MessageParserProtocol
 
 
 class SvcFunctions(FunctionsInterface):

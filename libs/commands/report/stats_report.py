@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Literal, cast
+from typing import TYPE_CHECKING, Any, Literal, cast
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -32,12 +32,12 @@ if TYPE_CHECKING:
     from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def get_game_results() -> list:
+def get_game_results() -> list[list[str]]:
     """
     月/年単位のゲーム結果集計
 
     Returns:
-        list: 集計結果のリスト
+        list[list[str]]: 集計結果のリスト
 
     """
     if "starttime" in g.params:
@@ -52,7 +52,7 @@ def get_game_results() -> list:
     )
 
     # --- データ収集
-    results = [
+    results: list[list[str]] = [
         [
             "",
             "ゲーム数",
@@ -379,7 +379,7 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
     return imgdata
 
 
-def gen_pdf(m: "MessageParserProtocol"):
+def gen_pdf(m: "MessageParserProtocol") -> None:
     """
     成績レポートを生成する
 
@@ -444,7 +444,7 @@ def gen_pdf(m: "MessageParserProtocol"):
     m.set_message(pdf_path, StyleOptions(title=f"成績レポート({g.params['player_name']})", use_comment=True, header_hidden=True))
 
 
-def cover_page(style: dict, target_info: dict) -> list:
+def cover_page(style: dict, target_info: dict) -> list[Any]:
     """
     表紙生成
 
@@ -453,10 +453,10 @@ def cover_page(style: dict, target_info: dict) -> list:
         target_info (dict): プレイヤー情報
 
     Returns:
-        list: 生成内容
+        list[Any]: 生成内容
 
     """
-    elements: list = []
+    elements: list[Any] = []
 
     first_game = datetime.fromtimestamp(  # 最初のゲーム日時
         float(target_info["first_game"])
@@ -488,7 +488,7 @@ def cover_page(style: dict, target_info: dict) -> list:
     return elements
 
 
-def entire_aggregate(style: dict) -> list:
+def entire_aggregate(style: dict) -> list[Any]:
     """
     全期間
 
@@ -496,10 +496,10 @@ def entire_aggregate(style: dict) -> list:
         style (dict): レイアウトスタイル
 
     Returns:
-        list: 生成内容
+        list[Any]: 生成内容
 
     """
-    elements: list = []
+    elements: list[Any] = []
 
     elements.append(Paragraph("全期間", style["Left"]))
     elements.append(Spacer(1, 5 * mm))
@@ -586,7 +586,7 @@ def entire_aggregate(style: dict) -> list:
     return elements
 
 
-def periodic_aggregation(style: dict) -> list:
+def periodic_aggregation(style: dict) -> list[Any]:
     """
     期間集計
 
@@ -594,10 +594,10 @@ def periodic_aggregation(style: dict) -> list:
         style (dict): レイアウトスタイル
 
     Returns:
-        list: 生成内容
+        list[Any]: 生成内容
 
     """
-    elements: list = []
+    elements: list[Any] = []
 
     pattern: list[tuple[str, str, Literal["A", "M", "Y"]]] = [
         # 表タイトル, グラフタイトル, フラグ
@@ -665,7 +665,7 @@ def periodic_aggregation(style: dict) -> list:
     return elements
 
 
-def sectional_aggregate(style: dict, target_info: dict) -> list:
+def sectional_aggregate(style: dict, target_info: dict) -> list[Any]:
     """
     区間集計
 
@@ -674,10 +674,10 @@ def sectional_aggregate(style: dict, target_info: dict) -> list:
         target_info (dict): プレイヤー情報
 
     Returns:
-        list: 生成内容
+        list[Any]: 生成内容
 
     """
-    elements: list = []
+    elements: list[Any] = []
 
     pattern: list[tuple[int, int, str]] = [
         # 区切り回数, 閾値, タイトル

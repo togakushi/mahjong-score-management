@@ -13,7 +13,7 @@ from libs.types import StyleOptions
 from libs.utils import formatter
 
 if TYPE_CHECKING:
-    from integrations.base.interface import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol
 
 
 class AdapterAPI(APIInterface):

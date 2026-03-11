@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     import pandas as pd
     from flask import Request, Response
 
-    from integrations.base.interface import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol
 
 
 class SvcFunctions(FunctionsInterface):

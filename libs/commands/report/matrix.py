@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
+def plot(m: "MessageParserProtocol") -> None:
     """
     対局対戦マトリックスの表示
 
