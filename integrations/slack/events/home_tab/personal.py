@@ -3,7 +3,7 @@ integrations/slack/events/home_tab/personal.py
 """
 
 import logging
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations.slack.adapter import ServiceAdapter
@@ -16,10 +16,13 @@ from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
+    from slack_bolt import App
+    from slack_sdk.models.views import View
+
     from integrations.protocols import MessageParserProtocol
 
 
-def build_personal_menu(adapter: ServiceAdapter):
+def build_personal_menu(adapter: ServiceAdapter) -> "View":
     """
     個人成績メニュー作成
 
@@ -79,19 +82,21 @@ def build_personal_menu(adapter: ServiceAdapter):
     ui_parts.button(adapter, text="集計", action_id="personal_aggregation", style="primary")
     ui_parts.button(adapter, text="戻る", action_id="actionId-back", style="danger")
 
+    return cast("View", adapter.conf.tab_var)
+
 
 @register
-def register_personal_handlers(app, adapter: ServiceAdapter):
+def register_personal_handlers(app: "App", adapter: ServiceAdapter) -> None:
     """個人成績メニュー"""
 
     @app.action("personal_menu")
-    def handle_menu_action(ack, body):
+    def handle_menu_action(ack: Any, body: Any) -> None:
         """
         メニュー項目生成
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
+            ack (Any): ack
+            body (Any): イベント内容
 
         """
         ack()
@@ -108,13 +113,13 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
         )
 
     @app.action("personal_aggregation")
-    def handle_aggregation_action(ack, body):
+    def handle_aggregation_action(ack: Any, body: Any) -> None:
         """
         メニュー項目生成
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
+            ack (Any): ack
+            body (Any): イベント内容
 
         """
         ack()
@@ -146,13 +151,13 @@ def register_personal_handlers(app, adapter: ServiceAdapter):
         ui_parts.update_view(adapter, m, app_msg)
 
     @app.view("PersonalMenu_ModalPeriodSelection")
-    def handle_view_submission(ack, view):
+    def handle_view_submission(ack: Any, view: Any) -> None:
         """
         view更新
 
         Args:
-            ack (_type_): ack
-            view (dict): 描写内容
+            ack (Any): ack
+            view (Any): 描写内容
 
         """
         ack()

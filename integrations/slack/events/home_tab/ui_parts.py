@@ -3,7 +3,7 @@ integrations/slack/events/home_tab/ui_parts.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 import libs.global_value as g
 from libs.data.lookup import read_memberslist
@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from integrations.slack.adapter import ServiceAdapter
 
 
-def plain_text(msg: str) -> dict:
+def plain_text(msg: str) -> dict[str, Any]:
     """
     プレーンテキストの埋め込み
 
@@ -21,10 +21,10 @@ def plain_text(msg: str) -> dict:
         msg (str): テキスト
 
     Returns:
-        dict: ブロック要素
+        dict[str, Any]: ブロック要素
 
     """
-    view: dict = {"type": "home", "blocks": []}
+    view: dict[str, Any] = {"type": "home", "blocks": []}
     view["blocks"].append({"type": "section", "text": {}})
     view["blocks"][0]["text"] = {"type": "mrkdwn", "text": msg}
 
@@ -260,7 +260,7 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
     adapter.conf.tab_var["no"] += 1
 
 
-def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
+def modalperiod_selection(adapter: "ServiceAdapter") -> dict[str, Any]:
     """
     日付選択
 
@@ -268,10 +268,10 @@ def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
         adapter (ServiceAdapter): アダプタインターフェース
 
     Returns:
-        dict: ブロック要素
+        dict[str, Any]: ブロック要素
 
     """
-    view: dict = {"type": "modal", "callback_id": f"{adapter.conf.tab_var['screen']}_ModalPeriodSelection"}
+    view: dict[str, Any] = {"type": "modal", "callback_id": f"{adapter.conf.tab_var['screen']}_ModalPeriodSelection"}
     view["title"] = {"type": "plain_text", "text": "検索範囲指定"}
     view["submit"] = {"type": "plain_text", "text": "決定"}
     view["close"] = {"type": "plain_text", "text": "取消"}
