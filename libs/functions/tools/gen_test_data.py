@@ -7,7 +7,7 @@ import logging
 import random
 from contextlib import closing
 from datetime import datetime
-from typing import cast
+from typing import Any, cast
 
 from tqdm import tqdm
 
@@ -32,11 +32,11 @@ def main(season_times: int = 1) -> None:
     lookup.read_memberslist()
 
     # 対戦組み合わせ作成
-    teams: list = g.cfg.team.lists
-    position: list = ["先鋒", "次鋒", "中堅", "副将", "大将"]
-    teams_data: dict = {x["team"]: x["members"] for x in g.cfg.team.info}
-    matchup: list = list(itertools.combinations(teams, 4))
-    teams_count: dict = {x: 0 for x in teams}
+    teams: list[str] = g.cfg.team.lists
+    position: list[str] = ["先鋒", "次鋒", "中堅", "副将", "大将"]
+    teams_data: dict[str, list[str]] = {x["team"]: x["members"] for x in g.cfg.team.info}
+    matchup: list[tuple[str, str, str, str]] = list(itertools.combinations(teams, 4))
+    teams_count: dict[str, int] = {x: 0 for x in teams}
     total_count: int = 0
 
     now = datetime.now().timestamp() - ((len(matchup) + 7) * 86400 * season_times)
@@ -57,15 +57,15 @@ def main(season_times: int = 1) -> None:
 
                 # 試合結果
                 total_count += 1
-                team_name = list(game)
-                random.shuffle(team_name)
+                team_order = list(game)
+                random.shuffle(team_order)
                 for idx in range(5):
                     # 席順シャッフル
                     member = [
-                        vs_member[team_name[0]][idx],
-                        vs_member[team_name[1]][idx],
-                        vs_member[team_name[2]][idx],
-                        vs_member[team_name[3]][idx],
+                        vs_member[team_order[0]][idx],
+                        vs_member[team_order[1]][idx],
+                        vs_member[team_order[2]][idx],
+                        vs_member[team_order[3]][idx],
                     ]
                     random.shuffle(member)
 
@@ -90,7 +90,7 @@ def main(season_times: int = 1) -> None:
                     param = {
                         "playtime": ExtDt(dt).format(Format.SQL),
                     }
-                    param.update(cast(dict, result.to_dict()))
+                    param.update(cast(dict[str, Any], result.to_dict()))
                     cur.execute(dbutil.query("RESULT_INSERT"), param)
 
                     output = f"{position[idx]}: "
