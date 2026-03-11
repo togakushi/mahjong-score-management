@@ -25,7 +25,7 @@ from libs.domain.command import CommandParser
 from libs.utils import dictutil
 
 
-def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: str):
+def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: str) -> None:
     """
     テストケース実行
 
@@ -38,7 +38,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     """
 
-    def graph_point(m):
+    def graph_point(m) -> None:
         """ポイント推移グラフ"""
         if len(g.params["player_list"]) == 1:
             graph_personal.plot(m)
@@ -59,7 +59,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 width=120,
             )
 
-    def graph_rank(m):
+    def graph_rank(m) -> None:
         """順位変動グラフ"""
         graph_summary.point_plot(m)
         pprint(
@@ -70,7 +70,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             width=120,
         )
 
-    def graph_statistics(m):
+    def graph_statistics(m) -> None:
         """統計グラフ"""
         graph_personal.statistics_plot(m)
         pprint(
@@ -231,7 +231,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 )
 
 
-def main():
+def main() -> None:
     """メイン処理"""
     g.args = arg_parser()
     assert isinstance(g.args.testcase, Path)

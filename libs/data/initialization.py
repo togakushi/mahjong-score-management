@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from libs.types import GradeTableDict
 
 
-def main(init_db: bool):
+def main(init_db: bool) -> None:
     """
     DB初期化処理
 
@@ -154,7 +154,7 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     memdb.close()
 
 
-def setup_regulations(database_file: Union[str, Path]):
+def setup_regulations(database_file: Union[str, Path]) -> None:
     """
     regulationsテーブル情報読み込み
 
@@ -163,7 +163,7 @@ def setup_regulations(database_file: Union[str, Path]):
 
     """
 
-    def _db_set():
+    def _db_set() -> None:
         params: dict = {}
         for k, v in parser.items(section):
             match k:

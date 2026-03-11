@@ -168,10 +168,10 @@ class MessageParserProtocol(Protocol):
     def ignore_user(self) -> bool:
         """コマンドを拒否するユーザか判定"""
 
-    def set_headline(self, data: "MessageType", options: "StyleOptions"):
+    def set_headline(self, data: "MessageType", options: "StyleOptions") -> None:
         """ヘッドラインメッセージをセット"""
 
-    def set_message(self, data: "MessageType", options: "StyleOptions"):
+    def set_message(self, data: "MessageType", options: "StyleOptions") -> None:
         """本文メッセージをセット"""
 
     def parser(self, body: Any) -> None:

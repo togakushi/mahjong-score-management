@@ -14,7 +14,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
     post: PostData
     status: StatusData
 
-    def __init__(self):
+    def __init__(self) -> None:
         MessageParserDataMixin.__init__(self)
         self.data = MsgData()
         self.post = PostData()
@@ -22,7 +22,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data.status = MessageStatus.APPEND
         self.status.command_flg = False
 
-    def parser(self, body: dict):
+    def parser(self, body: dict) -> None:
         _ = body
 
     @property

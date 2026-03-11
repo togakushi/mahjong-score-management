@@ -3,7 +3,7 @@ tests/events/test_slash_dispatch.py
 """
 
 import sys
-from typing import cast
+from typing import TYPE_CHECKING, cast
 from unittest.mock import patch
 
 import pytest
@@ -15,13 +15,16 @@ from libs.bootstrap import configuration
 from libs.types import StyleOptions
 from tests.events import param_data
 
+if TYPE_CHECKING:
+    from integrations.protocols import MessageParserProtocol
 
-def _init():
+
+def _init() -> "MessageParserProtocol":
     """初期化処理"""
     configuration.setup(init_db=False)
     adapter = factory.select_adapter("standard_io", g.cfg)
     m = adapter.parser()
-    m.set_command_flag(True)
+    m.status.command_flg = True
 
     return m
 

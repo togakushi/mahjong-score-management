@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter
 
 
-def main(adapter: "ServiceAdapter"):
+def main(adapter: "ServiceAdapter") -> None:
     """
     メイン処理
 
@@ -45,12 +45,12 @@ def main(adapter: "ServiceAdapter"):
     adapter.api.bot = bot
 
     @bot.event
-    async def on_ready():
+    async def on_ready() -> None:
         logging.info("login: %s", bot.user)
         adapter.conf.bot_name = bot.user
 
     @bot.event
-    async def on_message(message: discord.Message):
+    async def on_message(message: discord.Message) -> None:
         if message.author.bot:
             return
 
@@ -63,7 +63,7 @@ def main(adapter: "ServiceAdapter"):
         libs.dispatcher.by_keyword(m)
 
     @bot.event
-    async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
+    async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent) -> None:
         channel = bot.get_channel(payload.channel_id)
         if channel is None or not isinstance(channel, discord.TextChannel):
             return
@@ -91,7 +91,7 @@ def main(adapter: "ServiceAdapter"):
         libs.dispatcher.by_keyword(m)
 
     @bot.event
-    async def on_message_delete(message: discord.Message):
+    async def on_message_delete(message: discord.Message) -> None:
         if message.author.bot:
             return
 
@@ -104,7 +104,7 @@ def main(adapter: "ServiceAdapter"):
         libs.dispatcher.by_keyword(m)
 
     @bot.slash_command(name=adapter.conf.slash_command)
-    async def slash_command(ctx: discord.ApplicationContext, command: str):
+    async def slash_command(ctx: discord.ApplicationContext, command: str) -> None:
         adapter.api.response = ctx
 
         m = adapter.parser()

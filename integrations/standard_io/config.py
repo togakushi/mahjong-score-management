@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 class SvcConfig(BaseSection, IntegrationsConfig):
     """標準出力用個別設定値"""
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         assert self.main_conf
         self.section = "standard_io"
         self.main_parser = self.main_conf

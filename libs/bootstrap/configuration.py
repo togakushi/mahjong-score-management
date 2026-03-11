@@ -28,7 +28,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def set_loglevel():
+def set_loglevel() -> None:
     """ログレベル追加"""
     # DEBUG : 10
     # INFO : 20
@@ -200,7 +200,7 @@ def arg_parser() -> Args:
     return cast(Args, p.parse_args(namespace=Args))
 
 
-def setup(init_db: bool = True):
+def setup(init_db: bool = True) -> None:
     """
     設定ファイル読み込み処理
 
@@ -312,7 +312,7 @@ def setup(init_db: bool = True):
     )
 
 
-def register():
+def register() -> None:
     """ディスパッチテーブル登録"""
 
     def dispatch_download(m: "MessageParserProtocol"):

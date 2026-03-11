@@ -116,9 +116,9 @@ def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, 
     return (total_rounds, renchan_count, parent)
 
 
-def simulate_game():
+def simulate_game() -> list[int]:
     """ゲーム進行シミュレーション"""
-    scores: list = [INITIAL_POINTS] * 4  # 配給原点(0:東家 1:南家 2:西家 3:北家)
+    scores: list[int] = [INITIAL_POINTS] * 4  # 配給原点(0:東家 1:南家 2:西家 3:北家)
     parent: int = 0  # 親番
     total_rounds: int = 0  # 局数
     renchan_count: int = 0  # 本場

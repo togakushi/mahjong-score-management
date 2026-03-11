@@ -32,7 +32,7 @@ class AdapterAPI(APIInterface):
 
     bot: "Bot"
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         from discord import File as discord_file
@@ -42,7 +42,7 @@ class AdapterAPI(APIInterface):
         # discord object
         self.response: Union["Message", "ApplicationContext"]
 
-    def post(self, m: "MessageParserProtocol"):
+    def post(self, m: "MessageParserProtocol") -> None:
         """
         メッセージをポストする（非同期処理ラッパー）
 
@@ -55,7 +55,7 @@ class AdapterAPI(APIInterface):
         else:
             asyncio.create_task(self.post_async(m))
 
-    async def post_async(self, m: "MessageParserProtocol"):
+    async def post_async(self, m: "MessageParserProtocol") -> None:
         """
         メッセージをポストする
 
@@ -169,7 +169,7 @@ class AdapterAPI(APIInterface):
                 for split_msg in formatter.split_strings(msg, limit=1800):
                     await self.response.reply(split_msg)
 
-    async def command_respond(self, m: "MessageParserProtocol"):
+    async def command_respond(self, m: "MessageParserProtocol") -> None:
         """
         スラッシュコマンド応答
 

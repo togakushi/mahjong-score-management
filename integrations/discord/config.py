@@ -43,7 +43,7 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     bot_name: Optional["ClientUser"] = field(default=None)
     """ボットの名前"""
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         assert self.main_conf
         self.main_parser = self.main_conf
         self.section = "discord"
