@@ -174,9 +174,8 @@ class AppConfig:
         self.rule: RuleSet = RuleSet(self.setting.rule_config)
         """ルール情報"""
 
-    def initialization(self):
+    def initialization(self) -> None:
         """設定ファイル読み込み"""
-
         self.mahjong.config_load(self)
         self.setting.config_load(self)
         self.alias.config_load(self)
@@ -190,15 +189,16 @@ class AppConfig:
         self.help.config_load(self)
 
     def word_list(self, add_words: list | None = None) -> list[str]:
-        """設定されている値、キーワードをリスト化する
+        """
+        設定されている値、キーワードをリスト化する
 
         Args:
             add_words (list | None, optional): リストに追加するワード. Defaults to None.
 
         Returns:
             list: リスト化されたキーワード
-        """
 
+        """
         words: list[str] = []
 
         if add_words:
@@ -227,13 +227,14 @@ class AppConfig:
         return words
 
     def overwrite(self, additional_config: Path, section_name: str):
-        """指定セクションを上書き
+        """
+        指定セクションを上書き
 
         Args:
             additional_config (Path): 追加設定ファイルパス
             section_name (str): セクション名
-        """
 
+        """
         if not additional_config.exists():
             return
 
@@ -270,7 +271,8 @@ class AppConfig:
                 return
 
     def read_channel_config(self, section_name: str, ret_dict: "PlaceholderDict") -> Optional[Path]:
-        """チャンネル個別設定読み込み
+        """
+        チャンネル個別設定読み込み
 
         Args:
             section_name (str): チャンネル個別設定セクション名
@@ -280,8 +282,8 @@ class AppConfig:
             Optional[Path]: 個別設定読み込み結果
                 - *Path*: 読み込んだ設定ファイルパス
                 - *None*: 読み込める設定ファイルがない
-        """
 
+        """
         config_path: Optional[Path] = None
         self.initialization()
 
@@ -305,15 +307,16 @@ class AppConfig:
         return config_path
 
     def resolve_channel_id(self, section_name: Optional[str] = None) -> str:
-        """メイン設定から優先度の高いチャンネルIDを取得する
+        """
+        メイン設定から優先度の高いチャンネルIDを取得する
 
         Args:
             section_name (Optional[str]): チャンネル個別設定セクション名
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         for section in (section_name, self.selected_service, "setting"):
             if section and self.main_parser.has_section(section):
                 if channel_id := self.main_parser[section].get("channel_id"):

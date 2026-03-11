@@ -1,4 +1,5 @@
-"""アプリケーションロジック
+"""
+アプリケーションロジック
 
 - `libs.domain.datamodels`: データモデル
 - `libs.domain.command`: コマンド引数解析

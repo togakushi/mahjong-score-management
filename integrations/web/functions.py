@@ -15,14 +15,15 @@ if TYPE_CHECKING:
     import pandas as pd
     from flask import Request, Response
 
-    from integrations.base.interface import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol
 
 
 class SvcFunctions(FunctionsInterface):
     """WebUI専用関数"""
 
     def to_styled_html(self, df: "pd.DataFrame", padding: str, index: bool = False) -> str:
-        """データフレームをHTML表に変換
+        """
+        データフレームをHTML表に変換
 
         Args:
             df (pd.DataFrame): 変換元データ
@@ -31,8 +32,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             str: HTML表
-        """
 
+        """
         df = formatter.df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL))
         df = df.rename(columns={"name": "プレイヤー名", "point": "ポイント", "rank": "順位"})
         styled = (
@@ -125,15 +126,16 @@ class SvcFunctions(FunctionsInterface):
         return ret
 
     def to_text_html(self, text: str) -> str:
-        """テキストをHTMLに変換
+        """
+        テキストをHTMLに変換
 
         Args:
             text (str): 変換元
 
         Returns:
             str: 返還後
-        """
 
+        """
         ret: str = "<p>\n"
         for line in text.splitlines():
             ret += f"{line.strip()}<br>\n"
@@ -142,15 +144,16 @@ class SvcFunctions(FunctionsInterface):
         return ret
 
     def header_message(self, m: "MessageParserProtocol") -> tuple[str, str]:
-        """ヘッダ情報取得
+        """
+        ヘッダ情報取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
 
         Returns:
             tuple[str, str]: 取得文字列
-        """
 
+        """
         message = ""
         title = ""
 
@@ -164,7 +167,8 @@ class SvcFunctions(FunctionsInterface):
         return title, message
 
     def set_cookie(self, html: str, req: "Request", data: dict) -> "Response":
-        """cookie保存
+        """
+        cookie保存
 
         Args:
             html (str): テンプレートHTML
@@ -173,8 +177,8 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             Response: Response
-        """
 
+        """
         page = make_response(render_template(html, **data))
         if req.method == "POST":
             if req.form.get("action") == "reset":  # cookie削除
@@ -189,15 +193,16 @@ class SvcFunctions(FunctionsInterface):
         return page
 
     def get_cookie(self, req: "Request") -> dict:
-        """cookie取得
+        """
+        cookie取得
 
         Args:
             req (Request): Request
 
         Returns:
             dict: cookieデータ
-        """
 
+        """
         initial_value: dict = {
             "range": "",
             "guest": "ゲストなし",
@@ -229,12 +234,10 @@ class SvcFunctions(FunctionsInterface):
         return {k: v for k, v in cookie_data.items() if k in target_keys}
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m
         return {}
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m

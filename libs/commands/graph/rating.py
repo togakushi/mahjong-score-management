@@ -24,13 +24,14 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
-    """レーティング推移グラフを生成する
+def plot(m: "MessageParserProtocol") -> None:
+    """
+    レーティング推移グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 情報ヘッダ
     title: str = "レーティング推移グラフ"
 
@@ -83,7 +84,8 @@ def plot(m: "MessageParserProtocol"):
 
 
 def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) -> "Path":
-    """レーティング推移グラフ生成(matplotlib)
+    """
+    レーティング推移グラフ生成(matplotlib)
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -92,8 +94,8 @@ def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) ->
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(filename)
     title_text, xlabel_text = _graph_title(game_info)
     legend_text = []
@@ -127,7 +129,8 @@ def _graph_generation(game_info: GameInfo, df: "pd.DataFrame", filename: str) ->
 
 
 def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: str) -> "Path":
-    """レーティング推移グラフ生成(plotly)
+    """
+    レーティング推移グラフ生成(plotly)
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -136,8 +139,8 @@ def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: 
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(filename)
     # グラフタイトル/ラベル
     title_text, xlabel_text = _graph_title(game_info)
@@ -188,15 +191,16 @@ def _graph_generation_plotly(game_info: GameInfo, df: "pd.DataFrame", filename: 
 
 
 def _graph_title(game_info: GameInfo) -> tuple[str, str]:
-    """グラフタイトル/ラベル生成
+    """
+    グラフタイトル/ラベル生成
 
     Args:
         game_info (GameInfo): ゲームデータ
 
     Returns:
         tuple[str, str]: タイトル文字列
-    """
 
+    """
     match g.params.get("collection"):
         case "daily":
             kind = Format.YMD_O

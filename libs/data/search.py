@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def for_db_score(first_ts: float) -> list[GameResult]:
-    """データベースからスコアを検索して返す
+    """
+    データベースからスコアを検索して返す
 
     Args:
         first_ts (float): 検索を開始する時刻
 
     Returns:
         list[GameResult]: 検索した結果
-    """
 
+    """
     data: list = []
     rows = loader.execute(
         "select * from result where ts >= :first_ts and source like :source",
@@ -39,15 +40,16 @@ def for_db_score(first_ts: float) -> list[GameResult]:
 
 
 def for_db_remarks(first_ts: float) -> list["RemarkDict"]:
-    """データベースからメモを検索して返す
+    """
+    データベースからメモを検索して返す
 
     Args:
         first_ts (float): 検索を開始する時刻
 
     Returns:
         list[RemarkDict]: 検索した結果
-    """
 
+    """
     data: list["RemarkDict"] = []
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
         # 記録済みメモ内容

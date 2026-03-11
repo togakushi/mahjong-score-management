@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def main(adapter: "ServiceAdapter"):
-    """メイン処理
+    """
+    メイン処理
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
 
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
-    """
 
+    """
     try:
         sys.modules["audioop"] = _audioop
         import discord

@@ -6,9 +6,8 @@ import logging
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from integrations.protocols import ActionStatus, CommandType
 from libs.data import lookup, modify, search
-from libs.domain.datamodels import ComparisonResults
+from libs.domain.datamodels import ActionStatus, CommandType, ComparisonResults
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import formatter, validator
@@ -22,12 +21,13 @@ if TYPE_CHECKING:
 
 
 def main(m: "MessageParserProtocol") -> None:
-    """突合処理
+    """
+    突合処理
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     if g.cfg.main_parser.has_section(m.status.source):
@@ -70,12 +70,13 @@ def main(m: "MessageParserProtocol") -> None:
 
 
 def check_omission(results: ComparisonResults):
-    """スコア突合
+    """
+    スコア突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     slack_score: list[GameResult] = []
 
@@ -134,12 +135,13 @@ def check_omission(results: ComparisonResults):
 
 
 def check_remarks(results: ComparisonResults):
-    """メモ突合
+    """
+    メモ突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     slack_remarks: list["RemarkDict"] = []
     score_list: dict[str, GameResult] = {}
@@ -204,12 +206,13 @@ def check_remarks(results: ComparisonResults):
 
 
 def check_total_score(results: ComparisonResults):
-    """素点合計の再チェック
+    """
+    素点合計の再チェック
 
     Args:
         results (ComparisonResults): 結果格納データクラス
-    """
 
+    """
     for loop_m in results.score_list.values():
         if detection := validator.check_score(loop_m):
             score = GameResult(**detection)
@@ -221,7 +224,8 @@ def check_total_score(results: ComparisonResults):
 
 
 def check_pending(m: "MessageParserProtocol") -> bool:
-    """保留チェック
+    """
+    保留チェック
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -230,8 +234,8 @@ def check_pending(m: "MessageParserProtocol") -> bool:
         bool: 真偽
         - *True*: 保留中
         - *False*: チェック開始
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     now_ts = float(ExtDt().format(Format.TS))

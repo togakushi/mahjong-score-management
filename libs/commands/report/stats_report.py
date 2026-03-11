@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Literal, cast
+from typing import TYPE_CHECKING, Any, Literal, cast
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -32,13 +32,14 @@ if TYPE_CHECKING:
     from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def get_game_results() -> list:
-    """月/年単位のゲーム結果集計
+def get_game_results() -> list[list[str]]:
+    """
+    月/年単位のゲーム結果集計
 
     Returns:
-        list: 集計結果のリスト
-    """
+        list[list[str]]: 集計結果のリスト
 
+    """
     if "starttime" in g.params:
         g.params.update({"starttime": cast("ExtDt", g.params["starttime"]).format(Format.SQL)})
     if "endtime" in g.params:
@@ -51,7 +52,7 @@ def get_game_results() -> list:
     )
 
     # --- データ収集
-    results = [
+    results: list[list[str]] = [
         [
             "",
             "ゲーム数",
@@ -104,15 +105,16 @@ def get_game_results() -> list:
 
 
 def get_count_results(game_count: int) -> list:
-    """指定間隔区切りのゲーム結果集計
+    """
+    指定間隔区切りのゲーム結果集計
 
     Args:
         game_count (int): 区切るゲーム数
 
     Returns:
         list: 集計結果のリスト
-    """
 
+    """
     g.params.update({"interval": game_count})
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
@@ -176,15 +178,16 @@ def get_count_results(game_count: int) -> list:
 
 
 def get_count_moving(game_count: int) -> list:
-    """移動平均を取得する
+    """
+    移動平均を取得する
 
     Args:
         game_count (int): 平滑化するゲーム数
 
     Returns:
         list: 集計結果のリスト
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.update({"interval": game_count})
     rows = resultdb.execute(
@@ -204,7 +207,8 @@ def get_count_moving(game_count: int) -> list:
 
 
 def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
-    """平均順位の折れ線グラフを生成
+    """
+    平均順位の折れ線グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -215,8 +219,8 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
 
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     if whole:
@@ -256,7 +260,8 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
 
 
 def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
-    """通算ポイント推移の折れ線グラフを生成
+    """
+    通算ポイント推移の折れ線グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -266,8 +271,8 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
             - *False*: 指定範囲集計
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     if whole:
@@ -329,7 +334,8 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
 
 
 def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
-    """順位分布の棒グラフを生成
+    """
+    順位分布の棒グラフを生成
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -337,8 +343,8 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
 
     Returns:
         BytesIO: 画像データ
-    """
 
+    """
     imgdata = BytesIO()
 
     df.plot(
@@ -373,13 +379,14 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
     return imgdata
 
 
-def gen_pdf(m: "MessageParserProtocol"):
-    """成績レポートを生成する
+def gen_pdf(m: "MessageParserProtocol") -> None:
+    """
+    成績レポートを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions())
@@ -437,18 +444,19 @@ def gen_pdf(m: "MessageParserProtocol"):
     m.set_message(pdf_path, StyleOptions(title=f"成績レポート({g.params['player_name']})", use_comment=True, header_hidden=True))
 
 
-def cover_page(style: dict, target_info: dict) -> list:
-    """表紙生成
+def cover_page(style: dict, target_info: dict) -> list[Any]:
+    """
+    表紙生成
 
     Args:
         style (dict): レイアウトスタイル
         target_info (dict): プレイヤー情報
 
     Returns:
-        list: 生成内容
-    """
+        list[Any]: 生成内容
 
-    elements: list = []
+    """
+    elements: list[Any] = []
 
     first_game = datetime.fromtimestamp(  # 最初のゲーム日時
         float(target_info["first_game"])
@@ -480,17 +488,18 @@ def cover_page(style: dict, target_info: dict) -> list:
     return elements
 
 
-def entire_aggregate(style: dict) -> list:
-    """全期間
+def entire_aggregate(style: dict) -> list[Any]:
+    """
+    全期間
 
     Args:
         style (dict): レイアウトスタイル
 
     Returns:
-        list: 生成内容
-    """
+        list[Any]: 生成内容
 
-    elements: list = []
+    """
+    elements: list[Any] = []
 
     elements.append(Paragraph("全期間", style["Left"]))
     elements.append(Spacer(1, 5 * mm))
@@ -577,17 +586,18 @@ def entire_aggregate(style: dict) -> list:
     return elements
 
 
-def periodic_aggregation(style: dict) -> list:
-    """期間集計
+def periodic_aggregation(style: dict) -> list[Any]:
+    """
+    期間集計
 
     Args:
         style (dict): レイアウトスタイル
 
     Returns:
-        list: 生成内容
-    """
+        list[Any]: 生成内容
 
-    elements: list = []
+    """
+    elements: list[Any] = []
 
     pattern: list[tuple[str, str, Literal["A", "M", "Y"]]] = [
         # 表タイトル, グラフタイトル, フラグ
@@ -655,18 +665,19 @@ def periodic_aggregation(style: dict) -> list:
     return elements
 
 
-def sectional_aggregate(style: dict, target_info: dict) -> list:
-    """区間集計
+def sectional_aggregate(style: dict, target_info: dict) -> list[Any]:
+    """
+    区間集計
 
     Args:
         style (dict): レイアウトスタイル
         target_info (dict): プレイヤー情報
 
     Returns:
-        list: 生成内容
-    """
+        list[Any]: 生成内容
 
-    elements: list = []
+    """
+    elements: list[Any] = []
 
     pattern: list[tuple[int, int, str]] = [
         # 区切り回数, 閾値, タイトル

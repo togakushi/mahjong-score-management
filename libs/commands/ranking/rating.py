@@ -19,13 +19,14 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
-    """レーティングを集計して返す
+def aggregation(m: "MessageParserProtocol") -> None:
+    """
+    レーティングを集計して返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.RATING  # 更新
 
     # 情報ヘッダ

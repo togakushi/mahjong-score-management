@@ -19,12 +19,13 @@ if TYPE_CHECKING:
 
 
 def aggregation(m: "MessageParserProtocol"):
-    """直接対戦結果を集計して返す
+    """
+    直接対戦結果を集計して返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -144,7 +145,8 @@ def aggregation(m: "MessageParserProtocol"):
 
 
 def tmpl_header(my_name: str, vs_name: str) -> str:
-    """ヘッダテンプレート
+    """
+    ヘッダテンプレート
 
     Args:
         my_name (str): 自分の名前
@@ -152,6 +154,7 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
 
     Returns:
         str: 出力データ
+
     """
     ret = textwrap.dedent(
         f"""\
@@ -166,15 +169,16 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
 
 
 def tmpl_vs_table(data: dict) -> str:
-    """直接対決結果表示テンプレート
+    """
+    直接対決結果表示テンプレート
 
     Args:
         data (dict): 結果データ
 
     Returns:
         str: 出力データ
-    """
 
+    """
     ret = textwrap.indent(
         "".join(
             [

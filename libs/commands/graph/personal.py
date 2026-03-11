@@ -27,13 +27,14 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
-    """個人成績のグラフを生成する
+def plot(m: "MessageParserProtocol") -> None:
+    """
+    個人成績のグラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
@@ -124,13 +125,14 @@ def plot(m: "MessageParserProtocol"):
             m.set_message(save_file, StyleOptions(title=f"『{player}』の成績", use_comment=True, header_hidden=True, key_title=False))
 
 
-def statistics_plot(m: "MessageParserProtocol"):
-    """個人成績の統計グラフを生成する
+def statistics_plot(m: "MessageParserProtocol") -> None:
+    """
+    個人成績の統計グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
@@ -280,7 +282,8 @@ def statistics_plot(m: "MessageParserProtocol"):
 
 
 def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
-    """データフレームを指定範囲で分割する
+    """
+    データフレームを指定範囲で分割する
 
     Args:
         df (pd.Series): 分割するデータ
@@ -288,8 +291,8 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 分割されたデータ
-    """
 
+    """
     # interval単位で分割
     rpoint_data: dict = {}
 
@@ -306,13 +309,14 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
 
 
 def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
-    """箱ひげ図を生成する
+    """
+    箱ひげ図を生成する
 
     Args:
         df (pd.DataFrame): プロットデータ
         ax (plt.Axes): プロット先オブジェクト
-    """
 
+    """
     p = [x + 1 for x in range(len(df.columns))]
     df.plot(
         ax=ax,
@@ -335,13 +339,14 @@ def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
 
 
 def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
-    """テーブルを生成する
+    """
+    テーブルを生成する
 
     Args:
         df (pd.DataFrame): プロットデータ
         ax (plt.Axes): プロット先オブジェクト
-    """
 
+    """
     # 有効桁数の調整
     for col in df.columns:
         match col:
@@ -371,13 +376,14 @@ def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
 
 
 def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
-    """ポイントデータ
+    """
+    ポイントデータ
 
     Args:
         df (pd.Series): プロットデータ
         ax (plt.Axes): プロット先オブジェクト
-    """
 
+    """
     df.plot(  # レイアウト調整用ダミー
         ax=ax,
         kind="bar",
@@ -398,14 +404,15 @@ def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
 
 
 def subplot_rank(df: pd.DataFrame, ax: plt.Axes, total_index: str) -> None:
-    """順位データ
+    """
+    順位データ
 
     Args:
         df (pd.DataFrame): プロットデータ
         ax (plt.Axes): プロット先オブジェクト
         total_index (str): 合計値格納index
-    """
 
+    """
     df["1位(%)"] = df["1位(%)"] * 100
     df["2位(%)"] = df["2位(%)"] * 100
     df["3位(%)"] = df["3位(%)"] * 100
@@ -449,7 +456,8 @@ def subplot_rank(df: pd.DataFrame, ax: plt.Axes, total_index: str) -> None:
 
 
 def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "Path":
-    """獲得ポイントグラフ(plotly用)
+    """
+    獲得ポイントグラフ(plotly用)
 
     Args:
         df (pd.DataFrame): プロットするデータ
@@ -458,8 +466,8 @@ def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "
 
     Returns:
         Path: 保存先ファイルパス
-    """
 
+    """
     save_file = textutil.save_file_path("point.html")
 
     fig = go.Figure()
@@ -514,7 +522,8 @@ def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "
 
 
 def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "Path":
-    """獲得順位グラフ(plotly用)
+    """
+    獲得順位グラフ(plotly用)
 
     Args:
         df (pd.DataFrame): プロットするデータ
@@ -523,8 +532,8 @@ def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "P
 
     Returns:
         Path: 保存先ファイルパス
-    """
 
+    """
     save_file = textutil.save_file_path("rank.html")
 
     fig = go.Figure()
@@ -590,7 +599,8 @@ def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "P
 
 
 def plotly_line(title_text: str, df: pd.Series) -> "Path":
-    """通算ポイント推移グラフ生成(plotly用)
+    """
+    通算ポイント推移グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル
@@ -598,8 +608,8 @@ def plotly_line(title_text: str, df: pd.Series) -> "Path":
 
     Returns:
         Path: 保存先ファイルパス
-    """
 
+    """
     save_file = textutil.save_file_path("point.html")
 
     fig = go.Figure()
@@ -638,7 +648,8 @@ def plotly_line(title_text: str, df: pd.Series) -> "Path":
 
 
 def plotly_box(title_text: str, df: pd.DataFrame) -> "Path":
-    """素点分布グラフ生成(plotly用)
+    """
+    素点分布グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル
@@ -646,8 +657,8 @@ def plotly_box(title_text: str, df: pd.DataFrame) -> "Path":
 
     Returns:
         Path: 保存先ファイルパス
-    """
 
+    """
     save_file = textutil.save_file_path("rpoint.html")
     fig = px.box(df)
     fig.update_layout(
@@ -684,7 +695,8 @@ def plotly_box(title_text: str, df: pd.DataFrame) -> "Path":
 
 
 def plotly_bar(title_text: str, df: pd.DataFrame) -> "Path":
-    """順位分布グラフ生成(plotly用)
+    """
+    順位分布グラフ生成(plotly用)
 
     Args:
         title_text (str): グラフタイトル
@@ -692,8 +704,8 @@ def plotly_bar(title_text: str, df: pd.DataFrame) -> "Path":
 
     Returns:
         Path: 保存先ファイルパス
-    """
 
+    """
     save_file = textutil.save_file_path("rank.html")
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])

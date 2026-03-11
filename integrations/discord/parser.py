@@ -40,14 +40,15 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
 
     @property
     def in_thread(self) -> bool:
-        """リプライメッセージか判定
+        """
+        リプライメッセージか判定
 
         Returns:
             bool: 真偽値
 
         Note: slackに合わせてプロパティ名に`in_thread`を使う
-        """
 
+        """
         if self.status.command_flg:
             return False
 

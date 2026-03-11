@@ -17,19 +17,20 @@ if TYPE_CHECKING:
 class ReportConfig(SubCommands):
     """reportセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀レポート"
         self.section: str = str(CommandType.REPORT)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
-    """レポート生成処理エントリーポイント
+def main(m: "MessageParserProtocol") -> None:
+    """
+    レポート生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.REPORT
     g.params = dictutil.placeholder(g.cfg.report, m)
 

@@ -8,16 +8,16 @@ from discord import Forbidden, NotFound
 from discord.channel import TextChannel
 
 from integrations.base.interface import FunctionsInterface
-from integrations.protocols import ActionStatus
+from libs.domain.datamodels import ActionStatus
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from discord import ClientUser, Message
 
-    from integrations.base.interface import MessageParserProtocol
     from integrations.discord.api import AdapterAPI
     from integrations.discord.config import SvcConfig
     from integrations.discord.parser import MessageParser
+    from integrations.protocols import MessageParserProtocol
 
 
 class SvcFunctions(FunctionsInterface):
@@ -31,12 +31,13 @@ class SvcFunctions(FunctionsInterface):
         """個別設定"""
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理（非同期処理ラッパー）
+        """
+        後処理（非同期処理ラッパー）
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         match m.status.action:
             case ActionStatus.NOTHING:
                 return
@@ -46,12 +47,13 @@ class SvcFunctions(FunctionsInterface):
                 self.api.bot.loop.create_task(self.delete_reaction(m))
 
     async def update_reaction(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         m = cast("MessageParser", m)
         self.conf.bot_name = cast("ClientUser", self.conf.bot_name)
 
@@ -93,12 +95,13 @@ class SvcFunctions(FunctionsInterface):
                 await m.discord_msg.add_reaction(emoji["ng"])
 
     async def delete_reaction(self, m: "MessageParserProtocol"):
-        """botが付けたリアクションをすべて削除する
+        """
+        botが付けたリアクションをすべて削除する
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         m = cast("MessageParser", m)
 
         if hasattr(m, "discord_msg"):
@@ -128,13 +131,15 @@ class SvcFunctions(FunctionsInterface):
                     await reaction.remove(user)
 
     async def is_deleted_message(self, message: "Message") -> bool:
-        """メッセージが削除済みか調べる
+        """
+        メッセージが削除済みか調べる
 
         Args:
             message (Message): discordオブジェクト
 
         Returns:
             bool: 真偽
+
         """
         try:
             await message.channel.fetch_message(message.id)

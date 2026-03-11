@@ -40,10 +40,12 @@ class AdapterAPI(APIInterface):
             raise ModuleNotFoundError(err.msg) from None
 
     def post(self, m: "MessageParserProtocol"):
-        """メッセージをポストする
+        """
+        メッセージをポストする
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
         def _table_data(data: dict) -> list:
@@ -153,12 +155,13 @@ class AdapterAPI(APIInterface):
                 )
 
     def _call_chat_post_message(self, **kwargs) -> "SlackResponse":
-        """slackにメッセージをポストする
+        """
+        slackにメッセージをポストする
 
         Returns:
             SlackResponse: API response
-        """
 
+        """
         res = cast("SlackResponse", {})
         if kwargs["thread_ts"] == "0":
             kwargs.pop("thread_ts")
@@ -175,12 +178,13 @@ class AdapterAPI(APIInterface):
         return res
 
     def _call_files_upload(self, **kwargs) -> "SlackResponse":
-        """slackにファイルをアップロードする
+        """
+        slackにファイルをアップロードする
 
         Returns:
             SlackResponse | Any: API response
-        """
 
+        """
         res = cast("SlackResponse", {})
         if kwargs.get("thread_ts", "0") == "0":
             kwargs.pop("thread_ts")

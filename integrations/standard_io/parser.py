@@ -40,12 +40,13 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             self.data.channel_id = body.get("channel_id", "")
 
     def set_command_flag(self, flg: bool):
-        """スラッシュコマンドフラグを上書き
+        """
+        スラッシュコマンドフラグを上書き
 
         Args:
             flg (bool): フラグ
-        """
 
+        """
         self.status.command_flg = flg
 
     @property

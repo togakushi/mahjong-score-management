@@ -20,19 +20,20 @@ if TYPE_CHECKING:
 class HelpConfig(SubCommands):
     """helpセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀ヘルプ"
         self.section: str = str(CommandType.HELP)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
-    """ヘルプ処理エントリーポイント
+def main(m: "MessageParserProtocol") -> None:
+    """
+    ヘルプ処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.HELP
     g.params = dictutil.placeholder(g.cfg.help, m)
 
@@ -41,13 +42,14 @@ def main(m: "MessageParserProtocol"):
     m.post.thread_title = "ヘルプメッセージ"
 
 
-def help_message(m: "MessageParserProtocol"):
-    """呼び出しキーワードヘルプメッセージ
+def help_message(m: "MessageParserProtocol") -> None:
+    """
+    呼び出しキーワードヘルプメッセージ
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.params.update(
         {
             "source": g.cfg.resolve_channel_id(m.status.source),

@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """ランキングページ用Blueprint
+    """
+    ランキングページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("ranking", __name__, url_prefix="/ranking")
 
     @bp.route("/", methods=["GET", "POST"])

@@ -3,7 +3,7 @@ integrations/slack/events/home_tab/ui_parts.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 import libs.global_value as g
 from libs.data.lookup import read_memberslist
@@ -13,17 +13,18 @@ if TYPE_CHECKING:
     from integrations.slack.adapter import ServiceAdapter
 
 
-def plain_text(msg: str) -> dict:
-    """プレーンテキストの埋め込み
+def plain_text(msg: str) -> dict[str, Any]:
+    """
+    プレーンテキストの埋め込み
 
     Args:
         msg (str): テキスト
 
     Returns:
-        dict: ブロック要素
-    """
+        dict[str, Any]: ブロック要素
 
-    view: dict = {"type": "home", "blocks": []}
+    """
+    view: dict[str, Any] = {"type": "home", "blocks": []}
     view["blocks"].append({"type": "section", "text": {}})
     view["blocks"][0]["text"] = {"type": "mrkdwn", "text": msg}
 
@@ -31,12 +32,13 @@ def plain_text(msg: str) -> dict:
 
 
 def divider(adapter: "ServiceAdapter") -> None:
-    """境界線を引く
+    """
+    境界線を引く
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append(
         {
             "type": "divider",
@@ -46,28 +48,30 @@ def divider(adapter: "ServiceAdapter") -> None:
 
 
 def header(adapter: "ServiceAdapter", text: str = "dummy") -> None:
-    """ヘッダ生成
+    """
+    ヘッダ生成
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): ヘッダテキスト. Defaults to "dummy".
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "header", "text": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["text"] = {"type": "plain_text", "text": text}
     adapter.conf.tab_var["no"] += 1
 
 
 def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bool = False) -> None:
-    """ボタン配置
+    """
+    ボタン配置
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト
         action_id (str): action_id
         style (str | bool, optional): 表示スタイル. Defaults to False.
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "actions", "elements": [{}]})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["elements"][0] = {
         "type": "button",
@@ -85,15 +89,16 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
 
 
 def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict) -> None:
-    """オプション選択メニュー
+    """
+    オプション選択メニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
         flag (dict, optional): 表示する選択項目
-    """
 
+    """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": f"bid-{id_suffix}", "element": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["label"] = {"type": "plain_text", "text": title}
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"]["type"] = "radio_buttons"
@@ -115,7 +120,8 @@ def checkboxes(
     flag: Optional[dict] = None,
     initial: Optional[list] = None,
 ) -> None:
-    """チェックボックス選択メニュー
+    """
+    チェックボックス選択メニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -123,8 +129,8 @@ def checkboxes(
         title (str): 表示タイトル
         flag (Optional[dict], optional): 表示する選択項目. Defaults to None.
         initial (Optional[list], optional): チェック済み項目. Defaults to None.
-    """
 
+    """
     if flag is None:
         flag = {}
 
@@ -153,14 +159,15 @@ def user_select_pulldown(
     text: str = "dummy",
     add_list: Optional[list] = None,
 ) -> None:
-    """プレイヤー選択プルダウンメニュー
+    """
+    プレイヤー選択プルダウンメニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
         add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
-    """
 
+    """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-user_select", "element": {}})
@@ -193,14 +200,15 @@ def multi_select_pulldown(
     text: str = "dummy",
     add_list: Optional[list] = None,
 ) -> None:
-    """複数プレイヤー選択プルダウンメニュー
+    """
+    複数プレイヤー選択プルダウンメニュー
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
         add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
-    """
 
+    """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-multi_select", "element": {}})
@@ -229,13 +237,14 @@ def multi_select_pulldown(
 
 
 def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> None:
-    """ランキング上限入力テキストボックス
+    """
+    ランキング上限入力テキストボックス
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         block_id (str | bool, optional): block_id. Defaults to False.
-    """
 
+    """
     if block_id:
         adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": block_id, "element": {}, "label": {}})
     else:
@@ -251,17 +260,18 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
     adapter.conf.tab_var["no"] += 1
 
 
-def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
-    """日付選択
+def modalperiod_selection(adapter: "ServiceAdapter") -> dict[str, Any]:
+    """
+    日付選択
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
 
     Returns:
-        dict: ブロック要素
-    """
+        dict[str, Any]: ブロック要素
 
-    view: dict = {"type": "modal", "callback_id": f"{adapter.conf.tab_var['screen']}_ModalPeriodSelection"}
+    """
+    view: dict[str, Any] = {"type": "modal", "callback_id": f"{adapter.conf.tab_var['screen']}_ModalPeriodSelection"}
     view["title"] = {"type": "plain_text", "text": "検索範囲指定"}
     view["submit"] = {"type": "plain_text", "text": "決定"}
     view["close"] = {"type": "plain_text", "text": "取消"}
@@ -284,7 +294,8 @@ def modalperiod_selection(adapter: "ServiceAdapter") -> dict:
 
 
 def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, list, dict]:
-    """選択オプションの内容のフラグをセット
+    """
+    選択オプションの内容のフラグをセット
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
@@ -295,8 +306,8 @@ def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, lis
         - list: コマンドに追加する文字列
         - list: viewに表示するメッセージ
         - dict: 変更されるフラグ
-    """
 
+    """
     update_flag: dict = {}
 
     # 検索設定
@@ -364,14 +375,15 @@ def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, lis
 
 
 def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list):
-    """viewを更新する
+    """
+    viewを更新する
 
     Args:
         adapter (ServiceAdapter): アダプター
         m (MessageParserProtocol): メッセージデータ
         msg (list): 表示テキスト
-    """
 
+    """
     text = ""
     if m.post.headline:
         header_data, header_option = m.post.headline

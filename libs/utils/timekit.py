@@ -30,6 +30,7 @@ Examples:
 
     >>> ExtendedDatetime("2025-01-01 01:23:45", hours=-12).range("今年")
     [2024-01-01 00:00:00.000000, 2024-12-31 23:59:59.999999]
+
 """
 
 from datetime import datetime
@@ -212,14 +213,15 @@ class ExtendedDatetime:
     """
 
     def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs):
-        """ExtendedDatetimeの初期化
+        """
+        ExtendedDatetimeの初期化
 
         Args:
             value (Optional[AcceptedType], optional): 引数. Defaults to None.
                 - None: 現在時刻(`datetime.now()`)で初期化
             relativedelta_kwargs (dict): 初期化時にrelativedelta()に渡す引数
-        """
 
+        """
         self._dt = self.convert(value) if value else datetime.now()
         if relativedelta_kwargs:
             self._dt += relativedelta(**relativedelta_kwargs)
@@ -289,16 +291,18 @@ class ExtendedDatetime:
         self._dt = self.convert(value)
 
     def set(self, value: AcceptedType) -> None:
-        """渡された値をdatetime型に変換して保持
+        """
+        渡された値をdatetime型に変換して保持
 
         Args:
             value (AcceptedType): 入力値
-        """
 
+        """
         self._dt = self.convert(value)
 
     def format(self, fmt: Format, delimiter: Delimiter = Delimiter.UNDEFINED) -> str:
-        """フォーマット変換
+        """
+        フォーマット変換
 
         Args:
             fmt (Format): 変換形式
@@ -309,8 +313,8 @@ class ExtendedDatetime:
 
         Returns:
             str: 変換文字列
-        """
 
+        """
         ret: str
 
         if fmt.name.startswith("J"):
@@ -415,7 +419,8 @@ class ExtendedDatetime:
         return ret
 
     def range(self, value: str | list) -> "ExtendedDatetimeList":
-        """キーワードが示す範囲をリストで返す
+        """
+        キーワードが示す範囲をリストで返す
 
         Args:
             value (str | list): 範囲取得キーワード
@@ -424,8 +429,8 @@ class ExtendedDatetime:
 
         Returns:
             ExtendedDatetimeList: 日付リスト
-        """
 
+        """
         if isinstance(value, str):
             check_list = value.split()
         else:
@@ -451,12 +456,13 @@ class ExtendedDatetime:
 
     @classmethod
     def valid_keywords(cls) -> list[str]:
-        """有効なキーワード一覧
+        """
+        有効なキーワード一覧
 
         Returns:
             list[str]: キーワード一覧
-        """
 
+        """
         ret: list = []
         for _, range_map in DATE_RANGE_MAP.items():
             ret.extend(cast(list, range_map["keyword"]))
@@ -465,12 +471,13 @@ class ExtendedDatetime:
 
     @classmethod
     def print_range(cls) -> str:
-        """指定可能キーワードで取得できる範囲の一覧
+        """
+        指定可能キーワードで取得できる範囲の一覧
 
         Returns:
             str: 出力メッセージ
-        """
 
+        """
         base_instance = cls()
         ret: str = ""
 
@@ -483,7 +490,8 @@ class ExtendedDatetime:
 
     @staticmethod
     def convert(value: AcceptedType) -> datetime:
-        """引数の型を判定してdatetimeへ変換
+        """
+        引数の型を判定してdatetimeへ変換
 
         Args:
             value (AcceptedType): 変換対象
@@ -493,8 +501,8 @@ class ExtendedDatetime:
 
         Returns:
             datetime: 変換した型
-        """
 
+        """
         if isinstance(value, ExtendedDatetime):
             return value.dt
         if isinstance(value, datetime):
@@ -544,7 +552,8 @@ class ExtendedDatetimeList(list):
         return [min_dt, max_dt]
 
     def format(self, fmt: Format = Format.SQL, delimiter: Delimiter = Delimiter.UNDEFINED) -> list[str]:
-        """全要素にformatを適用した文字列リストを返す
+        """
+        全要素にformatを適用した文字列リストを返す
 
         Args:
             fmt (Format, optional): フォーマット変換. Defaults to "sql".
@@ -552,12 +561,13 @@ class ExtendedDatetimeList(list):
 
         Returns:
             list[str]: 生成したリスト
-        """
 
+        """
         return [dt.format(fmt, delimiter) for dt in self if isinstance(dt, ExtendedDatetime)]
 
     def dict_format(self, fmt: Format = Format.SQL, delimiter: Delimiter = Delimiter.UNDEFINED) -> dict[str, str]:
-        """全要素にformatを適用し、最小日付と最大日付を辞書で返す
+        """
+        全要素にformatを適用し、最小日付と最大日付を辞書で返す
 
         Args:
             fmt (Format, optional): フォーマット変換. Defaults to "sql".
@@ -565,8 +575,8 @@ class ExtendedDatetimeList(list):
 
         Returns:
             dict[str, str]: 生成した辞書
-        """
 
+        """
         date_range = [dt for dt in self if isinstance(dt, ExtendedDatetime)]
 
         if not date_range:

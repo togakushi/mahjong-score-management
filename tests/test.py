@@ -26,7 +26,8 @@ from libs.utils import dictutil
 
 
 def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: str):
-    """テストケース実行
+    """
+    テストケース実行
 
     Args:
         flag (dict): フラグ格納辞書
@@ -34,15 +35,16 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
         sec (str): 定義セクション
         pattern (str): 実行パターン
         argument (str): コマンドライン引数
+
     """
 
     def graph_point(m):
         """ポイント推移グラフ"""
         if len(g.params["player_list"]) == 1:
+            graph_personal.plot(m)
             pprint(
                 [
                     "exec: graph.personal.plot()",
-                    graph_personal.plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -52,7 +54,6 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             pprint(
                 [
                     "exec: graph.summary.point_plot()",
-                    graph_summary.point_plot(m),
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -60,10 +61,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     def graph_rank(m):
         """順位変動グラフ"""
+        graph_summary.point_plot(m)
         pprint(
             [
                 "exec: graph.summary.rank_plot()",
-                graph_summary.point_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -71,10 +72,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     def graph_statistics(m):
         """統計グラフ"""
+        graph_personal.statistics_plot(m)
         pprint(
             [
                 "exec: graph.personal.statistics_plot()",
-                graph_personal.statistics_plot(m),
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -122,15 +123,22 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 pprint(g.cfg.team.info)
 
             case "help":
-                pprint(help_message(m), width=200)
+                help_message(m)
+                pprint(
+                    [
+                        "exec: help.help_message()",
+                        f"{g.params=}" if flag.get("dump") else "g.params={...}",
+                    ],
+                    width=120,
+                )
 
             case "summary":
                 m.data.text = f"{g.cfg.results.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.results, m)
+                results_summary.aggregation(m)
                 pprint(
                     [
                         "exec: results.summary.aggregate()",
-                        results_summary.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -143,6 +151,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                     save_filename = g.params["filename"]
                     g.params.update({"filename": f"{save_filename}_point"})
                     graph_point(m)
+
                     g.params.update({"filename": f"{save_filename}_rank"})
                     graph_rank(m)
                     if g.params.get("statistics"):
@@ -175,11 +184,11 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "ranking":
                 m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.ranking, m)
+                ranking.aggregation(m)
 
                 pprint(
                     [
                         "exec: ranking.ranking.aggregation()",
-                        ranking.aggregation(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -188,10 +197,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "report":
                 m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.report, m)
+                stats_list.main(m)
                 pprint(
                     [
                         "exec: report.results_list.main()",
-                        stats_list.main(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -200,10 +209,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "pdf":
                 m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.report, m)
+                stats_report.gen_pdf(m)
                 pprint(
                     [
                         "exec: report.slackpost.results_report.gen_pdf()",
-                        stats_report.gen_pdf(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -212,10 +221,10 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             case "rating":
                 m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.results, m)
+                graph_rating.plot(m)
                 pprint(
                     [
                         "exec: graph.rating.plot()",
-                        graph_rating.plot(m),
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
@@ -224,7 +233,6 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
 def main():
     """メイン処理"""
-
     g.args = arg_parser()
     assert isinstance(g.args.testcase, Path)
 

@@ -13,14 +13,15 @@ from libs.types import StyleOptions
 from libs.utils import formatter
 
 if TYPE_CHECKING:
-    from integrations.base.interface import MessageParserProtocol
+    from integrations.protocols import MessageParserProtocol
 
 
 class AdapterAPI(APIInterface):
     """インターフェースAPI操作クラス"""
 
     def _text_formatter(self, text: str, style: StyleOptions) -> str:
-        """テキスト整形
+        """
+        テキスト整形
 
         Args:
             text (str): 対象テキスト
@@ -28,8 +29,8 @@ class AdapterAPI(APIInterface):
 
         Returns:
             str: 整形済みテキスト
-        """
 
+        """
         ret: str = ""
         for line in text.splitlines():
             line = line.replace("<@>", "")
@@ -40,12 +41,13 @@ class AdapterAPI(APIInterface):
         return ret.rstrip()
 
     def post(self, m: "MessageParserProtocol"):
-        """メッセージ出力
+        """
+        メッセージ出力
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         # 見出し
         if m.post.headline:
             header_data, header_option = m.post.headline

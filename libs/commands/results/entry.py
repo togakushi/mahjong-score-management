@@ -24,12 +24,13 @@ class ResultsConfig(SubCommands):
 
 
 def main(m: "MessageParserProtocol"):
-    """成績集計処理エントリーポイント
+    """
+    成績集計処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.RESULTS
     g.params = dictutil.placeholder(g.cfg.results, m)
 

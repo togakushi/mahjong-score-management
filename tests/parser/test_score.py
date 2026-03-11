@@ -9,6 +9,7 @@ import pytest
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
+from libs.data import initialization
 from libs.domain.score import GameResult
 from libs.utils import validator
 from tests.parser import param_data
@@ -24,7 +25,7 @@ def test_score_report(input_str, result_dict, get_point, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.setup_resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter("standard_io", g.cfg)
     g.cfg.selected_service = "standard_io"
 
@@ -65,7 +66,7 @@ def test_point_calc_seat(rpoint_list, point_dict, rank_dict, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.setup_resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter("standard_io", g.cfg)
     g.cfg.selected_service = "standard_io"
 
@@ -104,7 +105,7 @@ def test_point_calc_division(rpoint_list, point_dict, rank_dict, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.setup_resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter("standard_io", g.cfg)
     g.cfg.selected_service = "standard_io"
 

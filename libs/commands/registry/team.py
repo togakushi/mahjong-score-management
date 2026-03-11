@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from libs.bootstrap.app_config import BaseSection
+from libs.bootstrap.section import BaseSection
 from libs.data import initialization, loader, modify
 from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, formatter, textutil, validator
@@ -52,13 +52,13 @@ class TeamSection(BaseSection):
     friendly_fire: bool
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.default_commandword = "チーム一覧"
         self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -67,13 +67,14 @@ class TeamSection(BaseSection):
         self.member_limit = int(16)
         self.friendly_fire = bool(True)
 
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+    def config_load(self, outer: "AppConfig") -> None:
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self._reset()
         super().__init__(self)
 
@@ -83,22 +84,24 @@ class TeamSection(BaseSection):
         logging.debug("%s: %s", self.section, self)
 
     def member(self, team: str) -> list[str]:
-        """指定チームの所属メンバーをリストで返す
+        """
+        指定チームの所属メンバーをリストで返す
 
         Args:
             team (str): 対象チーム名
 
         Returns:
             list[str]: 所属メンバーリスト
-        """
 
+        """
         for x in self.info:
             if x.get("team") == team:
                 return x.get("members")
         return []
 
     def which(self, name: str) -> str | None:
-        """指定メンバーの所属チームを返す
+        """
+        指定メンバーの所属チームを返す
 
         Args:
             name (str): 対象メンバー名
@@ -107,8 +110,8 @@ class TeamSection(BaseSection):
             Union[str, None]:
             - str: 所属しているチーム名
             - None: 未所属
-        """
 
+        """
         for team in self.lists:
             if name in self.member(team):
                 return team
@@ -117,22 +120,24 @@ class TeamSection(BaseSection):
 
     @property
     def lists(self) -> list[str]:
-        """チーム名一覧をリストで返す
+        """
+        チーム名一覧をリストで返す
 
         Returns:
             list[str]: チーム名一覧
-        """
 
+        """
         return [x.get("team") for x in self.info]
 
     @property
     def get_info(self) -> list[TeamDataDict]:
-        """全チーム情報取得
+        """
+        全チーム情報取得
 
         Returns:
             list[TeamDataDict]: チーム情報
-        """
 
+        """
         ret = loader.read_data("TEAM_INFO", cast(dict, g.params)).to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
@@ -141,15 +146,16 @@ class TeamSection(BaseSection):
 
 
 def create(argument: list) -> str:
-    """チーム作成
+    """
+    チーム作成
 
     Args:
         argument (list): 作成するチーム名
 
     Returns:
         str: 処理結果
-    """
 
+    """
     ret = False
     msg = "使い方が間違っています。"
 
@@ -175,15 +181,16 @@ def create(argument: list) -> str:
 
 
 def delete(argument: list) -> str:
-    """チーム削除
+    """
+    チーム削除
 
     Args:
         argument (list): 削除するチーム名
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     if len(argument) == 1:  # 新規追加
@@ -209,7 +216,8 @@ def delete(argument: list) -> str:
 
 
 def append(argument: list) -> str:
-    """チーム所属
+    """
+    チーム所属
 
     Args:
         argument (list): 登録情報
@@ -218,8 +226,8 @@ def append(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     if len(argument) == 1:  # 新規作成
@@ -267,7 +275,8 @@ def append(argument: list) -> str:
 
 
 def remove(argument: list) -> str:
-    """チームから除名
+    """
+    チームから除名
 
     Args:
         argument (list): 登録情報
@@ -276,8 +285,8 @@ def remove(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = "使い方が間違っています。"
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)
@@ -319,12 +328,13 @@ def remove(argument: list) -> str:
 
 
 def clear() -> str:
-    """全チーム削除
+    """
+    全チーム削除
 
     Returns:
         str: 処理結果
-    """
 
+    """
     msg = modify.db_backup()
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)

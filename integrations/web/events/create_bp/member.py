@@ -17,15 +17,16 @@ if TYPE_CHECKING:
 
 
 def member_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """メンバー管理ページ用Blueprint
+    """
+    メンバー管理ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("member", __name__, url_prefix="/member")
 
     @bp.route("/", methods=["GET", "POST"])

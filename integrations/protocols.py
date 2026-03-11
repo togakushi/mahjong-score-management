@@ -126,22 +126,26 @@ class MessageParserProtocol(Protocol):
 
     @property
     def is_command(self) -> bool:
-        """コマンドとして実行されたかチェック
+        """
+        コマンドとして実行されたかチェック
 
         Returns:
             bool: 真偽値
             - *True*: スラッシュコマンド
             - *False*: チャンネル内呼び出しキーワード
+
         """
 
     @property
     def is_bot(self) -> bool:
-        """botによる操作かチェック
+        """
+        botによる操作かチェック
 
         Returns:
             bool: 真偽値
             - *True*: botが操作
             - *False*: ユーザが操作
+
         """
 
     @property
@@ -170,8 +174,8 @@ class MessageParserProtocol(Protocol):
     def set_message(self, data: "MessageType", options: "StyleOptions"):
         """本文メッセージをセット"""
 
-    def parser(self, body: Any):
+    def parser(self, body: Any) -> None:
         """メッセージ解析メソッド"""
 
-    def reset(self):
+    def reset(self) -> None:
         """状態リセット"""

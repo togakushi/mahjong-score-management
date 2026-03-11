@@ -86,7 +86,6 @@ class BaseSection(CommonMethodMixin):
 
     def initialization(self):
         """設定ファイルから値の取り込み"""
-
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
@@ -119,15 +118,16 @@ class BaseSection(CommonMethodMixin):
                     setattr(self, k, self.__dict__.get(k))
 
     def to_dict(self, drop_items: Optional[list[str]] = None) -> dict[str, str]:
-        """必要なパラメータを辞書型で返す
+        """
+        必要なパラメータを辞書型で返す
 
         Args:
-            drop_items (Optional[list[str]], optional): _description_. Defaults to None.
+            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.
 
         Returns:
              dict[str, str]: 返却値
-        """
 
+        """
         ret_dict: dict[str, str] = {}
         for key in vars(self):
             if key.startswith("_"):
@@ -171,12 +171,13 @@ class MahjongSection(BaseSection):
         """未定義ワードタイプ"""
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         super().__init__(self)
 
@@ -263,12 +264,13 @@ class SettingSection(BaseSection):
         self.work_dir = Path("work")
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
@@ -348,12 +350,13 @@ class AliasSection(BaseSection):
         self.team_clear = ["team_clear"]
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self._reset()
         super().__init__(self)
@@ -371,12 +374,13 @@ class SubCommands(BaseSection, CommandAttrs):
     """コマンドワードデフォルト値"""
 
     def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self.main_parser = outer.main_parser
         self.section_proxy = outer.main_parser[self.section]
         self.default_reset()

@@ -14,15 +14,16 @@ if TYPE_CHECKING:
 
 
 def user_assets_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """ユーザー指定CSS用Blueprint
+    """
+    ユーザー指定CSS用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint(
         "user_assets",
         __name__,

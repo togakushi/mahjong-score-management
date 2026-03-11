@@ -17,13 +17,14 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
-    """月別ゲーム統計表の生成
+def plot(m: "MessageParserProtocol") -> None:
+    """
+    月別ゲーム統計表の生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ収集
     title: str = "月別ゲーム統計"
     df = loader.read_data("REPORT_MONTHLY")

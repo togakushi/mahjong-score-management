@@ -1,4 +1,5 @@
-"""外部ツール用モジュール
+"""
+外部ツール用モジュール
 
 Exports:
 - `libs.functions.tools.comparison`: 突合処理

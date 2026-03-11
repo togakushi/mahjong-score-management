@@ -38,13 +38,14 @@ class GraphParams(TypedDict, total=False):
     save_file: str
 
 
-def point_plot(m: "MessageParserProtocol"):
-    """ポイント推移グラフを生成する
+def point_plot(m: "MessageParserProtocol") -> None:
+    """
+    ポイント推移グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
@@ -88,13 +89,14 @@ def point_plot(m: "MessageParserProtocol"):
     m.set_message(save_file, StyleOptions(title=file_title, use_comment=True, header_hidden=True, key_title=False))
 
 
-def rank_plot(m: "MessageParserProtocol"):
-    """順位変動グラフを生成する
+def rank_plot(m: "MessageParserProtocol") -> None:
+    """
+    順位変動グラフを生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
@@ -140,14 +142,15 @@ def rank_plot(m: "MessageParserProtocol"):
 
 
 def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
-    """データ収集
+    """
+    データ収集
 
     Returns:
         tuple[pd.DataFrame, pd.DataFrame]:
         - pd.DataFrame: 収集したデータのサマリ
         - pd.DataFrame: 集計範囲のデータ
-    """
 
+    """
     # データ収集
     g.params.update({"fourfold": True})  # 直近Nは4倍する(縦持ちなので4人分)
 
@@ -191,15 +194,16 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def _graph_generation(graph_params: GraphParams) -> "Path":
-    """グラフ生成共通処理(matplotlib用)
+    """
+    グラフ生成共通処理(matplotlib用)
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(graph_params["save_file"])
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
@@ -287,15 +291,16 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
 
 
 def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
-    """グラフ生成共通処理(plotly用)
+    """
+    グラフ生成共通処理(plotly用)
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
 
     Returns:
         Path: 保存先ファイル名
-    """
 
+    """
     save_file = textutil.save_file_path(graph_params["save_file"])
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
@@ -383,13 +388,14 @@ def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
     return save_file
 
 
-def _graph_title(graph_params: GraphParams):
-    """グラフタイトル生成
+def _graph_title(graph_params: GraphParams) -> None:
+    """
+    グラフタイトル生成
 
     Args:
         graph_params (GraphParams): グラフ生成パラメータ
-    """
 
+    """
     if g.params.get("target_count"):
         kind = Format.YMD_O
         graph_params.update({"xlabel_text": f"集計日（{graph_params['total_game_count']} ゲーム）"})

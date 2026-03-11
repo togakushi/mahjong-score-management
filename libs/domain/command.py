@@ -186,7 +186,7 @@ class ParsedCommand:
 class CommandParser:
     """引数解析クラス"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.day_format = re.compile(r"^([0-9]{8}|[0-9/.-]{8,10})$")
         """日付文字列判定用正規表現
         - *yyyymmdd*
@@ -197,15 +197,16 @@ class CommandParser:
 
     @classmethod
     def is_valid_command(cls, word: str) -> bool:
-        """引数がコマンド名と一致するか判定する
+        """
+        引数がコマンド名と一致するか判定する
 
         Args:
             word (str): チェック文字列
 
         Returns:
             bool: 真偽
-        """
 
+        """
         for cmd in COMMANDS.values():
             for pattern in cmd["match"]:
                 m = re.match(pattern, word)
@@ -218,19 +219,20 @@ class CommandParser:
         return False
 
     def analysis_argument(self, argument: list[str]) -> ParsedCommand:
-        """コマンドライン引数を解析する
+        """
+        コマンドライン引数を解析する
 
         Args:
             argument (list[str]): 引数
 
         Returns:
             ParsedCommand: 結果
-        """
 
-        ret: dict = {}
-        unknown: list = []
-        args: list = []
-        search_range: list = []
+        """
+        ret: dict[str, Any] = {}
+        unknown: list[str] = []
+        args: list[str] = []
+        search_range: list[Any] = []
 
         for keyword in argument:
             check_word = textutil.str_conv(keyword.lower(), textutil.ConversionType.HtoK)
@@ -265,21 +267,22 @@ class CommandParser:
 
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 
-    def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict:
-        """コマンド名に一致したときの処理
+    def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict[str, Any]:
+        """
+        コマンド名に一致したときの処理
 
         Args:
             cmd (CommandSpec): コマンドマップ
             obj (re.Match): Matchオブジェクト
 
         Returns:
-            dict: 更新用辞書
+            dict[str, Any]: 更新用辞書
+
         """
+        ret: dict[str, Any] = {}
 
-        ret: dict = {}
-
-        def with_arguments(tmp: dict):
-            key = next(iter(tmp.keys()))
+        def with_arguments(tmp: dict[str, Any]):
+            key = str(next(iter(tmp.keys())))
             val = str(tmp[key][1])
             if "" != val:
                 match cmd.get("type"):

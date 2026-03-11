@@ -20,12 +20,13 @@ if TYPE_CHECKING:
 
 
 def plot(m: "MessageParserProtocol"):
-    """成績上位者を一覧化
+    """
+    成績上位者を一覧化
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ取得
     game_info = GameInfo()
     results_df = loader.read_data("REPORT_WINNER")

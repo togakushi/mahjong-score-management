@@ -17,19 +17,20 @@ if TYPE_CHECKING:
 class GraphConfig(SubCommands):
     """graphセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀グラフ"
         self.section: str = str(CommandType.GRAPH)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
-    """グラフ生成処理エントリーポイント
+def main(m: "MessageParserProtocol") -> None:
+    """
+    グラフ生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     m.status.command_type = CommandType.GRAPH
     g.params = dictutil.placeholder(g.cfg.graph, m)
 

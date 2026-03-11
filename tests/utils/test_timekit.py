@@ -15,7 +15,6 @@ from tests.utils import param_data
 )
 def test_keyword_range(date: str, keyword_list: list, period: list):
     """日付範囲キーワード"""
-
     for keyword in keyword_list:
         dt = ExtDt(date).range(keyword)
 
@@ -30,7 +29,6 @@ def test_keyword_range(date: str, keyword_list: list, period: list):
 )
 def test_format_conv(date: str, option: list, output: str):
     """フォーマット変換"""
-
     args: dict = {}
     for x in option:
         if isinstance(x, ExtDt.FMT):

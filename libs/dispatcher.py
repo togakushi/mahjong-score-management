@@ -21,7 +21,6 @@ if TYPE_CHECKING:
 
 def by_keyword(m: "MessageParserProtocol"):
     """メイン処理"""
-
     # チャンネル個別設定切替
     g.params.update(
         {
@@ -81,13 +80,14 @@ def by_keyword(m: "MessageParserProtocol"):
 
 
 def other_words(word: str, m: "MessageParserProtocol"):
-    """コマンド以外のワードの処理
+    """
+    コマンド以外のワードの処理
 
     Args:
         word (str): 入力ワード
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if word in g.cfg.rule.remarks_words and m.in_thread:  # 追加メモ
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
@@ -114,13 +114,14 @@ def other_words(word: str, m: "MessageParserProtocol"):
 
 
 def message_append(detection: GameResult, m: "MessageParserProtocol"):
-    """メッセージの追加処理
+    """
+    メッセージの追加処理
 
     Args:
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if _thread_check(m):
         modify.db_insert(detection, m)
     else:
@@ -130,11 +131,13 @@ def message_append(detection: GameResult, m: "MessageParserProtocol"):
 
 
 def message_changed(detection: GameResult, m: "MessageParserProtocol"):
-    """メッセージの変更処理
+    """
+    メッセージの変更処理
 
     Args:
         detection (GameResult): スコアデータ
         m (MessageParserProtocol): メッセージデータ
+
     """
     record_data = lookup.exsist_record(m.data.event_ts)
 
@@ -160,12 +163,13 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
 
 
 def message_deleted(m: "MessageParserProtocol"):
-    """メッセージの削除処理
+    """
+    メッセージの削除処理
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     if re.match(rf"^{g.cfg.setting.remarks_word}", m.keyword):  # 追加メモ
         modify.remarks_delete(m)
     else:
@@ -174,7 +178,6 @@ def message_deleted(m: "MessageParserProtocol"):
 
 def _thread_check(m: "MessageParserProtocol") -> bool:
     """スレッド内判定関数"""
-
     if isinstance(g.adapter, factory.slack_adapter):
         if not m.in_thread or (m.in_thread == g.adapter.conf.thread_report):
             return True

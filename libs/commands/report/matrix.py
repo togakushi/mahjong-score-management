@@ -15,13 +15,14 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
-    """対局対戦マトリックスの表示
+def plot(m: "MessageParserProtocol") -> None:
+    """
+    対局対戦マトリックスの表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ集計
     title: str = "対局対戦マトリックス"
     game_info = GameInfo()

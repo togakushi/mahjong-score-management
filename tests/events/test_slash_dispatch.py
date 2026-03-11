@@ -31,7 +31,7 @@ def _init():
     list(param_data.slash_help.values()),
     ids=list(param_data.slash_help.keys()),
 )
-def test_help(config, keyword, monkeypatch):
+def test_help(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(help)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -56,7 +56,7 @@ def test_help(config, keyword, monkeypatch):
     list(param_data.slash_results.values()),
     ids=list(param_data.slash_results.keys()),
 )
-def test_results(config, keyword, monkeypatch):
+def test_results(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(results)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -75,7 +75,7 @@ def test_results(config, keyword, monkeypatch):
     list(param_data.slash_graph.values()),
     ids=list(param_data.slash_graph.keys()),
 )
-def test_graph(config, keyword, monkeypatch):
+def test_graph(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(graph)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -94,7 +94,7 @@ def test_graph(config, keyword, monkeypatch):
     list(param_data.slash_ranking.values()),
     ids=list(param_data.slash_ranking.keys()),
 )
-def test_ranking(config, keyword, monkeypatch):
+def test_ranking(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(ranking)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -113,7 +113,7 @@ def test_ranking(config, keyword, monkeypatch):
     list(param_data.slash_report.values()),
     ids=list(param_data.slash_report.keys()),
 )
-def test_report(config, keyword, monkeypatch):
+def test_report(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(report)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -132,7 +132,7 @@ def test_report(config, keyword, monkeypatch):
     list(param_data.slash_check.values()),
     ids=list(param_data.slash_check.keys()),
 )
-def test_check(config, keyword, monkeypatch):
+def test_check(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(check)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -151,7 +151,7 @@ def test_check(config, keyword, monkeypatch):
     list(param_data.slash_download.values()),
     ids=list(param_data.slash_download.keys()),
 )
-def test_download(config, keyword, monkeypatch):
+def test_download(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(download)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -177,7 +177,7 @@ def test_download(config, keyword, monkeypatch):
     list(param_data.slash_member_list.values()),
     ids=list(param_data.slash_member_list.keys()),
 )
-def test_member_list(config, keyword, monkeypatch):
+def test_member_list(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(member)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -196,7 +196,7 @@ def test_member_list(config, keyword, monkeypatch):
     list(param_data.slash_member_add.values()),
     ids=list(param_data.slash_member_add.keys()),
 )
-def test_member_add(config, keyword, monkeypatch):
+def test_member_add(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(add)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -215,7 +215,7 @@ def test_member_add(config, keyword, monkeypatch):
     list(param_data.slash_member_del.values()),
     ids=list(param_data.slash_member_del.keys()),
 )
-def test_member_del(config, keyword, monkeypatch):
+def test_member_del(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(del)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -234,7 +234,7 @@ def test_member_del(config, keyword, monkeypatch):
     list(param_data.slash_team_create.values()),
     ids=list(param_data.slash_team_create.keys()),
 )
-def test_team_create(config, keyword, monkeypatch):
+def test_team_create(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_create)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -253,7 +253,7 @@ def test_team_create(config, keyword, monkeypatch):
     list(param_data.slash_team_del.values()),
     ids=list(param_data.slash_team_del.keys()),
 )
-def test_team_del(config, keyword, monkeypatch):
+def test_team_del(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_del)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -272,7 +272,7 @@ def test_team_del(config, keyword, monkeypatch):
     list(param_data.slash_team_add.values()),
     ids=list(param_data.slash_team_add.keys()),
 )
-def test_team_add(config, keyword, monkeypatch):
+def test_team_add(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_add)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -291,7 +291,7 @@ def test_team_add(config, keyword, monkeypatch):
     list(param_data.slash_team_remove.values()),
     ids=list(param_data.slash_team_remove.keys()),
 )
-def test_team_remove(config, keyword, monkeypatch):
+def test_team_remove(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_remove)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -310,7 +310,7 @@ def test_team_remove(config, keyword, monkeypatch):
     list(param_data.slash_team_list.values()),
     ids=list(param_data.slash_team_list.keys()),
 )
-def test_team_list(config, keyword, monkeypatch):
+def test_team_list(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_list)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -329,7 +329,7 @@ def test_team_list(config, keyword, monkeypatch):
     list(param_data.slash_team_clear.values()),
     ids=list(param_data.slash_team_clear.keys()),
 )
-def test_team_clear(config, keyword, monkeypatch):
+def test_team_clear(config, keyword, monkeypatch) -> None:
     """スラッシュコマンドイベントテスト(team_clear)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 

@@ -1,4 +1,5 @@
-"""ホームタブ関連モジュール
+"""
+ホームタブ関連モジュール
 
 - `integrations.slack.events.home_tab.home`: 初期メニュー
 - `integrations.slack.events.home_tab.personal`: 個人成績

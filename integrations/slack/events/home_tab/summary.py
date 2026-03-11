@@ -3,7 +3,7 @@ integrations/slack/events/home_tab/summary.py
 """
 
 import logging
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations.slack.adapter import ServiceAdapter
@@ -18,12 +18,14 @@ from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
+    from slack_bolt import App
+    from slack_sdk.models.views import View
+
     from integrations.protocols import MessageParserProtocol
 
 
-def build_summary_menu(adapter: ServiceAdapter):
+def build_summary_menu(adapter: ServiceAdapter) -> "View":
     """サマリメニュー生成"""
-
     adapter.conf.tab_var["screen"] = "SummaryMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -75,20 +77,23 @@ def build_summary_menu(adapter: ServiceAdapter):
     ui_parts.button(adapter, text="集計", action_id="summary_aggregation", style="primary")
     ui_parts.button(adapter, text="戻る", action_id="actionId-back", style="danger")
 
+    return cast("View", adapter.conf.tab_var)
+
 
 @register
-def register_summary_handlers(app, adapter: ServiceAdapter):
+def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
     """サマリメニュー"""
 
     @app.action("summary_menu")
-    def handle_menu_action(ack, body):
-        """メニュー項目生成
+    def handle_menu_action(ack: Any, body: Any) -> None:
+        """
+        メニュー項目生成
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -103,15 +108,15 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
         )
 
     @app.action("summary_aggregation")
-    def handle_aggregation_action(ack, body):
-        """成績サマリ集計
+    def handle_aggregation_action(ack: Any, body: Any) -> None:
+        """
+        成績サマリ集計
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-            client (slack_bolt.App.client): slack_boltオブジェクト
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -153,15 +158,15 @@ def register_summary_handlers(app, adapter: ServiceAdapter):
         ui_parts.update_view(adapter, m, app_msg)
 
     @app.view("SummaryMenu_ModalPeriodSelection")
-    def handle_view_submission(ack, view):
-        """view更新
+    def handle_view_submission(ack: Any, view: Any) -> None:
+        """
+        view更新
 
         Args:
-            ack (_type_): ack
-            view (dict): 描写内容
-            client (slack_bolt.App.client): slack_boltオブジェクト
-        """
+            ack (Any): ack
+            view (Any): 描写内容
 
+        """
         ack()
 
         for i in view["state"]["values"].keys():

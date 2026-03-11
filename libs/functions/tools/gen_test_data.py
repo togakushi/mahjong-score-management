@@ -21,12 +21,13 @@ from libs.utils.timekit import Format
 
 
 def main(season_times: int = 1):
-    """テスト用ゲーム結果生成処理
+    """
+    テスト用ゲーム結果生成処理
 
     Args:
         season_times (int, optional): 総当たり回数. Defaults to 1.
-    """
 
+    """
     g.cfg.initialization()
     lookup.read_memberslist()
 

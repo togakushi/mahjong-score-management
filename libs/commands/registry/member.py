@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from libs.bootstrap.app_config import BaseSection
+from libs.bootstrap.section import BaseSection
 from libs.data import loader, modify
 from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, textutil, validator
@@ -60,13 +60,13 @@ class MemberSection(BaseSection):
     guest_name: str
     """未登録メンバー名称"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.default_commandword = "メンバー一覧"
         self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -75,13 +75,14 @@ class MemberSection(BaseSection):
         self.alias_limit = int(16)
         self.guest_name = str("ゲスト")
 
-    def config_load(self, outer: "AppConfig"):
-        """設定値取り込み
+    def config_load(self, outer: "AppConfig") -> None:
+        """
+        設定値取り込み
 
         Args:
             outer (AppConfig): 設定クラスオブジェクト
-        """
 
+        """
         self._reset()
         super().__init__(self)
 
@@ -91,15 +92,16 @@ class MemberSection(BaseSection):
         logging.debug("%s: %s", self.section, self)
 
     def resolve_name(self, name: str) -> str:
-        """別名からメンバー名を逆引き
+        """
+        別名からメンバー名を逆引き
 
         Args:
             name (str): 変換する名前
 
         Returns:
             str: メンバー名(見つからない場合は空欄)
-        """
 
+        """
         for x in self.info:
             if name in x["alias"]:
                 return x["name"]
@@ -107,15 +109,16 @@ class MemberSection(BaseSection):
         return ""
 
     def alias(self, name: str) -> list[str]:
-        """指定メンバーの別名をリストで返す
+        """
+        指定メンバーの別名をリストで返す
 
         Args:
             name (str): メンバー名
 
         Returns:
             list[str]: 別名リスト
-        """
 
+        """
         for x in self.info:
             if x.get("name") == name:
                 return x.get("alias")
@@ -124,17 +127,17 @@ class MemberSection(BaseSection):
     @property
     def lists(self) -> list[str]:
         """メンバー名一覧をリストで返す"""
-
         return [x.get("name") for x in self.info]
 
     @property
     def all_lists(self) -> list[str]:
-        """メンバー名、別名をすべてリストで返す
+        """
+        メンバー名、別名をすべてリストで返す
 
         Returns:
             list[str]: メンバー名、別名のリスト
-        """
 
+        """
         ret: list[str] = []
         for name in self.lists:
             ret.append(name)
@@ -144,12 +147,13 @@ class MemberSection(BaseSection):
 
     @property
     def get_info(self) -> list[MemberDataDict]:
-        """全メンバー情報取得
+        """
+        全メンバー情報取得
 
         Returns:
             list[MemberDataDict]: メンバー情報
-        """
 
+        """
         ret = loader.read_data("MEMBER_INFO", cast(dict, g.params)).to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
@@ -158,7 +162,8 @@ class MemberSection(BaseSection):
 
 
 def append(argument: list) -> str:
-    """メンバー追加
+    """
+    メンバー追加
 
     Args:
         argument (list): 登録情報
@@ -167,8 +172,8 @@ def append(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
 
     ret: bool = False
@@ -266,7 +271,8 @@ def append(argument: list) -> str:
 
 
 def remove(argument: list) -> str:
-    """メンバー削除
+    """
+    メンバー削除
 
     Args:
         argument (list): 削除情報
@@ -275,8 +281,8 @@ def remove(argument: list) -> str:
 
     Returns:
         str: 処理結果
-    """
 
+    """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     msg = "使い方が間違っています。"
 

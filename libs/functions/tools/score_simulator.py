@@ -5,6 +5,7 @@ libs/functions/tools/score_simulator.py
 
 Returns:
     list: ゲーム終了時点の素点リスト
+
 """
 
 import random
@@ -39,7 +40,8 @@ HAN_POINTS: dict[int, dict[str, Union[int, tuple[int, ...]]]] = {
 
 
 def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
-    """和了打点を決める
+    """
+    和了打点を決める
 
     Args:
         is_parent (bool): 親フラグ
@@ -47,8 +49,8 @@ def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
 
     Returns:
         int | tuple: 打点
-    """
 
+    """
     rank = 1
     while rank < 15:
         success_prob = max([0, 0.6 - 0.02 * rank])
@@ -62,15 +64,16 @@ def determine_point(is_parent: bool, is_tsumo: bool) -> int | tuple:
 
 
 def determine_winner(k: int) -> tuple[list[int], list[int]]:
-    """和了役を抽選し、放銃役候補と分けてリストを返す
+    """
+    和了役を抽選し、放銃役候補と分けてリストを返す
 
     Args:
         k (int): 和了役に選ばれる人数
 
     Returns:
         tuple[list, list]: 抽選結果
-    """
 
+    """
     member = list(range(4))
     winners = random.sample(member, k=k)  # 和了役
     losers = [i for i in member if i not in winners]
@@ -79,7 +82,8 @@ def determine_winner(k: int) -> tuple[list[int], list[int]]:
 
 
 def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
-    """連チャンの判定を行う
+    """
+    連チャンの判定を行う
 
     Args:
         winners (list): 和了者のリスト（流局時は空リスト）
@@ -94,8 +98,8 @@ def should_renchan(winners: list, parent: int, tenpai: list, total_rounds: int, 
         - int: 判定後の局数
         - int: 判定後の連チャン数
         - int: 次の親
-    """
 
+    """
     flg: bool = False
     if winners:
         flg = parent in winners  # 和了時: 親が和了していれば連チャン

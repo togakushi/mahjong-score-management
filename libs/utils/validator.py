@@ -15,7 +15,8 @@ if TYPE_CHECKING:
 
 
 def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool, str]:
-    """登録制限チェック
+    """
+    登録制限チェック
 
     Args:
         name (str): チェックする名前
@@ -27,6 +28,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
         tuple[bool, str]: 判定結果
         - bool: 制限チェック結果真偽
         - str: 制限理由
+
     """
 
     def _pattern_gen(check_list: list[str]) -> list[str]:
@@ -76,15 +78,16 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
 
 
 def check_score(m: "MessageParserProtocol") -> dict:
-    """スコアチェック
+    """
+    スコアチェック
 
     Args:
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
         dict: 結果
-    """
 
+    """
     text = m.data.text
     ret: dict = {}
 

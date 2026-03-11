@@ -3,19 +3,24 @@ integrations/slack/events/home_tab/home.py
 """
 
 import logging
+from typing import TYPE_CHECKING, Any
 
 from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
 
+if TYPE_CHECKING:
+    from slack_bolt import App
 
-def build_main_menu(adapter: ServiceAdapter):
-    """メインメニューを生成する
+
+def build_main_menu(adapter: ServiceAdapter) -> None:
+    """
+    メインメニューを生成する
 
     Args:
         adapter (ServiceAdapter): インターフェースアダプタ
-    """
 
+    """
     adapter.conf.tab_var["screen"] = "MainMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -26,18 +31,19 @@ def build_main_menu(adapter: ServiceAdapter):
 
 
 @register
-def register_home_handlers(app, adapter: ServiceAdapter):
+def register_home_handlers(app: "App", adapter: ServiceAdapter) -> None:
     """ホームタブ操作イベント"""
 
     @app.action("actionId-back")
-    def handle_action(ack, body):
-        """戻るボタン
+    def handle_action(ack: Any, body: Any) -> None:
+        """
+        戻るボタン
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -48,15 +54,15 @@ def register_home_handlers(app, adapter: ServiceAdapter):
         )
 
     @app.action("modal-open-period")
-    def handle_open_modal_button_clicks(ack, body):
-        """検索範囲設定選択イベント
+    def handle_open_modal_button_clicks(ack: Any, body: Any) -> None:
+        """
+        検索範囲設定選択イベント
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-            client (slack_bolt.App.client): オブジェクト
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
 
         adapter.api.appclient.views_open(

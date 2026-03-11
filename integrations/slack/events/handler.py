@@ -5,7 +5,7 @@ integrations/slack/events/handler.py
 import logging
 import os
 import sys
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.dispatcher
 from integrations.slack.events.handler_registry import register, register_all
@@ -20,16 +20,17 @@ if TYPE_CHECKING:
     from integrations.slack.adapter import ServiceAdapter
 
 
-def main(adapter: "ServiceAdapter"):
-    """メイン処理
+def main(adapter: "ServiceAdapter") -> None:
+    """
+    メイン処理
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
 
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
-    """
 
+    """
     try:
         from slack_bolt import App
         from slack_bolt.adapter.socket_mode import SocketModeHandler
@@ -38,7 +39,7 @@ def main(adapter: "ServiceAdapter"):
     except ModuleNotFoundError as err:
         raise ModuleNotFoundError(err.msg) from None
 
-    def log_filter():
+    def log_filter() -> None:
         """ログレベル変更"""
         for name in logging.Logger.manager.loggerDict:
             if name.startswith(("slack_", "slack")) or "socket_mode" in name:
@@ -60,45 +61,47 @@ def main(adapter: "ServiceAdapter"):
 
 
 @register
-def register_event_handlers(app: "App", adapter: "ServiceAdapter"):
+def register_event_handlers(app: "App", adapter: "ServiceAdapter") -> None:
     """イベントAPI"""
-
     m = cast("MessageParserProtocol", adapter.parser())
 
     @app.event("message")
-    def handle_message_events(body):
-        """メッセージイベント
+    def handle_message_events(body: Any) -> None:
+        """
+        メッセージイベント
 
         Args:
-            body (dict): ポストされたデータ
-        """
+            body (Any): ポストされたデータ
 
+        """
         m.reset()
         m.parser(body)
         libs.dispatcher.by_keyword(m)
 
     @app.command(adapter.conf.slash_command)
-    def slash_command(ack, body):
-        """スラッシュコマンド
+    def slash_command(ack: Any, body: Any) -> None:
+        """
+        スラッシュコマンド
 
         Args:
-            ack (_type_): ack
-            body (dict): ポストされたデータ
-        """
+            ack (Any): ack
+            body (Any): ポストされたデータ
 
+        """
         ack()
         m.reset()
         m.parser(body)
         libs.dispatcher.by_keyword(m)
 
     @app.event("app_home_opened")
-    def handle_home_events(event):
-        """ホームタブオープン
+    def handle_home_events(event: Any) -> None:
+        """
+        ホームタブオープン
 
         Args:
-            event (dict): イベント内容
-        """
+            event (Any): イベント内容
 
+        """
         adapter.conf.tab_var = {
             "view": {},
             "no": 0,

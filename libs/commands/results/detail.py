@@ -3,7 +3,7 @@ libs/commands/results/detail.py
 """
 
 import textwrap
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import numpy as np
 import pandas as pd
@@ -23,13 +23,14 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
-    """成績詳細を集計
+def aggregation(m: "MessageParserProtocol") -> None:
+    """
+    成績詳細を集計
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- パラメータ更新
     g.params.update({"guest_skip": g.params["guest_skip2"]})  # 検索動作を合わせる
 
@@ -53,8 +54,8 @@ def aggregation(m: "MessageParserProtocol"):
 
     # --- データ収集
     game_info = GameInfo()
-    msg_data: dict = {}
-    mapping_dict: dict = {}
+    msg_data: dict[str, str] = {}
+    mapping_dict: dict[str, str] = {}
 
     # タイトル
     if g.params.get("individual"):
@@ -75,7 +76,7 @@ def aggregation(m: "MessageParserProtocol"):
         return
 
     stats = StatsInfo()
-    stats.read(cast(dict, g.params))
+    stats.read(g.params)
 
     if stats.result_df.empty or stats.record_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
@@ -174,13 +175,14 @@ def aggregation(m: "MessageParserProtocol"):
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
 
-def comparison(m: "MessageParserProtocol"):
-    """成績詳細を比較
+def comparison(m: "MessageParserProtocol") -> None:
+    """
+    成績詳細を比較
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -263,8 +265,9 @@ def comparison(m: "MessageParserProtocol"):
     m.post.thread = True
 
 
-def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict:
-    """ヘッダメッセージ生成
+def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict[str, Any]:
+    """
+    ヘッダメッセージ生成
 
     Args:
         data (dict): 生成内容が格納された辞書
@@ -272,10 +275,10 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
         player_name (str): プレイヤー名
 
     Returns:
-        dict: 集計データ
-    """
+        dict[str, Any]: 集計データ
 
-    ret: dict = {}
+    """
+    ret: dict[str, Any] = {}
 
     if g.params.get("individual"):
         ret["プレイヤー名"] = f"{player_name} {badge.degree(data.seat0.count)}"
@@ -286,7 +289,7 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
         ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params["player_name"]))
 
     badge_status = badge.status(data.seat0.count, data.seat0.win)
-    ret["検索範囲"] = text_item.search_range(time_pattern="time")
+    ret["検索範囲"] = str(text_item.search_range(time_pattern="time"))
     ret["集計範囲"] = str(text_item.aggregation_range(game_info))
     ret["特記事項"] = "、".join(text_item.remarks())
     ret["検索ワード"] = text_item.search_word()
@@ -296,17 +299,18 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
     return ret
 
 
-def get_totalization(data: StatsInfo) -> dict:
-    """集計トータルメッセージ生成
+def get_totalization(data: StatsInfo) -> dict[str, Any]:
+    """
+    集計トータルメッセージ生成
 
     Args:
         data (StatsInfo): 成績情報
 
     Returns:
-        dict: 生成メッセージ
-    """
+        dict[str, Any]: 生成メッセージ
 
-    ret: dict = {}
+    """
+    ret: dict[str, Any] = {}
 
     ret["通算ポイント"] = f"{data.seat0.total_point:+.1f}pt".replace("-", "▲")
     ret["平均ポイント"] = f"{data.seat0.avg_point:+.1f}pt".replace("-", "▲")
@@ -326,15 +330,16 @@ def get_totalization(data: StatsInfo) -> dict:
 
 
 def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
-    """戦績(簡易)データ取得
+    """
+    戦績(簡易)データ取得
 
     Args:
         mapping_dict (dict): 匿名化オプション用マップ
 
     Returns:
         pd.DataFrame: 戦績データ
-    """
 
+    """
     target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)
 
     df = loader.read_data("SUMMARY_DETAILS").fillna(value="")
@@ -357,15 +362,16 @@ def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
 
 
 def get_results_details(mapping_dict: dict) -> pd.DataFrame:
-    """戦績(詳細)データ取得
+    """
+    戦績(詳細)データ取得
 
     Args:
         mapping_dict (dict): 匿名化オプション用マップ
 
     Returns:
         pd.DataFrame: 戦績データ
-    """
 
+    """
     target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)  # noqa: F841
 
     df = loader.read_data("SUMMARY_DETAILS2", cast(dict, g.params)).fillna(value="")
@@ -405,13 +411,17 @@ def get_results_details(mapping_dict: dict) -> pd.DataFrame:
     return df_data
 
 
-def get_versus_matrix(mapping_dict: dict) -> str:
-    """対戦結果データ出力用メッセージ生成
+def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
+    """
+    対戦結果データ出力用メッセージ生成
+
+    Args:
+        mapping_dict (dict[str, str]): 匿名化用マッピングデータ
 
     Returns:
         str: 出力メッセージ
-    """
 
+    """
     df = loader.read_data("SUMMARY_VERSUS_MATRIX")
 
     if df.empty:
@@ -437,16 +447,17 @@ def get_versus_matrix(mapping_dict: dict) -> str:
     return output
 
 
-def message_build(data: dict) -> str:
-    """表示する内容をテキストに起こす
+def message_build(data: dict[str, str]) -> str:
+    """
+    表示する内容をテキストに起こす
 
     Args:
-        data (dict): 内容
+        data (dict[str, str]): 内容
 
     Returns:
         str: 表示するテキスト
-    """
 
+    """
     msg = ""
     for k, v in data.items():
         if not v:  # 値がない項目は削除

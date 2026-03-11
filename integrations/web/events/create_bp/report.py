@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def report_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """レポートページ用Blueprint
+    """
+    レポートページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("report", __name__, url_prefix="/report")
 
     @bp.route("/", methods=["GET", "POST"])

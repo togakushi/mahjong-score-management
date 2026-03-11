@@ -21,15 +21,16 @@ if TYPE_CHECKING:
 
 
 def score_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """スコア管理ページ用Blueprint
+    """
+    スコア管理ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("score", __name__, url_prefix="/score")
 
     @bp.route("/", methods=["GET", "POST"])

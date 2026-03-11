@@ -31,7 +31,8 @@ def select_adapter(selected_service: Literal["standard_io"], conf: "AppConfig") 
 
 
 def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterface":
-    """インターフェース選択
+    """
+    インターフェース選択
 
     Args:
         selected_service (str): 選択サービス
@@ -42,8 +43,8 @@ def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterfac
 
     Returns:
         AdapterType: アダプタインターフェース
-    """
 
+    """
     match selected_service:
         case "slack":
             return slack_adapter(conf.main_parser)

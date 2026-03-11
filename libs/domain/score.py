@@ -4,7 +4,7 @@ libs/domain/score.py
 
 import re
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Literal, Optional, cast
+from typing import TYPE_CHECKING, Any, Literal, Optional, cast
 
 import pandas as pd
 
@@ -14,12 +14,14 @@ if TYPE_CHECKING:
 
 @dataclass
 class Score:
-    """プレイヤー成績
+    """
+    プレイヤー成績
 
     Note:
         フィールド名の 'r_' プレフィックス (r_str, rpoint など) は、
         GameResult.to_dict() によって 'p1_', 'p2_', 'p3_', 'p4_' に置換され、
         DBテーブルのカラム名 (p1_str, p2_str など) として使用する。
+
     """
 
     name: str = field(default="")
@@ -38,7 +40,8 @@ class Score:
         return self != Score()
 
     def to_dict(self, prefix: str) -> "ScoreDict":
-        """データを辞書で返す
+        """
+        データを辞書で返す
 
         Args:
             prefix (str): キーに付与する接頭辞 (p1, p2, p3, p4)
@@ -49,8 +52,8 @@ class Score:
         Note:
             フィールド名の 'r_' プレフィックスは、指定された prefix に置換される。
             例: r_str -> p1_str (prefix='p1' の場合)
-        """
 
+        """
         return cast(
             "ScoreDict",
             {
@@ -66,7 +69,7 @@ class Score:
 class GameResult:
     """スコアデータ"""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         # ゲーム結果
         self.ts: str = ""
         """タイムスタンプ"""
@@ -92,7 +95,7 @@ class GameResult:
         """配給原点"""
         self.return_point: int = 300
         """返し点"""
-        self.rank_point: list = [30, 10, -10, -30]
+        self.rank_point: list[int] = [30, 10, -10, -30]
         """順位点"""
         self.draw_split: bool = False
         """同着時に順位点を山分けにするか"""
@@ -104,7 +107,7 @@ class GameResult:
     def __bool__(self) -> bool:
         return all(self.to_list("name") + self.to_list("str"))
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         if not isinstance(other, GameResult):
             return NotImplemented
 
@@ -126,14 +129,13 @@ class GameResult:
             ]
         )
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> bool:
         if not isinstance(other, GameResult):
             return NotImplemented
         return self.ts < other.ts
 
     def has_valid_data(self) -> bool:
         """DB更新に必要なデータを持っているかチェック"""
-
         # スコアデータ
         match self.mode:
             case 3:
@@ -162,13 +164,15 @@ class GameResult:
         """データ取り込み"""
 
         def _normalize_score_string(s: str) -> str:
-            """素点文字列の正規化
+            """
+            素点文字列の正規化
 
             Args:
                 s (str): 入力文字列
 
             Returns:
                 str: 正規化後の文字列
+
             """
             s = s.strip()
             s = re.sub(r"(-)+|(\+)+", r"\1\2", s)  # 連続した符号を集約
@@ -178,13 +182,15 @@ class GameResult:
             return s
 
         def _set_score_attr(score: Score, prefix: str, key: str, value: object) -> None:
-            """Scoreオブジェクトに属性を設定
+            """
+            Scoreオブジェクトに属性を設定
 
             Args:
                 score (Score): 対象スコアオブジェクト
                 prefix (str): プレイヤーポジション (p1-p4)
                 key (str): 属性名
                 value (object): 設定値
+
             """
             match key:
                 case "name":
@@ -232,12 +238,13 @@ class GameResult:
             self.source = kwargs["source"]
 
     def to_dict(self) -> "ScoreDict":
-        """データを辞書で返す
+        """
+        データを辞書で返す
 
         Returns:
             ScoreDict: スコアデータ
-        """
 
+        """
         return {
             "ts": self.ts,
             **self.p1.to_dict("p1"),
@@ -252,7 +259,8 @@ class GameResult:
         }
 
     def to_text(self, kind: Literal["simple", "detail", "logging"] = "simple") -> str:
-        """データをテキストで返す
+        """
+        データをテキストで返す
 
         Args:
             kind (Literal, optional): 表示形式
@@ -262,8 +270,8 @@ class GameResult:
 
         Returns:
             str: スコアデータ
-        """
 
+        """
         ret_text: str = ""
         match kind:
             case "simple":
@@ -288,7 +296,8 @@ class GameResult:
         return ret_text
 
     def to_list(self, kind: Literal["name", "str", "rpoint", "point", "rank"] = "name") -> list[str | int | float]:
-        """指定データをリストで返す
+        """
+        指定データをリストで返す
 
         Args:
             kind (Literal, optional): 取得内容
@@ -300,9 +309,9 @@ class GameResult:
 
         Returns:
             list[str | int | float]: リスト
-        """
 
-        ret_list: list = []
+        """
+        ret_list: list[str | int | float] = []
         match kind:
             case "name":
                 ret_list = [self.p1.name, self.p2.name, self.p3.name, self.p4.name]
@@ -319,9 +328,8 @@ class GameResult:
 
         return ret_list[: self.mode]
 
-    def calc(self, **kwargs):
+    def calc(self, **kwargs) -> None:
         """獲得ポイント計算"""
-
         if kwargs:
             self.set(**kwargs)
 
@@ -337,16 +345,17 @@ class GameResult:
                 raise RuntimeError
 
     def _normalized_expression(self, expr: str) -> int:
-        """入力文字列を式として評価し、計算結果を返す
+        """
+        入力文字列を式として評価し、計算結果を返す
 
         Args:
             expr (str): 入力式
 
         Returns:
             int: 計算結果
-        """
 
-        normalized: list = []
+        """
+        normalized: list[str] = []
 
         for token in re.findall(r"\d+|[+\-*/]", expr):
             if isinstance(token, str):
@@ -355,15 +364,16 @@ class GameResult:
                 else:
                     normalized.append(token)
 
-        return eval("".join(normalized))
+        return int(eval("".join(normalized)))
 
-    def _calculation_point3(self) -> dict:
-        """獲得ポイントと順位を計算する(三人打ち)
+    def _calculation_point3(self) -> dict[str, Any]:
+        """
+        獲得ポイントと順位を計算する(三人打ち)
 
         Returns:
-            dict: 更新用辞書(順位と獲得ポイントのデータ)
-        """
+            dict[str, Any]: 更新用辞書(順位と獲得ポイントのデータ)
 
+        """
         # 計算用データフレーム
         score_df = pd.DataFrame({"rpoint": [self._normalized_expression(str(x)) for x in self.to_list("str")]}, index=["p1", "p2", "p3"])
 
@@ -384,23 +394,26 @@ class GameResult:
 
         return ret_dict
 
-    def _calculation_point4(self) -> dict:
-        """獲得ポイントと順位を計算する(四人打ち)
+    def _calculation_point4(self) -> dict[str, Any]:
+        """
+        獲得ポイントと順位を計算する(四人打ち)
 
         Returns:
-            dict: 更新用辞書(順位と獲得ポイントのデータ)
+            dict[str, Any]: 更新用辞書(順位と獲得ポイントのデータ)
+
         """
 
-        def point_split(point: list) -> list:
-            """順位点を山分けする
+        def point_split(point: list[int]) -> list[int]:
+            """
+            順位点を山分けする
 
             Args:
-                point (list): 山分けするポイントのリスト
+                point (list[int]): 山分けするポイントのリスト
 
             Returns:
-                list: 山分けした結果
-            """
+                list[int]: 山分けした結果
 
+            """
             new_point = [int(sum(point) / len(point))] * len(point)
             if sum(point) % len(point):
                 new_point[0] += sum(point) % len(point)
@@ -470,12 +483,13 @@ class GameResult:
 
     @property
     def rpoint_sum(self) -> int:
-        """素点合計
+        """
+        素点合計
 
         Returns:
             int: 素点合計
-        """
 
+        """
         if not all(self.to_list("rank")):  # 順位が確定していない場合は先に計算
             self.calc()
 

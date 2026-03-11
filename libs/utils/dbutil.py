@@ -5,7 +5,7 @@ libs/utils/dbutil.py
 import re
 import sqlite3
 from importlib.resources import files
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING, Any, Union
 
 import libs.global_value as g
 
@@ -14,15 +14,16 @@ if TYPE_CHECKING:
 
 
 def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
-    """DB接続共通処理
+    """
+    DB接続共通処理
 
     Args:
         database_path (Union[Path, str]): データベースファイル
 
     Returns:
         sqlite3.Connection: オブジェクト
-    """
 
+    """
     conn = sqlite3.connect(
         database=f"file:{database_path}",
         # detect_types=sqlite3.PARSE_DECLTYPES,
@@ -34,7 +35,8 @@ def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
 
 
 def query(keyword: str) -> str:
-    """SQLクエリを返す
+    """
+    SQLクエリを返す
 
     Args:
         keyword (str): SQL選択キーワード
@@ -44,8 +46,8 @@ def query(keyword: str) -> str:
 
     Returns:
         str: SQL文
-    """
 
+    """
     sql_tables: dict[str, str] = {
         # テーブル作成
         "CREATE_TABLE_MEMBER": "table/member.sql",
@@ -110,15 +112,16 @@ def query(keyword: str) -> str:
 
 
 def query_modification(sql: str) -> str:
-    """クエリをオプションの内容で修正する
+    """
+    クエリをオプションの内容で修正する
 
     Args:
         sql (str): 修正するクエリ
 
     Returns:
         str: 修正後のクエリ
-    """
 
+    """
     if g.params.get("individual"):  # 個人集計
         sql = sql.replace("--[individual] ", "")
         # ゲスト関連フラグ
@@ -242,17 +245,18 @@ def query_modification(sql: str) -> str:
     return sql
 
 
-def table_info(conn: sqlite3.Connection, table_name: str) -> dict:
-    """テーブルのスキーマを取得して辞書で返す
+def table_info(conn: sqlite3.Connection, table_name: str) -> dict[str, Any]:
+    """
+    テーブルのスキーマを取得して辞書で返す
 
     Args:
         conn (sqlite3.Connection): オブジェクト
         table_name (str): テーブル名
 
     Returns:
-        dict: スキーマ
-    """
+        dict[str, Any]: スキーマ
 
+    """
     rows = conn.execute(f"pragma table_info('{table_name}');")
     schema = {row["name"]: dict(row) for row in rows.fetchall()}
 

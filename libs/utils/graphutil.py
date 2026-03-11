@@ -3,6 +3,7 @@ libs/utils/graphutil.py
 """
 
 import logging
+from typing import Any
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -12,9 +13,8 @@ from matplotlib import use
 import libs.global_value as g
 
 
-def setup():
+def setup() -> None:
     """グラフ設定初期化"""
-
     pd.options.plotting.backend = g.adapter.conf.plotting_backend
     match g.adapter.conf.plotting_backend:
         case "plotly":
@@ -52,15 +52,16 @@ def setup():
 
 
 def gen_xlabel(game_count: int) -> str:
-    """X軸ラベル生成
+    """
+    X軸ラベル生成
 
     Args:
         game_count (int): ゲーム数
 
     Returns:
         str: X軸ラベル
-    """
 
+    """
     if g.params.get("target_count"):
         xlabel = f"直近 {game_count} ゲーム"
     else:
@@ -83,16 +84,17 @@ def gen_xlabel(game_count: int) -> str:
     return xlabel
 
 
-def xticks_parameter(days_list: list) -> dict:
-    """X軸(xticks)に渡すパラメータを生成
+def xticks_parameter(days_list: list[Any]) -> dict[str, Any]:
+    """
+    X軸(xticks)に渡すパラメータを生成
 
     Args:
-        days_list (list): 日付リスト
+        days_list (list[Any]): 日付リスト
 
     Returns:
-        dict: パラメータ
-    """
+        dict[str, Any]: パラメータ
 
+    """
     days_list = [str(x).replace("-", "/") for x in days_list]
 
     thresholds = [

@@ -59,12 +59,13 @@ class RuleData:
     """記録回数"""
 
     def update(self, rule_data: Mapping[str, Any]):
-        """ルール更新
+        """
+        ルール更新
 
         Args:
             rule_data (Mapping): 更新データ
-        """
 
+        """
         if "rule_version" in rule_data:
             self.rule_version = str(rule_data["rule_version"])
         if "origin_point" in rule_data:
@@ -116,13 +117,14 @@ class RuleSet:
         self.read_config()
 
     def data_set(self, section_name: str, rule_data: Mapping[str, Any]):
-        """ルール登録
+        """
+        ルール登録
 
         Args:
             section_name (str): セクション名
             rule_data (Mapping): 更新データ情報
-        """
 
+        """
         rule = RuleData()
 
         # 初期値セット
@@ -149,7 +151,6 @@ class RuleSet:
 
     def read_config(self):
         """設定ファイル読み込み"""
-
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
                 continue
@@ -159,12 +160,13 @@ class RuleSet:
             self.data_set(section_name, dict(self.config[section_name]))
 
     def status_update(self, params: dict):
-        """ステータス更新
+        """
+        ステータス更新
 
         Args:
             params (dict): プレースホルダ
-        """
 
+        """
         # ステータスリセット
         for rule_version in self.rule_list:
             self.data[rule_version].count = 0
@@ -199,15 +201,16 @@ class RuleSet:
                     self.data[rule_version].last_time = ExtDt(float(status_data["last_time"]))
 
     def to_dict(self, rule_version: str) -> dict[str, Any]:
-        """指定ルール識別子の情報を辞書で返す
+        """
+        指定ルール識別子の情報を辞書で返す
 
         Args:
             rule_version (str): ルール識別子
 
         Returns:
             dict[str, Any]: ルール情報
-        """
 
+        """
         if rule := self.data.get(rule_version):
             return {
                 "rule_version": rule.rule_version,
@@ -223,7 +226,8 @@ class RuleSet:
         return {}
 
     def get_version(self, mode: int, mapping: bool = True) -> list[str]:
-        """指定した条件のルール識別子をリストで返す
+        """
+        指定した条件のルール識別子をリストで返す
 
         Args:
             mode (int): 集計モード
@@ -233,8 +237,8 @@ class RuleSet:
 
         Returns:
             list[str]: ルール識別子
-        """
 
+        """
         ret: list[str] = []
 
         for keyword, rule in self.data.items():
@@ -248,51 +252,55 @@ class RuleSet:
         return ret
 
     def get_mode(self, rule_version: str) -> int:
-        """指定ルール識別子の集計モードを返す
+        """
+        指定ルール識別子の集計モードを返す
 
         Args:
             rule_version (str): ルール識別子
 
         Returns:
             int: 集計モード
-        """
 
+        """
         return int(self.to_dict(rule_version).get("mode", 0))
 
     def get_ignore_flying(self, rule_version: str) -> bool:
-        """指定ルール識別子のトビカウントフラグを返す
+        """
+        指定ルール識別子のトビカウントフラグを返す
 
         Args:
             rule_version (str): ルール識別子
 
         Returns:
             bool: トビカウントフラグ
-        """
 
+        """
         return bool(self.to_dict(rule_version).get("ignore_flying", False))
 
     def get_undefined_word(self, rule_version: str) -> int:
-        """指定ルール識別子の未定義ワードタイプを返す
+        """
+        指定ルール識別子の未定義ワードタイプを返す
 
         Args:
             rule_version (str): ルール識別子
 
         Returns:
             int: 未定義ワードタイプ
-        """
 
+        """
         return int(self.to_dict(rule_version).get("undefined_word", 1))
 
     def print(self, rule_version: str) -> str:
-        """指定ルール識別子の内容を出力する
+        """
+        指定ルール識別子の内容を出力する
 
         Args:
             rule_version (str): ルール識別子
 
         Returns:
             str: 内容
-        """
 
+        """
         ret: str = ""
         body_data: list = []
 
@@ -342,7 +350,6 @@ class RuleSet:
 
     def info(self):
         """定義ルールをログに出力する"""
-
         logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
             logging.info(
@@ -358,7 +365,8 @@ class RuleSet:
             )
 
     def check(self, chk_commands: set, chk_members: set, default_rule: str):
-        """キーワード重複チェック
+        """
+        キーワード重複チェック
 
         Args:
             chk_commands (set): チェック対象コマンド名
@@ -367,8 +375,8 @@ class RuleSet:
 
         Raises:
             RuntimeError: 重複あり
-        """
 
+        """
         chk_word: str | RuleData
 
         try:
@@ -401,7 +409,6 @@ class RuleSet:
 
     def register_to_database(self):
         """ルールセット情報をDBに登録する"""
-
         loader.execute("delete from rule;")
         for rule in self.rule_list:
             params = self.to_dict(rule)
@@ -420,22 +427,24 @@ class RuleSet:
 
     @property
     def rule_list(self) -> list[str]:
-        """定義済みルール識別子の列挙
+        """
+        定義済みルール識別子の列挙
 
         Returns:
             list[str]: ルール識別子
-        """
 
+        """
         return [x.rule_version for x in self.data.values()]
 
     @property
     def remarks_words(self) -> list[str]:
-        """全ルールセットのメモ記録ワードを列挙
+        """
+        全ルールセットのメモ記録ワードを列挙
 
         Returns:
             list[str]: メモ記録ワード
-        """
 
+        """
         ret: list[str] = []
 
         for rule, data in self.data.items():

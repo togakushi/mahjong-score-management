@@ -3,7 +3,7 @@ integrations/slack/events/home_tab/ranking.py
 """
 
 import logging
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations.slack.adapter import ServiceAdapter
@@ -16,16 +16,20 @@ from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
+    from slack_bolt import App
+    from slack_sdk.models.views import View
+
     from integrations.protocols import MessageParserProtocol
 
 
-def build_ranking_menu(adapter: ServiceAdapter):
-    """ランキングメニュー生成
+def build_ranking_menu(adapter: ServiceAdapter) -> "View":
+    """
+    ランキングメニュー生成
 
     Args:
         adapter (ServiceAdapter): インターフェースアダプタ
-    """
 
+    """
     adapter.conf.tab_var["screen"] = "RankingMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
@@ -67,20 +71,23 @@ def build_ranking_menu(adapter: ServiceAdapter):
     ui_parts.button(adapter, text="集計", action_id="ranking_aggregation", style="primary")
     ui_parts.button(adapter, text="戻る", action_id="actionId-back", style="danger")
 
+    return cast("View", adapter.conf.tab_var)
+
 
 @register
-def register_ranking_handlers(app, adapter: ServiceAdapter):
+def register_ranking_handlers(app: "App", adapter: ServiceAdapter) -> None:
     """ランキングメニュー"""
 
     @app.action("ranking_menu")
-    def handle_menu_action(ack, body):
-        """メニュー項目生成
+    def handle_menu_action(ack: Any, body: Any) -> None:
+        """
+        メニュー項目生成
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -95,14 +102,15 @@ def register_ranking_handlers(app, adapter: ServiceAdapter):
         )
 
     @app.action("ranking_aggregation")
-    def handle_aggregation_action(ack, body):
-        """メニュー項目生成
+    def handle_aggregation_action(ack: Any, body: Any) -> None:
+        """
+        メニュー項目生成
 
         Args:
-            ack (_type_): ack
-            body (dict): イベント内容
-        """
+            ack (Any): ack
+            body (Any): イベント内容
 
+        """
         ack()
         logging.trace(body)  # type: ignore
 
@@ -136,14 +144,15 @@ def register_ranking_handlers(app, adapter: ServiceAdapter):
         ui_parts.update_view(adapter, m, app_msg)
 
     @app.view("RankingMenu_ModalPeriodSelection")
-    def handle_view_submission(ack, view):
-        """view更新
+    def handle_view_submission(ack: Any, view: Any) -> None:
+        """
+        view更新
 
         Args:
-            ack (_type_): ack
-            view (dict): 描写内容
-        """
+            ack (Any): ack
+            view (Any): 描写内容
 
+        """
         ack()
 
         for i in view["state"]["values"].keys():

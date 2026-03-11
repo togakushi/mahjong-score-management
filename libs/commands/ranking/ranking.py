@@ -17,13 +17,14 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def aggregation(m: "MessageParserProtocol"):
-    """ランキングデータを生成
+def aggregation(m: "MessageParserProtocol") -> None:
+    """
+    ランキングデータを生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 情報ヘッダ
     if g.params.get("individual"):  # 個人集計
         title = "ランキング"

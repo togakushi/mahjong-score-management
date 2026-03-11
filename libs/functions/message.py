@@ -21,7 +21,8 @@ if TYPE_CHECKING:
 
 
 def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
-    """メッセージをランダムに返す
+    """
+    メッセージをランダムに返す
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -29,8 +30,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
     Returns:
         str: 応答メッセージ
-    """
 
+    """
     parser = ConfigParser()
     parser.read(g.cfg.config_file, encoding="utf-8")
 
@@ -84,7 +85,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
 
 def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", indent=1):
-    """見出し生成
+    """
+    見出し生成
 
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報
@@ -94,8 +96,8 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text="", inden
 
     Returns:
         str: 生成した見出し
-    """
 
+    """
     msg = ""
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)

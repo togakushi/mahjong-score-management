@@ -9,8 +9,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from integrations.protocols import ChannelType, CommandType
 from libs.data import loader
+from libs.domain.datamodels import ChannelType, CommandType
 from libs.domain.score import GameResult
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -30,7 +30,8 @@ def get_config_value(
     val_type: type,
     fallback: Union[bool, int, float, str, list, None] = None,
 ) -> Any:
-    """設定値取得
+    """
+    設定値取得
 
     Args:
         config_file (Path): 設定ファイルパス
@@ -45,8 +46,8 @@ def get_config_value(
 
     Raises:
         TypeError: val_type が bool, int, float, str, list 以外の場合
-    """
 
+    """
     value: Union[int, float, bool, str, list, None] = fallback
     parser = ConfigParser()
     parser.read(config_file, encoding="utf-8")
@@ -70,15 +71,16 @@ def get_config_value(
 
 
 def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
-    """優先度の高いセパレート設定フラグを取得する
+    """
+    優先度の高いセパレート設定フラグを取得する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
         bool: セパレート設定フラグ
-    """
 
+    """
     separate_flg: Optional[bool] = None
 
     # DM / HomeApp(slack) はセパレートしない
@@ -111,15 +113,16 @@ def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
 
 
 def member_info(params: "PlaceholderDict") -> dict[str, Any]:
-    """指定メンバーの記録情報を返す
+    """
+    指定メンバーの記録情報を返す
 
     Args:
         params (PlaceholderDict): 対象メンバー
 
     Returns:
         dict[str, Any]: 記録情報
-    """
 
+    """
     params.update({"starttime": cast(ExtDt, params["starttime"]).format(Format.SQL)})
     params.update({"endtime": cast(ExtDt, params["endtime"]).format(Format.SQL)})
     ret = loader.execute(
@@ -148,12 +151,13 @@ def member_info(params: "PlaceholderDict") -> dict[str, Any]:
 
 
 def get_guest() -> str:
-    """ゲスト名取得
+    """
+    ゲスト名取得
 
     Returns:
         str: ゲスト名
-    """
 
+    """
     guest_name: str = ""
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
         rows = conn.execute("select name from member where id=0")
@@ -163,7 +167,8 @@ def get_guest() -> str:
 
 
 def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list:
-    """登録済みワードリストを取得する
+    """
+    登録済みワードリストを取得する
 
     Args:
         word_type (int, optional): 取得するタイプ. Defaults to 0.
@@ -171,8 +176,8 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
 
     Returns:
         list: 取得結果
-    """
 
+    """
     ret: list = []
 
     if not rule_version and not (rule_version := g.params.get("default_rule")):
@@ -204,7 +209,8 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
 
 
 def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
-    """ルール識別子で割り当てられているコマンドワードを返す
+    """
+    ルール識別子で割り当てられているコマンドワードを返す
 
     Args:
         rule_version (str): ルール識別子
@@ -212,8 +218,8 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
 
     Returns:
         list[str]: コマンドワード
-    """
 
+    """
     keywords: list = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
     commandwords: list = []
 
@@ -253,15 +259,16 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
 
 
 def exsist_record(ts: str) -> GameResult:
-    """記録されているゲーム結果を返す
+    """
+    記録されているゲーム結果を返す
 
     Args:
         ts (str): 検索するタイムスタンプ
 
     Returns:
         GameResult: スコアデータ
-    """
 
+    """
     result = GameResult()
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
@@ -274,15 +281,16 @@ def exsist_record(ts: str) -> GameResult:
 
 
 def first_record(rule_list: list[str]) -> ExtDt:
-    """最初のゲーム記録時間を返す
+    """
+    最初のゲーム記録時間を返す
 
     Args:
         rule_list (list[str]): ルール識別子
 
     Returns:
         ExtendedDatetime: 最初のゲーム記録時間
-    """
 
+    """
     ret = ExtDt()
     rule_dict = {f"rule_{idx}": name for idx, name in enumerate(set(rule_list))}
 
@@ -305,7 +313,6 @@ def first_record(rule_list: list[str]) -> ExtDt:
 
 def read_memberslist():
     """メンバー情報/チーム情報の読み込み"""
-
     g.cfg.member.guest_name = get_guest()
     g.cfg.member.info = g.cfg.member.get_info
     g.cfg.team.info = g.cfg.team.get_info
@@ -316,12 +323,13 @@ def read_memberslist():
 
 
 def enumeration_all_members() -> list[str]:
-    """メンバーとチームをすべて列挙する
+    """
+    メンバーとチームをすべて列挙する
 
     Returns:
         list[str]: メンバー名(別名含む)/チーム名のリスト
-    """
 
+    """
     ret_list: list[str] = []
 
     for member in g.cfg.member.info:

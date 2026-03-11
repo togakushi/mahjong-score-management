@@ -11,9 +11,8 @@ from libs.data import modify
 from libs.utils import dbutil
 
 
-def main():
+def main() -> None:
     """vacuum実行"""
-
     g.cfg.initialization()
 
     modify.db_backup()
@@ -33,8 +32,9 @@ def main():
     logging.info("freelist_count: %s -> %s", before_freelist, after_freelist)
 
 
-def db_info(cur, kind):
-    """page_countを取得
+def db_info(cur, kind) -> int:
+    """
+    page_countを取得
 
     Args:
         cur (sqlite3.Cursor): カーソルオブジェクト
@@ -42,8 +42,8 @@ def db_info(cur, kind):
 
     Returns:
         int: page_count / freelist_count
-    """
 
+    """
     match kind:
         case "page_count":
             count = cur.execute("pragma page_count;").fetchone()[0]

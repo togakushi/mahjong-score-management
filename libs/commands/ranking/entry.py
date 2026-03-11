@@ -17,19 +17,20 @@ if TYPE_CHECKING:
 class RankingConfig(SubCommands):
     """rankingセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀ランキング"
         self.section: str = str(CommandType.RANKING)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
-    """ランキング生成処理エントリーポイント
+def main(m: "MessageParserProtocol") -> None:
+    """
+    ランキング生成処理エントリーポイント
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.params = dictutil.placeholder(g.cfg.ranking, m)
 
     if g.params.get("rating"):  # レーティング

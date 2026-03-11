@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from integrations.base.interface import FunctionsInterface
-from integrations.protocols import ActionStatus
 from libs.data import lookup
+from libs.domain.datamodels import ActionStatus
 from libs.utils import validator
 from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -41,15 +41,16 @@ class SvcFunctions(FunctionsInterface):
         """個別設定"""
 
     def get_messages(self, word: str) -> list["MessageParserProtocol"]:
-        """slackログからメッセージを検索して返す
+        """
+        slackログからメッセージを検索して返す
 
         Args:
             word (str): 検索するワード
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         g.adapter = cast("ServiceAdapter", g.adapter)
 
         # 検索クエリ
@@ -76,15 +77,16 @@ class SvcFunctions(FunctionsInterface):
         return data
 
     def get_message_details(self, matches: list["MessageParserProtocol"]) -> list["MessageParserProtocol"]:
-        """メッセージ詳細情報取得
+        """
+        メッセージ詳細情報取得
 
         Args:
             matches (list[MessageParserProtocol]): 対象データ
 
         Returns:
             list[MessageParserProtocol]: 詳細情報追加データ
-        """
 
+        """
         new_matches: list["MessageParserProtocol"] = []
 
         # 詳細情報取得
@@ -108,15 +110,16 @@ class SvcFunctions(FunctionsInterface):
         return new_matches
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """スレッド情報の取得
+        """
+        スレッド情報の取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
 
         Returns:
             dict: API response
-        """
 
+        """
         try:
             res = self.api.appclient.conversations_replies(channel=m.data.channel_id, ts=m.data.event_ts)
             logging.trace(res.validate())  # type: ignore
@@ -126,7 +129,8 @@ class SvcFunctions(FunctionsInterface):
             return {}
 
     def get_reactions_list(self, msg: dict) -> tuple[list, list]:
-        """botが付けたリアクションを取得
+        """
+        botが付けたリアクションを取得
 
         Args:
             msg (dict): メッセージ内容
@@ -135,8 +139,8 @@ class SvcFunctions(FunctionsInterface):
             tuple[list,list]:
             - reaction_ok: okが付いているメッセージのタイムスタンプ
             - reaction_ng: ngが付いているメッセージのタイムスタンプ
-        """
 
+        """
         reaction_ok: list = []
         reaction_ng: list = []
 
@@ -152,12 +156,13 @@ class SvcFunctions(FunctionsInterface):
         return (reaction_ok, reaction_ng)
 
     def get_channel_id(self) -> str:
-        """チャンネルIDを取得する
+        """
+        チャンネルIDを取得する
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         channel_id = ""
 
         try:
@@ -179,15 +184,16 @@ class SvcFunctions(FunctionsInterface):
         return channel_id
 
     def get_dm_channel_id(self, user_id: str) -> str:
-        """DMのチャンネルIDを取得する
+        """
+        DMのチャンネルIDを取得する
 
         Args:
             user_id (str): DMの相手
 
         Returns:
             str: チャンネルID
-        """
 
+        """
         channel_id = ""
 
         try:
@@ -199,7 +205,8 @@ class SvcFunctions(FunctionsInterface):
         return channel_id
 
     def reaction_status(self, ch=str, ts=str) -> dict[str, list]:
-        """botが付けたリアクションの種類を返す
+        """
+        botが付けたリアクションの種類を返す
 
         Args:
             ch (str): チャンネルID
@@ -209,8 +216,8 @@ class SvcFunctions(FunctionsInterface):
             dict[str,list]: リアクション
             - str: "oK" or "ng"
             - list: タイムスタンプ
-        """
 
+        """
         icon: dict[str, list] = {
             "ok": [],
             "ng": [],
@@ -233,14 +240,15 @@ class SvcFunctions(FunctionsInterface):
         return icon
 
     def reaction_append(self, icon: str, ch: str, ts: str):
-        """リアクション追加
+        """
+        リアクション追加
 
         Args:
             icon (str): リアクション文字
             ch (str): チャンネルID
             ts (str): メッセージのタイムスタンプ
-        """
 
+        """
         if not all([icon, ch, ts]):
             logging.warning("deficiency: ts=%s, ch=%s, icon=%s", ts, ch, icon)
             return
@@ -261,14 +269,15 @@ class SvcFunctions(FunctionsInterface):
                     logging.error("ts=%s, ch=%s, icon=%s", ts, ch, icon)
 
     def reaction_remove(self, icon: str, ch: str, ts: str):
-        """リアクション削除
+        """
+        リアクション削除
 
         Args:
             icon (str): リアクション文字
             ch (str): チャンネルID
             ts (str): メッセージのタイムスタンプ
-        """
 
+        """
         if not all([icon, ch, ts]):
             logging.warning("deficiency: ts=%s, ch=%s, icon=%s", ts, ch, icon)
             return
@@ -293,12 +302,13 @@ class SvcFunctions(FunctionsInterface):
                     logging.error("ch=%s, ts=%s, icon=%s", ch, ts, icon)
 
     def pickup_score(self) -> list["MessageParserProtocol"]:
-        """過去ログからスコア記録を検索して返す
+        """
+        過去ログからスコア記録を検索して返す
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         # ゲーム結果の抽出
         score_matches: list["MessageParserProtocol"] = []
         for keyword in g.cfg.rule.keyword_mapping.keys():
@@ -317,12 +327,13 @@ class SvcFunctions(FunctionsInterface):
         return score_matches
 
     def pickup_remarks(self) -> list["MessageParserProtocol"]:
-        """slackログからメモを検索して返す
+        """
+        slackログからメモを検索して返す
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
-        """
 
+        """
         remarks_matches: list["MessageParserProtocol"] = []
 
         # メモの抽出
@@ -339,10 +350,12 @@ class SvcFunctions(FunctionsInterface):
         return remarks_matches
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
         # リアクション文字取得

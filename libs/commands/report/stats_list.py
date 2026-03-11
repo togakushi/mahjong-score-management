@@ -23,13 +23,14 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def main(m: "MessageParserProtocol"):
-    """成績一覧表を生成する
+def main(m: "MessageParserProtocol") -> None:
+    """
+    成績一覧表を生成する
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # 検索動作を合わせる
     g.params.update({"guest_skip": g.params["guest_skip2"]})
 
@@ -86,7 +87,8 @@ def main(m: "MessageParserProtocol"):
 
 
 def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "MessageType":
-    """グラフ生成処理
+    """
+    グラフ生成処理
 
     Args:
         game_info (GameInfo): ゲーム情報
@@ -95,8 +97,8 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     if g.adapter.conf.plotting_backend == "plotly":
         return None
 
@@ -186,15 +188,16 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
 
 
 def text_generation(df: "pd.DataFrame") -> "MessageType":
-    """テキストテーブル生成
+    """
+    テキストテーブル生成
 
     Args:
         df (pd.DataFrame): 描写データ
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.txt" if g.params.get("filename") else "report.txt")
 
     df = df.filter(
@@ -227,15 +230,16 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
 
 
 def csv_generation(df: "pd.DataFrame") -> "MessageType":
-    """CSV生成
+    """
+    CSV生成
 
     Args:
         df (pd.DataFrame): 描写データ
 
     Returns:
         MessageType: 生成ファイルパス
-    """
 
+    """
     report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.csv" if g.params.get("filename") else "report.csv")
 
     df = df.filter(
@@ -276,15 +280,16 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
 
 
 def df_generation(df: "pd.DataFrame") -> "MessageType":
-    """テキストテーブル生成
+    """
+    テキストテーブル生成
 
     Args:
         df (pd.DataFrame): 描写データ
 
     Returns:
         MessageType: 整形データ
-    """
 
+    """
     df = df.filter(
         items=[
             "player",

@@ -20,7 +20,7 @@ from libs.utils import dbutil
 @pytest.fixture(scope="package")
 def database_connection():
     """共有インメモリDBと接続"""
-    configuration.set_loglevel()
+    configuration.setup(init_db=False)
     g.cfg = AppConfig(Path("tests/testdata/empty.ini"))
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"
     conn = dbutil.connection(g.cfg.setting.database_file)

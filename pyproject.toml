@@ -43,6 +43,10 @@ pythonpath = "."
 [tool.uv]
 default-groups = ["dev"]
 
+[tool.mypy]
+explicit_package_bases = true
+check_untyped_defs = true
+
 [tool.pyrefly]
 project-includes = [
     "**/*.py",
@@ -77,7 +81,6 @@ ignore = [
     "D203",  # 1 blank line required before class docstring
     "D202",  # No blank lines allowed after function docstring
     "D212",  # Multi-line docstring summary should start at the first line
-    "D213",  # Multi-line docstring summary should start at the second line
     "D400",  # First line should end with a period
     "D403",  # First word of the docstring should be capitalized
     "D413",  # Missing blank line after last section (`Returns`)

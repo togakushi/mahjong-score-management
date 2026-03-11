@@ -15,16 +15,16 @@ class SvcFunctions(FunctionsInterface):
     """標準入出力専用関数"""
 
     def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
-        """
 
+        """
         print(ExtDt(float(m.data.event_ts)), m.status.message)
 
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """abstractmethod dummy"""
-
+        """Abstractmethod dummy"""
         _ = m
         return {}

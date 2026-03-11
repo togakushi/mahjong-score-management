@@ -11,9 +11,8 @@ from discord import Message
 from discord.channel import TextChannel
 
 import libs.global_value as g
-from integrations.protocols import ActionStatus, CommandType
 from libs.data import modify, search
-from libs.domain.datamodels import ComparisonResults
+from libs.domain.datamodels import ActionStatus, CommandType, ComparisonResults
 from libs.domain.score import GameResult
 from libs.types import RemarkDict, StyleOptions
 from libs.utils import formatter, validator
@@ -26,12 +25,13 @@ if TYPE_CHECKING:
 
 
 def main(m: "MessageParserProtocol"):
-    """突合処理(非同期関数呼び出しラッパー)
+    """
+    突合処理(非同期関数呼び出しラッパー)
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     asyncio.create_task(_wrapper(m))
 
 
@@ -60,13 +60,14 @@ async def _wrapper(m: "MessageParserProtocol"):
 
 
 async def search_messages(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """メッセージ全検索
+    """
+    メッセージ全検索
 
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
     for ch in g.adapter.api.bot.get_all_channels():
@@ -98,13 +99,14 @@ async def search_messages(results: ComparisonResults, messages_list: list["Messa
 
 
 async def check_omission(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """スコア突合
+    """
+    スコア突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     discord_score: list[GameResult] = []
 
@@ -155,13 +157,14 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
 
 
 async def check_remarks(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """メモ突合
+    """
+    メモ突合
 
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     g.adapter = cast("ServiceAdapter", g.adapter)
     discord_remarks: list[RemarkDict] = []
     score_list: dict[str, GameResult] = {}
@@ -219,13 +222,14 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
 
 
 async def check_total_score(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
-    """素点合計の再チェック
+    """
+    素点合計の再チェック
 
     Args:
         results (ComparisonResults): 結果格納データクラス
         messages_list (list[MessageParserProtocol]): 検索結果
-    """
 
+    """
     for work_m in messages_list:
         if detection := validator.check_score(work_m):
             score = GameResult(**detection)

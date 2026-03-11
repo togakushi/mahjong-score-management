@@ -5,7 +5,7 @@ libs/utils/textutil.py
 import os
 from enum import Enum, auto
 from math import ceil, floor
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import libs.global_value as g
 
@@ -27,7 +27,8 @@ class ConversionType(Enum):
 
 
 def str_conv(text: str, kind: ConversionType) -> str:
-    """文字列変換
+    """
+    文字列変換
 
     Args:
         text (str): 変換対象文字列
@@ -35,8 +36,8 @@ def str_conv(text: str, kind: ConversionType) -> str:
 
     Returns:
         str: 変換後の文字列
-    """
 
+    """
     zen = "".join(chr(0xFF10 + i) for i in range(10))
     han = "".join(chr(0x30 + i) for i in range(10))
     hira = "".join(chr(0x3041 + i) for i in range(86))
@@ -58,7 +59,8 @@ def str_conv(text: str, kind: ConversionType) -> str:
 
 
 def save_file_path(filename: str, delete: bool = False) -> "Path":
-    """保存ファイルのフルパスを取得
+    """
+    保存ファイルのフルパスを取得
 
     Args:
         filename (str): デフォルトファイル名
@@ -66,8 +68,8 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
 
     Returns:
         Path: 保存ファイルパス
-    """
 
+    """
     _, file_ext = os.path.splitext(filename)
     file_name = f"{g.params['filename']}{file_ext}" if g.params.get("filename") else f"{filename}"
     file_path = g.cfg.setting.work_dir / file_name
@@ -78,18 +80,19 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
     return file_path
 
 
-def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> list:
-    """リストデータを指定個数で分割
+def split_balanced(data: list[list[Any]], target_size: int, tolerance: float = 0.15) -> list[list[Any]]:
+    """
+    リストデータを指定個数で分割
 
     Args:
-        data (list): 対象データ
+        data (list[list[Any]]): 対象データ
         target_size (int): 分割サイズ
         tolerance (float, optional): 個数誤差. Defaults to 0.15.
 
     Returns:
-        list: 分割したリスト
-    """
+        list[list[Any]]: 分割したリスト
 
+    """
     # 分割サイズに0が指定されている場合は何もしない
     if not target_size:
         return data
@@ -118,7 +121,7 @@ def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> lis
     base_size = n // num_blocks
     remainder = n % num_blocks
 
-    result: list = []
+    result: list[list[Any]] = []
     start = 0
     for i in range(num_blocks):
         end = start + base_size + (1 if i < remainder else 0)
@@ -129,7 +132,8 @@ def split_balanced(data: list, target_size: int, tolerance: float = 0.15) -> lis
 
 
 def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
-    """指定文字数でテキストを行単位で分割してリストにする
+    """
+    指定文字数でテキストを行単位で分割してリストにする
 
     Args:
         text (str): 対象文字列
@@ -137,9 +141,9 @@ def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
 
     Returns:
         list[str]: 分割リスト
-    """
 
-    blocks = []
+    """
+    blocks: list[str] = []
     current_data = ""
     buffer_data = ""
     in_code = False

@@ -11,9 +11,8 @@ from libs.data import modify
 from libs.utils import dbutil
 
 
-def export_data():
+def export_data() -> None:
     """メンバー情報エクスポート"""
-
     g.cfg.initialization()
 
     if g.args.export_data:
@@ -35,9 +34,8 @@ def export_data():
             logging.info("export data: %s -> %s", table, csvfile)
 
 
-def import_data():
+def import_data() -> None:
     """メンバー情報インポート"""
-
     g.cfg.initialization()
 
     if g.args.import_data:

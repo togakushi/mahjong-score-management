@@ -14,8 +14,9 @@ if TYPE_CHECKING:
     from libs.domain.datamodels import GameInfo
 
 
-def remarks(headword=False) -> str | list:
-    """引数で指定された集計方法を注記にまとめる
+def remarks(headword: bool = False) -> str | list[str]:
+    """
+    引数で指定された集計方法を注記にまとめる
 
     Args:
         headword (bool, optional): 見出しを付ける. Defaults to False.
@@ -24,9 +25,9 @@ def remarks(headword=False) -> str | list:
         Union[list, str]:
         - `headword` がない場合はリストで返す
         - `headword` がある場合は文字列で返す
-    """
 
-    remark_list: list = []
+    """
+    remark_list: list[str] = []
 
     if g.params.get("individual"):  # 個人集計時のみ表示
         if not g.params.get("unregistered_replace"):
@@ -67,16 +68,17 @@ def remarks(headword=False) -> str | list:
     return remark_list
 
 
-def search_word(headword=False) -> str:
-    """キーワード検索条件を返す
+def search_word(headword: bool = False) -> str:
+    """
+    キーワード検索条件を返す
 
     Args:
         headword (bool, optional): 見出しを付ける. Defaults to False.
 
     Returns:
         str: 条件をまとめた文字列
-    """
 
+    """
     if ret := str(g.params.get("search_word", "")).replace("%", ""):
         # 集約条件
         if g.params.get("group_length"):
@@ -91,8 +93,9 @@ def search_word(headword=False) -> str:
     return ret
 
 
-def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> list | str:
-    """検索範囲を返す（ヘッダ出力用）
+def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[str] = None) -> list[str] | str:
+    """
+    検索範囲を返す（ヘッダ出力用）
 
     Args:
         kind (str): 返値のタイプ. Defaults to str.
@@ -102,8 +105,8 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> lis
         Union[list, str]:
         - `kind` にlistが指定されている場合はリスト
         - `kind` にstrが指定されている場合は文字列
-    """
 
+    """
     starttime: str
     endtime: str
 
@@ -128,8 +131,9 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern=None) -> lis
 def aggregation_range(
     game_info: "GameInfo",
     kind: Literal["list", "str"] = "str",
-) -> list | str:
-    """集計範囲を返す（ヘッダ出力用）
+) -> list[Optional[str]] | str:
+    """
+    集計範囲を返す（ヘッダ出力用）
 
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報
@@ -141,8 +145,8 @@ def aggregation_range(
         Union[list, str]:
         - `kind` にlistが指定されている場合はリストで返す
         - `kind` にstrが指定されている場合は文字列で返す
-    """
 
+    """
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
 
@@ -165,7 +169,8 @@ def date_range(
     prefix_a: Optional[str] = None,
     prefix_b: Optional[str] = None,
 ) -> str:
-    """日付範囲文字列
+    """
+    日付範囲文字列
 
     Args:
         kind (Format): ExtendedDatetimeのformatメソッドに渡す引数
@@ -174,8 +179,8 @@ def date_range(
 
     Returns:
         str: 生成文字列
-    """
 
+    """
     ret: str
     str_st: str
     str_et: str
@@ -205,13 +210,14 @@ def date_range(
 
 
 def get_members_list() -> str:
-    """登録済みのメンバー一覧を取得する
+    """
+    登録済みのメンバー一覧を取得する
 
     Returns:
         str: メンバーリスト
-    """
 
-    name_list: list = []
+    """
+    name_list: list[list[str]] = []
     for pname in g.cfg.member.lists:
         name_list.append([pname, ", ".join(g.cfg.member.alias(pname))])
 
@@ -229,13 +235,14 @@ def get_members_list() -> str:
 
 
 def get_team_list() -> str:
-    """チームの登録状況を取得する
+    """
+    チームの登録状況を取得する
 
     Returns:
         str: チームリスト
-    """
 
-    team_list: list = []
+    """
+    team_list: list[list[str]] = []
     for team_name in g.cfg.team.lists:
         if member := ", ".join(g.cfg.team.member(team_name)):
             team_list.append([team_name, member])

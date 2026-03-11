@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """成績サマリページ用Blueprint
+    """
+    成績サマリページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("summary", __name__, url_prefix="/summary")
 
     @bp.route("/", methods=["GET", "POST"])
@@ -66,15 +67,16 @@ def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
 
 
 def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
-    """戦績(詳細)はマルチカラムで表示
+    """
+    戦績(詳細)はマルチカラムで表示
 
     Args:
-        df (pd.DataFrame): _description_
+        df (pd.DataFrame): 戦績データ
 
     Returns:
-        pd.DataFrame: _description_
-    """
+        pd.DataFrame: マルチカラム化
 
+    """
     if not isinstance(df.columns, pd.MultiIndex):
         if not g.params.get("individual", True):  # チーム戦
             df.rename(

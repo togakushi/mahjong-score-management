@@ -16,15 +16,16 @@ if TYPE_CHECKING:
 
 
 def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
-    """個人成績詳細ページ用Blueprint
+    """
+    個人成績詳細ページ用Blueprint
 
     Args:
         adapter (ServiceAdapter): web用アダプタ
 
     Returns:
         Blueprint: Blueprint
-    """
 
+    """
     bp = Blueprint("detail", __name__, url_prefix="/detail")
 
     @bp.route("/", methods=["GET", "POST"])
@@ -67,15 +68,16 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
 
 
 def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
-    """戦績(詳細)はマルチカラムで表示
+    """
+    戦績(詳細)はマルチカラムで表示
 
     Args:
-        df (pd.DataFrame): _description_
+        df (pd.DataFrame): 戦績データ
 
     Returns:
-        pd.DataFrame: _description_
-    """
+        pd.DataFrame: マルチカラム変換
 
+    """
     if not isinstance(df.columns, pd.MultiIndex):
         new_columns = [tuple(col.split("_")) if len(col.split("_")) != 1 else ("", col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_columns, names=["座席", "項目"])

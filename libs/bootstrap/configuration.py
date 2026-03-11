@@ -30,7 +30,6 @@ if TYPE_CHECKING:
 
 def set_loglevel():
     """ログレベル追加"""
-
     # DEBUG : 10
     # INFO : 20
     # WARNING : 30
@@ -44,12 +43,13 @@ def set_loglevel():
 
 
 def arg_parser() -> Args:
-    """コマンドライン解析
+    """
+    コマンドライン解析
 
     Returns:
         Args : ArgumentParserオブジェクト
-    """
 
+    """
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
@@ -190,16 +190,24 @@ def arg_parser() -> Args:
                 type=Path,
             )
 
+    # 非表示オプション（外部ツールのオプション受け入れ）
+    hidden_group = p.add_argument_group("hidden options")
+    hidden_group.add_argument(
+        "--rootdir",
+        help=argparse.SUPPRESS,
+    )
+
     return cast(Args, p.parse_args(namespace=Args))
 
 
 def setup(init_db: bool = True):
-    """設定ファイル読み込み処理
+    """
+    設定ファイル読み込み処理
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
-    """
 
+    """
     set_loglevel()
 
     g.args = arg_parser()

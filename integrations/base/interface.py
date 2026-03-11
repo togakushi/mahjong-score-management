@@ -45,8 +45,8 @@ class IntegrationsConfig(ABC):
     _parser: Optional[ConfigParser] = field(default=None)
 
     # ディスパッチテーブル用
-    _command_dispatcher: dict = field(default_factory=dict)
-    _keyword_dispatcher: dict = field(default_factory=dict)
+    _command_dispatcher: dict[str, Any] = field(default_factory=dict)
+    _keyword_dispatcher: dict[str, Any] = field(default_factory=dict)
 
     # 共通設定
     main_conf: Optional[ConfigParser] = field(default=None)
@@ -87,23 +87,25 @@ class IntegrationsConfig(ABC):
     """グラフ描写ライブラリ"""
 
     @property
-    def command_dispatcher(self) -> dict:
-        """コマンドディスパッチテーブルを辞書で取得
+    def command_dispatcher(self) -> dict[str, Any]:
+        """
+        コマンドディスパッチテーブルを辞書で取得
 
         Returns:
-            dict: コマンドディスパッチテーブル
-        """
+            dict[str, Any]: コマンドディスパッチテーブル
 
+        """
         return self._command_dispatcher
 
     @property
-    def keyword_dispatcher(self) -> dict:
-        """キーワードディスパッチテーブルを辞書で取得
+    def keyword_dispatcher(self) -> dict[str, Any]:
+        """
+        キーワードディスパッチテーブルを辞書で取得
 
         Returns:
-            dict: キーワードディスパッチテーブル
-        """
+            dict[str, Any]: キーワードディスパッチテーブル
 
+        """
         return self._keyword_dispatcher
 
 
@@ -111,22 +113,26 @@ class FunctionsInterface(ABC):
     """個別関数インターフェース"""
 
     @abstractmethod
-    def post_processing(self, m: "MessageParserProtocol"):
-        """後処理
+    def post_processing(self, m: "MessageParserProtocol") -> None:
+        """
+        後処理
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
     @abstractmethod
     def get_conversations(self, m: "MessageParserProtocol") -> dict:
-        """スレッド情報の取得
+        """
+        スレッド情報の取得
 
         Args:
             m (MessageParserProtocol): メッセージデータ
 
         Returns:
             dict: API response
+
         """
         return {}
 
@@ -135,11 +141,13 @@ class APIInterface(ABC):
     """アダプタAPIインターフェース"""
 
     @abstractmethod
-    def post(self, m: "MessageParserProtocol"):
-        """メッセージを出力する
+    def post(self, m: "MessageParserProtocol") -> None:
+        """
+        メッセージを出力する
 
         Args:
             m (MessageParserProtocol): メッセージデータ
+
         """
 
 
@@ -152,7 +160,6 @@ class MessageParserDataMixin:
 
     def reset(self) -> None:
         """初期化"""
-
         self.data.reset()
         self.post.reset()
         self.status.reset()
@@ -161,14 +168,15 @@ class MessageParserDataMixin:
         self,
         data: "MessageType",
         options: "StyleOptions",
-    ):
-        """ヘッドラインメッセージをセット
+    ) -> None:
+        """
+        ヘッドラインメッセージをセット
 
         Args:
             data (MessageType): 内容
             options (StyleOptions): 表示オプション
-        """
 
+        """
         # 空データは登録しない
         if isinstance(data, NoneType) or (isinstance(data, pd.DataFrame) and data.empty):
             self.post.headline = None
@@ -179,14 +187,15 @@ class MessageParserDataMixin:
         self,
         data: "MessageType",
         options: "StyleOptions",
-    ):
-        """本文メッセージをセット
+    ) -> None:
+        """
+        本文メッセージをセット
 
         Args:
             data (MessageType): 内容
             options (StyleOptions): 表示オプション
-        """
 
+        """
         # 空データは登録しない
         if isinstance(data, NoneType) or (isinstance(data, pd.DataFrame) and data.empty):
             return
@@ -202,101 +211,115 @@ class MessageParserInterface(ABC):
     status: "StatusData"
 
     @abstractmethod
-    def parser(self, body: Any):
-        """メッセージ解析
+    def parser(self, body: Any) -> None:
+        """
+        メッセージ解析
 
         Args:
             body (Any): 解析データ
+
         """
 
     @property
     @abstractmethod
     def in_thread(self) -> bool:
-        """元メッセージへのリプライとなっているか
+        """
+        元メッセージへのリプライとなっているか
 
         Returns:
             bool: 真偽値
             - *True*: リプライの形（リプライ／スレッドなど）
             - *False*: 通常メッセージ
+
         """
 
     @property
     @abstractmethod
     def is_bot(self) -> bool:
-        """botのポストかチェック
+        """
+        botのポストかチェック
 
         Returns:
             bool: 真偽値
             - *True*: botのポスト
             - *False*: ユーザのポスト
+
         """
 
     @property
     @abstractmethod
     def check_updatable(self) -> bool:
-        """DB操作の許可チェック
+        """
+        DB操作の許可チェック
 
         Returns:
             bool: 真偽値
             - *True*: 許可
             - *False*: 禁止
+
         """
 
     @property
     @abstractmethod
     def ignore_user(self) -> bool:
-        """ignore_useridに存在するユーザかチェック
+        """
+        ignore_useridに存在するユーザかチェック
 
         Returns:
             bool: 真偽値
             - *True*: 存在する(操作禁止ユーザ)
             - *False*: 存在しない
+
         """
 
     @property
     def is_command(self) -> bool:
-        """コマンドで実行されているかチェック
+        """
+        コマンドで実行されているかチェック
 
         Returns:
             bool: 真偽値
             - *True*: コマンド実行
             - *False*: 非コマンド(キーワード呼び出し)
-        """
 
+        """
         return self.status.command_flg
 
     @property
     def keyword(self) -> str:
-        """コマンドとして認識している文字列を返す
+        """
+        コマンドとして認識している文字列を返す
 
         Returns:
             str: コマンド名
-        """
 
+        """
         if ret := self.data.text.split():
             return ret[0]
         return self.data.text
 
     @property
-    def argument(self) -> list:
-        """コマンド引数として認識している文字列をリストで返す
+    def argument(self) -> list[str]:
+        """
+        コマンド引数として認識している文字列をリストで返す
 
         Returns:
-            list: 引数リスト
-        """
+            list[str]: 引数リスト
 
+        """
         if ret := self.data.text.split():
             return ret[1:]
         return ret
 
     @property
     def reply_ts(self) -> str:
-        """リプライ先のタイムスタンプを取得する
+        """
+        リプライ先のタイムスタンプを取得する
 
         Returns:
             str: タイムスタンプ
-        """
 
+        """
         ret_ts: str = "0"
 
         # tsが指定されていれば最優先

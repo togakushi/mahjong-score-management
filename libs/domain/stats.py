@@ -4,12 +4,15 @@ libs/domain/stats.py
 
 import textwrap
 from dataclasses import dataclass, field, fields
-from typing import Literal, Optional, Union, get_type_hints
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union, cast, get_type_hints
 
 import pandas as pd
 
 from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from libs.types import PlaceholderDict
 
 
 @dataclass
@@ -101,15 +104,16 @@ class StatsDetailed:
     """最後の記録時間のコメント"""
 
     def avg_balance(self, pattern: str) -> float:
-        """平均収支計算
+        """
+        平均収支計算
 
         Args:
             pattern (str): 計算パターン
 
         Returns:
             float: 計算結果
-        """
 
+        """
         ret: float = 0.0
 
         match pattern:
@@ -140,7 +144,6 @@ class StatsDetailed:
     @property
     def count(self) -> int:
         """ゲーム数"""
-
         match self.mode:
             case 3:
                 return sum([self.rank1, self.rank2, self.rank3])
@@ -150,7 +153,6 @@ class StatsDetailed:
     @property
     def rank_avg(self) -> float:
         """平均順位"""
-
         if self.count:
             match self.mode:
                 case 3:
@@ -162,7 +164,6 @@ class StatsDetailed:
     @property
     def rank_distr(self) -> str:
         """順位分布(+平均順位)"""
-
         match self.mode:
             case 3:
                 return f"{self.rank1}-{self.rank2}-{self.rank3} ({self.rank_avg:.2f})"
@@ -172,7 +173,6 @@ class StatsDetailed:
     @property
     def rank_distr2(self) -> str:
         """順位分布(+ゲーム数)"""
-
         match self.mode:
             case 3:
                 return f"{self.rank1}+{self.rank2}+{self.rank3}={self.count}"
@@ -182,7 +182,6 @@ class StatsDetailed:
     @property
     def rank1_rate(self) -> float:
         """1位獲得率"""
-
         if self.count:
             return round(self.rank1 / self.count, 4)
         return 0.0
@@ -190,7 +189,6 @@ class StatsDetailed:
     @property
     def rank2_rate(self) -> float:
         """2位獲得率"""
-
         if self.count:
             return round(self.rank2 / self.count, 4)
         return 0.0
@@ -198,7 +196,6 @@ class StatsDetailed:
     @property
     def rank3_rate(self) -> float:
         """3位獲得率"""
-
         if self.count:
             return round(self.rank3 / self.count, 4)
         return 0.0
@@ -206,7 +203,6 @@ class StatsDetailed:
     @property
     def rank4_rate(self) -> float:
         """4位獲得率"""
-
         if self.count:
             return round(self.rank4 / self.count, 4)
         return 0.0
@@ -214,7 +210,6 @@ class StatsDetailed:
     @property
     def flying_rate(self) -> float:
         """トビ率"""
-
         if self.count:
             return round(self.flying / self.count, 4)
         return 0.0
@@ -222,16 +217,17 @@ class StatsDetailed:
     @property
     def yakuman_rate(self) -> float:
         """役満和了率"""
-
         if self.count:
             return round(self.yakuman / self.count, 4)
         return 0.0
 
-    def update_from_dict(self, data: dict) -> None:
-        """辞書から値を更新
+    def update_from_dict(self, data: dict[Any, Any]) -> None:
+        """
+        辞書から値を更新
 
         Args:
-            data (dict): 更新データ（キーはフィールド名）
+            data (dict[Any, Any]): 更新データ（キーはフィールド名）
+
         """
         type_hints = get_type_hints(self.__class__)
         for field_obj in fields(self):
@@ -261,12 +257,10 @@ class StatsDetailed:
 
     def war_record(self) -> str:
         """戦績結果"""
-
         return f"{self.count} 戦 ({self.win} 勝 {self.lose} 敗 {self.draw} 分)"
 
     def best_record(self) -> str:
         """ベストレコード"""
-
         rpoint_max = f"{self.rpoint_max * 100:+}点".replace("-", "▲") if self.rpoint_max else "記録なし"
         point_max = f"{self.point_max:+.1f}pt".replace("-", "▲") if self.point_max else "記録なし"
 
@@ -281,7 +275,6 @@ class StatsDetailed:
 
     def worst_record(self) -> str:
         """ワーストレコード"""
-
         rpoint_min = f"{self.rpoint_min * 100:+}点".replace("-", "▲") if self.rpoint_min else "記録なし"
         point_min = f"{self.point_min:+.1f}pt".replace("-", "▲") if self.point_min else "記録なし"
 
@@ -295,7 +288,8 @@ class StatsDetailed:
         return ret.strip()
 
     def _work(self, c_num: int, m_num: int) -> str:
-        """単位設定
+        """
+        単位設定
 
         Args:
             c_num (int): 現在値
@@ -303,8 +297,8 @@ class StatsDetailed:
 
         Returns:
             str: 生成文字列
-        """
 
+        """
         c_str = f"{c_num} 回目" if c_num else f"{c_num} 回"
         if m_num:
             m_str = "最大 1 回" if m_num == 1 else f"最大 {m_num} 連続"
@@ -338,7 +332,7 @@ class StatsInfo:
     # 検索条件
     mode: Literal[3, 4] = field(default=4)
     """集計モード"""
-    rule_version: list = field(default_factory=list)
+    rule_version: list[str] = field(default_factory=list)
     """ルールセット"""
     # 検索範囲
     starttime: ExtDt = field(default=ExtDt("1900-01-01 00:00:00"))
@@ -351,15 +345,16 @@ class StatsInfo:
     result_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
-    def read(self, params: dict):
-        """データ読み込み
+    def read(self, params: "PlaceholderDict") -> None:
+        """
+        データ読み込み
 
         Args:
-            params (dict): プレースホルダ
-        """
+            params (PlaceholderDict): プレースホルダ
 
-        self.result_df = loader.read_data("RESULTS_INFO", params)
-        self.record_df = loader.read_data("RECORD_INFO", params)
+        """
+        self.result_df = loader.read_data("RESULTS_INFO", cast(dict, params))
+        self.record_df = loader.read_data("RECORD_INFO", cast(dict, params))
 
         if self.result_df.empty or self.record_df.empty:
             return
@@ -368,13 +363,14 @@ class StatsInfo:
         self.set_data(self.result_df)
         self.set_data(self.record_df)
 
-    def set_data(self, df: "pd.DataFrame"):
-        """集計結果取り込み
+    def set_data(self, df: "pd.DataFrame") -> None:
+        """
+        集計結果取り込み
 
         Args:
             df (pd.DataFrame): 集計結果
-        """
 
+        """
         seat_map = {0: self.seat0, 1: self.seat1, 2: self.seat2, 3: self.seat3, 4: self.seat4}
 
         for _, row in df.iterrows():
@@ -383,9 +379,8 @@ class StatsInfo:
                 if isinstance(seat_id, int) and seat_id in seat_map:
                     seat_map[seat_id].update_from_dict(row.to_dict())
 
-    def set_parameter(self, **kwargs):
+    def set_parameter(self, **kwargs) -> None:
         """パラメータ取り込み"""
-
         if "mode" in kwargs and isinstance(kwargs["mode"], int):
             if kwargs["mode"] in (3, 4):
                 self.mode = kwargs["mode"]  # type: ignore[assignment]
@@ -409,9 +404,8 @@ class StatsInfo:
             self.search_word = kwargs["search_word"]
 
     @property
-    def rank_distr_list(self) -> list:
+    def rank_distr_list(self) -> list[str]:
         """座席別順位分布(平均順位)"""
-
         return [
             self.seat1.rank_distr,
             self.seat2.rank_distr,
@@ -420,9 +414,8 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def rank_distr_list2(self) -> list:
+    def rank_distr_list2(self) -> list[str]:
         """座席別順位分布(ゲーム数)"""
-
         return [
             self.seat1.rank_distr2,
             self.seat2.rank_distr2,
@@ -431,9 +424,8 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def rank_avg_list(self) -> list:
+    def rank_avg_list(self) -> list[float]:
         """座席別平均順位"""
-
         return [
             self.seat1.rank_avg,
             self.seat2.rank_avg,
@@ -442,9 +434,8 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def flying_list(self) -> list:
+    def flying_list(self) -> list[int]:
         """座席別トビ率"""
-
         return [
             self.seat1.flying,
             self.seat2.flying,
@@ -453,9 +444,8 @@ class StatsInfo:
         ][: self.mode]
 
     @property
-    def yakuman_list(self) -> list:
+    def yakuman_list(self) -> list[int]:
         """座席別役満和了率"""
-
         return [
             self.seat1.yakuman,
             self.seat2.yakuman,
@@ -466,7 +456,6 @@ class StatsInfo:
     @property
     def summary(self) -> pd.DataFrame:
         """成績サマリ"""
-
         ret_df = pd.DataFrame(
             {
                 "count": [self.seat0.count],

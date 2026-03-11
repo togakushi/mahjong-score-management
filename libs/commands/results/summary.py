@@ -16,13 +16,14 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
-    """各プレイヤーの通算ポイントを表示
+def aggregation(m: "MessageParserProtocol") -> None:
+    """
+    各プレイヤーの通算ポイントを表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # --- データ収集
     data: "MessageType"
     game_info = GameInfo()
@@ -152,13 +153,14 @@ def aggregation(m: "MessageParserProtocol"):
         m.set_message(data, StyleOptions(**options.asdict))
 
 
-def difference(m: "MessageParserProtocol"):
-    """各プレイヤーのポイント差分を表示
+def difference(m: "MessageParserProtocol") -> None:
+    """
+    各プレイヤーのポイント差分を表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     # データ収集
     data: "MessageType"
     game_info = GameInfo()

@@ -11,12 +11,13 @@ if TYPE_CHECKING:
 
 
 def command_help(m: "MessageParserProtocol"):
-    """スラッシュコマンド用ヘルプ
+    """
+    スラッシュコマンド用ヘルプ
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     msg = "```使い方："
     msg += f"\n\t{m.status.command_name} help          このメッセージ"
     msg += "\n\t--- 成績管理 ---"

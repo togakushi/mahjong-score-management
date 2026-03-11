@@ -17,9 +17,8 @@ if TYPE_CHECKING:
     from libs.domain.datamodels import ComparisonResults
 
 
-def main():
+def main() -> None:
     """データ突合処理"""
-
     g.cfg.initialization()
 
     # 結果の出力先(standard_io)
@@ -44,7 +43,8 @@ def main():
 
 
 def slack_comparison(m: "MessageParserProtocol"):
-    """突合処理(slack)
+    """
+    突合処理(slack)
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -52,8 +52,8 @@ def slack_comparison(m: "MessageParserProtocol"):
     Raises:
         ModuleNotFoundError: ライブラリ未インストール
         RuntimeError: 接続エラー
-    """
 
+    """
     try:
         from slack_bolt import App
         from slack_sdk import WebClient
@@ -77,12 +77,13 @@ def slack_comparison(m: "MessageParserProtocol"):
 
 
 def discord_comparison(m: "MessageParserProtocol"):
-    """突合処理(discord)
+    """
+    突合処理(discord)
 
     Args:
         m (MessageParserProtocol): メッセージデータ
-    """
 
+    """
     g.adapter = cast("discord_adapter", g.adapter)
 
     m.status.message = "未実装"

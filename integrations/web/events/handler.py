@@ -15,9 +15,8 @@ if TYPE_CHECKING:
     from integrations.web.adapter import ServiceAdapter
 
 
-def main(adapter: "ServiceAdapter"):
+def main(adapter: "ServiceAdapter") -> None:
     """メイン処理"""
-
     app = Flask(
         __name__,
         static_folder=os.path.join(g.cfg.script_dir, "files/html/static"),
@@ -39,7 +38,7 @@ def main(adapter: "ServiceAdapter"):
     auth = HTTPBasicAuth()
 
     @auth.verify_password
-    def verify_password(username, password):
+    def verify_password(username: str, password: str) -> bool:
         if username == adapter.conf.username and password == adapter.conf.password:
             return True
         return False

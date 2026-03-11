@@ -4,6 +4,7 @@ libs/utils/formatter.py
 
 import random
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -12,27 +13,28 @@ from libs.types import StyleOptions
 from libs.utils import textutil
 
 
-def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
-    """カラム名に応じたfloatfmtのリストを返す
+def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
+    """
+    カラム名に応じたfloatfmtのリストを返す
 
     Args:
         df (pd.DataFrame): チェックするデータ
         index (bool, optional): リストにIndexを含める. Defaults to False.
 
     Returns:
-        list: floatfmtに指定するリスト
-    """
+        list[str]: floatfmtに指定するリスト
 
-    fmt: list = []
+    """
+    fmt: list[str] = []
     if df.empty:
         return fmt
 
-    field: list = df.columns.tolist()
+    field: list[Any] = df.columns.tolist()
     if index:
         field.insert(0, df.index.name)
 
     for x in field:
-        match x:
+        match str(x):
             case "ゲーム数" | "game_count":
                 fmt.append(".0f")
             case "win" | "lose" | "draw" | "top2" | "top3" | "yakuman_count":
@@ -75,8 +77,9 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list:
     return fmt
 
 
-def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False) -> list:
-    """カラム位置
+def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False) -> list[str]:
+    """
+    カラム位置
 
     Args:
         df (pd.DataFrame): チェックするデータ
@@ -84,14 +87,14 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
         index (bool, optional): リストにIndexを含める. Defaults to False.
 
     Returns:
-        list: colalignに指定するリスト
-    """
+        list[str]: colalignに指定するリスト
 
-    fmt: list = []  # global, right, center, left, decimal, None
+    """
+    fmt: list[str] = []  # global, right, center, left, decimal, None
     if df.empty:
         return fmt
 
-    field: list = df.columns.tolist()
+    field: list[Any] = df.columns.tolist()
     if index:
         field.insert(0, df.index.name)
 
@@ -99,7 +102,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
         fmt = ["left"] * len(field)
     else:
         for x in field:
-            match x:
+            match str(x):
                 case "name" | "playtime" | "matter" | "grade":
                     fmt.append("left")
                 case "rank_distr" | "rank_distr4":
@@ -113,7 +116,8 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
 
 
 def name_replace(target: str, add_mark: bool = False, not_replace: bool = False) -> str:
-    """表記ブレ修正(正規化)
+    """
+    表記ブレ修正(正規化)
 
     Args:
         target (str): 対象プレイヤー名
@@ -124,8 +128,8 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
     Returns:
         str: 表記ブレ修正後のプレイヤー名
-    """
 
+    """
     chk_pattern = [
         target,  # 無加工
         textutil.str_conv(target, textutil.ConversionType.HtoZ),  # 半角 -> 全角
@@ -161,15 +165,16 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
 
 def honor_remove(name: str) -> str:
-    """敬称削除
+    """
+    敬称削除
 
     Args:
         name (str): 対象の名前
 
     Returns:
         str: 敬称を削除した名前
-    """
 
+    """
     honor = r"(くん|さん|ちゃん|クン|サン|チャン|君)$"
     if re.match(rf".*{honor}", name):
         if not re.match(rf".*(っ|ッ|ー){honor}", name):
@@ -178,18 +183,19 @@ def honor_remove(name: str) -> str:
     return name
 
 
-def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
-    """名前リストから変換用辞書を生成
+def anonymous_mapping(name_list: list[str], initial: int = 0) -> dict[str, str]:
+    """
+    名前リストから変換用辞書を生成
 
     Args:
-        name_list (list): 名前リスト
+        name_list (list[str]): 名前リスト
         initial (int, optional): インデックス初期値. Defaults to 0.
 
     Returns:
-        dict: マッピング用辞書
-    """
+        dict[str, str]: マッピング用辞書
 
-    ret: dict = {}
+    """
+    ret: dict[str, str] = {}
 
     if g.params.get("individual", True):
         prefix = "Player"
@@ -214,7 +220,8 @@ def anonymous_mapping(name_list: list, initial: int = 0) -> dict:
 
 
 def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
-    """カラム名をリネームする
+    """
+    カラム名をリネームする
 
     Args:
         df (pd.DataFrame): 対象データフレーム
@@ -222,9 +229,9 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: リネーム後のデータフレーム
-    """
 
-    rename_dict: dict = {
+    """
+    rename_dict: dict[str, str] = {
         #
         "p1": "東家",
         "p2": "南家",
@@ -427,8 +434,9 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
     return df.rename(columns=rename_dict)
 
 
-def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
-    """非表示項目をドロップ
+def df_drop(df: pd.DataFrame, drop_items: list[str]) -> pd.DataFrame:
+    """
+    非表示項目をドロップ
 
     Args:
         df (pd.DataFrame): ターゲット
@@ -436,8 +444,8 @@ def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: 加工後
-    """
 
+    """
     original = df.columns.to_list()
     columns = df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL)).columns.to_list()  # カラム名変換
     position = [columns.index(item) for item in drop_items if item in columns]
@@ -447,7 +455,8 @@ def df_drop(df: pd.DataFrame, drop_items: list) -> pd.DataFrame:
 
 
 def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
-    """指定文字数まで改行で連結
+    """
+    指定文字数まで改行で連結
 
     Args:
         lines (list[str]): 連結対象
@@ -455,10 +464,10 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
 
     Returns:
         list[str]: 連結結果
-    """
 
-    result: list = []
-    buffer: list = []
+    """
+    result: list[str] = []
+    buffer: list[str] = []
 
     for i, line in enumerate(lines):
         is_last = i == len(lines) - 1  # 最終ブロック判定
@@ -486,7 +495,8 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
 
 
 def split_strings(msg: str, limit: int = 3000) -> list[str]:
-    """指定文字数で分割
+    """
+    指定文字数で分割
 
     Args:
         msg (str): 分割対象
@@ -494,10 +504,10 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
 
     Returns:
         list[str]: 分割結果
-    """
 
-    result: list = []
-    buffer: list = []
+    """
+    result: list[str] = []
+    buffer: list[str] = []
     codeblock: bool = False
 
     for line in msg.splitlines(keepends=True):
