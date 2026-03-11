@@ -3,7 +3,7 @@ integrations/web/events/handler.py
 """
 
 import os
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from flask import Flask
 from flask_httpauth import HTTPBasicAuth  # type: ignore
@@ -44,7 +44,7 @@ def main(adapter: "ServiceAdapter") -> None:
         return False
 
     @app.before_request
-    def require_auth():
+    def require_auth() -> Any:
         if adapter.conf.require_auth:
             return auth.login_required(lambda: None)()
         return None

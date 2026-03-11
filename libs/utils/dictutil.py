@@ -85,12 +85,12 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
     # always_argumentの処理
     pre_param = parser.analysis_argument(subcom.always_argument)
     logging.debug("analysis_argument: %s", pre_param)
-    ret_dict.update({**(cast(dict, pre_param.flags))})
+    cast(dict[str, Any], ret_dict).update(pre_param.flags)
 
     # 引数の処理
     param = parser.analysis_argument(m.argument)
     logging.debug("argument: %s", param)
-    ret_dict.update({**(cast(dict, param.flags))})  # 上書き
+    cast(dict[str, Any], ret_dict).update(param.flags)  # 上書き
 
     # 検索範囲取得
     departure_time = ExtDt(hours=-g.cfg.setting.time_adjust)
