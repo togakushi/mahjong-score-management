@@ -229,10 +229,10 @@ class CommandParser:
             ParsedCommand: 結果
 
         """
-        ret: dict = {}
-        unknown: list = []
-        args: list = []
-        search_range: list = []
+        ret: dict[str, Any] = {}
+        unknown: list[str] = []
+        args: list[str] = []
+        search_range: list[Any] = []
 
         for keyword in argument:
             check_word = textutil.str_conv(keyword.lower(), textutil.ConversionType.HtoK)
@@ -267,7 +267,7 @@ class CommandParser:
 
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 
-    def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict:
+    def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict[str, Any]:
         """
         コマンド名に一致したときの処理
 
@@ -276,13 +276,13 @@ class CommandParser:
             obj (re.Match): Matchオブジェクト
 
         Returns:
-            dict: 更新用辞書
+            dict[str, Any]: 更新用辞書
 
         """
-        ret: dict = {}
+        ret: dict[str, Any] = {}
 
-        def with_arguments(tmp: dict):
-            key = next(iter(tmp.keys()))
+        def with_arguments(tmp: dict[str, Any]):
+            key = str(next(iter(tmp.keys())))
             val = str(tmp[key][1])
             if "" != val:
                 match cmd.get("type"):

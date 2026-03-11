@@ -15,8 +15,10 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import BadgeDisplay, DropItems, MemberSection, TeamSection
+    from libs.bootstrap.app_config import BadgeDisplay, DropItems
     from libs.bootstrap.section import AliasSection, MahjongSection, SettingSection
+    from libs.commands.registry.member import MemberSection
+    from libs.commands.registry.team import TeamSection
     from libs.utils.timekit import ExtendedDatetime
 
 if TYPE_CHECKING:
@@ -218,7 +220,7 @@ class StyleOptions:
         return f"{self.base_name}.{self.format_type}"
 
     @property
-    def asdict(self) -> dict:
+    def asdict(self) -> dict[str, Any]:
         """辞書変換"""
         return asdict(self)
 
@@ -457,9 +459,9 @@ class RankTableDict(TypedDict):
 
     grade: str
     """段位名称"""
-    point: list
+    point: list[int]
     """初期ポイントと昇段に必要なポイント"""
-    acquisition: list
+    acquisition: list[int]
     """獲得ポイント(順位)"""
     demote: bool
     """降格フラグ

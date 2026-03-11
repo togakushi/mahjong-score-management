@@ -10,7 +10,7 @@ import pytest
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
-from libs.data import modify
+from libs.data import initialization, modify
 from libs.domain.score import GameResult
 from libs.utils import dbutil, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -28,7 +28,7 @@ def test_score_insert(draw_split, game_result, get_point, get_rank, monkeypatch)
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    configuration.initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.setup_resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter("standard_io", g.cfg)
     g.cfg.selected_service = "standard_io"
 

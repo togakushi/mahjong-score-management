@@ -5,7 +5,7 @@ libs/utils/dbutil.py
 import re
 import sqlite3
 from importlib.resources import files
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING, Any, Union
 
 import libs.global_value as g
 
@@ -245,7 +245,7 @@ def query_modification(sql: str) -> str:
     return sql
 
 
-def table_info(conn: sqlite3.Connection, table_name: str) -> dict:
+def table_info(conn: sqlite3.Connection, table_name: str) -> dict[str, Any]:
     """
     テーブルのスキーマを取得して辞書で返す
 
@@ -254,7 +254,7 @@ def table_info(conn: sqlite3.Connection, table_name: str) -> dict:
         table_name (str): テーブル名
 
     Returns:
-        dict: スキーマ
+        dict[str, Any]: スキーマ
 
     """
     rows = conn.execute(f"pragma table_info('{table_name}');")
