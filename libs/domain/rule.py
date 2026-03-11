@@ -116,7 +116,7 @@ class RuleSet:
         self.config.read(config, encoding="utf-8")
         self.read_config()
 
-    def data_set(self, section_name: str, rule_data: Mapping[str, Any]):
+    def data_set(self, section_name: str, rule_data: Mapping[str, Any]) -> None:
         """
         ルール登録
 

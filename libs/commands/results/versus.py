@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
+def aggregation(m: "MessageParserProtocol") -> None:
     """
     直接対戦結果を集計して返す
 

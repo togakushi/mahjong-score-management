@@ -20,7 +20,7 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format
 
 
-def main(season_times: int = 1):
+def main(season_times: int = 1) -> None:
     """
     テスト用ゲーム結果生成処理
 

@@ -12,6 +12,8 @@ import libs.dispatcher
 import libs.global_value as g
 
 if TYPE_CHECKING:
+    from flask import Response
+
     from integrations.web.adapter import ServiceAdapter
 
 
@@ -29,7 +31,7 @@ def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("ranking", __name__, url_prefix="/ranking")
 
     @bp.route("/", methods=["GET", "POST"])
-    def ranking():
+    def ranking() -> "Response":
         if not adapter.conf.view_ranking:
             abort(403)
 

@@ -103,7 +103,7 @@ def db_update(detection: "GameResult", m: "MessageParserProtocol") -> int:
     return changes
 
 
-def db_delete(m: "MessageParserProtocol"):
+def db_delete(m: "MessageParserProtocol") -> None:
     """
     スコアデータを削除する
 
@@ -200,7 +200,7 @@ def remarks_append(m: "MessageParserProtocol", remarks: list["RemarkDict"]) -> N
         g.adapter.functions.post_processing(m)
 
 
-def remarks_delete(m: "MessageParserProtocol"):
+def remarks_delete(m: "MessageParserProtocol") -> None:
     """
     DBからメモを削除する
 
@@ -309,7 +309,7 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
                     check_remarks(m)
 
 
-def _score_check(detection: "GameResult", m: "MessageParserProtocol"):
+def _score_check(detection: "GameResult", m: "MessageParserProtocol") -> None:
     """
     スコアデータ格納状態を記録する
 

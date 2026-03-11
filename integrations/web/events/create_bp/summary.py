@@ -12,6 +12,8 @@ import libs.dispatcher
 import libs.global_value as g
 
 if TYPE_CHECKING:
+    from flask import Response
+
     from integrations.web.adapter import ServiceAdapter
 
 
@@ -29,7 +31,7 @@ def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("summary", __name__, url_prefix="/summary")
 
     @bp.route("/", methods=["GET", "POST"])
-    def summary():
+    def summary() -> "Response":
         if not adapter.conf.view_summary:
             abort(403)
 

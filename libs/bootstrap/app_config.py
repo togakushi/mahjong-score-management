@@ -45,7 +45,7 @@ class DropItems(BaseSection):
     other: set[str]
     """メモ関連データ非表示指定ワード"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.main_parser = outer.main_parser
 
         # 設定値取り込み
@@ -81,7 +81,7 @@ class BadgeDisplay(BaseSection):
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
     """段位情報"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.section = "grade"
         self.main_parser = outer.main_parser
 
@@ -93,7 +93,7 @@ class BadgeDisplay(BaseSection):
 class AppConfig:
     """アプリケーション設定"""
 
-    def __init__(self, config_file: Path):
+    def __init__(self, config_file: Path) -> None:
         self.config_file: Path = config_file
         """メイン設定ファイルパス"""
 
@@ -226,7 +226,7 @@ class AppConfig:
 
         return words
 
-    def overwrite(self, additional_config: Path, section_name: str):
+    def overwrite(self, additional_config: Path, section_name: str) -> None:
         """
         指定セクションを上書き
 

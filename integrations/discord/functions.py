@@ -23,14 +23,14 @@ if TYPE_CHECKING:
 class SvcFunctions(FunctionsInterface):
     """discord専用関数"""
 
-    def __init__(self, api: "AdapterAPI", conf: "SvcConfig"):
+    def __init__(self, api: "AdapterAPI", conf: "SvcConfig") -> None:
         super().__init__()
 
         self.api = api
         self.conf = conf
         """個別設定"""
 
-    def post_processing(self, m: "MessageParserProtocol"):
+    def post_processing(self, m: "MessageParserProtocol") -> None:
         """
         後処理（非同期処理ラッパー）
 
@@ -46,7 +46,7 @@ class SvcFunctions(FunctionsInterface):
             case ActionStatus.DELETE:
                 self.api.bot.loop.create_task(self.delete_reaction(m))
 
-    async def update_reaction(self, m: "MessageParserProtocol"):
+    async def update_reaction(self, m: "MessageParserProtocol") -> None:
         """
         後処理
 
@@ -94,7 +94,7 @@ class SvcFunctions(FunctionsInterface):
             if not has_ng:
                 await m.discord_msg.add_reaction(emoji["ng"])
 
-    async def delete_reaction(self, m: "MessageParserProtocol"):
+    async def delete_reaction(self, m: "MessageParserProtocol") -> None:
         """
         botが付けたリアクションをすべて削除する
 

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 class SvcFunctions(FunctionsInterface):
     """標準入出力専用関数"""
 
-    def post_processing(self, m: "MessageParserProtocol"):
+    def post_processing(self, m: "MessageParserProtocol") -> None:
         """
         後処理
 

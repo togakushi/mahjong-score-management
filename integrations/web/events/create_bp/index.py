@@ -25,7 +25,7 @@ def index_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("index", __name__, url_prefix="/")
 
     @bp.route("/", methods=["GET", "POST"])
-    def index():
+    def index() -> str:
         return render_template("index.html", **asdict(adapter.conf))
 
     return bp

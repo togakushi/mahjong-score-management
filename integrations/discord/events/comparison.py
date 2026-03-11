@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def main(m: "MessageParserProtocol"):
+def main(m: "MessageParserProtocol") -> None:
     """
     突合処理(非同期関数呼び出しラッパー)
 
@@ -35,7 +35,7 @@ def main(m: "MessageParserProtocol"):
     asyncio.create_task(_wrapper(m))
 
 
-async def _wrapper(m: "MessageParserProtocol"):
+async def _wrapper(m: "MessageParserProtocol") -> None:
     g.adapter = cast("ServiceAdapter", g.adapter)
     results = ComparisonResults(search_after=-g.adapter.conf.search_after)
     messages_list: list["MessageParserProtocol"] = []
@@ -59,7 +59,7 @@ async def _wrapper(m: "MessageParserProtocol"):
     g.adapter.api.post(m)
 
 
-async def search_messages(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
+async def search_messages(results: ComparisonResults, messages_list: list["MessageParserProtocol"]) -> None:
     """
     メッセージ全検索
 
@@ -98,7 +98,7 @@ async def search_messages(results: ComparisonResults, messages_list: list["Messa
                 messages_list.append(work_m)
 
 
-async def check_omission(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
+async def check_omission(results: ComparisonResults, messages_list: list["MessageParserProtocol"]) -> None:
     """
     スコア突合
 
@@ -156,7 +156,7 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
             modify.db_delete(work_m)
 
 
-async def check_remarks(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
+async def check_remarks(results: ComparisonResults, messages_list: list["MessageParserProtocol"]) -> None:
     """
     メモ突合
 
@@ -221,7 +221,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
             modify.remarks_delete_compar(remark, work_m)
 
 
-async def check_total_score(results: ComparisonResults, messages_list: list["MessageParserProtocol"]):
+async def check_total_score(results: ComparisonResults, messages_list: list["MessageParserProtocol"]) -> None:
     """
     素点合計の再チェック
 

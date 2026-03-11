@@ -30,7 +30,7 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("member", __name__, url_prefix="/member")
 
     @bp.route("/", methods=["GET", "POST"])
-    def mgt_member():
+    def mgt_member() -> str:
         if not adapter.conf.management_member:
             abort(403)
 

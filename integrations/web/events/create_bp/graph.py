@@ -13,6 +13,8 @@ import libs.dispatcher
 import libs.global_value as g
 
 if TYPE_CHECKING:
+    from flask import Response
+
     from integrations.web.adapter import ServiceAdapter
 
 
@@ -30,7 +32,7 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("graph", __name__, url_prefix="/graph")
 
     @bp.route("/", methods=["GET", "POST"])
-    def graph():
+    def graph() -> "Response":
         if not adapter.conf.view_graph:
             abort(403)
 

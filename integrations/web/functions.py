@@ -238,6 +238,6 @@ class SvcFunctions(FunctionsInterface):
         _ = m
         return {}
 
-    def post_processing(self, m: "MessageParserProtocol"):
+    def post_processing(self, m: "MessageParserProtocol") -> None:
         """Abstractmethod dummy"""
         _ = m

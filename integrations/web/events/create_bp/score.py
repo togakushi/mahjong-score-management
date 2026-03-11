@@ -34,7 +34,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("score", __name__, url_prefix="/score")
 
     @bp.route("/", methods=["GET", "POST"])
-    def mgt_score():
+    def mgt_score() -> str:
         if not adapter.conf.management_score:
             abort(403)
 

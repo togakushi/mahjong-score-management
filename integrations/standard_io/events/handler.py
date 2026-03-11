@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from integrations.standard_io.adapter import ServiceAdapter
 
 
-def main(adapter: "ServiceAdapter"):
+def main(adapter: "ServiceAdapter") -> None:
     """メイン処理"""
     m = adapter.parser()
     m.parser({"event": {"text": g.args.text}})

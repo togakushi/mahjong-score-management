@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def by_keyword(m: "MessageParserProtocol"):
+def by_keyword(m: "MessageParserProtocol") -> None:
     """メイン処理"""
     # チャンネル個別設定切替
     g.params.update(
@@ -79,7 +79,7 @@ def by_keyword(m: "MessageParserProtocol"):
     g.adapter.api.post(m)
 
 
-def other_words(word: str, m: "MessageParserProtocol"):
+def other_words(word: str, m: "MessageParserProtocol") -> None:
     """
     コマンド以外のワードの処理
 
@@ -113,7 +113,7 @@ def other_words(word: str, m: "MessageParserProtocol"):
                 message_deleted(m)
 
 
-def message_append(detection: GameResult, m: "MessageParserProtocol"):
+def message_append(detection: GameResult, m: "MessageParserProtocol") -> None:
     """
     メッセージの追加処理
 
@@ -130,7 +130,7 @@ def message_append(detection: GameResult, m: "MessageParserProtocol"):
         logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
 
 
-def message_changed(detection: GameResult, m: "MessageParserProtocol"):
+def message_changed(detection: GameResult, m: "MessageParserProtocol") -> None:
     """
     メッセージの変更処理
 
@@ -162,7 +162,7 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol"):
     modify.db_update(detection, m)
 
 
-def message_deleted(m: "MessageParserProtocol"):
+def message_deleted(m: "MessageParserProtocol") -> None:
     """
     メッセージの削除処理
 
