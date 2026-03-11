@@ -61,7 +61,7 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     tab_var: dict = field(default_factory=dict)
     """ホームタブ用初期値"""
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         assert self.main_conf
         self.main_parser = self.main_conf
         self.section = "slack"

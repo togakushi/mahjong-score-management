@@ -32,7 +32,7 @@ def user_assets_bp(adapter: "ServiceAdapter") -> Blueprint:
     )
 
     @bp.before_request
-    def restrict_static():
+    def restrict_static() -> None:
         if not os.path.basename(request.path) == adapter.conf.custom_css:
             abort(403)
 

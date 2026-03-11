@@ -19,14 +19,14 @@ if TYPE_CHECKING:
 class MessageParser(MessageParserDataMixin, MessageParserInterface):
     """メッセージ解析クラス"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         MessageParserDataMixin.__init__(self)
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
         self.discord_msg: Message
 
-    def parser(self, body: Message):
+    def parser(self, body: Message) -> None:
         self.discord_msg = body
         self.status.source = f"discord_{self.discord_msg.channel.id}"
 

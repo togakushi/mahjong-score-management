@@ -12,7 +12,7 @@ from libs.utils import dbutil
 from tests.database import param_data
 
 
-def test_guest_name():
+def test_guest_name() -> None:
     """ゲスト登録チェック"""
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
         cur = conn.execute("select name from member where id = 0;")
@@ -27,7 +27,7 @@ def test_guest_name():
     list(param_data.user_add_case_01.values()),
     ids=list(param_data.user_add_case_01.keys()),
 )
-def test_member_add(user_name, ret_meg, registered):
+def test_member_add(user_name, ret_meg, registered) -> None:
     """ユーザ登録テスト"""
     ret = member.append(str(user_name).split())
     print(ret)
@@ -49,7 +49,7 @@ def test_member_add(user_name, ret_meg, registered):
     list(param_data.team_add_case_01.values()),
     ids=list(param_data.team_add_case_01.keys()),
 )
-def test_team_create(team_name, ret_meg, registered):
+def test_team_create(team_name, ret_meg, registered) -> None:
     """チーム作成テスト"""
     ret = team.create(str(team_name).split())
     assert ret_meg in ret

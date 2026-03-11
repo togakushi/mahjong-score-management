@@ -166,7 +166,7 @@ def get_guest() -> str:
     return guest_name
 
 
-def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list:
+def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list[str]:
     """
     登録済みワードリストを取得する
 
@@ -175,10 +175,10 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
         rule_version (str, optional): ルール識別子
 
     Returns:
-        list: 取得結果
+        list[str]: 取得結果
 
     """
-    ret: list = []
+    ret: list[str] = []
 
     if not rule_version and not (rule_version := g.params.get("default_rule")):
         return []
@@ -311,7 +311,7 @@ def first_record(rule_list: list[str]) -> ExtDt:
     return ret
 
 
-def read_memberslist():
+def read_memberslist() -> None:
     """メンバー情報/チーム情報の読み込み"""
     g.cfg.member.guest_name = get_guest()
     g.cfg.member.info = g.cfg.member.get_info

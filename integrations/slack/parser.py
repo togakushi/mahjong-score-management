@@ -17,13 +17,13 @@ if TYPE_CHECKING:
 class MessageParser(MessageParserDataMixin, MessageParserInterface):
     """メッセージ解析クラス"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         MessageParserDataMixin.__init__(self)
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
 
-    def parser(self, _body: dict):
+    def parser(self, _body: dict) -> None:
         g.adapter = cast("ServiceAdapter", g.adapter)
         _event = cast(dict, _body.get("event", _body))  # 対象のevent抽出
 

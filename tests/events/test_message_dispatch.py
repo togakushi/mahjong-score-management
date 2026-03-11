@@ -3,6 +3,7 @@ tests/events/test_message_dispatch.py
 """
 
 import sys
+from typing import TYPE_CHECKING
 from unittest.mock import patch
 
 import pytest
@@ -14,13 +15,16 @@ from libs.bootstrap import configuration
 from libs.domain.datamodels import MessageStatus
 from tests.events import param_data
 
+if TYPE_CHECKING:
+    from integrations.protocols import MessageParserProtocol
 
-def _init():
+
+def _init() -> "MessageParserProtocol":
     """初期化処理"""
     configuration.setup(init_db=False)
     adapter = factory.select_adapter("standard_io", g.cfg)
     m = adapter.parser()
-    m.set_command_flag(True)
+    m.status.command_flg = True
 
     return m
 
@@ -40,7 +44,7 @@ def test_keyword_event(module, config, keyword, monkeypatch):
         m = _init()
         m.data.text = keyword
         m.data.status = MessageStatus.APPEND
-        m.set_command_flag(False)
+        m.status.command_flg = False
 
         libs.dispatcher.by_keyword(m)
         mock_keyword_event.assert_called_once()

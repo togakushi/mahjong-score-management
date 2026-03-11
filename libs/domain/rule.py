@@ -58,7 +58,7 @@ class RuleData:
     count: int = 0
     """記録回数"""
 
-    def update(self, rule_data: Mapping[str, Any]):
+    def update(self, rule_data: Mapping[str, Any]) -> None:
         """
         ルール更新
 
@@ -105,7 +105,7 @@ class RuleData:
 class RuleSet:
     """ルールセット"""
 
-    def __init__(self, config: "Path"):
+    def __init__(self, config: "Path") -> None:
         self.config: ConfigParser = ConfigParser()
         """ルール設定ファイル"""
         self.data: dict[str, RuleData] = {}
@@ -149,7 +149,7 @@ class RuleSet:
             rule.rule_version = section_name
         self.data.update({rule.rule_version: rule})
 
-    def read_config(self):
+    def read_config(self) -> None:
         """設定ファイル読み込み"""
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
@@ -159,7 +159,7 @@ class RuleSet:
 
             self.data_set(section_name, dict(self.config[section_name]))
 
-    def status_update(self, params: dict):
+    def status_update(self, params: dict) -> None:
         """
         ステータス更新
 
@@ -348,7 +348,7 @@ class RuleSet:
 
         return ret
 
-    def info(self):
+    def info(self) -> None:
         """定義ルールをログに出力する"""
         logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
@@ -364,7 +364,7 @@ class RuleSet:
                 rule.undefined_word,
             )
 
-    def check(self, chk_commands: set, chk_members: set, default_rule: str):
+    def check(self, chk_commands: set, chk_members: set, default_rule: str) -> None:
         """
         キーワード重複チェック
 
@@ -407,7 +407,7 @@ class RuleSet:
             logging.critical("%s", err)
             sys.exit(1)
 
-    def register_to_database(self):
+    def register_to_database(self) -> None:
         """ルールセット情報をDBに登録する"""
         loader.execute("delete from rule;")
         for rule in self.rule_list:

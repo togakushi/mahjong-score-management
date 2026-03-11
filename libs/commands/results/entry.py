@@ -17,13 +17,13 @@ if TYPE_CHECKING:
 class ResultsConfig(SubCommands):
     """resultsセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.default_commandword: str = "麻雀成績"
         self.section: str = str(CommandType.RESULTS)
         self.default_reset()
 
 
-def main(m: "MessageParserProtocol"):
+def main(m: "MessageParserProtocol") -> None:
     """
     成績集計処理エントリーポイント
 

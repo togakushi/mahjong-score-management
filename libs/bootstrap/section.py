@@ -72,7 +72,7 @@ class BaseSection(CommonMethodMixin):
     section_proxy: "SectionProxy"
     """読み込み先(パーサー + セクション名)"""
 
-    def __init__(self, outer: SubClassType):
+    def __init__(self, outer: SubClassType) -> None:
         self.main_parser = outer.main_parser
         assert self.main_parser
         if not hasattr(self, "section") or self.section not in self.main_parser:
@@ -84,7 +84,7 @@ class BaseSection(CommonMethodMixin):
     def __repr__(self) -> str:
         return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
 
-    def initialization(self):
+    def initialization(self) -> None:
         """設定ファイルから値の取り込み"""
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
@@ -145,7 +145,7 @@ class BaseSection(CommonMethodMixin):
 class MahjongSection(BaseSection):
     """mahjongセクション処理"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.section: str = "mahjong"
         self.mode: Literal[3, 4] = 4
         """ 集計モード切替(四人打ち/三人打ち)"""
@@ -170,7 +170,7 @@ class MahjongSection(BaseSection):
         self.undefined_word = 0
         """未定義ワードタイプ"""
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 
@@ -241,11 +241,11 @@ class SettingSection(BaseSection):
     """グラフスタイル"""
     work_dir: Path
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.section: str = "setting"
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.keyword = str("終局")
         self.remarks_word = str("麻雀メモ")
         self.remarks_suffix = []
@@ -263,7 +263,7 @@ class SettingSection(BaseSection):
         self.graph_style = str("ggplot")
         self.work_dir = Path("work")
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 
@@ -329,11 +329,11 @@ class AliasSection(BaseSection):
     """チームリスト出力コマンド"""
     team_clear: list
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.section = "alias"
         self._reset()
 
-    def _reset(self):
+    def _reset(self) -> None:
         self.results = ["results", "成績"]
         self.graph = ["graph", "グラフ"]
         self.ranking = ["ranking", "ランキング"]
@@ -349,7 +349,7 @@ class AliasSection(BaseSection):
         self.team_list = ["team_list"]
         self.team_clear = ["team_clear"]
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 
@@ -373,7 +373,7 @@ class SubCommands(BaseSection, CommandAttrs):
     default_commandword: str
     """コマンドワードデフォルト値"""
 
-    def config_load(self, outer: "AppConfig"):
+    def config_load(self, outer: "AppConfig") -> None:
         """
         設定値取り込み
 

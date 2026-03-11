@@ -13,13 +13,13 @@ from libs.domain.datamodels import ChannelType, MessageStatus
 class MessageParser(MessageParserDataMixin, MessageParserInterface):
     """メッセージ解析クラス"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         MessageParserDataMixin.__init__(self)
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
 
-    def parser(self, body: dict):
+    def parser(self, body: dict) -> None:
         self.data.status = MessageStatus.APPEND
         self.data.channel_id = "dummy"
         self.data.event_ts = str(datetime.now().timestamp())
@@ -38,16 +38,6 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             self.status.command_flg = True
             self.data.channel_type = ChannelType.DIRECT_MESSAGE
             self.data.channel_id = body.get("channel_id", "")
-
-    def set_command_flag(self, flg: bool):
-        """
-        スラッシュコマンドフラグを上書き
-
-        Args:
-            flg (bool): フラグ
-
-        """
-        self.status.command_flg = flg
 
     @property
     def in_thread(self) -> bool:

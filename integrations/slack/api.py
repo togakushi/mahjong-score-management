@@ -29,7 +29,7 @@ class AdapterAPI(APIInterface):
     webclient: "WebClient"
     """WebClient(userトークン使用)"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         try:
@@ -39,7 +39,7 @@ class AdapterAPI(APIInterface):
         except ModuleNotFoundError as err:
             raise ModuleNotFoundError(err.msg) from None
 
-    def post(self, m: "MessageParserProtocol"):
+    def post(self, m: "MessageParserProtocol") -> None:
         """
         メッセージをポストする
 
@@ -61,7 +61,7 @@ class AdapterAPI(APIInterface):
 
             return ret_list
 
-        def _post_header():
+        def _post_header() -> None:
             res = self._call_chat_post_message(
                 channel=m.data.channel_id,
                 text=f"{header_title}{header_text.rstrip()}",
