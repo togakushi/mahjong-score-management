@@ -69,7 +69,7 @@ def main(m: "MessageParserProtocol") -> None:
     m.status.message = results
 
 
-def check_omission(results: ComparisonResults):
+def check_omission(results: ComparisonResults) -> None:
     """
     スコア突合
 
@@ -134,7 +134,7 @@ def check_omission(results: ComparisonResults):
             modify.db_delete(work_m)
 
 
-def check_remarks(results: ComparisonResults):
+def check_remarks(results: ComparisonResults) -> None:
     """
     メモ突合
 
@@ -205,7 +205,7 @@ def check_remarks(results: ComparisonResults):
                 modify.remarks_delete_compar(remark, work_m)
 
 
-def check_total_score(results: ComparisonResults):
+def check_total_score(results: ComparisonResults) -> None:
     """
     素点合計の再チェック
 

@@ -13,12 +13,12 @@ if TYPE_CHECKING:
 _registry: list[Callable] = []
 
 
-def register(fn: Callable):
+def register(fn: Callable) -> None:
     """登録関数をグローバルレジストリに追加"""
     _registry.append(fn)
 
 
-def register_all(app: "App", adapter: ServiceAdapter):
+def register_all(app: "App", adapter: ServiceAdapter) -> None:
     """すべての登録関数を呼び出す"""
     for fn in _registry:
         logging.trace("Calling: %s", fn.__name__)  # type: ignore
