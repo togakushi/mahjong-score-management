@@ -33,7 +33,7 @@ def database_connection() -> Generator["Connection", Any, None]:
 
 
 @pytest.fixture(scope="package", autouse=True)
-def initialize_database(database_connection) -> None:
+def initialize_database(database_connection: Any) -> None:
     """DB初期化"""
     _ = database_connection  # pylint (W0613: Unused argument)
     initialization.setup_resultdb(g.cfg.setting.database_file)

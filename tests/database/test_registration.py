@@ -27,7 +27,7 @@ def test_guest_name() -> None:
     list(param_data.user_add_case_01.values()),
     ids=list(param_data.user_add_case_01.keys()),
 )
-def test_member_add(user_name, ret_meg, registered) -> None:
+def test_member_add(user_name: str, ret_meg: str, registered: bool) -> None:
     """ユーザ登録テスト"""
     ret = member.append(str(user_name).split())
     print(ret)
@@ -38,7 +38,7 @@ def test_member_add(user_name, ret_meg, registered) -> None:
         rows = cur.fetchall()
         assert rows is not None
 
-    check_name = str(user_name).split()[0]
+    check_name = user_name.split()[0]
     name_list = [dict(row).get("name") for row in rows]
     print(f"in: {check_name} result: {ret}")
     assert (check_name in name_list) == registered
@@ -49,7 +49,7 @@ def test_member_add(user_name, ret_meg, registered) -> None:
     list(param_data.team_add_case_01.values()),
     ids=list(param_data.team_add_case_01.keys()),
 )
-def test_team_create(team_name, ret_meg, registered) -> None:
+def test_team_create(team_name: str, ret_meg: str, registered: bool) -> None:
     """チーム作成テスト"""
     ret = team.create(str(team_name).split())
     assert ret_meg in ret
@@ -59,7 +59,7 @@ def test_team_create(team_name, ret_meg, registered) -> None:
         rows = cur.fetchall()
         assert rows is not None
 
-    check_name = str(team_name).split()[0]
+    check_name = team_name.split()[0]
     name_list = [dict(row).get("name") for row in rows]
     print(f"in: {check_name} result: {ret}")
     assert (check_name in name_list) == registered

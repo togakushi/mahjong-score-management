@@ -26,7 +26,7 @@ def patch_by_keyword() -> Any:
 
 
 @pytest.fixture(name="flask_client")
-def client(request) -> Any:
+def client(request: pytest.FixtureRequest) -> Any:
     """Flask テストクライアント"""
     config_path = request.param
     sys.argv = ["app.py", "--service=web", f"--config=tests/testdata/{config_path}"]
@@ -55,7 +55,7 @@ def client(request) -> Any:
 
     auth = HTTPBasicAuth()
 
-    @auth.verify_password
+    @auth.verify_password  # type: ignore[untyped-decorator]
     def verify_password(username: str, password: str) -> bool:
         if username == adapter.conf.username and password == adapter.conf.password:
             return True

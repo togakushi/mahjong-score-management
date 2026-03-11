@@ -37,7 +37,7 @@ def main(adapter: "ServiceAdapter") -> None:
 
     auth = HTTPBasicAuth()
 
-    @auth.verify_password
+    @auth.verify_password  # type: ignore[untyped-decorator]
     def verify_password(username: str, password: str) -> bool:
         if username == adapter.conf.username and password == adapter.conf.password:
             return True
