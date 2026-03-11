@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands
 
 
-def test_empty_config(monkeypatch):
+def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     """空設定チェック"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -39,7 +39,7 @@ def test_empty_config(monkeypatch):
 
 
 @pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report", "help"])
-def test_subcommand_default(input_args, monkeypatch):
+def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """サブコマンドデフォルト値チェック"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)

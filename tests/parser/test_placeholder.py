@@ -3,11 +3,13 @@ tests/parser/test_placeholder.py
 """
 
 import sys
+from typing import Any, Generator, cast
 
 import pytest
 
 import libs.global_value as g
 from integrations import factory
+from integrations.standard_io.adapter import ServiceAdapter
 from libs.bootstrap import configuration
 from libs.data import lookup
 from libs.utils import dictutil, formatter
@@ -17,7 +19,7 @@ TEST_ARGS = ["progname", "--config=tests/test_data/saki.ini"]
 
 
 @pytest.fixture(scope="module")
-def parser_instance():
+def parser_instance() -> Generator[ServiceAdapter, Any, None]:
     """初期化処理"""
     old_argv = sys.argv[:]
     sys.argv = TEST_ARGS[:]
@@ -37,9 +39,9 @@ def parser_instance():
     list(param_data.command_test_case_01.values()),
     ids=list(param_data.command_test_case_01.keys()),
 )
-def test_command_check(input_args, player_name, player_list, competition_list, parser_instance):
+def test_command_check(input_args: str, player_name: str, player_list: dict[str, str], competition_list: dict[str, str], parser_instance: Any) -> None:
     """コマンド認識状態チェック"""
-    m = parser_instance.parser()
+    m = cast(ServiceAdapter, parser_instance).parser()
     param = dictutil.placeholder(g.cfg.results, m)
 
     print(f"\n  --> in: {input_args.split()} out: {param}")
@@ -53,9 +55,9 @@ def test_command_check(input_args, player_name, player_list, competition_list, p
     list(param_data.name_test_case_01.values()),
     ids=list(param_data.name_test_case_01.keys()),
 )
-def test_player_check(input_args, player_name, player_list, competition_list, parser_instance):
+def test_player_check(input_args: str, player_name: str, player_list: dict[str, str], competition_list: dict[str, str], parser_instance: Any) -> None:
     """プレイヤー名"""
-    m = parser_instance.parser()
+    m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"{g.cfg.setting.keyword} {input_args}"})
     param = dictutil.placeholder(g.cfg.results, m)
 
@@ -70,9 +72,9 @@ def test_player_check(input_args, player_name, player_list, competition_list, pa
     list(param_data.team_saki_test_case.values()),
     ids=list(param_data.team_saki_test_case.keys()),
 )
-def test_team_check(input_args, player_name, player_list, competition_list, parser_instance):
+def test_team_check(input_args: str, player_name: str, player_list: dict[str, str], competition_list: dict[str, str], parser_instance: Any) -> None:
     """チーム名"""
-    m = parser_instance.parser()
+    m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"event": {"text": f"{g.cfg.setting.keyword} {input_args}"}})
     param = dictutil.placeholder(g.cfg.results, m)
 
@@ -87,9 +89,9 @@ def test_team_check(input_args, player_name, player_list, competition_list, pars
     list(param_data.guest_test_case.values()),
     ids=list(param_data.guest_test_case.keys()),
 )
-def test_guest_check(input_args, player_name, replace_name, parser_instance):
+def test_guest_check(input_args: str, player_name: str, replace_name: str, parser_instance: Any) -> None:
     """ゲストチェック"""
-    m = parser_instance.parser()
+    m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"{g.cfg.setting.keyword} {input_args}"})
     g.params = dictutil.placeholder(g.cfg.results, m)
 

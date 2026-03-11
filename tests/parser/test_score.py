@@ -3,6 +3,7 @@ tests/parser/test_score.py
 """
 
 import sys
+from typing import Any
 
 import pytest
 
@@ -20,7 +21,7 @@ from tests.parser import param_data
     list(param_data.score_pattern.values()),
     ids=list(param_data.score_pattern.keys()),
 )
-def test_score_report(input_str, result_dict, get_point, monkeypatch):
+def test_score_report(input_str: str, result_dict: dict[str, Any], get_point: dict[str, float], monkeypatch: pytest.MonkeyPatch) -> None:
     """得点入力"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -37,7 +38,7 @@ def test_score_report(input_str, result_dict, get_point, monkeypatch):
     result.set(rule_version="test")
     result.calc()
     print(vars(result))
-    chk_dict: dict = {}
+    chk_dict: dict[str, Any] = {}
     if result.has_valid_data():
         chk_dict.update({k: v for k, v in result.to_dict().items() if str(k).endswith("_name")})
         chk_dict.update({k: v for k, v in result.to_dict().items() if str(k).endswith("_str")})
@@ -61,7 +62,7 @@ def test_score_report(input_str, result_dict, get_point, monkeypatch):
     list(param_data.point_calculation_pattern01.values()),
     ids=list(param_data.point_calculation_pattern01.keys()),
 )
-def test_point_calc_seat(rpoint_list, point_dict, rank_dict, monkeypatch):
+def test_point_calc_seat(rpoint_list: list[str], point_dict: dict[str, float], rank_dict: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
     """ポイント計算 (同点席順)"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -100,7 +101,7 @@ def test_point_calc_seat(rpoint_list, point_dict, rank_dict, monkeypatch):
     list(param_data.point_calculation_pattern02.values()),
     ids=list(param_data.point_calculation_pattern02.keys()),
 )
-def test_point_calc_division(rpoint_list, point_dict, rank_dict, monkeypatch):
+def test_point_calc_division(rpoint_list: list[str], point_dict: dict[str, float], rank_dict: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
     """ポイント計算 (同点山分け)"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
