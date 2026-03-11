@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def command_help(m: "MessageParserProtocol"):
+def command_help(m: "MessageParserProtocol") -> None:
     """
     スラッシュコマンド用ヘルプ
 
