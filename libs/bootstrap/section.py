@@ -6,7 +6,7 @@ import logging
 import sys
 from pathlib import Path, PosixPath
 from types import NoneType
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union, get_args, get_origin
 
 from libs.domain.datamodels import CommandAttrs
 
@@ -105,7 +105,7 @@ class BaseSection(CommonMethodMixin):
                         current_list.extend(v_list)
                     else:
                         setattr(self, k, v_list)
-                case v_type if k in self.__dict__ and v_type is Optional[str]:  # 文字列 or None(未定義)
+                case v_type if k in self.__dict__ and get_origin(v_type) is Union and type(None) in get_args(v_type):  # 文字列 or None(未定義)
                     setattr(self, k, self.get(k))
                 case v_type if k in self.__dict__ and v_type is PosixPath:
                     setattr(self, k, Path(self.get(k)))
