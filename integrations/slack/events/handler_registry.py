@@ -10,10 +10,10 @@ from integrations.slack.adapter import ServiceAdapter
 if TYPE_CHECKING:
     from slack_bolt import App
 
-_registry: list[Callable] = []
+_registry: list[Callable[..., None]] = []
 
 
-def register(fn: Callable) -> None:
+def register(fn: Callable[..., None]) -> None:
     """登録関数をグローバルレジストリに追加"""
     _registry.append(fn)
 
