@@ -9,7 +9,7 @@ import shutil
 import sys
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.commands.graph.entry
 import libs.commands.help.entry
@@ -349,7 +349,7 @@ def register() -> None:
     def dispatch_team_clear(m: "MessageParserProtocol") -> None:
         m.set_message(team.clear(), StyleOptions(title="全チーム削除", key_title=False))
 
-    dispatch_table: dict = {
+    dispatch_table: dict[str, Any] = {
         "results": libs.commands.results.entry.main,
         "graph": libs.commands.graph.entry.main,
         "ranking": libs.commands.ranking.entry.main,
@@ -368,7 +368,7 @@ def register() -> None:
         "team_clear": dispatch_team_clear,
     }
 
-    commandword_list: list
+    commandword_list: list[str]
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
@@ -385,7 +385,7 @@ def register() -> None:
                 g.keyword_dispatcher.update({commandword: ep})
         # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
-            for alias in cast(list, getattr(g.cfg.alias, command)):
+            for alias in cast(list[str], getattr(g.cfg.alias, command)):
                 g.command_dispatcher.update({alias: ep})
 
     # サービス別コマンド登録
