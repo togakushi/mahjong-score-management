@@ -99,7 +99,7 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">params</span><span class="p">:</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">PlaceholderDict</span><span class="p">()</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">sql</span> <span class="o">=</span> <span class="n">dbutil</span><span class="o">.</span><span class="n">query_modification</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
@@ -149,7 +149,7 @@
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">params</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">PlaceholderDict</span><span class="p">()</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">params_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
@@ -247,7 +247,7 @@
 </span><span id="execute-35"><a href="#execute-35"><span class="linenos">35</span></a>
 </span><span id="execute-36"><a href="#execute-36"><span class="linenos">36</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="execute-37"><a href="#execute-37"><span class="linenos">37</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">params</span><span class="p">:</span>
-</span><span id="execute-38"><a href="#execute-38"><span class="linenos">38</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">PlaceholderDict</span><span class="p">()</span>
+</span><span id="execute-38"><a href="#execute-38"><span class="linenos">38</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span>
 </span><span id="execute-39"><a href="#execute-39"><span class="linenos">39</span></a>
 </span><span id="execute-40"><a href="#execute-40"><span class="linenos">40</span></a>    <span class="n">ret</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="execute-41"><a href="#execute-41"><span class="linenos">41</span></a>    <span class="n">sql</span> <span class="o">=</span> <span class="n">dbutil</span><span class="o">.</span><span class="n">query_modification</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
@@ -327,7 +327,7 @@
 </span><span id="read_data-85"><a href="#read_data-85"><span class="linenos"> 85</span></a>
 </span><span id="read_data-86"><a href="#read_data-86"><span class="linenos"> 86</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="read_data-87"><a href="#read_data-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">params</span><span class="p">:</span>
-</span><span id="read_data-88"><a href="#read_data-88"><span class="linenos"> 88</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">PlaceholderDict</span><span class="p">()</span>
+</span><span id="read_data-88"><a href="#read_data-88"><span class="linenos"> 88</span></a>        <span class="n">params</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span>
 </span><span id="read_data-89"><a href="#read_data-89"><span class="linenos"> 89</span></a>
 </span><span id="read_data-90"><a href="#read_data-90"><span class="linenos"> 90</span></a>    <span class="n">params_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="read_data-91"><a href="#read_data-91"><span class="linenos"> 91</span></a>        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
