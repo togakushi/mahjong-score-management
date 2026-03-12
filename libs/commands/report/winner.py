@@ -2,7 +2,7 @@
 libs/commands/report/winner.py
 """
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def plot(m: "MessageParserProtocol"):
+def plot(m: "MessageParserProtocol") -> None:
     """
     成績上位者を一覧化
 
@@ -37,7 +37,7 @@ def plot(m: "MessageParserProtocol"):
 
     # 匿名化
     if g.params.get("anonymous"):
-        name_list: list = []
+        name_list: list[Any] = []
         for col in [f"name{x}" for x in range(1, 6)]:
             name_list.extend(results_df[col].unique().tolist())
         mapping_dict = formatter.anonymous_mapping(list(set(name_list)))
@@ -45,7 +45,7 @@ def plot(m: "MessageParserProtocol"):
             results_df[col] = results_df[col].replace(mapping_dict)
 
     # --- 集計
-    results: dict = {}
+    results: dict[str, Any] = {}
     for _, v in results_df.iterrows():
         results[v["collection"]] = {}
         results[v["collection"]]["集計月"] = v["collection"]

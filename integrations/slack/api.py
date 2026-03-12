@@ -5,7 +5,7 @@ integrations/slack/api.py
 import logging
 import textwrap
 from pathlib import PosixPath
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import pandas as pd
 
@@ -48,8 +48,8 @@ class AdapterAPI(APIInterface):
 
         """
 
-        def _table_data(data: dict) -> list:
-            ret_list: list = []
+        def _table_data(data: dict[str, Any]) -> list[str]:
+            ret_list: list[str] = []
             text_data = iter(data.values())
             # 先頭ブロックの処理(ヘッダ追加)
             v = next(text_data)
@@ -154,7 +154,7 @@ class AdapterAPI(APIInterface):
                     thread_ts=m.reply_ts,
                 )
 
-    def _call_chat_post_message(self, **kwargs) -> "SlackResponse":
+    def _call_chat_post_message(self, **kwargs: Any) -> "SlackResponse":
         """
         slackにメッセージをポストする
 
@@ -177,7 +177,7 @@ class AdapterAPI(APIInterface):
 
         return res
 
-    def _call_files_upload(self, **kwargs) -> "SlackResponse":
+    def _call_files_upload(self, **kwargs: Any) -> "SlackResponse":
         """
         slackにファイルをアップロードする
 

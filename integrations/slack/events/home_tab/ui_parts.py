@@ -88,7 +88,7 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
     adapter.conf.tab_var["no"] += 1
 
 
-def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict) -> None:
+def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: dict[str, Any]) -> None:
     """
     オプション選択メニュー
 
@@ -96,7 +96,7 @@ def radio_buttons(adapter: "ServiceAdapter", id_suffix: str, title: str, flag: d
         adapter (ServiceAdapter): アダプタインターフェース
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
-        flag (dict, optional): 表示する選択項目
+        flag (dict[str, Any]): 表示する選択項目
 
     """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": f"bid-{id_suffix}", "element": {}})
@@ -117,8 +117,8 @@ def checkboxes(
     adapter: "ServiceAdapter",
     id_suffix: str,
     title: str,
-    flag: Optional[dict] = None,
-    initial: Optional[list] = None,
+    flag: Optional[dict[str, Any]] = None,
+    initial: Optional[list[str]] = None,
 ) -> None:
     """
     チェックボックス選択メニュー
@@ -127,8 +127,8 @@ def checkboxes(
         adapter (ServiceAdapter): アダプタインターフェース
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
-        flag (Optional[dict], optional): 表示する選択項目. Defaults to None.
-        initial (Optional[list], optional): チェック済み項目. Defaults to None.
+        flag (Optional[dict[str, Any]): 表示する選択項目. Defaults to None.
+        initial (Optional[list[str]]): チェック済み項目. Defaults to None.
 
     """
     if flag is None:
@@ -157,7 +157,7 @@ def checkboxes(
 def user_select_pulldown(
     adapter: "ServiceAdapter",
     text: str = "dummy",
-    add_list: Optional[list] = None,
+    add_list: Optional[list[str]] = None,
 ) -> None:
     """
     プレイヤー選択プルダウンメニュー
@@ -165,7 +165,7 @@ def user_select_pulldown(
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
-        add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
+        add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
 
     """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
@@ -198,7 +198,7 @@ def user_select_pulldown(
 def multi_select_pulldown(
     adapter: "ServiceAdapter",
     text: str = "dummy",
-    add_list: Optional[list] = None,
+    add_list: Optional[list[str]] = None,
 ) -> None:
     """
     複数プレイヤー選択プルダウンメニュー
@@ -206,7 +206,7 @@ def multi_select_pulldown(
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト. Defaults to "dummy".
-        add_list (Optional[list], optional): プレイヤーリスト. Defaults to None.
+        add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
 
     """
     read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
@@ -293,49 +293,52 @@ def modalperiod_selection(adapter: "ServiceAdapter") -> dict[str, Any]:
     return view
 
 
-def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, list, dict]:
+def set_command_option(
+    adapter: "ServiceAdapter",
+    body: dict[str, Any],
+) -> tuple[list[str], list[str], dict[str, Any]]:
     """
     選択オプションの内容のフラグをセット
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-        body (dict): イベント内容
+        body (dict[str, Any]): イベント内容
 
     Returns:
-        tuple[list, list, dict]:
-        - list: コマンドに追加する文字列
-        - list: viewに表示するメッセージ
-        - dict: 変更されるフラグ
+        tuple[list[str], list[str], dict[str, Any]]:
+        - list[str]: コマンドに追加する文字列
+        - list[str]: viewに表示するメッセージ
+        - dict[str, Any]: 変更されるフラグ
 
     """
-    update_flag: dict = {}
+    update_flag: dict[str, Any] = {}
 
     # 検索設定
-    argument: list = []
+    argument: list[str] = []
     search_options = body["view"]["state"]["values"]
     logging.debug("search options: %s", search_options)
 
-    app_msg: list = []
+    app_msg: list[str] = []
     adapter.conf.tab_var.update(operation=None)
 
     if "bid-user_select" in search_options:
         user_select = search_options["bid-user_select"]["player"]["selected_option"]
         if user_select is not None:
             if "value" in user_select:
-                player = user_select["value"]
+                player = str(user_select["value"])
                 app_msg.append(f"対象プレイヤー：{player}")
                 argument.append(player)
 
     if "bid-multi_select" in search_options:
         user_list = search_options["bid-multi_select"]["player"]["selected_options"]
         for _, val in enumerate(user_list):
-            argument.append(val["value"])
+            argument.append(str(val["value"]))
 
     if "bid-search_range" in search_options:
-        match search_options["bid-search_range"]["aid-search_range"]["selected_option"]["value"]:
+        match str(search_options["bid-search_range"]["aid-search_range"]["selected_option"]["value"]):
             case "指定":
                 app_msg.append(f"集計範囲：{adapter.conf.tab_var['sday']} ～ {adapter.conf.tab_var['eday']}")
-                argument.extend([adapter.conf.tab_var["sday"], adapter.conf.tab_var["eday"]])
+                argument.extend([str(adapter.conf.tab_var["sday"]), str(adapter.conf.tab_var["eday"])])
             case "全部":
                 app_msg.append("集計範囲：全部")
                 argument.append("全部")
@@ -374,14 +377,14 @@ def set_command_option(adapter: "ServiceAdapter", body: dict) -> tuple[list, lis
     return (argument, app_msg, update_flag)
 
 
-def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list):
+def update_view(adapter: "ServiceAdapter", m: "MessageParserProtocol", msg: list[str]) -> None:
     """
     viewを更新する
 
     Args:
         adapter (ServiceAdapter): アダプター
         m (MessageParserProtocol): メッセージデータ
-        msg (list): 表示テキスト
+        msg (list[str]): 表示テキスト
 
     """
     text = ""

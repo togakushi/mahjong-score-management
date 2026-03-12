@@ -154,19 +154,19 @@ class MemberSection(BaseSection):
             list[MemberDataDict]: メンバー情報
 
         """
-        ret = loader.read_data("MEMBER_INFO", cast(dict, g.params)).to_dict(orient="records")
+        ret = loader.read_data("MEMBER_INFO", g.params).to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
 
         return cast(list[MemberDataDict], ret)
 
 
-def append(argument: list) -> str:
+def append(argument: list[str]) -> str:
     """
     メンバー追加
 
     Args:
-        argument (list): 登録情報
+        argument (list[str]): 登録情報
             - argument[0]: 登録するメンバー名
             - argument[1]: 登録する別名
 
@@ -270,12 +270,12 @@ def append(argument: list) -> str:
     return msg
 
 
-def remove(argument: list) -> str:
+def remove(argument: list[str]) -> str:
     """
     メンバー削除
 
     Args:
-        argument (list): 削除情報
+        argument (list[str]): 削除情報
             - argument[0]: 削除するメンバー名
             - argument[1]: 削除する別名
 

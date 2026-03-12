@@ -9,6 +9,7 @@ import re
 import shutil
 from pathlib import Path
 from pprint import pprint
+from typing import TYPE_CHECKING, Any
 
 import libs.global_value as g
 from integrations import factory
@@ -24,13 +25,16 @@ from libs.commands.results import summary as results_summary
 from libs.domain.command import CommandParser
 from libs.utils import dictutil
 
+if TYPE_CHECKING:
+    from integrations.protocols import MessageParserProtocol
 
-def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: str) -> None:
+
+def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, argument: str) -> None:
     """
     テストケース実行
 
     Args:
-        flag (dict): フラグ格納辞書
+        flag (dict[str, Any]): フラグ格納辞書
         test_case (str): テストケース
         sec (str): 定義セクション
         pattern (str): 実行パターン
@@ -38,7 +42,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
 
     """
 
-    def graph_point(m) -> None:
+    def graph_point(m: "MessageParserProtocol") -> None:
         """ポイント推移グラフ"""
         if len(g.params["player_list"]) == 1:
             graph_personal.plot(m)
@@ -59,7 +63,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
                 width=120,
             )
 
-    def graph_rank(m) -> None:
+    def graph_rank(m: "MessageParserProtocol") -> None:
         """順位変動グラフ"""
         graph_summary.point_plot(m)
         pprint(
@@ -70,7 +74,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
             width=120,
         )
 
-    def graph_statistics(m) -> None:
+    def graph_statistics(m: "MessageParserProtocol") -> None:
         """統計グラフ"""
         graph_personal.statistics_plot(m)
         pprint(
@@ -84,7 +88,7 @@ def test_pattern(flag: dict, test_case: str, sec: str, pattern: str, argument: s
     # ---------------------------------------------------------------------------------------------
     adapter = factory.select_adapter("standard_io", g.cfg)
     m = adapter.parser()
-    target_loop: list = []
+    target_loop: list[str] = []
 
     if flag.get("target_loop"):
         target_loop += flag.get("target_player", [])
@@ -243,7 +247,7 @@ def main() -> None:
     test_conf = configparser.ConfigParser()
     test_conf.read(g.args.testcase, encoding="utf-8")
 
-    flag: dict = {}
+    flag: dict[str, Any] = {}
 
     for sec in test_conf.sections():
         print("=" * 120)

@@ -23,7 +23,7 @@ from tests.database import param_data
     list(param_data.score_insert_case_01.values()),
     ids=list(param_data.score_insert_case_01.keys()),
 )
-def test_score_insert(draw_split, game_result, get_point, get_rank, monkeypatch):
+def test_score_insert(draw_split: bool, game_result: str, get_point: dict[str, float], get_rank: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
     """スコア登録テスト"""
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)

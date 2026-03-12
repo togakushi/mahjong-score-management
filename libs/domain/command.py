@@ -281,7 +281,7 @@ class CommandParser:
         """
         ret: dict[str, Any] = {}
 
-        def with_arguments(tmp: dict[str, Any]):
+        def with_arguments(tmp: dict[str, Any]) -> None:
             key = str(next(iter(tmp.keys())))
             val = str(tmp[key][1])
             if "" != val:

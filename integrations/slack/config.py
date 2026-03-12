@@ -4,7 +4,7 @@ integrations/slack/config.py
 
 import logging
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from integrations.base.interface import IntegrationsConfig
 from integrations.slack.events import comparison, slash
@@ -23,10 +23,10 @@ class SvcConfig(BaseSection, IntegrationsConfig):
 
     comparison_word: str = field(default="成績チェック")
     """データ突合コマンド呼び出しキーワード"""
-    comparison_alias: list = field(default_factory=list)
+    comparison_alias: list[str] = field(default_factory=list)
     """データ突合スラッシュコマンド別名(カンマ区切りで設定)"""
 
-    search_channel: list = field(default_factory=list)
+    search_channel: list[str] = field(default_factory=list)
     """テータ突合時に成績記録ワードを検索するチャンネル名(カンマ区切りで設定)"""
     search_after: int = field(default=7)
     """データ突合時対象にする日数"""
@@ -47,9 +47,9 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     """DBに取り込んだが正確な値ではない可能性があるときに付けるリアクション"""
 
     # 制限
-    ignore_userid: list = field(default_factory=list)
+    ignore_userid: list[str] = field(default_factory=list)
     """投稿を無視するユーザのリスト(カンマ区切りで設定)"""
-    channel_limitations: list = field(default_factory=list)
+    channel_limitations: list[str] = field(default_factory=list)
     """SQLが実行できるチャンネルリスト(カンマ区切りで設定)
 
     未定義はすべてのチャンネルでSQLが実行できる
@@ -58,7 +58,7 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     bot_id: str = field(default="")
     """ボットID"""
 
-    tab_var: dict = field(default_factory=dict)
+    tab_var: dict[str, Any] = field(default_factory=dict)
     """ホームタブ用初期値"""
 
     def __post_init__(self) -> None:

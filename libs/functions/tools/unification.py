@@ -85,7 +85,7 @@ def main() -> None:
     else:
         db = dbutil.connection(g.cfg.setting.database_file)
         for name in g.cfg.member.all_lists:
-            check_list: list = [
+            check_list: list[str] = [
                 textutil.str_conv(name, textutil.ConversionType.KtoH),
                 textutil.str_conv(name, textutil.ConversionType.HtoK),
             ]

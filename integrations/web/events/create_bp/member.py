@@ -3,7 +3,7 @@ integrations/web/events/member.py
 """
 
 from dataclasses import asdict
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any
 
 from flask import Blueprint, abort, current_app, render_template, request
 
@@ -30,7 +30,7 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("member", __name__, url_prefix="/member")
 
     @bp.route("/", methods=["GET", "POST"])
-    def mgt_member():
+    def mgt_member() -> str:
         if not adapter.conf.management_member:
             abort(403)
 
@@ -38,7 +38,7 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
         g.params = dictutil.placeholder(g.cfg.help, m)
 
         padding = current_app.config["padding"]
-        data: dict = asdict(adapter.conf)
+        data: dict[str, Any] = asdict(adapter.conf)
 
         if request.method == "POST":
             match request.form.get("action"):
@@ -64,13 +64,13 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             lookup.read_memberslist()
 
-        member_df = loader.read_data("MEMBER_INFO", cast(dict, g.params))
+        member_df = loader.read_data("MEMBER_INFO", g.params)
         if member_df.empty:
             data.update(member_table="<p>登録済みメンバーはいません。</p>")
         else:
             data.update(member_table=adapter.functions.to_styled_html(member_df.drop(columns=["id"]), padding))
 
-        team_df = loader.read_data("TEAM_INFO", cast(dict, g.params))
+        team_df = loader.read_data("TEAM_INFO", g.params)
         if team_df.empty:
             data.update(team_table="<p>登録済みチームはありません。</p>")
         else:

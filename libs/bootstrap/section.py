@@ -6,7 +6,7 @@ import logging
 import sys
 from pathlib import Path, PosixPath
 from types import NoneType
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union, get_args, get_origin
 
 from libs.domain.datamodels import CommandAttrs
 
@@ -53,11 +53,11 @@ class CommonMethodMixin:
         """キーリストの返却"""
         return list(self.section_proxy.keys())
 
-    def values(self) -> list:
+    def values(self) -> list[str]:
         """値リストの返却"""
         return list(self.section_proxy.values())
 
-    def items(self) -> list[tuple]:
+    def items(self) -> list[tuple[str, str]]:
         """ItemsViewを返却"""
         return list(self.section_proxy.items())
 
@@ -105,7 +105,7 @@ class BaseSection(CommonMethodMixin):
                         current_list.extend(v_list)
                     else:
                         setattr(self, k, v_list)
-                case v_type if k in self.__dict__ and v_type is Optional[str]:  # 文字列 or None(未定義)
+                case v_type if k in self.__dict__ and get_origin(v_type) is Union and type(None) in get_args(v_type):  # 文字列 or None(未定義)
                     setattr(self, k, self.get(k))
                 case v_type if k in self.__dict__ and v_type is PosixPath:
                     setattr(self, k, Path(self.get(k)))
@@ -155,7 +155,7 @@ class MahjongSection(BaseSection):
         """配給原点"""
         self.return_point: int = int(-1)
         """返し点"""
-        self.rank_point: list = []
+        self.rank_point: list[int] = []
         """順位点"""
         self.ignore_flying: bool = False
         """トビカウント
@@ -308,26 +308,26 @@ class SettingSection(BaseSection):
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
-    results: list
+    results: list[str]
     """成績サマリ出力コマンド"""
-    graph: list
+    graph: list[str]
     """成績グラフ出力コマンド"""
-    ranking: list
+    ranking: list[str]
     """ランキング出力コマンド"""
-    report: list
+    report: list[str]
     """レポート出力コマンド"""
-    download: list
-    member: list
+    download: list[str]
+    member: list[str]
     """メンバーリスト表示コマンド"""
-    add: list
-    delete: list
-    team_create: list
-    team_del: list
-    team_add: list
-    team_remove: list
-    team_list: list
+    add: list[str]
+    delete: list[str]
+    team_create: list[str]
+    team_del: list[str]
+    team_add: list[str]
+    team_remove: list[str]
+    team_list: list[str]
     """チームリスト出力コマンド"""
-    team_clear: list
+    team_clear: list[str]
 
     def __init__(self) -> None:
         self.section = "alias"

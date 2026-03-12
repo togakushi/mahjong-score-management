@@ -138,19 +138,19 @@ class TeamSection(BaseSection):
             list[TeamDataDict]: チーム情報
 
         """
-        ret = loader.read_data("TEAM_INFO", cast(dict, g.params)).to_dict(orient="records")
+        ret = loader.read_data("TEAM_INFO", g.params).to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
 
         return cast(list[TeamDataDict], ret)
 
 
-def create(argument: list) -> str:
+def create(argument: list[str]) -> str:
     """
     チーム作成
 
     Args:
-        argument (list): 作成するチーム名
+        argument (list[str]): 作成するチーム名
 
     Returns:
         str: 処理結果
@@ -180,12 +180,12 @@ def create(argument: list) -> str:
     return msg
 
 
-def delete(argument: list) -> str:
+def delete(argument: list[str]) -> str:
     """
     チーム削除
 
     Args:
-        argument (list): 削除するチーム名
+        argument (list[str]): 削除するチーム名
 
     Returns:
         str: 処理結果
@@ -215,12 +215,12 @@ def delete(argument: list) -> str:
     return msg
 
 
-def append(argument: list) -> str:
+def append(argument: list[str]) -> str:
     """
     チーム所属
 
     Args:
-        argument (list): 登録情報
+        argument (list[str]): 登録情報
             - argument[0]: 所属させるチーム名
             - argument[1]: 所属するメンバー名
 
@@ -274,12 +274,12 @@ def append(argument: list) -> str:
     return msg
 
 
-def remove(argument: list) -> str:
+def remove(argument: list[str]) -> str:
     """
     チームから除名
 
     Args:
-        argument (list): 登録情報
+        argument (list[str]): 登録情報
             - argument[0]: 対象チーム名
             - argument[1]: チームから離脱するメンバー名
 

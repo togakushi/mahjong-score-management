@@ -69,7 +69,7 @@ class Score:
 class GameResult:
     """スコアデータ"""
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, **kwargs: Any) -> None:
         # ゲーム結果
         self.ts: str = ""
         """タイムスタンプ"""
@@ -160,7 +160,7 @@ class GameResult:
 
         return all([self.ts, isinstance(self.ts, str), score_data, all(self.to_list("rank"))])
 
-    def set(self, **kwargs) -> None:
+    def set(self, **kwargs: Any) -> None:
         """データ取り込み"""
 
         def _normalize_score_string(s: str) -> str:
@@ -328,7 +328,7 @@ class GameResult:
 
         return ret_list[: self.mode]
 
-    def calc(self, **kwargs) -> None:
+    def calc(self, **kwargs: Any) -> None:
         """獲得ポイント計算"""
         if kwargs:
             self.set(**kwargs)

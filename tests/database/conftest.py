@@ -6,6 +6,7 @@ tests/database/conftest.py
 
 from contextlib import closing
 from pathlib import Path
+from typing import TYPE_CHECKING, Any, Generator
 
 import pandas as pd
 import pytest
@@ -16,9 +17,12 @@ from libs.bootstrap.app_config import AppConfig
 from libs.data import initialization, lookup
 from libs.utils import dbutil
 
+if TYPE_CHECKING:
+    from sqlite3 import Connection
+
 
 @pytest.fixture(scope="package")
-def database_connection():
+def database_connection() -> Generator["Connection", Any, None]:
     """共有インメモリDBと接続"""
     configuration.setup(init_db=False)
     g.cfg = AppConfig(Path("tests/testdata/empty.ini"))
@@ -29,7 +33,7 @@ def database_connection():
 
 
 @pytest.fixture(scope="package", autouse=True)
-def initialize_database(database_connection):
+def initialize_database(database_connection: Any) -> None:
     """DB初期化"""
     _ = database_connection  # pylint (W0613: Unused argument)
     initialization.setup_resultdb(g.cfg.setting.database_file)

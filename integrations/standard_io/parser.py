@@ -3,7 +3,7 @@ integrations/standard_io/parser.py
 """
 
 from datetime import datetime
-from typing import cast
+from typing import Any, cast
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
@@ -19,7 +19,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
 
-    def parser(self, body: dict) -> None:
+    def parser(self, body: dict[str, Any]) -> None:
         self.data.status = MessageStatus.APPEND
         self.data.channel_id = "dummy"
         self.data.event_ts = str(datetime.now().timestamp())
@@ -27,7 +27,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.status.source = "standard_io"
 
         if body.get("event"):
-            body = cast(dict, body["event"])
+            body = cast(dict[str, Any], body["event"])
 
         if body.get("text"):
             self.data.text = str(body.get("text", ""))

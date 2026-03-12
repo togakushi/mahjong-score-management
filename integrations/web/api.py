@@ -13,6 +13,6 @@ if TYPE_CHECKING:
 class AdapterAPI(APIInterface):
     """ダミークラス"""
 
-    def post(self, m: "MessageParserProtocol"):
+    def post(self, m: "MessageParserProtocol") -> None:
         """Abstractmethod dummy"""
         _ = m

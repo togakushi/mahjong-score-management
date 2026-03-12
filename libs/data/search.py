@@ -4,7 +4,7 @@ libs/data/search.py
 
 import logging
 from contextlib import closing
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from libs.data import loader
@@ -12,7 +12,7 @@ from libs.domain.score import GameResult
 from libs.utils import dbutil
 
 if TYPE_CHECKING:
-    from libs.types import RemarkDict
+    from libs.types import PlaceholderDict, RemarkDict
 
 
 def for_db_score(first_ts: float) -> list[GameResult]:
@@ -29,7 +29,7 @@ def for_db_score(first_ts: float) -> list[GameResult]:
     data: list = []
     rows = loader.execute(
         "select * from result where ts >= :first_ts and source like :source",
-        {"first_ts": str(first_ts), "source": f"{g.adapter.interface_type}_%"},
+        cast("PlaceholderDict", {"first_ts": str(first_ts), "source": f"{g.adapter.interface_type}_%"}),
     )
 
     for row in rows:

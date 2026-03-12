@@ -40,7 +40,7 @@ class AdapterAPI(APIInterface):
                 ret += textwrap.indent(f"{line}\n", "\t" * style.indent)
         return ret.rstrip()
 
-    def post(self, m: "MessageParserProtocol"):
+    def post(self, m: "MessageParserProtocol") -> None:
         """
         メッセージ出力
 

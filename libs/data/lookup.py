@@ -144,7 +144,7 @@ def member_info(params: "PlaceholderDict") -> dict[str, Any]:
             --[team] and team = :player_name
         ;
         """,
-        cast(dict, params),
+        params,
     )
 
     return ret[0]

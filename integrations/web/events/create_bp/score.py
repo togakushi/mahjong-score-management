@@ -3,7 +3,7 @@ integrations/web/events/score.py
 """
 
 from dataclasses import asdict
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 from flask import Blueprint, abort, current_app, render_template, request
@@ -34,7 +34,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
     bp = Blueprint("score", __name__, url_prefix="/score")
 
     @bp.route("/", methods=["GET", "POST"])
-    def mgt_score():
+    def mgt_score() -> str:
         if not adapter.conf.management_score:
             abort(403)
 
@@ -72,7 +72,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             return adapter.functions.to_styled_html(df, padding)
 
-        data: dict = asdict(adapter.conf)
+        data: dict[str, Any] = asdict(adapter.conf)
         data.update(players=players)
 
         if request.method == "POST":

@@ -3,7 +3,7 @@ libs/commands/results/versus.py
 """
 
 import textwrap
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from libs.types import MessageType
 
 
-def aggregation(m: "MessageParserProtocol"):
+def aggregation(m: "MessageParserProtocol") -> None:
     """
     直接対戦結果を集計して返す
 
@@ -52,8 +52,8 @@ def aggregation(m: "MessageParserProtocol"):
     else:
         vs = ",".join(vs_list)
 
-    game_result: dict = {}  # 対戦結果格納用
-    drop_name: list = []  # 対戦記録なしプレイヤー
+    game_result: dict[Any, Any] = {}  # 対戦結果格納用
+    drop_name: list[str] = []  # 対戦記録なしプレイヤー
 
     if len(df_vs) == 0:  # 検索結果なし
         m.set_headline("対戦記録が見つかりません。", StyleOptions(title="直接対戦"))
@@ -106,7 +106,7 @@ def aggregation(m: "MessageParserProtocol"):
         StyleOptions(),
     )
 
-    namelist = list(cast(dict, g.params["competition_list"]).values())  # noqa: F841
+    namelist = list(g.params["competition_list"].values())  # noqa: F841
     df_vs["対戦相手"] = df_vs["vs_name"].apply(lambda x: str(x).strip())
     df_vs["my_rpoint_avg"] = (df_vs["my_rpoint_avg"] * 100).astype("int")
     df_vs["vs_rpoint_avg"] = (df_vs["vs_rpoint_avg"] * 100).astype("int")
@@ -168,12 +168,12 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
     return ret
 
 
-def tmpl_vs_table(data: dict) -> str:
+def tmpl_vs_table(data: dict[Any, Any]) -> str:
     """
     直接対決結果表示テンプレート
 
     Args:
-        data (dict): 結果データ
+        data (dict[Any, Any]): 結果データ
 
     Returns:
         str: 出力データ

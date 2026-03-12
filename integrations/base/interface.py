@@ -123,7 +123,7 @@ class FunctionsInterface(ABC):
         """
 
     @abstractmethod
-    def get_conversations(self, m: "MessageParserProtocol") -> dict:
+    def get_conversations(self, m: "MessageParserProtocol") -> dict[str, Any]:
         """
         スレッド情報の取得
 

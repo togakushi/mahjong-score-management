@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     list(param_data.keyword_test.values()),
     ids=list(param_data.keyword_test.keys()),
 )
-def test_keyword(parameter, config, word, monkeypatch):
+def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """呼び出しキーワード取り込みチェック"""
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
@@ -34,7 +34,7 @@ def test_keyword(parameter, config, word, monkeypatch):
     list(param_data.help_word.values()),
     ids=list(param_data.help_word.keys()),
 )
-def test_help(config, word, monkeypatch):
+def test_help(config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """ヘルプキーワード取り込みチェック"""
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)

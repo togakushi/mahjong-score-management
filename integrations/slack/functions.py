@@ -3,7 +3,7 @@ integrations/slack/functions.py
 """
 
 import logging
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations.base.interface import FunctionsInterface
@@ -93,7 +93,7 @@ class SvcFunctions(FunctionsInterface):
         for key in matches:
             conversations = self.api.appclient.conversations_replies(channel=key.data.channel_id, ts=key.data.event_ts)
             if msg := conversations.get("messages"):
-                res = cast(dict, msg[0])
+                res = cast(dict[str, Any], msg[0])
             else:
                 continue
 
@@ -101,7 +101,7 @@ class SvcFunctions(FunctionsInterface):
                 # 各種時間取得
                 key.data.event_ts = str(res.get("ts", "0"))  # イベント発生時間
                 key.data.thread_ts = str(res.get("thread_ts", "0"))  # スレッドの先頭
-                key.data.edited_ts = str(cast(dict, res.get("edited", {})).get("ts", "0"))  # 編集時間
+                key.data.edited_ts = str(cast(dict[str, Any], res.get("edited", {})).get("ts", "0"))  # 編集時間
                 # リアクション取得
                 key.data.reaction_ok, key.data.reaction_ng = self.get_reactions_list(res)
 
@@ -109,7 +109,7 @@ class SvcFunctions(FunctionsInterface):
 
         return new_matches
 
-    def get_conversations(self, m: "MessageParserProtocol") -> dict:
+    def get_conversations(self, m: "MessageParserProtocol") -> dict[str, Any]:
         """
         スレッド情報の取得
 
@@ -117,23 +117,23 @@ class SvcFunctions(FunctionsInterface):
             m (MessageParserProtocol): メッセージデータ
 
         Returns:
-            dict: API response
+            dict[str, Any]: API response
 
         """
         try:
             res = self.api.appclient.conversations_replies(channel=m.data.channel_id, ts=m.data.event_ts)
             logging.trace(res.validate())  # type: ignore
-            return cast(dict, res)
+            return cast(dict[str, Any], res)
         except self.slack_api_error as err:
             logging.error("slack_api_error: %s", err)
             return {}
 
-    def get_reactions_list(self, msg: dict) -> tuple[list, list]:
+    def get_reactions_list(self, msg: dict[str, Any]) -> tuple[list[str], list[str]]:
         """
         botが付けたリアクションを取得
 
         Args:
-            msg (dict): メッセージ内容
+            msg (dict[str, Any]): メッセージ内容
 
         Returns:
             tuple[list,list]:
@@ -141,17 +141,17 @@ class SvcFunctions(FunctionsInterface):
             - reaction_ng: ngが付いているメッセージのタイムスタンプ
 
         """
-        reaction_ok: list = []
-        reaction_ng: list = []
+        reaction_ok: list[str] = []
+        reaction_ng: list[str] = []
 
         if msg.get("reactions"):
             for reactions in msg.get("reactions", {}):
                 if isinstance(reactions, dict) and self.conf.bot_id in reactions.get("users", []):
                     match reactions.get("name"):
                         case self.conf.reaction_ok:
-                            reaction_ok.append(msg.get("ts"))
+                            reaction_ok.append(msg.get("ts", ""))
                         case self.conf.reaction_ng:
-                            reaction_ng.append(msg.get("ts"))
+                            reaction_ng.append(msg.get("ts", ""))
 
         return (reaction_ok, reaction_ng)
 
@@ -170,7 +170,7 @@ class SvcFunctions(FunctionsInterface):
                 query=f"in:{self.conf.search_channel}",
                 count=1,
             )
-            messages: dict = response.get("messages", {})
+            messages: dict[str, Any] = response.get("messages", {})
             if messages.get("matches"):
                 channel = messages["matches"][0]["channel"]
                 if isinstance(self.conf.search_channel, str):
@@ -204,7 +204,7 @@ class SvcFunctions(FunctionsInterface):
 
         return channel_id
 
-    def reaction_status(self, ch=str, ts=str) -> dict[str, list]:
+    def reaction_status(self, ch=str, ts=str) -> dict[str, list[str]]:
         """
         botが付けたリアクションの種類を返す
 
@@ -213,12 +213,12 @@ class SvcFunctions(FunctionsInterface):
             ts (str): メッセージのタイムスタンプ
 
         Returns:
-            dict[str,list]: リアクション
+            dict[str, list[str]]: リアクション
             - str: "oK" or "ng"
-            - list: タイムスタンプ
+            - list[str]: タイムスタンプ
 
         """
-        icon: dict[str, list] = {
+        icon: dict[str, list[str]] = {
             "ok": [],
             "ng": [],
         }
@@ -229,17 +229,17 @@ class SvcFunctions(FunctionsInterface):
         except self.slack_api_error:
             return icon
 
-        if reactions := cast(dict, res["message"]).get("reactions"):
-            for reaction in cast(list[dict], reactions):
+        if reactions := cast(dict[str, Any], res["message"]).get("reactions"):
+            for reaction in cast(list[dict[str, Any]], reactions):
                 if reaction.get("name") == self.conf.reaction_ok and self.conf.bot_id in reaction["users"]:
-                    icon["ok"].append(res["message"]["ts"])
+                    icon["ok"].append(str(res["message"]["ts"]))
                 if reaction.get("name") == self.conf.reaction_ng and self.conf.bot_id in reaction["users"]:
-                    icon["ng"].append(res["message"]["ts"])
+                    icon["ng"].append(str(res["message"]["ts"]))
 
         logging.debug("ch=%s, ts=%s, icon=%s", ch, ts, icon)
         return icon
 
-    def reaction_append(self, icon: str, ch: str, ts: str):
+    def reaction_append(self, icon: str, ch: str, ts: str) -> None:
         """
         リアクション追加
 
@@ -261,14 +261,14 @@ class SvcFunctions(FunctionsInterface):
             )
             logging.debug("ts=%s, ch=%s, icon=%s, %s", ts, ch, icon, res.validate())
         except self.slack_api_error as err:
-            match cast(dict, err.response).get("error"):
+            match cast(dict[str, Any], err.response).get("error"):
                 case "already_reacted":
                     pass
                 case _:
                     logging.error("slack_api_error: %s", err)
                     logging.error("ts=%s, ch=%s, icon=%s", ts, ch, icon)
 
-    def reaction_remove(self, icon: str, ch: str, ts: str):
+    def reaction_remove(self, icon: str, ch: str, ts: str) -> None:
         """
         リアクション削除
 
@@ -290,7 +290,7 @@ class SvcFunctions(FunctionsInterface):
             )
             logging.debug("ch=%s, ts=%s, icon=%s, %s", ch, ts, icon, res.validate())
         except self.slack_api_error as err:
-            match cast(dict, err.response).get("error"):
+            match cast(dict[str, Any], err.response).get("error"):
                 case "no_reaction":
                     pass
                 case "message_not_found":
@@ -349,7 +349,7 @@ class SvcFunctions(FunctionsInterface):
             return self.get_message_details(remarks_matches)
         return remarks_matches
 
-    def post_processing(self, m: "MessageParserProtocol"):
+    def post_processing(self, m: "MessageParserProtocol") -> None:
         """
         後処理
 
@@ -359,7 +359,7 @@ class SvcFunctions(FunctionsInterface):
         """
 
         # リアクション文字取得
-        def _resolve_reaction(name: str, fallback: str) -> str:
+        def _resolve_reaction(name: str, fallback: str) -> Any:
             section_name = f"slack_{m.data.channel_id}"
             if channel_config := g.params.get("channel_config"):
                 if value := lookup.get_config_value(
@@ -386,8 +386,8 @@ class SvcFunctions(FunctionsInterface):
                 fallback=fallback,
             )
 
-        self.conf.reaction_ok = _resolve_reaction("reaction_ok", self.conf.reaction_ok)
-        self.conf.reaction_ng = _resolve_reaction("reaction_ng", self.conf.reaction_ng)
+        self.conf.reaction_ok = str(_resolve_reaction("reaction_ok", self.conf.reaction_ok))
+        self.conf.reaction_ng = str(_resolve_reaction("reaction_ng", self.conf.reaction_ng))
 
         # リアクション処理
         match m.status.action:

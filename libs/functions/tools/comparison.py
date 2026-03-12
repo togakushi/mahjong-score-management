@@ -42,7 +42,7 @@ def main() -> None:
         print(cast("ComparisonResults", m.status.message).output("summary"))
 
 
-def slack_comparison(m: "MessageParserProtocol"):
+def slack_comparison(m: "MessageParserProtocol") -> None:
     """
     突合処理(slack)
 
@@ -76,7 +76,7 @@ def slack_comparison(m: "MessageParserProtocol"):
     comparison.main(m)
 
 
-def discord_comparison(m: "MessageParserProtocol"):
+def discord_comparison(m: "MessageParserProtocol") -> None:
     """
     突合処理(discord)
 

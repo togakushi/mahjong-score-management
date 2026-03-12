@@ -3,7 +3,7 @@ tests/events/test_slash_dispatch.py
 """
 
 import sys
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 from unittest.mock import patch
 
 import pytest
@@ -34,7 +34,7 @@ def _init() -> "MessageParserProtocol":
     list(param_data.slash_help.values()),
     ids=list(param_data.slash_help.keys()),
 )
-def test_help(config, keyword, monkeypatch) -> None:
+def test_help(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(help)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -45,7 +45,7 @@ def test_help(config, keyword, monkeypatch) -> None:
     param_data.FAKE_BODY["event"].update(text=f"{keyword}")
 
     with patch.object(m, "set_message") as mock_set_message:
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
 
         # fixme
@@ -59,7 +59,7 @@ def test_help(config, keyword, monkeypatch) -> None:
     list(param_data.slash_results.values()),
     ids=list(param_data.slash_results.keys()),
 )
-def test_results(config, keyword, monkeypatch) -> None:
+def test_results(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(results)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -68,7 +68,7 @@ def test_results(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_results.assert_called_once()
 
@@ -78,7 +78,7 @@ def test_results(config, keyword, monkeypatch) -> None:
     list(param_data.slash_graph.values()),
     ids=list(param_data.slash_graph.keys()),
 )
-def test_graph(config, keyword, monkeypatch) -> None:
+def test_graph(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(graph)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -87,7 +87,7 @@ def test_graph(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_graph.assert_called_once()
 
@@ -97,7 +97,7 @@ def test_graph(config, keyword, monkeypatch) -> None:
     list(param_data.slash_ranking.values()),
     ids=list(param_data.slash_ranking.keys()),
 )
-def test_ranking(config, keyword, monkeypatch) -> None:
+def test_ranking(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(ranking)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -106,7 +106,7 @@ def test_ranking(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_ranking.assert_called_once()
 
@@ -116,7 +116,7 @@ def test_ranking(config, keyword, monkeypatch) -> None:
     list(param_data.slash_report.values()),
     ids=list(param_data.slash_report.keys()),
 )
-def test_report(config, keyword, monkeypatch) -> None:
+def test_report(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(report)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -125,7 +125,7 @@ def test_report(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_report.assert_called_once()
 
@@ -135,7 +135,7 @@ def test_report(config, keyword, monkeypatch) -> None:
     list(param_data.slash_check.values()),
     ids=list(param_data.slash_check.keys()),
 )
-def test_check(config, keyword, monkeypatch) -> None:
+def test_check(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(check)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -144,7 +144,7 @@ def test_check(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_check.assert_called_once()
 
@@ -154,7 +154,7 @@ def test_check(config, keyword, monkeypatch) -> None:
     list(param_data.slash_download.values()),
     ids=list(param_data.slash_download.keys()),
 )
-def test_download(config, keyword, monkeypatch) -> None:
+def test_download(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(download)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -162,7 +162,7 @@ def test_download(config, keyword, monkeypatch) -> None:
     param_data.FAKE_BODY["event"].update(text=f"{keyword}")
 
     with patch.object(m, "set_message") as mock_set_message:
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
 
         mock_set_message.assert_called_once()
@@ -180,7 +180,7 @@ def test_download(config, keyword, monkeypatch) -> None:
     list(param_data.slash_member_list.values()),
     ids=list(param_data.slash_member_list.keys()),
 )
-def test_member_list(config, keyword, monkeypatch) -> None:
+def test_member_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(member)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -189,7 +189,7 @@ def test_member_list(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_member_list.assert_called_once()
 
@@ -199,7 +199,7 @@ def test_member_list(config, keyword, monkeypatch) -> None:
     list(param_data.slash_member_add.values()),
     ids=list(param_data.slash_member_add.keys()),
 )
-def test_member_add(config, keyword, monkeypatch) -> None:
+def test_member_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(add)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -208,7 +208,7 @@ def test_member_add(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_member_add.assert_called_once()
 
@@ -218,7 +218,7 @@ def test_member_add(config, keyword, monkeypatch) -> None:
     list(param_data.slash_member_del.values()),
     ids=list(param_data.slash_member_del.keys()),
 )
-def test_member_del(config, keyword, monkeypatch) -> None:
+def test_member_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(del)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -227,7 +227,7 @@ def test_member_del(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_member_del.assert_called_once()
 
@@ -237,7 +237,7 @@ def test_member_del(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_create.values()),
     ids=list(param_data.slash_team_create.keys()),
 )
-def test_team_create(config, keyword, monkeypatch) -> None:
+def test_team_create(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_create)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -246,7 +246,7 @@ def test_team_create(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_create.assert_called_once()
 
@@ -256,7 +256,7 @@ def test_team_create(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_del.values()),
     ids=list(param_data.slash_team_del.keys()),
 )
-def test_team_del(config, keyword, monkeypatch) -> None:
+def test_team_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_del)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -265,7 +265,7 @@ def test_team_del(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_del.assert_called_once()
 
@@ -275,7 +275,7 @@ def test_team_del(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_add.values()),
     ids=list(param_data.slash_team_add.keys()),
 )
-def test_team_add(config, keyword, monkeypatch) -> None:
+def test_team_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_add)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -284,7 +284,7 @@ def test_team_add(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_add.assert_called_once()
 
@@ -294,7 +294,7 @@ def test_team_add(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_remove.values()),
     ids=list(param_data.slash_team_remove.keys()),
 )
-def test_team_remove(config, keyword, monkeypatch) -> None:
+def test_team_remove(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_remove)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -303,7 +303,7 @@ def test_team_remove(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_remove.assert_called_once()
 
@@ -313,7 +313,7 @@ def test_team_remove(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_list.values()),
     ids=list(param_data.slash_team_list.keys()),
 )
-def test_team_list(config, keyword, monkeypatch) -> None:
+def test_team_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_list)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -322,7 +322,7 @@ def test_team_list(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_list.assert_called_once()
 
@@ -332,7 +332,7 @@ def test_team_list(config, keyword, monkeypatch) -> None:
     list(param_data.slash_team_clear.values()),
     ids=list(param_data.slash_team_clear.keys()),
 )
-def test_team_clear(config, keyword, monkeypatch) -> None:
+def test_team_clear(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """スラッシュコマンドイベントテスト(team_clear)"""
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -341,6 +341,6 @@ def test_team_clear(config, keyword, monkeypatch) -> None:
     ):
         m = _init()
         param_data.FAKE_BODY["event"].update(text=f"{keyword}")
-        m.parser(cast(dict, param_data.FAKE_BODY))
+        m.parser(cast(dict[str, Any], param_data.FAKE_BODY))
         libs.dispatcher.by_keyword(m)
         mock_slash_team_clear.assert_called_once()

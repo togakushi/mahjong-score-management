@@ -9,7 +9,7 @@ import shutil
 import sys
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.commands.graph.entry
 import libs.commands.help.entry
@@ -315,41 +315,41 @@ def setup(init_db: bool = True) -> None:
 def register() -> None:
     """ディスパッチテーブル登録"""
 
-    def dispatch_download(m: "MessageParserProtocol"):
+    def dispatch_download(m: "MessageParserProtocol") -> None:
         m.set_message(g.cfg.setting.database_file, StyleOptions(title="成績記録DB"))
 
-    def dispatch_members_list(m: "MessageParserProtocol"):
+    def dispatch_members_list(m: "MessageParserProtocol") -> None:
         m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
         m.post.ts = m.data.event_ts
         m.post.thread_title = "登録済みメンバー"
 
-    def dispatch_team_list(m: "MessageParserProtocol"):
+    def dispatch_team_list(m: "MessageParserProtocol") -> None:
         m.set_message(text_item.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
         m.post.ts = m.data.event_ts
         m.post.thread_title = "登録済みチーム"
 
-    def dispatch_member_append(m: "MessageParserProtocol"):
+    def dispatch_member_append(m: "MessageParserProtocol") -> None:
         m.set_message(member.append(m.argument), StyleOptions(title="メンバー追加", key_title=False))
 
-    def dispatch_member_remove(m: "MessageParserProtocol"):
+    def dispatch_member_remove(m: "MessageParserProtocol") -> None:
         m.set_message(member.remove(m.argument), StyleOptions(title="メンバー削除", key_title=False))
 
-    def dispatch_team_create(m: "MessageParserProtocol"):
+    def dispatch_team_create(m: "MessageParserProtocol") -> None:
         m.set_message(team.create(m.argument), StyleOptions(title="チーム作成", key_title=False))
 
-    def dispatch_team_delete(m: "MessageParserProtocol"):
+    def dispatch_team_delete(m: "MessageParserProtocol") -> None:
         m.set_message(team.delete(m.argument), StyleOptions(title="チーム削除", key_title=False))
 
-    def dispatch_team_append(m: "MessageParserProtocol"):
+    def dispatch_team_append(m: "MessageParserProtocol") -> None:
         m.set_message(team.append(m.argument), StyleOptions(title="チーム所属", key_title=False))
 
-    def dispatch_team_remove(m: "MessageParserProtocol"):
+    def dispatch_team_remove(m: "MessageParserProtocol") -> None:
         m.set_message(team.remove(m.argument), StyleOptions(title="チーム脱退", key_title=False))
 
-    def dispatch_team_clear(m: "MessageParserProtocol"):
+    def dispatch_team_clear(m: "MessageParserProtocol") -> None:
         m.set_message(team.clear(), StyleOptions(title="全チーム削除", key_title=False))
 
-    dispatch_table: dict = {
+    dispatch_table: dict[str, Any] = {
         "results": libs.commands.results.entry.main,
         "graph": libs.commands.graph.entry.main,
         "ranking": libs.commands.ranking.entry.main,
@@ -368,7 +368,7 @@ def register() -> None:
         "team_clear": dispatch_team_clear,
     }
 
-    commandword_list: list
+    commandword_list: list[str]
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
@@ -385,7 +385,7 @@ def register() -> None:
                 g.keyword_dispatcher.update({commandword: ep})
         # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
-            for alias in cast(list, getattr(g.cfg.alias, command)):
+            for alias in cast(list[str], getattr(g.cfg.alias, command)):
                 g.command_dispatcher.update({alias: ep})
 
     # サービス別コマンド登録

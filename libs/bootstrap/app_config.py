@@ -45,7 +45,7 @@ class DropItems(BaseSection):
     other: set[str]
     """メモ関連データ非表示指定ワード"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.main_parser = outer.main_parser
 
         # 設定値取り込み
@@ -81,7 +81,7 @@ class BadgeDisplay(BaseSection):
     grade: "BadgeGradeSpec" = BadgeGradeSpec()
     """段位情報"""
 
-    def __init__(self, outer: "AppConfig"):
+    def __init__(self, outer: "AppConfig") -> None:
         self.section = "grade"
         self.main_parser = outer.main_parser
 
@@ -93,7 +93,7 @@ class BadgeDisplay(BaseSection):
 class AppConfig:
     """アプリケーション設定"""
 
-    def __init__(self, config_file: Path):
+    def __init__(self, config_file: Path) -> None:
         self.config_file: Path = config_file
         """メイン設定ファイルパス"""
 
@@ -188,15 +188,15 @@ class AppConfig:
         self.report.config_load(self)
         self.help.config_load(self)
 
-    def word_list(self, add_words: list | None = None) -> list[str]:
+    def word_list(self, add_words: list[str] | None = None) -> list[str]:
         """
         設定されている値、キーワードをリスト化する
 
         Args:
-            add_words (list | None, optional): リストに追加するワード. Defaults to None.
+            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.
 
         Returns:
-            list: リスト化されたキーワード
+            list[str]: リスト化されたキーワード
 
         """
         words: list[str] = []
@@ -226,7 +226,7 @@ class AppConfig:
 
         return words
 
-    def overwrite(self, additional_config: Path, section_name: str):
+    def overwrite(self, additional_config: Path, section_name: str) -> None:
         """
         指定セクションを上書き
 
@@ -245,7 +245,7 @@ class AppConfig:
             logging.error(err)
             return
 
-        protected_values: Union[str, list]
+        protected_values: Union[str, list[str]]
         match section_name:
             case "setting":
                 protected_values = self.setting.remarks_word  # 上書き保護

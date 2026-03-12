@@ -104,7 +104,7 @@ def get_game_results() -> list[list[str]]:
     return results
 
 
-def get_count_results(game_count: int) -> list:
+def get_count_results(game_count: int) -> list[list[str]]:
     """
     指定間隔区切りのゲーム結果集計
 
@@ -112,7 +112,7 @@ def get_count_results(game_count: int) -> list:
         game_count (int): 区切るゲーム数
 
     Returns:
-        list: 集計結果のリスト
+        list[list[str]]: 集計結果のリスト
 
     """
     g.params.update({"interval": game_count})
@@ -177,7 +177,7 @@ def get_count_results(game_count: int) -> list:
     return results
 
 
-def get_count_moving(game_count: int) -> list:
+def get_count_moving(game_count: int) -> list[dict[str, Any]]:
     """
     移動平均を取得する
 
@@ -185,7 +185,7 @@ def get_count_moving(game_count: int) -> list:
         game_count (int): 平滑化するゲーム数
 
     Returns:
-        list: 集計結果のリスト
+        list[dict[str, Any]]: 集計結果のリスト
 
     """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
@@ -249,7 +249,7 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
     # Y軸設定
     plt.ylabel("平均順位", fontsize=14)
     plt.yticks([4.0, 3.5, 3.0, 2.5, 2.0, 1.5, 1.0])
-    for ax in plt.gcf().get_axes():  # type: ignore[not-callable]  # 逆向きにする
+    for ax in plt.gcf().get_axes():  # 逆向きにする
         ax.invert_yaxis()
 
     # X軸設定
@@ -365,7 +365,7 @@ def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
     # Y軸設定
     plt.yticks([0, 25, 50, 75, 100])
     plt.ylabel("（％）", fontsize=14)
-    for ax in plt.gcf().get_axes():  # type: ignore[not-callable]  # グリッド線を背後にまわす
+    for ax in plt.gcf().get_axes():  # グリッド線を背後にまわす
         ax.set_axisbelow(True)
         plt.grid(axis="y")
 
@@ -420,19 +420,19 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
         # rightMargin=1.5 * mm,
     )
 
-    style: dict = {}
+    style: dict[str, Any] = {}
     style["Title"] = ParagraphStyle(name="Title", fontName="ReportFont", fontSize=24)
     style["Normal"] = ParagraphStyle(name="Normal", fontName="ReportFont", fontSize=14)
     style["Left"] = ParagraphStyle(name="Left", fontName="ReportFont", fontSize=14, alignment=TA_LEFT)
     style["Right"] = ParagraphStyle(name="Right", fontName="ReportFont", fontSize=14, alignment=TA_RIGHT)
 
-    plt.rcParams.update(plt.rcParamsDefault)
+    plt.rcdefaults()
     font_prop = fm.FontProperties(fname=font_path)
     plt.rcParams["font.family"] = font_prop.get_name()
     fm.fontManager.addfont(font_path)
 
     # レポート作成
-    elements: list = []
+    elements: list[Any] = []
     elements.extend(cover_page(style, target_info))  # 表紙
     elements.extend(entire_aggregate(style))  # 全期間
     elements.extend(periodic_aggregation(style))  # 期間集計
@@ -444,13 +444,13 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
     m.set_message(pdf_path, StyleOptions(title=f"成績レポート({g.params['player_name']})", use_comment=True, header_hidden=True))
 
 
-def cover_page(style: dict, target_info: dict) -> list[Any]:
+def cover_page(style: dict[str, Any], target_info: dict[str, Any]) -> list[Any]:
     """
     表紙生成
 
     Args:
-        style (dict): レイアウトスタイル
-        target_info (dict): プレイヤー情報
+        style (dict[str, Any]): レイアウトスタイル
+        target_info (dict[str, Any]): プレイヤー情報
 
     Returns:
         list[Any]: 生成内容
@@ -488,12 +488,12 @@ def cover_page(style: dict, target_info: dict) -> list[Any]:
     return elements
 
 
-def entire_aggregate(style: dict) -> list[Any]:
+def entire_aggregate(style: dict[str, Any]) -> list[Any]:
     """
     全期間
 
     Args:
-        style (dict): レイアウトスタイル
+        style (dict[str, Any]): レイアウトスタイル
 
     Returns:
         list[Any]: 生成内容
@@ -503,7 +503,7 @@ def entire_aggregate(style: dict) -> list[Any]:
 
     elements.append(Paragraph("全期間", style["Left"]))
     elements.append(Spacer(1, 5 * mm))
-    data: list = []
+    data: list[list[str]] = []
     g.cfg.aggregate_unit = "A"
     tmp_data = get_game_results()
 
@@ -569,8 +569,7 @@ def entire_aggregate(style: dict) -> list[Any]:
     elements.append(Spacer(1, 5 * mm))
     elements.append(Image(imgdata, width=600 * 0.5, height=600 * 0.5))
 
-    data = get_count_moving(0)
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(get_count_moving(0))
     df["playtime"] = pd.to_datetime(df["playtime"])
 
     # 通算ポイント推移
@@ -586,12 +585,12 @@ def entire_aggregate(style: dict) -> list[Any]:
     return elements
 
 
-def periodic_aggregation(style: dict) -> list[Any]:
+def periodic_aggregation(style: dict[str, Any]) -> list[Any]:
     """
     期間集計
 
     Args:
-        style (dict): レイアウトスタイル
+        style (dict[str, Any]): レイアウトスタイル
 
     Returns:
         list[Any]: 生成内容
@@ -609,7 +608,7 @@ def periodic_aggregation(style: dict) -> list[Any]:
         elements.append(Paragraph(table_title, style["Left"]))
         elements.append(Spacer(1, 5 * mm))
 
-        data: list = []
+        data: list[list[str]] = []
         g.cfg.aggregate_unit = flag
         tmp_data = get_game_results()
 
@@ -665,13 +664,13 @@ def periodic_aggregation(style: dict) -> list[Any]:
     return elements
 
 
-def sectional_aggregate(style: dict, target_info: dict) -> list[Any]:
+def sectional_aggregate(style: dict[str, Any], target_info: dict[str, Any]) -> list[Any]:
     """
     区間集計
 
     Args:
-        style (dict): レイアウトスタイル
-        target_info (dict): プレイヤー情報
+        style (dict[str, Any]): レイアウトスタイル
+        target_info (dict[str, Any]): プレイヤー情報
 
     Returns:
         list[Any]: 生成内容
@@ -736,8 +735,7 @@ def sectional_aggregate(style: dict, target_info: dict) -> list[Any]:
             elements.append(Image(imgdata, width=1200 * 0.5, height=800 * 0.5))
 
             # 通算ポイント推移
-            data = get_count_moving(count)
-            tmp_df = pd.DataFrame(data)
+            tmp_df = pd.DataFrame(get_count_moving(count))
             df = pd.DataFrame()
             for i in sorted(tmp_df["interval"].unique().tolist()):
                 list_data = tmp_df[tmp_df.interval == i]["point_sum"].to_list()

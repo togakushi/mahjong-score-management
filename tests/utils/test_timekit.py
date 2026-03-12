@@ -2,6 +2,8 @@
 tests/utils/test_timekit.py
 """
 
+from typing import Any
+
 import pytest
 
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -13,7 +15,7 @@ from tests.utils import param_data
     list(param_data.date_range.values()),
     ids=list(param_data.date_range.keys()),
 )
-def test_keyword_range(date: str, keyword_list: list, period: list):
+def test_keyword_range(date: str, keyword_list: list[str], period: list[str]) -> None:
     """日付範囲キーワード"""
     for keyword in keyword_list:
         dt = ExtDt(date).range(keyword)
@@ -27,9 +29,9 @@ def test_keyword_range(date: str, keyword_list: list, period: list):
     list(param_data.format_conv.values()),
     ids=list(param_data.format_conv.keys()),
 )
-def test_format_conv(date: str, option: list, output: str):
+def test_format_conv(date: str, option: list[Any], output: str) -> None:
     """フォーマット変換"""
-    args: dict = {}
+    args: dict[str, Any] = {}
     for x in option:
         if isinstance(x, ExtDt.FMT):
             args.update(fmt=x)

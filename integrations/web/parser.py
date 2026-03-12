@@ -2,6 +2,8 @@
 integrations/web/parser.py
 """
 
+from typing import Any
+
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
 from libs.domain.datamodels import MessageStatus
@@ -22,7 +24,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data.status = MessageStatus.APPEND
         self.status.command_flg = False
 
-    def parser(self, body: dict) -> None:
+    def parser(self, body: dict[str, Any]) -> None:
         _ = body
 
     @property
