@@ -3,7 +3,7 @@ integrations/web/functions.py
 """
 
 import re
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from flask import make_response, render_template
 
@@ -166,14 +166,14 @@ class SvcFunctions(FunctionsInterface):
 
         return title, message
 
-    def set_cookie(self, html: str, req: "Request", data: dict) -> "Response":
+    def set_cookie(self, html: str, req: "Request", data: dict[str, Any]) -> "Response":
         """
         cookie保存
 
         Args:
             html (str): テンプレートHTML
             req (Request): Request
-            data (dict): データ
+            data (dict[str, Any]): データ
 
         Returns:
             Response: Response
@@ -192,7 +192,7 @@ class SvcFunctions(FunctionsInterface):
 
         return page
 
-    def get_cookie(self, req: "Request") -> dict:
+    def get_cookie(self, req: "Request") -> dict[str, str]:
         """
         cookie取得
 
@@ -200,10 +200,10 @@ class SvcFunctions(FunctionsInterface):
             req (Request): Request
 
         Returns:
-            dict: cookieデータ
+            dict[str, str]: cookieデータ
 
         """
-        initial_value: dict = {
+        initial_value: dict[str, str] = {
             "range": "",
             "guest": "ゲストなし",
             "display": "",
@@ -211,7 +211,7 @@ class SvcFunctions(FunctionsInterface):
             "collect": "",
         }
 
-        target_keys: list = [
+        target_keys: list[str] = [
             "collect",
             "display",
             "guest",
@@ -233,7 +233,7 @@ class SvcFunctions(FunctionsInterface):
 
         return {k: v for k, v in cookie_data.items() if k in target_keys}
 
-    def get_conversations(self, m: "MessageParserProtocol") -> dict:
+    def get_conversations(self, m: "MessageParserProtocol") -> dict[str, Any]:
         """Abstractmethod dummy"""
         _ = m
         return {}

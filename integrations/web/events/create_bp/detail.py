@@ -3,7 +3,7 @@ integrations/web/events/detail.py
 """
 
 from dataclasses import asdict
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, cast
 
 import pandas as pd
 from flask import Blueprint, abort, current_app, request
@@ -39,7 +39,7 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
         players = g.cfg.member.lists
 
         m = adapter.parser()
-        cookie_data = adapter.functions.get_cookie(request)
+        cookie_data = cast(dict[str, Any], adapter.functions.get_cookie(request))
         text = " ".join(cookie_data.values())
         m.data.text = f"{g.cfg.results.commandword[0]} {text}"
         libs.dispatcher.by_keyword(m)
@@ -61,7 +61,7 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
             if isinstance(data, str):
                 message += adapter.functions.to_text_html(data)
 
-        cookie_data.update(body=message, players=players, **asdict(adapter.conf))
+        cookie_data.update({"body": message, "players": players, **asdict(adapter.conf)})
         page = adapter.functions.set_cookie("detail.html", request, cookie_data)
 
         return page

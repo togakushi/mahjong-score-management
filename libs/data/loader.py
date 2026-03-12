@@ -67,13 +67,13 @@ def execute(sql: str, params: Optional[dict] = None) -> list[dict[str, Any]]:
     return ret
 
 
-def read_data(keyword: str, params: Optional[dict] = None) -> pd.DataFrame:
+def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataFrame:
     """
     データベースからデータを取得する
 
     Args:
         keyword (str): SQL選択キーワード
-        params (Optional[dict]): プレースホルダ
+        params (Optional[dict[str, Any]]): プレースホルダ
 
     Returns:
         pd.DataFrame: 集計結果
