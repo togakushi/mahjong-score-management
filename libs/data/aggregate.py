@@ -28,7 +28,7 @@ def game_summary(
 
     """
     # データ収集
-    df = loader.read_data("SUMMARY_TOTAL")
+    df = loader.read_data("SUMMARY_TOTAL", g.params)
 
     # 順位分布選択
     match g.params.get("mode", 4):
