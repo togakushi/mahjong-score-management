@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Block commits directly on protected branches.
+branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null)"
+
+if [ "$branch" = "main" ]; then
+  echo "Error: commits to 'main' are blocked. Create a feature branch first." >&2
+  exit 1
+fi
+
+exit 0
