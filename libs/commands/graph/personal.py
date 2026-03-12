@@ -137,7 +137,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_DETAILS")
+    df = loader.read_data("SUMMARY_DETAILS", g.params)
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())

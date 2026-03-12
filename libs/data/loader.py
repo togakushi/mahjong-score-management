@@ -34,7 +34,7 @@ def execute(sql: str, params: Optional[PlaceholderDict] = None) -> list[dict[str
 
     """
     if not params:
-        params = PlaceholderDict()
+        params = g.params
 
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql)
@@ -84,7 +84,7 @@ def read_data(keyword: str, params: Optional[PlaceholderDict] = None) -> pd.Data
 
     """
     if not params:
-        params = PlaceholderDict()
+        params = g.params
 
     params_dict: dict[str, Any] = {
         **params,
