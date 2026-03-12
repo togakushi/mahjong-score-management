@@ -5,10 +5,14 @@ libs/functions/tools/vacuum.py
 import logging
 import os
 from contextlib import closing
+from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.data import modify
 from libs.utils import dbutil
+
+if TYPE_CHECKING:
+    from sqlite3 import Connection
 
 
 def main() -> None:
@@ -32,12 +36,12 @@ def main() -> None:
     logging.info("freelist_count: %s -> %s", before_freelist, after_freelist)
 
 
-def db_info(cur, kind) -> int:
+def db_info(cur: "Connection", kind: str) -> int:
     """
     page_countを取得
 
     Args:
-        cur (sqlite3.Cursor): カーソルオブジェクト
+        cur (Connection): Connectionオブジェクト
         kind (str): 取得する内容
 
     Returns:
@@ -46,9 +50,9 @@ def db_info(cur, kind) -> int:
     """
     match kind:
         case "page_count":
-            count = cur.execute("pragma page_count;").fetchone()[0]
+            count = int(cur.execute("pragma page_count;").fetchone()[0])
         case "freelist_count":
-            count = cur.execute("pragma freelist_count;").fetchone()[0]
+            count = int(cur.execute("pragma freelist_count;").fetchone()[0])
         case _:
             count = 0
 
