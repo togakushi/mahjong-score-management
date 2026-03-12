@@ -9,6 +9,7 @@ import pandas as pd
 import plotly.express as px  # type: ignore
 import plotly.graph_objects as go  # type: ignore
 from matplotlib import gridspec
+from matplotlib.axes import Axes
 from plotly.subplots import make_subplots  # type: ignore
 
 import libs.global_value as g
@@ -38,7 +39,7 @@ def plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_GAMEDATA")
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
@@ -308,7 +309,7 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
     return pd.DataFrame(rpoint_data)
 
 
-def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
+def subplot_box(df: pd.DataFrame, ax: Axes) -> None:
     """
     箱ひげ図を生成する
 
@@ -338,7 +339,7 @@ def subplot_box(df: pd.DataFrame, ax: plt.Axes) -> None:
     ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])  # type: ignore[not-callable]
 
 
-def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
+def subplot_table(df: pd.DataFrame, ax: Axes) -> None:
     """
     テーブルを生成する
 
@@ -375,7 +376,7 @@ def subplot_table(df: pd.DataFrame, ax: plt.Axes) -> None:
     ax.axis("off")
 
 
-def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
+def subplot_point(df: pd.Series, ax: Axes) -> None:
     """
     ポイントデータ
 
@@ -403,7 +404,7 @@ def subplot_point(df: pd.Series, ax: plt.Axes) -> None:
     ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])  # type: ignore[not-callable]
 
 
-def subplot_rank(df: pd.DataFrame, ax: plt.Axes, total_index: str) -> None:
+def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:
     """
     順位データ
 
