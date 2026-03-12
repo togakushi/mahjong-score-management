@@ -2,7 +2,7 @@
 libs/commands/graph/personal.py
 """
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -91,8 +91,8 @@ def plot(m: "MessageParserProtocol") -> None:
             point_ax.bar(df["playtime"], df["point"], color="blue")
 
             point_ax.tick_params(axis="x", which="both", labelbottom=False, bottom=False)
-            ylabs = point_ax.get_yticks()[1:-1]  # type: ignore[not-callable]
-            point_ax.set_yticks(ylabs, [str(int(ylab)).replace("-", "▲") for ylab in ylabs])  # type: ignore[not-callable]
+            ylabs = point_ax.get_yticks()[1:-1]
+            point_ax.set_yticks(ylabs, [str(int(ylab)).replace("-", "▲") for ylab in ylabs])
 
             point_ax.legend(
                 [f"通算ポイント ({point_sum}pt)", f"平均ポイント ({point_avg}pt)", "獲得ポイント"],
@@ -109,7 +109,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
             rank_ax.set_xlabel(graphutil.gen_xlabel(len(df)))
             rank_ax.set_xticks(**graphutil.xticks_parameter(df["playtime"].to_list()))
-            rank_ax.set_yticks(list(range(1, g.params.get("mode", 4) + 1)))  # type: ignore[not-callable]
+            rank_ax.set_yticks(list(range(1, g.params.get("mode", 4) + 1)))
             rank_ax.set_ylim(ymin=0.85, ymax=g.params.get("mode", 4) + 0.15)
             rank_ax.invert_yaxis()
 
@@ -295,7 +295,7 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
 
     """
     # interval単位で分割
-    rpoint_data: dict = {}
+    rpoint_data: dict[str, Any] = {}
 
     fraction = 0 if not len(df) % interval else interval - len(df) % interval  # 端数
     if fraction:
@@ -331,12 +331,12 @@ def subplot_box(df: pd.DataFrame, ax: Axes) -> None:
     )
     ax.axhline(y=25000, linewidth=0.5, ls="dashed", color="grey")
     ax.set_xticks(p)
-    ax.set_xticklabels(df.columns, rotation=45, ha="right")  # type: ignore[not-callable]
+    ax.set_xticklabels(df.columns, rotation=45, ha="right")
 
     # Y軸修正
-    ylabs = ax.get_yticks()[1:-1]  # type: ignore[not-callable]
-    ax.set_yticks(ylabs)  # type: ignore[not-callable]
-    ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])  # type: ignore[not-callable]
+    ylabs = ax.get_yticks()[1:-1]
+    ax.set_yticks(ylabs)
+    ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])
 
 
 def subplot_table(df: pd.DataFrame, ax: Axes) -> None:
@@ -399,9 +399,9 @@ def subplot_point(df: pd.Series, ax: Axes) -> None:
         color="b",
     )
     # Y軸修正
-    ylabs = ax.get_yticks()[1:-1]  # type: ignore[not-callable]
-    ax.set_yticks(ylabs)  # type: ignore[not-callable]
-    ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])  # type: ignore[not-callable]
+    ylabs = ax.get_yticks()[1:-1]
+    ax.set_yticks(ylabs)
+    ax.set_yticklabels([str(int(ylab)).replace("-", "▲") for ylab in ylabs])
 
 
 def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:

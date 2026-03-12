@@ -210,7 +210,7 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
 
     if (all(df.count() == 1) or g.params["collection"] == "all") and graph_params["horizontal"]:
         graph_params["graph_type"] = "point_hbar"
-        color: list = []
+        color: list[str] = []
         for _, v in target_data.iterrows():
             if v["last_point"] > 0:
                 color.append("deepskyblue")
@@ -227,7 +227,7 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
             figsize=(8, 2 + tmpdf.count().iloc[0] / 5),
             y="point",
             xlabel=graph_params["xlabel_text"],
-            color=color[::-1],
+            color=[x for x in color[::-1]],
         ).get_figure()
 
         plt.legend().remove()

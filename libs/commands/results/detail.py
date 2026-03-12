@@ -329,12 +329,12 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     return ret
 
 
-def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
+def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
     """
     戦績(簡易)データ取得
 
     Args:
-        mapping_dict (dict): 匿名化オプション用マップ
+        mapping_dict (dict[str, str]): 匿名化オプション用マップ
 
     Returns:
         pd.DataFrame: 戦績データ
@@ -361,12 +361,12 @@ def get_results_simple(mapping_dict: dict) -> pd.DataFrame:
     return df_data
 
 
-def get_results_details(mapping_dict: dict) -> pd.DataFrame:
+def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
     """
     戦績(詳細)データ取得
 
     Args:
-        mapping_dict (dict): 匿名化オプション用マップ
+        mapping_dict (dict[str, str]): 匿名化オプション用マップ
 
     Returns:
         pd.DataFrame: 戦績データ
@@ -376,7 +376,7 @@ def get_results_details(mapping_dict: dict) -> pd.DataFrame:
 
     df = loader.read_data("SUMMARY_DETAILS2", g.params).fillna(value="")
     if g.params.get("anonymous"):
-        name_list: list = []
+        name_list: list[str] = []
         name_list.extend(df["p1_name"].unique().tolist())
         name_list.extend(df["p2_name"].unique().tolist())
         name_list.extend(df["p3_name"].unique().tolist())
@@ -432,7 +432,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         df["my_name"] = df["my_name"].replace(mapping_dict)
         df["vs_name"] = df["vs_name"].replace(mapping_dict)
 
-    data_list: list = []
+    data_list: list[list[str]] = []
     for _, r in df.iterrows():
         data_list.append([r["vs_name"], f"{r['game']} 戦", f"{r['win']} 勝", f"{r['lose']} 敗", f"({r['win%']:6.2f}%)"])
 
