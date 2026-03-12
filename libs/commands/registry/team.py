@@ -138,7 +138,7 @@ class TeamSection(BaseSection):
             list[TeamDataDict]: チーム情報
 
         """
-        ret = loader.read_data("TEAM_INFO", cast(dict, g.params)).to_dict(orient="records")
+        ret = loader.read_data("TEAM_INFO", g.params).to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
 

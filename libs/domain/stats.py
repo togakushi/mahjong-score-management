@@ -4,7 +4,7 @@ libs/domain/stats.py
 
 import textwrap
 from dataclasses import dataclass, field, fields
-from typing import TYPE_CHECKING, Any, Literal, Optional, Union, cast, get_type_hints
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union, get_type_hints
 
 import pandas as pd
 
@@ -353,8 +353,8 @@ class StatsInfo:
             params (PlaceholderDict): プレースホルダ
 
         """
-        self.result_df = loader.read_data("RESULTS_INFO", cast(dict, params))
-        self.record_df = loader.read_data("RECORD_INFO", cast(dict, params))
+        self.result_df = loader.read_data("RESULTS_INFO", params)
+        self.record_df = loader.read_data("RECORD_INFO", params)
 
         if self.result_df.empty or self.record_df.empty:
             return

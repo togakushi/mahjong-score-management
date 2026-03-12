@@ -6,7 +6,7 @@ import logging
 import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any, Literal, Mapping
+from typing import TYPE_CHECKING, Any, Literal, Mapping, cast
 
 from table2ascii import Alignment, PresetStyle, table2ascii
 
@@ -17,6 +17,8 @@ from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    from libs.types import PlaceholderDict
 
 
 @dataclass
@@ -159,12 +161,12 @@ class RuleSet:
 
             self.data_set(section_name, dict(self.config[section_name]))
 
-    def status_update(self, params: dict) -> None:
+    def status_update(self, params: "PlaceholderDict") -> None:
         """
         ステータス更新
 
         Args:
-            params (dict): プレースホルダ
+            params (PlaceholderDict): プレースホルダ
 
         """
         # ステータスリセット
@@ -422,7 +424,7 @@ class RuleSet:
                     :rule_version, :mode, :origin_point, :return_point, :rank_point, :ignore_flying, :draw_split, :undefined_word
                 );
                 """,
-                params,
+                cast("PlaceholderDict", params),
             )
 
     @property
