@@ -251,7 +251,7 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="n">other</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ関連データ非表示指定ワード&quot;&quot;&quot;</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>        <span class="c1"># 設定値取り込み</span>
@@ -287,7 +287,7 @@
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">grade</span><span class="p">:</span> <span class="s2">&quot;BadgeGradeSpec&quot;</span> <span class="o">=</span> <span class="n">BadgeGradeSpec</span><span class="p">()</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;段位情報&quot;&quot;&quot;</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;grade&quot;</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>
@@ -299,7 +299,7 @@
 </span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;アプリケーション設定&quot;&quot;&quot;</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">config_file</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定ファイルパス&quot;&quot;&quot;</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
@@ -394,15 +394,15 @@
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="o">.</span><span class="n">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">help</span><span class="o">.</span><span class="n">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        設定されている値、キーワードをリスト化する</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        Args:</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            add_words (list | None, optional): リストに追加するワード. Defaults to None.</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        Returns:</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            list: リスト化されたキーワード</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            list[str]: リスト化されたキーワード</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -432,7 +432,7 @@
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="k">return</span> <span class="n">words</span>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        指定セクションを上書き</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>
@@ -451,7 +451,7 @@
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>            <span class="k">return</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="k">match</span> <span class="n">section_name</span><span class="p">:</span>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>            <span class="k">case</span> <span class="s2">&quot;setting&quot;</span><span class="p">:</span>
 </span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>                <span class="n">protected_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setting</span><span class="o">.</span><span class="n">remarks_word</span>  <span class="c1"># 上書き保護</span>
@@ -564,7 +564,7 @@
 </span><span id="DropItems-46"><a href="#DropItems-46"><span class="linenos">46</span></a>    <span class="n">other</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="DropItems-47"><a href="#DropItems-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ関連データ非表示指定ワード&quot;&quot;&quot;</span>
 </span><span id="DropItems-48"><a href="#DropItems-48"><span class="linenos">48</span></a>
-</span><span id="DropItems-49"><a href="#DropItems-49"><span class="linenos">49</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="DropItems-49"><a href="#DropItems-49"><span class="linenos">49</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="DropItems-50"><a href="#DropItems-50"><span class="linenos">50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="DropItems-51"><a href="#DropItems-51"><span class="linenos">51</span></a>
 </span><span id="DropItems-52"><a href="#DropItems-52"><span class="linenos">52</span></a>        <span class="c1"># 設定値取り込み</span>
@@ -602,7 +602,7 @@
 
     </div>
     <a class="headerlink" href="#DropItems.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="DropItems.__init__-49"><a href="#DropItems.__init__-49"><span class="linenos">49</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DropItems.__init__-49"><a href="#DropItems.__init__-49"><span class="linenos">49</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="DropItems.__init__-50"><a href="#DropItems.__init__-50"><span class="linenos">50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="DropItems.__init__-51"><a href="#DropItems.__init__-51"><span class="linenos">51</span></a>
 </span><span id="DropItems.__init__-52"><a href="#DropItems.__init__-52"><span class="linenos">52</span></a>        <span class="c1"># 設定値取り込み</span>
@@ -805,7 +805,7 @@
 </span><span id="BadgeDisplay-82"><a href="#BadgeDisplay-82"><span class="linenos">82</span></a>    <span class="n">grade</span><span class="p">:</span> <span class="s2">&quot;BadgeGradeSpec&quot;</span> <span class="o">=</span> <span class="n">BadgeGradeSpec</span><span class="p">()</span>
 </span><span id="BadgeDisplay-83"><a href="#BadgeDisplay-83"><span class="linenos">83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;段位情報&quot;&quot;&quot;</span>
 </span><span id="BadgeDisplay-84"><a href="#BadgeDisplay-84"><span class="linenos">84</span></a>
-</span><span id="BadgeDisplay-85"><a href="#BadgeDisplay-85"><span class="linenos">85</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+</span><span id="BadgeDisplay-85"><a href="#BadgeDisplay-85"><span class="linenos">85</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BadgeDisplay-86"><a href="#BadgeDisplay-86"><span class="linenos">86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;grade&quot;</span>
 </span><span id="BadgeDisplay-87"><a href="#BadgeDisplay-87"><span class="linenos">87</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="BadgeDisplay-88"><a href="#BadgeDisplay-88"><span class="linenos">88</span></a>
@@ -829,7 +829,7 @@
 
     </div>
     <a class="headerlink" href="#BadgeDisplay.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="BadgeDisplay.__init__-85"><a href="#BadgeDisplay.__init__-85"><span class="linenos">85</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BadgeDisplay.__init__-85"><a href="#BadgeDisplay.__init__-85"><span class="linenos">85</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outer</span><span class="p">:</span> <span class="s2">&quot;AppConfig&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="BadgeDisplay.__init__-86"><a href="#BadgeDisplay.__init__-86"><span class="linenos">86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;grade&quot;</span>
 </span><span id="BadgeDisplay.__init__-87"><a href="#BadgeDisplay.__init__-87"><span class="linenos">87</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">main_parser</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">main_parser</span>
 </span><span id="BadgeDisplay.__init__-88"><a href="#BadgeDisplay.__init__-88"><span class="linenos">88</span></a>
@@ -980,7 +980,7 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig-94"><a href="#AppConfig-94"><span class="linenos"> 94</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
 </span><span id="AppConfig-95"><a href="#AppConfig-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;アプリケーション設定&quot;&quot;&quot;</span>
 </span><span id="AppConfig-96"><a href="#AppConfig-96"><span class="linenos"> 96</span></a>
-</span><span id="AppConfig-97"><a href="#AppConfig-97"><span class="linenos"> 97</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+</span><span id="AppConfig-97"><a href="#AppConfig-97"><span class="linenos"> 97</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="AppConfig-98"><a href="#AppConfig-98"><span class="linenos"> 98</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">config_file</span>
 </span><span id="AppConfig-99"><a href="#AppConfig-99"><span class="linenos"> 99</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定ファイルパス&quot;&quot;&quot;</span>
 </span><span id="AppConfig-100"><a href="#AppConfig-100"><span class="linenos">100</span></a>
@@ -1075,15 +1075,15 @@
 </span><span id="AppConfig-189"><a href="#AppConfig-189"><span class="linenos">189</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="o">.</span><span class="n">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AppConfig-190"><a href="#AppConfig-190"><span class="linenos">190</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">help</span><span class="o">.</span><span class="n">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AppConfig-191"><a href="#AppConfig-191"><span class="linenos">191</span></a>
-</span><span id="AppConfig-192"><a href="#AppConfig-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="AppConfig-192"><a href="#AppConfig-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="AppConfig-193"><a href="#AppConfig-193"><span class="linenos">193</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="AppConfig-194"><a href="#AppConfig-194"><span class="linenos">194</span></a><span class="sd">        設定されている値、キーワードをリスト化する</span>
 </span><span id="AppConfig-195"><a href="#AppConfig-195"><span class="linenos">195</span></a>
 </span><span id="AppConfig-196"><a href="#AppConfig-196"><span class="linenos">196</span></a><span class="sd">        Args:</span>
-</span><span id="AppConfig-197"><a href="#AppConfig-197"><span class="linenos">197</span></a><span class="sd">            add_words (list | None, optional): リストに追加するワード. Defaults to None.</span>
+</span><span id="AppConfig-197"><a href="#AppConfig-197"><span class="linenos">197</span></a><span class="sd">            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.</span>
 </span><span id="AppConfig-198"><a href="#AppConfig-198"><span class="linenos">198</span></a>
 </span><span id="AppConfig-199"><a href="#AppConfig-199"><span class="linenos">199</span></a><span class="sd">        Returns:</span>
-</span><span id="AppConfig-200"><a href="#AppConfig-200"><span class="linenos">200</span></a><span class="sd">            list: リスト化されたキーワード</span>
+</span><span id="AppConfig-200"><a href="#AppConfig-200"><span class="linenos">200</span></a><span class="sd">            list[str]: リスト化されたキーワード</span>
 </span><span id="AppConfig-201"><a href="#AppConfig-201"><span class="linenos">201</span></a>
 </span><span id="AppConfig-202"><a href="#AppConfig-202"><span class="linenos">202</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="AppConfig-203"><a href="#AppConfig-203"><span class="linenos">203</span></a>        <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1113,7 +1113,7 @@
 </span><span id="AppConfig-227"><a href="#AppConfig-227"><span class="linenos">227</span></a>
 </span><span id="AppConfig-228"><a href="#AppConfig-228"><span class="linenos">228</span></a>        <span class="k">return</span> <span class="n">words</span>
 </span><span id="AppConfig-229"><a href="#AppConfig-229"><span class="linenos">229</span></a>
-</span><span id="AppConfig-230"><a href="#AppConfig-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="AppConfig-230"><a href="#AppConfig-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="AppConfig-231"><a href="#AppConfig-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="AppConfig-232"><a href="#AppConfig-232"><span class="linenos">232</span></a><span class="sd">        指定セクションを上書き</span>
 </span><span id="AppConfig-233"><a href="#AppConfig-233"><span class="linenos">233</span></a>
@@ -1132,7 +1132,7 @@
 </span><span id="AppConfig-246"><a href="#AppConfig-246"><span class="linenos">246</span></a>            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 </span><span id="AppConfig-247"><a href="#AppConfig-247"><span class="linenos">247</span></a>            <span class="k">return</span>
 </span><span id="AppConfig-248"><a href="#AppConfig-248"><span class="linenos">248</span></a>
-</span><span id="AppConfig-249"><a href="#AppConfig-249"><span class="linenos">249</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
+</span><span id="AppConfig-249"><a href="#AppConfig-249"><span class="linenos">249</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
 </span><span id="AppConfig-250"><a href="#AppConfig-250"><span class="linenos">250</span></a>        <span class="k">match</span> <span class="n">section_name</span><span class="p">:</span>
 </span><span id="AppConfig-251"><a href="#AppConfig-251"><span class="linenos">251</span></a>            <span class="k">case</span> <span class="s2">&quot;setting&quot;</span><span class="p">:</span>
 </span><span id="AppConfig-252"><a href="#AppConfig-252"><span class="linenos">252</span></a>                <span class="n">protected_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setting</span><span class="o">.</span><span class="n">remarks_word</span>  <span class="c1"># 上書き保護</span>
@@ -1229,7 +1229,7 @@
 
     </div>
     <a class="headerlink" href="#AppConfig.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.__init__-97"><a href="#AppConfig.__init__-97"><span class="linenos"> 97</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.__init__-97"><a href="#AppConfig.__init__-97"><span class="linenos"> 97</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="AppConfig.__init__-98"><a href="#AppConfig.__init__-98"><span class="linenos"> 98</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">config_file</span>
 </span><span id="AppConfig.__init__-99"><a href="#AppConfig.__init__-99"><span class="linenos"> 99</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;メイン設定ファイルパス&quot;&quot;&quot;</span>
 </span><span id="AppConfig.__init__-100"><a href="#AppConfig.__init__-100"><span class="linenos">100</span></a>
@@ -1593,21 +1593,21 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">word_list</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+        <span class="name">word_list</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="AppConfig.word_list-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#AppConfig.word_list"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.word_list-192"><a href="#AppConfig.word_list-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.word_list-192"><a href="#AppConfig.word_list-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">word_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="AppConfig.word_list-193"><a href="#AppConfig.word_list-193"><span class="linenos">193</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="AppConfig.word_list-194"><a href="#AppConfig.word_list-194"><span class="linenos">194</span></a><span class="sd">        設定されている値、キーワードをリスト化する</span>
 </span><span id="AppConfig.word_list-195"><a href="#AppConfig.word_list-195"><span class="linenos">195</span></a>
 </span><span id="AppConfig.word_list-196"><a href="#AppConfig.word_list-196"><span class="linenos">196</span></a><span class="sd">        Args:</span>
-</span><span id="AppConfig.word_list-197"><a href="#AppConfig.word_list-197"><span class="linenos">197</span></a><span class="sd">            add_words (list | None, optional): リストに追加するワード. Defaults to None.</span>
+</span><span id="AppConfig.word_list-197"><a href="#AppConfig.word_list-197"><span class="linenos">197</span></a><span class="sd">            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.</span>
 </span><span id="AppConfig.word_list-198"><a href="#AppConfig.word_list-198"><span class="linenos">198</span></a>
 </span><span id="AppConfig.word_list-199"><a href="#AppConfig.word_list-199"><span class="linenos">199</span></a><span class="sd">        Returns:</span>
-</span><span id="AppConfig.word_list-200"><a href="#AppConfig.word_list-200"><span class="linenos">200</span></a><span class="sd">            list: リスト化されたキーワード</span>
+</span><span id="AppConfig.word_list-200"><a href="#AppConfig.word_list-200"><span class="linenos">200</span></a><span class="sd">            list[str]: リスト化されたキーワード</span>
 </span><span id="AppConfig.word_list-201"><a href="#AppConfig.word_list-201"><span class="linenos">201</span></a>
 </span><span id="AppConfig.word_list-202"><a href="#AppConfig.word_list-202"><span class="linenos">202</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="AppConfig.word_list-203"><a href="#AppConfig.word_list-203"><span class="linenos">203</span></a>        <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1644,13 +1644,13 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>add_words (list | None, optional):</strong>  リストに追加するワード. Defaults to None.</li>
+<li><strong>add_words (list[str] | None, optional):</strong>  リストに追加するワード. Defaults to None.</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
 
 <blockquote>
-  <p>list: リスト化されたキーワード</p>
+  <p>list[str]: リスト化されたキーワード</p>
 </blockquote>
 </div>
 
@@ -1661,13 +1661,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">overwrite</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">additional_config</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">):</span></span>
+        <span class="name">overwrite</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">additional_config</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="AppConfig.overwrite-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#AppConfig.overwrite"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.overwrite-230"><a href="#AppConfig.overwrite-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AppConfig.overwrite-230"><a href="#AppConfig.overwrite-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="AppConfig.overwrite-231"><a href="#AppConfig.overwrite-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="AppConfig.overwrite-232"><a href="#AppConfig.overwrite-232"><span class="linenos">232</span></a><span class="sd">        指定セクションを上書き</span>
 </span><span id="AppConfig.overwrite-233"><a href="#AppConfig.overwrite-233"><span class="linenos">233</span></a>
@@ -1686,7 +1686,7 @@
 </span><span id="AppConfig.overwrite-246"><a href="#AppConfig.overwrite-246"><span class="linenos">246</span></a>            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 </span><span id="AppConfig.overwrite-247"><a href="#AppConfig.overwrite-247"><span class="linenos">247</span></a>            <span class="k">return</span>
 </span><span id="AppConfig.overwrite-248"><a href="#AppConfig.overwrite-248"><span class="linenos">248</span></a>
-</span><span id="AppConfig.overwrite-249"><a href="#AppConfig.overwrite-249"><span class="linenos">249</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
+</span><span id="AppConfig.overwrite-249"><a href="#AppConfig.overwrite-249"><span class="linenos">249</span></a>        <span class="n">protected_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
 </span><span id="AppConfig.overwrite-250"><a href="#AppConfig.overwrite-250"><span class="linenos">250</span></a>        <span class="k">match</span> <span class="n">section_name</span><span class="p">:</span>
 </span><span id="AppConfig.overwrite-251"><a href="#AppConfig.overwrite-251"><span class="linenos">251</span></a>            <span class="k">case</span> <span class="s2">&quot;setting&quot;</span><span class="p">:</span>
 </span><span id="AppConfig.overwrite-252"><a href="#AppConfig.overwrite-252"><span class="linenos">252</span></a>                <span class="n">protected_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setting</span><span class="o">.</span><span class="n">remarks_word</span>  <span class="c1"># 上書き保護</span>

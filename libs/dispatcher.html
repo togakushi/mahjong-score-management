@@ -90,7 +90,7 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">integrations.protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageParserProtocol</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="k">def</span><span class="w"> </span><span class="nf">by_keyword</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="k">def</span><span class="w"> </span><span class="nf">by_keyword</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メイン処理&quot;&quot;&quot;</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="c1"># チャンネル個別設定切替</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
@@ -150,7 +150,7 @@
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">adapter</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span><span class="w"> </span><span class="nf">other_words</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span><span class="w"> </span><span class="nf">other_words</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    コマンド以外のワードの処理</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
@@ -184,7 +184,7 @@
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>                <span class="n">message_deleted</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_append</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_append</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    メッセージの追加処理</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
@@ -201,7 +201,7 @@
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;skip (inside thread). event_ts=</span><span class="si">%s</span><span class="s2">, thread_ts=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">event_ts</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">thread_ts</span><span class="p">)</span>
 </span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_changed</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_changed</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    メッセージの変更処理</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
@@ -233,7 +233,7 @@
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">modify</span><span class="o">.</span><span class="n">db_update</span><span class="p">(</span><span class="n">detection</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_deleted</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_deleted</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    メッセージの削除処理</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
@@ -263,13 +263,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">by_keyword</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">by_keyword</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="by_keyword-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#by_keyword"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="by_keyword-23"><a href="#by_keyword-23"><span class="linenos">23</span></a><span class="k">def</span><span class="w"> </span><span class="nf">by_keyword</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="by_keyword-23"><a href="#by_keyword-23"><span class="linenos">23</span></a><span class="k">def</span><span class="w"> </span><span class="nf">by_keyword</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="by_keyword-24"><a href="#by_keyword-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メイン処理&quot;&quot;&quot;</span>
 </span><span id="by_keyword-25"><a href="#by_keyword-25"><span class="linenos">25</span></a>    <span class="c1"># チャンネル個別設定切替</span>
 </span><span id="by_keyword-26"><a href="#by_keyword-26"><span class="linenos">26</span></a>    <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
@@ -340,13 +340,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">other_words</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">word</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">other_words</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">word</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="other_words-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#other_words"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="other_words-83"><a href="#other_words-83"><span class="linenos"> 83</span></a><span class="k">def</span><span class="w"> </span><span class="nf">other_words</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="other_words-83"><a href="#other_words-83"><span class="linenos"> 83</span></a><span class="k">def</span><span class="w"> </span><span class="nf">other_words</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="other_words-84"><a href="#other_words-84"><span class="linenos"> 84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="other_words-85"><a href="#other_words-85"><span class="linenos"> 85</span></a><span class="sd">    コマンド以外のワードの処理</span>
 </span><span id="other_words-86"><a href="#other_words-86"><span class="linenos"> 86</span></a>
@@ -398,13 +398,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">message_append</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">detection</span><span class="p">:</span> <span class="n"><a href="domain/score.html#GameResult">libs.domain.score.GameResult</a></span>,</span><span class="param">	<span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">message_append</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">detection</span><span class="p">:</span> <span class="n"><a href="domain/score.html#GameResult">libs.domain.score.GameResult</a></span>,</span><span class="param">	<span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="message_append-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#message_append"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="message_append-117"><a href="#message_append-117"><span class="linenos">117</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_append</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="message_append-117"><a href="#message_append-117"><span class="linenos">117</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_append</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="message_append-118"><a href="#message_append-118"><span class="linenos">118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="message_append-119"><a href="#message_append-119"><span class="linenos">119</span></a><span class="sd">    メッセージの追加処理</span>
 </span><span id="message_append-120"><a href="#message_append-120"><span class="linenos">120</span></a>
@@ -439,13 +439,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">message_changed</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">detection</span><span class="p">:</span> <span class="n"><a href="domain/score.html#GameResult">libs.domain.score.GameResult</a></span>,</span><span class="param">	<span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">message_changed</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">detection</span><span class="p">:</span> <span class="n"><a href="domain/score.html#GameResult">libs.domain.score.GameResult</a></span>,</span><span class="param">	<span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="message_changed-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#message_changed"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="message_changed-134"><a href="#message_changed-134"><span class="linenos">134</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_changed</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="message_changed-134"><a href="#message_changed-134"><span class="linenos">134</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_changed</span><span class="p">(</span><span class="n">detection</span><span class="p">:</span> <span class="n">GameResult</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="message_changed-135"><a href="#message_changed-135"><span class="linenos">135</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="message_changed-136"><a href="#message_changed-136"><span class="linenos">136</span></a><span class="sd">    メッセージの変更処理</span>
 </span><span id="message_changed-137"><a href="#message_changed-137"><span class="linenos">137</span></a>
@@ -495,13 +495,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">message_deleted</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">message_deleted</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../integrations/protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="message_deleted-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#message_deleted"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="message_deleted-166"><a href="#message_deleted-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_deleted</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="message_deleted-166"><a href="#message_deleted-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">message_deleted</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="message_deleted-167"><a href="#message_deleted-167"><span class="linenos">167</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="message_deleted-168"><a href="#message_deleted-168"><span class="linenos">168</span></a><span class="sd">    メッセージの削除処理</span>
 </span><span id="message_deleted-169"><a href="#message_deleted-169"><span class="linenos">169</span></a>

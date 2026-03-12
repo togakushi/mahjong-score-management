@@ -86,7 +86,7 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_response</span><span class="p">,</span> <span class="n">render_template</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a>
@@ -249,14 +249,14 @@
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">message</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        cookie保存</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        Args:</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            html (str): テンプレートHTML</span>
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            req (Request): Request</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            data (dict): データ</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            data (dict[str, Any]): データ</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        Returns:</span>
 </span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            Response: Response</span>
@@ -275,7 +275,7 @@
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="k">return</span> <span class="n">page</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        cookie取得</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
@@ -283,10 +283,10 @@
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            req (Request): Request</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        Returns:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            dict: cookieデータ</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            dict[str, str]: cookieデータ</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">:</span> <span class="s2">&quot;ゲストなし&quot;</span><span class="p">,</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -294,7 +294,7 @@
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="p">}</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">,</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">,</span>
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">,</span>
@@ -316,12 +316,12 @@
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cookie_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">target_keys</span><span class="p">}</span>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="k">return</span> <span class="p">{}</span>
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span></pre></div>
@@ -487,14 +487,14 @@
 </span><span id="SvcFunctions-167"><a href="#SvcFunctions-167"><span class="linenos">167</span></a>
 </span><span id="SvcFunctions-168"><a href="#SvcFunctions-168"><span class="linenos">168</span></a>        <span class="k">return</span> <span class="n">title</span><span class="p">,</span> <span class="n">message</span>
 </span><span id="SvcFunctions-169"><a href="#SvcFunctions-169"><span class="linenos">169</span></a>
-</span><span id="SvcFunctions-170"><a href="#SvcFunctions-170"><span class="linenos">170</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
+</span><span id="SvcFunctions-170"><a href="#SvcFunctions-170"><span class="linenos">170</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
 </span><span id="SvcFunctions-171"><a href="#SvcFunctions-171"><span class="linenos">171</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions-172"><a href="#SvcFunctions-172"><span class="linenos">172</span></a><span class="sd">        cookie保存</span>
 </span><span id="SvcFunctions-173"><a href="#SvcFunctions-173"><span class="linenos">173</span></a>
 </span><span id="SvcFunctions-174"><a href="#SvcFunctions-174"><span class="linenos">174</span></a><span class="sd">        Args:</span>
 </span><span id="SvcFunctions-175"><a href="#SvcFunctions-175"><span class="linenos">175</span></a><span class="sd">            html (str): テンプレートHTML</span>
 </span><span id="SvcFunctions-176"><a href="#SvcFunctions-176"><span class="linenos">176</span></a><span class="sd">            req (Request): Request</span>
-</span><span id="SvcFunctions-177"><a href="#SvcFunctions-177"><span class="linenos">177</span></a><span class="sd">            data (dict): データ</span>
+</span><span id="SvcFunctions-177"><a href="#SvcFunctions-177"><span class="linenos">177</span></a><span class="sd">            data (dict[str, Any]): データ</span>
 </span><span id="SvcFunctions-178"><a href="#SvcFunctions-178"><span class="linenos">178</span></a>
 </span><span id="SvcFunctions-179"><a href="#SvcFunctions-179"><span class="linenos">179</span></a><span class="sd">        Returns:</span>
 </span><span id="SvcFunctions-180"><a href="#SvcFunctions-180"><span class="linenos">180</span></a><span class="sd">            Response: Response</span>
@@ -513,7 +513,7 @@
 </span><span id="SvcFunctions-193"><a href="#SvcFunctions-193"><span class="linenos">193</span></a>
 </span><span id="SvcFunctions-194"><a href="#SvcFunctions-194"><span class="linenos">194</span></a>        <span class="k">return</span> <span class="n">page</span>
 </span><span id="SvcFunctions-195"><a href="#SvcFunctions-195"><span class="linenos">195</span></a>
-</span><span id="SvcFunctions-196"><a href="#SvcFunctions-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="SvcFunctions-196"><a href="#SvcFunctions-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 </span><span id="SvcFunctions-197"><a href="#SvcFunctions-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions-198"><a href="#SvcFunctions-198"><span class="linenos">198</span></a><span class="sd">        cookie取得</span>
 </span><span id="SvcFunctions-199"><a href="#SvcFunctions-199"><span class="linenos">199</span></a>
@@ -521,10 +521,10 @@
 </span><span id="SvcFunctions-201"><a href="#SvcFunctions-201"><span class="linenos">201</span></a><span class="sd">            req (Request): Request</span>
 </span><span id="SvcFunctions-202"><a href="#SvcFunctions-202"><span class="linenos">202</span></a>
 </span><span id="SvcFunctions-203"><a href="#SvcFunctions-203"><span class="linenos">203</span></a><span class="sd">        Returns:</span>
-</span><span id="SvcFunctions-204"><a href="#SvcFunctions-204"><span class="linenos">204</span></a><span class="sd">            dict: cookieデータ</span>
+</span><span id="SvcFunctions-204"><a href="#SvcFunctions-204"><span class="linenos">204</span></a><span class="sd">            dict[str, str]: cookieデータ</span>
 </span><span id="SvcFunctions-205"><a href="#SvcFunctions-205"><span class="linenos">205</span></a>
 </span><span id="SvcFunctions-206"><a href="#SvcFunctions-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SvcFunctions-207"><a href="#SvcFunctions-207"><span class="linenos">207</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="SvcFunctions-207"><a href="#SvcFunctions-207"><span class="linenos">207</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="SvcFunctions-208"><a href="#SvcFunctions-208"><span class="linenos">208</span></a>            <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions-209"><a href="#SvcFunctions-209"><span class="linenos">209</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">:</span> <span class="s2">&quot;ゲストなし&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions-210"><a href="#SvcFunctions-210"><span class="linenos">210</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -532,7 +532,7 @@
 </span><span id="SvcFunctions-212"><a href="#SvcFunctions-212"><span class="linenos">212</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions-213"><a href="#SvcFunctions-213"><span class="linenos">213</span></a>        <span class="p">}</span>
 </span><span id="SvcFunctions-214"><a href="#SvcFunctions-214"><span class="linenos">214</span></a>
-</span><span id="SvcFunctions-215"><a href="#SvcFunctions-215"><span class="linenos">215</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="SvcFunctions-215"><a href="#SvcFunctions-215"><span class="linenos">215</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="SvcFunctions-216"><a href="#SvcFunctions-216"><span class="linenos">216</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions-217"><a href="#SvcFunctions-217"><span class="linenos">217</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions-218"><a href="#SvcFunctions-218"><span class="linenos">218</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">,</span>
@@ -554,12 +554,12 @@
 </span><span id="SvcFunctions-234"><a href="#SvcFunctions-234"><span class="linenos">234</span></a>
 </span><span id="SvcFunctions-235"><a href="#SvcFunctions-235"><span class="linenos">235</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cookie_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">target_keys</span><span class="p">}</span>
 </span><span id="SvcFunctions-236"><a href="#SvcFunctions-236"><span class="linenos">236</span></a>
-</span><span id="SvcFunctions-237"><a href="#SvcFunctions-237"><span class="linenos">237</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="SvcFunctions-237"><a href="#SvcFunctions-237"><span class="linenos">237</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="SvcFunctions-238"><a href="#SvcFunctions-238"><span class="linenos">238</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions-239"><a href="#SvcFunctions-239"><span class="linenos">239</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span><span id="SvcFunctions-240"><a href="#SvcFunctions-240"><span class="linenos">240</span></a>        <span class="k">return</span> <span class="p">{}</span>
 </span><span id="SvcFunctions-241"><a href="#SvcFunctions-241"><span class="linenos">241</span></a>
-</span><span id="SvcFunctions-242"><a href="#SvcFunctions-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+</span><span id="SvcFunctions-242"><a href="#SvcFunctions-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="SvcFunctions-243"><a href="#SvcFunctions-243"><span class="linenos">243</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions-244"><a href="#SvcFunctions-244"><span class="linenos">244</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span></pre></div>
@@ -811,20 +811,20 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_cookie</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">html</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">req</span><span class="p">:</span> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Request</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="nb">dict</span></span><span class="return-annotation">) -> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Response</span>:</span></span>
+        <span class="name">set_cookie</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">html</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">req</span><span class="p">:</span> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Request</span>,</span><span class="param">	<span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Response</span>:</span></span>
 
                 <label class="view-source-button" for="SvcFunctions.set_cookie-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#SvcFunctions.set_cookie"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.set_cookie-170"><a href="#SvcFunctions.set_cookie-170"><span class="linenos">170</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.set_cookie-170"><a href="#SvcFunctions.set_cookie-170"><span class="linenos">170</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Response&quot;</span><span class="p">:</span>
 </span><span id="SvcFunctions.set_cookie-171"><a href="#SvcFunctions.set_cookie-171"><span class="linenos">171</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions.set_cookie-172"><a href="#SvcFunctions.set_cookie-172"><span class="linenos">172</span></a><span class="sd">        cookie保存</span>
 </span><span id="SvcFunctions.set_cookie-173"><a href="#SvcFunctions.set_cookie-173"><span class="linenos">173</span></a>
 </span><span id="SvcFunctions.set_cookie-174"><a href="#SvcFunctions.set_cookie-174"><span class="linenos">174</span></a><span class="sd">        Args:</span>
 </span><span id="SvcFunctions.set_cookie-175"><a href="#SvcFunctions.set_cookie-175"><span class="linenos">175</span></a><span class="sd">            html (str): テンプレートHTML</span>
 </span><span id="SvcFunctions.set_cookie-176"><a href="#SvcFunctions.set_cookie-176"><span class="linenos">176</span></a><span class="sd">            req (Request): Request</span>
-</span><span id="SvcFunctions.set_cookie-177"><a href="#SvcFunctions.set_cookie-177"><span class="linenos">177</span></a><span class="sd">            data (dict): データ</span>
+</span><span id="SvcFunctions.set_cookie-177"><a href="#SvcFunctions.set_cookie-177"><span class="linenos">177</span></a><span class="sd">            data (dict[str, Any]): データ</span>
 </span><span id="SvcFunctions.set_cookie-178"><a href="#SvcFunctions.set_cookie-178"><span class="linenos">178</span></a>
 </span><span id="SvcFunctions.set_cookie-179"><a href="#SvcFunctions.set_cookie-179"><span class="linenos">179</span></a><span class="sd">        Returns:</span>
 </span><span id="SvcFunctions.set_cookie-180"><a href="#SvcFunctions.set_cookie-180"><span class="linenos">180</span></a><span class="sd">            Response: Response</span>
@@ -852,7 +852,7 @@
 <ul>
 <li><strong>html (str):</strong>  テンプレートHTML</li>
 <li><strong>req (Request):</strong>  Request</li>
-<li><strong>data (dict):</strong>  データ</li>
+<li><strong>data (dict[str, Any]):</strong>  データ</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -869,13 +869,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_cookie</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">req</span><span class="p">:</span> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Request</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">get_cookie</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">req</span><span class="p">:</span> <span class="n">flask</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">Request</span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="SvcFunctions.get_cookie-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#SvcFunctions.get_cookie"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.get_cookie-196"><a href="#SvcFunctions.get_cookie-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.get_cookie-196"><a href="#SvcFunctions.get_cookie-196"><span class="linenos">196</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">:</span> <span class="s2">&quot;Request&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 </span><span id="SvcFunctions.get_cookie-197"><a href="#SvcFunctions.get_cookie-197"><span class="linenos">197</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions.get_cookie-198"><a href="#SvcFunctions.get_cookie-198"><span class="linenos">198</span></a><span class="sd">        cookie取得</span>
 </span><span id="SvcFunctions.get_cookie-199"><a href="#SvcFunctions.get_cookie-199"><span class="linenos">199</span></a>
@@ -883,10 +883,10 @@
 </span><span id="SvcFunctions.get_cookie-201"><a href="#SvcFunctions.get_cookie-201"><span class="linenos">201</span></a><span class="sd">            req (Request): Request</span>
 </span><span id="SvcFunctions.get_cookie-202"><a href="#SvcFunctions.get_cookie-202"><span class="linenos">202</span></a>
 </span><span id="SvcFunctions.get_cookie-203"><a href="#SvcFunctions.get_cookie-203"><span class="linenos">203</span></a><span class="sd">        Returns:</span>
-</span><span id="SvcFunctions.get_cookie-204"><a href="#SvcFunctions.get_cookie-204"><span class="linenos">204</span></a><span class="sd">            dict: cookieデータ</span>
+</span><span id="SvcFunctions.get_cookie-204"><a href="#SvcFunctions.get_cookie-204"><span class="linenos">204</span></a><span class="sd">            dict[str, str]: cookieデータ</span>
 </span><span id="SvcFunctions.get_cookie-205"><a href="#SvcFunctions.get_cookie-205"><span class="linenos">205</span></a>
 </span><span id="SvcFunctions.get_cookie-206"><a href="#SvcFunctions.get_cookie-206"><span class="linenos">206</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SvcFunctions.get_cookie-207"><a href="#SvcFunctions.get_cookie-207"><span class="linenos">207</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="SvcFunctions.get_cookie-207"><a href="#SvcFunctions.get_cookie-207"><span class="linenos">207</span></a>        <span class="n">initial_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="SvcFunctions.get_cookie-208"><a href="#SvcFunctions.get_cookie-208"><span class="linenos">208</span></a>            <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions.get_cookie-209"><a href="#SvcFunctions.get_cookie-209"><span class="linenos">209</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">:</span> <span class="s2">&quot;ゲストなし&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions.get_cookie-210"><a href="#SvcFunctions.get_cookie-210"><span class="linenos">210</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -894,7 +894,7 @@
 </span><span id="SvcFunctions.get_cookie-212"><a href="#SvcFunctions.get_cookie-212"><span class="linenos">212</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions.get_cookie-213"><a href="#SvcFunctions.get_cookie-213"><span class="linenos">213</span></a>        <span class="p">}</span>
 </span><span id="SvcFunctions.get_cookie-214"><a href="#SvcFunctions.get_cookie-214"><span class="linenos">214</span></a>
-</span><span id="SvcFunctions.get_cookie-215"><a href="#SvcFunctions.get_cookie-215"><span class="linenos">215</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="SvcFunctions.get_cookie-215"><a href="#SvcFunctions.get_cookie-215"><span class="linenos">215</span></a>        <span class="n">target_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="SvcFunctions.get_cookie-216"><a href="#SvcFunctions.get_cookie-216"><span class="linenos">216</span></a>            <span class="s2">&quot;collect&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions.get_cookie-217"><a href="#SvcFunctions.get_cookie-217"><span class="linenos">217</span></a>            <span class="s2">&quot;display&quot;</span><span class="p">,</span>
 </span><span id="SvcFunctions.get_cookie-218"><a href="#SvcFunctions.get_cookie-218"><span class="linenos">218</span></a>            <span class="s2">&quot;guest&quot;</span><span class="p">,</span>
@@ -929,7 +929,7 @@
 <h6 id="returns">Returns:</h6>
 
 <blockquote>
-  <p>dict: cookieデータ</p>
+  <p>dict[str, str]: cookieデータ</p>
 </blockquote>
 </div>
 
@@ -940,13 +940,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_conversations</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">get_conversations</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">m</span><span class="p">:</span> <span class="n"><a href="../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="SvcFunctions.get_conversations-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#SvcFunctions.get_conversations"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.get_conversations-237"><a href="#SvcFunctions.get_conversations-237"><span class="linenos">237</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.get_conversations-237"><a href="#SvcFunctions.get_conversations-237"><span class="linenos">237</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="SvcFunctions.get_conversations-238"><a href="#SvcFunctions.get_conversations-238"><span class="linenos">238</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions.get_conversations-239"><a href="#SvcFunctions.get_conversations-239"><span class="linenos">239</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span><span id="SvcFunctions.get_conversations-240"><a href="#SvcFunctions.get_conversations-240"><span class="linenos">240</span></a>        <span class="k">return</span> <span class="p">{}</span>
@@ -963,13 +963,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">post_processing</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">):</span></span>
+        <span class="name">post_processing</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">m</span><span class="p">:</span> <span class="n"><a href="../protocols.html#MessageParserProtocol">integrations.protocols.MessageParserProtocol</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="SvcFunctions.post_processing-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#SvcFunctions.post_processing"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.post_processing-242"><a href="#SvcFunctions.post_processing-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SvcFunctions.post_processing-242"><a href="#SvcFunctions.post_processing-242"><span class="linenos">242</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;MessageParserProtocol&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="SvcFunctions.post_processing-243"><a href="#SvcFunctions.post_processing-243"><span class="linenos">243</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstractmethod dummy&quot;&quot;&quot;</span>
 </span><span id="SvcFunctions.post_processing-244"><a href="#SvcFunctions.post_processing-244"><span class="linenos">244</span></a>        <span class="n">_</span> <span class="o">=</span> <span class="n">m</span>
 </span></pre></div>

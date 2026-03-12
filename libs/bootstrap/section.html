@@ -284,7 +284,7 @@
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">PosixPath</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoneType</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">Union</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">get_args</span><span class="p">,</span> <span class="n">get_origin</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.domain.datamodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommandAttrs</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>
@@ -331,11 +331,11 @@
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;キーリストの返却&quot;&quot;&quot;</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;値リストの返却&quot;&quot;&quot;</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;ItemsViewを返却&quot;&quot;&quot;</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
@@ -383,7 +383,7 @@
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>                        <span class="n">current_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">v_list</span><span class="p">)</span>
 </span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>                    <span class="k">else</span><span class="p">:</span>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>                        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v_list</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>  <span class="c1"># 文字列 or None(未定義)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">v_type</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Union</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">v_type</span><span class="p">):</span>  <span class="c1"># 文字列 or None(未定義)</span>
 </span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">PosixPath</span><span class="p">:</span>
 </span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
@@ -433,7 +433,7 @@
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;配給原点&quot;&quot;&quot;</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">return_point</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;返し点&quot;&quot;&quot;</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rank_point</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rank_point</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;順位点&quot;&quot;&quot;</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ignore_flying</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;トビカウント</span>
@@ -586,26 +586,26 @@
 </span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>
 </span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
@@ -725,11 +725,11 @@
 </span><span id="CommonMethodMixin-54"><a href="#CommonMethodMixin-54"><span class="linenos">54</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;キーリストの返却&quot;&quot;&quot;</span>
 </span><span id="CommonMethodMixin-55"><a href="#CommonMethodMixin-55"><span class="linenos">55</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </span><span id="CommonMethodMixin-56"><a href="#CommonMethodMixin-56"><span class="linenos">56</span></a>
-</span><span id="CommonMethodMixin-57"><a href="#CommonMethodMixin-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span><span id="CommonMethodMixin-57"><a href="#CommonMethodMixin-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="CommonMethodMixin-58"><a href="#CommonMethodMixin-58"><span class="linenos">58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;値リストの返却&quot;&quot;&quot;</span>
 </span><span id="CommonMethodMixin-59"><a href="#CommonMethodMixin-59"><span class="linenos">59</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </span><span id="CommonMethodMixin-60"><a href="#CommonMethodMixin-60"><span class="linenos">60</span></a>
-</span><span id="CommonMethodMixin-61"><a href="#CommonMethodMixin-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
+</span><span id="CommonMethodMixin-61"><a href="#CommonMethodMixin-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
 </span><span id="CommonMethodMixin-62"><a href="#CommonMethodMixin-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;ItemsViewを返却&quot;&quot;&quot;</span>
 </span><span id="CommonMethodMixin-63"><a href="#CommonMethodMixin-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 </span></pre></div>
@@ -889,13 +889,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span>:</span></span>
+        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="CommonMethodMixin.values-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#CommonMethodMixin.values"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CommonMethodMixin.values-57"><a href="#CommonMethodMixin.values-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CommonMethodMixin.values-57"><a href="#CommonMethodMixin.values-57"><span class="linenos">57</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="CommonMethodMixin.values-58"><a href="#CommonMethodMixin.values-58"><span class="linenos">58</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;値リストの返却&quot;&quot;&quot;</span>
 </span><span id="CommonMethodMixin.values-59"><a href="#CommonMethodMixin.values-59"><span class="linenos">59</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </span></pre></div>
@@ -911,13 +911,13 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]</span>:</span></span>
+        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>:</span></span>
 
                 <label class="view-source-button" for="CommonMethodMixin.items-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#CommonMethodMixin.items"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CommonMethodMixin.items-61"><a href="#CommonMethodMixin.items-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CommonMethodMixin.items-61"><a href="#CommonMethodMixin.items-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
 </span><span id="CommonMethodMixin.items-62"><a href="#CommonMethodMixin.items-62"><span class="linenos">62</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;ItemsViewを返却&quot;&quot;&quot;</span>
 </span><span id="CommonMethodMixin.items-63"><a href="#CommonMethodMixin.items-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">section_proxy</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 </span></pre></div>
@@ -983,7 +983,7 @@
 </span><span id="BaseSection-106"><a href="#BaseSection-106"><span class="linenos">106</span></a>                        <span class="n">current_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">v_list</span><span class="p">)</span>
 </span><span id="BaseSection-107"><a href="#BaseSection-107"><span class="linenos">107</span></a>                    <span class="k">else</span><span class="p">:</span>
 </span><span id="BaseSection-108"><a href="#BaseSection-108"><span class="linenos">108</span></a>                        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v_list</span><span class="p">)</span>
-</span><span id="BaseSection-109"><a href="#BaseSection-109"><span class="linenos">109</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>  <span class="c1"># 文字列 or None(未定義)</span>
+</span><span id="BaseSection-109"><a href="#BaseSection-109"><span class="linenos">109</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">v_type</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Union</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">v_type</span><span class="p">):</span>  <span class="c1"># 文字列 or None(未定義)</span>
 </span><span id="BaseSection-110"><a href="#BaseSection-110"><span class="linenos">110</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 </span><span id="BaseSection-111"><a href="#BaseSection-111"><span class="linenos">111</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">PosixPath</span><span class="p">:</span>
 </span><span id="BaseSection-112"><a href="#BaseSection-112"><span class="linenos">112</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
@@ -1120,7 +1120,7 @@
 </span><span id="BaseSection.initialization-106"><a href="#BaseSection.initialization-106"><span class="linenos">106</span></a>                        <span class="n">current_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">v_list</span><span class="p">)</span>
 </span><span id="BaseSection.initialization-107"><a href="#BaseSection.initialization-107"><span class="linenos">107</span></a>                    <span class="k">else</span><span class="p">:</span>
 </span><span id="BaseSection.initialization-108"><a href="#BaseSection.initialization-108"><span class="linenos">108</span></a>                        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v_list</span><span class="p">)</span>
-</span><span id="BaseSection.initialization-109"><a href="#BaseSection.initialization-109"><span class="linenos">109</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>  <span class="c1"># 文字列 or None(未定義)</span>
+</span><span id="BaseSection.initialization-109"><a href="#BaseSection.initialization-109"><span class="linenos">109</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">v_type</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Union</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">v_type</span><span class="p">):</span>  <span class="c1"># 文字列 or None(未定義)</span>
 </span><span id="BaseSection.initialization-110"><a href="#BaseSection.initialization-110"><span class="linenos">110</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 </span><span id="BaseSection.initialization-111"><a href="#BaseSection.initialization-111"><span class="linenos">111</span></a>                <span class="k">case</span> <span class="n">v_type</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">v_type</span> <span class="ow">is</span> <span class="n">PosixPath</span><span class="p">:</span>
 </span><span id="BaseSection.initialization-112"><a href="#BaseSection.initialization-112"><span class="linenos">112</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
@@ -1234,7 +1234,7 @@
 </span><span id="MahjongSection-156"><a href="#MahjongSection-156"><span class="linenos">156</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;配給原点&quot;&quot;&quot;</span>
 </span><span id="MahjongSection-157"><a href="#MahjongSection-157"><span class="linenos">157</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">return_point</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="MahjongSection-158"><a href="#MahjongSection-158"><span class="linenos">158</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;返し点&quot;&quot;&quot;</span>
-</span><span id="MahjongSection-159"><a href="#MahjongSection-159"><span class="linenos">159</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rank_point</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="MahjongSection-159"><a href="#MahjongSection-159"><span class="linenos">159</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rank_point</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="MahjongSection-160"><a href="#MahjongSection-160"><span class="linenos">160</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;順位点&quot;&quot;&quot;</span>
 </span><span id="MahjongSection-161"><a href="#MahjongSection-161"><span class="linenos">161</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ignore_flying</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="MahjongSection-162"><a href="#MahjongSection-162"><span class="linenos">162</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;トビカウント</span>
@@ -1354,7 +1354,7 @@
                             </div>
                             <div id="MahjongSection.rank_point" class="classattr">
                                 <div class="attr variable">
-            <span class="name">rank_point</span><span class="annotation">: list</span>
+            <span class="name">rank_point</span><span class="annotation">: list[int]</span>
 
         
     </div>
@@ -1939,26 +1939,26 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="AliasSection-309"><a href="#AliasSection-309"><span class="linenos">309</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
 </span><span id="AliasSection-310"><a href="#AliasSection-310"><span class="linenos">310</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
 </span><span id="AliasSection-311"><a href="#AliasSection-311"><span class="linenos">311</span></a>
-</span><span id="AliasSection-312"><a href="#AliasSection-312"><span class="linenos">312</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-312"><a href="#AliasSection-312"><span class="linenos">312</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-313"><a href="#AliasSection-313"><span class="linenos">313</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-314"><a href="#AliasSection-314"><span class="linenos">314</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-314"><a href="#AliasSection-314"><span class="linenos">314</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-315"><a href="#AliasSection-315"><span class="linenos">315</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-316"><a href="#AliasSection-316"><span class="linenos">316</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-316"><a href="#AliasSection-316"><span class="linenos">316</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-317"><a href="#AliasSection-317"><span class="linenos">317</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-318"><a href="#AliasSection-318"><span class="linenos">318</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-318"><a href="#AliasSection-318"><span class="linenos">318</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-319"><a href="#AliasSection-319"><span class="linenos">319</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-320"><a href="#AliasSection-320"><span class="linenos">320</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-321"><a href="#AliasSection-321"><span class="linenos">321</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-320"><a href="#AliasSection-320"><span class="linenos">320</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-321"><a href="#AliasSection-321"><span class="linenos">321</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-322"><a href="#AliasSection-322"><span class="linenos">322</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-323"><a href="#AliasSection-323"><span class="linenos">323</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-324"><a href="#AliasSection-324"><span class="linenos">324</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-325"><a href="#AliasSection-325"><span class="linenos">325</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-326"><a href="#AliasSection-326"><span class="linenos">326</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-327"><a href="#AliasSection-327"><span class="linenos">327</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-328"><a href="#AliasSection-328"><span class="linenos">328</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span>
-</span><span id="AliasSection-329"><a href="#AliasSection-329"><span class="linenos">329</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-323"><a href="#AliasSection-323"><span class="linenos">323</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-324"><a href="#AliasSection-324"><span class="linenos">324</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-325"><a href="#AliasSection-325"><span class="linenos">325</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-326"><a href="#AliasSection-326"><span class="linenos">326</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-327"><a href="#AliasSection-327"><span class="linenos">327</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-328"><a href="#AliasSection-328"><span class="linenos">328</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-329"><a href="#AliasSection-329"><span class="linenos">329</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-330"><a href="#AliasSection-330"><span class="linenos">330</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-331"><a href="#AliasSection-331"><span class="linenos">331</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="AliasSection-331"><a href="#AliasSection-331"><span class="linenos">331</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-332"><a href="#AliasSection-332"><span class="linenos">332</span></a>
 </span><span id="AliasSection-333"><a href="#AliasSection-333"><span class="linenos">333</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="AliasSection-334"><a href="#AliasSection-334"><span class="linenos">334</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
@@ -2005,7 +2005,7 @@
 
                             <div id="AliasSection.results" class="classattr">
                                 <div class="attr variable">
-            <span class="name">results</span><span class="annotation">: list</span>
+            <span class="name">results</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2018,7 +2018,7 @@
                             </div>
                             <div id="AliasSection.graph" class="classattr">
                                 <div class="attr variable">
-            <span class="name">graph</span><span class="annotation">: list</span>
+            <span class="name">graph</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2031,7 +2031,7 @@
                             </div>
                             <div id="AliasSection.ranking" class="classattr">
                                 <div class="attr variable">
-            <span class="name">ranking</span><span class="annotation">: list</span>
+            <span class="name">ranking</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2044,7 +2044,7 @@
                             </div>
                             <div id="AliasSection.report" class="classattr">
                                 <div class="attr variable">
-            <span class="name">report</span><span class="annotation">: list</span>
+            <span class="name">report</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2057,7 +2057,7 @@
                             </div>
                             <div id="AliasSection.download" class="classattr">
                                 <div class="attr variable">
-            <span class="name">download</span><span class="annotation">: list</span>
+            <span class="name">download</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2068,7 +2068,7 @@
                             </div>
                             <div id="AliasSection.member" class="classattr">
                                 <div class="attr variable">
-            <span class="name">member</span><span class="annotation">: list</span>
+            <span class="name">member</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2081,7 +2081,7 @@
                             </div>
                             <div id="AliasSection.add" class="classattr">
                                 <div class="attr variable">
-            <span class="name">add</span><span class="annotation">: list</span>
+            <span class="name">add</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2092,7 +2092,7 @@
                             </div>
                             <div id="AliasSection.delete" class="classattr">
                                 <div class="attr variable">
-            <span class="name">delete</span><span class="annotation">: list</span>
+            <span class="name">delete</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2103,7 +2103,7 @@
                             </div>
                             <div id="AliasSection.team_create" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_create</span><span class="annotation">: list</span>
+            <span class="name">team_create</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2114,7 +2114,7 @@
                             </div>
                             <div id="AliasSection.team_del" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_del</span><span class="annotation">: list</span>
+            <span class="name">team_del</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2125,7 +2125,7 @@
                             </div>
                             <div id="AliasSection.team_add" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_add</span><span class="annotation">: list</span>
+            <span class="name">team_add</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2136,7 +2136,7 @@
                             </div>
                             <div id="AliasSection.team_remove" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_remove</span><span class="annotation">: list</span>
+            <span class="name">team_remove</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2147,7 +2147,7 @@
                             </div>
                             <div id="AliasSection.team_list" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_list</span><span class="annotation">: list</span>
+            <span class="name">team_list</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -2160,7 +2160,7 @@
                             </div>
                             <div id="AliasSection.team_clear" class="classattr">
                                 <div class="attr variable">
-            <span class="name">team_clear</span><span class="annotation">: list</span>
+            <span class="name">team_clear</span><span class="annotation">: list[str]</span>
 
         
     </div>

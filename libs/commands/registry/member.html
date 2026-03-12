@@ -300,19 +300,19 @@
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">            list[MemberDataDict]: メンバー情報</span>
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">:</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;alias&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">MemberDataDict</span><span class="p">],</span> <span class="n">ret</span><span class="p">)</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    メンバー追加</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Args:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        argument (list): 登録情報</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        argument (list[str]): 登録情報</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">            - argument[0]: 登録するメンバー名</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            - argument[1]: 登録する別名</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
@@ -416,12 +416,12 @@
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">return</span> <span class="n">msg</span>
 </span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>
 </span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    メンバー削除</span>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">    Args:</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">        argument (list): 削除情報</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">        argument (list[str]): 削除情報</span>
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">            - argument[0]: 削除するメンバー名</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">            - argument[1]: 削除する別名</span>
 </span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>
@@ -727,7 +727,7 @@
 </span><span id="MemberSection-155"><a href="#MemberSection-155"><span class="linenos">155</span></a><span class="sd">            list[MemberDataDict]: メンバー情報</span>
 </span><span id="MemberSection-156"><a href="#MemberSection-156"><span class="linenos">156</span></a>
 </span><span id="MemberSection-157"><a href="#MemberSection-157"><span class="linenos">157</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MemberSection-158"><a href="#MemberSection-158"><span class="linenos">158</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+</span><span id="MemberSection-158"><a href="#MemberSection-158"><span class="linenos">158</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
 </span><span id="MemberSection-159"><a href="#MemberSection-159"><span class="linenos">159</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">:</span>
 </span><span id="MemberSection-160"><a href="#MemberSection-160"><span class="linenos">160</span></a>            <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;alias&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
 </span><span id="MemberSection-161"><a href="#MemberSection-161"><span class="linenos">161</span></a>
@@ -1100,7 +1100,7 @@
 </span><span id="MemberSection.get_info-155"><a href="#MemberSection.get_info-155"><span class="linenos">155</span></a><span class="sd">            list[MemberDataDict]: メンバー情報</span>
 </span><span id="MemberSection.get_info-156"><a href="#MemberSection.get_info-156"><span class="linenos">156</span></a>
 </span><span id="MemberSection.get_info-157"><a href="#MemberSection.get_info-157"><span class="linenos">157</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MemberSection.get_info-158"><a href="#MemberSection.get_info-158"><span class="linenos">158</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+</span><span id="MemberSection.get_info-158"><a href="#MemberSection.get_info-158"><span class="linenos">158</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">&quot;MEMBER_INFO&quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
 </span><span id="MemberSection.get_info-159"><a href="#MemberSection.get_info-159"><span class="linenos">159</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">:</span>
 </span><span id="MemberSection.get_info-160"><a href="#MemberSection.get_info-160"><span class="linenos">160</span></a>            <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;alias&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
 </span><span id="MemberSection.get_info-161"><a href="#MemberSection.get_info-161"><span class="linenos">161</span></a>
@@ -1147,18 +1147,18 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">append</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+        <span class="name">append</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
 
                 <label class="view-source-button" for="append-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#append"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="append-165"><a href="#append-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="append-165"><a href="#append-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="append-166"><a href="#append-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="append-167"><a href="#append-167"><span class="linenos">167</span></a><span class="sd">    メンバー追加</span>
 </span><span id="append-168"><a href="#append-168"><span class="linenos">168</span></a>
 </span><span id="append-169"><a href="#append-169"><span class="linenos">169</span></a><span class="sd">    Args:</span>
-</span><span id="append-170"><a href="#append-170"><span class="linenos">170</span></a><span class="sd">        argument (list): 登録情報</span>
+</span><span id="append-170"><a href="#append-170"><span class="linenos">170</span></a><span class="sd">        argument (list[str]): 登録情報</span>
 </span><span id="append-171"><a href="#append-171"><span class="linenos">171</span></a><span class="sd">            - argument[0]: 登録するメンバー名</span>
 </span><span id="append-172"><a href="#append-172"><span class="linenos">172</span></a><span class="sd">            - argument[1]: 登録する別名</span>
 </span><span id="append-173"><a href="#append-173"><span class="linenos">173</span></a>
@@ -1268,7 +1268,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>argument (list):</strong>  登録情報
+<li><strong>argument (list[str]):</strong>  登録情報
 <ul>
 <li>argument[0]: 登録するメンバー名</li>
 <li>argument[1]: 登録する別名</li>
@@ -1289,18 +1289,18 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
 
                 <label class="view-source-button" for="remove-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#remove"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="remove-274"><a href="#remove-274"><span class="linenos">274</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="remove-274"><a href="#remove-274"><span class="linenos">274</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="remove-275"><a href="#remove-275"><span class="linenos">275</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="remove-276"><a href="#remove-276"><span class="linenos">276</span></a><span class="sd">    メンバー削除</span>
 </span><span id="remove-277"><a href="#remove-277"><span class="linenos">277</span></a>
 </span><span id="remove-278"><a href="#remove-278"><span class="linenos">278</span></a><span class="sd">    Args:</span>
-</span><span id="remove-279"><a href="#remove-279"><span class="linenos">279</span></a><span class="sd">        argument (list): 削除情報</span>
+</span><span id="remove-279"><a href="#remove-279"><span class="linenos">279</span></a><span class="sd">        argument (list[str]): 削除情報</span>
 </span><span id="remove-280"><a href="#remove-280"><span class="linenos">280</span></a><span class="sd">            - argument[0]: 削除するメンバー名</span>
 </span><span id="remove-281"><a href="#remove-281"><span class="linenos">281</span></a><span class="sd">            - argument[1]: 削除する別名</span>
 </span><span id="remove-282"><a href="#remove-282"><span class="linenos">282</span></a>
@@ -1354,7 +1354,7 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>argument (list):</strong>  削除情報
+<li><strong>argument (list[str]):</strong>  削除情報
 <ul>
 <li>argument[0]: 削除するメンバー名</li>
 <li>argument[1]: 削除する別名</li>

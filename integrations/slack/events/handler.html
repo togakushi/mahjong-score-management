@@ -119,7 +119,7 @@
 </span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">register_all</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>  <span class="c1"># イベント遅延登録</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">SocketModeHandler</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SLACK_APP_TOKEN&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">SocketModeHandler</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SLACK_APP_TOKEN&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="nd">@register</span>
@@ -239,7 +239,7 @@
 </span><span id="main-58"><a href="#main-58"><span class="linenos">58</span></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </span><span id="main-59"><a href="#main-59"><span class="linenos">59</span></a>
 </span><span id="main-60"><a href="#main-60"><span class="linenos">60</span></a>    <span class="n">register_all</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>  <span class="c1"># イベント遅延登録</span>
-</span><span id="main-61"><a href="#main-61"><span class="linenos">61</span></a>    <span class="n">SocketModeHandler</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SLACK_APP_TOKEN&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="main-61"><a href="#main-61"><span class="linenos">61</span></a>    <span class="n">SocketModeHandler</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SLACK_APP_TOKEN&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
 </span></pre></div>
 
 
