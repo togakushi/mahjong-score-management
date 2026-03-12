@@ -156,7 +156,7 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     target_data = pd.DataFrame()
 
-    df = loader.read_data("SUMMARY_GAMEDATA")
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
     if df.empty:
         return (target_data, df)
 

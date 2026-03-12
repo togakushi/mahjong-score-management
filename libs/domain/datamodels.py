@@ -194,7 +194,7 @@ class GameInfo:
             g.params.update({"endtime": ExtDt().range("全部").end})
 
         # データ収集
-        df = loader.read_data("GAME_INFO")
+        df = loader.read_data("GAME_INFO", g.params)
         if df.empty:
             self.count = 0
             self.first_game = ExtDt()
