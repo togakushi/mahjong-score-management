@@ -151,7 +151,7 @@ def simulate_game() -> list[int]:
             else:  # 被ツモによる点数移動
                 discarder = random.choice(losers)  # 放銃役
                 pay = determine_point(is_parent, False)
-                assert isinstance(pay, int), "pay should be a int"
+                assert isinstance(pay, int), "pay should be an int"
                 scores[discarder] -= pay + 300 * renchan_count
                 scores[winner] += pay + 300 * renchan_count
 
