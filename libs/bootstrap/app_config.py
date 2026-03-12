@@ -188,15 +188,15 @@ class AppConfig:
         self.report.config_load(self)
         self.help.config_load(self)
 
-    def word_list(self, add_words: list | None = None) -> list[str]:
+    def word_list(self, add_words: list[str] | None = None) -> list[str]:
         """
         設定されている値、キーワードをリスト化する
 
         Args:
-            add_words (list | None, optional): リストに追加するワード. Defaults to None.
+            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.
 
         Returns:
-            list: リスト化されたキーワード
+            list[str]: リスト化されたキーワード
 
         """
         words: list[str] = []
@@ -245,7 +245,7 @@ class AppConfig:
             logging.error(err)
             return
 
-        protected_values: Union[str, list]
+        protected_values: Union[str, list[str]]
         match section_name:
             case "setting":
                 protected_values = self.setting.remarks_word  # 上書き保護
