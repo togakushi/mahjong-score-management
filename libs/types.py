@@ -296,6 +296,8 @@ class PlaceholderDict(TypedDict, total=False):
     """
 
     # 検索関連
+    ts: str
+    """ゲーム結果タイムスタンプ"""
     starttime: Union[str, "ExtendedDatetime", None]
     """集計開始日時"""
     endtime: Union[str, "ExtendedDatetime", None]
