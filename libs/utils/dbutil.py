@@ -233,15 +233,18 @@ def query_modification(sql: str, params: "PlaceholderDict") -> str:
         else:
             sql = sql.replace("<<Calculation Formula>>", "(row_number() over (order by total_count desc) - 1) / :interval")
 
-    match params.get("undefined_word"):
-        case 0:
-            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
-        case 1:
-            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
-        case 2:
-            sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
-        case _:
-            sql = sql.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
+    if params.get("undefined_word") is not None:
+        match params.get("undefined_word"):
+            case 0:
+                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
+            case 1:
+                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
+            case 2:
+                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
+            case _:
+                sql = sql.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
+    else:
+        sql = sql.replace(":undefined_word", "1")
 
     # SQLコメント削除
     sql = re.sub(r"^ *--\[.*$", "", sql, flags=re.MULTILINE)
