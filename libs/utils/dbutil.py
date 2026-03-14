@@ -12,6 +12,8 @@ import libs.global_value as g
 if TYPE_CHECKING:
     from pathlib import Path
 
+    from libs.types import PlaceholderDict
+
 
 def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
     """
@@ -111,37 +113,38 @@ def query(keyword: str) -> str:
         raise ValueError(f"Unknown keyword: {keyword}")
 
 
-def query_modification(sql: str) -> str:
+def query_modification(sql: str, params: "PlaceholderDict") -> str:
     """
     クエリをオプションの内容で修正する
 
     Args:
         sql (str): 修正するクエリ
+        params (PlaceholderDict): プレースホルダ
 
     Returns:
         str: 修正後のクエリ
 
     """
-    if g.params.get("individual"):  # 個人集計
+    if params.get("individual"):  # 個人集計
         sql = sql.replace("--[individual] ", "")
         # ゲスト関連フラグ
-        if g.params.get("unregistered_replace"):
+        if params.get("unregistered_replace"):
             sql = sql.replace("--[unregistered_replace] ", "")
-            if g.params.get("guest_skip"):
+            if params.get("guest_skip"):
                 sql = sql.replace("--[guest_not_skip] ", "")
             else:
                 sql = sql.replace("--[guest_skip] ", "")
         else:
             sql = sql.replace("--[unregistered_not_replace] ", "")
     else:  # チーム集計
-        g.params.update({"unregistered_replace": False})
-        g.params.update({"guest_skip": True})
+        params.update({"unregistered_replace": False})
+        params.update({"guest_skip": True})
         sql = sql.replace("--[team] ", "")
-        if not g.params.get("friendly_fire"):
+        if not params.get("friendly_fire"):
             sql = sql.replace("--[friendly_fire] ", "")
 
     # 集約集計
-    match g.params.get("collection"):
+    match params.get("collection"):
         case "daily":
             sql = sql.replace("--[collection_daily] ", "")
             sql = sql.replace("--[collection] ", "")
@@ -161,51 +164,52 @@ def query_modification(sql: str) -> str:
             sql = sql.replace("--[not_collection] ", "")
 
     # 集計対象ルール
-    if g.params.get("rule_set"):
-        sql = sql.replace("<<rule_list>>", ":" + ", :".join(g.params["rule_set"]))
+    if params.get("rule_set"):
+        sql = sql.replace("<<rule_list>>", ":" + ", :".join(params["rule_set"]))
     else:
         sql = sql.replace("and rule_version in (<<rule_list>>)", "")
         sql = sql.replace("and results.rule_version in (<<rule_list>>)", "")
+        sql = sql.replace("and game_info.rule_version in (<<rule_list>>)", "")
 
     # 集計モード
-    match g.params.get("mode"):
+    match params.get("mode"):
         case 3:
             sql = sql.replace("--[mode3] ", "")
         case 4:
             sql = sql.replace("--[mode4] ", "")
 
     # スコア入力元識別子別集計
-    if g.params.get("separate"):
+    if params.get("separate"):
         sql = sql.replace("--[separate] ", "")
 
     # コメント検索
-    if g.params.get("search_word") or g.params.get("group_length"):
+    if params.get("search_word") or params.get("group_length"):
         sql = sql.replace("--[group_by] ", "")
     else:
         sql = sql.replace("--[not_group_by] ", "")
 
-    if g.params.get("search_word"):
+    if params.get("search_word"):
         sql = sql.replace("--[search_word] ", "")
     else:
         sql = sql.replace("--[not_search_word] ", "")
 
-    if g.params.get("group_length"):
+    if params.get("group_length"):
         sql = sql.replace("--[group_length] ", "")
     else:
         sql = sql.replace("--[not_group_length] ", "")
-        if g.params.get("search_word"):
+        if params.get("search_word"):
             sql = sql.replace("--[comment] ", "")
         else:
             sql = sql.replace("--[not_comment] ", "")
 
     # 直近N検索用（全範囲取得してから絞る）
-    if g.params.get("target_count") != 0:
+    if params.get("target_count") != 0:
         sql = sql.replace("and my.playtime between", "-- and my.playtime between")
 
     # プレイヤーリスト
-    if g.params.get("player_name"):
+    if params.get("player_name") and params.get("player_list"):
         sql = sql.replace("--[player_name] ", "")
-        sql = sql.replace("<<player_list>>", ":" + ", :".join(g.params["player_list"]))
+        sql = sql.replace("<<player_list>>", ":" + ", :".join(params["player_list"]))
     sql = sql.replace("<<guest_mark>>", g.cfg.setting.guest_mark)
 
     # フラグの処理
@@ -220,15 +224,16 @@ def query_modification(sql: str) -> str:
             sql = sql.replace("<<collection>>", "'合計' as 集計")
             sql = sql.replace("<<group by>>", "")
         case _:
-            pass
+            sql = sql.replace("<<collection>>,", "-- <<collection>>")
+            sql = sql.replace("<<group by>>", "-- <<group by>>")
 
-    if g.params.get("interval") is not None:
-        if g.params.get("interval") == 0:
+    if params.get("interval") is not None:
+        if params.get("interval") == 0:
             sql = sql.replace("<<Calculation Formula>>", ":interval")
         else:
             sql = sql.replace("<<Calculation Formula>>", "(row_number() over (order by total_count desc) - 1) / :interval")
 
-    match g.params.get("undefined_word"):
+    match params.get("undefined_word"):
         case 0:
             sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
         case 1:

@@ -37,7 +37,7 @@ def execute(sql: str, params: Optional[PlaceholderDict] = None) -> list[dict[str
         params = g.params
 
     ret: list[dict[str, Any]] = []
-    sql = dbutil.query_modification(sql)
+    sql = dbutil.query_modification(sql, params)
 
     params_dict: dict[str, Any] = {
         **params.get("rule_set", {}),
@@ -102,7 +102,7 @@ def read_data(keyword: str, params: Optional[PlaceholderDict] = None) -> pd.Data
     if endtime := params.get("endtime"):
         params.update({"endtime": cast("ExtDt", endtime).format(Format.SQL)})
 
-    sql = dbutil.query_modification(dbutil.query(keyword))
+    sql = dbutil.query_modification(dbutil.query(keyword), params)
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")
