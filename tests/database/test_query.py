@@ -1,10 +1,10 @@
 """
-tests/database/test_query_execution.py
+tests/database/test_query.py
 """
 
 from dataclasses import asdict
 from pprint import pprint
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
@@ -12,7 +12,7 @@ from libs.data import loader
 from libs.domain.datamodels import CommandAttrs
 from libs.types import PlaceholderDict
 
-sql_tables: list[str] = {
+sql_tables: list[str] = [
     # 情報取得
     "GAME_INFO",
     "RESULTS_INFO",
@@ -39,7 +39,7 @@ sql_tables: list[str] = {
     #
     "SELECT_ALL_RESULTS",
     "SELECT_GAME_RESULTS",
-}
+]
 params_tables = {
     "guest_off": {"guest_skip": True},
     "guest_on": {"guest_skip": False},
@@ -51,9 +51,9 @@ param_list = [pytest.param(name, flags, id=name) for name, flags in params_table
 
 @pytest.mark.parametrize("param_name, flags", param_list)
 @pytest.mark.parametrize("query_name", query_list)
-def test_query_syntax(query_name: str, param_name: str, flags: dict[str, Any]):
-    """xxxx"""
-    params = {
+def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -> None:
+    """クエリ構文チェック"""
+    params: dict[str, Any] = {
         **asdict(CommandAttrs()),
         "ts": "1234567890.123456",
         "player_name": "dummy_player",
@@ -63,6 +63,8 @@ def test_query_syntax(query_name: str, param_name: str, flags: dict[str, Any]):
         "endtime": "1999-01-01 00:00:00",
     }
     params.update(**flags)
+    placeholder: PlaceholderDict = cast(PlaceholderDict, {**params})
+
     pprint([query_name, param_name, params])
 
-    _ = loader.read_data(query_name, PlaceholderDict(params))
+    _ = loader.read_data(query_name, placeholder)
