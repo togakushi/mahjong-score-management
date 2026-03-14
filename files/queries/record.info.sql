@@ -13,6 +13,7 @@ with base_tbl as (
             rank,
             mode,
             rule_version,
+            comment,
             source,
             sum(guest) over (partition by playtime) as guest_count,
             count(*) over (partition by playtime, team) as same_team
