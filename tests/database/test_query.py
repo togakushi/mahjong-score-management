@@ -78,7 +78,6 @@ def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -
     """クエリ構文チェック"""
     params: dict[str, Any] = {
         **asdict(CommandAttrs()),
-        "ts": "1234567890.123456",
         "player_name": "dummy_player",
         "guest_name": "dummy_guest",
         "source": "dummy_source",
