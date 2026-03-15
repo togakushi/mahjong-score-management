@@ -208,7 +208,7 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
 
-    if (all(df.count() == 1) or g.params["collection"] == "all") and graph_params["horizontal"]:
+    if (all(df.count() == 1) or g.params.get("collection", "") == "all") and graph_params["horizontal"]:
         graph_params["graph_type"] = "point_hbar"
         color: list[str] = []
         for _, v in target_data.iterrows():
