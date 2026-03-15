@@ -2,7 +2,7 @@
 integrations/factory.py
 """
 
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Literal, TypeAlias, Union, overload
 
 from integrations.discord.adapter import ServiceAdapter as discord_adapter
 from integrations.slack.adapter import ServiceAdapter as slack_adapter
@@ -10,8 +10,15 @@ from integrations.standard_io.adapter import ServiceAdapter as std_adapter
 from integrations.web.adapter import ServiceAdapter as web_adapter
 
 if TYPE_CHECKING:
-    from integrations.base.interface import AdapterInterface
     from libs.bootstrap.app_config import AppConfig
+
+AdapterType: TypeAlias = Union[
+    slack_adapter,
+    discord_adapter,
+    web_adapter,
+    std_adapter,
+]
+"""アダプタインターフェース"""
 
 
 @overload
@@ -30,7 +37,7 @@ def select_adapter(selected_service: Literal["web"], conf: "AppConfig") -> web_a
 def select_adapter(selected_service: Literal["standard_io"], conf: "AppConfig") -> std_adapter: ...
 
 
-def select_adapter(selected_service: str, conf: "AppConfig") -> "AdapterInterface":
+def select_adapter(selected_service: str, conf: "AppConfig") -> AdapterType:
     """
     インターフェース選択
 
