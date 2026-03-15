@@ -8,5 +8,5 @@ select
     comment,
     rule_version
 from
-    result where ts=:ts
+    result where ts = :ts
 ;
