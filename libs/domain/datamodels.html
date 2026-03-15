@@ -250,12 +250,6 @@
                         <li>
                                 <a class="function" href="#ParameterData.default_reset">default_reset</a>
                         </li>
-                        <li>
-                                <a class="function" href="#ParameterData.stipulated_update">stipulated_update</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#ParameterData.dict_dump">dict_dump</a>
-                        </li>
                 </ul>
 
             </li>
@@ -314,10 +308,10 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">MISSING</span><span class="p">,</span> <span class="n">asdict</span><span class="p">,</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">MISSING</span><span class="p">,</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">ceil</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">libs.global_value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">g</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">libs.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">loader</span>
@@ -632,49 +626,35 @@
 </span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>            <span class="k">elif</span> <span class="n">f</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">MISSING</span><span class="p">:</span>
 </span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">default_factory</span><span class="p">())</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">        ゲーム数から規定打数を再計算</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">        Args:</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stipulated</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="nd">@dataclass</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CommandAttrs</span><span class="p">(</span><span class="n">ParameterData</span><span class="p">):</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンド設定パラメータ&quot;&quot;&quot;</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">commandword</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;呼び出しキーワード&quot;&quot;&quot;</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">command_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)&quot;&quot;&quot;</span>
 </span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dict_dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;dump to dict&quot;&quot;&quot;</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="k">return</span> <span class="n">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="nd">@dataclass</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CommandAttrs</span><span class="p">(</span><span class="n">ParameterData</span><span class="p">):</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンド設定パラメータ&quot;&quot;&quot;</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="n">commandword</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;呼び出しキーワード&quot;&quot;&quot;</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="n">command_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)&quot;&quot;&quot;</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;当日&quot;</span><span class="p">)</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;検索範囲未指定時に使用される範囲&quot;&quot;&quot;</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;オプションとして常に付与される文字列&quot;&quot;&quot;</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="n">dropitems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;非表示にする項目&quot;&quot;&quot;</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="sd">        規定打数をゲーム数から計算</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="sd">        Args:</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
 </span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;当日&quot;</span><span class="p">)</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;検索範囲未指定時に使用される範囲&quot;&quot;&quot;</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;オプションとして常に付与される文字列&quot;&quot;&quot;</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">dropitems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;非表示にする項目&quot;&quot;&quot;</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">        規定打数をゲーム数から計算</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">        Args:</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">        Returns:</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">            int: 規定ゲーム数</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">        Returns:</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">            int: 規定ゲーム数</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1895,20 +1875,6 @@
 </span><span id="ParameterData-321"><a href="#ParameterData-321"><span class="linenos">321</span></a>                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 </span><span id="ParameterData-322"><a href="#ParameterData-322"><span class="linenos">322</span></a>            <span class="k">elif</span> <span class="n">f</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">MISSING</span><span class="p">:</span>
 </span><span id="ParameterData-323"><a href="#ParameterData-323"><span class="linenos">323</span></a>                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">default_factory</span><span class="p">())</span>
-</span><span id="ParameterData-324"><a href="#ParameterData-324"><span class="linenos">324</span></a>
-</span><span id="ParameterData-325"><a href="#ParameterData-325"><span class="linenos">325</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ParameterData-326"><a href="#ParameterData-326"><span class="linenos">326</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ParameterData-327"><a href="#ParameterData-327"><span class="linenos">327</span></a><span class="sd">        ゲーム数から規定打数を再計算</span>
-</span><span id="ParameterData-328"><a href="#ParameterData-328"><span class="linenos">328</span></a>
-</span><span id="ParameterData-329"><a href="#ParameterData-329"><span class="linenos">329</span></a><span class="sd">        Args:</span>
-</span><span id="ParameterData-330"><a href="#ParameterData-330"><span class="linenos">330</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="ParameterData-331"><a href="#ParameterData-331"><span class="linenos">331</span></a>
-</span><span id="ParameterData-332"><a href="#ParameterData-332"><span class="linenos">332</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ParameterData-333"><a href="#ParameterData-333"><span class="linenos">333</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stipulated</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span id="ParameterData-334"><a href="#ParameterData-334"><span class="linenos">334</span></a>
-</span><span id="ParameterData-335"><a href="#ParameterData-335"><span class="linenos">335</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dict_dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="ParameterData-336"><a href="#ParameterData-336"><span class="linenos">336</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;dump to dict&quot;&quot;&quot;</span>
-</span><span id="ParameterData-337"><a href="#ParameterData-337"><span class="linenos">337</span></a>        <span class="k">return</span> <span class="n">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2137,62 +2103,6 @@
 
 
                             </div>
-                            <div id="ParameterData.stipulated_update" class="classattr">
-                                        <input id="ParameterData.stipulated_update-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">stipulated_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
-
-                <label class="view-source-button" for="ParameterData.stipulated_update-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ParameterData.stipulated_update"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ParameterData.stipulated_update-325"><a href="#ParameterData.stipulated_update-325"><span class="linenos">325</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ParameterData.stipulated_update-326"><a href="#ParameterData.stipulated_update-326"><span class="linenos">326</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ParameterData.stipulated_update-327"><a href="#ParameterData.stipulated_update-327"><span class="linenos">327</span></a><span class="sd">        ゲーム数から規定打数を再計算</span>
-</span><span id="ParameterData.stipulated_update-328"><a href="#ParameterData.stipulated_update-328"><span class="linenos">328</span></a>
-</span><span id="ParameterData.stipulated_update-329"><a href="#ParameterData.stipulated_update-329"><span class="linenos">329</span></a><span class="sd">        Args:</span>
-</span><span id="ParameterData.stipulated_update-330"><a href="#ParameterData.stipulated_update-330"><span class="linenos">330</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="ParameterData.stipulated_update-331"><a href="#ParameterData.stipulated_update-331"><span class="linenos">331</span></a>
-</span><span id="ParameterData.stipulated_update-332"><a href="#ParameterData.stipulated_update-332"><span class="linenos">332</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ParameterData.stipulated_update-333"><a href="#ParameterData.stipulated_update-333"><span class="linenos">333</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stipulated</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>ゲーム数から規定打数を再計算</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>game_count (int):</strong>  指定ゲーム数</li>
-</ul>
-</div>
-
-
-                            </div>
-                            <div id="ParameterData.dict_dump" class="classattr">
-                                        <input id="ParameterData.dict_dump-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">dict_dump</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>:</span></span>
-
-                <label class="view-source-button" for="ParameterData.dict_dump-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ParameterData.dict_dump"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ParameterData.dict_dump-335"><a href="#ParameterData.dict_dump-335"><span class="linenos">335</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dict_dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="ParameterData.dict_dump-336"><a href="#ParameterData.dict_dump-336"><span class="linenos">336</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;dump to dict&quot;&quot;&quot;</span>
-</span><span id="ParameterData.dict_dump-337"><a href="#ParameterData.dict_dump-337"><span class="linenos">337</span></a>        <span class="k">return</span> <span class="n">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>dump to dict</p>
-</div>
-
-
-                            </div>
                 </section>
                 <section id="CommandAttrs">
                             <input id="CommandAttrs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -2206,34 +2116,34 @@
 
     </div>
     <a class="headerlink" href="#CommandAttrs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CommandAttrs-340"><a href="#CommandAttrs-340"><span class="linenos">340</span></a><span class="nd">@dataclass</span>
-</span><span id="CommandAttrs-341"><a href="#CommandAttrs-341"><span class="linenos">341</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CommandAttrs</span><span class="p">(</span><span class="n">ParameterData</span><span class="p">):</span>
-</span><span id="CommandAttrs-342"><a href="#CommandAttrs-342"><span class="linenos">342</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンド設定パラメータ&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-343"><a href="#CommandAttrs-343"><span class="linenos">343</span></a>
-</span><span id="CommandAttrs-344"><a href="#CommandAttrs-344"><span class="linenos">344</span></a>    <span class="n">commandword</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="CommandAttrs-345"><a href="#CommandAttrs-345"><span class="linenos">345</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;呼び出しキーワード&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-346"><a href="#CommandAttrs-346"><span class="linenos">346</span></a>    <span class="n">command_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="CommandAttrs-347"><a href="#CommandAttrs-347"><span class="linenos">347</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CommandAttrs-326"><a href="#CommandAttrs-326"><span class="linenos">326</span></a><span class="nd">@dataclass</span>
+</span><span id="CommandAttrs-327"><a href="#CommandAttrs-327"><span class="linenos">327</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CommandAttrs</span><span class="p">(</span><span class="n">ParameterData</span><span class="p">):</span>
+</span><span id="CommandAttrs-328"><a href="#CommandAttrs-328"><span class="linenos">328</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンド設定パラメータ&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-329"><a href="#CommandAttrs-329"><span class="linenos">329</span></a>
+</span><span id="CommandAttrs-330"><a href="#CommandAttrs-330"><span class="linenos">330</span></a>    <span class="n">commandword</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="CommandAttrs-331"><a href="#CommandAttrs-331"><span class="linenos">331</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;呼び出しキーワード&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-332"><a href="#CommandAttrs-332"><span class="linenos">332</span></a>    <span class="n">command_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="CommandAttrs-333"><a href="#CommandAttrs-333"><span class="linenos">333</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-334"><a href="#CommandAttrs-334"><span class="linenos">334</span></a>
+</span><span id="CommandAttrs-335"><a href="#CommandAttrs-335"><span class="linenos">335</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;当日&quot;</span><span class="p">)</span>
+</span><span id="CommandAttrs-336"><a href="#CommandAttrs-336"><span class="linenos">336</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;検索範囲未指定時に使用される範囲&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-337"><a href="#CommandAttrs-337"><span class="linenos">337</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="CommandAttrs-338"><a href="#CommandAttrs-338"><span class="linenos">338</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;オプションとして常に付与される文字列&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-339"><a href="#CommandAttrs-339"><span class="linenos">339</span></a>    <span class="n">dropitems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="CommandAttrs-340"><a href="#CommandAttrs-340"><span class="linenos">340</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;非表示にする項目&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-341"><a href="#CommandAttrs-341"><span class="linenos">341</span></a>
+</span><span id="CommandAttrs-342"><a href="#CommandAttrs-342"><span class="linenos">342</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="CommandAttrs-343"><a href="#CommandAttrs-343"><span class="linenos">343</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-344"><a href="#CommandAttrs-344"><span class="linenos">344</span></a><span class="sd">        規定打数をゲーム数から計算</span>
+</span><span id="CommandAttrs-345"><a href="#CommandAttrs-345"><span class="linenos">345</span></a>
+</span><span id="CommandAttrs-346"><a href="#CommandAttrs-346"><span class="linenos">346</span></a><span class="sd">        Args:</span>
+</span><span id="CommandAttrs-347"><a href="#CommandAttrs-347"><span class="linenos">347</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
 </span><span id="CommandAttrs-348"><a href="#CommandAttrs-348"><span class="linenos">348</span></a>
-</span><span id="CommandAttrs-349"><a href="#CommandAttrs-349"><span class="linenos">349</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;当日&quot;</span><span class="p">)</span>
-</span><span id="CommandAttrs-350"><a href="#CommandAttrs-350"><span class="linenos">350</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;検索範囲未指定時に使用される範囲&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-351"><a href="#CommandAttrs-351"><span class="linenos">351</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="CommandAttrs-352"><a href="#CommandAttrs-352"><span class="linenos">352</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;オプションとして常に付与される文字列&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-353"><a href="#CommandAttrs-353"><span class="linenos">353</span></a>    <span class="n">dropitems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
-</span><span id="CommandAttrs-354"><a href="#CommandAttrs-354"><span class="linenos">354</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;非表示にする項目&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-355"><a href="#CommandAttrs-355"><span class="linenos">355</span></a>
-</span><span id="CommandAttrs-356"><a href="#CommandAttrs-356"><span class="linenos">356</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="CommandAttrs-357"><a href="#CommandAttrs-357"><span class="linenos">357</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-358"><a href="#CommandAttrs-358"><span class="linenos">358</span></a><span class="sd">        規定打数をゲーム数から計算</span>
-</span><span id="CommandAttrs-359"><a href="#CommandAttrs-359"><span class="linenos">359</span></a>
-</span><span id="CommandAttrs-360"><a href="#CommandAttrs-360"><span class="linenos">360</span></a><span class="sd">        Args:</span>
-</span><span id="CommandAttrs-361"><a href="#CommandAttrs-361"><span class="linenos">361</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="CommandAttrs-362"><a href="#CommandAttrs-362"><span class="linenos">362</span></a>
-</span><span id="CommandAttrs-363"><a href="#CommandAttrs-363"><span class="linenos">363</span></a><span class="sd">        Returns:</span>
-</span><span id="CommandAttrs-364"><a href="#CommandAttrs-364"><span class="linenos">364</span></a><span class="sd">            int: 規定ゲーム数</span>
-</span><span id="CommandAttrs-365"><a href="#CommandAttrs-365"><span class="linenos">365</span></a>
-</span><span id="CommandAttrs-366"><a href="#CommandAttrs-366"><span class="linenos">366</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CommandAttrs-367"><a href="#CommandAttrs-367"><span class="linenos">367</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="CommandAttrs-349"><a href="#CommandAttrs-349"><span class="linenos">349</span></a><span class="sd">        Returns:</span>
+</span><span id="CommandAttrs-350"><a href="#CommandAttrs-350"><span class="linenos">350</span></a><span class="sd">            int: 規定ゲーム数</span>
+</span><span id="CommandAttrs-351"><a href="#CommandAttrs-351"><span class="linenos">351</span></a>
+</span><span id="CommandAttrs-352"><a href="#CommandAttrs-352"><span class="linenos">352</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CommandAttrs-353"><a href="#CommandAttrs-353"><span class="linenos">353</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2330,18 +2240,18 @@
 
     </div>
     <a class="headerlink" href="#CommandAttrs.stipulated_calculation"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CommandAttrs.stipulated_calculation-356"><a href="#CommandAttrs.stipulated_calculation-356"><span class="linenos">356</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="CommandAttrs.stipulated_calculation-357"><a href="#CommandAttrs.stipulated_calculation-357"><span class="linenos">357</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CommandAttrs.stipulated_calculation-358"><a href="#CommandAttrs.stipulated_calculation-358"><span class="linenos">358</span></a><span class="sd">        規定打数をゲーム数から計算</span>
-</span><span id="CommandAttrs.stipulated_calculation-359"><a href="#CommandAttrs.stipulated_calculation-359"><span class="linenos">359</span></a>
-</span><span id="CommandAttrs.stipulated_calculation-360"><a href="#CommandAttrs.stipulated_calculation-360"><span class="linenos">360</span></a><span class="sd">        Args:</span>
-</span><span id="CommandAttrs.stipulated_calculation-361"><a href="#CommandAttrs.stipulated_calculation-361"><span class="linenos">361</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
-</span><span id="CommandAttrs.stipulated_calculation-362"><a href="#CommandAttrs.stipulated_calculation-362"><span class="linenos">362</span></a>
-</span><span id="CommandAttrs.stipulated_calculation-363"><a href="#CommandAttrs.stipulated_calculation-363"><span class="linenos">363</span></a><span class="sd">        Returns:</span>
-</span><span id="CommandAttrs.stipulated_calculation-364"><a href="#CommandAttrs.stipulated_calculation-364"><span class="linenos">364</span></a><span class="sd">            int: 規定ゲーム数</span>
-</span><span id="CommandAttrs.stipulated_calculation-365"><a href="#CommandAttrs.stipulated_calculation-365"><span class="linenos">365</span></a>
-</span><span id="CommandAttrs.stipulated_calculation-366"><a href="#CommandAttrs.stipulated_calculation-366"><span class="linenos">366</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CommandAttrs.stipulated_calculation-367"><a href="#CommandAttrs.stipulated_calculation-367"><span class="linenos">367</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CommandAttrs.stipulated_calculation-342"><a href="#CommandAttrs.stipulated_calculation-342"><span class="linenos">342</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">stipulated_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="CommandAttrs.stipulated_calculation-343"><a href="#CommandAttrs.stipulated_calculation-343"><span class="linenos">343</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CommandAttrs.stipulated_calculation-344"><a href="#CommandAttrs.stipulated_calculation-344"><span class="linenos">344</span></a><span class="sd">        規定打数をゲーム数から計算</span>
+</span><span id="CommandAttrs.stipulated_calculation-345"><a href="#CommandAttrs.stipulated_calculation-345"><span class="linenos">345</span></a>
+</span><span id="CommandAttrs.stipulated_calculation-346"><a href="#CommandAttrs.stipulated_calculation-346"><span class="linenos">346</span></a><span class="sd">        Args:</span>
+</span><span id="CommandAttrs.stipulated_calculation-347"><a href="#CommandAttrs.stipulated_calculation-347"><span class="linenos">347</span></a><span class="sd">            game_count (int): 指定ゲーム数</span>
+</span><span id="CommandAttrs.stipulated_calculation-348"><a href="#CommandAttrs.stipulated_calculation-348"><span class="linenos">348</span></a>
+</span><span id="CommandAttrs.stipulated_calculation-349"><a href="#CommandAttrs.stipulated_calculation-349"><span class="linenos">349</span></a><span class="sd">        Returns:</span>
+</span><span id="CommandAttrs.stipulated_calculation-350"><a href="#CommandAttrs.stipulated_calculation-350"><span class="linenos">350</span></a><span class="sd">            int: 規定ゲーム数</span>
+</span><span id="CommandAttrs.stipulated_calculation-351"><a href="#CommandAttrs.stipulated_calculation-351"><span class="linenos">351</span></a>
+</span><span id="CommandAttrs.stipulated_calculation-352"><a href="#CommandAttrs.stipulated_calculation-352"><span class="linenos">352</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CommandAttrs.stipulated_calculation-353"><a href="#CommandAttrs.stipulated_calculation-353"><span class="linenos">353</span></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">game_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stipulated_rate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2379,8 +2289,6 @@
                 <dd id="CommandAttrs.search_word" class="variable"><a href="#ParameterData.search_word">search_word</a></dd>
                 <dd id="CommandAttrs.group_length" class="variable"><a href="#ParameterData.group_length">group_length</a></dd>
                 <dd id="CommandAttrs.default_reset" class="function"><a href="#ParameterData.default_reset">default_reset</a></dd>
-                <dd id="CommandAttrs.stipulated_update" class="function"><a href="#ParameterData.stipulated_update">stipulated_update</a></dd>
-                <dd id="CommandAttrs.dict_dump" class="function"><a href="#ParameterData.dict_dump">dict_dump</a></dd>
 
             </div>
                                 </dl>

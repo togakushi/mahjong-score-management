@@ -103,7 +103,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;placeholder生成に必要なサブコマンド設定の最小インターフェース&quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">section</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span> <span class="o">...</span>
@@ -213,7 +213,7 @@
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
 </span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="c1"># プレイヤー名</span>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">player_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">target_player</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">target_player</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">ret_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;individual&quot;</span><span class="p">):</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="k">if</span> <span class="n">ret_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all_player&quot;</span><span class="p">):</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="n">check_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">lists</span><span class="p">)</span>
@@ -238,8 +238,8 @@
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">player_name</span> <span class="o">=</span> <span class="n">target_player</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="c1"># リスト生成</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">player_list</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">competition_list</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">player_list</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">competition_list</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">target_player</span><span class="p">):</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">player_list</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;player_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
@@ -286,19 +286,19 @@
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">return</span> <span class="n">ret_dict</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">merge_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">dict2</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">merge_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">dict2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    辞書の内容をマージする</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Args:</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        dict1 (Any): 1つ目の辞書</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        dict2 (Any): 2つ目の辞書</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        dict1 (dict[Any, Any]): 1つ目の辞書</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        dict2 (dict[Any, Any]): 2つ目の辞書</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Returns:</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        dict: マージされた辞書</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">merged</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">merged</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict2</span><span class="p">):</span>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">val1</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -333,7 +333,7 @@
 </span><span id="SubCommandLike-21"><a href="#SubCommandLike-21"><span class="linenos">21</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;placeholder生成に必要なサブコマンド設定の最小インターフェース&quot;&quot;&quot;</span>
 </span><span id="SubCommandLike-22"><a href="#SubCommandLike-22"><span class="linenos">22</span></a>
 </span><span id="SubCommandLike-23"><a href="#SubCommandLike-23"><span class="linenos">23</span></a>    <span class="n">section</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SubCommandLike-24"><a href="#SubCommandLike-24"><span class="linenos">24</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span>
+</span><span id="SubCommandLike-24"><a href="#SubCommandLike-24"><span class="linenos">24</span></a>    <span class="n">always_argument</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="SubCommandLike-25"><a href="#SubCommandLike-25"><span class="linenos">25</span></a>    <span class="n">aggregation_range</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="SubCommandLike-26"><a href="#SubCommandLike-26"><span class="linenos">26</span></a>
 </span><span id="SubCommandLike-27"><a href="#SubCommandLike-27"><span class="linenos">27</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span> <span class="o">...</span>
@@ -400,7 +400,7 @@
                             </div>
                             <div id="SubCommandLike.always_argument" class="classattr">
                                 <div class="attr variable">
-            <span class="name">always_argument</span><span class="annotation">: list</span>
+            <span class="name">always_argument</span><span class="annotation">: list[str]</span>
 
         
     </div>
@@ -554,7 +554,7 @@
 </span><span id="placeholder-131"><a href="#placeholder-131"><span class="linenos">131</span></a>
 </span><span id="placeholder-132"><a href="#placeholder-132"><span class="linenos">132</span></a>    <span class="c1"># プレイヤー名</span>
 </span><span id="placeholder-133"><a href="#placeholder-133"><span class="linenos">133</span></a>    <span class="n">player_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
-</span><span id="placeholder-134"><a href="#placeholder-134"><span class="linenos">134</span></a>    <span class="n">target_player</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="placeholder-134"><a href="#placeholder-134"><span class="linenos">134</span></a>    <span class="n">target_player</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="placeholder-135"><a href="#placeholder-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">ret_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;individual&quot;</span><span class="p">):</span>
 </span><span id="placeholder-136"><a href="#placeholder-136"><span class="linenos">136</span></a>        <span class="k">if</span> <span class="n">ret_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all_player&quot;</span><span class="p">):</span>
 </span><span id="placeholder-137"><a href="#placeholder-137"><span class="linenos">137</span></a>            <span class="n">check_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">member</span><span class="o">.</span><span class="n">lists</span><span class="p">)</span>
@@ -579,8 +579,8 @@
 </span><span id="placeholder-156"><a href="#placeholder-156"><span class="linenos">156</span></a>        <span class="n">player_name</span> <span class="o">=</span> <span class="n">target_player</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="placeholder-157"><a href="#placeholder-157"><span class="linenos">157</span></a>
 </span><span id="placeholder-158"><a href="#placeholder-158"><span class="linenos">158</span></a>    <span class="c1"># リスト生成</span>
-</span><span id="placeholder-159"><a href="#placeholder-159"><span class="linenos">159</span></a>    <span class="n">player_list</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="placeholder-160"><a href="#placeholder-160"><span class="linenos">160</span></a>    <span class="n">competition_list</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="placeholder-159"><a href="#placeholder-159"><span class="linenos">159</span></a>    <span class="n">player_list</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="placeholder-160"><a href="#placeholder-160"><span class="linenos">160</span></a>    <span class="n">competition_list</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="placeholder-161"><a href="#placeholder-161"><span class="linenos">161</span></a>
 </span><span id="placeholder-162"><a href="#placeholder-162"><span class="linenos">162</span></a>    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">target_player</span><span class="p">):</span>
 </span><span id="placeholder-163"><a href="#placeholder-163"><span class="linenos">163</span></a>        <span class="n">player_list</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;player_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
@@ -651,25 +651,25 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">merge_dicts</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">dict1</span><span class="p">:</span> <span class="n">Any</span>, </span><span class="param"><span class="n">dict2</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">merge_dicts</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dict1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>,</span><span class="param">	<span class="n">dict2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">dict</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="merge_dicts-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#merge_dicts"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="merge_dicts-207"><a href="#merge_dicts-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">merge_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">dict2</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="merge_dicts-207"><a href="#merge_dicts-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">merge_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">dict2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="merge_dicts-208"><a href="#merge_dicts-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="merge_dicts-209"><a href="#merge_dicts-209"><span class="linenos">209</span></a><span class="sd">    辞書の内容をマージする</span>
 </span><span id="merge_dicts-210"><a href="#merge_dicts-210"><span class="linenos">210</span></a>
 </span><span id="merge_dicts-211"><a href="#merge_dicts-211"><span class="linenos">211</span></a><span class="sd">    Args:</span>
-</span><span id="merge_dicts-212"><a href="#merge_dicts-212"><span class="linenos">212</span></a><span class="sd">        dict1 (Any): 1つ目の辞書</span>
-</span><span id="merge_dicts-213"><a href="#merge_dicts-213"><span class="linenos">213</span></a><span class="sd">        dict2 (Any): 2つ目の辞書</span>
+</span><span id="merge_dicts-212"><a href="#merge_dicts-212"><span class="linenos">212</span></a><span class="sd">        dict1 (dict[Any, Any]): 1つ目の辞書</span>
+</span><span id="merge_dicts-213"><a href="#merge_dicts-213"><span class="linenos">213</span></a><span class="sd">        dict2 (dict[Any, Any]): 2つ目の辞書</span>
 </span><span id="merge_dicts-214"><a href="#merge_dicts-214"><span class="linenos">214</span></a>
 </span><span id="merge_dicts-215"><a href="#merge_dicts-215"><span class="linenos">215</span></a><span class="sd">    Returns:</span>
 </span><span id="merge_dicts-216"><a href="#merge_dicts-216"><span class="linenos">216</span></a><span class="sd">        dict: マージされた辞書</span>
 </span><span id="merge_dicts-217"><a href="#merge_dicts-217"><span class="linenos">217</span></a>
 </span><span id="merge_dicts-218"><a href="#merge_dicts-218"><span class="linenos">218</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="merge_dicts-219"><a href="#merge_dicts-219"><span class="linenos">219</span></a>    <span class="n">merged</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="merge_dicts-219"><a href="#merge_dicts-219"><span class="linenos">219</span></a>    <span class="n">merged</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="merge_dicts-220"><a href="#merge_dicts-220"><span class="linenos">220</span></a>
 </span><span id="merge_dicts-221"><a href="#merge_dicts-221"><span class="linenos">221</span></a>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict2</span><span class="p">):</span>
 </span><span id="merge_dicts-222"><a href="#merge_dicts-222"><span class="linenos">222</span></a>        <span class="n">val1</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -693,8 +693,8 @@
 <h6 id="arguments">Arguments:</h6>
 
 <ul>
-<li><strong>dict1 (Any):</strong>  1つ目の辞書</li>
-<li><strong>dict2 (Any):</strong>  2つ目の辞書</li>
+<li><strong>dict1 (dict[Any, Any]):</strong>  1つ目の辞書</li>
+<li><strong>dict2 (dict[Any, Any]):</strong>  2つ目の辞書</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
