@@ -8,7 +8,7 @@ import re
 import shutil
 import sqlite3
 from contextlib import closing
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from libs.data import lookup
@@ -287,16 +287,16 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
 
     """
     res = g.adapter.functions.get_conversations(m)
-    msg = cast(dict, res.get("messages"))
+    msg = res.get("messages")
 
     if msg:
-        reply_count = cast(dict, msg[0]).get("reply_count", 0)
-        m.data.thread_ts = str(cast(dict, msg[0]).get("ts"))
+        reply_count = int(cast(dict[str, Any], msg[0]).get("reply_count", 0))
+        m.data.thread_ts = str(cast(dict[str, Any], msg[0]).get("ts"))
 
         for x in range(1, reply_count + 1):
-            m.data.text = str(cast(dict, msg[x]).get("text", ""))
+            m.data.text = str(cast(dict[str, str], msg[x]).get("text", ""))
             if m.data.text:
-                m.data.event_ts = str(cast(dict, msg[x]).get("ts"))
+                m.data.event_ts = str(cast(dict[str, Any], msg[x]).get("ts"))
                 logging.debug(
                     "(%s/%s) thread_ts=%s, event_ts=%s, %s",
                     x,
