@@ -38,7 +38,6 @@ sql_tables: list[str] = [
     "REPORT_COUNT_MOVING",
     # その他
     "SELECT_ALL_RESULTS",
-    "SELECT_GAME_RESULTS",
 ]
 params_tables = {
     "guest_off": {"guest_skip": True},

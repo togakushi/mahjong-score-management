@@ -103,7 +103,6 @@ def query(keyword: str) -> str:
         "WORDS_INSERT": "general/words_insert.sql",
         #
         "SELECT_ALL_RESULTS": "general/select_all_results.sql",
-        "SELECT_GAME_RESULTS": "general/select_game_results.sql",
     }
 
     if query_path := sql_tables.get(keyword):
