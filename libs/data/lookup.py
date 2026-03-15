@@ -28,7 +28,7 @@ def get_config_value(
     section: str,
     name: str,
     val_type: type,
-    fallback: Union[bool, int, float, str, list, None] = None,
+    fallback: Union[bool, int, float, str, list[Any], None] = None,
 ) -> Any:
     """
     設定値取得
@@ -37,18 +37,18 @@ def get_config_value(
         config_file (Path): 設定ファイルパス
         section (str): セクション名
         name (str): 項目名
-        val_type (type): 取り込む値の型 (bool, int, float, str, list)
-        fallback (Union[bool, int, float, str, list], optional): 項目が見つからない場合に返す値. Defaults to None
+        val_type (type): 取り込む値の型 (bool, int, float, str, list[Any])
+        fallback (Union[bool, int, float, str, list[Any]], optional): 項目が見つからない場合に返す値. Defaults to None
 
     Returns:
         Any: 取得した値
-            - 実際に返す型: Union[int, float, bool, str, list, None]
+            - 実際に返す型: Union[int, float, bool, str, list[Any], None]
 
     Raises:
         TypeError: val_type が bool, int, float, str, list 以外の場合
 
     """
-    value: Union[int, float, bool, str, list, None] = fallback
+    value: Union[int, float, bool, str, list[Any], None] = fallback
     parser = ConfigParser()
     parser.read(config_file, encoding="utf-8")
 
@@ -220,8 +220,8 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
         list[str]: コマンドワード
 
     """
-    keywords: list = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
-    commandwords: list = []
+    keywords: list[str] = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
+    commandwords: list[str] = []
 
     match command_type:
         case CommandType.RESULTS:
