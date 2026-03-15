@@ -5,7 +5,8 @@ libs/domain/command.py
 import re
 from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field, fields
-from typing import Any, Callable, Literal, TypedDict, Union
+from math import ceil
+from typing import Any, Callable, Literal, Optional, TypedDict, Union
 
 import pandas as pd
 
@@ -419,7 +420,7 @@ class PlaceholderBuild(ParameterData):
     filename: str = field(default="")
     """出力ファイル名"""
 
-    def update_to_dict(self, input_dict: dict[str, Any]) -> None:
+    def update_from_dict(self, input_dict: dict[str, Any]) -> None:
         """
         辞書の内容で値を更新する
 
@@ -432,9 +433,25 @@ class PlaceholderBuild(ParameterData):
             if k in field_list:
                 setattr(self, k, v)
 
-    def placeholder(self) -> dict[str, Any]:
-        """プレースホルダ用辞書出力"""
+    def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
+        """
+        プレースホルダ用辞書出力
+
+        Args:
+            game_count (Optional[int]): 規定打数調整用ゲーム数. Defaults to None.
+
+        Returns:
+            dict[str, Any]: プレースホルダ
+
+        """
         ret_dict: dict[str, Any] = asdict(self)
+
+        # 規定打数更新
+        if not ret_dict.get("stipulated") or game_count is not None:
+            if game_count is None:
+                ret_dict.update({"stipulated": 1})
+            else:
+                ret_dict.update({"stipulated": int(ceil(game_count * self.stipulated_rate) + 1)})
 
         if self.player_list:
             ret_dict.update({f"player_{idx}": x for idx, x in enumerate(self.player_list)})
