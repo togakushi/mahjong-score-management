@@ -20,7 +20,7 @@ class SubCommandLike(Protocol):
     """placeholder生成に必要なサブコマンド設定の最小インターフェース"""
 
     section: str
-    always_argument: list
+    always_argument: list[str]
     aggregation_range: str
 
     def to_dict(self, drop_items: list[str] | None = None) -> dict[str, Any]: ...
@@ -130,7 +130,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
 
     # プレイヤー名
     player_name: str = str()
-    target_player: list = []
+    target_player: list[str] = []
     if ret_dict.get("individual"):
         if ret_dict.get("all_player"):
             check_list.extend(g.cfg.member.lists)
@@ -155,8 +155,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
         player_name = target_player[0]
 
     # リスト生成
-    player_list: dict = {}
-    competition_list: dict = {}
+    player_list: dict[str, str] = {}
+    competition_list: dict[str, str] = {}
 
     for idx, name in enumerate(target_player):
         player_list[f"player_{idx}"] = name
@@ -203,19 +203,19 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> "Placeh
     return ret_dict
 
 
-def merge_dicts(dict1: Any, dict2: Any) -> dict:
+def merge_dicts(dict1: dict[Any, Any], dict2: dict[Any, Any]) -> dict[Any, Any]:
     """
     辞書の内容をマージする
 
     Args:
-        dict1 (Any): 1つ目の辞書
-        dict2 (Any): 2つ目の辞書
+        dict1 (dict[Any, Any]): 1つ目の辞書
+        dict2 (dict[Any, Any]): 2つ目の辞書
 
     Returns:
         dict: マージされた辞書
 
     """
-    merged: dict = {}
+    merged: dict[Any, Any] = {}
 
     for key in set(dict1) | set(dict2):
         val1: Any = dict1.get(key)
