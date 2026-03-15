@@ -122,7 +122,7 @@ def db_delete(m: "MessageParserProtocol") -> None:
             if remark_list := cur.execute("select event_ts from remarks where thread_ts=?", (m.data.event_ts,)).fetchall():
                 cur.execute(dbutil.query("REMARKS_DELETE_ALL"), (m.data.event_ts,))
                 if delete_remark := cur.execute("select changes();").fetchone()[0]:
-                    m.status.target_ts.extend([x.get("event_ts") for x in list(map(dict, remark_list))])
+                    m.status.target_ts.extend([str(x.get("event_ts")) for x in list(map(dict, remark_list))])
                     logging.info("remark: ts=%s, count=%s", m.data.event_ts, delete_remark)
             cur.commit()
         m.status.action = ActionStatus.DELETE
