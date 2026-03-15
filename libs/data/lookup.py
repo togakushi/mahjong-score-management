@@ -272,7 +272,22 @@ def exsist_record(ts: str) -> GameResult:
     result = GameResult()
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
-        row = conn.execute(dbutil.query("SELECT_GAME_RESULTS"), {"ts": ts}).fetchone()
+        row = conn.execute(
+            """
+            select
+                ts,
+                p1_name, p1_str,
+                p2_name, p2_str,
+                p3_name, p3_str,
+                p4_name, p4_str,
+                comment,
+                rule_version
+            from
+                result where ts = :ts
+            ;
+            """,
+            {"ts": ts},
+        ).fetchone()
 
     if row:
         result.calc(**dict(row))

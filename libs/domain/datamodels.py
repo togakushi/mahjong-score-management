@@ -3,10 +3,10 @@ libs/domain/datamodels.py
 """
 
 import logging
-from dataclasses import MISSING, dataclass, field, fields
+from dataclasses import MISSING, asdict, dataclass, field, fields
 from enum import StrEnum
 from math import ceil
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Any, Literal, Optional
 
 import libs.global_value as g
 from libs.data import loader
@@ -85,84 +85,6 @@ class ChannelType(StrEnum):
     """検索API"""
     UNDETERMINED = "undetermined"
     """未定義状態"""
-
-
-@dataclass
-class CommandAttrs:
-    """サブコマンド設定パラメータ"""
-
-    commandword: list[str] = field(default_factory=list)
-    """呼び出しキーワード"""
-    command_suffix: list[str] = field(default_factory=list)
-    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-    aggregation_range: str = field(default="当日")
-    """検索範囲未指定時に使用される範囲"""
-    individual: bool = field(default=True)
-    """個人/チーム集計切替フラグ
-    - *True*: 個人集計
-    - *False*: チーム集計
-    """
-    all_player: bool = field(default=False)
-    daily: bool = field(default=True)
-    fourfold: bool = field(default=True)
-    game_results: bool = field(default=False)
-    guest_skip: bool = field(default=True)
-    """ゲストアリ/ナシフラグ(サマリ集計用)"""
-    guest_skip2: bool = field(default=True)
-    """ゲストアリ/ナシフラグ(詳細集計用)"""
-    ranked: int = field(default=3)
-    """ランキング/レーティングで表示する順位"""
-    score_comparisons: bool = field(default=False)
-    """スコア比較"""
-    statistics: bool = field(default=False)
-    """統計情報表示"""
-    stipulated: int = field(default=0)
-    """規定打数指定"""
-    stipulated_rate: float = field(default=0.05)
-    """規定打数計算レート"""
-    unregistered_replace: bool = field(default=True)
-    """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
-    - *True*: 置き換える
-    - *False*: 置き換えない
-    """
-    anonymous: bool = field(default=False)
-    """匿名化フラグ"""
-    verbose: bool = field(default=False)
-    """詳細情報出力フラグ"""
-    versus_matrix: bool = field(default=False)
-    """対戦マトリックス表示"""
-    collection: str = field(default="")
-    always_argument: list[str] = field(default_factory=list)
-    """オプションとして常に付与される文字列"""
-    target_mode: int = field(default=0)
-    """集計対象モードの指定
-    - *0*: settingのデフォルトに従う
-    - *not 0*: 指定値でmodeを上書き
-    """
-    format: str = field(default="")
-    filename: str = field(default="")
-    interval: int = field(default=80)
-
-    def default_reset(self) -> None:
-        """デフォルト値にリセット"""
-        for f in fields(self):
-            if f.default is not MISSING:
-                setattr(self, f.name, f.default)
-            elif f.default_factory is not MISSING:
-                setattr(self, f.name, f.default_factory())
-
-    def stipulated_calculation(self, game_count: int) -> int:
-        """
-        規定打数をゲーム数から計算
-
-        Args:
-            game_count (int): 指定ゲーム数
-
-        Returns:
-            int: 規定ゲーム数
-
-        """
-        return int(ceil(game_count * self.stipulated_rate) + 1)
 
 
 @dataclass
@@ -342,3 +264,103 @@ class ComparisonResults:
                     ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
 
         return ret
+
+
+@dataclass
+class ParameterData:
+    """動作パラメータ"""
+
+    # 検索条件変更フラグ
+    individual: bool = field(default=True)
+    """個人/チーム集計切替フラグ
+    - *True*: 個人集計
+    - *False*: チーム集計
+    """
+    guest_skip: bool = field(default=True)
+    """ゲストアリ/ナシフラグ(サマリ集計用)"""
+    guest_skip2: bool = field(default=True)
+    """ゲストアリ/ナシフラグ(詳細集計用)"""
+    unregistered_replace: bool = field(default=True)
+    """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
+    - *True*: 置き換える
+    - *False*: 置き換えない
+    """
+    friendly_fire: bool = field(default=False)
+    """チーム戦集計時のチーム同卓ゲームの扱い
+    - *True*: チーム同卓ゲームを集計(同じチームのポイントは合算される)
+    - *False*: チーム同卓ゲームを集計対象外にする
+    """
+
+    # 動作変更フラグ
+    statistics: bool = field(default=False)
+    """統計情報表示"""
+
+    # 表示情報変更フラグ
+    ranked: int = field(default=3)
+    """ランキング/レーティングで表示する順位"""
+    stipulated: int = field(default=0)
+    """規定打数指定"""
+    stipulated_rate: float = field(default=0.05)
+    """規定打数計算レート"""
+
+    # 集約条件変更フラグ
+    interval: int = field(default=80)
+    """移動平均算出ゲーム数指定"""
+
+    # コメント検索
+    search_word: str = field(default="")
+    """コメント検索文字列"""
+    group_length: int = field(default=0)
+    """コメント検索時に指定文字数でグループ化する"""
+
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
+        for f in fields(self):
+            if f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
+
+    def stipulated_update(self, game_count: int) -> None:
+        """
+        ゲーム数から規定打数を再計算
+
+        Args:
+            game_count (int): 指定ゲーム数
+
+        """
+        self.stipulated = int(ceil(game_count * self.stipulated_rate) + 1)
+
+    def dict_dump(self) -> dict[str, Any]:
+        """dump to dict"""
+        return asdict(self)
+
+
+@dataclass
+class CommandAttrs(ParameterData):
+    """サブコマンド設定パラメータ"""
+
+    commandword: list[str] = field(default_factory=list)
+    """呼び出しキーワード"""
+    command_suffix: list[str] = field(default_factory=list)
+    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
+    aggregation_range: str = field(default="当日")
+    """検索範囲未指定時に使用される範囲"""
+    always_argument: list[str] = field(default_factory=list)
+    """オプションとして常に付与される文字列"""
+    dropitems: list[str] = field(default_factory=list)
+    """非表示にする項目"""
+
+    def stipulated_calculation(self, game_count: int) -> int:
+        """
+        規定打数をゲーム数から計算
+
+        Args:
+            game_count (int): 指定ゲーム数
+
+        Returns:
+            int: 規定ゲーム数
+
+        """
+        return int(ceil(game_count * self.stipulated_rate) + 1)

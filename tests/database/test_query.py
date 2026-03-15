@@ -36,13 +36,36 @@ sql_tables: list[str] = [
     "REPORT_WINNER",
     "REPORT_MATRIX_TABLE",
     "REPORT_COUNT_MOVING",
-    #
+    # その他
     "SELECT_ALL_RESULTS",
-    "SELECT_GAME_RESULTS",
 ]
 params_tables = {
     "guest_off": {"guest_skip": True},
     "guest_on": {"guest_skip": False},
+    "guest_ignore": {"unregistered_replace": True},
+    "team": {"individual": False},
+    "team_with_friendly_fire": {"individual": False, "friendly_fire": False},
+    "collection(daily)": {"collection": "daily"},
+    "collection(weekly)": {"collection": "weekly"},
+    "collection(monthly)": {"collection": "monthly"},
+    "collection(yearly)": {"collection": "yearly"},
+    "collection(all)": {"collection": "all"},
+    "mode3": {"mode": 3},
+    "separate(True)": {"separate": True},
+    "separate(False)": {"separate": False},
+    "search_word": {"search_word": "find_word"},
+    "group_length": {"group_length": 10},
+    "target_player": {"target_player": ["player1", "player2"]},
+    "all_player": {"all_player": False},
+    "anonymous": {"anonymous": True},
+    "ranked": {"ranked": 100},
+    "stipulated": {"stipulated": 100},
+    "interval": {"interval": 100},
+    "target_count": {"target_count": 100},
+    "mixed": {"mixed": True},
+    # "mixed(False)_with_rule_set": {"mixed": False, "rule_set": ["dummy_rule1", "dummy_rule2"]},
+    # "mixed(True)_with_rule_set": {"mixed": True, "rule_set": ["dummy_rule1", "dummy_rule2"]},
+    # "": {"": ""},
 }
 
 query_list = [pytest.param(name, id=name) for name in sql_tables]
@@ -55,16 +78,15 @@ def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -
     """クエリ構文チェック"""
     params: dict[str, Any] = {
         **asdict(CommandAttrs()),
-        "ts": "1234567890.123456",
         "player_name": "dummy_player",
         "guest_name": "dummy_guest",
-        "undefined_word": 1,
+        "source": "dummy_source",
         "starttime": "1999-01-01 00:00:00",
         "endtime": "1999-01-01 00:00:00",
     }
     params.update(**flags)
-    placeholder: PlaceholderDict = cast(PlaceholderDict, {**params})
 
+    placeholder: PlaceholderDict = cast(PlaceholderDict, {**params})
     pprint([query_name, param_name, params])
 
     _ = loader.read_data(query_name, placeholder)

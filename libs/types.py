@@ -359,8 +359,8 @@ class PlaceholderDict(TypedDict, total=False):
     undefined_word: int
     """未登録ワードの扱い
     - *0*: 役満扱い
-    - *1*: 卓外清算(個人清算)
-    - *2*: カウントのみ
+    - *1*: カウントのみ
+    - *2*: 卓外清算(個人清算)
     - *3*: 卓外清算(チーム清算)
     """
     channel_config: Optional["Path"]
