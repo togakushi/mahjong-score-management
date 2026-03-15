@@ -523,7 +523,7 @@ class ExtendedDatetime:
         raise TypeError("Unsupported type for datetime conversion")
 
 
-class ExtendedDatetimeList(list):
+class ExtendedDatetimeList(list):  # type: ignore[type-arg]
     """ExtendedDatetimeを要素とする日付リストを扱う補助クラス"""
 
     Delimiter: TypeAlias = Delimiter

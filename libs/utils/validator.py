@@ -3,7 +3,7 @@ libs/utils/validator.py
 """
 
 import re
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Any, Literal, Optional
 
 import libs.global_value as g
 from libs.domain.command import CommandParser
@@ -32,7 +32,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
     """
 
     def _pattern_gen(check_list: list[str]) -> list[str]:
-        ret: list = []
+        ret: list[str] = []
         for x in check_list:
             ret.append(x)
             ret.append(textutil.str_conv(x, textutil.ConversionType.KtoH))  # ひらがな
@@ -77,7 +77,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
     return (ret_flg, ret_msg)
 
 
-def check_score(m: "MessageParserProtocol") -> dict:
+def check_score(m: "MessageParserProtocol") -> dict[str, Any]:
     """
     スコアチェック
 
@@ -85,11 +85,11 @@ def check_score(m: "MessageParserProtocol") -> dict:
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
-        dict: 結果
+        dict[str, Any]: 結果
 
     """
     text = m.data.text
-    ret: dict = {}
+    ret: dict[str, Any] = {}
 
     # 記号を置換
     replace_chr = [
@@ -120,7 +120,7 @@ def check_score(m: "MessageParserProtocol") -> dict:
         else:
             raise RuntimeError
 
-        position_map: dict[int, dict] = {
+        position_map: dict[int, dict[str, Any]] = {
             3: {
                 "position1": {"p1_name": 1, "p1_str": 2, "p2_name": 3, "p2_str": 4, "p3_name": 5, "p3_str": 6, "comment": None},
                 "position2": {"p1_name": 0, "p1_str": 1, "p2_name": 2, "p2_str": 3, "p3_name": 4, "p3_str": 5, "comment": None},
@@ -155,9 +155,9 @@ def check_score(m: "MessageParserProtocol") -> dict:
 
         for k, p in position.items():
             if isinstance(p, int):
-                ret.update({k: str(msg[p])})
+                ret.update({str(k): str(msg[p])})
             else:
-                ret.update({k: p})
+                ret.update({str(k): p})
 
         ret.update(
             source=g.cfg.resolve_channel_id(m.status.source),

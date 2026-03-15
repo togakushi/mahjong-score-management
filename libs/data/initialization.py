@@ -7,7 +7,7 @@ import logging
 import os
 from importlib.resources import files
 from pathlib import Path
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING, Any, Union
 
 import libs.global_value as g
 from libs.data import lookup
@@ -164,7 +164,7 @@ def setup_regulations(database_file: Union[str, Path]) -> None:
     """
 
     def _db_set() -> None:
-        params: dict = {}
+        params: dict[str, Any] = {}
         for k, v in parser.items(section):
             match k:
                 case "yakuman_list":

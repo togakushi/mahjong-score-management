@@ -65,8 +65,8 @@ class AdapterAPI(APIInterface):
         """
         self.response = cast("Message", self.response)
 
-        def _table_data(data: dict) -> list:
-            ret_list: list = []
+        def _table_data(data: dict[str, str]) -> list[str]:
+            ret_list: list[str] = []
             text_data = iter(data.values())
             # 先頭ブロックの処理(ヘッダ追加)
             v = next(text_data)

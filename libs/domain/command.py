@@ -5,7 +5,8 @@ libs/domain/command.py
 import re
 from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field, fields
-from typing import Any, Callable, Literal, TypedDict, Union
+from math import ceil
+from typing import Any, Callable, Literal, Optional, TypedDict, Union
 
 import pandas as pd
 
@@ -339,10 +340,20 @@ class PlaceholderBuild(ParameterData):
     - *True*: 定義済みすべてのルール識別子を含める
     - *False*: ルール識別子を個別指定
     """
+    # ルールセット登録用
     origin_point: int = field(default=250)
     """配給原点"""
     return_point: int = field(default=300)
     """返し点"""
+    rank_point: str = field(default="")
+    """順位点(空白区切りの文字列)"""
+    ignore_flying: bool = field(default=False)
+    """トビカウントの無効化"""
+    draw_split: bool = field(default=False)
+    """同点時の順位点の取り扱い
+    - *True*: 山分け
+    - *False*: 席順
+    """
     undefined_word: int = field(default=1)
     """未登録ワードの扱い
     - *0*: 役満扱い
@@ -409,7 +420,7 @@ class PlaceholderBuild(ParameterData):
     filename: str = field(default="")
     """出力ファイル名"""
 
-    def update_to_dict(self, input_dict: dict[str, Any]) -> None:
+    def update_from_dict(self, input_dict: dict[str, Any]) -> None:
         """
         辞書の内容で値を更新する
 
@@ -422,9 +433,25 @@ class PlaceholderBuild(ParameterData):
             if k in field_list:
                 setattr(self, k, v)
 
-    def placeholder(self) -> dict[str, Any]:
-        """プレースホルダ用辞書出力"""
+    def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
+        """
+        プレースホルダ用辞書出力
+
+        Args:
+            game_count (Optional[int]): 規定打数調整用ゲーム数. Defaults to None.
+
+        Returns:
+            dict[str, Any]: プレースホルダ
+
+        """
         ret_dict: dict[str, Any] = asdict(self)
+
+        # 規定打数更新
+        if not ret_dict.get("stipulated") or game_count is not None:
+            if game_count is None:
+                ret_dict.update({"stipulated": 1})
+            else:
+                ret_dict.update({"stipulated": int(ceil(game_count * self.stipulated_rate) + 1)})
 
         if self.player_list:
             ret_dict.update({f"player_{idx}": x for idx, x in enumerate(self.player_list)})

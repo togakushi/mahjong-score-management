@@ -304,7 +304,7 @@ class RuleSet:
 
         """
         ret: str = ""
-        body_data: list = []
+        body_data: list[list[str]] = []
 
         if rule := self.data.get(rule_version):
             body_data.append(["ルール識別子", rule.rule_version])
@@ -366,13 +366,13 @@ class RuleSet:
                 rule.undefined_word,
             )
 
-    def check(self, chk_commands: set, chk_members: set, default_rule: str) -> None:
+    def check(self, chk_commands: set[str], chk_members: set[str], default_rule: str) -> None:
         """
         キーワード重複チェック
 
         Args:
-            chk_commands (set): チェック対象コマンド名
-            chk_members (set): チェック対象メンバー名/チーム名
+            chk_commands (set[str]): チェック対象コマンド名
+            chk_members (set[str]): チェック対象メンバー名/チーム名
             default_rule (str): デフォルトルールバージョン
 
         Raises:

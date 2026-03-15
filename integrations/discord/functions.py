@@ -2,7 +2,7 @@
 integrations/discord/functions.py
 """
 
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 from discord import Forbidden, NotFound
 from discord.channel import TextChannel
@@ -149,6 +149,6 @@ class SvcFunctions(FunctionsInterface):
         except Forbidden:
             return True
 
-    def get_conversations(self, m: "MessageParserProtocol") -> dict:
+    def get_conversations(self, m: "MessageParserProtocol") -> dict[str, Any]:
         _ = m
         return {}

@@ -51,9 +51,9 @@ class MsgData(DataMixin):
     """ユーザーID"""
     status: MessageStatus = field(default=MessageStatus.UNDETERMINED)
     """イベントステータス"""
-    reaction_ok: list = field(default_factory=list)
-    reaction_ng: list = field(default_factory=list)
-    remarks: list = field(default_factory=list)
+    reaction_ok: list[str] = field(default_factory=list)
+    reaction_ng: list[str] = field(default_factory=list)
+    remarks: list[str] = field(default_factory=list)
     """メモ格納用"""
 
 
@@ -94,7 +94,7 @@ class StatusData(DataMixin):
     """
     action: ActionStatus = field(default=ActionStatus.NOTHING)
     """DBに対する操作"""
-    target_ts: list = field(default_factory=list)
+    target_ts: list[str] = field(default_factory=list)
     """同じ処理をしたタイムスタンプリスト(1件だけの処理でもセットされる)"""
     rpoint_sum: int = field(default=0)
     """素点合計値格納用"""
@@ -153,7 +153,7 @@ class MessageParserProtocol(Protocol):
         """コマンドとして認識している文字列を返す"""
 
     @property
-    def argument(self) -> list:
+    def argument(self) -> list[str]:
         """コマンド引数として認識しているオプションを文字列のリストで返す"""
 
     @property

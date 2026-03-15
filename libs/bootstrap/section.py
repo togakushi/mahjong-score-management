@@ -13,8 +13,32 @@ from libs.domain.datamodels import CommandAttrs
 if TYPE_CHECKING:
     from configparser import ConfigParser, SectionProxy
 
-    from libs.bootstrap.app_config import AppConfig
-    from libs.types import ServiceClassType, SettingClassType
+    from integrations.discord.config import SvcConfig as DiscordConfig
+    from integrations.slack.config import SvcConfig as SlackConfig
+    from integrations.standard_io.config import SvcConfig as StdConfig
+    from integrations.web.config import SvcConfig as WebConfig
+    from libs.bootstrap.app_config import AppConfig, BadgeDisplay, DropItems
+    from libs.commands.registry.member import MemberSection
+    from libs.commands.registry.team import TeamSection
+
+ServiceClassType: TypeAlias = Union[
+    "SlackConfig",
+    "DiscordConfig",
+    "WebConfig",
+    "StdConfig",
+]
+"""連携サービスクラス"""
+
+SettingClassType: TypeAlias = Union[
+    "MahjongSection",
+    "SettingSection",
+    "MemberSection",
+    "TeamSection",
+    "AliasSection",
+    "DropItems",
+    "BadgeDisplay",
+]
+"""設定関連クラス"""
 
 SubClassType: TypeAlias = Union[
     "SettingClassType",

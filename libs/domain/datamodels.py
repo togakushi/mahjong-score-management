@@ -3,10 +3,10 @@ libs/domain/datamodels.py
 """
 
 import logging
-from dataclasses import MISSING, asdict, dataclass, field, fields
+from dataclasses import MISSING, dataclass, field, fields
 from enum import StrEnum
 from math import ceil
-from typing import TYPE_CHECKING, Any, Literal, Optional
+from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
 from libs.data import loader
@@ -320,20 +320,6 @@ class ParameterData:
                 setattr(self, f.name, f.default)
             elif f.default_factory is not MISSING:
                 setattr(self, f.name, f.default_factory())
-
-    def stipulated_update(self, game_count: int) -> None:
-        """
-        ゲーム数から規定打数を再計算
-
-        Args:
-            game_count (int): 指定ゲーム数
-
-        """
-        self.stipulated = int(ceil(game_count * self.stipulated_rate) + 1)
-
-    def dict_dump(self) -> dict[str, Any]:
-        """dump to dict"""
-        return asdict(self)
 
 
 @dataclass

@@ -204,7 +204,7 @@ class SvcFunctions(FunctionsInterface):
 
         return channel_id
 
-    def reaction_status(self, ch=str, ts=str) -> dict[str, list[str]]:
+    def reaction_status(self, ch: str, ts: str) -> dict[str, list[str]]:
         """
         botが付けたリアクションの種類を返す
 
@@ -259,7 +259,7 @@ class SvcFunctions(FunctionsInterface):
                 name=icon,
                 timestamp=str(ts),
             )
-            logging.debug("ts=%s, ch=%s, icon=%s, %s", ts, ch, icon, res.validate())
+            logging.debug("ts=%s, ch=%s, icon=%s, %s", ts, ch, icon, res.validate())  # type: ignore[no-untyped-call]
         except self.slack_api_error as err:
             match cast(dict[str, Any], err.response).get("error"):
                 case "already_reacted":
@@ -288,7 +288,7 @@ class SvcFunctions(FunctionsInterface):
                 name=icon,
                 timestamp=ts,
             )
-            logging.debug("ch=%s, ts=%s, icon=%s, %s", ch, ts, icon, res.validate())
+            logging.debug("ch=%s, ts=%s, icon=%s, %s", ch, ts, icon, res.validate())  # type: ignore[no-untyped-call]
         except self.slack_api_error as err:
             match cast(dict[str, Any], err.response).get("error"):
                 case "no_reaction":

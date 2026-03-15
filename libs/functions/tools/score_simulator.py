@@ -76,14 +76,14 @@ def determine_winner(k: int) -> tuple[list[int], list[int]]:
     return (winners, losers)
 
 
-def should_renchan(winners: list[int], parent: int, tenpai: list, total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
+def should_renchan(winners: list[int], parent: int, tenpai: list[bool], total_rounds: int, renchan_count: int) -> tuple[int, int, int]:
     """
     連チャンの判定を行う
 
     Args:
-        winners (list): 和了者のリスト（流局時は空リスト）
+        winners (list[int]): 和了者のリスト（流局時は空リスト）
         parent (int): 現在の親
-        tenpai (list): 流局時のテンパイ状況（和了時は空リスト）
+        tenpai (list[bool]): 流局時のテンパイ状況（和了時は空リスト）
         total_rounds (int): 現在の局数
         renchan_count (int): 現在の連チャン数
 

@@ -26,7 +26,7 @@ def for_db_score(first_ts: float) -> list[GameResult]:
         list[GameResult]: 検索した結果
 
     """
-    data: list = []
+    data: list[GameResult] = []
     rows = loader.execute(
         "select * from result where ts >= :first_ts and source like :source",
         cast("PlaceholderDict", {"first_ts": str(first_ts), "source": f"{g.adapter.interface_type}_%"}),
