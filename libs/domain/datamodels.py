@@ -292,95 +292,26 @@ class ParameterData:
     """
 
     # 動作変更フラグ
-    score_comparisons: bool = field(default=False)
-    """スコア比較表示"""
     statistics: bool = field(default=False)
     """統計情報表示"""
-    verbose: bool = field(default=False)
-    """詳細情報表示"""
-    game_results: bool = field(default=False)
-    """ゲーム結果表示"""
-    versus_matrix: bool = field(default=False)
-    """対戦マトリックス表示"""
 
     # 表示情報変更フラグ
-    anonymous: bool = field(default=False)
-    """匿名化フラグ"""
     ranked: int = field(default=3)
     """ランキング/レーティングで表示する順位"""
     stipulated: int = field(default=0)
     """規定打数指定"""
     stipulated_rate: float = field(default=0.05)
     """規定打数計算レート"""
-    fourfold: bool = field(default=True)
-    """縦持ち/横持ちデータ判定"""
 
     # 集約条件変更フラグ
-    collection: str = field(default="")
-    """集約集計
-    - *daily*: 日次集約
-    - *weekly*: 週次集約
-    - *monthly*: 月次集約
-    - *yearly*: 年次集約
-    - *all*: 全体集約
-    """
     interval: int = field(default=80)
     """移動平均算出ゲーム数指定"""
-    target_count: int = field(default=0)
-    """直近ゲーム数指定"""
-
-    # --- プレースホルダ構築用情報
-    # ルール情報
-    target_mode: int = field(default=0)
-    """集計対象モードの指定
-    - *0*: settingのデフォルトに従う
-    - *not 0*: 指定値でmodeを上書き
-    """
-    mode: int = field(default=4)
-    """集計モード"""
-    default_rule: str = field(default="")
-    """ルール識別子(設定値)"""
-    rule_version: str = field(default="")
-    """ルール識別子(指定値)"""
-    # rule_set: dict[str, str] = field(default=dict)
-    # """集計対象ルール識別子"""
-    mixed: bool = field(default=False)
-    """ルール識別子の扱い
-    - *True*: 定義済みすべてのルール識別子を含める
-    - *False*: ルール識別子を個別指定
-    """
-
-    player_name: str = field(default="")
-    """集計対象プレイヤー"""
-    guest_name: str = field(default="")
-    """ゲストの名前"""
-    target_player: list[str] = field(default_factory=list)
-    """比較対象プレイヤーリスト"""
-    player_list: dict[str, str] = field(default_factory=list)
-    """集計対象プレイヤーリスト"""
-    competition_list: dict[str, str] = field(default_factory=list)
-    """比較対象プレイヤーリスト"""
-    all_player: bool = field(default=False)
-    """検索対象に登録済みメンバー全員を加える"""
-    source: str = field(default="")
-    """スコア入力元識別子"""
-    separate: bool = field(default=False)
-    """スコア入力元識別子別集計フラグ
-    - *True*: 識別子別に集計
-    - *False*: すべて集計
-    """
 
     # コメント検索
     search_word: str = field(default="")
     """コメント検索文字列"""
     group_length: int = field(default=0)
     """コメント検索時に指定文字数でグループ化する"""
-
-    # 出力関連
-    format: Literal["default", "csv", "txt"] = field(default="default")
-    """出力フォーマット指定"""
-    filename: str = field(default="")
-    """出力ファイル名"""
 
     def default_reset(self) -> None:
         """デフォルト値にリセット"""
