@@ -339,10 +339,20 @@ class PlaceholderBuild(ParameterData):
     - *True*: 定義済みすべてのルール識別子を含める
     - *False*: ルール識別子を個別指定
     """
+    # ルールセット登録用
     origin_point: int = field(default=250)
     """配給原点"""
     return_point: int = field(default=300)
     """返し点"""
+    rank_point: str = field(default="")
+    """順位点(空白区切りの文字列)"""
+    ignore_flying: bool = field(default=False)
+    """トビカウントの無効化"""
+    draw_split: bool = field(default=False)
+    """同点時の順位点の取り扱い
+    - *True*: 山分け
+    - *False*: 席順
+    """
     undefined_word: int = field(default=1)
     """未登録ワードの扱い
     - *0*: 役満扱い
