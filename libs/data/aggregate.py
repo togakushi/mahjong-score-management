@@ -2,7 +2,7 @@
 libs/data/aggregate.py
 """
 
-from typing import Optional
+from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
@@ -13,15 +13,15 @@ from libs.utils import formatter
 
 
 def game_summary(
-    filter_items: Optional[list] = None,
-    drop_items: Optional[list] = None,
+    filter_items: Optional[list[str]] = None,
+    drop_items: Optional[list[str]] = None,
 ) -> pd.DataFrame:
     """
     ゲーム結果をサマライズする
 
     Args:
-        filter_items (Optional[list], optional): 抽出するカラム. Defaults to None.
-        drop_items (Optional[list], optional): 除外するカラム. Defaults to None.
+        filter_items (Optional[list[str]]): 抽出するカラム. Defaults to None.
+        drop_items (Optional[list[str]]): 除外するカラム. Defaults to None.
 
     Returns:
         pd.DataFrame: 集計結果
@@ -57,7 +57,7 @@ def calculation_rating() -> pd.DataFrame:
     # データ収集
     df_results = loader.read_data("RANKING_RATINGS").set_index("playtime")
     df_ratings = pd.DataFrame(index=["initial_rating"] + df_results.index.to_list())  # 記録用
-    last_ratings: dict = {}  # 最終値格納用
+    last_ratings: dict[str, float] = {}  # 最終値格納用
 
     # 獲得スコア
     score_mapping = {"1": 30.0, "2": 10.0, "3": -10.0, "4": -30.0}
@@ -74,7 +74,7 @@ def calculation_rating() -> pd.DataFrame:
         # 天鳳計算式 (https://tenhou.net/man/#RATING)
         rank_list = (x.p1_rank, x.p2_rank, x.p3_rank, x.p4_rank)
         rating_list = [last_ratings[player] for player in player_list]
-        rating_avg = 1500.0 if np.mean(rating_list) < 1500.0 else np.mean(rating_list)
+        rating_avg = float(1500.0 if np.mean(rating_list) < 1500.0 else np.mean(rating_list))
 
         for i, player in enumerate(player_list):
             rating = float(rating_list[i])
@@ -158,7 +158,7 @@ def matrix_table() -> pd.DataFrame:
     plist = sorted(list(set(df["p1_name"].tolist() + df["p2_name"].tolist() + df["p3_name"].tolist() + df["p4_name"].tolist())))
 
     # 順位テーブルの作成
-    l_data: dict = {}
+    l_data: dict[str, Any] = {}
     for pname in plist:
         if g.params.get("individual"):  # 個人集計
             l_name = formatter.name_replace(pname)
