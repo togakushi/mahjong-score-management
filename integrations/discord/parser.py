@@ -77,7 +77,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             return True
 
         # チャンネルIDでチェック
-        if self.discord_msg.channel.id in g.adapter.conf.channel_limitations:
+        if str(self.discord_msg.channel.id) in g.adapter.conf.channel_limitations:
             return True
 
         # チャンネル名でチェック
