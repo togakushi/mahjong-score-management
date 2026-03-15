@@ -379,7 +379,7 @@ class StatsInfo:
                 if isinstance(seat_id, int) and seat_id in seat_map:
                     seat_map[seat_id].update_from_dict(row.to_dict())
 
-    def set_parameter(self, **kwargs) -> None:
+    def set_parameter(self, **kwargs: Any) -> None:
         """パラメータ取り込み"""
         if "mode" in kwargs and isinstance(kwargs["mode"], int):
             if kwargs["mode"] in (3, 4):
