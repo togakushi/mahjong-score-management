@@ -2,7 +2,7 @@
 libs/commands/graph/personal.py
 """
 
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -39,7 +39,7 @@ def plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_GAMEDATA", cast(dict[str, Any], g.params))
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
@@ -137,7 +137,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_DETAILS", cast(dict[str, Any], g.params))
+    df = loader.read_data("SUMMARY_DETAILS", g.params)
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())

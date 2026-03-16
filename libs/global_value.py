@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from integrations.standard_io.adapter import ServiceAdapter as std_adapter
     from integrations.web.adapter import ServiceAdapter as web_adapter
     from libs.bootstrap.app_config import AppConfig
-    from libs.types import Args, PlaceholderDict
+    from libs.types import Args
 
 # --- グローバル変数 ---
 adapter: Union["slack_adapter", "discord_adapter", "web_adapter", "std_adapter"]
@@ -27,5 +27,5 @@ cfg: "AppConfig"
 """Configインスタンス共有"""
 
 # 環境パラメータ
-params: "PlaceholderDict" = {}
+params: dict[str, Any] = {}
 """プレースホルダ用パラメータ"""

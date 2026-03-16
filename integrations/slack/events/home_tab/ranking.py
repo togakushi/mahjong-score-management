@@ -120,7 +120,7 @@ def register_ranking_handlers(app: "App", adapter: ServiceAdapter) -> None:
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"
         g.params = dictutil.placeholder(g.cfg.ranking, m)
-        cast(dict[str, Any], g.params).update(update_flag)
+        g.params.update(update_flag)
 
         adapter.api.appclient.views_update(
             view_id=adapter.conf.tab_var["view_id"],

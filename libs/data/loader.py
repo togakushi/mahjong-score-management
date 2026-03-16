@@ -33,7 +33,7 @@ def execute(sql: str, params: Optional[dict[str, Any]] = None) -> list[dict[str,
 
     """
     if not params:
-        params = cast(dict[str, Any], g.params)
+        params = g.params
 
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql, params)
@@ -84,7 +84,7 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
 
     """
     if not params:
-        params = cast(dict[str, Any], g.params)
+        params = g.params
 
     params.update(
         {

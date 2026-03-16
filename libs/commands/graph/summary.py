@@ -3,7 +3,7 @@ libs/commands/graph/summary.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypedDict, cast
+from typing import TYPE_CHECKING, Literal, Optional, TypedDict
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -156,7 +156,7 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     target_data = pd.DataFrame()
 
-    df = loader.read_data("SUMMARY_GAMEDATA", cast(dict[str, Any], g.params))
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
     if df.empty:
         return (target_data, df)
 

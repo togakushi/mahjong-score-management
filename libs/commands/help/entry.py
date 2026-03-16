@@ -3,7 +3,7 @@ libs/commands/help/entry.py
 """
 
 import textwrap
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.bootstrap.section import SubCommands
@@ -56,7 +56,7 @@ def help_message(m: "MessageParserProtocol") -> None:
             "separate": lookup.resolve_separate_flag(m),
         }
     )
-    g.cfg.rule.status_update(cast(dict[str, Any], g.params))
+    g.cfg.rule.status_update(g.params)
 
     rule_version = g.params.get("rule_version", g.cfg.setting.default_rule)
 

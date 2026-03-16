@@ -7,7 +7,7 @@ import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal, Optional, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, SettingSection
 from libs.commands.graph.entry import GraphConfig
@@ -24,7 +24,6 @@ from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands
-    from libs.types import PlaceholderDict
 
 
 class DropItems(BaseSection):
@@ -270,13 +269,13 @@ class AppConfig:
             case _:
                 return
 
-    def read_channel_config(self, section_name: str, ret_dict: "PlaceholderDict") -> Optional[Path]:
+    def read_channel_config(self, section_name: str, ret_dict: dict[str, Any]) -> Optional[Path]:
         """
         チャンネル個別設定読み込み
 
         Args:
             section_name (str): チャンネル個別設定セクション名
-            ret_dict (PlaceholderDict): パラメータ
+            ret_dict (dict[str, Any]): パラメータ
 
         Returns:
             Optional[Path]: 個別設定読み込み結果

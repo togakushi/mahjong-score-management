@@ -4,15 +4,12 @@ libs/domain/stats.py
 
 import textwrap
 from dataclasses import dataclass, field, fields
-from typing import TYPE_CHECKING, Any, Literal, Optional, Union, cast, get_type_hints
+from typing import Any, Literal, Optional, Union, get_type_hints
 
 import pandas as pd
 
 from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-
-if TYPE_CHECKING:
-    from libs.types import PlaceholderDict
 
 
 @dataclass
@@ -345,16 +342,16 @@ class StatsInfo:
     result_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
-    def read(self, params: "PlaceholderDict") -> None:
+    def read(self, params: dict[str, Any]) -> None:
         """
         データ読み込み
 
         Args:
-            params (PlaceholderDict): プレースホルダ
+            params (dict[str, Any]): プレースホルダ
 
         """
-        self.result_df = loader.read_data("RESULTS_INFO", cast(dict[str, Any], params))
-        self.record_df = loader.read_data("RECORD_INFO", cast(dict[str, Any], params))
+        self.result_df = loader.read_data("RESULTS_INFO", params)
+        self.record_df = loader.read_data("RECORD_INFO", params)
 
         if self.result_df.empty or self.record_df.empty:
             return

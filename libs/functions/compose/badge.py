@@ -3,7 +3,6 @@ libs/functions/compose/badge.py
 """
 
 import math
-from typing import Any, cast
 
 import libs.global_value as g
 from libs.data import aggregate, loader
@@ -101,7 +100,7 @@ def grade(name: str, detail: bool = True) -> str:
     grade_level: int = 0  # レベル(段位)
     g.params.update({"player_name": name})
 
-    result_df = loader.read_data("SELECT_ALL_RESULTS", cast(dict[str, Any], g.params))
+    result_df = loader.read_data("SELECT_ALL_RESULTS", g.params)
     addition_expression = g.cfg.badge.grade.table.get("addition_expression", "0")
     for _, data in result_df.iterrows():
         rank = data["rank"]
