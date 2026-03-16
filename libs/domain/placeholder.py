@@ -11,7 +11,7 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 @dataclass
-class PlaceholderBuild(ParameterData):
+class PlaceholderBuilder(ParameterData):
     """プレースホルダ構築クラス"""
 
     # ルール情報
