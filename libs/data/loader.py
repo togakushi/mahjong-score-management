@@ -13,7 +13,6 @@ from typing import TYPE_CHECKING, Any, Optional, cast
 import pandas as pd
 
 import libs.global_value as g
-from libs.types import PlaceholderDict
 from libs.utils import dbutil
 from libs.utils.timekit import Format
 
@@ -21,30 +20,31 @@ if TYPE_CHECKING:
     from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def execute(sql: str, params: Optional[PlaceholderDict] = None) -> list[dict[str, Any]]:
+def execute(sql: str, params: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
     """
     クエリ実行
 
     Args:
         sql (str): 実行クエリ
-        params (Optional[PlaceholderDict]): プレースホルダ
+        params (Optional[dict[str,Any]]): プレースホルダ
 
     Returns:
         list[dict[str, Any]]: 実行結果
 
     """
     if not params:
-        params = g.params
+        params = cast(dict[str, Any], g.params)
 
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql, params)
 
-    params_dict: dict[str, Any] = {
-        **params.get("rule_set", {}),
-        **params.get("player_list", {}),
-        **params.get("competition_list", {}),
-    }
-    params.update(cast(PlaceholderDict, params_dict))
+    params.update(
+        {
+            **params.get("rule_set", {}),
+            **params.get("player_list", {}),
+            **params.get("competition_list", {}),
+        }
+    )
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")
@@ -71,28 +71,29 @@ def execute(sql: str, params: Optional[PlaceholderDict] = None) -> list[dict[str
     return ret
 
 
-def read_data(keyword: str, params: Optional[PlaceholderDict] = None) -> pd.DataFrame:
+def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataFrame:
     """
     データベースからデータを取得する
 
     Args:
         keyword (str): SQL選択キーワード
-        params (Optional[PlaceholderDict]): プレースホルダ
+        params (Optional[dict[str, Any]]): プレースホルダ
 
     Returns:
         pd.DataFrame: 集計結果
 
     """
     if not params:
-        params = g.params
+        params = cast(dict[str, Any], g.params)
 
-    params_dict: dict[str, Any] = {
-        **params,
-        **g.params.get("rule_set", {}),
-        **g.params.get("player_list", {}),
-        **g.params.get("competition_list", {}),
-    }
-    params.update(cast(PlaceholderDict, params_dict))
+    params.update(
+        {
+            **params,
+            **g.params.get("rule_set", {}),
+            **g.params.get("player_list", {}),
+            **g.params.get("competition_list", {}),
+        }
+    )
 
     if "mode" not in params:
         mode = g.cfg.rule.get_mode(g.cfg.setting.default_rule)
@@ -113,7 +114,7 @@ def read_data(keyword: str, params: Optional[PlaceholderDict] = None) -> pd.Data
         df = pd.read_sql(
             sql=sql,
             con=dbutil.connection(g.cfg.setting.database_file),
-            params=cast(dict[str, Any], dict(params)),
+            params=params,
         )
         query_end_time = datetime.now().timestamp()
     except pd.errors.DatabaseError as err:
@@ -130,27 +131,28 @@ def read_data(keyword: str, params: Optional[PlaceholderDict] = None) -> pd.Data
     return df
 
 
-def named_query(query: str, params: PlaceholderDict) -> str:
+def named_query(query: str, params: dict[str, Any]) -> str:
     """
     クエリにパラメータをバインドして返す
 
     Args:
         query (str): SQL
-        params (PlaceholderDict): プレースホルダ
+        params (dict[str, Any]): プレースホルダ
 
     Returns:
         str: バインド済みSQL
 
     """
-    params_dict: dict[str, Any] = {
-        **params.get("rule_set", {}),
-        **params.get("player_list", {}),
-        **params.get("competition_list", {}),
-    }
-    params.update(cast(PlaceholderDict, params_dict))
+    params.update(
+        {
+            **params.get("rule_set", {}),
+            **params.get("player_list", {}),
+            **params.get("competition_list", {}),
+        }
+    )
 
     for k, v in params.items():
         if isinstance(v, datetime):
-            cast(dict[str, Any], params).update({k: v.strftime("%Y-%m-%d %H:%M:%S")})
+            params.update({k: v.strftime("%Y-%m-%d %H:%M:%S")})
 
     return textwrap.dedent(re.sub(r":(\w+)", lambda m: repr(params.get(m.group(1), m.group(0))), query)).strip()

@@ -3,13 +3,12 @@ tests/database/test_query.py
 """
 
 from pprint import pprint
-from typing import Any, cast
+from typing import Any
 
 import pytest
 
 from libs.data import loader
 from libs.domain.placeholder import PlaceholderBuilder
-from libs.types import PlaceholderDict
 
 sql_tables: list[str] = [
     # 情報取得
@@ -88,4 +87,4 @@ def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -
     p.update_from_dict(flags)
 
     pprint([query_name, param_name, p])
-    _ = loader.read_data(query_name, cast(PlaceholderDict, p.placeholder()))
+    _ = loader.read_data(query_name, p.placeholder())

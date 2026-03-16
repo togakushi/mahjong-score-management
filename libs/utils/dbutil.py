@@ -12,8 +12,6 @@ import libs.global_value as g
 if TYPE_CHECKING:
     from pathlib import Path
 
-    from libs.types import PlaceholderDict
-
 
 def connection(database_path: Union["Path", str]) -> sqlite3.Connection:
     """
@@ -112,13 +110,13 @@ def query(keyword: str) -> str:
         raise ValueError(f"Unknown keyword: {keyword}")
 
 
-def query_modification(sql: str, params: "PlaceholderDict") -> str:
+def query_modification(sql: str, params: dict[str, Any]) -> str:
     """
     クエリをオプションの内容で修正する
 
     Args:
         sql (str): 修正するクエリ
-        params (PlaceholderDict): プレースホルダ
+        params (dict[str, Any]): プレースホルダ
 
     Returns:
         str: 修正後のクエリ

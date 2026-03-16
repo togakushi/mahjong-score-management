@@ -3,7 +3,7 @@ libs/commands/registry/member.py
 """
 
 import logging
-from typing import TYPE_CHECKING, TypedDict, cast
+from typing import TYPE_CHECKING, Any, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.section import BaseSection
@@ -154,7 +154,7 @@ class MemberSection(BaseSection):
             list[MemberDataDict]: メンバー情報
 
         """
-        ret = loader.read_data("MEMBER_INFO", g.params).to_dict(orient="records")
+        ret = loader.read_data("MEMBER_INFO", cast(dict[str, Any], g.params)).to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
 

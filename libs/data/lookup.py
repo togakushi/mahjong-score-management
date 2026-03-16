@@ -20,7 +20,6 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.types import PlaceholderDict
 
 
 def get_config_value(
@@ -112,12 +111,12 @@ def resolve_separate_flag(m: "MessageParserProtocol") -> bool:
     return False
 
 
-def member_info(params: "PlaceholderDict") -> dict[str, Any]:
+def member_info(params: dict[str, Any]) -> dict[str, Any]:
     """
     指定メンバーの記録情報を返す
 
     Args:
-        params (PlaceholderDict): 対象メンバー
+        params (dict[str, Any]): 対象メンバー
 
     Returns:
         dict[str, Any]: 記録情報

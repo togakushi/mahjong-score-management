@@ -7,7 +7,7 @@ import logging
 import os
 from importlib.resources import files
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Union
+from typing import TYPE_CHECKING, Any, Union, cast
 
 import libs.global_value as g
 from libs.data import lookup
@@ -64,7 +64,7 @@ def main(init_db: bool) -> None:
         else:
             g.cfg.rule.keyword_mapping = {"終局": g.cfg.mahjong.rule_version}
 
-    g.cfg.rule.status_update(g.params)
+    g.cfg.rule.status_update(cast(dict[str, Any], g.params))
     g.cfg.rule.register_to_database()
     g.cfg.rule.info()
 

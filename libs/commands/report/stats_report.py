@@ -47,7 +47,7 @@ def get_game_results() -> list[list[str]]:
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_PERSONAL_DATA"), g.params),
+        dbutil.query_modification(dbutil.query("REPORT_PERSONAL_DATA"), cast(dict[str, Any], g.params)),
         g.params,
     )
 
@@ -118,7 +118,7 @@ def get_count_results(game_count: int) -> list[list[str]]:
     g.params.update({"interval": game_count})
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_DATA"), g.params),
+        dbutil.query_modification(dbutil.query("REPORT_COUNT_DATA"), cast(dict[str, Any], g.params)),
         g.params,
     )
 
@@ -191,7 +191,7 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.update({"interval": game_count})
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_MOVING"), g.params),
+        dbutil.query_modification(dbutil.query("REPORT_COUNT_MOVING"), cast(dict[str, Any], g.params)),
         g.params,
     )
 
@@ -398,7 +398,7 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
         return
 
     # 対象メンバーの記録状況
-    target_info = lookup.member_info(g.params)
+    target_info = lookup.member_info(cast(dict[str, Any], g.params))
     logging.debug(target_info)
 
     if not target_info["game_count"]:  # 記録なし

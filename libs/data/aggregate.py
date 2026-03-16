@@ -2,7 +2,7 @@
 libs/data/aggregate.py
 """
 
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
 import numpy as np
 import pandas as pd
@@ -28,7 +28,7 @@ def game_summary(
 
     """
     # データ収集
-    df = loader.read_data("SUMMARY_TOTAL", g.params)
+    df = loader.read_data("SUMMARY_TOTAL", cast(dict[str, Any], g.params))
 
     # 順位分布選択
     match g.params.get("mode", 4):

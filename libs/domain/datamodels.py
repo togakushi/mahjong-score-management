@@ -6,7 +6,7 @@ import logging
 from dataclasses import MISSING, dataclass, field, fields
 from enum import StrEnum
 from math import ceil
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Any, Literal, Optional, cast
 
 import libs.global_value as g
 from libs.data import loader
@@ -116,7 +116,7 @@ class GameInfo:
             g.params.update({"endtime": ExtDt().range("全部").end})
 
         # データ収集
-        df = loader.read_data("GAME_INFO", g.params)
+        df = loader.read_data("GAME_INFO", cast(dict[str, Any], g.params))
         if df.empty:
             self.count = 0
             self.first_game = ExtDt()
