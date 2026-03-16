@@ -21,7 +21,7 @@ class PlaceholderBuilder(ParameterData):
     """コマンド名"""
     channel_config: Optional["Path"] = field(default=None)
     """チャンネル個別設定状況
-    - *Path*: 読み込んだ追加設定
+    - *Path*: 追加設定ファイルパス
     - *None*: 個別設定を利用していない
     """
 
@@ -72,7 +72,7 @@ class PlaceholderBuilder(ParameterData):
     guest_name: str = field(default="")
     """ゲストの名前"""
     target_player: list[str] = field(default_factory=list)
-    """比較対象プレイヤーリスト"""
+    """引数で受け付けたプレイヤーのリスト"""
     player_list: list[str] = field(default_factory=list)
     """集計対象プレイヤーリスト"""
     competition_list: list[str] = field(default_factory=list)
