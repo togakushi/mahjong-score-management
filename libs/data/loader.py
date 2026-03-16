@@ -33,18 +33,10 @@ def execute(sql: str, params: Optional[dict[str, Any]] = None) -> list[dict[str,
 
     """
     if not params:
-        params = g.params
+        params = g.params.placeholder()
 
     ret: list[dict[str, Any]] = []
     sql = dbutil.query_modification(sql, params)
-
-    params.update(
-        {
-            **params.get("rule_set", {}),
-            **params.get("player_list", {}),
-            **params.get("competition_list", {}),
-        }
-    )
 
     if g.args.verbose & 0x01:
         print(f">>> {params=}")
@@ -84,16 +76,7 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
 
     """
     if not params:
-        params = g.params
-
-    params.update(
-        {
-            **params,
-            **g.params.get("rule_set", {}),
-            **g.params.get("player_list", {}),
-            **g.params.get("competition_list", {}),
-        }
-    )
+        params = g.params.placeholder()
 
     if "mode" not in params:
         mode = g.cfg.rule.get_mode(g.cfg.setting.default_rule)
@@ -143,14 +126,6 @@ def named_query(query: str, params: dict[str, Any]) -> str:
         str: バインド済みSQL
 
     """
-    params.update(
-        {
-            **params.get("rule_set", {}),
-            **params.get("player_list", {}),
-            **params.get("competition_list", {}),
-        }
-    )
-
     for k, v in params.items():
         if isinstance(v, datetime):
             params.update({k: v.strftime("%Y-%m-%d %H:%M:%S")})

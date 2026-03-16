@@ -36,7 +36,7 @@ def plot(m: "MessageParserProtocol") -> None:
         return
 
     # 匿名化
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         name_list: list[Any] = []
         for col in [f"name{x}" for x in range(1, 6)]:
             name_list.extend(results_df[col].unique().tolist())

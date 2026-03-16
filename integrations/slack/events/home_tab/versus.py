@@ -126,7 +126,7 @@ def register_versus_handlers(app: "App", adapter: ServiceAdapter) -> None:
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"
         g.params = dictutil.placeholder(g.cfg.results, m)
-        g.params.update(update_flag)
+        g.params.update_from_dict(update_flag)
 
         search_options = body["view"]["state"]["values"]
         if "bid-user_select" in search_options:

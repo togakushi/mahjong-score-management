@@ -52,11 +52,11 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
-                if options.title == "戦績" and g.params.get("verbose"):
+                if options.title == "戦績" and g.params.verbose:
                     padding = "0.25em 0.75em"
                     data = _conv_verbose(data)
                 message += adapter.functions.to_styled_html(data, padding, show_index)
-                message = message.replace(f">{g.params['player_name']}<", f"><div class='player_name'>{g.params['player_name']}</div><")
+                message = message.replace(f">{g.params.player_name}<", f"><div class='player_name'>{g.params.player_name}</div><")
 
             if isinstance(data, str):
                 message += adapter.functions.to_text_html(data)

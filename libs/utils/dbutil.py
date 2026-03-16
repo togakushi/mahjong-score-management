@@ -204,9 +204,12 @@ def query_modification(sql: str, params: dict[str, Any]) -> str:
         sql = sql.replace("and my.playtime between", "-- and my.playtime between")
 
     # プレイヤーリスト
-    if params.get("player_name") and params.get("player_list"):
+    if params.get("player_name") and (player_list := params.get("player_list", [])):
         sql = sql.replace("--[player_name] ", "")
-        sql = sql.replace("<<player_list>>", ":" + ", :".join(params["player_list"]))
+        sql = sql.replace(
+            "<<player_list>>",
+            ", ".join([f":player_{idx}" for idx, _ in enumerate(player_list)]),
+        )
     sql = sql.replace("<<guest_mark>>", g.cfg.setting.guest_mark)
 
     # フラグの処理

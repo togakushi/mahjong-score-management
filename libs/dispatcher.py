@@ -22,9 +22,9 @@ if TYPE_CHECKING:
 def by_keyword(m: "MessageParserProtocol") -> None:
     """メイン処理"""
     # チャンネル個別設定切替
-    g.params.update(
+    g.params.update_from_dict(
         {
-            "channel_config": g.cfg.read_channel_config(m.status.source, g.params),
+            "channel_config": g.cfg.read_channel_config(m.status.source, g.params.placeholder()),
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
         }

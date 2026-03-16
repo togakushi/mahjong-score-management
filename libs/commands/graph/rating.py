@@ -35,7 +35,7 @@ def plot(m: "MessageParserProtocol") -> None:
     # 情報ヘッダ
     title: str = "レーティング推移グラフ"
 
-    if g.params.get("mode") == 3 or g.params.get("target_mode") == 3:  # todo: 未実装
+    if g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return
@@ -50,7 +50,7 @@ def plot(m: "MessageParserProtocol") -> None:
         return
 
     # 足切り
-    df_count = loader.read_data("SUMMARY_GAMEDATA").filter(items=["name", "count"]).set_index("name").query("count >= @g.params['stipulated']")
+    df_count = loader.read_data("SUMMARY_GAMEDATA").filter(items=["name", "count"]).set_index("name").query("count >= @g.params.stipulated")
     df_dropped = df_ratings.filter(items=df_count.index.to_list())
 
     # 並び変え
@@ -62,7 +62,7 @@ def plot(m: "MessageParserProtocol") -> None:
     df_sorted = df_sorted.rename(index=new_index)
     df_sorted.ffill(inplace=True)
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df_sorted.columns.to_list())
         df_sorted = df_sorted.rename(columns=mapping_dict)
 
@@ -201,7 +201,7 @@ def _graph_title(game_info: GameInfo) -> tuple[str, str]:
         tuple[str, str]: タイトル文字列
 
     """
-    match g.params.get("collection"):
+    match g.params.collection:
         case "daily":
             kind = Format.YMD_O
             xlabel_text = f"集計日（総ゲーム数：{game_info.count} ゲーム）"

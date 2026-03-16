@@ -27,7 +27,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # 検索動作を合わせる
-    g.params.update({"guest_skip": g.params["guest_skip2"]})
+    g.params.guest_skip = g.params.guest_skip2
 
     # --- データ収集
     data: "MessageType"
@@ -35,11 +35,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_game = loader.read_data("SUMMARY_DETAILS").fillna(value="")
     df_data = pd.DataFrame(columns=df_game.columns)  # ファイル出力用
 
-    my_name = formatter.name_replace(g.params["player_name"], add_mark=True)
-    vs_list = [formatter.name_replace(x, add_mark=True) for x in g.params["competition_list"].values()]
+    my_name = formatter.name_replace(g.params.player_name, add_mark=True)
+    vs_list = [formatter.name_replace(x, add_mark=True) for x in g.params.competition_list]
 
     # --- 匿名化
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping([my_name] + vs_list)
         my_name = mapping_dict[my_name]
         vs_list = [mapping_dict[name] for name in vs_list]
@@ -47,7 +47,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         df_vs["vs_name"] = df_vs["vs_name"].replace(mapping_dict)
 
     # --- 表示内容
-    if g.params.get("all_player"):
+    if g.params.all_player:
         vs = "全員"
     else:
         vs = ",".join(vs_list)
@@ -66,7 +66,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         if vs_name in vs_list:
             data = df_vs.query("my_name == @my_name and vs_name == @vs_name")
             if data.empty:
-                if len(vs_list) <= 5 and not g.params.get("all_player"):
+                if len(vs_list) <= 5 and not g.params.all_player:
                     drop_name.append(vs_name)
                     game_result[title] = "対戦記録はありません。"
                 continue
@@ -74,7 +74,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             game_result[title] = tmpl_vs_table(data.to_dict(orient="records")[0])
 
             # ゲーム結果
-            if g.params.get("game_results"):
+            if g.params.game_results:
                 count = 0
                 my_score = df_game.query("name == @my_name")
                 vs_score = df_game.query("name == @vs_name")
@@ -106,13 +106,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
         StyleOptions(),
     )
 
-    namelist = list(g.params["competition_list"].values())  # noqa: F841
     df_vs["対戦相手"] = df_vs["vs_name"].apply(lambda x: str(x).strip())
     df_vs["my_rpoint_avg"] = (df_vs["my_rpoint_avg"] * 100).astype("int")
     df_vs["vs_rpoint_avg"] = (df_vs["vs_rpoint_avg"] * 100).astype("int")
     df_vs = formatter.df_rename(df_vs, StyleOptions())
     df_vs2 = (
-        df_vs.query("vs_name == @namelist")
+        df_vs.query("vs_name == @g.params.competition_list")
         .filter(
             items=[
                 "対戦相手",
@@ -133,7 +132,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         .drop_duplicates()
     )
 
-    match str(g.params.get("format", "default")).lower():
+    match g.params.format.lower():
         case "csv":
             m.set_message(converter.save_output(df_data, StyleOptions(format_type="csv", base_name="result")), StyleOptions(title="対戦結果"))
             m.set_message(converter.save_output(df_vs2, StyleOptions(format_type="csv", base_name="versus")), StyleOptions(title="成績"))

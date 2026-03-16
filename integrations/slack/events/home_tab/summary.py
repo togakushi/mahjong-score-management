@@ -126,7 +126,7 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"  # 引数の位置を調整
         g.params = dictutil.placeholder(g.cfg.results, m)
-        g.params.update(update_flag)
+        g.params.update_from_dict(update_flag)
 
         adapter.api.appclient.views_update(
             view_id=adapter.conf.tab_var["view_id"],
@@ -147,7 +147,7 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
                 adapter.api.post(m)
             case "rating":
                 m.status.command_type = CommandType.RATING
-                g.params["command"] = "ranking"
+                g.params.command = "ranking"
                 rating.aggregation(m)
                 adapter.api.post(m)
             case _:

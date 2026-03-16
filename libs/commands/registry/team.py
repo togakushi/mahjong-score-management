@@ -138,7 +138,7 @@ class TeamSection(BaseSection):
             list[TeamDataDict]: チーム情報
 
         """
-        ret = loader.read_data("TEAM_INFO", g.params).to_dict(orient="records")
+        ret = loader.read_data("TEAM_INFO", g.params.placeholder()).to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
 
@@ -234,7 +234,7 @@ def append(argument: list[str]) -> str:
         msg = create(argument)
 
     if len(argument) == 2:  # チーム所属
-        g.params.update({"unregistered_replace": False})
+        g.params.unregistered_replace = False
 
         team_name = textutil.str_conv(argument[0], textutil.ConversionType.HtoZ)
         player_name = formatter.name_replace(argument[1])
@@ -295,7 +295,7 @@ def remove(argument: list[str]) -> str:
         msg = delete(argument)
 
     if len(argument) == 2:  # チーム名指
-        g.params.update({"unregistered_replace": False})
+        g.params.unregistered_replace = False
         team_name = textutil.str_conv(argument[0], textutil.ConversionType.HtoZ)
         player_name = formatter.name_replace(argument[1])
 

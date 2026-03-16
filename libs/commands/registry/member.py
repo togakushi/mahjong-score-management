@@ -154,7 +154,7 @@ class MemberSection(BaseSection):
             list[MemberDataDict]: メンバー情報
 
         """
-        ret = loader.read_data("MEMBER_INFO", g.params).to_dict(orient="records")
+        ret = loader.read_data("MEMBER_INFO", g.params.placeholder()).to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
 

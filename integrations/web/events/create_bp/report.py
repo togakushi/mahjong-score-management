@@ -54,7 +54,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                 if {"個人成績一覧", "チーム成績一覧"} & set(headline_title):
                     check_column = data.columns.to_list()
                     multi = [
-                        ("", "プレイヤー名" if g.params.get("individual", True) else "チーム名"),
+                        ("", "プレイヤー名" if g.params.individual else "チーム名"),
                         ("", "ゲーム数"),
                         ("ポイント", "通算") if {"通算ポイント", "平均ポイント"}.issubset(check_column) else None,
                         ("ポイント", "平均") if {"通算ポイント", "平均ポイント"}.issubset(check_column) else None,
@@ -74,7 +74,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                     ]
                     data.columns = pd.MultiIndex.from_tuples([x for x in multi if x is not None])
                 elif "成績上位者" in headline_title:
-                    name = "名前" if g.params.get("individual", True) else "チーム"
+                    name = "名前" if g.params.individual else "チーム"
                     check_column = data.columns.to_list()
                     multi = [
                         ("", "集計月"),

@@ -71,8 +71,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
             msg.format(
                 user_id=m.data.user_id,
                 keyword=g.cfg.setting.keyword,
-                start=ExtDt(g.params.get("starttime", ExtDt())).format(Format.YMD),
-                end=ExtDt(g.params.get("onday", ExtDt())).format(Format.YMD),
+                start=ExtDt(g.params.starttime).format(Format.YMD),
+                end=ExtDt(g.params.onday).format(Format.YMD),
                 rpoint_diff=rpoint_diff * 100,
                 rpoint_sum=m.status.rpoint_sum * 100,
             )
@@ -103,7 +103,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
     assert isinstance(game_info.last_game, ExtDt)
 
     # 集計範囲
-    if g.params.get("search_word"):  # コメント検索の場合はコメントで表示
+    if g.params.search_word:  # コメント検索の場合はコメントで表示
         game_range1 = f"最初のゲーム：{game_info.first_comment}\n"
         game_range1 += f"最後のゲーム：{game_info.last_comment}\n"
     else:
@@ -117,7 +117,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
     else:
         match m.status.command_type:
             case CommandType.RESULTS:
-                if g.params.get("target_count"):  # 直近指定がない場合は検索範囲を付ける
+                if g.params.target_count:  # 直近指定がない場合は検索範囲を付ける
                     msg += game_range1
                     msg += f"集計対象：{game_info.count} ゲーム {add_text}\n"
                 else:

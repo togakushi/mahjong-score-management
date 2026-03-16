@@ -164,7 +164,7 @@ class RuleSet:
         ステータス更新
 
         Args:
-            params (PlaceholderDict): プレースホルダ
+            params (dict[str, Any]): プレースホルダ
 
         """
         # ステータスリセット

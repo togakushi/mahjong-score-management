@@ -4,15 +4,26 @@ libs/domain/placeholder.py
 
 from dataclasses import dataclass, field, fields
 from math import ceil
-from typing import Any, Literal, Optional, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 from libs.domain.datamodels import ParameterData
 from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 @dataclass
 class PlaceholderBuilder(ParameterData):
     """プレースホルダ構築クラス"""
+
+    command: str = field(default="")
+    """コマンド名"""
+    channel_config: Optional["Path"] = field(default=None)
+    """チャンネル個別設定状況
+    - *Path*: 読み込んだ追加設定
+    - *None*: 個別設定を利用していない
+    """
 
     # ルール情報
     target_mode: int = field(default=0)
@@ -102,6 +113,10 @@ class PlaceholderBuilder(ParameterData):
     """ゲーム結果表示"""
     versus_matrix: bool = field(default=False)
     """対戦マトリックス表示"""
+    order: bool = field(default=False)
+    """順位推移グラフ表示"""
+    rating: bool = field(default=False)
+    """レーティング推移グラフ表示"""
     anonymous: bool = field(default=False)
     """匿名化フラグ"""
     fourfold: bool = field(default=True)
@@ -148,20 +163,16 @@ class PlaceholderBuilder(ParameterData):
 
         if self.player_list:
             ret_dict.update({f"player_{idx}": x for idx, x in enumerate(self.player_list)})
-        ret_dict.pop("player_list")
 
         if self.target_player:
             ret_dict.update({f"target_{idx}": x for idx, x in enumerate(self.target_player)})
-        ret_dict.pop("target_player")
 
         if self.competition_list:
             ret_dict.update({f"competition_{idx}": x for idx, x in enumerate(self.competition_list)})
-        ret_dict.pop("competition_list")
 
         if self.rule_list:
             ret_dict.update({f"rule_{idx}": x for idx, x in enumerate(self.rule_list)})
         else:
             ret_dict.update({"rule_0": self.rule_version})
-        ret_dict.pop("rule_list")
 
         return ret_dict

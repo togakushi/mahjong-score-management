@@ -2,6 +2,8 @@
 
 from typing import TYPE_CHECKING, Any, Callable, Union
 
+from libs.domain.placeholder import PlaceholderBuilder
+
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter as discord_adapter
     from integrations.slack.adapter import ServiceAdapter as slack_adapter
@@ -27,5 +29,5 @@ cfg: "AppConfig"
 """Configインスタンス共有"""
 
 # 環境パラメータ
-params: dict[str, Any] = {}
-"""プレースホルダ用パラメータ"""
+params: PlaceholderBuilder = PlaceholderBuilder()
+"""プレースホルダパラメータ"""

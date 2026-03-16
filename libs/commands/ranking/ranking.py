@@ -26,7 +26,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # 情報ヘッダ
-    if g.params.get("individual"):  # 個人集計
+    if g.params.individual:  # 個人集計
         title = "ランキング"
     else:  # チーム集計
         title = "チームランキング"
@@ -47,7 +47,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             axis=1,
         )
         .drop(columns=["first_game", "last_game", "first_comment", "last_comment"])
-        .query("count>=@g.params['stipulated']")
+        .query("count>=@g.params.stipulated")
     )
 
     if df.empty:
@@ -62,18 +62,17 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df["top3_rate"] = (df["rank1"] + df["rank2"] + df["rank3"]) / df["count"]  # ラス回避率
     df["flying_rate"] = df["flying"] / df["count"]  # トビ率
     df["yakuman_rate"] = df["yakuman"] / df["count"]  # 役満和了率
-    if g.params.get("mode") == 3:
+    if g.params.mode == 3:
         df["rank_distr"] = [f"{x.rank1}-{x.rank2}-{x.rank3}" for x in df.itertuples()]
     else:
         df["rank_distr"] = [f"{x.rank1}-{x.rank2}-{x.rank3}-{x.rank4}" for x in df.itertuples()]
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     # 集計
     data: dict[str, pd.DataFrame] = {}
-    ranked = int(g.params.get("ranked", g.cfg.ranking.ranked))  # noqa: F841
 
     data["ゲーム参加率"] = (
         pd.DataFrame(
@@ -86,7 +85,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values("rank")
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["通算ポイント"] = (
         pd.DataFrame(
@@ -98,7 +97,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["平均ポイント"] = (
         pd.DataFrame(
@@ -111,7 +110,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["平均収支"] = (
         pd.DataFrame(
@@ -124,7 +123,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["トップ率"] = (
         pd.DataFrame(
@@ -137,9 +136,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
-    if g.params.get("mode") == 3:
+    if g.params.mode == 3:
         data["ラス回避率"] = (
             pd.DataFrame(
                 {
@@ -151,7 +150,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked")
+            .query("rank <= @g.params.ranked")
         )
     else:
         data["連対率"] = (
@@ -165,7 +164,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked")
+            .query("rank <= @g.params.ranked")
         )
         data["ラス回避率"] = (
             pd.DataFrame(
@@ -178,7 +177,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked")
+            .query("rank <= @g.params.ranked")
         )
     data["トビ率"] = (
         pd.DataFrame(
@@ -191,7 +190,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["平均順位"] = (
         pd.DataFrame(
@@ -204,7 +203,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["役満和了率"] = (
         pd.DataFrame(
@@ -217,7 +216,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked and yakuman > 0")
+        .query("rank <= @g.params.ranked and yakuman > 0")
     )
     data["最大素点"] = (
         pd.DataFrame(
@@ -230,7 +229,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked")
+        .query("rank <= @g.params.ranked")
     )
     data["連続トップ"] = (
         pd.DataFrame(
@@ -242,9 +241,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
             }
         )
         .sort_values(by=["rank", "count"], ascending=[True, False])
-        .query("rank <= @ranked and top1_max > 1")
+        .query("rank <= @g.params.ranked and top1_max > 1")
     )
-    if g.params.get("mode") == 3:
+    if g.params.mode == 3:
         data["連続ラス回避"] = (
             pd.DataFrame(
                 {
@@ -255,7 +254,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked and top2_max > 1")
+            .query("rank <= @g.params.ranked and top2_max > 1")
         )
     else:
         data["連続連対"] = (
@@ -268,7 +267,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked and top2_max > 1")
+            .query("rank <= @g.params.ranked and top2_max > 1")
         )
         data["連続ラス回避"] = (
             pd.DataFrame(
@@ -280,11 +279,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 }
             )
             .sort_values(by=["rank", "count"], ascending=[True, False])
-            .query("rank <= @ranked and top3_max > 1")
+            .query("rank <= @g.params.ranked and top3_max > 1")
         )
 
     # 項目整理
-    if g.params.get("ignore_flying") or g.cfg.dropitems.ranking & g.cfg.dropitems.flying:
+    if g.params.ignore_flying or g.cfg.dropitems.ranking & g.cfg.dropitems.flying:
         data.pop("トビ率")
     if g.cfg.dropitems.ranking & g.cfg.dropitems.yakuman:
         data.pop("役満和了率")

@@ -29,36 +29,36 @@ def remarks(headword: bool = False) -> str | list[str]:
     """
     remark_list: list[str] = []
 
-    if g.params.get("individual"):  # 個人集計時のみ表示
-        if not g.params.get("unregistered_replace"):
+    if g.params.individual:  # 個人集計時のみ表示
+        if not g.params.unregistered_replace:
             remark_list.append("ゲスト置換なし(" + g.cfg.setting.guest_mark + "：未登録プレイヤー)")
-        if not g.params.get("guest_skip"):
+        if not g.params.guest_skip:
             remark_list.append("2ゲスト戦の結果を含む")
     else:  # チーム集計時
-        if g.params.get("friendly_fire"):
-            if g.params.get("game_results") and g.params.get("verbose"):
+        if g.params.friendly_fire:
+            if g.params.game_results and g.params.verbose:
                 remark_list.append("チーム同卓時の結果を含む(" + g.cfg.setting.guest_mark + ")")
             else:
                 remark_list.append("チーム同卓時の結果を含む")
 
-    if g.params["stipulated"] >= 2:
-        remark_list.append(f"規定打数 {g.params['stipulated']} G以上")
-    if g.params.get("command") in ["ranking"]:
-        remark_list.append(f"{int(g.params.get('ranked', g.cfg.ranking.ranked))}位まで表示")
+    if g.params.stipulated >= 2:
+        remark_list.append(f"規定打数 {g.params.stipulated} G以上")
+    if g.params.command in ["ranking"]:
+        remark_list.append(f"{g.params.ranked}位まで表示")
 
     # 集計ルール
-    if g.params.get("mixed"):
-        match g.params.get("target_mode"):
+    if g.params.mixed:
+        match g.params.target_mode:
             case 3:
                 remark_list.append("集計対象ルール すべて(三人打)")
             case 4:
                 remark_list.append("集計対象ルール すべて(四人打)")
             case _:
                 remark_list.append("集計対象ルール すべて")
-    elif len(g.params.get("rule_set", {})) > 1:
-        remark_list.append(f"集計対象ルール {'、'.join(g.params['rule_set'].values())}")
-    elif g.params.get("rule_version") != g.params.get("default_rule"):
-        remark_list.append(f"集計対象ルール {'、'.join(g.params['rule_set'].values())}")
+    elif len(g.params.rule_list) > 1:
+        remark_list.append(f"集計対象ルール {'、'.join(g.params.rule_list)}")
+    elif g.params.rule_version != g.params.default_rule:
+        remark_list.append(f"集計対象ルール {'、'.join(g.params.rule_list)}")
 
     if headword:
         if remark_list:
@@ -79,10 +79,10 @@ def search_word(headword: bool = False) -> str:
         str: 条件をまとめた文字列
 
     """
-    if ret := str(g.params.get("search_word", "")).replace("%", ""):
+    if ret := g.params.search_word.replace("%", ""):
         # 集約条件
-        if g.params.get("group_length"):
-            ret += f"（{g.params['group_length']}文字集約）"
+        if g.params.group_length:
+            ret += f"（{g.params.group_length}文字集約）"
     else:
         ret = ""
 
@@ -112,14 +112,14 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[st
 
     match time_pattern:
         case "day":
-            starttime = ExtDt(g.params["starttime"]).format(Format.TS)
-            endtime = ExtDt(g.params["endtime"]).format(Format.TS)
+            starttime = ExtDt(g.params.starttime).format(Format.TS)
+            endtime = ExtDt(g.params.endtime).format(Format.TS)
         case "time":
-            starttime = ExtDt(g.params["starttime"]).format(Format.YMDHM)
-            endtime = ExtDt(g.params["endtime"]).format(Format.YMDHM)
+            starttime = ExtDt(g.params.starttime).format(Format.YMDHM)
+            endtime = ExtDt(g.params.endtime).format(Format.YMDHM)
         case _:
-            starttime = ExtDt(g.params["starttime"]).format(Format.YMDHMS)
-            endtime = ExtDt(g.params["endtime"]).format(Format.YMDHMS)
+            starttime = ExtDt(g.params.starttime).format(Format.YMDHMS)
+            endtime = ExtDt(g.params.endtime).format(Format.YMDHMS)
 
     match kind:
         case "list":
@@ -150,7 +150,7 @@ def aggregation_range(
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
 
-    if g.params.get("search_word"):  # コメント検索の場合はコメントで表示
+    if g.params.search_word:  # コメント検索の場合はコメントで表示
         first = game_info.first_comment
         last = game_info.last_comment
     else:
@@ -184,9 +184,9 @@ def date_range(
     ret: str
     str_st: str
     str_et: str
-    st = ExtDt(g.params["starttime"])
-    et = ExtDt(g.params["endtime"])
-    ot = ExtDt(g.params["onday"])
+    st = ExtDt(g.params.starttime)
+    et = ExtDt(g.params.endtime)
+    ot = ExtDt(g.params.onday)
 
     if kind.name.endswith("_O"):
         str_st = st.format(kind)

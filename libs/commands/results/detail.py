@@ -3,7 +3,7 @@ libs/commands/results/detail.py
 """
 
 import textwrap
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 import pandas as pd
@@ -32,10 +32,10 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # --- パラメータ更新
-    g.params.update({"guest_skip": g.params["guest_skip2"]})  # 検索動作を合わせる
+    g.params.guest_skip = g.params.guest_skip2  # 検索動作を合わせる
 
-    if rule_version := g.params.get("rule_version"):
-        g.params.update(
+    if rule_version := g.params.rule_version:
+        g.params.update_from_dict(
             {
                 "mode": int(g.cfg.rule.to_dict(rule_version).get("mode", 4)),
                 "rule_version": str(g.cfg.rule.to_dict(rule_version).get("rule_version", "")),
@@ -43,14 +43,14 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 "return_point": int(g.cfg.rule.to_dict(rule_version).get("return_point", 300)),
             }
         )
-        if (target_mode := g.params.get("target_mode")) and target_mode != g.cfg.rule.get_mode(rule_version):
+        if (target_mode := g.params.target_mode) and target_mode != g.cfg.rule.get_mode(rule_version):
             m.set_headline(message.random_reply(m, "rule_mismatch"), StyleOptions(title="集計矛盾検出"))
             m.status.result = False
             return
-    if g.params["player_name"] in g.cfg.team.lists:
-        g.params.update({"individual": False})
-    elif g.params["player_name"] in g.cfg.member.lists:
-        g.params.update({"individual": True})
+    if g.params.player_name in g.cfg.team.lists:
+        g.params.individual = False
+    elif g.params.player_name in g.cfg.member.lists:
+        g.params.individual = True
 
     # --- データ収集
     game_info = GameInfo()
@@ -58,13 +58,13 @@ def aggregation(m: "MessageParserProtocol") -> None:
     mapping_dict: dict[str, str] = {}
 
     # タイトル
-    if g.params.get("individual"):
+    if g.params.individual:
         title = "個人成績詳細"
     else:
         title = "チーム成績詳細"
 
     if game_info.count == 0:
-        if g.params.get("individual"):
+        if g.params.individual:
             msg_data["検索範囲"] = f"{text_item.search_range(time_pattern='time')}"
             msg_data["特記事項"] = "、".join(text_item.remarks())
             msg_data["検索ワード"] = text_item.search_word()
@@ -76,15 +76,15 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     stats = StatsInfo()
-    stats.read(g.params)
+    stats.read(g.params.placeholder())
 
     if stats.result_df.empty or stats.record_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
         m.status.result = False
         return
 
-    player_name = formatter.name_replace(g.params["player_name"], add_mark=True)
-    if g.params.get("anonymous"):
+    player_name = formatter.name_replace(g.params.player_name, add_mark=True)
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(stats.result_df["name"].unique().tolist())
         stats.result_df["name"] = stats.result_df["name"].replace(mapping_dict)
         player_name = mapping_dict[player_name]
@@ -92,7 +92,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # --- 表示内容
     msg_data.update(get_headline(stats, game_info, player_name))
     msg_data.update(get_totalization(stats))
-    mode = g.params.get("mode", 4)
+    mode = g.params.mode
 
     # 統計
     seat_data = pd.DataFrame(
@@ -105,7 +105,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         }
     )
 
-    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    if g.params.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
         seat_data.drop(columns=["トビ"], inplace=True)
     if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
         seat_data.drop(columns=["役満和了"], inplace=True)
@@ -132,7 +132,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             """.replace("+0.0点", "記録なし")
         ).replace("-", "▲")
 
-    if g.params.get("statistics"):
+    if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
         m.set_message(textwrap.indent(stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
         m.set_message(textwrap.indent(stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
@@ -148,7 +148,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
     if not g.cfg.dropitems.results & g.cfg.dropitems.regulation:
-        if g.params.get("individual"):
+        if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
@@ -159,12 +159,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
     # 対戦結果
-    if g.params.get("versus_matrix"):
+    if g.params.versus_matrix:
         m.set_message(get_versus_matrix(mapping_dict), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
-    if g.params.get("game_results"):
-        if g.params.get("verbose"):
+    if g.params.game_results:
+        if g.params.verbose:
             m.set_message(get_results_details(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False))
         else:
             m.set_message(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
@@ -184,12 +184,12 @@ def comparison(m: "MessageParserProtocol") -> None:
 
     """
     # 検索動作を合わせる
-    g.params.update({"guest_skip": g.params["guest_skip2"]})
+    g.params.guest_skip = g.params.guest_skip2
 
-    if g.params["player_name"] in g.cfg.team.lists:
-        g.params.update({"individual": False})
-    elif g.params["player_name"] in g.cfg.member.lists:
-        g.params.update({"individual": True})
+    if g.params.player_name in g.cfg.team.lists:
+        g.params.update_from_dict({"individual": False})
+    elif g.params.player_name in g.cfg.member.lists:
+        g.params.update_from_dict({"individual": True})
 
     # データ収集
     data: "MessageType"
@@ -209,9 +209,10 @@ def comparison(m: "MessageParserProtocol") -> None:
 
     for name in result_df.query("id==0").sort_values("total_point", ascending=False)["name"]:
         work_stats = StatsInfo()
-        work_params = g.params.copy()
-        work_params["player_name"] = name
-        work_stats.set_parameter(**work_params)
+        if str(name) not in g.params.player_list:
+            continue
+        work_stats.set_parameter(**g.params.placeholder())
+        work_stats.name = str(name)
         work_stats.set_data(result_df.query("name == @name"))
         work_stats.set_data(record_df.query("name == @name"))
         stats_df = pd.concat([stats_df, work_stats.summary])
@@ -222,20 +223,19 @@ def comparison(m: "MessageParserProtocol") -> None:
         return
 
     # 規定打数足切り
-    stipulated = g.params.get("stipulated", 1)  # noqa: F841
-    stats_df.query("count >= @stipulated", inplace=True)
+    stats_df.query("count >= @g.params.stipulated", inplace=True)
     if stats_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
         m.status.result = False
         return
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(stats_df["name"].unique().tolist())
         stats_df["name"] = stats_df["name"].replace(mapping_dict)
 
     # 非表示項目
     stats_df = stats_df.drop(columns=[x for x in g.cfg.dropitems.results if x in stats_df.columns.to_list()])
-    if g.params.get("ignore_flying") or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    if g.params.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
         stats_df = stats_df.drop(columns=["flying_rate-count"])
     if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
         stats_df = stats_df.drop(columns=["yakuman_rate-count"])
@@ -250,7 +250,7 @@ def comparison(m: "MessageParserProtocol") -> None:
         transpose=True,
     )
 
-    match cast(str, g.params.get("format", "default")).lower():
+    match g.params.format.lower():
         case "csv":
             options.format_type = "csv"
             data = converter.save_output(stats_df, options, m.post.headline)
@@ -280,13 +280,13 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
     """
     ret: dict[str, Any] = {}
 
-    if g.params.get("individual"):
+    if g.params.individual:
         ret["プレイヤー名"] = f"{player_name} {badge.degree(data.seat0.count)}"
-        if team_name := g.cfg.team.which(g.params["player_name"]):
+        if team_name := g.cfg.team.which(g.params.player_name):
             ret["所属チーム"] = team_name
     else:
-        ret["チーム名"] = f"{g.params['player_name']} {badge.degree(data.seat0.count)}"
-        ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params["player_name"]))
+        ret["チーム名"] = f"{g.params.player_name} {badge.degree(data.seat0.count)}"
+        ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params.player_name))
 
     badge_status = badge.status(data.seat0.count, data.seat0.win)
     ret["検索範囲"] = str(text_item.search_range(time_pattern="time"))
@@ -315,13 +315,13 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     ret["通算ポイント"] = f"{data.seat0.total_point:+.1f}pt".replace("-", "▲")
     ret["平均ポイント"] = f"{data.seat0.avg_point:+.1f}pt".replace("-", "▲")
     ret["平均順位"] = f"{data.seat0.rank_avg:1.2f}"
-    if g.params.get("individual") and g.adapter.conf.badge_grade:
-        ret["段位"] = badge.grade(g.params["player_name"])
+    if g.params.individual and g.adapter.conf.badge_grade:
+        ret["段位"] = badge.grade(g.params.player_name)
     ret["_blank2"] = True
     ret["1位"] = f"{data.seat0.rank1:2} 回 ({data.seat0.rank1_rate:7.2%})"
     ret["2位"] = f"{data.seat0.rank2:2} 回 ({data.seat0.rank2_rate:7.2%})"
     ret["3位"] = f"{data.seat0.rank3:2} 回 ({data.seat0.rank3_rate:7.2%})"
-    if g.params.get("mode", 4) == 4:
+    if g.params.mode == 4:
         ret["4位"] = f"{data.seat0.rank4:2} 回 ({data.seat0.rank4_rate:7.2%})"
     ret["トビ"] = f"{data.seat0.flying:2} 回 ({data.seat0.flying_rate:7.2%})"
     ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
@@ -340,10 +340,10 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
         pd.DataFrame: 戦績データ
 
     """
-    target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)
+    target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)
 
     df = loader.read_data("SUMMARY_DETAILS").fillna(value="")
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict.update(formatter.anonymous_mapping(df["name"].unique().tolist(), len(mapping_dict)))
         df["name"] = df["name"].replace(mapping_dict)
         target_player = mapping_dict.get(target_player, target_player)
@@ -352,7 +352,7 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
     df_data["seat"] = df_data.apply(lambda v: ["東家", "南家", "西家", "北家"][(v["seat"] - 1)], axis=1)
     df_data["rpoint"] = df_data["rpoint"] * 100
     pd.options.mode.copy_on_write = True
-    if g.params.get("individual"):
+    if g.params.individual:
         df_data.loc[:, "memo"] = np.where(df_data["guest_count"] >= 2, "2ゲスト戦", "")
     else:
         df_data.loc[:, "memo"] = np.where(df_data["same_team"] == 1, "チーム同卓", "")
@@ -372,10 +372,10 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
         pd.DataFrame: 戦績データ
 
     """
-    target_player = formatter.name_replace(g.params["target_player"][0], add_mark=True)  # noqa: F841
+    target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)  # noqa: F841
 
-    df = loader.read_data("SUMMARY_DETAILS2", g.params).fillna(value="")
-    if g.params.get("anonymous"):
+    df = loader.read_data("SUMMARY_DETAILS2", g.params.placeholder()).fillna(value="")
+    if g.params.anonymous:
         name_list: list[str] = []
         name_list.extend(df["p1_name"].unique().tolist())
         name_list.extend(df["p2_name"].unique().tolist())
@@ -388,7 +388,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
         df["p4_name"] = df["p4_name"].replace(mapping_dict)
         target_player = mapping_dict.get(target_player, target_player)
 
-    match g.params.get("mode"):
+    match g.params.mode:
         case 3:
             df.drop(columns=["p4_name", "p4_rpoint", "p4_rank", "p4_point", "p4_remarks"], inplace=True)
             df_data = df.query(
@@ -402,7 +402,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
             return pd.DataFrame()
 
     pd.options.mode.copy_on_write = True
-    if g.params.get("individual"):
+    if g.params.individual:
         df_data.loc[:, "memo"] = np.where(df_data["guest_count"] >= 2, "2ゲスト戦", "")
     else:
         df_data.loc[:, "memo"] = np.where(df_data["same_team"] == 1, "チーム同卓", "")
@@ -427,7 +427,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
     if df.empty:
         return ""
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict.update(formatter.anonymous_mapping(df["vs_name"].unique().tolist(), len(mapping_dict)))
         df["my_name"] = df["my_name"].replace(mapping_dict)
         df["vs_name"] = df["vs_name"].replace(mapping_dict)

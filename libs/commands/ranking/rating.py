@@ -33,15 +33,13 @@ def aggregation(m: "MessageParserProtocol") -> None:
     title: str = "レーティング"
     add_text: str = ""
 
-    if g.params.get("mode") == 3 or g.params.get("target_mode") == 3:  # todo: 未実装
+    if g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return
 
     # データ収集
-    # g.params.update(guest_skip=False)  # 2ゲスト戦強制取り込み
     game_info = GameInfo()
-    ranked = int(g.params.get("ranked", g.cfg.ranking.ranked))  # noqa: F841
 
     if not game_info.count:  # 検索結果が0件のとき
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
@@ -57,16 +55,16 @@ def aggregation(m: "MessageParserProtocol") -> None:
     final["name"] = final.index
 
     df = pd.merge(df_results, final, on=["name"]).sort_values(by="rate", ascending=False)
-    df = df.query("count >= @g.params['stipulated']")  # 足切り
+    df = df.query("count >= @g.params.stipulated")  # 足切り
     df["rank"] = 0  # 順位表示用カラム
 
     # 集計対象外データの削除
-    if g.params.get("unregistered_replace"):  # 個人戦
+    if g.params.unregistered_replace:  # 個人戦
         for player in df.itertuples():
             if player.name not in g.cfg.member.lists:
                 df = df.drop(player.Index)
 
-    if not g.params.get("individual"):  # チーム戦
+    if not g.params.individual:  # チーム戦
         df = df.query("name != '未所属'")
 
     # 順位偏差 / 得点偏差
@@ -80,7 +78,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             df.at[idx, "grade"] = badge.grade(name, False)
 
     # 表示
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
@@ -90,7 +88,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     df["rank"] = df["rate"].rank(ascending=False, method="dense").astype("int")
-    df = df.query("rank <= @ranked").filter(items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"])
+    df = df.query("rank <= @g.params.ranked").filter(
+        items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"],
+    )
     df = formatter.df_drop(df, list(g.cfg.dropitems.ranking))
 
     m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
@@ -105,7 +105,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     )
 
     data: "MessageType"
-    match g.params.get("format", "default"):
+    match g.params.format.lower():
         case "csv":
             options.format_type = "csv"
             data = converter.save_output(df, options, m.post.headline)

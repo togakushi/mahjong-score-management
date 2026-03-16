@@ -32,22 +32,21 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_remarks = loader.read_data("REMARKS_INFO")
 
     current_rule: str = ""
-    if rule_set := g.params.get("rule_set"):
-        for rule in rule_set.values():
-            current_rule = rule
+    for rule in g.params.rule_list:
+        current_rule = rule
 
     # インデックスの振りなおし
     df_summary.reset_index(inplace=True, drop=True)
     df_summary.index += 1
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df_game["name"].unique().tolist())
         df_game["name"] = df_game["name"].replace(mapping_dict)
         df_summary["name"] = df_summary["name"].replace(mapping_dict)
         df_remarks["name"] = df_remarks["name"].replace(mapping_dict)
 
     # 情報ヘッダ
-    if g.params.get("individual"):  # 個人集計
+    if g.params.individual:  # 個人集計
         headline_title = "成績サマリ"
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
@@ -69,7 +68,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_TOTAL,
     )
-    match g.params.get("format", "default").lower():
+    match g.params.format.lower():
         case "csv":
             options.format_type = "csv"
         case "txt" | "text":
@@ -126,7 +125,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         options.title = "卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
-        if g.params.get("individual"):  # 個人集計
+        if g.params.individual:  # 個人集計
             df_regulations = df_remarks.query("type == 2").drop(columns=["type"])
         else:  # チーム集計
             df_regulations = df_remarks.query("type == 2 or type == 3").drop(columns=["type"])
@@ -171,18 +170,18 @@ def difference(m: "MessageParserProtocol") -> None:
     df_summary.reset_index(inplace=True, drop=True)
     df_summary.index += 1
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df_game["name"].unique().tolist())
         df_game["name"] = df_game["name"].replace(mapping_dict)
         df_summary["name"] = df_summary["name"].replace(mapping_dict)
 
     # 情報ヘッダ
-    if g.params.get("individual"):  # 個人集計
+    if g.params.individual:  # 個人集計
         headline_title = "成績サマリ"
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    add_text = "" if g.params.get("ignore_flying") else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    add_text = "" if g.params.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
     header_text = message.header(game_info, m, add_text, 1)
     m.set_headline(header_text, StyleOptions(title=headline_title))
 
@@ -199,7 +198,7 @@ def difference(m: "MessageParserProtocol") -> None:
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_DIFF,
     )
-    match g.params.get("format", "default").lower():
+    match g.params.format.lower():
         case "csv":
             options.format_type = "csv"
         case "txt" | "text":

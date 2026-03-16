@@ -179,7 +179,7 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
     """
     ret: list[str] = []
 
-    if not rule_version and not (rule_version := g.params.get("default_rule")):
+    if not rule_version and not (rule_version := g.params.default_rule):
         return []
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:

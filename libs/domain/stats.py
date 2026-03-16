@@ -389,6 +389,8 @@ class StatsInfo:
             else:
                 raise ValueError(f"Unsupported mode: {kwargs['mode']}")
 
+        if "rule_list" in kwargs and isinstance(kwargs["rule_list"], list):
+            self.rule_version = kwargs["rule_list"]
         if "rule_set" in kwargs and isinstance(kwargs["rule_set"], dict):
             self.rule_version = list(kwargs["rule_set"].values())
         if "player_name" in kwargs and isinstance(kwargs["player_name"], str):

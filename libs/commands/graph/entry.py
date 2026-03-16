@@ -34,16 +34,16 @@ def main(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.GRAPH
     g.params = dictutil.placeholder(g.cfg.graph, m)
 
-    if len(g.params["player_list"]) == 1:  # 対象がひとり
-        if g.params.get("statistics"):
+    if len(g.params.player_list) == 1:  # 対象がひとり
+        if g.params.statistics:
             personal.statistics_plot(m)
         else:
             personal.plot(m)
     else:  # 対象が複数
-        if g.params.get("rating"):  # レーティング
+        if g.params.rating:  # レーティング
             rating.plot(m)
         else:
-            if g.params.get("order"):
+            if g.params.order:
                 summary.rank_plot(m)
             else:
                 summary.point_plot(m)
