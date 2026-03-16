@@ -2,7 +2,7 @@
 libs/domain/placeholder.py
 """
 
-from dataclasses import asdict, dataclass, field, fields
+from dataclasses import dataclass, field, fields
 from math import ceil
 from typing import Any, Literal, Optional, Union
 
@@ -137,7 +137,7 @@ class PlaceholderBuilder(ParameterData):
             dict[str, Any]: プレースホルダ
 
         """
-        ret_dict: dict[str, Any] = asdict(self)
+        ret_dict: dict[str, Any] = {f.name: getattr(self, f.name) for f in fields(self)}
 
         # 規定打数更新
         if not ret_dict.get("stipulated") or game_count is not None:
