@@ -68,12 +68,12 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     params.source = g.cfg.resolve_channel_id(m.status.source)
 
     # セパレートフラグ更新
-    params.update_separate_flag(g.cfg.config_file)
+    params.update_setting(main_config=g.cfg.config_file, key_name="separate", val_type=bool)
     if m.data.channel_type in {ChannelType.DIRECT_MESSAGE, ChannelType.HOME_APP}:
         params.separate = False  # DM / HomeApp(slack) はセパレートしない
 
     # ルール識別子探索
-    params.update_default_rule(g.cfg.config_file)
+    params.update_setting(main_config=g.cfg.config_file, key_name="default_rule", val_type=str)
     if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
         for suffix in command_suffix:
             if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
@@ -94,14 +94,14 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     params.update_from_dict(pre_param.flags)
 
     # 引数の処理
-    param = parser.analysis_argument(m.argument)
-    logging.debug("argument: %s", param)
-    params.update_from_dict(param.flags)  # 上書き
+    post_param = parser.analysis_argument(m.argument)
+    logging.debug("argument: %s", post_param)
+    params.update_from_dict(post_param.flags)  # 上書き
 
     # 検索範囲取得
     departure_time = ExtDt(hours=-g.cfg.setting.time_adjust)
-    if param.search_range:
-        search_range = param.search_range
+    if post_param.search_range:
+        search_range = post_param.search_range
     elif pre_param.search_range:
         search_range = pre_param.search_range
     else:
@@ -112,7 +112,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     params.onday = departure_time.range(search_range).end
 
     # どのオプションにも該当しないキーワード
-    check_list: list[str] = param.unknown + pre_param.unknown
+    check_list: list[str] = post_param.unknown + pre_param.unknown
 
     # 追加ルール識別子
     rule_list: list[str] = []

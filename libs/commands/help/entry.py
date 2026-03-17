@@ -161,9 +161,9 @@ def help_message(m: "MessageParserProtocol") -> None:
     m.set_message(
         textwrap.dedent(f"""\
         チャンネル識別子：{g.params.source}
+        デフォルトルール：{g.params.default_rule}
         チャンネル個別設定：{channel_config.name if channel_config else "---"}
         セパレート機能：{"有効" if g.params.separate else "無効"}
-        データベースファイル：{g.cfg.setting.database_file}
         """),
         StyleOptions(title="チャンネル設定情報"),
     )
