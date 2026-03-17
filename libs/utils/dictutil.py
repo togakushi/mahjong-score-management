@@ -68,12 +68,12 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     params.source = g.cfg.resolve_channel_id(m.status.source)
 
     # セパレートフラグ更新
-    params.update_separate_flag(g.cfg.config_file)
+    params.update_setting(main_config=g.cfg.config_file, key_name="separate", val_type=bool)
     if m.data.channel_type in {ChannelType.DIRECT_MESSAGE, ChannelType.HOME_APP}:
         params.separate = False  # DM / HomeApp(slack) はセパレートしない
 
     # ルール識別子探索
-    params.update_default_rule(g.cfg.config_file)
+    params.update_setting(main_config=g.cfg.config_file, key_name="default_rule", val_type=str)
     if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
         for suffix in command_suffix:
             if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):

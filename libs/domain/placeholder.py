@@ -144,89 +144,48 @@ class PlaceholderBuilder(ParameterData):
             if k in field_list:
                 setattr(self, k, v)
 
-    def update_separate_flag(self, main_config: "Path") -> None:
+    def update_setting(self, main_config: "Path", key_name: str, val_type: type = bool) -> None:
         """
-        優先度順に separate_flag を探索して値を更新する
+        優先度順に key_name を探索して値を更新する
 
         Args:
             main_config (Path): メイン設定ファイルパス
+            key_name (str): 探索するキー名
+            val_type (type): 取り込む値の型 (bool, str)
 
         Note:
             探索優先順序
-            1: 個別設定ファイル内settingセクション
-            2: メイン設定ファイル内チャンネル個別セクション
-            3: メイン設定ファイル内サービス別セクション
-            4: メイン設定ファイル内settingセクション
+            1. 個別設定ファイル内settingセクション
+            2. メイン設定ファイル内チャンネル個別セクション
+            3. メイン設定ファイル内サービス別セクション
+            4. メイン設定ファイル内settingセクション
 
         """
-        resolve_flag: Optional[bool] = None
-
+        value: Optional[Any] = None
         # 個別設定ファイル内探索
         if self.channel_config:
-            resolve_flag = lookup.get_config_value(
+            value = lookup.get_config_value(
                 config_file=self.channel_config,
                 section="setting",
-                name="separate",
-                val_type=bool,
+                name=key_name,
+                val_type=val_type,
                 fallback=None,
             )
-            if resolve_flag is not None:
-                self.separate = resolve_flag
+            if value is not None:
+                setattr(self, key_name, value)
                 return
 
         # メイン設定ファイル内探索
         for section_name in [self.source, self.service_type, "setting"]:
-            resolve_flag = lookup.get_config_value(
+            value = lookup.get_config_value(
                 config_file=main_config,
                 section=section_name,
-                name="separate",
-                val_type=bool,
+                name=key_name,
+                val_type=val_type,
                 fallback=None,
             )
-            if resolve_flag is not None:
-                self.separate = resolve_flag
-                return
-
-    def update_default_rule(self, main_config: "Path") -> None:
-        """
-        優先度順に default_rule を探索して値を更新する
-
-        Args:
-            main_config (Path): メイン設定ファイルパス
-
-        Note:
-            探索優先順序
-            1: 個別設定ファイル内settingセクション
-            2: メイン設定ファイル内チャンネル個別セクション
-            3: メイン設定ファイル内サービス別セクション
-            4: メイン設定ファイル内settingセクション
-
-        """
-        resolve_rule: Optional[str] = None
-        # 個別設定ファイル内探索
-        if self.channel_config:
-            resolve_rule = lookup.get_config_value(
-                config_file=self.channel_config,
-                section="setting",
-                name="default_rule",
-                val_type=str,
-                fallback=None,
-            )
-            if resolve_rule is not None:
-                self.default_rule = resolve_rule
-                return
-
-        # メイン設定ファイル内探索
-        for section_name in [self.source, self.service_type, "setting"]:
-            resolve_rule = lookup.get_config_value(
-                config_file=main_config,
-                section=section_name,
-                name="default_rule",
-                val_type=str,
-                fallback=None,
-            )
-            if resolve_rule is not None:
-                self.default_rule = resolve_rule
+            if value is not None:
+                setattr(self, key_name, value)
                 return
 
     def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
