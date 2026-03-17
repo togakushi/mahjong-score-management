@@ -38,11 +38,10 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
         PlaceholderBuilder: プレースホルダ用データ
 
     """
-    parser: CommandParser = CommandParser()
-    tmp_p: PlaceholderBuilder = PlaceholderBuilder()
-
     # 初期化
     g.cfg.initialization()
+    parser: CommandParser = CommandParser()
+    params: PlaceholderBuilder = PlaceholderBuilder()
     rule_version: str | None = None
 
     # メンバー情報更新
@@ -50,7 +49,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     g.cfg.member.info = g.cfg.member.get_info
     g.cfg.team.info = g.cfg.team.get_info
 
-    tmp_p.update_from_dict(
+    params.update_from_dict(
         {
             "command": subcom.section,
             "guest_name": g.cfg.member.guest_name,
@@ -64,15 +63,17 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     )
 
     # チャンネル個別設定取り込み
-    g.cfg.read_channel_config(m.status.source, tmp_p.placeholder())
+    if channel_config := g.cfg.read_channel_config(m.status.source, params.placeholder()):
+        params.channel_config = channel_config
 
-    # if "command_suffix" in ret_dict and isinstance(ret_dict["command_suffix"], list):
-    #    for suffix in ret_dict.get("command_suffix", []):
-    #        if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
-    #            break
-    rule_version = rule_version if rule_version else tmp_p.default_rule
+    # ルール識別子探索
+    if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
+        for suffix in command_suffix:
+            if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
+                break
+    rule_version = rule_version if rule_version else params.default_rule
 
-    tmp_p.update_from_dict(
+    params.update_from_dict(
         {
             "rule_version": rule_version,
             "target_mode": g.cfg.rule.get_mode(rule_version),
@@ -84,12 +85,12 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     # always_argumentの処理
     pre_param = parser.analysis_argument(subcom.always_argument)
     logging.debug("analysis_argument: %s", pre_param)
-    tmp_p.update_from_dict(pre_param.flags)
+    params.update_from_dict(pre_param.flags)
 
     # 引数の処理
     param = parser.analysis_argument(m.argument)
     logging.debug("argument: %s", param)
-    tmp_p.update_from_dict(param.flags)  # 上書き
+    params.update_from_dict(param.flags)  # 上書き
 
     # 検索範囲取得
     departure_time = ExtDt(hours=-g.cfg.setting.time_adjust)
@@ -100,9 +101,9 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     else:
         search_range = departure_time.range(subcom.aggregation_range)
 
-    tmp_p.starttime = (departure_time.range(search_range) + {"hours": g.cfg.setting.time_adjust}).start
-    tmp_p.endtime = (departure_time.range(search_range) + {"hours": g.cfg.setting.time_adjust}).end
-    tmp_p.onday = departure_time.range(search_range).end
+    params.starttime = (departure_time.range(search_range) + {"hours": g.cfg.setting.time_adjust}).start
+    params.endtime = (departure_time.range(search_range) + {"hours": g.cfg.setting.time_adjust}).end
+    params.onday = departure_time.range(search_range).end
 
     # どのオプションにも該当しないキーワード
     check_list: list[str] = param.unknown + pre_param.unknown
@@ -115,17 +116,17 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             check_list.remove(name)
         elif name in g.cfg.rule.rule_list:  # マッピングされていないルール識別子
             check_list.remove(name)
-    if tmp_p.mixed:
+    if params.mixed:
         for rule in g.cfg.rule.rule_list:  # 全ルール追加
-            if g.cfg.rule.get_mode(rule) == tmp_p.target_mode:
+            if g.cfg.rule.get_mode(rule) == params.target_mode:
                 rule_list.append(rule)
     if not rule_list:
         rule_list.append(rule_version)
 
     # プレイヤー名
     target_player: list[str] = []
-    if tmp_p.individual:
-        if tmp_p.all_player:
+    if params.individual:
+        if params.all_player:
             check_list.extend(g.cfg.member.lists)
         for name in check_list:
             if name in g.cfg.team.lists:  # チーム名がある場合は所属メンバーに展開
@@ -133,7 +134,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             else:
                 target_player.append(formatter.name_replace(name, not_replace=True))
     else:  # チーム名
-        if tmp_p.all_player:
+        if params.all_player:
             check_list.extend(g.cfg.team.lists)
         for team in check_list:
             if team in g.cfg.member.lists:
@@ -145,40 +146,40 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     target_player = sorted(set(target_player), key=target_player.index)  # 順序を維持したまま重複排除
 
     if target_player:
-        tmp_p.player_name = target_player[0]
-        tmp_p.target_player = target_player
-        tmp_p.player_list = target_player
-        tmp_p.competition_list = target_player[1:]
+        params.player_name = target_player[0]
+        params.target_player = target_player
+        params.player_list = target_player
+        params.competition_list = target_player[1:]
 
     # 出力タイプ
-    if not tmp_p.format:
-        tmp_p.format = "default"
+    if not params.format:
+        params.format = "default"
 
     # 規定打数設定
-    if tmp_p.mixed and not tmp_p.stipulated:  # 横断集計&規定数制限なし
+    if params.mixed and not params.stipulated:  # 横断集計&規定数制限なし
         if target_player:
-            tmp_p.stipulated = 1  # 個人成績
+            params.stipulated = 1  # 個人成績
         else:
-            tmp_p.stipulated = 0
-    elif not tmp_p.stipulated:  # 通常集計&規定数制限なし
+            params.stipulated = 0
+    elif not params.stipulated:  # 通常集計&規定数制限なし
         if subcom.section == "ranking":  # ランキングはレート計算
-            tmp_p.stipulated = 0
+            params.stipulated = 0
         else:
-            tmp_p.stipulated = 1
+            params.stipulated = 1
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
-        tmp_p.update_from_dict(
+        params.update_from_dict(
             {
                 "starttime": lookup.first_record(
                     g.cfg.rule.get_version(
-                        mode=tmp_p.mode,
-                        mapping=not (tmp_p.mixed),
+                        mode=params.mode,
+                        mapping=not (params.mixed),
                     )
                 )
             }
         )
 
-    return tmp_p
+    return params
 
 
 def merge_dicts(dict1: dict[Any, Any], dict2: dict[Any, Any]) -> dict[Any, Any]:
