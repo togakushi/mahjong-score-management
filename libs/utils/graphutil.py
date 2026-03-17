@@ -62,11 +62,11 @@ def gen_xlabel(game_count: int) -> str:
         str: X軸ラベル
 
     """
-    if g.params.get("target_count"):
+    if g.params.target_count:
         xlabel = f"直近 {game_count} ゲーム"
     else:
         xlabel = f"集計日（{game_count} ゲーム）"
-        match g.params.get("collection"):
+        match g.params.collection:
             case "daily":
                 xlabel = f"集計日（{game_count} ゲーム）"
             case "monthly":
@@ -76,7 +76,7 @@ def gen_xlabel(game_count: int) -> str:
             case "all":
                 xlabel = f"ゲーム数：{game_count} ゲーム"
             case _:
-                if g.params.get("search_word"):
+                if g.params.search_word:
                     xlabel = f"ゲーム数：{game_count} ゲーム"
                 else:
                     xlabel = f"ゲーム終了日時（{game_count} ゲーム）"

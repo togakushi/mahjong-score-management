@@ -10,6 +10,7 @@ import libs.global_value as g
 from integrations import factory
 from libs.data import lookup, modify
 from libs.domain.datamodels import MessageStatus
+from libs.domain.placeholder import PlaceholderBuilder
 from libs.domain.score import GameResult
 from libs.functions import message
 from libs.types import StyleOptions
@@ -21,14 +22,8 @@ if TYPE_CHECKING:
 
 def by_keyword(m: "MessageParserProtocol") -> None:
     """メイン処理"""
-    # チャンネル個別設定切替
-    g.params.update(
-        {
-            "channel_config": g.cfg.read_channel_config(m.status.source, g.params),
-            "source": g.cfg.resolve_channel_id(m.status.source),
-            "separate": lookup.resolve_separate_flag(m),
-        }
-    )
+    g.cfg.initialization()
+    g.params = PlaceholderBuilder()
 
     logging.debug("keyword=%s, argument=%s, source=%s", m.keyword, m.argument, m.status.source)
     logging.debug(

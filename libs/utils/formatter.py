@@ -142,7 +142,7 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
     ]
     chk_pattern = sorted(set(chk_pattern), key=chk_pattern.index)  # 順序を維持したまま重複排除
 
-    if g.params.get("individual", True) or not_replace:
+    if g.params.individual or not_replace:
         for name in chk_pattern:
             if name in g.cfg.member.lists:  # メンバーリスト
                 return name
@@ -156,7 +156,7 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
     # リストに見つからない場合
     name = honor_remove(target)
-    if g.params.get("unregistered_replace", True) and not not_replace:
+    if g.params.unregistered_replace and not not_replace:
         name = g.cfg.member.guest_name
     if name != g.cfg.member.guest_name and add_mark:
         name = f"{name}({g.cfg.setting.guest_mark})"
@@ -197,7 +197,7 @@ def anonymous_mapping(name_list: list[str], initial: int = 0) -> dict[str, str]:
     """
     ret: dict[str, str] = {}
 
-    if g.params.get("individual", True):
+    if g.params.individual:
         prefix = "Player"
         id_list = {x["name"]: x["id"] for x in g.cfg.member.info}
     else:
@@ -428,7 +428,7 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
                     case _:
                         rename_dict[x] = "内容"
 
-    if not g.params.get("individual"):
+    if not g.params.individual:
         rename_dict.update(name="チーム" if short else "チーム名")
 
     return df.rename(columns=rename_dict)

@@ -50,15 +50,16 @@ def help_message(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    g.params.update(
+    g.params.update_from_dict(
         {
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
         }
     )
-    g.cfg.rule.status_update(g.params)
+    g.cfg.rule.status_update(g.params.placeholder())
 
-    rule_version = g.params.get("rule_version", g.cfg.setting.default_rule)
+    if not (rule_version := g.params.rule_version):
+        rule_version = g.cfg.setting.default_rule
 
     m.set_message(
         "使い方：<呼び出しワード> [検索範囲] [対象メンバー] [オプション]",
@@ -112,14 +113,14 @@ def help_message(m: "MessageParserProtocol") -> None:
     if words := lookup.regulation_list(1, rule_version):
         remarks_type1 += "個別カウントワード：" + "、".join(words)
     else:
-        if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 1:
+        if g.cfg.rule.get_undefined_word(g.params.default_rule) == 1:
             remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
 
     remarks_type0: str = ""
     if words := lookup.regulation_list(0, rule_version):
         remarks_type0 += "役満カウントワード：" + "、".join(words)
     else:
-        if g.cfg.rule.get_undefined_word(str(g.params.get("default_rule"))) == 0:
+        if g.cfg.rule.get_undefined_word(g.params.default_rule) == 0:
             remarks_type0 += "役満カウントワード：未登録ワードのすべてを役満としてカウント"
 
     m.set_message(
@@ -156,12 +157,12 @@ def help_message(m: "MessageParserProtocol") -> None:
         m.set_message(regulation, StyleOptions(title="レギュレーション", keep_blank=True, keep_indent=True))
 
     # その他
-    channel_config = g.params.get("channel_config")
+    channel_config = g.params.channel_config
     m.set_message(
         textwrap.dedent(f"""\
-        チャンネル識別子：{g.params.get("source")}
+        チャンネル識別子：{g.params.source}
         チャンネル個別設定：{channel_config.name if channel_config else "---"}
-        セパレート機能：{"有効" if g.params.get("separate", False) else "無効"}
+        セパレート機能：{"有効" if g.params.separate else "無効"}
         データベースファイル：{g.cfg.setting.database_file}
         """),
         StyleOptions(title="チャンネル設定情報"),

@@ -56,7 +56,7 @@ def point_plot(m: "MessageParserProtocol") -> None:
         return
 
     # 集計
-    if g.params.get("search_word"):
+    if g.params.search_word:
         pivot_index = "comment"
     else:
         pivot_index = "playtime"
@@ -106,7 +106,7 @@ def rank_plot(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    if g.params.get("search_word"):
+    if g.params.search_word:
         pivot_index = "comment"
     else:
         pivot_index = "playtime"
@@ -152,21 +152,21 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     """
     # データ収集
-    g.params.update({"fourfold": True})  # 直近Nは4倍する(縦持ちなので4人分)
+    g.params.update_from_dict({"fourfold": True})  # 直近Nは4倍する(縦持ちなので4人分)
 
     target_data = pd.DataFrame()
 
-    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params.placeholder())
     if df.empty:
         return (target_data, df)
 
-    if g.params.get("individual"):  # 個人集計
+    if g.params.individual:  # 個人集計
         target_data["name"] = df.groupby("name", as_index=False).last()["name"]
         target_data["last_point"] = df.groupby("name", as_index=False).last()["point_sum"]
         target_data["game_count"] = df.groupby("name", as_index=False).max(numeric_only=True)["count"]
 
         # 足切り
-        target_list = list(target_data.query("game_count >= @g.params['stipulated']")["name"])
+        target_list = list(target_data.query("game_count >= @g.params.stipulated")["name"])
         _ = target_list  # ignore PEP8 F841
         target_data = target_data.query("name == @target_list")
         df = df.query("name == @target_list")
@@ -179,7 +179,7 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
     # 順位付け
     target_data["position"] = target_data["last_point"].rank(ascending=False).astype(int)
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
         target_data["name"] = target_data["name"].replace(mapping_dict)
@@ -208,7 +208,7 @@ def _graph_generation(graph_params: GraphParams) -> "Path":
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
 
-    if (all(df.count() == 1) or g.params.get("collection", "") == "all") and graph_params["horizontal"]:
+    if (all(df.count() == 1) or g.params.collection == "all") and graph_params["horizontal"]:
         graph_params["graph_type"] = "point_hbar"
         color: list[str] = []
         for _, v in target_data.iterrows():
@@ -305,7 +305,7 @@ def _graph_generation_plotly(graph_params: GraphParams) -> "Path":
     target_data = graph_params["target_data"]
     df = graph_params["pivot"]
 
-    if (all(df.count() == 1) or g.params["collection"] == "all") and graph_params["horizontal"]:
+    if (all(df.count() == 1) or g.params.collection == "all") and graph_params["horizontal"]:
         graph_params["graph_type"] = "point_hbar"
         df_t = df.T
         df_t.columns = ["point"]
@@ -396,20 +396,20 @@ def _graph_title(graph_params: GraphParams) -> None:
         graph_params (GraphParams): グラフ生成パラメータ
 
     """
-    if g.params.get("target_count"):
+    if g.params.target_count:
         kind = Format.YMD_O
         graph_params.update({"xlabel_text": f"集計日（{graph_params['total_game_count']} ゲーム）"})
         match graph_params.get("graph_type"):
             case "point":
-                graph_params.update({"title_text": f"ポイント推移 (直近 {g.params['target_count']} ゲーム)"})
+                graph_params.update({"title_text": f"ポイント推移 (直近 {g.params.target_count} ゲーム)"})
             case "rank":
-                graph_params.update({"title_text": f"順位変動 (直近 {g.params['target_count']} ゲーム)"})
+                graph_params.update({"title_text": f"順位変動 (直近 {g.params.target_count} ゲーム)"})
             case "point_hbar":
-                graph_params.update({"title_text": f"通算ポイント (直近 {g.params['target_count']} ゲーム)"})
+                graph_params.update({"title_text": f"通算ポイント (直近 {g.params.target_count} ゲーム)"})
             case _:
                 raise ValueError("Unsupported")
     else:
-        match g.params.get("collection"):
+        match g.params.collection:
             case "daily":
                 kind = Format.YMD_O
                 graph_params.update({"xlabel_text": f"集計日（{graph_params['total_game_count']} ゲーム）"})
@@ -427,7 +427,7 @@ def _graph_title(graph_params: GraphParams) -> None:
                 graph_params.update({"xlabel_text": f"ゲーム数：{graph_params['total_game_count']} ゲーム"})
             case _:
                 kind = Format.YMDHM
-                if g.params.get("search_word"):
+                if g.params.search_word:
                     graph_params.update({"xlabel_text": f"ゲーム数：{graph_params['total_game_count']} ゲーム"})
                 else:
                     graph_params.update({"xlabel_text": f"ゲーム終了日時（{graph_params['total_game_count']} ゲーム）"})

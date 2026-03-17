@@ -27,7 +27,7 @@ def plot(m: "MessageParserProtocol") -> None:
     title: str = "対局対戦マトリックス"
     game_info = GameInfo()
     df = aggregate.matrix_table()
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df.index.tolist())
         df = df.rename(columns=mapping_dict, index=mapping_dict)
 
@@ -36,7 +36,7 @@ def plot(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    if str(g.params.get("format", "default")).lower() == "csv":
+    if g.params.format.lower() == "csv":
         file_path = textutil.save_file_path("matrix.csv", True)
         df.to_csv(file_path)
     else:

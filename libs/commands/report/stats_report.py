@@ -40,15 +40,15 @@ def get_game_results() -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    if "starttime" in g.params:
-        g.params.update({"starttime": cast("ExtDt", g.params["starttime"]).format(Format.SQL)})
-    if "endtime" in g.params:
-        g.params.update({"endtime": cast("ExtDt", g.params["endtime"]).format(Format.SQL)})
+    if not g.params.starttime:
+        g.params.starttime = cast("ExtDt", g.params.starttime).format(Format.SQL)
+    if not g.params.endtime:
+        g.params.endtime = cast("ExtDt", g.params.endtime).format(Format.SQL)
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_PERSONAL_DATA"), g.params),
-        g.params,
+        dbutil.query_modification(dbutil.query("REPORT_PERSONAL_DATA"), g.params.placeholder()),
+        g.params.placeholder(),
     )
 
     # --- データ収集
@@ -115,11 +115,11 @@ def get_count_results(game_count: int) -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    g.params.update({"interval": game_count})
+    g.params.interval = game_count
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_DATA"), g.params),
-        g.params,
+        dbutil.query_modification(dbutil.query("REPORT_COUNT_DATA"), g.params.placeholder()),
+        g.params.placeholder(),
     )
 
     # --- データ収集
@@ -189,10 +189,10 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
 
     """
     resultdb = dbutil.connection(g.cfg.setting.database_file)
-    g.params.update({"interval": game_count})
+    g.params.interval = game_count
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_MOVING"), g.params),
-        g.params,
+        dbutil.query_modification(dbutil.query("REPORT_COUNT_MOVING"), g.params.placeholder()),
+        g.params.placeholder(),
     )
 
     # --- データ収集
@@ -392,13 +392,13 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions())
         return
 
-    if not g.params.get("player_name"):  # レポート対象の指定なし
+    if not g.params.player_name:  # レポート対象の指定なし
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title="成績レポート"))
         m.status.result = False
         return
 
     # 対象メンバーの記録状況
-    target_info = lookup.member_info(g.params)
+    target_info = lookup.member_info(g.params.placeholder())
     logging.debug(target_info)
 
     if not target_info["game_count"]:  # 記録なし
@@ -408,7 +408,7 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
 
     # 書式設定
     font_path = os.path.join(os.path.realpath(os.path.curdir), g.cfg.setting.font_file)
-    pdf_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.pdf" if g.params.get("filename") else "results.pdf")
+    pdf_path = g.cfg.setting.work_dir / (f"{g.params.filename}.pdf" if g.params.filename else "results.pdf")
     pdfmetrics.registerFont(TTFont("ReportFont", font_path))
 
     doc = SimpleDocTemplate(
@@ -439,9 +439,9 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
     elements.extend(sectional_aggregate(style, target_info))  # 区間集計
 
     doc.build(elements)
-    logging.debug("report generation: %s", g.params["player_name"])
+    logging.debug("report generation: %s", g.params.player_name)
 
-    m.set_message(pdf_path, StyleOptions(title=f"成績レポート({g.params['player_name']})", use_comment=True, header_hidden=True))
+    m.set_message(pdf_path, StyleOptions(title=f"成績レポート({g.params.player_name})", use_comment=True, header_hidden=True))
 
 
 def cover_page(style: dict[str, Any], target_info: dict[str, Any]) -> list[Any]:
@@ -465,11 +465,11 @@ def cover_page(style: dict[str, Any], target_info: dict[str, Any]) -> list[Any]:
         float(target_info["last_game"])
     )
 
-    if g.params.get("anonymous"):
-        mapping_dict = formatter.anonymous_mapping([g.params["player_name"]])
+    if g.params.anonymous:
+        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
         target_player = next(iter(mapping_dict.values()))
     else:
-        target_player = g.params["player_name"]
+        target_player = g.params.player_name
 
     # 表紙
     elements.append(Spacer(1, 40 * mm))

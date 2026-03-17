@@ -120,7 +120,7 @@ def register_ranking_handlers(app: "App", adapter: ServiceAdapter) -> None:
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"
         g.params = dictutil.placeholder(g.cfg.ranking, m)
-        cast(dict[str, Any], g.params).update(update_flag)
+        g.params.update_from_dict(update_flag)
 
         adapter.api.appclient.views_update(
             view_id=adapter.conf.tab_var["view_id"],
@@ -132,7 +132,7 @@ def register_ranking_handlers(app: "App", adapter: ServiceAdapter) -> None:
             if "value" in search_options["bid-ranked"]["aid-ranked"]:
                 ranked = int(search_options["bid-ranked"]["aid-ranked"]["value"])
                 if ranked > 0:
-                    g.params.update({"ranked": ranked})
+                    g.params.ranked = ranked
 
         app_msg.pop()
         app_msg.append("集計完了")

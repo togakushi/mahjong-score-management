@@ -79,42 +79,42 @@ name_test_case_01: dict[str, tuple[Any, ...]] = {
     "keep order 01": (
         "名前あ 名前い 名前う",
         "名前あ",
-        {"player_0": "名前あ", "player_1": "名前い", "player_2": "名前う"},
-        {"competition_1": "名前い", "competition_2": "名前う"},
+        ["名前あ", "名前い", "名前う"],
+        ["名前い", "名前う"],
     ),
     "keep order 02": (
         "名前い 名前う 名前あ",
         "名前い",
-        {"player_0": "名前い", "player_1": "名前う", "player_2": "名前あ"},
-        {"competition_1": "名前う", "competition_2": "名前あ"},
+        ["名前い", "名前う", "名前あ"],
+        ["名前う", "名前あ"],
     ),
     "keep order 03": (
         "名前う 名前あ 名前い",
         "名前う",
-        {"player_0": "名前う", "player_1": "名前あ", "player_2": "名前い"},
-        {"competition_1": "名前あ", "competition_2": "名前い"},
+        ["名前う", "名前あ", "名前い"],
+        ["名前あ", "名前い"],
     ),
     # --- 重複パターン
     "duplication 01": (
         "名前あ 名前あ 名前い",
         "名前あ",
-        {"player_0": "名前あ", "player_1": "名前い"},
-        {"competition_1": "名前い"},
+        ["名前あ", "名前い"],
+        ["名前い"],
     ),
     "duplication 02": (
         "名前う 名前あ 名前う",
         "名前う",
-        {"player_0": "名前う", "player_1": "名前あ"},
-        {"competition_1": "名前あ"},
+        ["名前う", "名前あ"],
+        ["名前あ"],
     ),
 }
 
 # チーム名テスト
 team_saki_test_case: dict[str, tuple[Any, ...]] = {
     # input_args, player_name, player_list, competition_list
-    "case 01": ("チーム 清澄高校", "清澄高校", {"player_0": "清澄高校"}, {}),
-    "case 02": ("チーム 清澄高校 宮永咲", "清澄高校", {"player_0": "清澄高校"}, {}),
-    "case 03": ("チーム 宮永咲 清澄高校", "清澄高校", {"player_0": "清澄高校"}, {}),
+    "case 01": ("チーム 清澄高校", "清澄高校", ["清澄高校"], []),
+    "case 02": ("チーム 清澄高校 宮永咲", "清澄高校", ["清澄高校"], []),
+    "case 03": ("チーム 宮永咲 清澄高校", "清澄高校", ["清澄高校"], []),
 }
 
 # ゲストテスト
@@ -135,28 +135,28 @@ guest_test_case: dict[str, tuple[Any, ...]] = {
 command_test_case_01: dict[str, tuple[Any, ...]] = {
     # input_args, player_name, player_list, competition_list
     # --- フラグ更新コマンドが誤って認識されていないか
-    "verbose": ("詳細 verbose", "", {}, {}),
-    "versus": ("対戦 対戦結果", "", {}, {}),
-    "results": ("戦績", "", {}, {}),
-    "statistics": ("統計", "", {}, {}),
-    "most recent": ("直近", "", {}, {}),
-    "score comparisons": ("比較 点差 差分", "", {}, {}),
-    "interval": ("期間 区間 区切リ 区切 interval", "", {}, {}),
-    "rating": ("rate rating ratings レート レーティング", "", {}, {}),
-    "collecting": ("daily monthly yearly デイリー マンスリー イヤーリー 日次 月次 年次 全体", "", {}, {}),
-    "format type": ("csv text txt", "", {}, {}),
-    "filename": ("filename:ほげ ファイル名ふが", "", {}, {}),
-    "comment": ("コメントふー commentばー 集約", "", {}, {}),
-    "ranked": ("トップ 上位 top", "", {}, {}),
-    "stipulated": ("規定数 規定打数", "", {}, {}),
-    "rule": ("ルール rule", "", {}, {}),
-    "order": ("順位", "", {}, {}),
-    "individual": ("個人 個人成績", "", {}, {}),
-    "team": ("チーム チーム成績 team", "", {}, {}),
-    "friendly fire": ("チーム同卓あり コンビあり 同士討ち チーム同卓なし コンビなし", "", {}, {}),
-    "guest": ("ゲストあり ゲストなし ゲスト無効", "", {}, {}),
-    "anonymous": ("匿名 anonymous", "", {}, {}),
-    "mixed": ("横断 mix mixed", "", {}, {}),
+    "verbose": ("詳細 verbose", "", [], []),
+    "versus": ("対戦 対戦結果", "", [], []),
+    "results": ("戦績", "", [], []),
+    "statistics": ("統計", "", [], []),
+    "most recent": ("直近", "", [], []),
+    "score comparisons": ("比較 点差 差分", "", [], []),
+    "interval": ("期間 区間 区切リ 区切 interval", "", [], []),
+    "rating": ("rate rating ratings レート レーティング", "", [], []),
+    "collecting": ("daily monthly yearly デイリー マンスリー イヤーリー 日次 月次 年次 全体", "", [], []),
+    "format type": ("csv text txt", "", [], []),
+    "filename": ("filename:ほげ ファイル名ふが", "", [], []),
+    "comment": ("コメントふー commentばー 集約", "", [], []),
+    "ranked": ("トップ 上位 top", "", [], []),
+    "stipulated": ("規定数 規定打数", "", [], []),
+    "rule": ("ルール rule", "", [], []),
+    "order": ("順位", "", [], []),
+    "individual": ("個人 個人成績", "", [], []),
+    "team": ("チーム チーム成績 team", "", [], []),
+    "friendly fire": ("チーム同卓あり コンビあり 同士討ち チーム同卓なし コンビなし", "", [], []),
+    "guest": ("ゲストあり ゲストなし ゲスト無効", "", [], []),
+    "anonymous": ("匿名 anonymous", "", [], []),
+    "mixed": ("横断 mix mixed", "", [], []),
 }
 
 # 検索日付範囲

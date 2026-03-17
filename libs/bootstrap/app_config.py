@@ -7,7 +7,7 @@ import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal, Optional, Union
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, SettingSection
 from libs.commands.graph.entry import GraphConfig
@@ -24,7 +24,6 @@ from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands
-    from libs.types import PlaceholderDict
 
 
 class DropItems(BaseSection):
@@ -176,17 +175,40 @@ class AppConfig:
 
     def initialization(self) -> None:
         """設定ファイル読み込み"""
-        self.mahjong.config_load(self)
-        self.setting.config_load(self)
-        self.alias.config_load(self)
-        self.member.config_load(self)
-        self.team.config_load(self)
+        self.mahjong.config_load(self.main_parser["mahjong"])
+        self.setting.config_load(self.main_parser["setting"])
+        self.alias.config_load(self.main_parser["alias"])
+        self.member.config_load(self.main_parser["member"])
+        self.team.config_load(self.main_parser["team"])
 
-        self.results.config_load(self)
-        self.graph.config_load(self)
-        self.ranking.config_load(self)
-        self.report.config_load(self)
-        self.help.config_load(self)
+        self.results.config_load(self.main_parser["results"])
+        self.graph.config_load(self.main_parser["graph"])
+        self.ranking.config_load(self.main_parser["ranking"])
+        self.report.config_load(self.main_parser["report"])
+        self.help.config_load(self.main_parser["help"])
+
+        # フォントファイルチェック
+        for chk_dir in (self.config_dir, self.script_dir):
+            chk_file = chk_dir / str(self.setting.font_file)
+            if chk_file.exists():
+                self.setting.font_file = chk_file
+                break
+        else:
+            if not self.setting.font_file.exists():
+                logging.critical("The specified font file cannot be found.")
+                sys.exit(255)
+
+        # 作業ディレクトリパス
+        if not self.setting.work_dir.is_absolute():
+            self.setting.work_dir = self.script_dir / self.setting.work_dir
+
+        # データベース関連
+        if isinstance(self.setting.database_file, Path) and not self.setting.database_file.exists():
+            self.setting.database_file = self.config_dir / str(self.setting.database_file)
+
+        # デフォルトルール識別子
+        if not self.setting.default_rule:
+            self.setting.default_rule = self.mahjong.rule_version
 
     def word_list(self, add_words: list[str] | None = None) -> list[str]:
         """
@@ -239,8 +261,8 @@ class AppConfig:
             return
 
         try:
-            self.additional_config_parser = ConfigParser()
-            self.additional_config_parser.read([self.config_file, additional_config], encoding="utf-8")
+            additional_config_parser = ConfigParser()
+            additional_config_parser.read([self.config_file, additional_config], encoding="utf-8")
         except Exception as err:
             logging.error(err)
             return
@@ -249,34 +271,34 @@ class AppConfig:
         match section_name:
             case "setting":
                 protected_values = self.setting.remarks_word  # 上書き保護
-                self.setting.config_load(self)
+                self.setting.config_load(additional_config_parser[section_name])
                 self.setting.remarks_word = protected_values
             case "results":
                 protected_values = self.results.commandword  # 上書き保護
-                self.results.config_load(self)
+                self.results.config_load(additional_config_parser[section_name])
                 self.results.commandword = protected_values
             case "graph":
                 protected_values = self.graph.commandword  # 上書き保護
-                self.graph.config_load(self)
+                self.graph.config_load(additional_config_parser[section_name])
                 self.graph.commandword = protected_values
             case "ranking":
                 protected_values = self.ranking.commandword  # 上書き保護
-                self.ranking.config_load(self)
+                self.ranking.config_load(additional_config_parser[section_name])
                 self.ranking.commandword = protected_values
             case "report":
                 protected_values = self.report.commandword  # 上書き保護
-                self.report.config_load(self)
+                self.report.config_load(additional_config_parser[section_name])
                 self.report.commandword = protected_values
             case _:
                 return
 
-    def read_channel_config(self, section_name: str, ret_dict: "PlaceholderDict") -> Optional[Path]:
+    def read_channel_config(self, section_name: str, ret_dict: dict[str, Any]) -> Optional[Path]:
         """
         チャンネル個別設定読み込み
 
         Args:
             section_name (str): チャンネル個別設定セクション名
-            ret_dict (PlaceholderDict): パラメータ
+            ret_dict (dict[str, Any]): パラメータ
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
@@ -285,7 +307,6 @@ class AppConfig:
 
         """
         config_path: Optional[Path] = None
-        self.initialization()
 
         if self.main_parser.has_section(section_name):
             if default_rule := self.main_parser[section_name].get("default_rule"):
@@ -294,6 +315,7 @@ class AppConfig:
                 config_path = Path(channel_config)
                 if config_path.exists():
                     logging.debug("Override: %s", config_path.absolute())
+                    self.initialization()
                     self.overwrite(config_path, "setting")
                     self.overwrite(config_path, "results")
                     self.overwrite(config_path, "graph")

@@ -108,15 +108,15 @@ class GameInfo:
     def get(self) -> None:
         """指定条件を満たすゲーム数のカウント、最初と最後の時刻とコメントを取得"""
         # グローバルパラメータチェック
-        if "rule_version" not in g.params:
-            g.params.update({"rule_version": g.cfg.setting.default_rule})
-        if "starttime" not in g.params:
-            g.params.update({"starttime": ExtDt().range("全部").start})
-        if "endtime" not in g.params:
-            g.params.update({"endtime": ExtDt().range("全部").end})
+        if not g.params.rule_version:
+            g.params.rule_version = g.cfg.setting.default_rule
+        if not g.params.starttime:
+            g.params.starttime = ExtDt().range("全部").start
+        if not g.params.endtime:
+            g.params.endtime = ExtDt().range("全部").end
 
         # データ収集
-        df = loader.read_data("GAME_INFO", g.params)
+        df = loader.read_data("GAME_INFO", g.params.placeholder())
         if df.empty:
             self.count = 0
             self.first_game = ExtDt()
@@ -131,16 +131,16 @@ class GameInfo:
             self.last_comment = str(df["last_comment"].iloc[0])
 
         # 規定打数更新
-        if not g.params.get("stipulated", 0):  # 規定打数0はレートから計算
-            match g.params.get("command", ""):
+        if not g.params.stipulated:  # 規定打数0はレートから計算
+            match g.params.command:
                 case "results":
-                    g.params["stipulated"] = g.cfg.results.stipulated_calculation(self.count)
+                    g.params.stipulated = g.cfg.results.stipulated_calculation(self.count)
                 case "graph":
-                    g.params["stipulated"] = g.cfg.graph.stipulated_calculation(self.count)
+                    g.params.stipulated = g.cfg.graph.stipulated_calculation(self.count)
                 case "ranking":
-                    g.params["stipulated"] = g.cfg.ranking.stipulated_calculation(self.count)
+                    g.params.stipulated = g.cfg.ranking.stipulated_calculation(self.count)
                 case "report":
-                    g.params["stipulated"] = g.cfg.report.stipulated_calculation(self.count)
+                    g.params.stipulated = g.cfg.report.stipulated_calculation(self.count)
                 case _:
                     pass
 
@@ -157,9 +157,9 @@ class GameInfo:
     def conditions(self) -> dict[str, str | ExtDt | None]:
         """検索条件を返す"""
         return {
-            "rule_version": g.params.get("rule_version"),
-            "starttime": g.params.get("starttime"),
-            "endtime": g.params.get("endtime"),
+            "rule_version": g.params.rule_version,
+            "starttime": g.params.starttime,
+            "endtime": g.params.endtime,
         }
 
 

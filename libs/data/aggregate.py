@@ -28,10 +28,10 @@ def game_summary(
 
     """
     # データ収集
-    df = loader.read_data("SUMMARY_TOTAL", g.params)
+    df = loader.read_data("SUMMARY_TOTAL", g.params.placeholder())
 
     # 順位分布選択
-    match g.params.get("mode", 4):
+    match g.params.mode:
         case 3:
             df = df.drop(columns=["rank_distr4"])
         case 4:
@@ -92,7 +92,7 @@ def calculation_rating() -> pd.DataFrame:
             df_ratings.loc[x.Index, player] = new_rating
 
     # 間引き(集約オプション)
-    if collection := g.params.get("collection"):
+    if collection := g.params.collection:
         ratings = df_ratings[1:]
         ratings.index = pd.to_datetime(ratings.index)  # DatetimeIndexに変換
 
@@ -160,14 +160,14 @@ def matrix_table() -> pd.DataFrame:
     # 順位テーブルの作成
     l_data: dict[str, Any] = {}
     for pname in plist:
-        if g.params.get("individual"):  # 個人集計
+        if g.params.individual:  # 個人集計
             l_name = formatter.name_replace(pname)
             # プレイヤー指定があるなら対象以外をスキップ
-            if g.params["player_list"]:
-                if l_name not in g.params["player_list"].values():
+            if g.params.player_list:
+                if l_name not in g.params.player_list:
                     continue
             # ゲスト置換
-            if g.params.get("guest_skip"):  # ゲストあり
+            if g.params.guest_skip:  # ゲストあり
                 l_name = formatter.name_replace(pname, add_mark=True)
             else:  # ゲストなし
                 if pname == g.cfg.member.guest_name:
@@ -190,9 +190,9 @@ def matrix_table() -> pd.DataFrame:
                     l_data[l_name] += [None]
 
     # 規定打数以下を足切り
-    if g.params["stipulated"]:
+    if g.params.stipulated:
         for pname in list(l_data.keys()):
-            if sum(x is not None for x in l_data[pname]) < g.params["stipulated"]:
+            if sum(x is not None for x in l_data[pname]) < g.params.stipulated:
                 l_data.pop(pname)
 
     rank_df = pd.DataFrame(l_data.values(), columns=list(df.index), index=list(l_data.keys()))

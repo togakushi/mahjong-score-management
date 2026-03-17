@@ -32,7 +32,7 @@ def main(m: "MessageParserProtocol") -> None:
 
     """
     # 検索動作を合わせる
-    g.params.update({"guest_skip": g.params["guest_skip2"]})
+    g.params.guest_skip = g.params.guest_skip2
 
     # --- データ取得
     game_info = GameInfo()
@@ -43,29 +43,29 @@ def main(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    if g.params.get("anonymous"):
+    if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     # 見出し設定
-    if g.params.get("individual"):
+    if g.params.individual:
         title = "個人成績一覧"
         df = df.rename(columns={"name": "player"})
     else:  # チーム集計
         title = "チーム成績一覧"
         df = df.rename(columns={"name": "team"})
 
-    if g.params.get("mode") == 3:
+    if g.params.mode == 3:
         df.drop(columns=["4th_count", "rank4_rate", "4th_mix"], inplace=True)
 
     # 非表示項目
-    if g.params.get("ignore_flying") or g.cfg.dropitems.report & g.cfg.dropitems.flying:
+    if g.params.ignore_flying or g.cfg.dropitems.report & g.cfg.dropitems.flying:
         df = df.drop(columns=["flying_mix", "flying_count", "flying_rate"])
     if g.cfg.dropitems.report & g.cfg.dropitems.yakuman:
         df = df.drop(columns=["yakuman_mix", "yakuman_count", "yakuman_rate"])
 
     file_path: "MessageType"
-    match str(g.params.get("format", "default")).lower():
+    match g.params.format.lower():
         case "text" | "txt":
             file_path = text_generation(df)
         case "csv":
@@ -198,7 +198,7 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
         MessageType: 生成ファイルパス
 
     """
-    report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.txt" if g.params.get("filename") else "report.txt")
+    report_file_path = g.cfg.setting.work_dir / (f"{g.params.filename}.txt" if g.params.filename else "report.txt")
 
     df = df.filter(
         items=[
@@ -240,7 +240,7 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
         MessageType: 生成ファイルパス
 
     """
-    report_file_path = g.cfg.setting.work_dir / (f"{g.params['filename']}.csv" if g.params.get("filename") else "report.csv")
+    report_file_path = g.cfg.setting.work_dir / (f"{g.params.filename}.csv" if g.params.filename else "report.csv")
 
     df = df.filter(
         items=[

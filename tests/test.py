@@ -44,7 +44,7 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
 
     def graph_point(m: "MessageParserProtocol") -> None:
         """ポイント推移グラフ"""
-        if len(g.params["player_list"]) == 1:
+        if len(g.params.player_list) == 1:
             graph_personal.plot(m)
             pprint(
                 [
@@ -151,23 +151,23 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             case "graph":
                 m.data.text = f"{g.cfg.graph.commandword[0]} {' '.join(add_argument)}"
                 g.params = dictutil.placeholder(g.cfg.graph, m)
-                if g.params.get("filename"):
-                    save_filename = g.params["filename"]
-                    g.params.update({"filename": f"{save_filename}_point"})
+                if g.params.filename:
+                    save_filename = g.params.filename
+                    g.params.filename = f"{save_filename}_point"
                     graph_point(m)
 
-                    g.params.update({"filename": f"{save_filename}_rank"})
+                    g.params.filename = f"{save_filename}_rank"
                     graph_rank(m)
-                    if g.params.get("statistics"):
-                        g.params.update({"filename": f"{save_filename}"})
+                    if g.params.statistics:
+                        g.params.filename = f"{save_filename}"
                         graph_statistics(m)
                 else:
-                    g.params.update({"filename": f"point_{sec}_{pattern}"})
+                    g.params.filename = f"point_{sec}_{pattern}"
                     graph_point(m)
-                    g.params.update({"filename": f"rank_{sec}_{pattern}"})
+                    g.params.filename = f"rank_{sec}_{pattern}"
                     graph_rank(m)
-                    if g.params.get("statistics"):
-                        g.params.update({"filename": f"statistics_{sec}_{pattern}"})
+                    if g.params.statistics:
+                        g.params.filename = f"statistics_{sec}_{pattern}"
                         graph_statistics(m)
 
             case "graph_point":

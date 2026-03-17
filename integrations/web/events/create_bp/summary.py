@@ -51,7 +51,7 @@ def summary_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
-                if options.title == "戦績" and g.params.get("verbose"):
+                if options.title == "戦績" and g.params.verbose:
                     padding = "0.25em 0.75em"
                     data = _conv_verbose(data)
 
@@ -80,7 +80,7 @@ def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
 
     """
     if not isinstance(df.columns, pd.MultiIndex):
-        if not g.params.get("individual", True):  # チーム戦
+        if not g.params.individual:  # チーム戦
             df.rename(
                 columns={
                     "東家 名前": "東家 チーム",

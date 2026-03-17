@@ -93,7 +93,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
                         data.update(table=score_table())
                         return render_template("score_list.html", **data)
                     case "update":
-                        g.params.update({"unregistered_replace": False})
+                        g.params.unregistered_replace = False
                         data.update(request.form.to_dict(), players=players)
                         if p1_name := request.form.get("p1_other"):
                             data.update(p1_name=formatter.name_replace(p1_name))

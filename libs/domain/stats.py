@@ -4,15 +4,12 @@ libs/domain/stats.py
 
 import textwrap
 from dataclasses import dataclass, field, fields
-from typing import TYPE_CHECKING, Any, Literal, Optional, Union, get_type_hints
+from typing import Any, Literal, Optional, Union, get_type_hints
 
 import pandas as pd
 
 from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-
-if TYPE_CHECKING:
-    from libs.types import PlaceholderDict
 
 
 @dataclass
@@ -345,12 +342,12 @@ class StatsInfo:
     result_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
-    def read(self, params: "PlaceholderDict") -> None:
+    def read(self, params: dict[str, Any]) -> None:
         """
         データ読み込み
 
         Args:
-            params (PlaceholderDict): プレースホルダ
+            params (dict[str, Any]): プレースホルダ
 
         """
         self.result_df = loader.read_data("RESULTS_INFO", params)
@@ -392,6 +389,8 @@ class StatsInfo:
             else:
                 raise ValueError(f"Unsupported mode: {kwargs['mode']}")
 
+        if "rule_list" in kwargs and isinstance(kwargs["rule_list"], list):
+            self.rule_version = kwargs["rule_list"]
         if "rule_set" in kwargs and isinstance(kwargs["rule_set"], dict):
             self.rule_version = list(kwargs["rule_set"].values())
         if "player_name" in kwargs and isinstance(kwargs["player_name"], str):

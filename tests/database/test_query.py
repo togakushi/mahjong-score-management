@@ -2,15 +2,13 @@
 tests/database/test_query.py
 """
 
-from dataclasses import asdict
 from pprint import pprint
-from typing import Any, cast
+from typing import Any
 
 import pytest
 
 from libs.data import loader
-from libs.domain.datamodels import CommandAttrs
-from libs.types import PlaceholderDict
+from libs.domain.placeholder import PlaceholderBuilder
 
 sql_tables: list[str] = [
     # 情報取得
@@ -63,8 +61,8 @@ params_tables = {
     "interval": {"interval": 100},
     "target_count": {"target_count": 100},
     "mixed": {"mixed": True},
-    # "mixed(False)_with_rule_set": {"mixed": False, "rule_set": ["dummy_rule1", "dummy_rule2"]},
-    # "mixed(True)_with_rule_set": {"mixed": True, "rule_set": ["dummy_rule1", "dummy_rule2"]},
+    "mixed(False)_with_rule_set": {"mixed": False, "rule_list": ["dummy_rule1", "dummy_rule2"]},
+    "mixed(True)_with_rule_set": {"mixed": True, "rule_list": ["dummy_rule1", "dummy_rule2"]},
     # "": {"": ""},
 }
 
@@ -76,17 +74,17 @@ param_list = [pytest.param(name, flags, id=name) for name, flags in params_table
 @pytest.mark.parametrize("query_name", query_list)
 def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -> None:
     """クエリ構文チェック"""
-    params: dict[str, Any] = {
-        **asdict(CommandAttrs()),
-        "player_name": "dummy_player",
-        "guest_name": "dummy_guest",
-        "source": "dummy_source",
-        "starttime": "1999-01-01 00:00:00",
-        "endtime": "1999-01-01 00:00:00",
-    }
-    params.update(**flags)
+    p = PlaceholderBuilder()
+    p.update_from_dict(
+        {
+            "player_name": "dummy_player",
+            "guest_name": "dummy_guest",
+            "source": "dummy_source",
+            "starttime": "1999-01-01 00:00:00",
+            "endtime": "1999-01-01 00:00:00",
+        }
+    )
+    p.update_from_dict(flags)
 
-    placeholder: PlaceholderDict = cast(PlaceholderDict, {**params})
-    pprint([query_name, param_name, params])
-
-    _ = loader.read_data(query_name, placeholder)
+    pprint([query_name, param_name, p])
+    _ = loader.read_data(query_name, p.placeholder())

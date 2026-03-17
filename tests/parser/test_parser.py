@@ -91,7 +91,7 @@ def test_command_unknown_str(input_args: str, expected_flags: list[str], monkeyp
     configuration.setup()
 
     parser = CommandParser()
-    g.params["unregistered_replace"] = False
+    g.params.unregistered_replace = False
     result = parser.analysis_argument(input_args.split())
 
     print(f"\n  --> in: {input_args.split()} out: {result}")
@@ -125,8 +125,8 @@ def test_search_range(keyword: str, search_range: list[ExtDt], parser_instance: 
     """検索範囲"""
     m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"dummy_command {keyword}"})
-
-    ret_range = [v for k, v in dictutil.placeholder(g.cfg.results, m).items() if k in ["starttime", "endtime"]]
+    params = dictutil.placeholder(g.cfg.results, m)
+    ret_range = [params.starttime, params.endtime]
 
     print(f"\n  --> in: {keyword.split()} out: {ret_range}")
     assert ret_range == search_range

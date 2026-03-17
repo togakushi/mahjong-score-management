@@ -34,13 +34,13 @@ def main(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.REPORT
     g.params = dictutil.placeholder(g.cfg.report, m)
 
-    if len(g.params["player_list"]) == 1:  # 成績レポート
+    if len(g.params.player_list) == 1:  # 成績レポート
         stats_report.gen_pdf(m)
-    elif g.params.get("order"):
+    elif g.params.order:
         winner.plot(m)
-    elif g.params.get("statistics"):
+    elif g.params.statistics:
         monthly.plot(m)
-    elif g.params.get("versus_matrix") or len(g.params["player_list"]) >= 2:  # 対局対戦マトリックス
+    elif g.params.versus_matrix or len(g.params.player_list) >= 2:  # 対局対戦マトリックス
         matrix.plot(m)
     else:
         stats_list.main(m)

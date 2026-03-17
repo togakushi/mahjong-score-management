@@ -3,7 +3,6 @@ libs/bootstrap/section.py
 """
 
 import logging
-import sys
 from pathlib import Path, PosixPath
 from types import NoneType
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union, get_args, get_origin
@@ -17,7 +16,7 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import AppConfig, BadgeDisplay, DropItems
+    from libs.bootstrap.app_config import BadgeDisplay, DropItems
     from libs.commands.registry.member import MemberSection
     from libs.commands.registry.team import TeamSection
 
@@ -101,15 +100,21 @@ class BaseSection(CommonMethodMixin):
         assert self.main_parser
         if not hasattr(self, "section") or self.section not in self.main_parser:
             return
-        self.section_proxy = self.main_parser[self.section]
 
-        self.initialization()
+        self.initialization(self.main_parser[self.section])
 
     def __repr__(self) -> str:
         return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
 
-    def initialization(self) -> None:
-        """設定ファイルから値の取り込み"""
+    def initialization(self, section_proxy: "SectionProxy") -> None:
+        """
+        設定ファイルから値の取り込み
+
+        Args:
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
+
+        """
+        self.section_proxy = section_proxy
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
@@ -194,16 +199,15 @@ class MahjongSection(BaseSection):
         self.undefined_word = 0
         """未定義ワードタイプ"""
 
-    def config_load(self, outer: "AppConfig") -> None:
+    def config_load(self, section_proxy: "SectionProxy") -> None:
         """
         設定値取り込み
 
         Args:
-            outer (AppConfig): 設定クラスオブジェクト
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
 
         """
-        self.main_parser = outer.main_parser
-        super().__init__(self)
+        self.initialization(section_proxy)
 
         # デフォルト値
         match self.mode:
@@ -264,6 +268,7 @@ class SettingSection(BaseSection):
     graph_style: str
     """グラフスタイル"""
     work_dir: Path
+    """作業ディレクトリ"""
 
     def __init__(self) -> None:
         self.section: str = "setting"
@@ -287,44 +292,20 @@ class SettingSection(BaseSection):
         self.graph_style = str("ggplot")
         self.work_dir = Path("work")
 
-    def config_load(self, outer: "AppConfig") -> None:
+    def config_load(self, section_proxy: "SectionProxy") -> None:
         """
         設定値取り込み
 
         Args:
-            outer (AppConfig): 設定クラスオブジェクト
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
 
         """
-        self.main_parser = outer.main_parser
         self._reset()
-        super().__init__(self)
+        self.initialization(section_proxy)
 
         # 成績登録キーワード
         if not (isinstance(self.keyword, Path) and self.keyword.exists()):
             self.keyword = str(self.keyword)
-
-        # デフォルトルール識別子
-        if not self.default_rule:
-            self.default_rule = outer.mahjong.rule_version
-
-        # フォントファイルチェック
-        for chk_dir in (outer.config_dir, outer.script_dir):
-            chk_file = chk_dir / str(self.font_file)
-            if chk_file.exists():
-                self.font_file = chk_file
-                break
-        else:
-            if not self.font_file.exists():
-                logging.critical("The specified font file cannot be found.")
-                sys.exit(255)
-
-        # 作業ディレクトリパス
-        if not self.work_dir.is_absolute():
-            self.work_dir = outer.script_dir / self.work_dir
-
-        # データベース関連
-        if isinstance(self.database_file, Path) and not self.database_file.exists():
-            self.database_file = outer.config_dir / str(self.database_file)
 
         logging.debug("%s: %s", self.section, self)
 
@@ -373,17 +354,16 @@ class AliasSection(BaseSection):
         self.team_list = ["team_list"]
         self.team_clear = ["team_clear"]
 
-    def config_load(self, outer: "AppConfig") -> None:
+    def config_load(self, section_proxy: "SectionProxy") -> None:
         """
         設定値取り込み
 
         Args:
-            outer (AppConfig): 設定クラスオブジェクト
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
 
         """
-        self.main_parser = outer.main_parser
         self._reset()
-        super().__init__(self)
+        self.initialization(section_proxy)
 
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
         self.delete.extend(self.getlist("del", fallback="del"))
@@ -397,18 +377,16 @@ class SubCommands(BaseSection, CommandAttrs):
     default_commandword: str
     """コマンドワードデフォルト値"""
 
-    def config_load(self, outer: "AppConfig") -> None:
+    def config_load(self, section_proxy: "SectionProxy") -> None:
         """
         設定値取り込み
 
         Args:
-            outer (AppConfig): 設定クラスオブジェクト
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
 
         """
-        self.main_parser = outer.main_parser
-        self.section_proxy = outer.main_parser[self.section]
         self.default_reset()
-        super().__init__(self)
+        self.initialization(section_proxy)
 
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", self.default_commandword)

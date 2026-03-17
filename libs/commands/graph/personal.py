@@ -38,17 +38,17 @@ def plot(m: "MessageParserProtocol") -> None:
     """
     # データ収集
     game_info = GameInfo()
-    g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_GAMEDATA", g.params)
+    g.params.guest_skip = g.params.guest_skip2
+    df = loader.read_data("SUMMARY_GAMEDATA", g.params.placeholder())
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
-    player = formatter.name_replace(g.params["player_name"], add_mark=True)
-    if g.params.get("anonymous"):
-        mapping_dict = formatter.anonymous_mapping([g.params["player_name"]])
+    player = formatter.name_replace(g.params.player_name, add_mark=True)
+    if g.params.anonymous:
+        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
     # 最終値（凡例/ラベル追加用）
@@ -58,10 +58,10 @@ def plot(m: "MessageParserProtocol") -> None:
     total_game_count = int(df["count"].iloc[-1])
 
     title_text = f"『{player}』の成績"
-    if g.params.get("target_count", 0):
+    if g.params.target_count:
         title_range = f"(直近 {len(df)} ゲーム)"
     else:
-        title_range = f"({ExtDt(g.params['starttime']).format(Format.YMDHM)} - {ExtDt(g.params['endtime']).format(Format.YMDHM)})"
+        title_range = f"({ExtDt(g.params.starttime).format(Format.YMDHM)} - {ExtDt(g.params.endtime).format(Format.YMDHM)})"
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
     m.set_message(
@@ -109,8 +109,8 @@ def plot(m: "MessageParserProtocol") -> None:
 
             rank_ax.set_xlabel(graphutil.gen_xlabel(len(df)))
             rank_ax.set_xticks(**graphutil.xticks_parameter(df["playtime"].to_list()))
-            rank_ax.set_yticks(list(range(1, g.params.get("mode", 4) + 1)))
-            rank_ax.set_ylim(ymin=0.85, ymax=g.params.get("mode", 4) + 0.15)
+            rank_ax.set_yticks(list(range(1, g.params.mode + 1)))
+            rank_ax.set_ylim(ymin=0.85, ymax=g.params.mode + 0.15)
             rank_ax.invert_yaxis()
 
             rank_ax.legend(
@@ -120,7 +120,7 @@ def plot(m: "MessageParserProtocol") -> None:
                 borderaxespad=0.5,
             )
 
-            rank_ax.axhline(y=(1 + g.params.get("mode", 4)) / 2, linewidth=0.5, ls="dashed", color="grey")
+            rank_ax.axhline(y=(1 + g.params.mode) / 2, linewidth=0.5, ls="dashed", color="grey")
 
             plt.savefig(save_file, bbox_inches="tight")
             m.set_message(save_file, StyleOptions(title=f"『{player}』の成績", use_comment=True, header_hidden=True, key_title=False))
@@ -136,18 +136,18 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     """
     # データ収集
     game_info = GameInfo()
-    g.params.update({"guest_skip": g.params["guest_skip2"]})
-    df = loader.read_data("SUMMARY_DETAILS", g.params)
+    g.params.guest_skip = g.params.guest_skip2
+    df = loader.read_data("SUMMARY_DETAILS", g.params.placeholder())
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
-    if g.params.get("individual"):  # 個人成績
-        player = formatter.name_replace(g.params["player_name"], add_mark=True)
+    if g.params.individual:  # 個人成績
+        player = formatter.name_replace(g.params.player_name, add_mark=True)
     else:  # チーム成績
-        player = g.params["player_name"]
+        player = g.params.player_name
 
     df = df.filter(items=["playtime", "name", "rpoint", "rank", "point"])
     df["rpoint"] = df["rpoint"] * 100
@@ -161,16 +161,16 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
     player_df["sum_point"] = player_df["point"].cumsum()
 
-    if g.params.get("anonymous"):
-        mapping_dict = formatter.anonymous_mapping([g.params["player_name"]])
+    if g.params.anonymous:
+        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
     title_text = f"『{player}』の成績 (検索範囲：{text_item.date_range(Format.YMD_O)})"
 
-    rpoint_df = get_data(player_df["rpoint"], g.params["interval"])
-    point_sum_df = get_data(player_df["point"], g.params["interval"])
-    point_df = get_data(player_df["sum_point"], g.params["interval"]).iloc[-1]
-    rank_df = get_data(player_df["rank"], g.params["interval"])
+    rpoint_df = get_data(player_df["rpoint"], g.params.interval)
+    point_sum_df = get_data(player_df["point"], g.params.interval)
+    point_df = get_data(player_df["sum_point"], g.params.interval).iloc[-1]
+    rank_df = get_data(player_df["rank"], g.params.interval)
     total_index = "全区間"
 
     rpoint_stats = {
@@ -424,17 +424,17 @@ def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:
         ax=ax_rank_avg,
         kind="line",
         ylabel="平均順位",
-        yticks=list(range(1, g.params.get("mode", 4) + 1)),
-        ylim=[0.85, g.params.get("mode", 4) + 0.15],
+        yticks=list(range(1, g.params.mode + 1)),
+        ylim=[0.85, g.params.mode + 0.15],
         marker="o",
         color="b",
         legend=False,
         grid=False,
     )
     ax_rank_avg.invert_yaxis()
-    ax_rank_avg.axhline(y=(1 + g.params.get("mode", 4)) / 2, linewidth=0.5, ls="dashed", color="grey")
+    ax_rank_avg.axhline(y=(1 + g.params.mode) / 2, linewidth=0.5, ls="dashed", color="grey")
 
-    filter_items = ["1位(%)", "2位(%)", "3位(%)", "4位(%)"][: g.params.get("mode", 4)]
+    filter_items = ["1位(%)", "2位(%)", "3位(%)", "4位(%)"][: g.params.mode]
     df.filter(items=filter_items).drop(index=total_index).plot(
         ax=ax,
         kind="bar",
@@ -582,13 +582,13 @@ def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "P
             "text": "順位",
             "font": {"size": 18, "color": "white"},
         },
-        range=[g.params.get("mode", 4) + 0.2, 0.8],
-        tickvals=list(range(1, g.params.get("mode", 4) + 1))[::-1],
+        range=[g.params.mode + 0.2, 0.8],
+        tickvals=list(range(1, g.params.mode + 1))[::-1],
         zeroline=False,
     )
 
     fig.add_hline(
-        y=(1 + g.params.get("mode", 4)) / 2,
+        y=(1 + g.params.mode) / 2,
         line_dash="dot",
         line_color="white",
         line_width=2,

@@ -1,0 +1,266 @@
+"""
+libs/domain/placeholder.py
+"""
+
+from dataclasses import dataclass, field, fields
+from math import ceil
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
+
+from libs.data import lookup
+from libs.domain.datamodels import ParameterData
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+
+@dataclass
+class PlaceholderBuilder(ParameterData):
+    """プレースホルダ構築クラス"""
+
+    service_type: str = field(default="")
+    """連携先サービス"""
+    command: str = field(default="")
+    """コマンド名"""
+    channel_config: Optional["Path"] = field(default=None)
+    """チャンネル個別設定状況
+    - *Path*: 追加設定ファイルパス
+    - *None*: 個別設定を利用していない
+    """
+
+    # ルール情報
+    target_mode: int = field(default=0)
+    """集計対象モードの指定
+    - *0*: settingのデフォルトに従う
+    - *not 0*: 指定値でmodeを上書き
+    """
+    mode: int = field(default=4)
+    """集計モード"""
+    default_rule: str = field(default="")
+    """ルール識別子(設定値)"""
+    rule_version: str = field(default="")
+    """ルール識別子(指定値)"""
+    rule_list: list[str] = field(default_factory=list)
+    """集計対象ルール識別子"""
+    mixed: bool = field(default=False)
+    """ルール識別子の扱い
+    - *True*: 定義済みすべてのルール識別子を含める
+    - *False*: ルール識別子を個別指定
+    """
+    # ルールセット登録用
+    origin_point: int = field(default=250)
+    """配給原点"""
+    return_point: int = field(default=300)
+    """返し点"""
+    rank_point: str = field(default="")
+    """順位点(空白区切りの文字列)"""
+    ignore_flying: bool = field(default=False)
+    """トビカウントの無効化"""
+    draw_split: bool = field(default=False)
+    """同点時の順位点の取り扱い
+    - *True*: 山分け
+    - *False*: 席順
+    """
+    undefined_word: int = field(default=1)
+    """未登録ワードの扱い
+    - *0*: 役満扱い
+    - *1*: カウントのみ
+    - *2*: 卓外清算(個人清算)
+    - *3*: 卓外清算(チーム清算)
+    """
+
+    # 集計対象情報
+    player_name: str = field(default="")
+    """集計対象プレイヤー"""
+    guest_name: str = field(default="")
+    """ゲストの名前"""
+    target_player: list[str] = field(default_factory=list)
+    """引数で受け付けたプレイヤーのリスト"""
+    player_list: list[str] = field(default_factory=list)
+    """集計対象プレイヤーリスト"""
+    competition_list: list[str] = field(default_factory=list)
+    """比較対象プレイヤーリスト"""
+    all_player: bool = field(default=False)
+    """検索対象に登録済みメンバー全員を加える"""
+    source: str = field(default="")
+    """スコア入力元識別子"""
+    separate: bool = field(default=False)
+    """スコア入力元識別子別集計フラグ
+    - *True*: 識別子別に集計
+    - *False*: すべて集計
+    """
+    collection: str = field(default="")
+    """集約集計
+    - *daily*: 日次集約
+    - *weekly*: 週次集約
+    - *monthly*: 月次集約
+    - *yearly*: 年次集約
+    - *all*: 全体集約
+    """
+    target_count: int = field(default=0)
+    """直近ゲーム数指定"""
+
+    starttime: Union[str, ExtDt, None] = field(default=None)
+    """集計開始日時"""
+    endtime: Union[str, ExtDt, None] = field(default=None)
+    """集計終了日時"""
+    onday: Union[str, ExtDt, None] = field(default=None)
+    """time_adjust修正を含まない日時"""
+
+    # 動作/表示変更フラグ
+    score_comparisons: bool = field(default=False)
+    """スコア比較表示"""
+    verbose: bool = field(default=False)
+    """詳細情報表示"""
+    game_results: bool = field(default=False)
+    """ゲーム結果表示"""
+    versus_matrix: bool = field(default=False)
+    """対戦マトリックス表示"""
+    order: bool = field(default=False)
+    """順位推移グラフ表示"""
+    rating: bool = field(default=False)
+    """レーティング推移グラフ表示"""
+    anonymous: bool = field(default=False)
+    """匿名化フラグ"""
+    fourfold: bool = field(default=True)
+    """縦持ち/横持ちデータ判定"""
+
+    # 出力関連
+    format: Literal["default", "csv", "txt"] = field(default="default")
+    """出力フォーマット指定"""
+    filename: str = field(default="")
+    """出力ファイル名"""
+
+    def update_from_dict(self, input_dict: dict[str, Any]) -> None:
+        """
+        辞書の内容で値を更新する
+
+        Args:
+            input_dict (dict[str,Any]): 更新内容
+
+        """
+        field_list: list[str] = [x.name for x in fields(self)]
+        for k, v in input_dict.items():
+            if k in field_list:
+                setattr(self, k, v)
+
+    def update_separate_flag(self, main_config: "Path") -> None:
+        """
+        優先度順に separate_flag を探索して値を更新する
+
+        Args:
+            main_config (Path): メイン設定ファイルパス
+
+        Note:
+            探索優先順序
+            1: 個別設定ファイル内settingセクション
+            2: メイン設定ファイル内チャンネル個別セクション
+            3: メイン設定ファイル内サービス別セクション
+            4: メイン設定ファイル内settingセクション
+
+        """
+        resolve_flag: Optional[bool] = None
+
+        # 個別設定ファイル内探索
+        if self.channel_config:
+            resolve_flag = lookup.get_config_value(
+                config_file=self.channel_config,
+                section="setting",
+                name="separate",
+                val_type=bool,
+                fallback=None,
+            )
+            if resolve_flag is not None:
+                self.separate = resolve_flag
+                return
+
+        # メイン設定ファイル内探索
+        for section_name in [self.source, self.service_type, "setting"]:
+            resolve_flag = lookup.get_config_value(
+                config_file=main_config,
+                section=section_name,
+                name="separate",
+                val_type=bool,
+                fallback=None,
+            )
+            if resolve_flag is not None:
+                self.separate = resolve_flag
+                return
+
+    def update_default_rule(self, main_config: "Path") -> None:
+        """
+        優先度順に default_rule を探索して値を更新する
+
+        Args:
+            main_config (Path): メイン設定ファイルパス
+
+        Note:
+            探索優先順序
+            1: 個別設定ファイル内settingセクション
+            2: メイン設定ファイル内チャンネル個別セクション
+            3: メイン設定ファイル内サービス別セクション
+            4: メイン設定ファイル内settingセクション
+
+        """
+        resolve_rule: Optional[str] = None
+        # 個別設定ファイル内探索
+        if self.channel_config:
+            resolve_rule = lookup.get_config_value(
+                config_file=self.channel_config,
+                section="setting",
+                name="default_rule",
+                val_type=str,
+                fallback=None,
+            )
+            if resolve_rule is not None:
+                self.default_rule = resolve_rule
+                return
+
+        # メイン設定ファイル内探索
+        for section_name in [self.source, self.service_type, "setting"]:
+            resolve_rule = lookup.get_config_value(
+                config_file=main_config,
+                section=section_name,
+                name="default_rule",
+                val_type=str,
+                fallback=None,
+            )
+            if resolve_rule is not None:
+                self.default_rule = resolve_rule
+                return
+
+    def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
+        """
+        プレースホルダ用辞書出力
+
+        Args:
+            game_count (Optional[int]): 規定打数調整用ゲーム数. Defaults to None.
+
+        Returns:
+            dict[str, Any]: プレースホルダ
+
+        """
+        ret_dict: dict[str, Any] = {f.name: getattr(self, f.name) for f in fields(self)}
+
+        # 規定打数更新
+        if not ret_dict.get("stipulated") or game_count is not None:
+            if game_count is None:
+                ret_dict.update({"stipulated": 1})
+            else:
+                ret_dict.update({"stipulated": int(ceil(game_count * self.stipulated_rate) + 1)})
+
+        if self.player_list:
+            ret_dict.update({f"player_{idx}": x for idx, x in enumerate(self.player_list)})
+
+        if self.target_player:
+            ret_dict.update({f"target_{idx}": x for idx, x in enumerate(self.target_player)})
+
+        if self.competition_list:
+            ret_dict.update({f"competition_{idx}": x for idx, x in enumerate(self.competition_list)})
+
+        if self.rule_list:
+            ret_dict.update({f"rule_{idx}": x for idx, x in enumerate(self.rule_list)})
+        else:
+            ret_dict.update({"rule_0": self.rule_version})
+
+        return ret_dict

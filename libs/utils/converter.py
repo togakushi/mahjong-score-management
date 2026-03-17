@@ -61,7 +61,7 @@ def save_output(
 
     # 保存
     save_file = textutil.save_file_path(options.filename, True)
-    if suffix and g.params.get("filename"):
+    if suffix and g.params.filename:
         save_file = save_file.with_name(f"{save_file.stem}_{suffix}{save_file.suffix}")
 
     with open(save_file, "w", encoding="utf-8") as writefile:
@@ -516,7 +516,7 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
     """
     df = formatter.df_rename(df, options)
 
-    key_name = "名前" if g.params.get("individual") else "チーム"
+    key_name = "名前" if g.params.individual else "チーム"
     for col in df.columns:
         match col:
             case "日時":
