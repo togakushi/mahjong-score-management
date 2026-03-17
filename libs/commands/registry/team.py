@@ -12,7 +12,7 @@ from libs.domain.datamodels import CommandType
 from libs.utils import dbutil, formatter, textutil, validator
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser
+    from configparser import ConfigParser, SectionProxy
 
     from libs.bootstrap.app_config import AppConfig
 
@@ -67,16 +67,16 @@ class TeamSection(BaseSection):
         self.member_limit = int(16)
         self.friendly_fire = bool(True)
 
-    def config_load(self, outer: "AppConfig") -> None:
+    def config_load(self, section_proxy: "SectionProxy") -> None:
         """
         設定値取り込み
 
         Args:
-            outer (AppConfig): 設定クラスオブジェクト
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
 
         """
         self._reset()
-        super().__init__(self)
+        self.initialization(section_proxy)
 
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", fallback=self.default_commandword)

@@ -6,6 +6,7 @@ from dataclasses import dataclass, field, fields
 from math import ceil
 from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
+from libs.data import lookup
 from libs.domain.datamodels import ParameterData
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -17,6 +18,8 @@ if TYPE_CHECKING:
 class PlaceholderBuilder(ParameterData):
     """プレースホルダ構築クラス"""
 
+    service_type: str = field(default="")
+    """連携先サービス"""
     command: str = field(default="")
     """コマンド名"""
     channel_config: Optional["Path"] = field(default=None)
@@ -140,6 +143,91 @@ class PlaceholderBuilder(ParameterData):
         for k, v in input_dict.items():
             if k in field_list:
                 setattr(self, k, v)
+
+    def update_separate_flag(self, main_config: "Path") -> None:
+        """
+        優先度順に separate_flag を探索して値を更新する
+
+        Args:
+            main_config (Path): メイン設定ファイルパス
+
+        Note:
+            探索優先順序
+            1: 個別設定ファイル内settingセクション
+            2: メイン設定ファイル内チャンネル個別セクション
+            3: メイン設定ファイル内サービス別セクション
+            4: メイン設定ファイル内settingセクション
+
+        """
+        resolve_flag: Optional[bool] = None
+
+        # 個別設定ファイル内探索
+        if self.channel_config:
+            resolve_flag = lookup.get_config_value(
+                config_file=self.channel_config,
+                section="setting",
+                name="separate",
+                val_type=bool,
+                fallback=None,
+            )
+            if resolve_flag is not None:
+                self.separate = resolve_flag
+                return
+
+        # メイン設定ファイル内探索
+        for section_name in [self.source, self.service_type, "setting"]:
+            resolve_flag = lookup.get_config_value(
+                config_file=main_config,
+                section=section_name,
+                name="separate",
+                val_type=bool,
+                fallback=None,
+            )
+            if resolve_flag is not None:
+                self.separate = resolve_flag
+                return
+
+    def update_default_rule(self, main_config: "Path") -> None:
+        """
+        優先度順に default_rule を探索して値を更新する
+
+        Args:
+            main_config (Path): メイン設定ファイルパス
+
+        Note:
+            探索優先順序
+            1: 個別設定ファイル内settingセクション
+            2: メイン設定ファイル内チャンネル個別セクション
+            3: メイン設定ファイル内サービス別セクション
+            4: メイン設定ファイル内settingセクション
+
+        """
+        resolve_rule: Optional[str] = None
+        # 個別設定ファイル内探索
+        if self.channel_config:
+            resolve_rule = lookup.get_config_value(
+                config_file=self.channel_config,
+                section="setting",
+                name="default_rule",
+                val_type=str,
+                fallback=None,
+            )
+            if resolve_rule is not None:
+                self.default_rule = resolve_rule
+                return
+
+        # メイン設定ファイル内探索
+        for section_name in [self.source, self.service_type, "setting"]:
+            resolve_rule = lookup.get_config_value(
+                config_file=main_config,
+                section=section_name,
+                name="default_rule",
+                val_type=str,
+                fallback=None,
+            )
+            if resolve_rule is not None:
+                self.default_rule = resolve_rule
+                return
 
     def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
         """

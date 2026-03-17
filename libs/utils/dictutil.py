@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Protocol
 import libs.global_value as g
 from libs.data import lookup
 from libs.domain.command import CommandParser
+from libs.domain.datamodels import ChannelType
 from libs.domain.placeholder import PlaceholderBuilder
 from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -39,40 +40,45 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
 
     """
     # 初期化
-    g.cfg.initialization()
     parser: CommandParser = CommandParser()
     params: PlaceholderBuilder = PlaceholderBuilder()
     rule_version: str | None = None
-
-    # メンバー情報更新
-    g.cfg.member.guest_name = lookup.get_guest()
-    g.cfg.member.info = g.cfg.member.get_info
-    g.cfg.team.info = g.cfg.team.get_info
-
     params.update_from_dict(
         {
+            "service_type": g.adapter.interface_type,
             "command": subcom.section,
             "guest_name": g.cfg.member.guest_name,
             "undefined_word": 1,
-            "source": g.cfg.resolve_channel_id(m.status.source),
-            "separate": lookup.resolve_separate_flag(m),
-            "rule_set": {},
-            **g.cfg.setting.to_dict(drop_items=["separate"]),
-            **subcom.to_dict(),  # デフォルト値
+            **g.cfg.setting.to_dict(),
+            **subcom.to_dict(),  #  サブコマンドデフォルト値
         }
     )
 
-    # チャンネル個別設定取り込み
+    # チャンネル個別設定読み込み
     if channel_config := g.cfg.read_channel_config(m.status.source, params.placeholder()):
+        logging.debug("read channel config: %s", channel_config.absolute())
         params.channel_config = channel_config
+        params.update_from_dict(subcom.to_dict())  # 更新
+
+    # メンバー情報更新 # ToDo: DB切り替え実装後
+    # g.cfg.member.guest_name = lookup.get_guest()
+    # g.cfg.member.info = g.cfg.member.get_info
+    # g.cfg.team.info = g.cfg.team.get_info
+
+    params.source = g.cfg.resolve_channel_id(m.status.source)
+
+    # セパレートフラグ更新
+    params.update_separate_flag(g.cfg.config_file)
+    if m.data.channel_type in {ChannelType.DIRECT_MESSAGE, ChannelType.HOME_APP}:
+        params.separate = False  # DM / HomeApp(slack) はセパレートしない
 
     # ルール識別子探索
+    params.update_default_rule(g.cfg.config_file)
     if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
         for suffix in command_suffix:
             if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
                 break
     rule_version = rule_version if rule_version else params.default_rule
-
     params.update_from_dict(
         {
             "rule_version": rule_version,
@@ -168,15 +174,11 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             params.stipulated = 1
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
-        params.update_from_dict(
-            {
-                "starttime": lookup.first_record(
-                    g.cfg.rule.get_version(
-                        mode=params.mode,
-                        mapping=not (params.mixed),
-                    )
-                )
-            }
+        params.starttime = lookup.first_record(
+            g.cfg.rule.get_version(
+                mode=params.mode,
+                mapping=not (params.mixed),
+            )
         )
 
     return params
