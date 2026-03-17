@@ -187,6 +187,29 @@ class AppConfig:
         self.report.config_load(self)
         self.help.config_load(self)
 
+        # フォントファイルチェック
+        for chk_dir in (self.config_dir, self.script_dir):
+            chk_file = chk_dir / str(self.setting.font_file)
+            if chk_file.exists():
+                self.setting.font_file = chk_file
+                break
+        else:
+            if not self.setting.font_file.exists():
+                logging.critical("The specified font file cannot be found.")
+                sys.exit(255)
+
+        # 作業ディレクトリパス
+        if not self.setting.work_dir.is_absolute():
+            self.setting.work_dir = self.script_dir / self.setting.work_dir
+
+        # データベース関連
+        if isinstance(self.setting.database_file, Path) and not self.setting.database_file.exists():
+            self.setting.database_file = self.config_dir / str(self.setting.database_file)
+
+        # デフォルトルール識別子
+        if not self.setting.default_rule:
+            self.setting.default_rule = self.mahjong.rule_version
+
     def word_list(self, add_words: list[str] | None = None) -> list[str]:
         """
         設定されている値、キーワードをリスト化する

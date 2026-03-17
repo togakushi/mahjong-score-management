@@ -3,7 +3,6 @@ libs/bootstrap/section.py
 """
 
 import logging
-import sys
 from pathlib import Path, PosixPath
 from types import NoneType
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union, get_args, get_origin
@@ -264,6 +263,7 @@ class SettingSection(BaseSection):
     graph_style: str
     """グラフスタイル"""
     work_dir: Path
+    """作業ディレクトリ"""
 
     def __init__(self) -> None:
         self.section: str = "setting"
@@ -302,29 +302,6 @@ class SettingSection(BaseSection):
         # 成績登録キーワード
         if not (isinstance(self.keyword, Path) and self.keyword.exists()):
             self.keyword = str(self.keyword)
-
-        # デフォルトルール識別子
-        if not self.default_rule:
-            self.default_rule = outer.mahjong.rule_version
-
-        # フォントファイルチェック
-        for chk_dir in (outer.config_dir, outer.script_dir):
-            chk_file = chk_dir / str(self.font_file)
-            if chk_file.exists():
-                self.font_file = chk_file
-                break
-        else:
-            if not self.font_file.exists():
-                logging.critical("The specified font file cannot be found.")
-                sys.exit(255)
-
-        # 作業ディレクトリパス
-        if not self.work_dir.is_absolute():
-            self.work_dir = outer.script_dir / self.work_dir
-
-        # データベース関連
-        if isinstance(self.database_file, Path) and not self.database_file.exists():
-            self.database_file = outer.config_dir / str(self.database_file)
 
         logging.debug("%s: %s", self.section, self)
 
