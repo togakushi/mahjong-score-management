@@ -103,7 +103,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
     else:
         for x in field:
             match str(x):
-                case "name" | "playtime" | "matter" | "grade":
+                case "name" | "player" | "playtime" | "matter" | "grade":
                     fmt.append("left")
                 case "rank_distr" | "rank_distr4":
                     fmt.append("left")
