@@ -3,7 +3,6 @@ libs/dispatcher.py
 """
 
 import logging
-import re
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
@@ -163,7 +162,7 @@ def message_deleted(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    if re.match(rf"^{g.cfg.setting.remarks_word}", m.keyword):  # 追加メモ
+    if m.keyword in g.cfg.rule.remarks_words:  # 追加メモ
         modify.remarks_delete(m)
     else:
         modify.db_delete(m)
