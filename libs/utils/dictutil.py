@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING, Any, Protocol
 import libs.global_value as g
 from libs.data import lookup
 from libs.domain.command import CommandParser
-from libs.domain.datamodels import ChannelType
 from libs.domain.placeholder import PlaceholderBuilder
+from libs.types import ChannelType
 from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 

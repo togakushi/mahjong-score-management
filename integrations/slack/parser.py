@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING, Any, cast
 import libs.global_value as g
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
-from libs.domain.datamodels import ChannelType, CommandType
-from libs.types import MessageStatus
+from libs.domain.datamodels import CommandType
+from libs.types import ChannelType, MessageStatus
 
 if TYPE_CHECKING:
     from integrations.slack.adapter import ServiceAdapter

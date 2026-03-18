@@ -47,6 +47,23 @@ class ActionStatus(StrEnum):
     """何もしてない"""
 
 
+class ChannelType(StrEnum):
+    """チャンネルタイプ"""
+
+    CHANNEL = "normal"
+    """通常チャンネル"""
+    PRIVATE = "private"
+    """プライベートチャンネル"""
+    DIRECT_MESSAGE = "direct_message"
+    """ダイレクトメッセージ"""
+    HOME_APP = "home_app"
+    """Slackのホームアプリ"""
+    SEARCH = "search_api"
+    """検索API"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
+
+
 class ServiceType(StrEnum):
     """連携先サービス"""
 
