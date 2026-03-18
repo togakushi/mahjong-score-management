@@ -65,7 +65,7 @@ class ChannelType(StrEnum):
 
 
 class CommandType(StrEnum):
-    """実行(する/した)サブコマンド県設定ファイルセクション名"""
+    """実行(する/した)サブコマンド兼設定ファイルセクション名"""
 
     RESULTS = "results"
     """成績サマリ"""
