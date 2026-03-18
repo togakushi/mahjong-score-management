@@ -69,18 +69,20 @@ class AdapterAPI(APIInterface):
                     print(self._text_formatter(x, options))
                 case x if isinstance(x, pd.DataFrame):
                     options.rename_type = StyleOptions.RenameType.NORMAL
-                    disp = (
-                        formatter.df_rename(x, options)
-                        .to_markdown(
-                            index=options.show_index,
-                            tablefmt="simple_outline",
-                            floatfmt=formatter.floatfmt_adjust(x, index=options.show_index),
-                            colalign=formatter.column_alignment(x, index=options.show_index),
-                        )
-                        .replace(" nan ", "-----")
+                    match options.data_kind:
+                        case StyleOptions.DataKind.POINTS_TOTAL:
+                            x["total_point"] = x.apply(lambda df: f"{df['total_point']:+.1f} pt".replace("-", "▲"), axis=1)
+                            x["avg_point"] = x.apply(lambda df: f"{df['avg_point']:+.1f} pt".replace("-", "▲"), axis=1)
+                        case StyleOptions.DataKind.POINTS_DIFF:
+                            x["total_point"] = x.apply(lambda df: f"{df['total_point']:+.1f} pt".replace("-", "▲"), axis=1)
+                            x["diff_from_above"] = x["diff_from_above"].map(lambda v: f"{v:.1f} pt" if pd.notna(v) else "------")
+                            x["diff_from_top"] = x["diff_from_top"].map(lambda v: f"{v:.1f} pt" if pd.notna(v) else "------")
+                    disp = formatter.df_rename(x, options).to_markdown(
+                        index=options.show_index,
+                        tablefmt="simple_outline",
+                        floatfmt=formatter.floatfmt_adjust(x, index=options.show_index),
+                        colalign=formatter.column_alignment(x, index=options.show_index),
                     )
-                    if options.title == "座席データ":
-                        disp = disp.replace("0.00", "-.--")
                     print(disp)
                 case x if isinstance(x, Path):
                     print(f"{options.title}: {x.absolute()}")
