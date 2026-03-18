@@ -65,7 +65,7 @@ class ChannelType(StrEnum):
 
 
 class CommandType(StrEnum):
-    """実行(する/した)サブコマンド県設定ファイルセクション名"""
+    """実行(する/した)サブコマンド兼設定ファイルセクション名"""
 
     RESULTS = "results"
     """成績サマリ"""
@@ -189,14 +189,17 @@ class StyleOptions:
     - *False*: 要素単位でデータを処理する
     """
     indent: int = 0
-    """インデント数(TAB)"""
+    """出力時に付与するインデント数(TAB)"""
     keep_blank: bool = False
     """空行の削除
     - *True*: 削除しない
     - *False*: 削除する
     """
     keep_indent: bool = False
-    """出力前のdedent"""
+    """保存されているメッセージのdedentの取り扱い
+    - *True*: 維持する
+    - *False*: 削除する
+    """
     transpose: bool = False
     """MessageTypeがDataFrameのとき表の縦横を変換する"""
     rename_type: RenameType = field(default=RenameType.NORMAL)

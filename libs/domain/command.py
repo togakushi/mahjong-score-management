@@ -267,13 +267,13 @@ class CommandParser:
 
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 
-    def _parse_match(self, cmd: CommandSpec, obj: re.Match) -> dict[str, Any]:
+    def _parse_match(self, cmd: CommandSpec, obj: re.Match[str]) -> dict[str, Any]:
         """
         コマンド名に一致したときの処理
 
         Args:
             cmd (CommandSpec): コマンドマップ
-            obj (re.Match): Matchオブジェクト
+            obj (re.Match[str]): Matchオブジェクト
 
         Returns:
             dict[str, Any]: 更新用辞書

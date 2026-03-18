@@ -223,4 +223,9 @@ class PlaceholderBuilder(ParameterData):
         else:
             ret_dict.update({"rule_0": self.rule_version})
 
+        # 日付型変換
+        for date_attr in ["starttime", "endtime", "onday"]:
+            if (val := ret_dict.get(date_attr)) and isinstance(val, ExtDt):
+                ret_dict.update({date_attr: val.format(ExtDt.FMT.SQL)})
+
         return ret_dict
