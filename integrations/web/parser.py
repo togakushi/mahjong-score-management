@@ -6,7 +6,7 @@ from typing import Any
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
-from libs.domain.datamodels import MessageStatus
+from libs.types import MessageStatus
 
 
 class MessageParser(MessageParserDataMixin, MessageParserInterface):

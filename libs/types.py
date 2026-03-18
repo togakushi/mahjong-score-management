@@ -21,6 +21,21 @@ MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
 """
 
 
+class MessageStatus(StrEnum):
+    """メッセージステータス"""
+
+    APPEND = "message_append"
+    """新規ポストイベント"""
+    CHANGED = "message_changed"
+    """編集イベント"""
+    DELETED = "message_deleted"
+    """削除イベント"""
+    DO_NOTHING = "do_nothing"
+    """何もしなくてよいイベント"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
+
+
 class ServiceType(StrEnum):
     """連携先サービス"""
 

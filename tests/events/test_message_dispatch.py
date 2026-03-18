@@ -12,8 +12,7 @@ import libs.dispatcher
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
-from libs.domain.datamodels import MessageStatus
-from libs.types import ServiceType
+from libs.types import MessageStatus, ServiceType
 from tests.events import param_data
 
 if TYPE_CHECKING:
