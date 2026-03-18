@@ -197,11 +197,12 @@ def check_remarks(results: ComparisonResults) -> None:
         modify.remarks_append(work_m, results.remark_mod)
 
     # DATABASE -> SLACK
+    work_remarks = [{k: str(v) for k, v in d.items() if k != "source"} for d in slack_remarks]  # sourceを除外したリスト
     for remark in db_remarks:
-        if remark not in slack_remarks:  # slackに記録なし
-            if remark["source"] in {x.source for x in score_list.values()}:
-                results.remark_del.append(remark)
-                modify.remarks_delete_compar(work_m, remark)
+        check_remark = {k: str(v) for k, v in remark.items() if k != "source"}
+        if check_remark not in work_remarks:  # slackに記録なし
+            results.remark_del.append(remark)
+            modify.remarks_delete_compar(work_m, remark)
 
 
 def check_total_score(results: ComparisonResults) -> None:

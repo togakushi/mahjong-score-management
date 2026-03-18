@@ -213,8 +213,10 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
     modify.remarks_append(work_m, results.remark_mod)
 
     # DATABASE -> DISCORD
+    work_remarks = [{k: str(v) for k, v in d.items() if k != "source"} for d in discord_remarks]  # sourceを除外したリスト
     for remark in db_remarks:
-        if remark not in discord_remarks:  # Discordに記録なし
+        check_remark = {k: str(v) for k, v in remark.items() if k != "source"}
+        if check_remark not in work_remarks:  # Discordに記録なし
             results.remark_del.append(remark)
             modify.remarks_delete_compar(work_m, remark)
 
