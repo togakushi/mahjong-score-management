@@ -218,13 +218,13 @@ def remarks_delete(m: "MessageParserProtocol") -> None:
         g.adapter.functions.post_processing(m)
 
 
-def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> None:
+def remarks_delete_compar(m: "MessageParserProtocol", para: "RemarkDict") -> None:
     """
     DBからメモを削除する(突合)
 
     Args:
-        para (dict): パラメータ
         m (MessageParserProtocol): メッセージデータ
+        para (RemarkDict): パラメータ
 
     """
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
@@ -232,6 +232,7 @@ def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> Non
         cur.commit()
 
         left = cur.execute("select count() from remarks where event_ts=:event_ts;", para).fetchone()[0]
+        logging.info("ts=%s, count=%s", m.data.event_ts, left)
 
     # 後処理
     m.status.action = ActionStatus.DELETE

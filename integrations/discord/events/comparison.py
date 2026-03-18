@@ -216,7 +216,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
     for remark in db_remarks:
         if remark not in discord_remarks:  # Discordに記録なし
             results.remark_del.append(remark)
-            modify.remarks_delete_compar(remark, work_m)
+            modify.remarks_delete_compar(work_m, remark)
 
 
 async def check_total_score(results: ComparisonResults, messages_list: list["MessageParserProtocol"]) -> None:

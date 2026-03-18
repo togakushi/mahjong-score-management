@@ -193,7 +193,7 @@ def check_remarks(results: ComparisonResults) -> None:
             work_m.data.event_ts = remark["event_ts"]
             work_m.data.channel_id = remark["source"].replace("slack_", "")
             work_m.status.command_type = CommandType.COMPARISON
-        modify.remarks_delete(work_m)
+            modify.remarks_delete(work_m)
         modify.remarks_append(work_m, results.remark_mod)
 
     # DATABASE -> SLACK
@@ -201,7 +201,7 @@ def check_remarks(results: ComparisonResults) -> None:
         if remark not in slack_remarks:  # slackに記録なし
             if remark["source"] in {x.source for x in score_list.values()}:
                 results.remark_del.append(remark)
-                modify.remarks_delete_compar(remark, work_m)
+                modify.remarks_delete_compar(work_m, remark)
 
 
 def check_total_score(results: ComparisonResults) -> None:
