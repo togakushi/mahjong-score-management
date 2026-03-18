@@ -337,11 +337,11 @@ class SvcFunctions(FunctionsInterface):
         remarks_matches: list["MessageParserProtocol"] = []
 
         # メモの抽出
-        for match in self.get_messages(g.cfg.setting.remarks_word):
+        for match in self.get_messages(g.cfg.rule.remarks_words):
             if match.ignore_user:  # 除外ユーザからのポストは破棄
                 logging.info("skip ignore user: %s", match.data.user_id)
                 continue
-            if match.keyword == g.cfg.setting.remarks_word:
+            if match.keyword in g.cfg.rule.remarks_words:
                 remarks_matches.append(match)
 
         # イベント詳細取得

@@ -4,7 +4,6 @@ integrations/discord/events/comparison.py
 
 import asyncio
 import logging
-import re
 from typing import TYPE_CHECKING, cast
 
 from discord import Message
@@ -176,7 +175,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
                     score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
             score_list.update({loop_m.data.event_ts: score})
 
-        if re.match(rf"^{g.cfg.setting.remarks_word}$", loop_m.keyword):
+        if loop_m.keyword in g.cfg.rule.remarks_words:
             for name, matter in zip(loop_m.argument[0::2], loop_m.argument[1::2]):
                 # 対象外のメモはスキップ
                 if not float(loop_m.data.thread_ts):
