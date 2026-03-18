@@ -12,6 +12,7 @@ from integrations import factory
 from integrations.standard_io.adapter import ServiceAdapter
 from libs.bootstrap import configuration
 from libs.domain.command import CommandParser
+from libs.types import ServiceType
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from tests.parser import param_data
@@ -27,7 +28,7 @@ def parser_instance() -> Generator[ServiceAdapter, Any, None]:
 
     configuration.setup(init_db=False)
 
-    adapter = factory.select_adapter("standard_io", g.cfg)
+    adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
 
     yield adapter
 

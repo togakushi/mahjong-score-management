@@ -12,7 +12,7 @@ import libs.dispatcher
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
-from libs.domain.datamodels import MessageStatus
+from libs.types import MessageStatus, ServiceType
 from tests.events import param_data
 
 if TYPE_CHECKING:
@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 def _init() -> "MessageParserProtocol":
     """初期化処理"""
     configuration.setup(init_db=False)
-    adapter = factory.select_adapter("standard_io", g.cfg)
+    adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
     m.status.command_flg = True
 

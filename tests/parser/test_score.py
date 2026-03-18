@@ -12,6 +12,7 @@ from integrations import factory
 from libs.bootstrap import configuration
 from libs.data import initialization
 from libs.domain.score import GameResult
+from libs.types import ServiceType
 from libs.utils import validator
 from tests.parser import param_data
 
@@ -27,8 +28,8 @@ def test_score_report(input_str: str, result_dict: dict[str, Any], get_point: di
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
-    g.adapter = factory.select_adapter("standard_io", g.cfg)
-    g.cfg.selected_service = "standard_io"
+    g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
+    g.cfg.selected_service = ServiceType.STANDARD_IO
 
     m = g.adapter.parser()
     m.data.text = input_str
@@ -68,8 +69,8 @@ def test_point_calc_seat(rpoint_list: list[str], point_dict: dict[str, float], r
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
-    g.adapter = factory.select_adapter("standard_io", g.cfg)
-    g.cfg.selected_service = "standard_io"
+    g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
+    g.cfg.selected_service = ServiceType.STANDARD_IO
 
     result = GameResult(
         ts="1234567890.123456",
@@ -107,8 +108,8 @@ def test_point_calc_division(rpoint_list: list[str], point_dict: dict[str, float
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
-    g.adapter = factory.select_adapter("standard_io", g.cfg)
-    g.cfg.selected_service = "standard_io"
+    g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
+    g.cfg.selected_service = ServiceType.STANDARD_IO
 
     result = GameResult(
         ts="1234567890.123456",

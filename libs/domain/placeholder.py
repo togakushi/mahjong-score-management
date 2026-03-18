@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 from libs.data import lookup
 from libs.domain.datamodels import ParameterData
+from libs.types import ServiceType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -18,7 +19,7 @@ if TYPE_CHECKING:
 class PlaceholderBuilder(ParameterData):
     """プレースホルダ構築クラス"""
 
-    service_type: str = field(default="")
+    service_type: ServiceType = field(default=ServiceType.UNKNOWN)
     """連携先サービス"""
     command: str = field(default="")
     """コマンド名"""

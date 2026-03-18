@@ -18,9 +18,8 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
-from libs.domain.datamodels import CommandType
 from libs.domain.rule import RuleSet
-from libs.types import GradeTableDict
+from libs.types import CommandType, GradeTableDict, ServiceType
 
 if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands
@@ -125,7 +124,7 @@ class AppConfig:
         """スクリプトが保存されているディレクトリパス"""
         self.config_dir: Path = self.config_file.absolute().parent
         """設定ファイルが保存されているディレクトリパス"""
-        self.selected_service: Literal["slack", "discord", "web", "standard_io"] = "slack"
+        self.selected_service: ServiceType = ServiceType.SLACK
         """連携先サービス"""
 
         # 設定値

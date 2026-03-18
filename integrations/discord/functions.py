@@ -8,7 +8,7 @@ from discord import Forbidden, NotFound
 from discord.channel import TextChannel
 
 from integrations.base.interface import FunctionsInterface
-from libs.domain.datamodels import ActionStatus
+from libs.types import ActionStatus
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:

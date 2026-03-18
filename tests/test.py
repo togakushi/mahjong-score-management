@@ -23,6 +23,7 @@ from libs.commands.ranking import ranking
 from libs.commands.report import stats_list, stats_report
 from libs.commands.results import summary as results_summary
 from libs.domain.command import CommandParser
+from libs.types import ServiceType
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
@@ -86,7 +87,7 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         )
 
     # ---------------------------------------------------------------------------------------------
-    adapter = factory.select_adapter("standard_io", g.cfg)
+    adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
     target_loop: list[str] = []
 

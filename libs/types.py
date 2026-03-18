@@ -3,7 +3,7 @@ libs/types.py
 """
 
 from dataclasses import asdict, dataclass, field
-from enum import Enum, auto
+from enum import Enum, StrEnum, auto
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, TypedDict, Union
 
 if TYPE_CHECKING:
@@ -21,40 +21,87 @@ MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
 """
 
 
-@dataclass
-class Args:
-    """コマンドラインオプション"""
+class MessageStatus(StrEnum):
+    """メッセージステータス"""
 
-    service: str
-    config: "Path"
-    """設定ファイルパス"""
+    APPEND = "message_append"
+    """新規ポストイベント"""
+    CHANGED = "message_changed"
+    """編集イベント"""
+    DELETED = "message_deleted"
+    """削除イベント"""
+    DO_NOTHING = "do_nothing"
+    """何もしなくてよいイベント"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
 
-    debug: int
-    """デバッグ出力フラグ"""
-    verbose: int
-    """詳細出力フラグ"""
 
-    moderate: bool
-    """INFO以下のログレベル出力を抑止"""
-    notime: bool
-    """ログに日付を付与しない"""
+class ActionStatus(StrEnum):
+    """DBに対する操作"""
 
-    # Only allowed when --service=standard_io
-    text: str
+    CHANGE = "change"
+    """insert/updateが実行された"""
+    DELETE = "delete"
+    """deleteが実行された"""
+    NOTHING = "nothing"
+    """何もしてない"""
 
-    # Only allowed when --service=web
-    host: str
-    port: int
 
-    # dbtools
-    compar: bool
-    unification: "Path"
-    recalculation: bool
-    export_data: str
-    import_data: str
-    vacuum: bool
-    gen_test_data: int
-    testcase: Optional["Path"]
+class ChannelType(StrEnum):
+    """チャンネルタイプ"""
+
+    CHANNEL = "normal"
+    """通常チャンネル"""
+    PRIVATE = "private"
+    """プライベートチャンネル"""
+    DIRECT_MESSAGE = "direct_message"
+    """ダイレクトメッセージ"""
+    HOME_APP = "home_app"
+    """Slackのホームアプリ"""
+    SEARCH = "search_api"
+    """検索API"""
+    UNDETERMINED = "undetermined"
+    """未定義状態"""
+
+
+class CommandType(StrEnum):
+    """実行(する/した)サブコマンド県設定ファイルセクション名"""
+
+    RESULTS = "results"
+    """成績サマリ"""
+    GRAPH = "graph"
+    """グラフ生成"""
+    RANKING = "ranking"
+    """ランキング"""
+    RATING = "rating"
+    """レーティング"""
+    REPORT = "report"
+    """レポート"""
+    MEMBER_LIST = "member"
+    """メンバー一覧"""
+    TEAM_LIST = "team"
+    """チーム一覧"""
+    HELP = "help"
+    """ヘルプ"""
+    COMPARISON = "comparison"
+    """突合処理"""
+    UNKNOWN = "unknown"
+    """未定義"""
+
+
+class ServiceType(StrEnum):
+    """連携先サービス"""
+
+    SLACK = "slack"
+    """slack"""
+    DISCORD = "discord"
+    """discord"""
+    WEB = "web"
+    """web ui"""
+    STANDARD_IO = "standard_io"
+    """standard_io"""
+    UNKNOWN = "unknown"
+    """unknown"""
 
 
 @dataclass

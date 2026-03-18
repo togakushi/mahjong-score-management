@@ -9,6 +9,7 @@ import libs.global_value as g
 from integrations import factory
 from integrations.slack.events import comparison
 from libs.data import lookup
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter as discord_adapter
@@ -22,15 +23,15 @@ def main() -> None:
     g.cfg.initialization()
 
     # 結果の出力先(standard_io)
-    adapter_std = factory.select_adapter("standard_io", g.cfg)
+    adapter_std = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter_std.parser()
 
     # 連携サービス切替
     match g.adapter.interface_type:
-        case "slack":
+        case ServiceType.SLACK:
             g.adapter = factory.select_adapter(g.adapter.interface_type, g.cfg)
             slack_comparison(m)
-        case "discord":
+        case ServiceType.DISCORD:
             g.adapter = factory.select_adapter(g.adapter.interface_type, g.cfg)
             discord_comparison(m)
         case _:

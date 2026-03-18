@@ -9,6 +9,7 @@ from integrations.discord.api import AdapterAPI
 from integrations.discord.config import SvcConfig
 from integrations.discord.functions import SvcFunctions
 from integrations.discord.parser import MessageParser
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
 class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, MessageParser]):
     """discord interface"""
 
-    interface_type = "discord"
+    interface_type = ServiceType.DISCORD
 
     def __init__(self, parser: "ConfigParser"):
         self.conf = SvcConfig(main_conf=parser)

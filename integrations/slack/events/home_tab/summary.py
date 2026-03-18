@@ -12,7 +12,7 @@ from integrations.slack.events.home_tab import ui_parts
 from libs.commands.graph import summary as graph_summary
 from libs.commands.ranking import rating
 from libs.commands.results import summary as results_summary
-from libs.domain.datamodels import CommandType
+from libs.types import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt

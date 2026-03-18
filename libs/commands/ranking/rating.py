@@ -8,10 +8,10 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.data import aggregate, loader
-from libs.domain.datamodels import CommandType, GameInfo
+from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import badge
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import converter, formatter
 
 if TYPE_CHECKING:

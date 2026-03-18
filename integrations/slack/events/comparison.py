@@ -7,9 +7,9 @@ from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from libs.data import lookup, modify, search
-from libs.domain.datamodels import ActionStatus, CommandType, ComparisonResults
+from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
-from libs.types import StyleOptions
+from libs.types import ActionStatus, CommandType, StyleOptions
 from libs.utils import formatter, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format
