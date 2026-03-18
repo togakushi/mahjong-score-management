@@ -9,6 +9,7 @@ from integrations.slack.api import AdapterAPI
 from integrations.slack.config import SvcConfig
 from integrations.slack.functions import SvcFunctions
 from integrations.slack.parser import MessageParser
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
 class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, MessageParser]):
     """slack interface"""
 
-    interface_type = "slack"
+    interface_type = ServiceType.SLACK
 
     def __init__(self, parser: "ConfigParser"):
         self.conf = SvcConfig(main_conf=parser)

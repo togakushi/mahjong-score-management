@@ -30,6 +30,7 @@ from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
 from libs.bootstrap import configuration
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from integrations.discord.adapter import ServiceAdapter as discord_adapter
@@ -42,19 +43,19 @@ if __name__ == "__main__":
     configuration.setup()
 
     match g.cfg.selected_service:
-        case "slack":
+        case ServiceType.SLACK:
             import integrations.slack.events.handler as slack
 
             slack.main(cast("slack_adapter", g.adapter))
-        case "discord":
+        case ServiceType.DISCORD:
             import integrations.discord.events.handler as discord
 
             discord.main(cast("discord_adapter", g.adapter))
-        case "standard_io":
+        case ServiceType.STANDARD_IO:
             import integrations.standard_io.events.handler as standard_io
 
             standard_io.main(cast("std_adapter", g.adapter))
-        case "web":
+        case ServiceType.WEB:
             import integrations.web.events.handler as webapp
 
             webapp.main(cast("web_adapter", g.adapter))

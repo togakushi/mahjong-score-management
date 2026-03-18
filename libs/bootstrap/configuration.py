@@ -22,7 +22,7 @@ from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.data import initialization, lookup
 from libs.functions.compose import text_item
-from libs.types import Args, StyleOptions
+from libs.types import Args, ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -240,20 +240,20 @@ def setup(init_db: bool = True) -> None:
     # 連携サービス
     match g.args.service:
         case "slack":
-            g.cfg.selected_service = "slack"
+            g.cfg.selected_service = ServiceType.SLACK
         case "discord":
-            g.cfg.selected_service = "discord"
+            g.cfg.selected_service = ServiceType.DISCORD
         case "standard_io" | "std":
-            g.cfg.selected_service = "standard_io"
+            g.cfg.selected_service = ServiceType.STANDARD_IO
         case "web" | "flask":
-            g.cfg.selected_service = "web"
+            g.cfg.selected_service = ServiceType.WEB
         case _:
             sys.exit()
 
     if not hasattr(g.args, "testcase"):
         g.args.testcase = None
     else:
-        g.cfg.selected_service = "standard_io"
+        g.cfg.selected_service = ServiceType.STANDARD_IO
 
     g.adapter = factory.select_adapter(g.cfg.selected_service, g.cfg)
 

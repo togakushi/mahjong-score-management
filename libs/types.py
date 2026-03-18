@@ -3,7 +3,7 @@ libs/types.py
 """
 
 from dataclasses import asdict, dataclass, field
-from enum import Enum, auto
+from enum import Enum, StrEnum, auto
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, TypedDict, Union
 
 if TYPE_CHECKING:
@@ -19,6 +19,21 @@ MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
 - *Path*: ファイルパス(アップロード処理)
 - *DataFrame*: 表データ
 """
+
+
+class ServiceType(StrEnum):
+    """連携先サービス"""
+
+    SLACK = "slack"
+    """slack"""
+    DISCORD = "discord"
+    """discord"""
+    WEB = "web"
+    """web ui"""
+    STANDARD_IO = "standard_io"
+    """standard_io"""
+    UNKNOWN = "unknown"
+    """unknown"""
 
 
 @dataclass

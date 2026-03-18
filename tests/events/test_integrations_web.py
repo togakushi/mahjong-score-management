@@ -15,6 +15,7 @@ import libs.global_value as g
 from integrations import factory
 from integrations.web.events import create_bp
 from libs.bootstrap import configuration
+from libs.types import ServiceType
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -32,7 +33,7 @@ def client(request: pytest.FixtureRequest) -> Any:
     sys.argv = ["app.py", "--service=web", f"--config=tests/testdata/{config_path}"]
     configuration.setup(init_db=False)
 
-    adapter = factory.select_adapter("web", g.cfg)
+    adapter = factory.select_adapter(ServiceType.WEB, g.cfg)
 
     app = Flask(
         __name__,

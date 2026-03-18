@@ -12,6 +12,7 @@ from integrations import factory
 from libs.bootstrap import configuration
 from libs.data import initialization, modify
 from libs.domain.score import GameResult
+from libs.types import ServiceType
 from libs.utils import dbutil, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from libs.utils.timekit import Format
@@ -29,8 +30,8 @@ def test_score_insert(draw_split: bool, game_result: str, get_point: dict[str, f
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
-    g.adapter = factory.select_adapter("standard_io", g.cfg)
-    g.cfg.selected_service = "standard_io"
+    g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
+    g.cfg.selected_service = ServiceType.STANDARD_IO
 
     m = g.adapter.parser()
     m.data.text = game_result

@@ -9,6 +9,7 @@ from integrations.web.api import AdapterAPI
 from integrations.web.config import SvcConfig
 from integrations.web.functions import SvcFunctions
 from integrations.web.parser import MessageParser
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
 class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, MessageParser]):
     """web interface"""
 
-    interface_type = "web"
+    interface_type = ServiceType.WEB
 
     def __init__(self, parser: "ConfigParser"):
         self.conf = SvcConfig(main_conf=parser)

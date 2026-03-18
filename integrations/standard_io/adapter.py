@@ -9,6 +9,7 @@ from integrations.standard_io.api import AdapterAPI
 from integrations.standard_io.config import SvcConfig
 from integrations.standard_io.functions import SvcFunctions
 from integrations.standard_io.parser import MessageParser
+from libs.types import ServiceType
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
 class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, MessageParser]):
     """standard input/output interface"""
 
-    interface_type = "standard_io"
+    interface_type = ServiceType.STANDARD_IO
 
     def __init__(self, parser: "ConfigParser"):
         self.conf = SvcConfig(main_conf=parser)
