@@ -105,42 +105,6 @@ class ServiceType(StrEnum):
 
 
 @dataclass
-class Args:
-    """コマンドラインオプション"""
-
-    service: str
-    config: "Path"
-    """設定ファイルパス"""
-
-    debug: int
-    """デバッグ出力フラグ"""
-    verbose: int
-    """詳細出力フラグ"""
-
-    moderate: bool
-    """INFO以下のログレベル出力を抑止"""
-    notime: bool
-    """ログに日付を付与しない"""
-
-    # Only allowed when --service=standard_io
-    text: str
-
-    # Only allowed when --service=web
-    host: str
-    port: int
-
-    # dbtools
-    compar: bool
-    unification: "Path"
-    recalculation: bool
-    export_data: str
-    import_data: str
-    vacuum: bool
-    gen_test_data: int
-    testcase: Optional["Path"]
-
-
-@dataclass
 class StyleOptions:
     """表示オプション"""
 

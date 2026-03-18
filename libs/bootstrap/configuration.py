@@ -21,8 +21,9 @@ from integrations import factory
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.data import initialization, lookup
+from libs.domain.datamodels import Args
 from libs.functions.compose import text_item
-from libs.types import Args, ServiceType, StyleOptions
+from libs.types import ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
