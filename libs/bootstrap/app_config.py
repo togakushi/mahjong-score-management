@@ -18,9 +18,8 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.data.lookup import read_memberslist
-from libs.domain.datamodels import CommandType
 from libs.domain.rule import RuleSet
-from libs.types import GradeTableDict, ServiceType
+from libs.types import CommandType, GradeTableDict, ServiceType
 
 if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands

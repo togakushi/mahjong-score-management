@@ -4,7 +4,6 @@ libs/domain/datamodels.py
 
 import logging
 from dataclasses import MISSING, dataclass, field, fields
-from enum import StrEnum
 from math import ceil
 from typing import TYPE_CHECKING, Literal, Optional
 
@@ -17,31 +16,6 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
     from libs.domain.score import GameResult
     from libs.types import RemarkDict
-
-
-class CommandType(StrEnum):
-    """実行(する/した)サブコマンド"""
-
-    RESULTS = "results"
-    """成績サマリ"""
-    GRAPH = "graph"
-    """グラフ生成"""
-    RANKING = "ranking"
-    """ランキング"""
-    RATING = "rating"
-    """レーティング"""
-    REPORT = "report"
-    """レポート"""
-    MEMBER_LIST = "member"
-    """メンバー一覧"""
-    TEAM_LIST = "team"
-    """チーム一覧"""
-    HELP = "help"
-    """ヘルプ"""
-    COMPARISON = "comparison"
-    """突合処理"""
-    UNKNOWN = "unknown"
-    """未定義"""
 
 
 @dataclass
