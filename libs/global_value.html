@@ -84,7 +84,7 @@
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">integrations.standard_io.adapter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ServiceAdapter</span> <span class="k">as</span> <span class="n">std_adapter</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">integrations.web.adapter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ServiceAdapter</span> <span class="k">as</span> <span class="n">web_adapter</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">libs.bootstrap.app_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppConfig</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">libs.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Args</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">libs.domain.datamodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">Args</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="c1"># --- グローバル変数 ---</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="n">adapter</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;slack_adapter&quot;</span><span class="p">,</span> <span class="s2">&quot;discord_adapter&quot;</span><span class="p">,</span> <span class="s2">&quot;web_adapter&quot;</span><span class="p">,</span> <span class="s2">&quot;std_adapter&quot;</span><span class="p">]</span>
@@ -152,7 +152,7 @@
                 </section>
                 <section id="args">
                     <div class="attr variable">
-            <span class="name">args</span><span class="annotation">: <a href="types.html#Args">libs.types.Args</a></span>
+            <span class="name">args</span><span class="annotation">: <a href="domain/datamodels.html#Args">libs.domain.datamodels.Args</a></span>
 
         
     </div>
@@ -180,7 +180,7 @@
                     <div class="attr variable">
             <span class="name">params</span><span class="annotation">: <a href="domain/placeholder.html#PlaceholderBuilder">libs.domain.placeholder.PlaceholderBuilder</a></span>        =
 <input id="params-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="params-view-value"></label><span class="default_value">PlaceholderBuilder(individual=True, guest_skip=True, guest_skip2=True, unregistered_replace=True, friendly_fire=False, statistics=False, ranked=3, stipulated=0, stipulated_rate=0.05, interval=80, search_word=&#39;&#39;, group_length=0, service_type=&#39;&#39;, command=&#39;&#39;, channel_config=None, target_mode=0, mode=4, default_rule=&#39;&#39;, rule_version=&#39;&#39;, rule_list=[], mixed=False, origin_point=250, return_point=300, rank_point=&#39;&#39;, ignore_flying=False, draw_split=False, undefined_word=1, player_name=&#39;&#39;, guest_name=&#39;&#39;, target_player=[], player_list=[], competition_list=[], all_player=False, source=&#39;&#39;, separate=False, collection=&#39;&#39;, target_count=0, starttime=None, endtime=None, onday=None, score_comparisons=False, verbose=False, game_results=False, versus_matrix=False, order=False, rating=False, anonymous=False, fourfold=True, format=&#39;default&#39;, filename=&#39;&#39;)</span>
+            <label class="view-value-button pdoc-button" for="params-view-value"></label><span class="default_value">PlaceholderBuilder(individual=True, guest_skip=True, guest_skip2=True, unregistered_replace=True, friendly_fire=False, statistics=False, ranked=3, stipulated=0, stipulated_rate=0.05, interval=80, search_word=&#39;&#39;, group_length=0, service_type=&lt;ServiceType.UNKNOWN: &#39;unknown&#39;&gt;, command=&#39;&#39;, channel_config=None, target_mode=0, mode=4, default_rule=&#39;&#39;, rule_version=&#39;&#39;, rule_list=[], mixed=False, origin_point=250, return_point=300, rank_point=&#39;&#39;, ignore_flying=False, draw_split=False, undefined_word=1, player_name=&#39;&#39;, guest_name=&#39;&#39;, target_player=[], player_list=[], competition_list=[], all_player=False, source=&#39;&#39;, separate=False, collection=&#39;&#39;, target_count=0, starttime=None, endtime=None, onday=None, score_comparisons=False, verbose=False, game_results=False, versus_matrix=False, order=False, rating=False, anonymous=False, fourfold=True, format=&#39;default&#39;, filename=&#39;&#39;)</span>
 
         
     </div>
