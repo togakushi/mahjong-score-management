@@ -171,7 +171,7 @@ def message_deleted(m: "MessageParserProtocol") -> None:
 
 def _thread_check(m: "MessageParserProtocol") -> bool:
     """スレッド内判定関数"""
-    if isinstance(g.adapter, factory.slack_adapter):
+    if isinstance(g.adapter, factory.slack_adapter):  # type: ignore[attr-defined]
         if not m.in_thread or (m.in_thread == g.adapter.conf.thread_report):
             return True
         return False
