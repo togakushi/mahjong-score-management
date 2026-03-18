@@ -14,7 +14,6 @@ from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.web.adapter import ServiceAdapter
@@ -119,7 +118,11 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
                         return render_template("score_list.html", **data)
             elif request.form.get("action") == "modify":  # 新規登録
                 playtime = ExtDt()
-                data.update(mode="insert", playtime=playtime.format(Format.SQL), ts=playtime.format(Format.TS))
+                data.update(
+                    mode="insert",
+                    playtime=playtime.format(ExtDt.FMT.SQL),
+                    ts=playtime.format(ExtDt.FMT.TS),
+                )
                 return render_template("score_input.html", **data)
 
         data.update(table=score_table())

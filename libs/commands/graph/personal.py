@@ -20,7 +20,6 @@ from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -61,7 +60,7 @@ def plot(m: "MessageParserProtocol") -> None:
     if g.params.target_count:
         title_range = f"(直近 {len(df)} ゲーム)"
     else:
-        title_range = f"({ExtDt(g.params.starttime).format(Format.YMDHM)} - {ExtDt(g.params.endtime).format(Format.YMDHM)})"
+        title_range = f"({ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHM)} - {ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHM)})"
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
     m.set_message(
@@ -165,7 +164,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         mapping_dict = formatter.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
-    title_text = f"『{player}』の成績 (検索範囲：{text_item.date_range(Format.YMD_O)})"
+    title_text = f"『{player}』の成績 (検索範囲：{text_item.date_range(ExtDt.FMT.YMD_O)})"
 
     rpoint_df = get_data(player_df["rpoint"], g.params.interval)
     point_sum_df = get_data(player_df["point"], g.params.interval)

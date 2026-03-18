@@ -15,7 +15,6 @@ from libs.domain.score import GameResult
 from libs.types import ServiceType
 from libs.utils import dbutil, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 from tests.database import param_data
 
 
@@ -35,7 +34,7 @@ def test_score_insert(draw_split: bool, game_result: str, get_point: dict[str, f
 
     m = g.adapter.parser()
     m.data.text = game_result
-    m.data.event_ts = ExtDt().format(Format.TS)
+    m.data.event_ts = ExtDt().format(ExtDt.FMT.TS)
 
     score_data = GameResult(**validator.check_score(m))
     score_data.set(rule_version="test", draw_split=draw_split)

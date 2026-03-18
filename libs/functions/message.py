@@ -13,7 +13,6 @@ import libs.global_value as g
 from libs.functions.compose import text_item
 from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -71,8 +70,8 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
             msg.format(
                 user_id=m.data.user_id,
                 keyword=g.cfg.setting.keyword,
-                start=ExtDt(g.params.starttime).format(Format.YMD),
-                end=ExtDt(g.params.onday).format(Format.YMD),
+                start=ExtDt(g.params.starttime).format(ExtDt.FMT.YMD),
+                end=ExtDt(g.params.onday).format(ExtDt.FMT.YMD),
                 rpoint_diff=rpoint_diff * 100,
                 rpoint_sum=m.status.rpoint_sum * 100,
             )
@@ -107,8 +106,8 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
         game_range1 = f"最初のゲーム：{game_info.first_comment}\n"
         game_range1 += f"最後のゲーム：{game_info.last_comment}\n"
     else:
-        game_range1 = f"最初のゲーム：{game_info.first_game.format(Format.YMDHMS)}\n"
-        game_range1 += f"最後のゲーム：{game_info.last_game.format(Format.YMDHMS)}\n"
+        game_range1 = f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}\n"
+        game_range1 += f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}\n"
     game_range2 = f"集計範囲：{text_item.aggregation_range(game_info)}\n"
 
     # ゲーム数

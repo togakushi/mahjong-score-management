@@ -6,7 +6,7 @@ import logging
 from configparser import ConfigParser
 from contextlib import closing
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Optional, Union, cast
+from typing import TYPE_CHECKING, Any, Optional, Union
 
 import libs.global_value as g
 from libs.data import loader
@@ -14,7 +14,6 @@ from libs.domain.score import GameResult
 from libs.types import ChannelType, CommandType
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -122,8 +121,6 @@ def member_info(params: dict[str, Any]) -> dict[str, Any]:
         dict[str, Any]: 記録情報
 
     """
-    params.update({"starttime": cast(ExtDt, params["starttime"]).format(Format.SQL)})
-    params.update({"endtime": cast(ExtDt, params["endtime"]).format(Format.SQL)})
     ret = loader.execute(
         """
         select

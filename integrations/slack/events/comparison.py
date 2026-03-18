@@ -12,7 +12,6 @@ from libs.domain.score import GameResult
 from libs.types import ActionStatus, CommandType, StyleOptions
 from libs.utils import formatter, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -98,7 +97,7 @@ def check_omission(results: ComparisonResults) -> None:
     if slack_score:
         first_ts = float(min(x.ts for x in slack_score))
     else:
-        first_ts = float(results.after.format(Format.TS))
+        first_ts = float(results.after.format(ExtDt.FMT.TS))
 
     db_score = search.for_db_score(first_ts)
 
@@ -110,13 +109,13 @@ def check_omission(results: ComparisonResults) -> None:
             target = db_score[ts_list.index(score.ts)]
             if score != target:  # 不一致(更新)
                 results.mismatch.append({"before": target, "after": score})
-                logging.info("mismatch: %s (%s)", score.ts, ExtDt(float(score.ts)).format(Format.YMDHMS))
+                logging.info("mismatch: %s (%s)", score.ts, ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS))
                 logging.debug("  * slack: %s", score.to_text("detail"))
                 logging.debug("  *    db: %s", target.to_text("detail"))
                 modify.db_update(score, work_m)
         else:  # 取りこぼし(追加)
             results.missing.append(score)
-            logging.info("missing: %s (%s)", score.ts, ExtDt(float(score.ts)).format(Format.YMDHMS))
+            logging.info("missing: %s (%s)", score.ts, ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS))
             logging.debug(score.to_text("logging"))
             modify.db_insert(score, work_m)
 
@@ -129,7 +128,7 @@ def check_omission(results: ComparisonResults) -> None:
             if score.source:
                 work_m.data.channel_id = score.source.replace("slack_", "")
             results.delete.append(score)
-            logging.info("delete (Only database): %s %s", ExtDt(float(score.ts)).format(Format.YMDHMS), score.to_text("logging"))
+            logging.info("delete (Only database): %s %s", ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS), score.to_text("logging"))
             work_m.status.command_type = CommandType.COMPARISON
             modify.db_delete(work_m)
 
@@ -176,7 +175,7 @@ def check_remarks(results: ComparisonResults) -> None:
                 }
             )
 
-    db_remarks = search.for_db_remarks(float(results.after.format(Format.TS)))
+    db_remarks = search.for_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
 
     # SLACK -> DATABASE
     work_m = cast("MessageParserProtocol", g.adapter.parser())
@@ -194,15 +193,16 @@ def check_remarks(results: ComparisonResults) -> None:
             work_m.data.event_ts = remark["event_ts"]
             work_m.data.channel_id = remark["source"].replace("slack_", "")
             work_m.status.command_type = CommandType.COMPARISON
-        modify.remarks_delete(work_m)
+            modify.remarks_delete(work_m)
         modify.remarks_append(work_m, results.remark_mod)
 
     # DATABASE -> SLACK
+    work_remarks = [{k: str(v) for k, v in d.items() if k != "source"} for d in slack_remarks]  # sourceを除外したリスト
     for remark in db_remarks:
-        if remark not in slack_remarks:  # slackに記録なし
-            if remark["source"] in {x.source for x in score_list.values()}:
-                results.remark_del.append(remark)
-                modify.remarks_delete_compar(remark, work_m)
+        check_remark = {k: str(v) for k, v in remark.items() if k != "source"}
+        if check_remark not in work_remarks:  # slackに記録なし
+            results.remark_del.append(remark)
+            modify.remarks_delete_compar(work_m, remark)
 
 
 def check_total_score(results: ComparisonResults) -> None:
@@ -238,7 +238,7 @@ def check_pending(m: "MessageParserProtocol") -> bool:
     """
     g.adapter = cast("ServiceAdapter", g.adapter)
 
-    now_ts = float(ExtDt().format(Format.TS))
+    now_ts = float(ExtDt().format(ExtDt.FMT.TS))
 
     if m.data.edited_ts == "undetermined":
         check_ts = float(m.data.event_ts) + g.adapter.conf.search_wait

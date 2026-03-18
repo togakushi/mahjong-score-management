@@ -16,7 +16,6 @@ from libs.functions import message
 from libs.types import ActionStatus, MessageStatus, StyleOptions
 from libs.utils import dbutil, formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -44,7 +43,7 @@ def db_insert(detection: "GameResult", m: "MessageParserProtocol") -> int:
                 cur.execute(
                     dbutil.query("RESULT_INSERT"),
                     {
-                        "playtime": ExtDt(float(detection.ts)).format(Format.SQL),
+                        "playtime": ExtDt(float(detection.ts)).format(ExtDt.FMT.SQL),
                         "rpoint_sum": detection.rpoint_sum,
                         **detection.to_dict(),
                     },
@@ -84,7 +83,7 @@ def db_update(detection: "GameResult", m: "MessageParserProtocol") -> int:
             cur.execute(
                 dbutil.query("RESULT_UPDATE"),
                 {
-                    "playtime": ExtDt(float(detection.ts)).format(Format.SQL),
+                    "playtime": ExtDt(float(detection.ts)).format(ExtDt.FMT.SQL),
                     "rpoint_sum": detection.rpoint_sum,
                     **detection.to_dict(),
                 },
@@ -143,7 +142,7 @@ def db_backup() -> str:
 
     fname = os.path.splitext(g.cfg.setting.database_file)[0]
     fext = os.path.splitext(g.cfg.setting.database_file)[1]
-    bktime = ExtDt().format(Format.EXT)
+    bktime = ExtDt().format(ExtDt.FMT.EXT)
     bkfname = os.path.join(g.cfg.setting.backup_dir, os.path.basename(f"{fname}_{bktime}{fext}"))
 
     if not os.path.isdir(g.cfg.setting.backup_dir):  # バックアップディレクトリ作成
@@ -219,13 +218,13 @@ def remarks_delete(m: "MessageParserProtocol") -> None:
         g.adapter.functions.post_processing(m)
 
 
-def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> None:
+def remarks_delete_compar(m: "MessageParserProtocol", para: "RemarkDict") -> None:
     """
     DBからメモを削除する(突合)
 
     Args:
-        para (dict): パラメータ
         m (MessageParserProtocol): メッセージデータ
+        para (RemarkDict): パラメータ
 
     """
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
@@ -233,6 +232,7 @@ def remarks_delete_compar(para: "RemarkDict", m: "MessageParserProtocol") -> Non
         cur.commit()
 
         left = cur.execute("select count() from remarks where event_ts=:event_ts;", para).fetchone()[0]
+        logging.info("ts=%s, count=%s", m.data.event_ts, left)
 
     # 後処理
     m.status.action = ActionStatus.DELETE

@@ -3,7 +3,7 @@ integrations/slack/functions.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any, Union, cast
 
 import libs.global_value as g
 from integrations.base.interface import FunctionsInterface
@@ -40,23 +40,25 @@ class SvcFunctions(FunctionsInterface):
         self.conf = conf
         """個別設定"""
 
-    def get_messages(self, word: str) -> list["MessageParserProtocol"]:
+    def get_messages(self, words: Union[str, list[str]]) -> list["MessageParserProtocol"]:
         """
         slackログからメッセージを検索して返す
 
         Args:
-            word (str): 検索するワード
+            words (Union[str, list[str]]): 検索するワード
 
         Returns:
             list[MessageParserProtocol]: 検索した結果
 
         """
         g.adapter = cast("ServiceAdapter", g.adapter)
+        if isinstance(words, list):
+            words = " ".join(words)
 
         # 検索クエリ
         after = ExtDt(days=-self.conf.search_after, hours=g.cfg.setting.time_adjust).format(Format.YMD, Delimiter.HYPHEN)
         channel = " ".join([f"in:{x}" for x in self.conf.search_channel])
-        query = f"{word} {channel} after:{after}"
+        query = f"{words} {channel} after:{after}"
         logging.info("query=%s, check_db=%s", query, g.cfg.setting.database_file)
 
         # データ取得
@@ -337,11 +339,11 @@ class SvcFunctions(FunctionsInterface):
         remarks_matches: list["MessageParserProtocol"] = []
 
         # メモの抽出
-        for match in self.get_messages(g.cfg.setting.remarks_word):
+        for match in self.get_messages(g.cfg.rule.remarks_words):
             if match.ignore_user:  # 除外ユーザからのポストは破棄
                 logging.info("skip ignore user: %s", match.data.user_id)
                 continue
-            if match.keyword == g.cfg.setting.remarks_word:
+            if match.keyword in g.cfg.rule.remarks_words:
                 remarks_matches.append(match)
 
         # イベント詳細取得
