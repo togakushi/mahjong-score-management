@@ -17,7 +17,6 @@ from libs.domain.score import GameResult
 from libs.functions.tools import score_simulator
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 
 def main(season_times: int = 1) -> None:
@@ -88,7 +87,7 @@ def main(season_times: int = 1) -> None:
 
                     # データ投入
                     param = {
-                        "playtime": ExtDt(dt).format(Format.SQL),
+                        "playtime": ExtDt(dt).format(ExtDt.FMT.SQL),
                     }
                     param.update(cast(dict[str, Any], result.to_dict()))
                     cur.execute(dbutil.query("RESULT_INSERT"), param)

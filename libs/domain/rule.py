@@ -13,7 +13,6 @@ from table2ascii import Alignment, PresetStyle, table2ascii
 from libs.data import loader
 from libs.domain.command import CommandParser
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -335,8 +334,8 @@ class RuleSet:
             if rule.count:
                 body_data.extend(
                     [
-                        ["記録開始日時", rule.first_time.format(Format.YMDHMS)],
-                        ["最終記録日時", rule.last_time.format(Format.YMDHMS)],
+                        ["記録開始日時", rule.first_time.format(ExtDt.FMT.YMDHMS)],
+                        ["最終記録日時", rule.last_time.format(ExtDt.FMT.YMDHMS)],
                     ]
                 )
 

@@ -10,7 +10,6 @@ from typing import TYPE_CHECKING, Literal, Optional
 import libs.global_value as g
 from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -201,36 +200,36 @@ class ComparisonResults:
                 ret += f"remark_del:{len(self.remark_del)} "
                 ret += f"invalid_score:{len(self.invalid_score)} "
             case "headline":
-                ret = f"突合範囲：{self.after.format(Format.YMDHMS)} - {self.before.format(Format.YMDHMS)}"
+                ret = f"突合範囲：{self.after.format(ExtDt.FMT.YMDHMS)} - {self.before.format(ExtDt.FMT.YMDHMS)}"
             case "pending":
                 ret += f"＊ 保留：{len(self.pending)}件\n"
                 for score in self.pending:
-                    ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
+                    ret += f"{ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS)} {score.to_text()}\n"
             case "mismatch":
                 ret += f"＊ 不一致：{len(self.mismatch)}件\n"
                 for score_dict in self.mismatch:
-                    ret += f"{ExtDt(float(score_dict['before'].ts)).format(Format.YMDHMS)}\n"
+                    ret += f"{ExtDt(float(score_dict['before'].ts)).format(ExtDt.FMT.YMDHMS)}\n"
                     ret += f"\t修正前：{score_dict['before'].to_text()}\n"
                     ret += f"\t修正後：{score_dict['after'].to_text()}\n"
             case "missing":
                 ret += f"＊ 取りこぼし：{len(self.missing)}件\n"
                 for score in self.missing:
-                    ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
+                    ret += f"{ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS)} {score.to_text()}\n"
             case "delete":
                 ret += f"＊ 削除漏れ：{len(self.delete)}件\n"
                 for score in self.delete:
-                    ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
+                    ret += f"{ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS)} {score.to_text()}\n"
             case "remark_mod":
                 ret += f"＊ メモ更新：{len(self.remark_mod)}件\n"
                 for remark in self.remark_mod:
-                    ret += f"{ExtDt(float(remark['thread_ts'])).format(Format.YMDHMS)} "
+                    ret += f"{ExtDt(float(remark['thread_ts'])).format(ExtDt.FMT.YMDHMS)} "
                     ret += f"{remark['name']} {remark['matter']}\n"
             case "remark_del":
                 ret += f"＊ メモ削除：{len(self.remark_del)}件\n"
             case "invalid_score":
                 ret += f"＊ 素点合計不一致：{len(self.invalid_score)}件\n"
                 for score in self.invalid_score:
-                    ret += f"{ExtDt(float(score.ts)).format(Format.YMDHMS)} {score.to_text()}\n"
+                    ret += f"{ExtDt(float(score.ts)).format(ExtDt.FMT.YMDHMS)} {score.to_text()}\n"
 
         return ret
 
