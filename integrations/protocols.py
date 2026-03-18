@@ -5,8 +5,8 @@ integrations/protocols.py
 from dataclasses import dataclass, field, fields, is_dataclass
 from typing import TYPE_CHECKING, Any, Optional, Protocol
 
-from libs.domain.datamodels import ActionStatus, ChannelType, CommandType
-from libs.types import MessageStatus
+from libs.domain.datamodels import ChannelType, CommandType
+from libs.types import ActionStatus, MessageStatus
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401

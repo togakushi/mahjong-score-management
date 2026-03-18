@@ -44,17 +44,6 @@ class CommandType(StrEnum):
     """未定義"""
 
 
-class ActionStatus(StrEnum):
-    """DBに対する操作"""
-
-    CHANGE = "change"
-    """insert/updateが実行された"""
-    DELETE = "delete"
-    """deleteが実行された"""
-    NOTHING = "nothing"
-    """何もしてない"""
-
-
 class ChannelType(StrEnum):
     """チャンネルタイプ"""
 
