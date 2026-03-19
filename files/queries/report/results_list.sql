@@ -36,9 +36,9 @@ with target_data as (
 select
     name,
     count() as "game",
-    replace(printf("%+.1f pt", round(sum(point), 1)), "-", "▲") as "total_mix",
+    replace(printf("%+.1fpt", round(sum(point), 1)), "-", "▲") as "total_mix",
     round(sum(point), 1) as "point_sum",
-    replace(printf("%+.1f pt", round(avg(point), 1)), "-", "▲") as "avg_mix",
+    replace(printf("%+.1fpt", round(avg(point), 1)), "-", "▲") as "avg_mix",
     round(avg(point), 1) as "point_avg",
     count(rank = 1 or null) as "1st_count",
     cast(count(rank = 1 or null) as real) / count() as "rank1_rate",
