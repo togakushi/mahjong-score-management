@@ -4,8 +4,8 @@
 改行を含めず、1行で記述してもよい。
 
 **成績記録キーワード** は設定ファイルで指定される。
-- [searchセクション](../config/mainconf.md#settingセクション)の`keyword`キー
-- [keyword_mappingセクション](../config/mainconf.md#keyword_mappingセクション)でのマッピング設定
+- [searchセクション](../config/main.md#settingセクション)の`keyword`キー
+- [keyword_mappingセクション](../config/main.md#keyword_mappingセクション)でのマッピング設定
 
 ### 四人打ルールセット記録
 ```

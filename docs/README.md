@@ -9,7 +9,7 @@
 - [デーモン化](./setting/for_discord/daemon.md)
 ## 設定ファイル内容説明
 - [概要説明](./config/README.md)
-  - [メイン設定](./config/mainconf.md)
+  - [メイン設定](./config/main.md)
     - [サービス個別設定](./config/integrations.md)
   - [ルールセット設定](./config/ruleset.md)
 
