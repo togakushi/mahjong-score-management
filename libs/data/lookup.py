@@ -175,13 +175,11 @@ def get_current_rule_version(m: "MessageParserProtocol", command_suffix: list[st
         str: ルール識別子
 
     """
-    rule_version = g.cfg.setting.database_file
-
     for suffix in command_suffix:
         if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
             return rule_version
 
-    return rule_version
+    return g.cfg.setting.default_rule
 
 
 def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list[str]:
