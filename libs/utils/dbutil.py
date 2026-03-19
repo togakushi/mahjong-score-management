@@ -161,8 +161,8 @@ def query_modification(sql: str, params: dict[str, Any]) -> str:
             sql = sql.replace("--[not_collection] ", "")
 
     # 集計対象ルール
-    if params.get("rule_set"):
-        sql = sql.replace("<<rule_list>>", ":" + ", :".join(params["rule_set"]))
+    if rule_list := params.get("rule_list"):
+        sql = sql.replace("<<rule_list>>", ",".join([f":rule_{idx}" for idx, _ in enumerate(rule_list)]))
     else:
         sql = sql.replace("and rule_version in (<<rule_list>>)", "")
         sql = sql.replace("and results.rule_version in (<<rule_list>>)", "")
