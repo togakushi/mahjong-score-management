@@ -75,9 +75,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     # ルール識別子探索
     params.update_setting(main_config=g.cfg.config_file, key_name="default_rule", val_type=str)
     if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
-        for suffix in command_suffix:
-            if rule_version := g.cfg.rule.keyword_mapping.get(m.keyword.removesuffix(suffix)):
-                break
+        rule_version = lookup.get_current_rule_version(m, command_suffix)
     rule_version = rule_version if rule_version else params.default_rule
     params.update_from_dict(
         {
@@ -117,17 +115,23 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     # 追加ルール識別子
     rule_list: list[str] = []
     for name in list(check_list):
-        if name in g.cfg.rule.keyword_mapping or name in g.cfg.rule.keyword_mapping.values():  # マッピング済みルール識別子
+        if name in g.cfg.rule.keyword_mapping:  # マッピング済みルール識別子
+            rule_list.append(g.cfg.rule.keyword_mapping.get(name, rule_version))
+            check_list.remove(name)
+        if name in g.cfg.rule.keyword_mapping.values():  # マッピング済みルール識別子
             rule_list.append(name)
             check_list.remove(name)
-        elif name in g.cfg.rule.rule_list:  # マッピングされていないルール識別子
+        if name in g.cfg.rule.rule_list:  # マッピングされていないルール識別子
+            rule_list.append(name)
             check_list.remove(name)
     if params.mixed:
         for rule in g.cfg.rule.rule_list:  # 全ルール追加
             if g.cfg.rule.get_mode(rule) == params.target_mode:
                 rule_list.append(rule)
-    if not rule_list:
-        rule_list.append(rule_version)
+    if rule_list:
+        params.rule_list.extend(list(set(rule_list)))
+    else:
+        params.rule_list.append(rule_version)
 
     # プレイヤー名
     target_player: list[str] = []
