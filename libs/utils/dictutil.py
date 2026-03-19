@@ -123,7 +123,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             check_list.remove(name)
         if name in g.cfg.rule.rule_list:  # マッピングされていないルール識別子
             rule_list.append(name)
-            check_list.remove(name)
+            if name in check_list:
+                check_list.remove(name)
     if params.mixed:
         for rule in g.cfg.rule.rule_list:  # 全ルール追加
             if g.cfg.rule.get_mode(rule) == params.target_mode:
