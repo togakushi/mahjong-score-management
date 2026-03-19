@@ -50,7 +50,7 @@
 | ヨンマ<br />四麻<br />四人打<br />四人打ち | `mode=4`が指定されているルールセットをすべて含める | マッピングされているルールセットのみ |
 
 > [!NOTE]
-> 参照：[keyword_mappingセクション](../config/mainconf.md#keyword_mappingセクション)、[ルールセット設定](../config/ruleset.md)
+> 参照：[keyword_mappingセクション](../config/main.md#keyword_mappingセクション)、[ルールセット設定](../config/ruleset.md)
 
 ### 出力フォーマット変更
 |  キーワード   |        内容        | 備考  |

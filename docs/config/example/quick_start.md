@@ -11,7 +11,6 @@
 
 [setting]
 keyword = お好みの成績記録キーワード
-help = お好みのヘルプ呼び出しワード
 font_file = ipaexg.ttf
 
 [results]
@@ -32,6 +31,9 @@ ranked = 10
 commandword = お好みのレポート呼び出しワード
 aggregation_range = 今年
 guest_skip = False
+
+[help]
+commandword = お好みのヘルプ呼び出しワード
 
 [slack]
 slash_command = /設定したスラッシュコマンド

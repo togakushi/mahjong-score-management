@@ -145,7 +145,7 @@ class PlaceholderBuilder(ParameterData):
             if k in field_list:
                 setattr(self, k, v)
 
-    def update_setting(self, main_config: "Path", key_name: str, val_type: type = bool) -> None:
+    def update_setting(self, main_config: "Path", key_name: str, val_type: type, fallback: Any = None) -> None:
         """
         優先度順に key_name を探索して値を更新する
 
@@ -153,6 +153,8 @@ class PlaceholderBuilder(ParameterData):
             main_config (Path): メイン設定ファイルパス
             key_name (str): 探索するキー名
             val_type (type): 取り込む値の型 (bool, str)
+            fallback (Any): 見つからなかった場合にセットする値
+            - *None* が指定されているときは値を更新しない
 
         Note:
             探索優先順序
@@ -188,6 +190,9 @@ class PlaceholderBuilder(ParameterData):
             if value is not None:
                 setattr(self, key_name, value)
                 return
+
+        if fallback is not None:
+            setattr(self, key_name, fallback)
 
     def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
         """

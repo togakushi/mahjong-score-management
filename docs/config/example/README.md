@@ -4,3 +4,4 @@
 - [ルールセット設定例](./rule_set.md)
 - [セパレート機能設定例](./separate.md)
 - [クイックスタート](./quick_start.md)
+- [ベストプラクティス](./bestpractice.md)

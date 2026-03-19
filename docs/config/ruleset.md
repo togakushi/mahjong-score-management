@@ -1,5 +1,5 @@
 # ルールセット設定
-メイン設定ファイル（[settingセクション](mainconf.md#settingセクション)）の`rule_config`で定義される設定ファイル。
+メイン設定ファイル（[settingセクション](main.md#settingセクション)）の`rule_config`で定義される設定ファイル。
 
 ## 設定内容
 |      キー      |        内容        |               型                |    省略時    |  mode=4 省略時   | mode=3 省略時 |                       備考                       |
@@ -35,19 +35,19 @@ ignore_flying = True
 [レギュレーション設定](./regulations.md)参照
 
 # マッピング
-使用するルールセットと成績登録キーワードの紐付けは[keyword_mappingセクション](mainconf.md#keyword_mappingセクション)で行う。
+使用するルールセットと成績登録キーワードの紐付けは[keyword_mappingセクション](main.md#keyword_mappingセクション)で行う。
 
 ## 未設定時の動作
 ### ルールセット定義ファイル
 ルールセット定義ファイルの内容が空の場合は追加のルールセットの登録は行われない。
 
-メイン設定内の[mahjongセクション](mainconf.md#mahjongセクション)で設定されたルールが登録される。
+メイン設定内の[mahjongセクション](main.md#mahjongセクション)で設定されたルールが登録される。
 
 ### マッピング定義
-[keyword_mappingセクション](mainconf.md#keyword_mappingセクション)が未定義の場合、[mahjongセクション](mainconf.md#mahjongセクション)のルールが[settingセクション](mainconf.md#settingセクション)の`keyword`とマッピングされる。
+[keyword_mappingセクション](main.md#keyword_mappingセクション)が未定義の場合、[mahjongセクション](main.md#mahjongセクション)のルールが[settingセクション](main.md#settingセクション)の`keyword`とマッピングされる。
 
 ### すべて未定義のデフォルト状態
-[mahjongセクション](mainconf.md#mahjongセクション)がすべて未設定の場合、以下のルールセットが定義される。
+[mahjongセクション](main.md#mahjongセクション)がすべて未設定の場合、以下のルールセットが定義される。
 * ルール識別子：default_rule
 * 集計モード：四人打ち
 * 配給原点：25000点
@@ -56,8 +56,8 @@ ignore_flying = True
 * 素点同点時：席順で決定
 * トビ表示：アリ
 
-[settingセクション](mainconf.md#settingセクション)の`keyword`が未設定の場合、以下のキーワードがセットされる。
+[settingセクション](main.md#settingセクション)の`keyword`が未設定の場合、以下のキーワードがセットされる。
 * 終局
 
-[keyword_mappingセクション](mainconf.md#keyword_mappingセクション)が未設定の場合、マッピング設定が空になる。\
-マッピング設定が空の状態でアプリが起動した場合、[settingセクション](mainconf.md#settingセクション)の`keyword`と[mahjongセクション](mainconf.md#mahjongセクション)の`rule_version`がマッピングされる。
+[keyword_mappingセクション](main.md#keyword_mappingセクション)が未設定の場合、マッピング設定が空になる。\
+マッピング設定が空の状態でアプリが起動した場合、[settingセクション](main.md#settingセクション)の`keyword`と[mahjongセクション](main.md#mahjongセクション)の`rule_version`がマッピングされる。

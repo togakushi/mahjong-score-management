@@ -2,12 +2,9 @@
 ## メイン設定
 コマンド名の設定を行う。
 ```
-[mahjong]
-
 [setting]
 keyword = 成績記録
 remarks_word = ゲーム内メモ
-help = アプリヘルプ
 
 [alias] # 一部のみ指定
 download = ダウンロード
@@ -32,6 +29,9 @@ commandword = 部員リスト
 
 [team]
 commandword = チーム一覧, チーム構成
+
+[help]
+commandword = アプリヘルプ
 
 [slack]
 comparison_word = 成績突合
@@ -108,35 +108,24 @@ Slack/Discordを利用時は突合コマンドが追加される
 
 ### 各セクション設定状況
 ```
-[DEBUG][config:config_load] setting: {'help': 'アプリヘルプ', 'keyword': '成績記録', 'remarks_word': 'ゲーム内メモ', 'rule_config': PosixPath('files/default_rule.ini'), 'time_adjust': 12, 'separate': False, 'search_word': '', 'group_length': 0, 'guest_mark': '※', 'database_file': PosixPath('mahjong.db'), 'backup_dir': None, 'font_file': PosixPath('/path/to/slack-mahjong-score-management/ipaexg.ttf'), 'graph_style': 'ggplot', 'work_dir': PosixPath('work'), 'section': 'setting'}
-[DEBUG][config:config_load] mahjong: {'mode': 4, 'rule_version': 'default_rule', 'origin_point': 250, 'return_point': 300, 'rank_point': [30, 10, -10, 30], 'ignore_flying': False, 'draw_split': False, 'section': 'mahjong'}
-[DEBUG][config:config_load] alias: {'results': ['results', '成績'], 'graph': ['graph', 'グラフ'], 'ranking': ['ranking', 'ランキング'], 'report': ['report', 'レポート'], 'download': ['download', 'ダウンロード', 'ダウンロード'], 'member': ['member', 'userlist', 'member_list', 'userlist', 'メンバー', 'リスト'], 'add': ['add', '追加', '入部届'], 'delete': ['del', '削除', '退部届'], 'team_create': ['team_create'], 'team_del': ['team_del'], 'team_add': ['team_add'], 'team_remove': ['team_remove'], 'team_list': ['team_list'], 'team_clear': ['team_clear'], 'del': None, 'section': 'alias'}
-[DEBUG][config:config_load] member: {'info': [], 'registration_limit': 255, 'character_limit': 8, 'alias_limit': 16, 'guest_name': 'ゲスト', 'commandword': ['部員リスト'], 'section': 'member'}
-[DEBUG][config:config_load] team: {'info': [], 'registration_limit': 255, 'character_limit': 16, 'member_limit': 16, 'friendly_fire': True, 'commandword': ['チーム一覧', 'チーム構成'], 'section': 'team'}
-[DEBUG][config:config_load] results: {'section': 'results', 'commandword': ['成績サマリ', '成績サマリ2'], 'aggregation_range': '当日', 'individual': True, 'all_player': False, 'daily': True, 'fourfold': True, 'game_results': False, 'guest_skip': True, 'guest_skip2': True, 'ranked': 3, 'score_comparisons': False, 'statistics': False, 'stipulated': 0, 'stipulated_rate': 0.05, 'unregistered_replace': True, 'anonymous': False, 'verbose': False, 'versus_matrix': False, 'collection': '', 'always_argument': [], 'target_mode': 0, 'format': '', 'filename': '', 'interval': 80}
-[DEBUG][config:config_load] graph: {'section': 'graph', 'commandword': ['成績グラフ', '成績グラフ2'], 'aggregation_range': '当日', 'individual': True, 'all_player': False, 'daily': True, 'fourfold': True, 'game_results': False, 'guest_skip': True, 'guest_skip2': True, 'ranked': 3, 'score_comparisons': False, 'statistics': False, 'stipulated': 0, 'stipulated_rate': 0.05, 'unregistered_replace': True, 'anonymous': False, 'verbose': False, 'versus_matrix': False, 'collection': '', 'always_argument': [], 'target_mode': 0, 'format': '', 'filename': '', 'interval': 80}
-[DEBUG][config:config_load] ranking: {'section': 'ranking', 'commandword': ['成績ランキング'], 'aggregation_range': '当日', 'individual': True, 'all_player': False, 'daily': True, 'fourfold': True, 'game_results': False, 'guest_skip': True, 'guest_skip2': True, 'ranked': 3, 'score_comparisons': False, 'statistics': False, 'stipulated': 0, 'stipulated_rate': 0.05, 'unregistered_replace': True, 'anonymous': False, 'verbose': False, 'versus_matrix': False, 'collection': '', 'always_argument': [], 'target_mode': 0, 'format': '', 'filename': '', 'interval': 80}
-[DEBUG][config:config_load] report: {'section': 'report', 'commandword': ['成績レポート'], 'aggregation_range': '当日', 'individual': True, 'all_player': False, 'daily': True, 'fourfold': True, 'game_results': False, 'guest_skip': True, 'guest_skip2': True, 'ranked': 3, 'score_comparisons': False, 'statistics': False, 'stipulated': 0, 'stipulated_rate': 0.05, 'unregistered_replace': True, 'anonymous': False, 'verbose': False, 'versus_matrix': False, 'collection': '', 'always_argument': [], 'target_mode': 0, 'format': '', 'filename': '', 'interval': 80}
+[DEBUG][section:config_load] mahjong: {'section': 'mahjong', 'mode': 4, 'rule_version': 'default_rule', 'origin_point': 250, 'return_point': 300, 'rank_point': [30, 10, -10, -30], 'ignore_flying': False, 'draw_split': False, 'undefined_word': 0, 'section_proxy': <Section: mahjong>}
+[DEBUG][section:config_load] setting: {'section': 'setting', 'keyword': '成績記録', 'remarks_word': 'ゲーム内メモ', 'remarks_suffix': [], 'rule_config': PosixPath('files/default_rule.ini'), 'time_adjust': 12, 'default_rule': '', 'separate': False, 'channel_id': None, 'search_word': '', 'group_length': 0, 'guest_mark': '※', 'database_file': PosixPath('mahjong.db'), 'backup_dir': None, 'font_file': PosixPath('ipaexg.ttf'), 'graph_style': 'ggplot', 'work_dir': PosixPath('work'), 'section_proxy': <Section: setting>}
+[DEBUG][section:config_load] alias: {'section': 'alias', 'results': ['results', '成績'], 'graph': ['graph', 'グラフ'], 'ranking': ['ranking', 'ランキング'], 'report': ['report', 'レポート'], 'download': ['download', 'ダウンロード', 'ダウンロード'], 'member': ['member', 'userlist', 'member_list', 'userlist', 'メンバー', 'リスト'], 'add': ['add', '追加', '入部届'], 'delete': ['del', '削除', '退部届'], 'team_create': ['team_create'], 'team_del': ['team_del'], 'team_add': ['team_add'], 'team_remove': ['team_remove'], 'team_list': ['team_list'], 'team_clear': ['team_clear'], 'section_proxy': <Section: alias>}
+[DEBUG][member:config_load] member: {'default_commandword': 'メンバー一覧', 'section': 'member', 'main_parser': <configparser.ConfigParser object at 0x710bc8d8abd0>, 'info': [], 'commandword': ['部員リスト'], 'command_suffix': [], 'registration_limit': 255, 'character_limit': 8, 'alias_limit': 16, 'guest_name': 'ゲスト', 'section_proxy': <Section: member>}
+[DEBUG][team:config_load] team: {'default_commandword': 'チーム一覧', 'section': 'team', 'main_parser': <configparser.ConfigParser object at 0x710bc8d8abd0>, 'info': [], 'commandword': ['チーム一覧', 'チーム構成'], 'command_suffix': [], 'registration_limit': 255, 'character_limit': 16, 'member_limit': 16, 'friendly_fire': True, 'section_proxy': <Section: team>}
+[DEBUG][section:config_load] results: {'default_commandword': '麻雀成績', 'section': 'results', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['成績サマリ', '成績サマリ2'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: results>}
+[DEBUG][section:config_load] graph: {'default_commandword': '麻雀グラフ', 'section': 'graph', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['成績グラフ', '成績グラフ2'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: graph>}
+[DEBUG][section:config_load] ranking: {'default_commandword': '麻雀ランキング', 'section': 'ranking', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['成績ランキング'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: ranking>}
+[DEBUG][section:config_load] report: {'default_commandword': '麻雀レポート', 'section': 'report', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['成績レポート'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: report>}
+[DEBUG][section:config_load] help: {'default_commandword': '麻雀ヘルプ', 'section': 'help', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['アプリヘルプ'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: help>}
 ```
+定義した呼び出しキーワードは`commandword`で確認できる。
 
 ### サービス個別設定状況
 > [!CAUTION]
 > `slash_command`の不一致に注意！！
 
-#### Slack
-```
-[DEBUG][interface:read_file] slack: SvcConfig(_command_dispatcher={}, _keyword_dispatcher={}, config_file=<configparser.ConfigParser object at 0x7fecc77378c0>, slash_command='/mahjong', badge_degree=False, badge_status=False, badge_grade=False, plotting_backend='matplotlib', comparison_word='成績突合', comparison_alias=['突合'], search_channel=[], search_after=7, search_wait=180, thread_report=True, reaction_ok='ok', reaction_ng='ng', ignore_userid=[], channel_limitations=[], bot_id='', tab_var={})
-```
-
-#### Discord
-```
-[DEBUG][interface:read_file] discord: SvcConfig(_command_dispatcher={}, _keyword_dispatcher={}, config_file=<configparser.ConfigParser object at 0x7fb1ec5278c0>, slash_command='mahjong', badge_degree=False, badge_status=False, badge_grade=False, plotting_backend='matplotlib', comparison_word='成績突合', comparison_alias=['突合'], search_after=7, ignore_userid=[], channel_limitations=[], bot_name=None)
-```
-
-#### Web
-```
-[DEBUG][interface:read_file] web: SvcConfig(_command_dispatcher={}, _keyword_dispatcher={}, config_file=<configparser.ConfigParser object at 0x7f19641c38c0>, slash_command='', badge_degree=False, badge_status=False, badge_grade=False, plotting_backend='plotly', host='', port=0, require_auth=False, username='', password='', use_ssl=False, certificate='', private_key='', view_summary=True, view_graph=True, view_ranking=True, view_report=True, management_member=False, management_score=False, theme='', custom_css='')
-```
+すべて省略していｒので、[最小構成](./minimal.md#サービス個別設定状況)と同じになる。
 
 ## ルールセット設定
 省略されているため[*default_rule.ini*](../../../files/default_rule.ini)が読み込まれる。
@@ -147,3 +136,5 @@ Slack/Discordを利用時は突合コマンドが追加される
 [INFO][rule:info] default_rule: mode=4, origin_point=250, return_point=300, rank_point=[30, 10, -10, 30], draw_split=False, ignore_flying=False
 [INFO][rule:info] default_rule3: mode=3, origin_point=350, return_point=400, rank_point=[30, 0, -30], draw_split=False, ignore_flying=False
 ```
+settingセクションで定義した`keyword`とデフォルトルールとなる`default_rule`が紐付けられる。\
+三人打ちルールの`default_rule3`はルール定義をすべて省略すると登録されるがデフォルトルールには指定されない。
