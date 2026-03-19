@@ -6,7 +6,7 @@ import logging
 from configparser import ConfigParser
 from contextlib import closing
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
 from libs.data import loader
@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
+    from libs.bootstrap.section import SubCommands
 
 
 def get_config_value(
@@ -240,37 +241,11 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
     keywords: list[str] = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
     commandwords: list[str] = []
 
-    match command_type:
-        case CommandType.RESULTS:
-            commandwords.append(g.cfg.results.default_commandword)
-            commandwords.extend(g.cfg.results.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.results.command_suffix for command in keywords])
-        case CommandType.GRAPH:
-            commandwords.append(g.cfg.graph.default_commandword)
-            commandwords.extend(g.cfg.graph.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.graph.command_suffix for command in keywords])
-        case CommandType.RANKING:
-            commandwords.append(g.cfg.ranking.default_commandword)
-            commandwords.extend(g.cfg.ranking.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.ranking.command_suffix for command in keywords])
-        case CommandType.REPORT:
-            commandwords.append(g.cfg.report.default_commandword)
-            commandwords.extend(g.cfg.report.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.report.command_suffix for command in keywords])
-        case CommandType.MEMBER_LIST:
-            commandwords.append(g.cfg.member.default_commandword)
-            commandwords.extend(g.cfg.member.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.member.command_suffix for command in keywords])
-        case CommandType.TEAM_LIST:
-            commandwords.append(g.cfg.team.default_commandword)
-            commandwords.extend(g.cfg.team.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.team.command_suffix for command in keywords])
-        case CommandType.HELP:
-            commandwords.append(g.cfg.help.default_commandword)
-            commandwords.extend(g.cfg.help.commandword)
-            commandwords.extend([f"{command}{suffix}" for suffix in g.cfg.help.command_suffix for command in keywords])
-        case _:
-            return []
+    if hasattr(g.cfg, command_type):
+        sub_com = cast("SubCommands", getattr(g.cfg, command_type))
+        commandwords.append(sub_com.default_commandword)
+        commandwords.extend(sub_com.commandword)
+        commandwords.extend([f"{command}{suffix}" for suffix in sub_com.command_suffix for command in keywords])
 
     return [x for x in g.keyword_dispatcher if x in commandwords]
 
