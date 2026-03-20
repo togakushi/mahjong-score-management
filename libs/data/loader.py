@@ -3,29 +3,23 @@ libs/data/loader.py
 """
 
 import logging
-import re
 import sqlite3
-import textwrap
 from contextlib import closing
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, Optional, cast
+from typing import Any, Optional
 
 import pandas as pd
 
 import libs.global_value as g
 from libs.utils import dbutil
-from libs.utils.timekit import Format
-
-if TYPE_CHECKING:
-    from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
-def execute(sql: str, params: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
+def execute(query: str, params: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
     """
     クエリ実行
 
     Args:
-        sql (str): 実行クエリ
+        query (str): 実行クエリ
         params (Optional[dict[str,Any]]): プレースホルダ
 
     Returns:
@@ -36,21 +30,23 @@ def execute(sql: str, params: Optional[dict[str, Any]] = None) -> list[dict[str,
         params = g.params.placeholder()
 
     ret: list[dict[str, Any]] = []
-    sql = dbutil.query_modification(sql, params)
+
+    g.params.update_from_dict(params)
+    query = g.params.query_modification(cfg=g.cfg, query=query)
 
     if g.args.verbose & 0x01:
-        print(f">>> {params=}")
-        print(f">>> SQL -> {g.cfg.setting.database_file}\n{named_query(sql, params)}")
+        print(f">>> params={g.params.placeholder()}")
+        print(f">>> SQL -> {g.cfg.setting.database_file}\n{g.params.named_query(query)}")
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
         try:
-            rows = conn.execute(sql, params)
+            rows = conn.execute(query, params)
             if conn.total_changes:
                 conn.commit()
         except sqlite3.OperationalError as err:
             logging.error("OperationalError: %s", err)
-            logging.error("params=%s", params)
-            logging.error("query: %s", named_query(sql, params))
+            logging.error("params=%s", g.params.placeholder())
+            logging.error("query: %s", g.params.named_query(query))
             return ret
 
         for row in rows.fetchall():
@@ -78,19 +74,12 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
     if not params:
         params = g.params.placeholder()
 
-    if "mode" not in params:
-        mode = g.cfg.rule.get_mode(g.cfg.setting.default_rule)
-        params.update({"mode": mode if mode else 4})
-    if starttime := params.get("starttime"):
-        params.update({"starttime": cast("ExtDt", starttime).format(Format.SQL)})
-    if endtime := params.get("endtime"):
-        params.update({"endtime": cast("ExtDt", endtime).format(Format.SQL)})
-
-    sql = dbutil.query_modification(dbutil.query(keyword), params)
+    g.params.update_from_dict(params)
+    sql = g.params.query_modification(cfg=g.cfg, query=dbutil.query(keyword))
 
     if g.args.verbose & 0x01:
-        print(f">>> {params=}")
-        print(f">>> SQL: {keyword} -> {g.cfg.setting.database_file}\n{named_query(sql, params)}")
+        print(f">>> params={g.params.placeholder()}")
+        print(f">>> SQL: {keyword} -> {g.cfg.setting.database_file}\n{g.params.named_query(sql)}")
 
     try:
         query_start_time = datetime.now().timestamp()
@@ -103,8 +92,8 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
     except pd.errors.DatabaseError as err:
         logging.error("DatabaseError: %s", err)
         logging.error("SQL: %s, DATABASE: %s", keyword, g.cfg.setting.database_file)
-        logging.error("params=%s", params)
-        logging.error("query: %s", named_query(sql, params))
+        logging.error("params=%s", g.params.placeholder())
+        logging.error("query: %s", g.params.named_query(sql))
 
     if g.args.verbose & 0x02:
         print("=" * 80)
@@ -112,22 +101,3 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
 
     logging.debug("SQL: %s, time: %s", keyword, query_end_time - query_start_time)
     return df
-
-
-def named_query(query: str, params: dict[str, Any]) -> str:
-    """
-    クエリにパラメータをバインドして返す
-
-    Args:
-        query (str): SQL
-        params (dict[str, Any]): プレースホルダ
-
-    Returns:
-        str: バインド済みSQL
-
-    """
-    for k, v in params.items():
-        if isinstance(v, datetime):
-            params.update({k: v.strftime("%Y-%m-%d %H:%M:%S")})
-
-    return textwrap.dedent(re.sub(r":(\w+)", lambda m: repr(params.get(m.group(1), m.group(0))), query)).strip()
