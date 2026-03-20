@@ -2,6 +2,8 @@
 libs/domain/placeholder.py
 """
 
+import re
+import textwrap
 from dataclasses import dataclass, field, fields
 from math import ceil
 from typing import TYPE_CHECKING, Any, Literal, Optional, Union
@@ -13,6 +15,8 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    from libs.bootstrap.app_config import AppConfig
 
 
 @dataclass
@@ -193,6 +197,166 @@ class PlaceholderBuilder(ParameterData):
 
         if fallback is not None:
             setattr(self, key_name, fallback)
+
+    def query_modification(self, cfg: "AppConfig", query: str) -> str:
+        """
+        クエリをオプションの内容で修正する
+
+        Args:
+            cfg (AppConfig): コンフィグ
+            query (str): 修正するクエリ
+
+        Returns:
+            str: 修正後のクエリ
+
+        """
+        if self.individual:  # 個人集計
+            query = query.replace("--[individual] ", "")
+            # ゲスト関連フラグ
+            if self.unregistered_replace:
+                query = query.replace("--[unregistered_replace] ", "")
+                if self.guest_skip:
+                    query = query.replace("--[guest_not_skip] ", "")
+                else:
+                    query = query.replace("--[guest_skip] ", "")
+            else:
+                query = query.replace("--[unregistered_not_replace] ", "")
+        else:  # チーム集計
+            self.unregistered_replace = False
+            self.guest_skip = True
+            query = query.replace("--[team] ", "")
+            if not self.friendly_fire:
+                query = query.replace("--[friendly_fire] ", "")
+
+        # 集約集計
+        match self.collection:
+            case "daily":
+                query = query.replace("--[collection_daily] ", "")
+                query = query.replace("--[collection] ", "")
+            case "weekly":
+                query = query.replace("--[collection_weekly] ", "")
+                query = query.replace("--[collection] ", "")
+            case "monthly":
+                query = query.replace("--[collection_monthly] ", "")
+                query = query.replace("--[collection] ", "")
+            case "yearly":
+                query = query.replace("--[collection_yearly] ", "")
+                query = query.replace("--[collection] ", "")
+            case "all":
+                query = query.replace("--[collection_all] ", "")
+                query = query.replace("--[collection] ", "")
+            case _:
+                query = query.replace("--[not_collection] ", "")
+
+        # 集計対象ルール
+        if self.rule_list:
+            query = query.replace("<<rule_list>>", ",".join([f":rule_{idx}" for idx, _ in enumerate(self.rule_list)]))
+        else:
+            query = query.replace("and rule_version in (<<rule_list>>)", "")
+            query = query.replace("and results.rule_version in (<<rule_list>>)", "")
+            query = query.replace("and game_info.rule_version in (<<rule_list>>)", "")
+
+        # 集計モード
+        match self.mode:
+            case 3:
+                query = query.replace("--[mode3] ", "")
+            case 4:
+                query = query.replace("--[mode4] ", "")
+
+        # スコア入力元識別子別集計
+        if self.separate:
+            query = query.replace("--[separate] ", "")
+
+        # コメント検索
+        if self.search_word or self.group_length:
+            query = query.replace("--[group_by] ", "")
+        else:
+            query = query.replace("--[not_group_by] ", "")
+
+        if self.search_word:
+            query = query.replace("--[search_word] ", "")
+        else:
+            query = query.replace("--[not_search_word] ", "")
+
+        if self.group_length:
+            query = query.replace("--[group_length] ", "")
+        else:
+            query = query.replace("--[not_group_length] ", "")
+            if self.search_word:
+                query = query.replace("--[comment] ", "")
+            else:
+                query = query.replace("--[not_comment] ", "")
+
+        # 直近N検索用（全範囲取得してから絞る）
+        if self.target_count:
+            query = query.replace("and my.playtime between", "-- and my.playtime between")
+
+        # プレイヤーリスト
+        if self.player_name and self.player_list:
+            query = query.replace("--[player_name] ", "")
+            query = query.replace(
+                "<<player_list>>",
+                ", ".join([f":player_{idx}" for idx, _ in enumerate(self.player_list)]),
+            )
+        query = query.replace("<<guest_mark>>", cfg.setting.guest_mark)
+
+        # フラグの処理
+        match cfg.aggregate_unit:
+            case "M":
+                query = query.replace("<<collection>>", "substr(collection_daily, 1, 7) as 集計")
+                query = query.replace("<<group by>>", "group by 集計")
+            case "Y":
+                query = query.replace("<<collection>>", "substr(collection_daily, 1, 4) as 集計")
+                query = query.replace("<<group by>>", "group by 集計")
+            case "A":
+                query = query.replace("<<collection>>", "'合計' as 集計")
+                query = query.replace("<<group by>>", "")
+            case _:
+                query = query.replace("<<collection>>,", "-- <<collection>>")
+                query = query.replace("<<group by>>", "-- <<group by>>")
+
+        if self.interval:
+            query = query.replace("<<Calculation Formula>>", "(row_number() over (order by total_count desc) - 1) / :interval")
+        else:
+            query = query.replace("<<Calculation Formula>>", ":interval")
+
+        if self.undefined_word is not None:
+            match self.undefined_word:
+                case 0:
+                    query = query.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
+                case 1:
+                    query = query.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
+                case 2:
+                    query = query.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
+                case _:
+                    query = query.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
+        else:
+            query = query.replace(":undefined_word", "1")
+
+        # queryコメント削除
+        query = re.sub(r"^ *--\[.*$", "", query, flags=re.MULTILINE)
+        query = re.sub(r"\n+", "\n", query, flags=re.MULTILINE)
+
+        return query
+
+    def named_query(self, query: str) -> str:
+        """
+        クエリにパラメータをバインドして返す
+
+        Args:
+            query (str): SQL
+
+        Returns:
+            str: バインド済みSQL
+
+        """
+        return textwrap.dedent(
+            re.sub(
+                r":(\w+)",
+                lambda m: repr(self.placeholder().get(m.group(1), m.group(0))),
+                query,
+            ),
+        ).strip()
 
     def placeholder(self, game_count: Optional[int] = None) -> dict[str, Any]:
         """

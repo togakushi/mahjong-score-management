@@ -47,7 +47,7 @@ def get_game_results() -> list[list[str]]:
 
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_PERSONAL_DATA"), g.params.placeholder()),
+        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_PERSONAL_DATA")),
         g.params.placeholder(),
     )
 
@@ -118,7 +118,7 @@ def get_count_results(game_count: int) -> list[list[str]]:
     g.params.interval = game_count
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_DATA"), g.params.placeholder()),
+        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_COUNT_DATA")),
         g.params.placeholder(),
     )
 
@@ -191,7 +191,7 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.interval = game_count
     rows = resultdb.execute(
-        dbutil.query_modification(dbutil.query("REPORT_COUNT_MOVING"), g.params.placeholder()),
+        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_COUNT_MOVING")),
         g.params.placeholder(),
     )
 

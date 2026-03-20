@@ -2,12 +2,9 @@
 libs/utils/dbutil.py
 """
 
-import re
 import sqlite3
 from importlib.resources import files
 from typing import TYPE_CHECKING, Any, Union
-
-import libs.global_value as g
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -108,149 +105,6 @@ def query(keyword: str) -> str:
             return str(queryfile.read()).strip()
     else:
         raise ValueError(f"Unknown keyword: {keyword}")
-
-
-def query_modification(sql: str, params: dict[str, Any]) -> str:
-    """
-    クエリをオプションの内容で修正する
-
-    Args:
-        sql (str): 修正するクエリ
-        params (dict[str, Any]): プレースホルダ
-
-    Returns:
-        str: 修正後のクエリ
-
-    """
-    if params.get("individual"):  # 個人集計
-        sql = sql.replace("--[individual] ", "")
-        # ゲスト関連フラグ
-        if params.get("unregistered_replace"):
-            sql = sql.replace("--[unregistered_replace] ", "")
-            if params.get("guest_skip"):
-                sql = sql.replace("--[guest_not_skip] ", "")
-            else:
-                sql = sql.replace("--[guest_skip] ", "")
-        else:
-            sql = sql.replace("--[unregistered_not_replace] ", "")
-    else:  # チーム集計
-        params.update({"unregistered_replace": False})
-        params.update({"guest_skip": True})
-        sql = sql.replace("--[team] ", "")
-        if not params.get("friendly_fire"):
-            sql = sql.replace("--[friendly_fire] ", "")
-
-    # 集約集計
-    match params.get("collection"):
-        case "daily":
-            sql = sql.replace("--[collection_daily] ", "")
-            sql = sql.replace("--[collection] ", "")
-        case "weekly":
-            sql = sql.replace("--[collection_weekly] ", "")
-            sql = sql.replace("--[collection] ", "")
-        case "monthly":
-            sql = sql.replace("--[collection_monthly] ", "")
-            sql = sql.replace("--[collection] ", "")
-        case "yearly":
-            sql = sql.replace("--[collection_yearly] ", "")
-            sql = sql.replace("--[collection] ", "")
-        case "all":
-            sql = sql.replace("--[collection_all] ", "")
-            sql = sql.replace("--[collection] ", "")
-        case _:
-            sql = sql.replace("--[not_collection] ", "")
-
-    # 集計対象ルール
-    if rule_list := params.get("rule_list"):
-        sql = sql.replace("<<rule_list>>", ",".join([f":rule_{idx}" for idx, _ in enumerate(rule_list)]))
-    else:
-        sql = sql.replace("and rule_version in (<<rule_list>>)", "")
-        sql = sql.replace("and results.rule_version in (<<rule_list>>)", "")
-        sql = sql.replace("and game_info.rule_version in (<<rule_list>>)", "")
-
-    # 集計モード
-    match params.get("mode"):
-        case 3:
-            sql = sql.replace("--[mode3] ", "")
-        case 4:
-            sql = sql.replace("--[mode4] ", "")
-
-    # スコア入力元識別子別集計
-    if params.get("separate"):
-        sql = sql.replace("--[separate] ", "")
-
-    # コメント検索
-    if params.get("search_word") or params.get("group_length"):
-        sql = sql.replace("--[group_by] ", "")
-    else:
-        sql = sql.replace("--[not_group_by] ", "")
-
-    if params.get("search_word"):
-        sql = sql.replace("--[search_word] ", "")
-    else:
-        sql = sql.replace("--[not_search_word] ", "")
-
-    if params.get("group_length"):
-        sql = sql.replace("--[group_length] ", "")
-    else:
-        sql = sql.replace("--[not_group_length] ", "")
-        if params.get("search_word"):
-            sql = sql.replace("--[comment] ", "")
-        else:
-            sql = sql.replace("--[not_comment] ", "")
-
-    # 直近N検索用（全範囲取得してから絞る）
-    if params.get("target_count") != 0:
-        sql = sql.replace("and my.playtime between", "-- and my.playtime between")
-
-    # プレイヤーリスト
-    if params.get("player_name") and (player_list := params.get("player_list", [])):
-        sql = sql.replace("--[player_name] ", "")
-        sql = sql.replace(
-            "<<player_list>>",
-            ", ".join([f":player_{idx}" for idx, _ in enumerate(player_list)]),
-        )
-    sql = sql.replace("<<guest_mark>>", g.cfg.setting.guest_mark)
-
-    # フラグの処理
-    match g.cfg.aggregate_unit:
-        case "M":
-            sql = sql.replace("<<collection>>", "substr(collection_daily, 1, 7) as 集計")
-            sql = sql.replace("<<group by>>", "group by 集計")
-        case "Y":
-            sql = sql.replace("<<collection>>", "substr(collection_daily, 1, 4) as 集計")
-            sql = sql.replace("<<group by>>", "group by 集計")
-        case "A":
-            sql = sql.replace("<<collection>>", "'合計' as 集計")
-            sql = sql.replace("<<group by>>", "")
-        case _:
-            sql = sql.replace("<<collection>>,", "-- <<collection>>")
-            sql = sql.replace("<<group by>>", "-- <<group by>>")
-
-    if params.get("interval") is not None:
-        if params.get("interval") == 0:
-            sql = sql.replace("<<Calculation Formula>>", ":interval")
-        else:
-            sql = sql.replace("<<Calculation Formula>>", "(row_number() over (order by total_count desc) - 1) / :interval")
-
-    if params.get("undefined_word") is not None:
-        match params.get("undefined_word"):
-            case 0:
-                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 0)")
-            case 1:
-                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 1)")
-            case 2:
-                sql = sql.replace("<<where_string>>", "and (words.type is null or words.type = 2)")
-            case _:
-                sql = sql.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
-    else:
-        sql = sql.replace(":undefined_word", "1")
-
-    # SQLコメント削除
-    sql = re.sub(r"^ *--\[.*$", "", sql, flags=re.MULTILINE)
-    sql = re.sub(r"\n+", "\n", sql, flags=re.MULTILINE)
-
-    return sql
 
 
 def table_info(conn: sqlite3.Connection, table_name: str) -> dict[str, Any]:
