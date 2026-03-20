@@ -27,6 +27,7 @@ from libs.types import ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+    from libs.bootstrap.section import SubCommands
 
 
 def set_loglevel() -> None:
@@ -312,6 +313,15 @@ def setup(init_db: bool = True) -> None:
         default_rule=g.cfg.setting.default_rule,
     )
 
+    logging.debug(
+        "\nresults: %s\ngraph: %s\nranking: %s\nreport: %s\nhelp: %s",
+        g.cfg.results,
+        g.cfg.graph,
+        g.cfg.ranking,
+        g.cfg.report,
+        g.cfg.help,
+    )
+
 
 def register() -> None:
     """ディスパッチテーブル登録"""
@@ -373,7 +383,7 @@ def register() -> None:
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
-            sub_command = getattr(g.cfg, command)
+            sub_command = cast("SubCommands", getattr(g.cfg, command))
             commandword_list = []
             if hasattr(sub_command, "command_suffix"):  # コマンドサフィックス登録
                 for keyword in g.cfg.rule.keyword_mapping:
@@ -382,6 +392,7 @@ def register() -> None:
             if hasattr(sub_command, "commandword") and not commandword_list:
                 for commandword in sub_command.commandword:
                     commandword_list.append(commandword)
+            sub_command.commandword = commandword_list
             for commandword in commandword_list:
                 g.keyword_dispatcher.update({commandword: ep})
         # スラッシュコマンド登録

@@ -10,8 +10,8 @@ from typing import TYPE_CHECKING, Any, Literal, Mapping
 
 from table2ascii import Alignment, PresetStyle, table2ascii
 
-from libs.data import loader
 from libs.domain.command import CommandParser
+from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -172,7 +172,7 @@ class RuleSet:
             self.data[rule_version].first_time.set("1900-01-01 00:00:00")
             self.data[rule_version].last_time.set("1900-01-01 00:00:00")
 
-        status = loader.execute(
+        status = dbutil.execute(
             """
             select
                 rule_version,
@@ -408,11 +408,11 @@ class RuleSet:
 
     def register_to_database(self) -> None:
         """ルールセット情報をDBに登録する"""
-        loader.execute("delete from rule;")
+        dbutil.execute("delete from rule;")
         for rule in self.rule_list:
             params = self.to_dict(rule)
             params.update(rank_point=" ".join(map(str, params["rank_point"])))
-            loader.execute(
+            dbutil.execute(
                 """
                 insert into
                 rule (

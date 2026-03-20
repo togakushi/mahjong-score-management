@@ -30,5 +30,6 @@ where
     --[team] --[player_name] and results.team in (<<player_list>>) -- 対象チーム
     --[search_word] and game_info.comment like :search_word
 group by
-    results.name
+    --[individual] results.name
+    --[team] results.team
 ;

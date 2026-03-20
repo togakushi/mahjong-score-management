@@ -12,7 +12,7 @@ from typing import Any, cast
 from tqdm import tqdm
 
 import libs.global_value as g
-from libs.data import loader, lookup
+from libs.data import lookup
 from libs.domain.score import GameResult
 from libs.functions.tools import score_simulator
 from libs.utils import dbutil
@@ -98,7 +98,7 @@ def main(season_times: int = 1) -> None:
 
         cur.commit()
 
-    ret = loader.execute("select team, round(sum(point), 1) as point from individual_results group by team order by point desc;")
+    ret = dbutil.execute("select team, round(sum(point), 1) as point from individual_results group by team order by point desc;")
     if ret:
         logging.info([f"{x.get('team')}: {x.get('point')}pt" for x in ret])
     else:
