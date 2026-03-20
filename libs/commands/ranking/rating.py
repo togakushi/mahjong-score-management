@@ -68,8 +68,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         df = df.query("name != '未所属'")
 
     # 順位偏差 / 得点偏差
-    df["point_dev"] = (df["rpoint_avg"] - df["rpoint_avg"].mean()) / df["rpoint_avg"].std(ddof=0) * 10 + 50
-    df["rank_dev"] = (df["rank_avg"] - df["rank_avg"].mean()) / df["rank_avg"].std(ddof=0) * -10 + 50
+    df["point_dev"] = round((df["rpoint_avg"] - df["rpoint_avg"].mean()) / df["rpoint_avg"].std(ddof=0) * 10 + 50, 1)
+    df["rank_dev"] = round((df["rank_avg"] - df["rank_avg"].mean()) / df["rank_avg"].std(ddof=0) * -10 + 50, 1)
 
     # 段位
     if g.adapter.conf.badge_grade:
