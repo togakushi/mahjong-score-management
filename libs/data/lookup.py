@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.score import GameResult
 from libs.types import ChannelType, CommandType
 from libs.utils import dbutil
@@ -122,7 +121,7 @@ def member_info(params: dict[str, Any]) -> dict[str, Any]:
         dict[str, Any]: 記録情報
 
     """
-    ret = loader.execute(
+    ret = dbutil.execute(
         """
         select
             count() as game_count,
