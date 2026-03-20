@@ -5,7 +5,7 @@ libs/commands/results/summary.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.data import aggregate, loader
+from libs.data import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
@@ -28,8 +28,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
     data: "MessageType"
     game_info = GameInfo()
     df_summary = aggregate.game_summary()
-    df_game = loader.read_data("SUMMARY_DETAILS")
-    df_remarks = loader.read_data("REMARKS_INFO")
+    df_game = g.params.read_data("SUMMARY_DETAILS")
+    df_remarks = g.params.read_data("REMARKS_INFO")
 
     current_rule: str = ""
     for rule in g.params.rule_list:
@@ -164,7 +164,7 @@ def difference(m: "MessageParserProtocol") -> None:
     data: "MessageType"
     game_info = GameInfo()
     df_summary = aggregate.game_summary()
-    df_game = loader.read_data("SUMMARY_DETAILS")
+    df_game = g.params.read_data("SUMMARY_DETAILS")
 
     # インデックスの振りなおし
     df_summary.reset_index(inplace=True, drop=True)

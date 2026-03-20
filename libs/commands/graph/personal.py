@@ -13,7 +13,6 @@ from matplotlib.axes import Axes
 from plotly.subplots import make_subplots  # type: ignore
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -38,7 +37,7 @@ def plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.guest_skip = g.params.guest_skip2
-    df = loader.read_data("SUMMARY_GAMEDATA", g.params.placeholder())
+    df = g.params.read_data("SUMMARY_GAMEDATA")
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
@@ -136,7 +135,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     # データ収集
     game_info = GameInfo()
     g.params.guest_skip = g.params.guest_skip2
-    df = loader.read_data("SUMMARY_DETAILS", g.params.placeholder())
+    df = g.params.read_data("SUMMARY_DETAILS")
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())

@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
-from libs.data import aggregate, loader
+from libs.data import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -50,7 +50,14 @@ def plot(m: "MessageParserProtocol") -> None:
         return
 
     # 足切り
-    df_count = loader.read_data("SUMMARY_GAMEDATA").filter(items=["name", "count"]).set_index("name").query("count >= @g.params.stipulated")
+    df_count = (
+        g.params.read_data("SUMMARY_GAMEDATA")
+        .filter(
+            items=["name", "count"],
+        )
+        .set_index("name")
+        .query("count >= @g.params.stipulated")
+    )
     df_dropped = df_ratings.filter(items=df_count.index.to_list())
 
     # 並び変え

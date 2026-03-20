@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING
 import matplotlib.pyplot as plt
 
 import libs.global_value as g
-from libs.data import loader
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
@@ -27,7 +26,7 @@ def plot(m: "MessageParserProtocol") -> None:
     """
     # --- データ収集
     title: str = "月別ゲーム統計"
-    df = loader.read_data("REPORT_MONTHLY")
+    df = g.params.read_data("REPORT_MONTHLY")
     results = df.transpose().to_dict()
 
     if len(results) == 0:

@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, Literal, cast
+from typing import TYPE_CHECKING, Any, Literal
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -25,11 +25,9 @@ from libs.data import lookup
 from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
-from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 
 def get_game_results() -> list[list[str]]:
@@ -40,14 +38,9 @@ def get_game_results() -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    if not g.params.starttime:
-        g.params.starttime = cast("ExtDt", g.params.starttime).format(Format.SQL)
-    if not g.params.endtime:
-        g.params.endtime = cast("ExtDt", g.params.endtime).format(Format.SQL)
-
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_PERSONAL_DATA")),
+        g.params.query_modification(dbutil.query("REPORT_PERSONAL_DATA")),
         g.params.placeholder(),
     )
 
@@ -118,7 +111,7 @@ def get_count_results(game_count: int) -> list[list[str]]:
     g.params.interval = game_count
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     rows = resultdb.execute(
-        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_COUNT_DATA")),
+        g.params.query_modification(dbutil.query("REPORT_COUNT_DATA")),
         g.params.placeholder(),
     )
 
@@ -191,7 +184,7 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
     resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.interval = game_count
     rows = resultdb.execute(
-        g.params.query_modification(cfg=g.cfg, query=dbutil.query("REPORT_COUNT_MOVING")),
+        g.params.query_modification(dbutil.query("REPORT_COUNT_MOVING")),
         g.params.placeholder(),
     )
 
@@ -504,7 +497,7 @@ def entire_aggregate(style: dict[str, Any]) -> list[Any]:
     elements.append(Paragraph("全期間", style["Left"]))
     elements.append(Spacer(1, 5 * mm))
     data: list[list[str]] = []
-    g.cfg.aggregate_unit = "A"
+    g.params.aggregate_unit = "A"
     tmp_data = get_game_results()
 
     if not tmp_data:
@@ -609,7 +602,7 @@ def periodic_aggregation(style: dict[str, Any]) -> list[Any]:
         elements.append(Spacer(1, 5 * mm))
 
         data: list[list[str]] = []
-        g.cfg.aggregate_unit = flag
+        g.params.aggregate_unit = flag
         tmp_data = get_game_results()
 
         if not tmp_data:

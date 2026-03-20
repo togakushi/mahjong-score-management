@@ -2,21 +2,23 @@
 libs/domain/placeholder.py
 """
 
+import logging
 import re
 import textwrap
 from dataclasses import dataclass, field, fields
 from math import ceil
 from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
+import pandas as pd
+
 from libs.data import lookup
 from libs.domain.datamodels import ParameterData
 from libs.types import ServiceType
+from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    from libs.bootstrap.app_config import AppConfig
 
 
 @dataclass
@@ -102,6 +104,13 @@ class PlaceholderBuilder(ParameterData):
     - *yearly*: 年次集約
     - *all*: 全体集約
     """
+    aggregate_unit: Literal["A", "M", "Y", None] = field(default=None)
+    """レポート生成用日付範囲デフォルト値
+    - *A*: 全期間
+    - *M*: 月別
+    - *Y*: 年別
+    - *None*: 未定義
+    """
     target_count: int = field(default=0)
     """直近ゲーム数指定"""
 
@@ -131,10 +140,18 @@ class PlaceholderBuilder(ParameterData):
     """縦持ち/横持ちデータ判定"""
 
     # 出力関連
+    guest_mark: str = field(default="※")
+    """ゲスト無効時に未登録メンバーに付与する印"""
     format: Literal["default", "csv", "txt"] = field(default="default")
     """出力フォーマット指定"""
     filename: str = field(default="")
     """出力ファイル名"""
+
+    # その他
+    database_file: Union[str, "Path"] = field(default="")
+    """成績管理データベースファイル名"""
+    logging_verbose: int = field(default=0)
+    """デバッグ情報出力レベル"""
 
     def update_from_dict(self, input_dict: dict[str, Any]) -> None:
         """
@@ -198,12 +215,11 @@ class PlaceholderBuilder(ParameterData):
         if fallback is not None:
             setattr(self, key_name, fallback)
 
-    def query_modification(self, cfg: "AppConfig", query: str) -> str:
+    def query_modification(self, query: str) -> str:
         """
         クエリをオプションの内容で修正する
 
         Args:
-            cfg (AppConfig): コンフィグ
             query (str): 修正するクエリ
 
         Returns:
@@ -298,10 +314,10 @@ class PlaceholderBuilder(ParameterData):
                 "<<player_list>>",
                 ", ".join([f":player_{idx}" for idx, _ in enumerate(self.player_list)]),
             )
-        query = query.replace("<<guest_mark>>", cfg.setting.guest_mark)
+        query = query.replace("<<guest_mark>>", self.guest_mark)
 
         # フラグの処理
-        match cfg.aggregate_unit:
+        match self.aggregate_unit:
             case "M":
                 query = query.replace("<<collection>>", "substr(collection_daily, 1, 7) as 集計")
                 query = query.replace("<<group by>>", "group by 集計")
@@ -398,3 +414,41 @@ class PlaceholderBuilder(ParameterData):
                 ret_dict.update({date_attr: val.format(ExtDt.FMT.SQL)})
 
         return ret_dict
+
+    def read_data(self, keyword: str) -> pd.DataFrame:
+        """
+        データベースからデータを取得する
+
+        Args:
+            keyword (str): SQL選択キーワード
+
+        Returns:
+            pd.DataFrame: 集計結果
+
+        """
+        query = self.query_modification(dbutil.query(keyword))
+
+        if self.logging_verbose & 0x01:
+            print(f">>> params={self.placeholder()}")
+            print(f">>> SQL: {keyword} -> {self.database_file}\n{self.named_query(query)}")
+
+        try:
+            query_start_time = ExtDt().dt.timestamp()
+            df = pd.read_sql(
+                sql=query,
+                con=dbutil.connection(self.database_file),
+                params=self.placeholder(),
+            )
+            query_end_time = ExtDt().dt.timestamp()
+        except pd.errors.DatabaseError as err:
+            logging.error("DatabaseError: %s", err)
+            logging.error("SQL: %s, DATABASE: %s", keyword, self.database_file)
+            logging.error("params=%s", self.placeholder())
+            logging.error("query: %s", self.named_query(query))
+
+        if self.logging_verbose & 0x02:
+            print("=" * 80)
+            print(df.to_string())
+
+        logging.debug("SQL: %s, time: %s", keyword, query_end_time - query_start_time)
+        return df

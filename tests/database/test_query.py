@@ -7,7 +7,6 @@ from typing import Any
 
 import pytest
 
-from libs.data import loader
 from libs.domain.placeholder import PlaceholderBuilder
 
 sql_tables: list[str] = [
@@ -97,6 +96,7 @@ def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -
         }
     )
     p.update_from_dict(flags)
+    p.database_file = "memdb1?mode=memory&cache=shared"
 
     pprint([query_name, param_name, p])
-    _ = loader.read_data(query_name, p.placeholder())
+    _ = p.read_data(query_name)

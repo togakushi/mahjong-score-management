@@ -10,7 +10,6 @@ import pandas as pd
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.domain.stats import StatsInfo
 from libs.functions import message
@@ -76,7 +75,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     stats = StatsInfo()
-    stats.read(g.params.placeholder())
+    stats.read(g.params)
 
     if stats.result_df.empty or stats.record_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
@@ -139,7 +138,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(textwrap.indent(balance_data.strip(), "\t"), StyleOptions(title="平均収支"))
 
     # レギュレーション
-    remarks_df = loader.read_data("REMARKS_INFO")
+    remarks_df = g.params.read_data("REMARKS_INFO")
     count_df = remarks_df.groupby("matter").agg(matter_count=("matter", "count"), ex_total=("ex_point", "sum"), type=("type", "max"))
     count_df["matter"] = count_df.index
 
@@ -204,8 +203,8 @@ def comparison(m: "MessageParserProtocol") -> None:
         return
 
     stats_df = pd.DataFrame()
-    result_df = loader.read_data("RESULTS_INFO")
-    record_df = loader.read_data("RECORD_INFO")
+    result_df = g.params.read_data("RESULTS_INFO")
+    record_df = g.params.read_data("RECORD_INFO")
 
     for name in result_df.query("id==0").sort_values("total_point", ascending=False)["name"]:
         work_stats = StatsInfo()
@@ -342,7 +341,7 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
     """
     target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)
 
-    df = loader.read_data("SUMMARY_DETAILS").fillna(value="")
+    df = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
     if g.params.anonymous:
         mapping_dict.update(formatter.anonymous_mapping(df["name"].unique().tolist(), len(mapping_dict)))
         df["name"] = df["name"].replace(mapping_dict)
@@ -374,7 +373,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
     """
     target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)  # noqa: F841
 
-    df = loader.read_data("SUMMARY_DETAILS2", g.params.placeholder()).fillna(value="")
+    df = g.params.read_data("SUMMARY_DETAILS2").fillna(value="")
     if g.params.anonymous:
         name_list: list[str] = []
         name_list.extend(df["p1_name"].unique().tolist())
@@ -422,7 +421,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         str: 出力メッセージ
 
     """
-    df = loader.read_data("SUMMARY_VERSUS_MATRIX")
+    df = g.params.read_data("SUMMARY_VERSUS_MATRIX")
 
     if df.empty:
         return ""

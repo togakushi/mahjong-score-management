@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING, cast
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
@@ -41,8 +40,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df = (
         pd.concat(
             [
-                loader.read_data("RESULTS_INFO").query("id==0").drop(columns=["id", "seat"]),
-                loader.read_data("RECORD_INFO").query("id==0").drop(columns=["id", "seat", "name"]),
+                g.params.read_data("RESULTS_INFO").query("id==0").drop(columns=["id", "seat"]),
+                g.params.read_data("RECORD_INFO").query("id==0").drop(columns=["id", "seat", "name"]),
             ],
             axis=1,
         )

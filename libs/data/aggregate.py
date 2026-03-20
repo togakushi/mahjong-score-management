@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import loader
 from libs.utils import formatter
 
 
@@ -28,7 +27,7 @@ def game_summary(
 
     """
     # データ収集
-    df = loader.read_data("SUMMARY_TOTAL", g.params.placeholder())
+    df = g.params.read_data("SUMMARY_TOTAL")
 
     # 順位分布選択
     match g.params.mode:
@@ -55,7 +54,7 @@ def calculation_rating() -> pd.DataFrame:
 
     """
     # データ収集
-    df_results = loader.read_data("RANKING_RATINGS").set_index("playtime")
+    df_results = g.params.read_data("RANKING_RATINGS").set_index("playtime")
     df_ratings = pd.DataFrame(index=["initial_rating"] + df_results.index.to_list())  # 記録用
     last_ratings: dict[str, float] = {}  # 最終値格納用
 
@@ -152,7 +151,7 @@ def matrix_table() -> pd.DataFrame:
 
     """
     # データ収集
-    df = loader.read_data("REPORT_MATRIX_TABLE").set_index("playtime")
+    df = g.params.read_data("REPORT_MATRIX_TABLE").set_index("playtime")
 
     # 結果に含まれるプレイヤーのリスト
     plist = sorted(list(set(df["p1_name"].tolist() + df["p2_name"].tolist() + df["p3_name"].tolist() + df["p4_name"].tolist())))

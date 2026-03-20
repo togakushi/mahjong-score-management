@@ -10,7 +10,6 @@ import pandas as pd
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -156,7 +155,7 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     target_data = pd.DataFrame()
 
-    df = loader.read_data("SUMMARY_GAMEDATA", g.params.placeholder())
+    df = g.params.read_data("SUMMARY_GAMEDATA")
     if df.empty:
         return (target_data, df)
 
