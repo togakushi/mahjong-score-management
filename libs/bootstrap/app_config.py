@@ -7,7 +7,7 @@ import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 
 from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, SettingSection
 from libs.commands.graph.entry import GraphConfig
@@ -157,15 +157,6 @@ class AppConfig:
         """reportセクション設定値"""
         self.help: "SubCommands" = HelpConfig()
         """helpセクション設定値"""
-
-        # 共通設定値
-        self.aggregate_unit: Literal["A", "M", "Y", None] = None
-        """レポート生成用日付範囲デフォルト値(レポート生成用)
-        - *A*: 全期間
-        - *M*: 月別
-        - *Y*: 年別
-        - *None*: 未定義
-        """
 
         self.initialization()
 

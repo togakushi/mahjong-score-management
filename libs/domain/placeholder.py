@@ -102,6 +102,13 @@ class PlaceholderBuilder(ParameterData):
     - *yearly*: 年次集約
     - *all*: 全体集約
     """
+    aggregate_unit: Literal["A", "M", "Y", None] = field(default=None)
+    """レポート生成用日付範囲デフォルト値
+    - *A*: 全期間
+    - *M*: 月別
+    - *Y*: 年別
+    - *None*: 未定義
+    """
     target_count: int = field(default=0)
     """直近ゲーム数指定"""
 
@@ -301,7 +308,7 @@ class PlaceholderBuilder(ParameterData):
         query = query.replace("<<guest_mark>>", cfg.setting.guest_mark)
 
         # フラグの処理
-        match cfg.aggregate_unit:
+        match self.aggregate_unit:
             case "M":
                 query = query.replace("<<collection>>", "substr(collection_daily, 1, 7) as 集計")
                 query = query.replace("<<group by>>", "group by 集計")
