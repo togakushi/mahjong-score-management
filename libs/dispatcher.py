@@ -19,8 +19,13 @@ if TYPE_CHECKING:
 
 def by_keyword(m: "MessageParserProtocol") -> None:
     """メイン処理"""
-    g.cfg.initialization()
     g.params.default_reset()
+    g.params.update_from_dict(
+        {
+            "database_file": g.cfg.setting.database_file,
+            "logging_verbose": g.args.verbose,
+        }
+    )
 
     logging.debug("keyword=%s, argument=%s, source=%s", m.keyword, m.argument, m.status.source)
     logging.debug(
