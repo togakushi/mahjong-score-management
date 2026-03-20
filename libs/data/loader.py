@@ -32,7 +32,7 @@ def execute(query: str, params: Optional[dict[str, Any]] = None) -> list[dict[st
     ret: list[dict[str, Any]] = []
 
     g.params.update_from_dict(params)
-    query = g.params.query_modification(cfg=g.cfg, query=query)
+    query = g.params.query_modification(query)
 
     if g.args.verbose & 0x01:
         print(f">>> params={g.params.placeholder()}")
@@ -75,7 +75,7 @@ def read_data(keyword: str, params: Optional[dict[str, Any]] = None) -> pd.DataF
         params = g.params.placeholder()
 
     g.params.update_from_dict(params)
-    sql = g.params.query_modification(cfg=g.cfg, query=dbutil.query(keyword))
+    sql = g.params.query_modification(dbutil.query(keyword))
 
     if g.args.verbose & 0x01:
         print(f">>> params={g.params.placeholder()}")

@@ -16,8 +16,6 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 if TYPE_CHECKING:
     from pathlib import Path
 
-    from libs.bootstrap.app_config import AppConfig
-
 
 @dataclass
 class PlaceholderBuilder(ParameterData):
@@ -138,6 +136,8 @@ class PlaceholderBuilder(ParameterData):
     """縦持ち/横持ちデータ判定"""
 
     # 出力関連
+    guest_mark: str = field(default="※")
+    """ゲスト無効時に未登録メンバーに付与する印"""
     format: Literal["default", "csv", "txt"] = field(default="default")
     """出力フォーマット指定"""
     filename: str = field(default="")
@@ -205,12 +205,11 @@ class PlaceholderBuilder(ParameterData):
         if fallback is not None:
             setattr(self, key_name, fallback)
 
-    def query_modification(self, cfg: "AppConfig", query: str) -> str:
+    def query_modification(self, query: str) -> str:
         """
         クエリをオプションの内容で修正する
 
         Args:
-            cfg (AppConfig): コンフィグ
             query (str): 修正するクエリ
 
         Returns:
@@ -305,7 +304,7 @@ class PlaceholderBuilder(ParameterData):
                 "<<player_list>>",
                 ", ".join([f":player_{idx}" for idx, _ in enumerate(self.player_list)]),
             )
-        query = query.replace("<<guest_mark>>", cfg.setting.guest_mark)
+        query = query.replace("<<guest_mark>>", self.guest_mark)
 
         # フラグの処理
         match self.aggregate_unit:
