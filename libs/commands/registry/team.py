@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.section import BaseSection
-from libs.data import initialization, loader, modify
+from libs.data import initialization, modify
 from libs.types import CommandType
 from libs.utils import dbutil, formatter, textutil, validator
 
@@ -138,7 +138,7 @@ class TeamSection(BaseSection):
             list[TeamDataDict]: チーム情報
 
         """
-        ret = loader.read_data("TEAM_INFO", g.params.placeholder()).to_dict(orient="records")
+        ret = g.params.read_data("TEAM_INFO").to_dict(orient="records")
         for row in ret:
             row.update(members=str(row["members"]).split(","))
 

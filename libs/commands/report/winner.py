@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -29,7 +28,7 @@ def plot(m: "MessageParserProtocol") -> None:
     """
     # --- データ取得
     game_info = GameInfo()
-    results_df = loader.read_data("REPORT_WINNER")
+    results_df = g.params.read_data("REPORT_WINNER")
     if len(results_df) == 0:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績上位"))
         m.status.result = False

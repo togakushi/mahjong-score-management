@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.section import BaseSection
-from libs.data import loader, modify
+from libs.data import modify
 from libs.types import CommandType
 from libs.utils import dbutil, textutil, validator
 
@@ -154,7 +154,13 @@ class MemberSection(BaseSection):
             list[MemberDataDict]: メンバー情報
 
         """
-        ret = loader.read_data("MEMBER_INFO", g.params.placeholder()).to_dict(orient="records")
+        g.params.update_from_dict(
+            {
+                "database_file": g.cfg.setting.database_file,
+                "logging_verbose": g.args.verbose,
+            }
+        )
+        ret = g.params.read_data("MEMBER_INFO").to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))
 

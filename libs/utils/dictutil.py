@@ -49,6 +49,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             "command": subcom.section,
             "guest_name": g.cfg.member.guest_name,
             "undefined_word": 1,
+            "logging_verbose": g.args.verbose,
             **g.cfg.setting.to_dict(),
             **subcom.to_dict(),  #  サブコマンドデフォルト値
         }

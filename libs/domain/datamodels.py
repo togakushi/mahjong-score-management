@@ -8,7 +8,6 @@ from math import ceil
 from typing import TYPE_CHECKING, Literal, Optional
 
 import libs.global_value as g
-from libs.data import loader
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -84,7 +83,7 @@ class GameInfo:
             g.params.endtime = ExtDt().range("全部").end
 
         # データ収集
-        df = loader.read_data("GAME_INFO", g.params.placeholder())
+        df = g.params.read_data("GAME_INFO")
         if df.empty:
             self.count = 0
             self.first_game = ExtDt()

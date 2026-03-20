@@ -2,15 +2,19 @@
 libs/domain/placeholder.py
 """
 
+import logging
 import re
 import textwrap
 from dataclasses import dataclass, field, fields
 from math import ceil
 from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
+import pandas as pd
+
 from libs.data import lookup
 from libs.domain.datamodels import ParameterData
 from libs.types import ServiceType
+from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -142,6 +146,12 @@ class PlaceholderBuilder(ParameterData):
     """出力フォーマット指定"""
     filename: str = field(default="")
     """出力ファイル名"""
+
+    # その他
+    database_file: Union[str, "Path"] = field(default="")
+    """成績管理データベースファイル名"""
+    logging_verbose: int = field(default=0)
+    """デバッグ情報出力レベル"""
 
     def update_from_dict(self, input_dict: dict[str, Any]) -> None:
         """
@@ -404,3 +414,41 @@ class PlaceholderBuilder(ParameterData):
                 ret_dict.update({date_attr: val.format(ExtDt.FMT.SQL)})
 
         return ret_dict
+
+    def read_data(self, keyword: str) -> pd.DataFrame:
+        """
+        データベースからデータを取得する
+
+        Args:
+            keyword (str): SQL選択キーワード
+
+        Returns:
+            pd.DataFrame: 集計結果
+
+        """
+        query = self.query_modification(dbutil.query(keyword))
+
+        if self.logging_verbose & 0x01:
+            print(f">>> params={self.placeholder()}")
+            print(f">>> SQL: {keyword} -> {self.database_file}\n{self.named_query(query)}")
+
+        try:
+            query_start_time = ExtDt().dt.timestamp()
+            df = pd.read_sql(
+                sql=query,
+                con=dbutil.connection(self.database_file),
+                params=self.placeholder(),
+            )
+            query_end_time = ExtDt().dt.timestamp()
+        except pd.errors.DatabaseError as err:
+            logging.error("DatabaseError: %s", err)
+            logging.error("SQL: %s, DATABASE: %s", keyword, self.database_file)
+            logging.error("params=%s", self.placeholder())
+            logging.error("query: %s", self.named_query(query))
+
+        if self.logging_verbose & 0x02:
+            print("=" * 80)
+            print(df.to_string())
+
+        logging.debug("SQL: %s, time: %s", keyword, query_end_time - query_start_time)
+        return df

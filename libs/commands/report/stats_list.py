@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING
 import matplotlib.pyplot as plt
 
 import libs.global_value as g
-from libs.data import loader
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -36,7 +35,7 @@ def main(m: "MessageParserProtocol") -> None:
 
     # --- データ取得
     game_info = GameInfo()
-    df = loader.read_data("REPORT_RESULTS_LIST").reset_index(drop=True)
+    df = g.params.read_data("REPORT_RESULTS_LIST").reset_index(drop=True)
     df.index = df.index + 1
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績一覧"))

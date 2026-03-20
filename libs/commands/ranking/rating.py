@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import aggregate, loader
+from libs.data import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import badge
@@ -46,7 +46,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    df_results = loader.read_data("RANKING_RESULTS").set_index("name")
+    df_results = g.params.read_data("RANKING_RESULTS").set_index("name")
     df_ratings = aggregate.calculation_rating()
 
     # 最終的なレーティング

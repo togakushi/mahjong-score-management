@@ -8,7 +8,6 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import loader
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
@@ -31,8 +30,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # --- データ収集
     data: "MessageType"
-    df_vs = loader.read_data("SUMMARY_VERSUS_MATRIX")
-    df_game = loader.read_data("SUMMARY_DETAILS").fillna(value="")
+    df_vs = g.params.read_data("SUMMARY_VERSUS_MATRIX")
+    df_game = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
     df_data = pd.DataFrame(columns=df_game.columns)  # ファイル出力用
 
     my_name = formatter.name_replace(g.params.player_name, add_mark=True)
