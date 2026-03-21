@@ -7,6 +7,8 @@ from dataclasses import MISSING, dataclass, field, fields
 from math import ceil
 from typing import TYPE_CHECKING, Literal, Optional
 
+import pandas as pd
+
 import libs.global_value as g
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -88,14 +90,16 @@ class GameInfo:
             self.count = 0
             self.first_game = ExtDt()
             self.last_game = ExtDt()
-            self.first_comment = ""
-            self.last_comment = ""
+            self.first_comment = None
+            self.last_comment = None
         else:
             self.count = int(df["count"].iloc[0])
             self.first_game = ExtDt(str(df["first_game"].iloc[0]))
             self.last_game = ExtDt(str(df["last_game"].iloc[0]))
-            self.first_comment = str(df["first_comment"].iloc[0])
-            self.last_comment = str(df["last_comment"].iloc[0])
+            first_comment_val = df["first_comment"].iloc[0]
+            self.first_comment = str(first_comment_val) if pd.notna(first_comment_val) else None
+            last_comment_val = df["last_comment"].iloc[0]
+            self.last_comment = str(last_comment_val) if pd.notna(last_comment_val) else None
 
         # 規定打数更新
         if not g.params.stipulated:  # 規定打数0はレートから計算
