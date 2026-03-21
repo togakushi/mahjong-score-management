@@ -303,10 +303,6 @@ class SettingSection(BaseSection):
         self._reset()
         self.initialization(section_proxy)
 
-        # 成績登録キーワード
-        if not (isinstance(self.keyword, Path) and self.keyword.exists()):
-            self.keyword = str(self.keyword)
-
         logging.debug("%s: %s", self.section, self)
 
 

@@ -314,7 +314,8 @@ def setup(init_db: bool = True) -> None:
     )
 
     logging.debug(
-        "\nresults: %s\ngraph: %s\nranking: %s\nreport: %s\nhelp: %s",
+        "\nsetting: %s\nresults: %s\ngraph: %s\nranking: %s\nreport: %s\nhelp: %s",
+        g.cfg.setting,
         g.cfg.results,
         g.cfg.graph,
         g.cfg.ranking,
