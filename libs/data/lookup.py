@@ -316,7 +316,8 @@ def first_record(rule_list: list[str]) -> ExtDt:
 
 
 def read_memberslist() -> None:
-    """メンバー情報/チーム情報の読み込み"""
+    """メンバー情報/チーム情報の再読み込み"""
+    # todo: 最後にアクセスしたDBのメンバーリストが返る
     g.cfg.member.guest_name = get_guest()
     g.cfg.member.info = g.cfg.member.get_info
     g.cfg.team.info = g.cfg.team.get_info
