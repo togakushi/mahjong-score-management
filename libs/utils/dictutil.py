@@ -80,10 +80,8 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
     rule_version = rule_version if rule_version else params.default_rule
     params.update_from_dict(
         {
-            "rule_version": rule_version,
+            **g.cfg.rule.to_dict(rule_version),
             "target_mode": g.cfg.rule.get_mode(rule_version),
-            "undefined_word": g.cfg.rule.get_undefined_word(rule_version),
-            "ignore_flying": g.cfg.rule.get_ignore_flying(rule_version),
         }
     )
 
