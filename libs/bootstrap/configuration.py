@@ -65,8 +65,9 @@ def arg_parser() -> Args:
         help="設定ファイル(default: %(default)s)",
     )
     p.add_argument(
-        "--profile",
-        help=argparse.SUPPRESS,
+        "--no_cleanup",
+        action="store_false",
+        help="作業ディレクトリの内容を削除しない",
     )
     p.add_argument(
         "-s",
@@ -195,6 +196,10 @@ def arg_parser() -> Args:
     # 非表示オプション（外部ツールのオプション受け入れ）
     hidden_group = p.add_argument_group("hidden options")
     hidden_group.add_argument(
+        "--profile",
+        help=argparse.SUPPRESS,
+    )
+    hidden_group.add_argument(
         "--rootdir",
         help=argparse.SUPPRESS,
     )
@@ -270,7 +275,7 @@ def setup(init_db: bool = True) -> None:
 
     # ディレクトリ作成
     if not g.args.testcase:
-        if g.cfg.setting.work_dir.is_dir():
+        if g.cfg.setting.work_dir.is_dir() and g.args.no_cleanup:
             shutil.rmtree(g.cfg.setting.work_dir)
     try:
         g.cfg.setting.work_dir.mkdir(exist_ok=True)

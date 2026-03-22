@@ -27,6 +27,8 @@ class Args:
     service: str
     config: "Path"
     """設定ファイルパス"""
+    no_cleanup: bool
+    """作業ディレクトリの内容を削除"""
 
     debug: int
     """デバッグ出力フラグ"""
