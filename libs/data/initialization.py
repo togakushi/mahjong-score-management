@@ -25,10 +25,6 @@ def main(init_db: bool) -> None:
         init_db (bool): setup処理の実行有無
 
     """
-    # ルールデータ取り込み
-    if g.cfg.mahjong.rule_version:
-        g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
-
     if init_db:
         # メイン設定
         setup_resultdb(g.cfg.setting.database_file)
@@ -49,7 +45,12 @@ def main(init_db: bool) -> None:
                         setup_resultdb(Path(others_db).absolute())
                         setup_regulations(g.cfg.setting.database_file)
 
-        read_grade_table()
+    # 段位テーブル取り込み
+    read_grade_table()
+
+    # ルールデータ取り込み
+    if g.cfg.mahjong.rule_version:
+        g.cfg.rule.data_set(g.cfg.mahjong.rule_version, rule_data=g.cfg.mahjong.to_dict())
 
     if g.cfg.main_parser.has_section("keyword_mapping"):
         for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
@@ -226,7 +227,7 @@ def setup_regulations(database_file: Union[str, Path]) -> None:
 
 
 def read_grade_table() -> None:
-    """段位テーブル読み込み"""
+    """段位テーブル取り込み"""
     # テーブル選択
     match table_name := g.cfg.badge.grade.table_name:
         case "":
