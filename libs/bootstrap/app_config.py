@@ -292,8 +292,8 @@ class AppConfig:
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
-                - *Path*: 読み込んだ設定ファイルパス
-                - *None*: 読み込める設定ファイルがない
+            - *Path*: 読み込んだ設定ファイルパス
+            - *None*: 読み込める設定ファイルがない
 
         """
         config_path: Optional[Path] = None
