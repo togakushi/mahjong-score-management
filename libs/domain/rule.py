@@ -104,16 +104,13 @@ class RuleData:
 class RuleSet:
     """ルールセット"""
 
-    def __init__(self, config: "Path") -> None:
+    def __init__(self) -> None:
         self.config: ConfigParser = ConfigParser()
         """ルール設定ファイル"""
         self.data: dict[str, RuleData] = {}
         """ルール情報格納辞書"""
         self.keyword_mapping: dict[str, str] = {}
         """登録キーワードとルール識別子のマッピング"""
-
-        self.config.read(config, encoding="utf-8")
-        self.read_config()
 
     def data_set(self, section_name: str, rule_data: Mapping[str, Any]) -> None:
         """
@@ -148,8 +145,9 @@ class RuleSet:
             rule.rule_version = section_name
         self.data.update({rule.rule_version: rule})
 
-    def read_config(self) -> None:
+    def read_config(self, config: "Path") -> None:
         """設定ファイル読み込み"""
+        self.config.read(config, encoding="utf-8")
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
                 continue

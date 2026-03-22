@@ -77,7 +77,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
         if request.method == "POST":
             data.update(request.form.to_dict())
             data.update(mode="update")
-            data.update(g.cfg.mahjong.to_dict())
+            data.update(g.cfg.setting.to_dict())
 
             if "ts" in data:
                 match request.form.get("action"):
