@@ -322,6 +322,7 @@ def setup(init_db: bool = True) -> None:
         g.cfg.report,
         g.cfg.help,
     )
+    logging.debug("\nrule_set: %s", vars(g.cfg.rule))
 
 
 def register() -> None:
