@@ -318,16 +318,16 @@ def setup(init_db: bool = True) -> None:
         default_rule=g.cfg.setting.default_rule,
     )
 
-    logging.debug(
-        "\nsetting: %s\nresults: %s\ngraph: %s\nranking: %s\nreport: %s\nhelp: %s",
-        g.cfg.setting,
-        g.cfg.results,
-        g.cfg.graph,
-        g.cfg.ranking,
-        g.cfg.report,
-        g.cfg.help,
-    )
-    logging.debug("\nrule_set: %s", vars(g.cfg.rule))
+    drop_items = ["section", "default_commandword", "main_parser", "section_proxy", "info"]
+    logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
+    logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
+    logging.debug("team: %s", g.cfg.team.to_dict(drop_items))
+    logging.debug("results: %s", g.cfg.results.to_dict(drop_items))
+    logging.debug("graph: %s", g.cfg.graph.to_dict(drop_items))
+    logging.debug("ranking: %s", g.cfg.ranking.to_dict(drop_items))
+    logging.debug("report: %s", g.cfg.report.to_dict(drop_items))
+    logging.debug("help: %s", g.cfg.help.to_dict(drop_items))
+    logging.debug("rule_set: %s", vars(g.cfg.rule))
 
 
 def register() -> None:

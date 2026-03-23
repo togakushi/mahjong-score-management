@@ -242,7 +242,7 @@ class SettingSection(BaseSection):
         self._reset()
         self.initialization(section_proxy)
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class AliasSection(BaseSection):
@@ -303,7 +303,7 @@ class AliasSection(BaseSection):
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
         self.delete.extend(self.getlist("del", fallback="del"))
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class SubCommands(BaseSection, CommandAttrs):
@@ -326,4 +326,4 @@ class SubCommands(BaseSection, CommandAttrs):
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", self.default_commandword)
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
