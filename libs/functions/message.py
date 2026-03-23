@@ -34,7 +34,7 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
     parser = ConfigParser()
     parser.read(g.cfg.config_file, encoding="utf-8")
 
-    correct_score = g.cfg.mahjong.origin_point * 4  # 配給原点
+    correct_score = g.params.origin_point * 4  # 配給原点
     rpoint_diff = abs(correct_score - m.status.rpoint_sum)
 
     default_message_type = {

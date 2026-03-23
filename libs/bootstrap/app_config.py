@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, Union
 
-from libs.bootstrap.section import AliasSection, BaseSection, MahjongSection, SettingSection
+from libs.bootstrap.section import AliasSection, BaseSection, SettingSection
 from libs.commands.graph.entry import GraphConfig
 from libs.commands.help.entry import HelpConfig
 from libs.commands.ranking.entry import RankingConfig
@@ -103,7 +103,6 @@ class AppConfig:
 
         # セクションチェック
         option_sections = [
-            "mahjong",
             "setting",
             "results",
             "graph",
@@ -130,19 +129,14 @@ class AppConfig:
         # 設定値
         self.setting: SettingSection = SettingSection()
         """settingセクション設定値"""
-        self.mahjong: MahjongSection = MahjongSection()
-        """mahjongセクション設定値"""
         self.alias: AliasSection = AliasSection()
         """aliasセクション設定値"""
-
         self.member: MemberSection = MemberSection(self)
         """memberセクション設定値"""
         self.team: TeamSection = TeamSection(self)
         """teamセクション設定値"""
-
         self.dropitems: DropItems = DropItems(self)
         """非表示項目"""
-
         self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
 
@@ -160,12 +154,11 @@ class AppConfig:
 
         self.initialization()
 
-        self.rule: RuleSet = RuleSet(self.setting.rule_config)
+        self.rule: RuleSet = RuleSet()
         """ルール情報"""
 
     def initialization(self) -> None:
         """設定ファイル読み込み"""
-        self.mahjong.config_load(self.main_parser["mahjong"])
         self.setting.config_load(self.main_parser["setting"])
         self.alias.config_load(self.main_parser["alias"])
         self.member.config_load(self.main_parser["member"])
@@ -195,10 +188,6 @@ class AppConfig:
         # データベース関連
         if isinstance(self.setting.database_file, Path) and not self.setting.database_file.exists():
             self.setting.database_file = self.config_dir / str(self.setting.database_file)
-
-        # デフォルトルール識別子
-        if not self.setting.default_rule:
-            self.setting.default_rule = self.mahjong.rule_version
 
     def word_list(self, add_words: list[str] | None = None) -> list[str]:
         """
@@ -292,8 +281,8 @@ class AppConfig:
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
-                - *Path*: 読み込んだ設定ファイルパス
-                - *None*: 読み込める設定ファイルがない
+            - *Path*: 読み込んだ設定ファイルパス
+            - *None*: 読み込める設定ファイルがない
 
         """
         config_path: Optional[Path] = None

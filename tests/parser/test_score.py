@@ -72,12 +72,13 @@ def test_point_calc_seat(rpoint_list: list[str], point_dict: dict[str, float], r
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
+    rule = g.cfg.rule.to_dict(g.cfg.rule.get_version(4)[0])
     result = GameResult(
         ts="1234567890.123456",
         rule_version="test",
         draw_split=False,
-        return_point=g.cfg.mahjong.return_point,
-        origin_point=g.cfg.mahjong.origin_point,
+        return_point=rule["return_point"],
+        origin_point=rule["origin_point"],
         p1_name="東家",
         p1_str=rpoint_list[0],
         p2_name="南家",
@@ -111,12 +112,13 @@ def test_point_calc_division(rpoint_list: list[str], point_dict: dict[str, float
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
+    rule = g.cfg.rule.to_dict(g.cfg.rule.get_version(4)[0])
     result = GameResult(
         ts="1234567890.123456",
         rule_version="test",
         draw_split=True,
-        return_point=g.cfg.mahjong.return_point,
-        origin_point=g.cfg.mahjong.origin_point,
+        return_point=rule["return_point"],
+        origin_point=rule["origin_point"],
         p1_name="東家",
         p1_str=rpoint_list[0],
         p2_name="南家",

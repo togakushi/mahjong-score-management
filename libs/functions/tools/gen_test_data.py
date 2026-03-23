@@ -82,7 +82,8 @@ def main(season_times: int = 1) -> None:
                         p4_name=member[3],
                         p4_str=str(int(vs_score[3] / 100)),
                         comment=f"第{season:02d}期{count + 1:04d}試合_{position[idx]}戦",
-                        rule_version=g.cfg.mahjong.rule_version,
+                        rule_version=g.cfg.rule.get_version(4)[0],
+                        source="score_simulator",
                     )
 
                     # データ投入

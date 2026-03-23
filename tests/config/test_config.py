@@ -24,9 +24,6 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
 
-    assert g.cfg.mahjong.origin_point == 250
-    assert g.cfg.mahjong.return_point == 300
-
     # default alias
     assert "results" in g.cfg.alias.results
     assert "graph" in g.cfg.alias.graph

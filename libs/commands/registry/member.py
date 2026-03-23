@@ -154,12 +154,6 @@ class MemberSection(BaseSection):
             list[MemberDataDict]: メンバー情報
 
         """
-        g.params.update_from_dict(
-            {
-                "database_file": g.cfg.setting.database_file,
-                "logging_verbose": g.args.verbose,
-            }
-        )
         ret = g.params.read_data("MEMBER_INFO").to_dict(orient="records")
         for row in ret:
             row.update(alias=str(row["alias"]).split(","))

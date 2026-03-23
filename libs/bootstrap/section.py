@@ -5,7 +5,7 @@ libs/bootstrap/section.py
 import logging
 from pathlib import Path, PosixPath
 from types import NoneType
-from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, Union, get_args, get_origin
+from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union, get_args, get_origin
 
 from libs.domain.datamodels import CommandAttrs
 
@@ -29,7 +29,6 @@ ServiceClassType: TypeAlias = Union[
 """連携サービスクラス"""
 
 SettingClassType: TypeAlias = Union[
-    "MahjongSection",
     "SettingSection",
     "MemberSection",
     "TeamSection",
@@ -139,7 +138,7 @@ class BaseSection(CommonMethodMixin):
                 case v_type if k in self.__dict__ and v_type is PosixPath:
                     setattr(self, k, Path(self.get(k)))
                 case v_type if k in self.__dict__ and v_type is NoneType:
-                    if k in ["backup_dir"]:  # ディレクトリを指定する設定はPathで格納
+                    if k in ["backup_dir", "rule_config"]:  # Optional[Path]
                         setattr(self, k, Path(self.get(k)))
                     else:
                         setattr(self, k, self.get(k))
@@ -171,66 +170,6 @@ class BaseSection(CommonMethodMixin):
         return ret_dict
 
 
-class MahjongSection(BaseSection):
-    """mahjongセクション処理"""
-
-    def __init__(self) -> None:
-        self.section: str = "mahjong"
-        self.mode: Literal[3, 4] = 4
-        """ 集計モード切替(四人打ち/三人打ち)"""
-        self.rule_version: str = str("default_rule")
-        """ルール識別子"""
-        self.origin_point: int = int(-1)
-        """配給原点"""
-        self.return_point: int = int(-1)
-        """返し点"""
-        self.rank_point: list[int] = []
-        """順位点"""
-        self.ignore_flying: bool = False
-        """トビカウント
-        - *True*: なし
-        - *False*: あり
-        """
-        self.draw_split: bool = False
-        """同点時の順位点
-        - *True*: 山分けにする
-        - *False*: 席順で決める
-        """
-        self.undefined_word = 0
-        """未定義ワードタイプ"""
-
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self.initialization(section_proxy)
-
-        # デフォルト値
-        match self.mode:
-            case 3:
-                if self.origin_point < 0:
-                    self.origin_point = 350
-                if self.return_point < 0:
-                    self.return_point = 400
-                if not self.rank_point:
-                    self.rank_point = [30, 0, -30]
-            case 4:
-                if self.origin_point < 0:
-                    self.origin_point = 250
-                if self.return_point < 0:
-                    self.return_point = 300
-                if not self.rank_point:
-                    self.rank_point = [30, 10, -10, -30]
-
-        self.rank_point = self.rank_point[: self.mode]
-
-        logging.debug("%s: %s", self.section, self)
-
-
 class SettingSection(BaseSection):
     """settingセクション処理"""
 
@@ -240,7 +179,7 @@ class SettingSection(BaseSection):
     """メモ記録用キーワード"""
     remarks_suffix: list[str]
     """メモ記録用キーワードサフィックス"""
-    rule_config: Path
+    rule_config: Optional[Path]
     """ルール設定ファイル"""
     default_rule: str
     """ルール識別子未指定時に使用される識別子"""
@@ -278,7 +217,7 @@ class SettingSection(BaseSection):
         self.keyword = str("終局")
         self.remarks_word = str("麻雀メモ")
         self.remarks_suffix = []
-        self.rule_config = Path("files/default_rule.ini")
+        self.rule_config = None
         self.time_adjust = int(12)
         self.default_rule = str("")
         self.separate = bool(False)
@@ -302,10 +241,6 @@ class SettingSection(BaseSection):
         """
         self._reset()
         self.initialization(section_proxy)
-
-        # 成績登録キーワード
-        if not (isinstance(self.keyword, Path) and self.keyword.exists()):
-            self.keyword = str(self.keyword)
 
         logging.debug("%s: %s", self.section, self)
 

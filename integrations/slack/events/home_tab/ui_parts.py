@@ -168,7 +168,7 @@ def user_select_pulldown(
         add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
 
     """
-    read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
+    read_memberslist()
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-user_select", "element": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"]["type"] = "static_select"
@@ -209,7 +209,7 @@ def multi_select_pulldown(
         add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
 
     """
-    read_memberslist()  # fixme: 最後にアクセスしたDBのメンバーリストが返る
+    read_memberslist()
 
     adapter.conf.tab_var["view"]["blocks"].append({"type": "input", "block_id": "bid-multi_select", "element": {}})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"]["type"] = "multi_static_select"
