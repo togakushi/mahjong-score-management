@@ -55,6 +55,7 @@ def arg_parser() -> Args:
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
+        allow_abbrev=False,
     )
 
     p.add_argument(
@@ -193,18 +194,11 @@ def arg_parser() -> Args:
                 type=Path,
             )
 
-    # 非表示オプション（外部ツールのオプション受け入れ）
-    hidden_group = p.add_argument_group("hidden options")
-    hidden_group.add_argument(
-        "--profile",
-        help=argparse.SUPPRESS,
-    )
-    hidden_group.add_argument(
-        "--rootdir",
-        help=argparse.SUPPRESS,
-    )
+    args, unknown = p.parse_known_args()
+    if unknown:
+        logging.debug("ignored args: %s", unknown)
 
-    return cast(Args, p.parse_args(namespace=Args))
+    return cast(Args, args)
 
 
 def setup(init_db: bool = True) -> None:

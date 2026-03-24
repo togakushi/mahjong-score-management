@@ -91,6 +91,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df = df.query("rank <= @g.params.ranked").filter(
         items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"],
     )
+
+    # 非表示項目を削除
     df = formatter.df_drop(df, list(g.cfg.rule.dropitems(g.params.rule_version)))
 
     m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
