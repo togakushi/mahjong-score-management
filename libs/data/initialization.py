@@ -136,14 +136,15 @@ def setup_rule_data() -> None:
 
     # ルールセットがなければプリセットから取り込み
     if not g.cfg.rule.rule_list:
-        if (new_conf := g.cfg.config_dir / Path("files/default_rule.ini")) and new_conf.exists():
+        if (new_conf := g.cfg.config_dir / "files/default_rule.ini") and new_conf.exists():
             g.cfg.setting.rule_config = new_conf
-        elif (new_conf := g.cfg.script_dir / Path("files/default_rule.ini")) and new_conf.exists():
+        elif (new_conf := g.cfg.script_dir / "files/default_rule.ini") and new_conf.exists():
             g.cfg.setting.rule_config = new_conf
-        else:
-            raise TypeError("Preset not found.")
+
         if g.cfg.setting.rule_config:
             g.cfg.rule.read_config(g.cfg.setting.rule_config)
+        else:
+            raise TypeError("Preset not found.")
 
     if not g.cfg.setting.default_rule:
         g.cfg.setting.default_rule = g.cfg.rule.rule_list[0]
