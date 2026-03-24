@@ -45,7 +45,8 @@ class RuleData:
     """
     undefined_word: int = 1
     """未定義ワードタイプ"""
-
+    dropitems: list[str] = field(default_factory=list)
+    """非表示にする項目"""
     remarks_words: list[str] = field(default_factory=list)
     """メモ記録用ワード"""
 
@@ -99,6 +100,9 @@ class RuleData:
             self.undefined_word = int(undefined_word)
         else:
             self.undefined_word = 1
+
+        if dropitems := rule_data.get("dropitems"):
+            self.dropitems = [x.strip() for x in str(dropitems).split(",")]
 
 
 class RuleSet:
@@ -221,6 +225,21 @@ class RuleSet:
             }
 
         return {}
+
+    def dropitems(self, rule_version: str) -> set[str]:
+        """
+        _summary_
+
+        Args:
+            rule_version (str): _description_
+
+        Returns:
+            set[str]: _description_
+        """
+        if items := self.data.get(rule_version):
+            return set(items.dropitems)
+        else:
+            return set([])
 
     def get_version(self, mode: int, mapping: bool = True) -> list[str]:
         """

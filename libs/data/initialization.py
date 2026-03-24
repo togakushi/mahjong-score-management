@@ -28,7 +28,6 @@ def main(init_db: bool) -> None:
     if init_db:
         # メイン設定
         setup_resultdb(g.cfg.setting.database_file)
-        setup_regulations(g.cfg.setting.database_file)
 
         # チャンネル個別設定
         for section in g.cfg.main_parser.sections():
@@ -43,10 +42,9 @@ def main(init_db: bool) -> None:
                     )
                     if others_db:
                         setup_resultdb(Path(others_db).absolute())
-                        setup_regulations(g.cfg.setting.database_file)
 
     # 段位テーブル取り込み
-    read_grade_table()
+    setup_grade_table()
 
     # ルールデータ取り込み
     if g.cfg.main_parser.has_section("mahjong"):
@@ -78,6 +76,9 @@ def main(init_db: bool) -> None:
     g.cfg.rule.status_update(g.params.placeholder())
     g.cfg.rule.register_to_database()
     g.cfg.rule.info()
+
+    # レギュレーション設定取り込み
+    setup_regulations(g.cfg.setting.database_file)
 
 
 def setup_resultdb(database_file: Union[str, Path]) -> None:
@@ -168,7 +169,7 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
 
 def setup_regulations(database_file: Union[str, Path]) -> None:
     """
-    regulationsテーブル情報読み込み
+    レギュレーション設定取り込み
 
     Args:
         database_file (Union[str, Path]): データベース接続パス
@@ -237,7 +238,7 @@ def setup_regulations(database_file: Union[str, Path]) -> None:
     resultdb.close()
 
 
-def read_grade_table() -> None:
+def setup_grade_table() -> None:
     """段位テーブル取り込み"""
     # テーブル選択
     match table_name := g.cfg.badge.grade.table_name:

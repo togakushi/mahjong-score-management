@@ -104,9 +104,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
         }
     )
 
-    if g.params.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    if g.params.ignore_flying or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:
         seat_data.drop(columns=["トビ"], inplace=True)
-    if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
+    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
         seat_data.drop(columns=["役満和了"], inplace=True)
 
     if mode == 3:
@@ -142,18 +142,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
     count_df = remarks_df.groupby("matter").agg(matter_count=("matter", "count"), ex_total=("ex_point", "sum"), type=("type", "max"))
     count_df["matter"] = count_df.index
 
-    if not g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
-    if not g.cfg.dropitems.results & g.cfg.dropitems.regulation:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.regulation:
         if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
         m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
-    if not g.cfg.dropitems.results & g.cfg.dropitems.other:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.other:
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
@@ -169,7 +169,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             m.set_message(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
 
     # 非表示項目を除外
-    m.post.message = [(data, options) for data, options in m.post.message if options.title not in g.cfg.dropitems.results]
+    m.post.message = [(data, options) for data, options in m.post.message if options.title not in g.cfg.rule.dropitems(g.params.rule_version)]
 
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
@@ -233,10 +233,10 @@ def comparison(m: "MessageParserProtocol") -> None:
         stats_df["name"] = stats_df["name"].replace(mapping_dict)
 
     # 非表示項目
-    stats_df = stats_df.drop(columns=[x for x in g.cfg.dropitems.results if x in stats_df.columns.to_list()])
-    if g.params.ignore_flying or g.cfg.dropitems.results & g.cfg.dropitems.flying:
+    stats_df = stats_df.drop(columns=[x for x in g.cfg.rule.dropitems(g.params.rule_version) if x in stats_df.columns.to_list()])
+    if g.params.ignore_flying or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:
         stats_df = stats_df.drop(columns=["flying_rate-count"])
-    if g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
+    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
         stats_df = stats_df.drop(columns=["yakuman_rate-count"])
 
     # 出力
@@ -462,7 +462,7 @@ def message_build(data: dict[str, str]) -> str:
         if not v:  # 値がない項目は削除
             continue
         match k:
-            case k if k in g.cfg.dropitems.results:  # 非表示
+            case k if k in g.cfg.rule.dropitems(g.params.rule_version):  # 非表示
                 pass
             case k if str(k).startswith("_blank"):
                 msg += "\n"

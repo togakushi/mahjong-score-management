@@ -89,7 +89,7 @@ class MemberSection(BaseSection):
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
 
     def resolve_name(self, name: str) -> str:
         """

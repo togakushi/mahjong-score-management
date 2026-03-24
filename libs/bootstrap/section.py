@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import BadgeDisplay, DropItems
+    from libs.bootstrap.app_config import BadgeDisplay
     from libs.commands.registry.member import MemberSection
     from libs.commands.registry.team import TeamSection
 
@@ -33,7 +33,6 @@ SettingClassType: TypeAlias = Union[
     "MemberSection",
     "TeamSection",
     "AliasSection",
-    "DropItems",
     "BadgeDisplay",
 ]
 """設定関連クラス"""
@@ -242,7 +241,7 @@ class SettingSection(BaseSection):
         self._reset()
         self.initialization(section_proxy)
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class AliasSection(BaseSection):
@@ -303,7 +302,7 @@ class AliasSection(BaseSection):
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
         self.delete.extend(self.getlist("del", fallback="del"))
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class SubCommands(BaseSection, CommandAttrs):
@@ -326,4 +325,4 @@ class SubCommands(BaseSection, CommandAttrs):
         # 呼び出しキーワード取り込み
         self.commandword = self.getlist("commandword", self.default_commandword)
 
-        logging.debug("%s: %s", self.section, self)
+        logging.trace("%s: %s", self.section, self)  # type: ignore
