@@ -52,6 +52,7 @@ def arg_parser() -> Args:
         Args : ArgumentParserオブジェクト
 
     """
+    prog_name = os.path.basename(sys.argv[0])
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
@@ -113,7 +114,7 @@ def arg_parser() -> Args:
         help="ログフォーマットから日時を削除",
     )
 
-    match os.path.basename(sys.argv[0]):
+    match prog_name:
         case "app.py":
             service_stdio = p.add_argument_group("Only allowed when --service=standard_io")
             service_stdio.add_argument(
@@ -196,8 +197,9 @@ def arg_parser() -> Args:
             )
 
     args, unknown = p.parse_known_args()
-    if unknown:
-        logging.warning("ignored args: %s", unknown)
+    if unknown and prog_name in ["app.py", "dbtools.py"]:
+        p.print_usage()
+        sys.exit(f"\ninvalid args: {unknown}")
 
     return cast(Args, args)
 
