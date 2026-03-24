@@ -66,7 +66,8 @@ def arg_parser() -> Args:
         help="設定ファイル(default: %(default)s)",
     )
     p.add_argument(
-        "--no_cleanup",
+        "--no-cleanup",
+        dest="no_cleanup",
         action="store_false",
         help="作業ディレクトリの内容を削除しない",
     )
