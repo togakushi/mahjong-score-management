@@ -54,12 +54,13 @@ class AppConfig:
     class FixedWords:
         """固定ワード"""
 
-        flying = {"トビ", "トビ率"}
+        flying: set[str] = {"トビ", "トビ率"}
         """トビ関連ワード"""
-        yakuman = {"役満", "役満和了", "役満和了率"}
+        yakuman: set[str] = {"役満", "役満和了", "役満和了率"}
         """役満関連ワード"""
-        regulation = {"卓外", "卓外清算", "卓外ポイント"}
-        other = {"その他", "メモ"}
+        regulation: set[str] = {"卓外", "卓外清算", "卓外ポイント"}
+        """レギュレーション関連ワード"""
+        other: set[str] = {"その他", "メモ"}
         """その他ワード"""
 
     def __init__(self, config_file: Path) -> None:
