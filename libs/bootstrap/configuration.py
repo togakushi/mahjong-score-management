@@ -261,15 +261,6 @@ def setup(init_db: bool = True) -> None:
 
     g.adapter = factory.select_adapter(g.cfg.selected_service, g.cfg)
 
-    # 設定情報
-    logging.info("config: %s", g.cfg.config_file.absolute())
-    logging.info(
-        "service: %s, graph_library: %s, time_adjust: %sh",
-        g.cfg.selected_service,
-        g.adapter.conf.plotting_backend,
-        g.cfg.setting.time_adjust,
-    )
-
     # ディレクトリ作成
     if not g.args.testcase:
         if g.cfg.setting.work_dir.is_dir() and g.args.no_cleanup:
@@ -315,6 +306,18 @@ def setup(init_db: bool = True) -> None:
         default_rule=g.cfg.setting.default_rule,
     )
 
+    # 設定情報
+    logging.info("main_config: %s", g.cfg.config_file.absolute())
+    if g.cfg.setting.rule_config:
+        logging.info("rule_config: %s", g.cfg.setting.rule_config.absolute())
+    if isinstance(g.cfg.setting.database_file, Path):
+        logging.info("resultdb: %s", g.cfg.setting.database_file.absolute())
+    logging.info(
+        "service: %s, graph_library: %s, time_adjust: %sh",
+        g.cfg.selected_service,
+        g.adapter.conf.plotting_backend,
+        g.cfg.setting.time_adjust,
+    )
     drop_items = ["section", "default_commandword", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
     logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
