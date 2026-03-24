@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import BadgeDisplay, DropItems
+    from libs.bootstrap.app_config import BadgeDisplay
     from libs.commands.registry.member import MemberSection
     from libs.commands.registry.team import TeamSection
 
@@ -33,7 +33,6 @@ SettingClassType: TypeAlias = Union[
     "MemberSection",
     "TeamSection",
     "AliasSection",
-    "DropItems",
     "BadgeDisplay",
 ]
 """設定関連クラス"""

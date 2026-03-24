@@ -25,47 +25,6 @@ if TYPE_CHECKING:
     from libs.bootstrap.section import SubCommands
 
 
-class DropItems(BaseSection):
-    """非表示項目リスト"""
-
-    results: set[str]
-    """成績サマリ非表示項目"""
-    ranking: set[str]
-    """ランキング/レーティング非表示項目"""
-    report: set[str]
-    """レポート非表示項目"""
-    flying: set[str]
-    """トビ関連データ非表示指定ワード"""
-    yakuman: set[str]
-    """役満和了関連データ非表示指定ワード"""
-    regulation: set[str]
-    """卓外清算関連データ非表示指定ワード"""
-    other: set[str]
-    """メモ関連データ非表示指定ワード"""
-
-    def __init__(self, outer: "AppConfig") -> None:
-        self.main_parser = outer.main_parser
-
-        # 設定値取り込み
-        self.section = "results"
-        self.section_proxy = self.main_parser[self.section]
-        self.results = set(self.getlist("dropitems", fallback=""))
-
-        self.section = "ranking"
-        self.section_proxy = self.main_parser[self.section]
-        self.ranking = set(self.getlist("dropitems", fallback=""))
-
-        self.section = "report"
-        self.section_proxy = self.main_parser[self.section]
-        self.report = set(self.getlist("dropitems", fallback=""))
-
-        # 固定ワード
-        self.flying = {"トビ", "トビ率"}
-        self.yakuman = {"役満", "役満和了", "役満和了率"}
-        self.regulation = {"卓外", "卓外清算", "卓外ポイント"}
-        self.other = {"その他", "メモ"}
-
-
 class BadgeDisplay(BaseSection):
     """バッジ表示"""
 
@@ -90,6 +49,18 @@ class BadgeDisplay(BaseSection):
 
 class AppConfig:
     """アプリケーション設定"""
+
+    @dataclass
+    class FixedWords:
+        """固定ワード"""
+
+        flying = {"トビ", "トビ率"}
+        """トビ関連ワード"""
+        yakuman = {"役満", "役満和了", "役満和了率"}
+        """役満関連ワード"""
+        regulation = {"卓外", "卓外清算", "卓外ポイント"}
+        other = {"その他", "メモ"}
+        """その他ワード"""
 
     def __init__(self, config_file: Path) -> None:
         self.config_file: Path = config_file
@@ -135,8 +106,6 @@ class AppConfig:
         """memberセクション設定値"""
         self.team: TeamSection = TeamSection(self)
         """teamセクション設定値"""
-        self.dropitems: DropItems = DropItems(self)
-        """非表示項目"""
         self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
 
@@ -154,6 +123,8 @@ class AppConfig:
 
         self.initialization()
 
+        self.dropitems = self.FixedWords()
+        """非表示項目リスト"""
         self.rule: RuleSet = RuleSet()
         """ルール情報"""
 

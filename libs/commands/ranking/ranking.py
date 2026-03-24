@@ -282,13 +282,13 @@ def aggregation(m: "MessageParserProtocol") -> None:
         )
 
     # 項目整理
-    if g.params.ignore_flying or g.cfg.dropitems.ranking & g.cfg.dropitems.flying:
+    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying or g.params.ignore_flying:
         data.pop("トビ率")
-    if g.cfg.dropitems.ranking & g.cfg.dropitems.yakuman:
+    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
         data.pop("役満和了率")
 
     for msg, df_data in data.items():
-        if msg in g.cfg.dropitems.ranking:  # 非表示項目
+        if msg in g.cfg.rule.dropitems(g.params.rule_version):  # 非表示項目
             continue
         if df_data.empty:  # 対象者なし
             continue

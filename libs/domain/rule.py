@@ -226,6 +226,21 @@ class RuleSet:
 
         return {}
 
+    def dropitems(self, rule_version: str) -> set[str]:
+        """
+        _summary_
+
+        Args:
+            rule_version (str): _description_
+
+        Returns:
+            set[str]: _description_
+        """
+        if items := self.data.get(rule_version):
+            return set(items.dropitems)
+        else:
+            return set([])
+
     def get_version(self, mode: int, mapping: bool = True) -> list[str]:
         """
         指定した条件のルール識別子をリストで返す

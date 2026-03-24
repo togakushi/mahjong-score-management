@@ -92,7 +92,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         "flying",
     ]
 
-    if g.cfg.rule.get_ignore_flying(current_rule) or g.cfg.dropitems.results & g.cfg.dropitems.flying:  # トビカウントなし
+    if g.cfg.rule.get_ignore_flying(current_rule) or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:  # トビカウントなし
         header_list.remove("flying")
         filter_list.remove("flying")
 
@@ -107,7 +107,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(役満和了)
-    if not g.cfg.dropitems.results & g.cfg.dropitems.yakuman:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
         options.title = "役満和了"
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
@@ -121,7 +121,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
-    if not g.cfg.dropitems.results & g.cfg.dropitems.regulation:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.regulation:
         options.title = "卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
@@ -139,7 +139,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
-    if not g.cfg.dropitems.results & g.cfg.dropitems.other:
+    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.other:
         options.title = "その他"
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
         df_others = df_remarks.query("type == 1").drop(columns=["type", "ex_point"])
