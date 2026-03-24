@@ -318,6 +318,9 @@ def setup(init_db: bool = True) -> None:
         g.adapter.conf.plotting_backend,
         g.cfg.setting.time_adjust,
     )
+
+    g.cfg.rule.info()
+
     drop_items = ["section", "default_commandword", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
     logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
