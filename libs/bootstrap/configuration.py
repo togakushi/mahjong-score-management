@@ -52,6 +52,7 @@ def arg_parser() -> Args:
         Args : ArgumentParserオブジェクト
 
     """
+    prog_name = os.path.basename(sys.argv[0])
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
@@ -66,7 +67,8 @@ def arg_parser() -> Args:
         help="設定ファイル(default: %(default)s)",
     )
     p.add_argument(
-        "--no_cleanup",
+        "--no-cleanup",
+        dest="no_cleanup",
         action="store_false",
         help="作業ディレクトリの内容を削除しない",
     )
@@ -112,7 +114,7 @@ def arg_parser() -> Args:
         help="ログフォーマットから日時を削除",
     )
 
-    match os.path.basename(sys.argv[0]):
+    match prog_name:
         case "app.py":
             service_stdio = p.add_argument_group("Only allowed when --service=standard_io")
             service_stdio.add_argument(
@@ -195,8 +197,9 @@ def arg_parser() -> Args:
             )
 
     args, unknown = p.parse_known_args()
-    if unknown:
-        logging.debug("ignored args: %s", unknown)
+    if unknown and prog_name in ["app.py", "dbtools.py"]:
+        p.print_usage()
+        sys.exit(f"\ninvalid args: {unknown}")
 
     return cast(Args, args)
 
@@ -258,15 +261,6 @@ def setup(init_db: bool = True) -> None:
 
     g.adapter = factory.select_adapter(g.cfg.selected_service, g.cfg)
 
-    # 設定情報
-    logging.info("config: %s", g.cfg.config_file.absolute())
-    logging.info(
-        "service: %s, graph_library: %s, time_adjust: %sh",
-        g.cfg.selected_service,
-        g.adapter.conf.plotting_backend,
-        g.cfg.setting.time_adjust,
-    )
-
     # ディレクトリ作成
     if not g.args.testcase:
         if g.cfg.setting.work_dir.is_dir() and g.args.no_cleanup:
@@ -311,6 +305,21 @@ def setup(init_db: bool = True) -> None:
         chk_members=set(lookup.enumeration_all_members()),
         default_rule=g.cfg.setting.default_rule,
     )
+
+    # 設定情報
+    logging.info("main_config: %s", g.cfg.config_file.absolute())
+    if g.cfg.setting.rule_config:
+        logging.info("rule_config: %s", g.cfg.setting.rule_config.absolute())
+    if isinstance(g.cfg.setting.database_file, Path):
+        logging.info("resultdb: %s", g.cfg.setting.database_file.absolute())
+    logging.info(
+        "service: %s, graph_library: %s, time_adjust: %sh",
+        g.cfg.selected_service,
+        g.adapter.conf.plotting_backend,
+        g.cfg.setting.time_adjust,
+    )
+
+    g.cfg.rule.info()
 
     drop_items = ["section", "default_commandword", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))

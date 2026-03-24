@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Union
 
 import libs.global_value as g
-from libs.data import lookup
 from libs.utils import dbutil
 
 if TYPE_CHECKING:
@@ -26,59 +25,11 @@ def main(init_db: bool) -> None:
 
     """
     if init_db:
-        # メイン設定
-        setup_resultdb(g.cfg.setting.database_file)
+        setup_resultdb(g.cfg.setting.database_file)  # DB初期化
 
-        # チャンネル個別設定
-        for section in g.cfg.main_parser.sections():
-            if str(section).startswith(f"{g.adapter.interface_type}_"):
-                if channel_config := g.cfg.main_parser[section].get("channel_config"):
-                    others_db = lookup.get_config_value(
-                        config_file=Path(channel_config),
-                        section="setting",
-                        name="database_file",
-                        val_type=str,
-                        fallback="",
-                    )
-                    if others_db:
-                        setup_resultdb(Path(others_db).absolute())
-
-    # 段位テーブル取り込み
-    setup_grade_table()
-
-    # ルールデータ取り込み
-    if g.cfg.main_parser.has_section("mahjong"):
-        section_data = dict(g.cfg.main_parser["mahjong"])
-        if rule_version := section_data.get("rule_version"):
-            g.cfg.rule.data_set("mahjong", rule_data=section_data)
-
-    if not g.cfg.rule.rule_list and not g.cfg.setting.rule_config:
-        g.cfg.setting.rule_config = Path("files/default_rule.ini")
-    if g.cfg.setting.rule_config:
-        g.cfg.rule.read_config(g.cfg.setting.rule_config)
-
-    if not g.cfg.setting.default_rule:
-        g.cfg.setting.default_rule = g.cfg.rule.rule_list[0]
-
-    if g.cfg.main_parser.has_section("keyword_mapping"):
-        for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
-            if not rule_version:
-                g.cfg.rule.keyword_mapping.update({keyword: g.cfg.setting.default_rule})
-            elif rule_version in g.cfg.rule.data:
-                g.cfg.rule.keyword_mapping.update({keyword: rule_version})
-
-    if not g.cfg.rule.keyword_mapping:
-        if isinstance(g.cfg.setting.keyword, str):
-            g.cfg.rule.keyword_mapping = {g.cfg.setting.keyword: g.cfg.setting.default_rule}
-        else:
-            g.cfg.rule.keyword_mapping = {"終局": g.cfg.setting.default_rule}
-
-    g.cfg.rule.status_update(g.params.placeholder())
-    g.cfg.rule.register_to_database()
-    g.cfg.rule.info()
-
-    # レギュレーション設定取り込み
-    setup_regulations(g.cfg.setting.database_file)
+    setup_grade_table()  # 段位テーブル取り込み
+    setup_rule_data()  # ルールデータ取り込み
+    setup_regulations(g.cfg.setting.database_file)  # レギュレーション設定取り込み
 
 
 def setup_resultdb(database_file: Union[str, Path]) -> None:
@@ -89,11 +40,6 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
         database_file (Union[str, Path]): データベース接続パス
 
     """
-    if isinstance(database_file, Path):
-        logging.info(database_file.absolute())
-    else:
-        logging.info(database_file)
-
     resultdb = dbutil.connection(database_file)
     memdb = dbutil.connection(":memory:")
 
@@ -167,6 +113,60 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     memdb.close()
 
 
+def setup_rule_data() -> None:
+    """ルールデータ取り込み"""
+    if g.cfg.main_parser.has_section("mahjong"):
+        section_data = dict(g.cfg.main_parser["mahjong"])
+        if rule_version := section_data.get("rule_version"):
+            g.cfg.rule.data_set("mahjong", rule_data=section_data)
+
+    # ルール設定ファイル探索 & 取り込み
+    if g.cfg.setting.rule_config:
+        if not g.cfg.setting.rule_config.exists():
+            if (new_conf := g.cfg.config_dir / str(g.cfg.setting.rule_config)) and new_conf.exists():
+                g.cfg.setting.rule_config = new_conf
+            elif (new_conf := g.cfg.script_dir / str(g.cfg.setting.rule_config)) and new_conf.exists():
+                g.cfg.setting.rule_config = new_conf
+            elif (new_conf := Path.cwd() / str(g.cfg.setting.rule_config)) and new_conf.exists():
+                g.cfg.setting.rule_config = new_conf
+            else:
+                g.cfg.setting.rule_config = None
+        if g.cfg.setting.rule_config:
+            g.cfg.rule.read_config(g.cfg.setting.rule_config)
+
+    # ルールセットがなければプリセットから取り込み
+    if not g.cfg.rule.rule_list:
+        if (new_conf := g.cfg.config_dir / "files/default_rule.ini") and new_conf.exists():
+            g.cfg.setting.rule_config = new_conf
+        elif (new_conf := g.cfg.script_dir / "files/default_rule.ini") and new_conf.exists():
+            g.cfg.setting.rule_config = new_conf
+
+        if g.cfg.setting.rule_config:
+            g.cfg.rule.read_config(g.cfg.setting.rule_config)
+        else:
+            raise TypeError("Preset not found.")
+
+    if not g.cfg.setting.default_rule:
+        g.cfg.setting.default_rule = g.cfg.rule.rule_list[0]
+
+    # マッピング生成
+    if g.cfg.main_parser.has_section("keyword_mapping"):
+        for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
+            if not rule_version:
+                g.cfg.rule.keyword_mapping.update({keyword: g.cfg.setting.default_rule})
+            elif rule_version in g.cfg.rule.data:
+                g.cfg.rule.keyword_mapping.update({keyword: rule_version})
+
+    if not g.cfg.rule.keyword_mapping:
+        if isinstance(g.cfg.setting.keyword, str):
+            g.cfg.rule.keyword_mapping = {g.cfg.setting.keyword: g.cfg.setting.default_rule}
+        else:
+            g.cfg.rule.keyword_mapping = {"終局": g.cfg.setting.default_rule}
+
+    g.cfg.rule.status_update(g.params.placeholder())
+    g.cfg.rule.register_to_database()
+
+
 def setup_regulations(database_file: Union[str, Path]) -> None:
     """
     レギュレーション設定取り込み
@@ -196,11 +196,6 @@ def setup_regulations(database_file: Union[str, Path]) -> None:
                     params = {"word": k.strip(), "type": regulation_type, "ex_point": int(v), "rule_version": rule}
                     resultdb.execute(dbutil.query("WORDS_INSERT"), params)
                     logging.debug("regulations table(type%s): %s, %s", regulation_type, params["word"], params["ex_point"])
-
-    if isinstance(database_file, Path):
-        logging.info(database_file.absolute())
-    else:
-        logging.info(database_file)
 
     resultdb = dbutil.connection(database_file)
     resultdb.execute("delete from words;")
