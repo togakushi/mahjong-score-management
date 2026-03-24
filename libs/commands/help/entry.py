@@ -167,3 +167,8 @@ def help_message(m: "MessageParserProtocol") -> None:
         """),
         StyleOptions(title="チャンネル設定情報"),
     )
+
+    # 非表示項目を削除
+    for msg, option in m.post.message:
+        if option.title in g.cfg.rule.dropitems(g.params.rule_version):
+            m.post.message.remove((msg, option))
