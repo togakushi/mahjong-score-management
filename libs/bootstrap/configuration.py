@@ -197,7 +197,7 @@ def arg_parser() -> Args:
 
     args, unknown = p.parse_known_args()
     if unknown:
-        logging.critical("ignored args: %s", unknown)
+        logging.warning("ignored args: %s", unknown)
 
     return cast(Args, args)
 
