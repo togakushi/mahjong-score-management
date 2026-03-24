@@ -52,15 +52,15 @@ class AppConfig:
 
     @dataclass
     class FixedWords:
-        """固定ワード"""
+        """非表示項目用固定ワード"""
 
-        flying: set[str] = {"トビ", "トビ率"}
+        flying: set[str] = field(default_factory=lambda: {"トビ", "トビ率"})
         """トビ関連ワード"""
-        yakuman: set[str] = {"役満", "役満和了", "役満和了率"}
+        yakuman: set[str] = field(default_factory=lambda: {"役満", "役満和了", "役満和了率"})
         """役満関連ワード"""
-        regulation: set[str] = {"卓外", "卓外清算", "卓外ポイント"}
+        regulation: set[str] = field(default_factory=lambda: {"卓外", "卓外清算", "卓外ポイント"})
         """レギュレーション関連ワード"""
-        other: set[str] = {"その他", "メモ"}
+        other: set[str] = field(default_factory=lambda: {"その他", "メモ"})
         """その他ワード"""
 
     def __init__(self, config_file: Path) -> None:
