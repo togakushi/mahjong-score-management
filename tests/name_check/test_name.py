@@ -8,7 +8,7 @@ from typing import Any, Generator
 import pytest
 
 from libs.bootstrap import configuration
-from libs.data import lookup
+from libs.functions import lookup
 from libs.utils import validator
 from tests.name_check import param_data
 

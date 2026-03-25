@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, cast
 import libs.global_value as g
 from integrations import factory
 from integrations.slack.events import comparison
-from libs.data import lookup
+from libs.functions import lookup
 from libs.types import ServiceType
 
 if TYPE_CHECKING:

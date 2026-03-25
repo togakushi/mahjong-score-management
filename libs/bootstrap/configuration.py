@@ -21,8 +21,8 @@ from integrations import factory
 from libs.bootstrap import initialization
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
-from libs.data import lookup
 from libs.domain.datamodels import Args
+from libs.functions import lookup
 from libs.functions.compose import text_item
 from libs.types import ServiceType, StyleOptions
 

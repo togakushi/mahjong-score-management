@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.bootstrap.section import SubCommands
-from libs.data import lookup
+from libs.functions import lookup
 from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt

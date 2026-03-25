@@ -11,7 +11,7 @@ import libs.global_value as g
 from integrations import factory
 from integrations.standard_io.adapter import ServiceAdapter
 from libs.bootstrap import configuration
-from libs.data import lookup
+from libs.functions import lookup
 from libs.types import ServiceType
 from libs.utils import dictutil, formatter
 from tests.parser import param_data

@@ -11,8 +11,8 @@ from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 import pandas as pd
 
-from libs.data import lookup
 from libs.domain.datamodels import ParameterData
+from libs.functions import lookup
 from libs.types import ServiceType
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
