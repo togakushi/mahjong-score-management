@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.section import BaseSection
-from libs.data import modify
+from libs.domain import modify
 from libs.types import CommandType
 from libs.utils import dbutil, textutil, validator
 
