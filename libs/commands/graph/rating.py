@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
-from libs.data import aggregate
+from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item

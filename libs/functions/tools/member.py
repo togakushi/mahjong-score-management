@@ -7,7 +7,7 @@ import logging
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import modify
+from libs.domain import modify
 from libs.utils import dbutil
 
 

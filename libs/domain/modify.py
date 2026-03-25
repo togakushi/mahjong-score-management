@@ -1,5 +1,5 @@
 """
-libs/data/modify.py
+libs/domain/modify.py
 """
 
 import logging
@@ -11,8 +11,7 @@ from contextlib import closing
 from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
-from libs.data import lookup
-from libs.functions import message
+from libs.functions import lookup, message
 from libs.types import ActionStatus, MessageStatus, StyleOptions
 from libs.utils import dbutil, formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt

@@ -12,8 +12,8 @@ from typing import Any, cast
 from tqdm import tqdm
 
 import libs.global_value as g
-from libs.data import lookup
 from libs.domain.score import GameResult
+from libs.functions import lookup
 from libs.functions.tools import score_simulator
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt

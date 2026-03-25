@@ -1,5 +1,5 @@
 """
-libs/data/lookup.py
+libs/functions/lookup.py
 """
 
 import logging
@@ -12,7 +12,6 @@ import libs.global_value as g
 from libs.domain.score import GameResult
 from libs.types import ChannelType, CommandType
 from libs.utils import dbutil
-from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -282,37 +281,6 @@ def exsist_record(ts: str) -> GameResult:
         result.calc(**dict(row))
 
     return result
-
-
-def first_record(rule_list: list[str]) -> ExtDt:
-    """
-    最初のゲーム記録時間を返す
-
-    Args:
-        rule_list (list[str]): ルール識別子
-
-    Returns:
-        ExtendedDatetime: 最初のゲーム記録時間
-
-    """
-    ret = ExtDt()
-    rule_dict = {f"rule_{idx}": name for idx, name in enumerate(set(rule_list))}
-
-    try:
-        with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
-            table_count = conn.execute(
-                "select count() from sqlite_master where type='view' and name='game_results';",
-            ).fetchall()[0][0]
-
-            if table_count:
-                sql = "select min(playtime) from game_results where rule_version in (<<rule_list>>);".replace("<<rule_list>>", ":" + ", :".join(rule_dict))
-                record = conn.execute(sql, rule_dict).fetchall()[0][0]
-                if record:
-                    ret = ExtDt(str(record)) - {"hour": 0, "minute": 0, "second": 0, "microsecond": 0, "hours": g.cfg.setting.time_adjust}
-    except AttributeError:
-        ret = ExtDt()
-
-    return ret
 
 
 def read_memberslist() -> None:

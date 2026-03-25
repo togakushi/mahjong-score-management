@@ -32,22 +32,22 @@ help:
 
 import libs.global_value as g
 from libs.bootstrap import configuration
-from libs.functions import tools as t
+from libs.functions.tools import comparison, gen_test_data, member, recalculation, unification, vacuum
 
 if __name__ == "__main__":
     configuration.setup()
 
     if g.args.compar:
-        t.comparison.main()
+        comparison.main()
     if g.args.recalculation:
-        t.recalculation.main()
+        recalculation.main()
     if g.args.unification:
-        t.unification.main()
+        unification.main()
     if g.args.export_data:
-        t.member.export_data()
+        member.export_data()
     if g.args.import_data:
-        t.member.import_data()
+        member.import_data()
     if g.args.vacuum:
-        t.vacuum.main()
+        vacuum.main()
     if g.args.gen_test_data:
-        t.gen_test_data.main(g.args.gen_test_data)
+        gen_test_data.main(g.args.gen_test_data)

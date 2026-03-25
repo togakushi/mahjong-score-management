@@ -9,7 +9,7 @@ from flask import Blueprint, abort, current_app, render_template, request
 
 import libs.global_value as g
 from libs.commands.registry import member, team
-from libs.data import lookup
+from libs.functions import lookup
 from libs.utils import dictutil
 
 if TYPE_CHECKING:

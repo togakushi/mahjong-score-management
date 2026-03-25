@@ -21,8 +21,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDocTemplate, Spacer, TableStyle
 
 import libs.global_value as g
-from libs.data import lookup
-from libs.functions import message
+from libs.functions import lookup, message
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter
 

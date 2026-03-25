@@ -9,7 +9,7 @@ import pandas as pd
 from flask import Blueprint, abort, current_app, render_template, request
 
 import libs.global_value as g
-from libs.data import modify
+from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
 from libs.utils import dbutil, formatter

@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 import libs.global_value as g
-from libs.data import aggregate
+from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import badge

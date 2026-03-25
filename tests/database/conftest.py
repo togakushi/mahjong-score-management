@@ -12,9 +12,9 @@ import pandas as pd
 import pytest
 
 import libs.global_value as g
-from libs.bootstrap import configuration
+from libs.bootstrap import configuration, initialization
 from libs.bootstrap.app_config import AppConfig
-from libs.data import initialization, lookup
+from libs.functions import lookup
 from libs.utils import dbutil
 
 if TYPE_CHECKING:

@@ -9,8 +9,8 @@ import pytest
 
 import libs.global_value as g
 from integrations import factory
-from libs.bootstrap import configuration
-from libs.data import initialization, modify
+from libs.bootstrap import configuration, initialization
+from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.types import ServiceType
 from libs.utils import dbutil, validator

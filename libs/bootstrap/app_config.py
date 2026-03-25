@@ -17,8 +17,8 @@ from libs.commands.registry.member import MemberSection
 from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
-from libs.data.lookup import read_memberslist
 from libs.domain.rule import RuleSet
+from libs.functions.lookup import read_memberslist
 from libs.types import CommandType, GradeTableDict, ServiceType
 
 if TYPE_CHECKING:

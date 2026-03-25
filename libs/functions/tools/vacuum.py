@@ -8,7 +8,7 @@ from contextlib import closing
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.data import modify
+from libs.domain import modify
 from libs.utils import dbutil
 
 if TYPE_CHECKING:

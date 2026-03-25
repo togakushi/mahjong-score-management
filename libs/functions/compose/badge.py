@@ -5,7 +5,7 @@ libs/functions/compose/badge.py
 import math
 
 import libs.global_value as g
-from libs.data import aggregate
+from libs.domain import aggregate
 
 
 def degree(game_count: int = 0) -> str:
