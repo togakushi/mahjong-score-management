@@ -10,10 +10,10 @@ from discord import Message
 from discord.channel import TextChannel
 
 import libs.global_value as g
-from libs.data import search
 from libs.domain import modify
 from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
+from libs.functions import search
 from libs.types import ActionStatus, CommandType, RemarkDict, StyleOptions
 from libs.utils import formatter, validator
 from libs.utils.timekit import ExtendedDatetime as ExtDt
