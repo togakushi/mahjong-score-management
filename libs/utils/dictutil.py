@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, Any, Protocol
 
 import libs.global_value as g
-from libs.data import lookup
+from libs.data import lookup, search
 from libs.domain.command import CommandParser
 from libs.domain.placeholder import PlaceholderBuilder
 from libs.types import ChannelType
@@ -177,7 +177,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             params.stipulated = 1
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
-        params.starttime = lookup.first_record(
+        params.starttime = search.first_record(
             g.cfg.rule.get_version(
                 mode=params.mode,
                 mapping=not (params.mixed),
