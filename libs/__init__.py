@@ -12,7 +12,6 @@
 - `libs.dispatcher`: コマンドディスパッチャ
 
 共有ライブラリ:
-- `libs.data`: データ操作ライブラリ
 - `libs.functions`: 共通処理ライブラリ
 - `libs.utils`: ユーティリティ
 """
