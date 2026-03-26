@@ -320,7 +320,4 @@ class SubCommands(BaseSection, CommandAttrs):
         self.default_reset()
         self.initialization(section_proxy)
 
-        # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", self.default_commandword)
-
         logging.trace("%s: %s", self.section, self)  # type: ignore
