@@ -172,8 +172,6 @@ class BaseSection(CommonMethodMixin):
 class SettingSection(BaseSection):
     """settingセクション処理"""
 
-    keyword: str
-    """成績記録キーワード(プライマリ)"""
     remarks_word: str
     """メモ記録用キーワード"""
     remarks_suffix: list[str]
