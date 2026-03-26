@@ -378,7 +378,6 @@ class RuleSet:
 
     def info(self) -> None:
         """定義ルールをログに出力する"""
-        logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
             logging.info(
                 "%s: mode=%s, origin_point=%s, return_point=%s, rank_point=%s, draw_split=%s, ignore_flying=%s, undefined_word=%s",
@@ -391,6 +390,11 @@ class RuleSet:
                 rule.ignore_flying,
                 rule.undefined_word,
             )
+
+        if self.keyword_mapping:
+            logging.info("keyword_mapping: %s", self.keyword_mapping)
+        else:
+            logging.warning("keyword_mapping: empty")
 
     def check(self, chk_commands: set[str], chk_members: set[str], default_rule: str) -> None:
         """

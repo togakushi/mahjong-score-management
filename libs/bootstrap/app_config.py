@@ -84,7 +84,6 @@ class AppConfig:
             "alias",
             "member",
             "team",
-            "keyword_mapping",
         ]
         for x in option_sections:
             if x not in self.main_parser.sections():
