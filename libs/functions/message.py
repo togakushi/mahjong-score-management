@@ -69,7 +69,7 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
             # 文字列置き換え
             msg.format(
                 user_id=m.data.user_id,
-                keyword=g.cfg.setting.keyword,
+                keyword=list(g.cfg.rule.keywords(g.params.rule_version))[0],
                 start=ExtDt(g.params.starttime).format(ExtDt.FMT.YMD),
                 end=ExtDt(g.params.onday).format(ExtDt.FMT.YMD),
                 rpoint_diff=rpoint_diff * 100,

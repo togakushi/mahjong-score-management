@@ -211,7 +211,6 @@ class SettingSection(BaseSection):
         self._reset()
 
     def _reset(self) -> None:
-        self.keyword = str("終局")
         self.remarks_word = str("麻雀メモ")
         self.remarks_suffix = []
         self.rule_config = None
