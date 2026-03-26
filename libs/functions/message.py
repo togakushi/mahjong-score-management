@@ -64,12 +64,17 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
         if msg_list:
             msg = random.choice(msg_list)
 
+    if keywords := g.cfg.rule.keywords(g.params.rule_version):
+        keyword = list(keywords)[0]
+    else:
+        keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
+
     try:
         msg = str(
             # 文字列置き換え
             msg.format(
                 user_id=m.data.user_id,
-                keyword=list(g.cfg.rule.keywords(g.params.rule_version))[0],
+                keyword=keyword,
                 start=ExtDt(g.params.starttime).format(ExtDt.FMT.YMD),
                 end=ExtDt(g.params.onday).format(ExtDt.FMT.YMD),
                 rpoint_diff=rpoint_diff * 100,
