@@ -322,7 +322,7 @@ def setup(init_db: bool = True) -> None:
 
     g.cfg.rule.info()
 
-    drop_items = ["section", "default_commandword", "main_parser", "section_proxy", "info"]
+    drop_items = ["section", "default_commandword", "command_suffix", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
     logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
     logging.debug("team: %s", g.cfg.team.to_dict(drop_items))
@@ -396,13 +396,15 @@ def register() -> None:
         if hasattr(g.cfg, command):
             sub_command = cast("SubCommands", getattr(g.cfg, command))
             commandword_list = []
-            if hasattr(sub_command, "command_suffix"):  # コマンドサフィックス登録
-                for keyword in g.cfg.rule.keyword_mapping:
-                    for suffix in sub_command.command_suffix:
-                        commandword_list.append(f"{keyword}{suffix}")
-            if hasattr(sub_command, "commandword") and not commandword_list:
-                for commandword in sub_command.commandword:
-                    commandword_list.append(commandword)
+            if sub_command.command_suffix:  # コマンドサフィックス登録
+                for rule_version in g.cfg.rule.rule_list:
+                    commandword_list.extend(
+                        [f"{prefix}{suffix}" for prefix in g.cfg.rule.keywords(rule_version) for suffix in sub_command.command_suffix],
+                    )
+            if sub_command.commandword:
+                commandword_list.extend(sub_command.commandword)
+            if not commandword_list:  # デフォルトコマンド登録
+                commandword_list.append(sub_command.default_commandword)
             sub_command.commandword = commandword_list
             for commandword in commandword_list:
                 g.keyword_dispatcher.update({commandword: ep})
