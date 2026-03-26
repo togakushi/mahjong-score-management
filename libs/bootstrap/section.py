@@ -172,8 +172,6 @@ class BaseSection(CommonMethodMixin):
 class SettingSection(BaseSection):
     """settingセクション処理"""
 
-    keyword: str
-    """成績記録キーワード(プライマリ)"""
     remarks_word: str
     """メモ記録用キーワード"""
     remarks_suffix: list[str]
@@ -321,8 +319,5 @@ class SubCommands(BaseSection, CommandAttrs):
         """
         self.default_reset()
         self.initialization(section_proxy)
-
-        # 呼び出しキーワード取り込み
-        self.commandword = self.getlist("commandword", self.default_commandword)
 
         logging.trace("%s: %s", self.section, self)  # type: ignore

@@ -115,6 +115,8 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
 
 def setup_rule_data() -> None:
     """ルールデータ取り込み"""
+
+    # メイン設定ファイルから取り込み
     if g.cfg.main_parser.has_section("mahjong"):
         section_data = dict(g.cfg.main_parser["mahjong"])
         if rule_version := section_data.get("rule_version"):
@@ -146,22 +148,21 @@ def setup_rule_data() -> None:
         else:
             raise TypeError("Preset not found.")
 
+    # デフォルトルール定義
     if not g.cfg.setting.default_rule:
         g.cfg.setting.default_rule = g.cfg.rule.rule_list[0]
 
     # マッピング生成
+    for rule_version in g.cfg.rule.rule_list:
+        for keyword in g.cfg.rule.keywords(rule_version):
+            g.cfg.rule.keyword_mapping.update({keyword: rule_version})
+
     if g.cfg.main_parser.has_section("keyword_mapping"):
         for keyword, rule_version in dict(g.cfg.main_parser["keyword_mapping"]).items():
             if not rule_version:
                 g.cfg.rule.keyword_mapping.update({keyword: g.cfg.setting.default_rule})
             elif rule_version in g.cfg.rule.data:
                 g.cfg.rule.keyword_mapping.update({keyword: rule_version})
-
-    if not g.cfg.rule.keyword_mapping:
-        if isinstance(g.cfg.setting.keyword, str):
-            g.cfg.rule.keyword_mapping = {g.cfg.setting.keyword: g.cfg.setting.default_rule}
-        else:
-            g.cfg.rule.keyword_mapping = {"終局": g.cfg.setting.default_rule}
 
     g.cfg.rule.status_update(g.params.placeholder())
     g.cfg.rule.register_to_database()

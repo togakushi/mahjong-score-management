@@ -45,10 +45,12 @@ class RuleData:
     """
     undefined_word: int = 1
     """未定義ワードタイプ"""
-    dropitems: list[str] = field(default_factory=list)
-    """非表示にする項目"""
+    keywords: list[str] = field(default_factory=list)
+    """成績記録キーワード"""
     remarks_words: list[str] = field(default_factory=list)
     """メモ記録用ワード"""
+    dropitems: list[str] = field(default_factory=list)
+    """非表示にする項目"""
 
     # ステータス
     first_time: ExtDt = field(default=ExtDt("1900-01-01 00:00:00"))
@@ -77,32 +79,27 @@ class RuleData:
             if isinstance(rank_point, str):
                 rank_point = rank_point.split(",")
                 self.rank_point = list(map(int, map(float, rank_point[: self.mode])))
-            if isinstance(rank_point, list):
+            elif isinstance(rank_point, list):
                 self.rank_point = list(map(int, map(float, rank_point[: self.mode])))
-
-        if ignore_flying := rule_data.get("ignore_flying"):
-            if isinstance(ignore_flying, bool):
-                self.ignore_flying = ignore_flying
-            else:
-                self.ignore_flying = str(ignore_flying).lower() in {"1", "true", "yes", "on"}
-        else:
-            self.ignore_flying = False
-
-        if draw_split := rule_data.get("draw_split"):
-            if isinstance(draw_split, bool):
-                self.draw_split = draw_split
-            else:
-                self.draw_split = str(draw_split).lower() in {"1", "true", "yes", "on"}
-        else:
-            self.draw_split = False
 
         if undefined_word := rule_data.get("undefined_word"):
             self.undefined_word = int(undefined_word)
         else:
             self.undefined_word = 1
 
-        if dropitems := rule_data.get("dropitems"):
-            self.dropitems = [x.strip() for x in str(dropitems).split(",")]
+        for item in ["ignore_flying", "draw_split"]:
+            if flag := rule_data.get(item):
+                if isinstance(flag, bool):
+                    setattr(self, item, flag)
+                else:
+                    setattr(self, item, str(flag).lower() in {"1", "true", "yes", "on"})
+
+        for item in ["keywords", "remarks_words", "dropitems"]:
+            if item_list := rule_data.get(item):
+                if isinstance(item_list, str):
+                    setattr(self, item, [x.strip() for x in item_list.split(",")])
+                elif isinstance(item_list, list):
+                    setattr(self, item, item_list)
 
 
 class RuleSet:
@@ -226,15 +223,30 @@ class RuleSet:
 
         return {}
 
-    def dropitems(self, rule_version: str) -> set[str]:
+    def keywords(self, rule_version: str) -> set[str]:
         """
-        _summary_
+        成績記録キーワードの取得
 
         Args:
-            rule_version (str): _description_
+            rule_version (str): ルール識別子
 
         Returns:
-            set[str]: _description_
+            set[str]: 成績記録キーワード
+        """
+        if items := self.data.get(rule_version):
+            return set(items.keywords)
+        else:
+            return set([])
+
+    def dropitems(self, rule_version: str) -> set[str]:
+        """
+        非表示項目の取得
+
+        Args:
+            rule_version (str): ルール識別子
+
+        Returns:
+            set[str]: 非表示項目
         """
         if items := self.data.get(rule_version):
             return set(items.dropitems)
@@ -366,7 +378,6 @@ class RuleSet:
 
     def info(self) -> None:
         """定義ルールをログに出力する"""
-        logging.info("keyword_mapping: %s", self.keyword_mapping)
         for rule in self.data.values():
             logging.info(
                 "%s: mode=%s, origin_point=%s, return_point=%s, rank_point=%s, draw_split=%s, ignore_flying=%s, undefined_word=%s",
@@ -379,6 +390,11 @@ class RuleSet:
                 rule.ignore_flying,
                 rule.undefined_word,
             )
+
+        if self.keyword_mapping:
+            logging.info("keyword_mapping: %s", self.keyword_mapping)
+        else:
+            logging.warning("keyword_mapping: empty")
 
     def check(self, chk_commands: set[str], chk_members: set[str], default_rule: str) -> None:
         """
