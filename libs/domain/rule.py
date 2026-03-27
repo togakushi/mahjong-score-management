@@ -149,7 +149,13 @@ class RuleSet:
         self.data.update({rule.rule_version: rule})
 
     def read_config(self, config: "Path") -> None:
-        """設定ファイル読み込み"""
+        """
+        設定ファイル読み込み
+
+        Args:
+            config (Path): ルール設定ファイル
+
+        """
         self.config.read(config, encoding="utf-8")
         for section_name in map(str, self.config.sections()):
             if section_name.startswith("regulations_") or section_name.endswith("_regulations"):
