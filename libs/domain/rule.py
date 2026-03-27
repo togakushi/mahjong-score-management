@@ -419,14 +419,14 @@ class RuleSet:
                 rule.ignore_flying,
                 rule.undefined_word,
             )
-        if self.remarks_words:
-            logging.info("remarks_words: %s", self.remarks_words)
-        else:
-            logging.warning("remarks_words: empty")
         if self.keyword_mapping:
             logging.info("keyword_mapping: %s", self.keyword_mapping)
         else:
             logging.warning("keyword_mapping: empty")
+        if self.remarks_words:
+            logging.info("remarks_words: %s", self.remarks_words)
+        else:
+            logging.warning("remarks_words: empty")
 
     def check(self, chk_commands: set[str], chk_members: set[str], default_rule: str) -> None:
         """

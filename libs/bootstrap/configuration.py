@@ -291,6 +291,7 @@ def setup(init_db: bool = True) -> None:
             + g.cfg.ranking.commandword
             + g.cfg.report.commandword
             + g.cfg.help.commandword
+            + g.cfg.rule.remarks_words
             + list(g.keyword_dispatcher)
         ),
         chk_members=set(lookup.enumeration_all_members()),
