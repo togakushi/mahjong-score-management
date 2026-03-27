@@ -47,7 +47,7 @@ class RuleData:
     """未定義ワードタイプ"""
     keywords: list[str] = field(default_factory=list)
     """成績記録キーワード"""
-    remarks_words: list[str] = field(default_factory=list)
+    remarks: list[str] = field(default_factory=list)
     """メモ記録用ワード"""
     dropitems: list[str] = field(default_factory=list)
     """非表示にする項目"""
@@ -94,7 +94,7 @@ class RuleData:
                 else:
                     setattr(self, item, str(flag).lower() in {"1", "true", "yes", "on"})
 
-        for item in ["keywords", "remarks_words", "dropitems"]:
+        for item in ["keywords", "remarks", "dropitems"]:
             if item_list := rule_data.get(item):
                 if isinstance(item_list, str):
                     setattr(self, item, [x.strip() for x in item_list.split(",")])
@@ -112,6 +112,8 @@ class RuleSet:
         """ルール情報格納辞書"""
         self.keyword_mapping: dict[str, str] = {}
         """登録キーワードとルール識別子のマッピング"""
+        self.remarks_words: list[str] = []
+        """メモ記録用ワードリスト"""
 
     def data_set(self, section_name: str, rule_data: Mapping[str, Any]) -> None:
         """
@@ -197,6 +199,27 @@ class RuleSet:
                     self.data[rule_version].first_time = ExtDt(float(status_data["first_time"]))
                 if "last_time" in status_data:
                     self.data[rule_version].last_time = ExtDt(float(status_data["last_time"]))
+
+    def remarks_words_update(self, suffix: list[str]) -> None:
+        """
+        メモ記録ワードリストを更新する
+
+        Args:
+            suffix (list[str]): メモに追加するサフィックス
+
+        """
+        ret: list[str] = []
+
+        for rule in self.rule_list:
+            if rule_data := self.data.get(rule):
+                if rule_data.remarks:
+                    ret.extend(rule_data.remarks)
+                else:
+                    ret.extend(
+                        [f"{pre}{suf}" for pre in self.keywords(rule) for suf in suffix],
+                    )
+
+        self.remarks_words = list(set(ret))
 
     def to_dict(self, rule_version: str) -> dict[str, Any]:
         """
@@ -470,19 +493,3 @@ class RuleSet:
 
         """
         return [x.rule_version for x in self.data.values()]
-
-    @property
-    def remarks_words(self) -> list[str]:
-        """
-        全ルールセットのメモ記録ワードを列挙
-
-        Returns:
-            list[str]: メモ記録ワード
-
-        """
-        ret: list[str] = []
-
-        for rule, data in self.data.items():
-            ret.extend(data.remarks_words)
-
-        return list(set(ret))

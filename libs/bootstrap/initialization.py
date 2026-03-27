@@ -165,17 +165,8 @@ def setup_rule_data() -> None:
                 g.cfg.rule.keyword_mapping.update({keyword: rule_version})
 
     g.cfg.rule.status_update(g.params.placeholder())
+    g.cfg.rule.remarks_words_update(g.cfg.setting.remarks_suffix)
     g.cfg.rule.register_to_database()
-
-    # メモ記録ワード登録
-    if g.cfg.setting.remarks_suffix:
-        for rule_version in g.cfg.rule.rule_list:
-            keywords = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
-            if keywords:
-                g.cfg.rule.data[rule_version].remarks_words.extend([f"{rule}{suffix}" for rule in keywords for suffix in g.cfg.setting.remarks_suffix])
-    else:
-        for rule_version in g.cfg.rule.rule_list:
-            g.cfg.rule.data[rule_version].remarks_words.append(g.cfg.setting.remarks_word)
 
 
 def setup_regulations(database_file: Union[str, Path]) -> None:
