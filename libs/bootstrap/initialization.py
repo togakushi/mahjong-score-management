@@ -165,6 +165,7 @@ def setup_rule_data() -> None:
                 g.cfg.rule.keyword_mapping.update({keyword: rule_version})
 
     g.cfg.rule.status_update(g.params.placeholder())
+    g.cfg.rule.remarks_words_update(g.cfg.setting.remarks_suffix)
     g.cfg.rule.register_to_database()
 
 

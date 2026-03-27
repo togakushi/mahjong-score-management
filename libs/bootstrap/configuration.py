@@ -283,16 +283,6 @@ def setup(init_db: bool = True) -> None:
 
     register()
 
-    # メモ記録ワード登録
-    if g.cfg.setting.remarks_suffix:
-        for rule_version in g.cfg.rule.rule_list:
-            keywords = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
-            if keywords:
-                g.cfg.rule.data[rule_version].remarks_words.extend([f"{rule}{suffix}" for rule in keywords for suffix in g.cfg.setting.remarks_suffix])
-    else:
-        for rule_version in g.cfg.rule.rule_list:
-            g.cfg.rule.data[rule_version].remarks_words.append(g.cfg.setting.remarks_word)
-
     # キーワード重複チェック
     g.cfg.rule.check(
         chk_commands=set(

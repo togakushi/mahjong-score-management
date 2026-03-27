@@ -126,7 +126,7 @@ def help_message(m: "MessageParserProtocol") -> None:
     m.set_message(
         textwrap.dedent(f"""\
         使い方：<メモ記録ワード> <対象メンバー> <内容>
-        メモ記録ワード：{"、".join(g.cfg.rule.data[g.params.rule_version].remarks_words)}
+        メモ記録ワード：{"、".join(g.cfg.rule.data[g.params.rule_version].remarks)}
 
         {remarks_type1}
         {remarks_type0}
