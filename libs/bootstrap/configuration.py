@@ -277,7 +277,7 @@ def setup(init_db: bool = True) -> None:
         except FileExistsError as err:
             sys.exit(str(err))
 
-    # DB初期化
+    # 初期化
     initialization.main(init_db)
     lookup.read_memberslist()
 
