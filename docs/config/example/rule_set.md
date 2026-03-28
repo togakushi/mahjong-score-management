@@ -107,9 +107,9 @@ rule_config = rule.ini
 [INFO][rule:info] サンマルール: mode=3, origin_point=350, return_point=400, rank_point=[20, 0, -20], draw_split=False, ignore_flying=False
 [INFO][rule:info] 基本ルール: mode=4, origin_point=250, return_point=300, rank_point=[30, 10, -10, 30], draw_split=False, ignore_flying=False
 ```
-* マッピングが定義されるため、`keyword`指定の成績登録キーワードとmahjongセクションのデフォルトルールセットのマッピングは行われない
+* マッピングが定義されるため、`keyword`指定の成績登録ワードとmahjongセクションのデフォルトルールセットのマッピングは行われない
   * マッピング定義が空のときのみ自動定義処理が動く
   * デフォルトルールセットとのマッピングはルール識別子を省略する、もしくは`rule_version`を明記する
-* `keyword`指定の成績登録キーワードを使いたい場合は、keyword_mappingセクションで改めて定義する
+* `keyword`指定の成績登録ワードを使いたい場合は、keyword_mappingセクションで改めて定義する
   * マッピングがある場合、`keyword`の指定は意味を持たなくなるため省略しても問題ない
     * デフォルト値の「終局」がセットされた状態で処理が進むが、マッピングされなければ使われることはない
