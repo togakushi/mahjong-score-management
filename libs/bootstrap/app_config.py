@@ -181,12 +181,9 @@ class AppConfig:
 
         for command_name in CommandType:
             if hasattr(self, str(command_name)):
-                command = getattr(self, str(command_name))
-                if hasattr(command, "default_commandword"):
+                if (command := getattr(self, str(command_name))) and isinstance(command, SubCommands):
                     words.append(command.default_commandword)
-                if hasattr(command, "commandword"):
                     words.extend(command.commandword)
-                if hasattr(command, "command_suffix"):
                     words.extend(command.command_suffix)
 
         for k, v in self.alias.to_dict().items():
