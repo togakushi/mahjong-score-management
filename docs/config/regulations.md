@@ -1,7 +1,7 @@
 # レギュレーション設定
 ゲーム結果とは別清算されるレギュレーションを設定できる。\
 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。\
-レギュレーション設定のセクション定義が見つからない場合は何も設定されず、`undefined_word`のみの動作となる（[mahjongセクション](./ruleset.md#設定内容)参照）。
+レギュレーション設定のセクション定義が見つからない場合は何も設定されず、`undefined_word`のみの動作となる（[ルールセット設定](./ruleset.md#設定内容)参照）。
 
 レギュレーションの記録は[メモ機能](../functions/remarks.md)で行う。
 
@@ -13,7 +13,7 @@
 定義されているキーが [wordsテーブル](../development/datedase/schema.md#words)の`word`として事前登録される。
 
 `yakuman_list` 及び `word_list` にはカンマで区切られたワードを並べる。\
-テーブルに登録されていないワードが使用された場合、そのワードのtypeは`undefined_word`で指定した値となる（[mahjongセクション](../config/main.md#mahjongセクション)参照）。
+テーブルに登録されていないワードが使用された場合、そのワードのtypeは`undefined_word`で指定した値となる。
 
 |          キー          |                     内容                     |                型                | 未定義時 |                     備考                      |
 | ---------------------- | -------------------------------------------- | -------------------------------- | -------- | --------------------------------------------- |
@@ -47,19 +47,19 @@
 > [regulationsセクション](#regulationsセクション) / [regulations_teamセクション](#regulations_teamセクション) の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
 
 ### 個人清算レギュレーション
-| 優先</br>順位 |              定義箇所               |        セクション名        |
-| :-----------: | ----------------------------------- | -------------------------- |
-|       1       | [ルールセット設定](ruleset.md)      | {rule_version}_regulations |
-|       2       | [ルールセット設定](ruleset.md)      | regulations_{rule_version} |
+| 優先</br>順位 |            定義箇所             |        セクション名        |
+| :-----------: | ------------------------------- | -------------------------- |
+|       1       | [ルールセット設定](ruleset.md)  | {rule_version}_regulations |
+|       2       | [ルールセット設定](ruleset.md)  | regulations_{rule_version} |
 |       3       | [メイン設定](../config/main.md) | {rule_version}_regulations |
 |       4       | [メイン設定](../config/main.md) | regulations_{rule_version} |
 |       5       | [メイン設定](../config/main.md) | regulations                |
 
 ### チーム清算レギュレーション
-| 優先</br>順位 |              定義箇所               |          セクション名           |
-| :-----------: | ----------------------------------- | ------------------------------- |
-|       1       | [ルールセット設定](ruleset.md)      | {rule_version}_regulations_team |
-|       2       | [ルールセット設定](ruleset.md)      | regulations_team_{rule_version} |
+| 優先</br>順位 |            定義箇所             |          セクション名           |
+| :-----------: | ------------------------------- | ------------------------------- |
+|       1       | [ルールセット設定](ruleset.md)  | {rule_version}_regulations_team |
+|       2       | [ルールセット設定](ruleset.md)  | regulations_team_{rule_version} |
 |       3       | [メイン設定](../config/main.md) | {rule_version}_regulations_team |
 |       4       | [メイン設定](../config/main.md) | regulations_team_{rule_version} |
 |       5       | [メイン設定](../config/main.md) | regulations_team                |

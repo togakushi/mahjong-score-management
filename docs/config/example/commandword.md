@@ -128,7 +128,7 @@ Slack/Discordを利用時は突合コマンドが追加される
 すべて省略していｒので、[最小構成](./minimal.md#サービス個別設定状況)と同じになる。
 
 ## ルールセット設定
-省略されているため[*default_rule.ini*](../../../files/default_rule.ini)が読み込まれる。
+省略されているため[*default_rule.ini*](../../files/default_rule.ini)が読み込まれる。
 
 ### ルールセット登録状況
 ```
