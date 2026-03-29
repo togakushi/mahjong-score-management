@@ -38,7 +38,7 @@ keyword_mappingセクションはオプション扱いのセクションであ�
 | backup_dir     | 自動バックアップ保存先[^2]                                              | 文字列<br>(ディレクトリ名) | None                                       | 空欄時はバックアップしない                                                            |
 
 > [!TIP]
-> [*default_rule.ini*](../../../files/default_rule.ini)には ***default_rule*** (四人打ち用ルールセット)と ***default_rule3*** (三人打ち用ルールセット)が定義されている。\
+> [*default_rule.ini*](../../files/default_rule.ini)には ***default_rule*** (四人打ち用ルールセット)と ***default_rule3*** (三人打ち用ルールセット)が定義されている。\
 
 ### aliasセクション
 スラッシュコマンド使用時のサブコマンドの別名を定義。\
