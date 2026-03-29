@@ -89,16 +89,16 @@ commandword、command_suffixの定義状況によって登録される呼び出�
 commandwordの定義が優先的に登録される。\
 command_suffixの定義があれば、ルールセットのkeywordsとcommand_suffixの組み合わせが登録される。
 
-| commandword | command_suffix | keywords<br>(成績登録ワード) |      登録されるキーワード      |
-| :---------: | :------------: | :------------------------------: | :----------------------------: |
-|      ×      |       ×        |                ×                 |      デフォルトキーワード      |
-|     〇      |       ×        |                ×                 |          commandword           |
-|     〇      |       ×        |                〇                |          commandword           |
-|     〇      |       〇       |                ×                 |          commandword           |
-|     〇      |       〇       |                〇                | commandword<br>keywords+suffix |
-|      ×      |       ×        |                〇                |      デフォルトキーワード      |
-|      ×      |       〇       |                ×                 |      デフォルトキーワード      |
-|      ×      |       〇       |                〇                |        keywords+suffix         |
+| commandword | command_suffix | keywords<br>(成績登録ワード) | 登録されるキーワード |
+| :---------: | :------------: | :--------------------------: | :------------------: |
+|      ×      |       ×        |              ×               | デフォルトキーワード |
+|     〇      |       ×        |              ×               |     commandword      |
+|     〇      |       ×        |              〇              |     commandword      |
+|     〇      |       〇       |              ×               |     commandword      |
+|     〇      |       〇       |              〇              |     commandword      |
+|      ×      |       ×        |              〇              | デフォルトキーワード |
+|      ×      |       〇       |              ×               | デフォルトキーワード |
+|      ×      |       〇       |              〇              |   keywords+suffix    |
 
 ### パラメータの評価順序
 以下の順に評価され、値を上書きしていく。
