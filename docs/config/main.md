@@ -91,14 +91,14 @@ command_suffixの定義があれば、ルールセットのkeywordsとcommand_su
 
 | commandword | command_suffix | keywords<br>(成績登録ワード) | 登録されるキーワード |
 | :---------: | :------------: | :--------------------------: | :------------------: |
-|      ×      |       ×        |              ×               | デフォルトキーワード |
-|     〇      |       ×        |              ×               |     commandword      |
-|     〇      |       ×        |              〇              |     commandword      |
-|     〇      |       〇       |              ×               |     commandword      |
-|     〇      |       〇       |              〇              |     commandword      |
-|      ×      |       ×        |              〇              | デフォルトキーワード |
-|      ×      |       〇       |              ×               | デフォルトキーワード |
-|      ×      |       〇       |              〇              |   keywords+suffix    |
+|     :X:     |      :X:       |             :X:              | デフォルトキーワード |
+|     :o:     |      :X:       |             :X:              |     commandword      |
+|     :o:     |      :X:       |             :o:              |     commandword      |
+|     :o:     |      :o:       |             :X:              |     commandword      |
+|     :o:     |      :o:       |             :o:              |     commandword      |
+|     :X:     |      :X:       |             :o:              | デフォルトキーワード |
+|     :X:     |      :o:       |             :X:              | デフォルトキーワード |
+|     :X:     |      :o:       |             :o:              |   keywords+suffix    |
 
 ### パラメータの評価順序
 以下の順に評価され、値を上書きしていく。
