@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 def main(init_db: bool) -> None:
     """
-    DB初期化処理
+    初期化処理
 
     Args:
         init_db (bool): setup処理の実行有無

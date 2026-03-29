@@ -277,7 +277,7 @@ def setup(init_db: bool = True) -> None:
         except FileExistsError as err:
             sys.exit(str(err))
 
-    # DB初期化
+    # 初期化
     initialization.main(init_db)
     lookup.read_memberslist()
 
@@ -385,17 +385,17 @@ def register() -> None:
     for command, ep in dispatch_table.items():
         # 呼び出しキーワード登録
         if hasattr(g.cfg, command):
-            sub_command = cast("SubCommands", getattr(g.cfg, command))
             commandword_list = []
-            if sub_command.command_suffix:  # コマンドサフィックス登録
+            sub_command = cast("SubCommands", getattr(g.cfg, command))
+            if not any([sub_command.commandword, sub_command.command_suffix]):  # 何も設定されていない
+                commandword_list.append(sub_command.default_commandword)
+            elif sub_command.commandword:
+                commandword_list.extend(sub_command.commandword)
+            elif sub_command.command_suffix:  # コマンドサフィックス登録
                 for rule_version in g.cfg.rule.rule_list:
                     commandword_list.extend(
                         [f"{prefix}{suffix}" for prefix in g.cfg.rule.keywords(rule_version) for suffix in sub_command.command_suffix],
                     )
-            if sub_command.commandword:
-                commandword_list.extend(sub_command.commandword)
-            if not commandword_list:  # デフォルトコマンド登録
-                commandword_list.append(sub_command.default_commandword)
             sub_command.commandword = commandword_list
             for commandword in commandword_list:
                 g.keyword_dispatcher.update({commandword: ep})
