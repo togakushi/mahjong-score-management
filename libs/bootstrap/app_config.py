@@ -7,9 +7,9 @@ import sys
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Optional, Union
+from typing import Any, Optional, Union
 
-from libs.bootstrap.section import AliasSection, BaseSection, SettingSection
+from libs.bootstrap.section import AliasSection, BaseSection, SettingSection, SubCommands
 from libs.commands.graph.entry import GraphConfig
 from libs.commands.help.entry import HelpConfig
 from libs.commands.ranking.entry import RankingConfig
@@ -20,9 +20,6 @@ from libs.commands.results.entry import ResultsConfig
 from libs.domain.rule import RuleSet
 from libs.functions.lookup import read_memberslist
 from libs.types import CommandType, GradeTableDict, ServiceType
-
-if TYPE_CHECKING:
-    from libs.bootstrap.section import SubCommands
 
 
 class BadgeDisplay(BaseSection):
