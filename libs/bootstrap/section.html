@@ -92,6 +92,9 @@
                                 <a class="function" href="#BaseSection.initialization">initialization</a>
                         </li>
                         <li>
+                                <a class="function" href="#BaseSection.config_load">config_load</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#BaseSection.to_dict">to_dict</a>
                         </li>
                 </ul>
@@ -149,7 +152,7 @@
                                 <a class="variable" href="#SettingSection.section">section</a>
                         </li>
                         <li>
-                                <a class="function" href="#SettingSection.config_load">config_load</a>
+                                <a class="function" href="#SettingSection.default_reset">default_reset</a>
                         </li>
                 </ul>
 
@@ -203,7 +206,7 @@
                                 <a class="variable" href="#AliasSection.section">section</a>
                         </li>
                         <li>
-                                <a class="function" href="#AliasSection.config_load">config_load</a>
+                                <a class="function" href="#AliasSection.default_reset">default_reset</a>
                         </li>
                 </ul>
 
@@ -213,9 +216,6 @@
                             <ul class="memberlist">
                         <li>
                                 <a class="variable" href="#SubCommands.default_commandword">default_commandword</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#SubCommands.config_load">config_load</a>
                         </li>
                 </ul>
 
@@ -389,182 +389,164 @@
 </span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>                <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        Args:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        Returns:</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">             dict[str, str]: 返却値</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>                <span class="k">continue</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SettingSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;settingセクション処理&quot;&quot;&quot;</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">remarks_word</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワード&quot;&quot;&quot;</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">remarks_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワードサフィックス&quot;&quot;&quot;</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">rule_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール設定ファイル&quot;&quot;&quot;</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">default_rule</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール識別子未指定時に使用される識別子&quot;&quot;&quot;</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">separate</span><span class="p">:</span> <span class="nb">bool</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;スコア入力元識別子別集計フラグ</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    - *True*: 識別子別に集計</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    - *False*: すべて集計</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">channel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チャンネルIDを上書きする&quot;&quot;&quot;</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">time_adjust</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;日付変更後、集計範囲に含める追加時間&quot;&quot;&quot;</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">search_word</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の検索文字列)&quot;&quot;&quot;</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">group_length</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の集約文字数)&quot;&quot;&quot;</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">guest_mark</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ゲスト無効時に未登録メンバーに付与する印&quot;&quot;&quot;</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">database_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績管理データベースファイル名&quot;&quot;&quot;</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">backup_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;バックアップ先ディレクトリ&quot;&quot;&quot;</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">font_file</span><span class="p">:</span> <span class="n">Path</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフ描写に使用するフォントファイル&quot;&quot;&quot;</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">graph_style</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフスタイル&quot;&quot;&quot;</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">work_dir</span><span class="p">:</span> <span class="n">Path</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;作業ディレクトリ&quot;&quot;&quot;</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;setting&quot;</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;麻雀メモ&quot;</span><span class="p">)</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_suffix</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rule_config</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">time_adjust</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_rule</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">separate</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_mark</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;※&quot;</span><span class="p">)</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">database_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mahjong.db&quot;</span><span class="p">)</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backup_dir</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">font_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;ipaexg.ttf&quot;</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph_style</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">)</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        Args:</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_before_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み前の初期化処理&quot;&quot;&quot;</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="k">if</span> <span class="p">(</span><span class="n">reset_method</span> <span class="o">:=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;default_reset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">reset_method</span><span class="p">):</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="n">reset_method</span><span class="p">()</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_after_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み後の追加処理&quot;&quot;&quot;</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み&quot;&quot;&quot;</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_before_config_load</span><span class="p">()</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_after_config_load</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        Args:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        Returns:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">             dict[str, str]: 返却値</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>                <span class="k">continue</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SettingSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;settingセクション処理&quot;&quot;&quot;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">remarks_word</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワード&quot;&quot;&quot;</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">remarks_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワードサフィックス&quot;&quot;&quot;</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">rule_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール設定ファイル&quot;&quot;&quot;</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">default_rule</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール識別子未指定時に使用される識別子&quot;&quot;&quot;</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">separate</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;スコア入力元識別子別集計フラグ</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    - *True*: 識別子別に集計</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    - *False*: すべて集計</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">channel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チャンネルIDを上書きする&quot;&quot;&quot;</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">time_adjust</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;日付変更後、集計範囲に含める追加時間&quot;&quot;&quot;</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">search_word</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の検索文字列)&quot;&quot;&quot;</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">group_length</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の集約文字数)&quot;&quot;&quot;</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">guest_mark</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ゲスト無効時に未登録メンバーに付与する印&quot;&quot;&quot;</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">database_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績管理データベースファイル名&quot;&quot;&quot;</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">backup_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;バックアップ先ディレクトリ&quot;&quot;&quot;</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">font_file</span><span class="p">:</span> <span class="n">Path</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフ描写に使用するフォントファイル&quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">graph_style</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフスタイル&quot;&quot;&quot;</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">work_dir</span><span class="p">:</span> <span class="n">Path</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;作業ディレクトリ&quot;&quot;&quot;</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;setting&quot;</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;麻雀メモ&quot;</span><span class="p">)</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_suffix</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rule_config</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">time_adjust</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_rule</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">separate</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_mark</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;※&quot;</span><span class="p">)</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">database_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mahjong.db&quot;</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backup_dir</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">font_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;ipaexg.ttf&quot;</span><span class="p">)</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph_style</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">)</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="s2">&quot;成績&quot;</span><span class="p">]</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;グラフ&quot;</span><span class="p">]</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ranking&quot;</span><span class="p">,</span> <span class="s2">&quot;ランキング&quot;</span><span class="p">]</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="s2">&quot;レポート&quot;</span><span class="p">]</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;ダウンロード&quot;</span><span class="p">]</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">,</span> <span class="s2">&quot;userlist&quot;</span><span class="p">,</span> <span class="s2">&quot;member_list&quot;</span><span class="p">]</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;del&quot;</span><span class="p">]</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_create</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_create&quot;</span><span class="p">]</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_del&quot;</span><span class="p">]</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_add&quot;</span><span class="p">]</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_remove&quot;</span><span class="p">]</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_list&quot;</span><span class="p">]</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_clear</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_clear&quot;</span><span class="p">]</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        Args:</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="s2">&quot;成績&quot;</span><span class="p">]</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;グラフ&quot;</span><span class="p">]</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ranking&quot;</span><span class="p">,</span> <span class="s2">&quot;ランキング&quot;</span><span class="p">]</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="s2">&quot;レポート&quot;</span><span class="p">]</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;ダウンロード&quot;</span><span class="p">]</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">,</span> <span class="s2">&quot;userlist&quot;</span><span class="p">,</span> <span class="s2">&quot;member_list&quot;</span><span class="p">]</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;del&quot;</span><span class="p">]</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_create</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_create&quot;</span><span class="p">]</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_del&quot;</span><span class="p">]</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_add&quot;</span><span class="p">]</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_remove&quot;</span><span class="p">]</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_list&quot;</span><span class="p">]</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_clear</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_clear&quot;</span><span class="p">]</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_after_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;AliasSection専用の追加処理&quot;&quot;&quot;</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="c1"># delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;del&quot;</span><span class="p">))</span>
 </span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>        <span class="c1"># delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;del&quot;</span><span class="p">))</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SubCommands</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">,</span> <span class="n">CommandAttrs</span><span class="p">):</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンドセクション処理&quot;&quot;&quot;</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="n">default_commandword</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンドワードデフォルト値&quot;&quot;&quot;</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        Args:</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SubCommands</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">,</span> <span class="n">CommandAttrs</span><span class="p">):</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンドセクション処理&quot;&quot;&quot;</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">default_commandword</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンドワードデフォルト値&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -928,29 +910,45 @@
 </span><span id="BaseSection-145"><a href="#BaseSection-145"><span class="linenos">145</span></a>                <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 </span><span id="BaseSection-146"><a href="#BaseSection-146"><span class="linenos">146</span></a>                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 </span><span id="BaseSection-147"><a href="#BaseSection-147"><span class="linenos">147</span></a>
-</span><span id="BaseSection-148"><a href="#BaseSection-148"><span class="linenos">148</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-</span><span id="BaseSection-149"><a href="#BaseSection-149"><span class="linenos">149</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="BaseSection-150"><a href="#BaseSection-150"><span class="linenos">150</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
-</span><span id="BaseSection-151"><a href="#BaseSection-151"><span class="linenos">151</span></a>
-</span><span id="BaseSection-152"><a href="#BaseSection-152"><span class="linenos">152</span></a><span class="sd">        Args:</span>
-</span><span id="BaseSection-153"><a href="#BaseSection-153"><span class="linenos">153</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
-</span><span id="BaseSection-154"><a href="#BaseSection-154"><span class="linenos">154</span></a>
-</span><span id="BaseSection-155"><a href="#BaseSection-155"><span class="linenos">155</span></a><span class="sd">        Returns:</span>
-</span><span id="BaseSection-156"><a href="#BaseSection-156"><span class="linenos">156</span></a><span class="sd">             dict[str, str]: 返却値</span>
-</span><span id="BaseSection-157"><a href="#BaseSection-157"><span class="linenos">157</span></a>
-</span><span id="BaseSection-158"><a href="#BaseSection-158"><span class="linenos">158</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="BaseSection-159"><a href="#BaseSection-159"><span class="linenos">159</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="BaseSection-160"><a href="#BaseSection-160"><span class="linenos">160</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="BaseSection-161"><a href="#BaseSection-161"><span class="linenos">161</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-</span><span id="BaseSection-162"><a href="#BaseSection-162"><span class="linenos">162</span></a>                <span class="k">continue</span>
-</span><span id="BaseSection-163"><a href="#BaseSection-163"><span class="linenos">163</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="BaseSection-164"><a href="#BaseSection-164"><span class="linenos">164</span></a>
-</span><span id="BaseSection-165"><a href="#BaseSection-165"><span class="linenos">165</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="BaseSection-166"><a href="#BaseSection-166"><span class="linenos">166</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="BaseSection-167"><a href="#BaseSection-167"><span class="linenos">167</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
-</span><span id="BaseSection-168"><a href="#BaseSection-168"><span class="linenos">168</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</span><span id="BaseSection-169"><a href="#BaseSection-169"><span class="linenos">169</span></a>
-</span><span id="BaseSection-170"><a href="#BaseSection-170"><span class="linenos">170</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
+</span><span id="BaseSection-148"><a href="#BaseSection-148"><span class="linenos">148</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_before_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseSection-149"><a href="#BaseSection-149"><span class="linenos">149</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み前の初期化処理&quot;&quot;&quot;</span>
+</span><span id="BaseSection-150"><a href="#BaseSection-150"><span class="linenos">150</span></a>        <span class="k">if</span> <span class="p">(</span><span class="n">reset_method</span> <span class="o">:=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;default_reset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">reset_method</span><span class="p">):</span>
+</span><span id="BaseSection-151"><a href="#BaseSection-151"><span class="linenos">151</span></a>            <span class="n">reset_method</span><span class="p">()</span>
+</span><span id="BaseSection-152"><a href="#BaseSection-152"><span class="linenos">152</span></a>
+</span><span id="BaseSection-153"><a href="#BaseSection-153"><span class="linenos">153</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_after_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseSection-154"><a href="#BaseSection-154"><span class="linenos">154</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み後の追加処理&quot;&quot;&quot;</span>
+</span><span id="BaseSection-155"><a href="#BaseSection-155"><span class="linenos">155</span></a>
+</span><span id="BaseSection-156"><a href="#BaseSection-156"><span class="linenos">156</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseSection-157"><a href="#BaseSection-157"><span class="linenos">157</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み&quot;&quot;&quot;</span>
+</span><span id="BaseSection-158"><a href="#BaseSection-158"><span class="linenos">158</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_before_config_load</span><span class="p">()</span>
+</span><span id="BaseSection-159"><a href="#BaseSection-159"><span class="linenos">159</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="BaseSection-160"><a href="#BaseSection-160"><span class="linenos">160</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_after_config_load</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="BaseSection-161"><a href="#BaseSection-161"><span class="linenos">161</span></a>
+</span><span id="BaseSection-162"><a href="#BaseSection-162"><span class="linenos">162</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+</span><span id="BaseSection-163"><a href="#BaseSection-163"><span class="linenos">163</span></a>
+</span><span id="BaseSection-164"><a href="#BaseSection-164"><span class="linenos">164</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+</span><span id="BaseSection-165"><a href="#BaseSection-165"><span class="linenos">165</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseSection-166"><a href="#BaseSection-166"><span class="linenos">166</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
+</span><span id="BaseSection-167"><a href="#BaseSection-167"><span class="linenos">167</span></a>
+</span><span id="BaseSection-168"><a href="#BaseSection-168"><span class="linenos">168</span></a><span class="sd">        Args:</span>
+</span><span id="BaseSection-169"><a href="#BaseSection-169"><span class="linenos">169</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
+</span><span id="BaseSection-170"><a href="#BaseSection-170"><span class="linenos">170</span></a>
+</span><span id="BaseSection-171"><a href="#BaseSection-171"><span class="linenos">171</span></a><span class="sd">        Returns:</span>
+</span><span id="BaseSection-172"><a href="#BaseSection-172"><span class="linenos">172</span></a><span class="sd">             dict[str, str]: 返却値</span>
+</span><span id="BaseSection-173"><a href="#BaseSection-173"><span class="linenos">173</span></a>
+</span><span id="BaseSection-174"><a href="#BaseSection-174"><span class="linenos">174</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseSection-175"><a href="#BaseSection-175"><span class="linenos">175</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="BaseSection-176"><a href="#BaseSection-176"><span class="linenos">176</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="BaseSection-177"><a href="#BaseSection-177"><span class="linenos">177</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+</span><span id="BaseSection-178"><a href="#BaseSection-178"><span class="linenos">178</span></a>                <span class="k">continue</span>
+</span><span id="BaseSection-179"><a href="#BaseSection-179"><span class="linenos">179</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span id="BaseSection-180"><a href="#BaseSection-180"><span class="linenos">180</span></a>
+</span><span id="BaseSection-181"><a href="#BaseSection-181"><span class="linenos">181</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="BaseSection-182"><a href="#BaseSection-182"><span class="linenos">182</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="BaseSection-183"><a href="#BaseSection-183"><span class="linenos">183</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
+</span><span id="BaseSection-184"><a href="#BaseSection-184"><span class="linenos">184</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span id="BaseSection-185"><a href="#BaseSection-185"><span class="linenos">185</span></a>
+</span><span id="BaseSection-186"><a href="#BaseSection-186"><span class="linenos">186</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
 </span></pre></div>
 
 
@@ -1084,6 +1082,32 @@
 
 
                             </div>
+                            <div id="BaseSection.config_load" class="classattr">
+                                        <input id="BaseSection.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">config_load</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">section_proxy</span><span class="p">:</span> <span class="n">configparser</span><span class="o">.</span><span class="n">SectionProxy</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="BaseSection.config_load-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#BaseSection.config_load"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseSection.config_load-156"><a href="#BaseSection.config_load-156"><span class="linenos">156</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="BaseSection.config_load-157"><a href="#BaseSection.config_load-157"><span class="linenos">157</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;設定値取り込み&quot;&quot;&quot;</span>
+</span><span id="BaseSection.config_load-158"><a href="#BaseSection.config_load-158"><span class="linenos">158</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_before_config_load</span><span class="p">()</span>
+</span><span id="BaseSection.config_load-159"><a href="#BaseSection.config_load-159"><span class="linenos">159</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="BaseSection.config_load-160"><a href="#BaseSection.config_load-160"><span class="linenos">160</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_after_config_load</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
+</span><span id="BaseSection.config_load-161"><a href="#BaseSection.config_load-161"><span class="linenos">161</span></a>
+</span><span id="BaseSection.config_load-162"><a href="#BaseSection.config_load-162"><span class="linenos">162</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>設定値取り込み</p>
+</div>
+
+
+                            </div>
                             <div id="BaseSection.to_dict" class="classattr">
                                         <input id="BaseSection.to_dict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -1095,29 +1119,29 @@
 
     </div>
     <a class="headerlink" href="#BaseSection.to_dict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseSection.to_dict-148"><a href="#BaseSection.to_dict-148"><span class="linenos">148</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-</span><span id="BaseSection.to_dict-149"><a href="#BaseSection.to_dict-149"><span class="linenos">149</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="BaseSection.to_dict-150"><a href="#BaseSection.to_dict-150"><span class="linenos">150</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
-</span><span id="BaseSection.to_dict-151"><a href="#BaseSection.to_dict-151"><span class="linenos">151</span></a>
-</span><span id="BaseSection.to_dict-152"><a href="#BaseSection.to_dict-152"><span class="linenos">152</span></a><span class="sd">        Args:</span>
-</span><span id="BaseSection.to_dict-153"><a href="#BaseSection.to_dict-153"><span class="linenos">153</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
-</span><span id="BaseSection.to_dict-154"><a href="#BaseSection.to_dict-154"><span class="linenos">154</span></a>
-</span><span id="BaseSection.to_dict-155"><a href="#BaseSection.to_dict-155"><span class="linenos">155</span></a><span class="sd">        Returns:</span>
-</span><span id="BaseSection.to_dict-156"><a href="#BaseSection.to_dict-156"><span class="linenos">156</span></a><span class="sd">             dict[str, str]: 返却値</span>
-</span><span id="BaseSection.to_dict-157"><a href="#BaseSection.to_dict-157"><span class="linenos">157</span></a>
-</span><span id="BaseSection.to_dict-158"><a href="#BaseSection.to_dict-158"><span class="linenos">158</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="BaseSection.to_dict-159"><a href="#BaseSection.to_dict-159"><span class="linenos">159</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="BaseSection.to_dict-160"><a href="#BaseSection.to_dict-160"><span class="linenos">160</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="BaseSection.to_dict-161"><a href="#BaseSection.to_dict-161"><span class="linenos">161</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-</span><span id="BaseSection.to_dict-162"><a href="#BaseSection.to_dict-162"><span class="linenos">162</span></a>                <span class="k">continue</span>
-</span><span id="BaseSection.to_dict-163"><a href="#BaseSection.to_dict-163"><span class="linenos">163</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-</span><span id="BaseSection.to_dict-164"><a href="#BaseSection.to_dict-164"><span class="linenos">164</span></a>
-</span><span id="BaseSection.to_dict-165"><a href="#BaseSection.to_dict-165"><span class="linenos">165</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="BaseSection.to_dict-166"><a href="#BaseSection.to_dict-166"><span class="linenos">166</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
-</span><span id="BaseSection.to_dict-167"><a href="#BaseSection.to_dict-167"><span class="linenos">167</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
-</span><span id="BaseSection.to_dict-168"><a href="#BaseSection.to_dict-168"><span class="linenos">168</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</span><span id="BaseSection.to_dict-169"><a href="#BaseSection.to_dict-169"><span class="linenos">169</span></a>
-</span><span id="BaseSection.to_dict-170"><a href="#BaseSection.to_dict-170"><span class="linenos">170</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="BaseSection.to_dict-164"><a href="#BaseSection.to_dict-164"><span class="linenos">164</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drop_items</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+</span><span id="BaseSection.to_dict-165"><a href="#BaseSection.to_dict-165"><span class="linenos">165</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="BaseSection.to_dict-166"><a href="#BaseSection.to_dict-166"><span class="linenos">166</span></a><span class="sd">        必要なパラメータを辞書型で返す</span>
+</span><span id="BaseSection.to_dict-167"><a href="#BaseSection.to_dict-167"><span class="linenos">167</span></a>
+</span><span id="BaseSection.to_dict-168"><a href="#BaseSection.to_dict-168"><span class="linenos">168</span></a><span class="sd">        Args:</span>
+</span><span id="BaseSection.to_dict-169"><a href="#BaseSection.to_dict-169"><span class="linenos">169</span></a><span class="sd">            drop_items (Optional[list[str]], optional): 返却に含めないキーリスト. Defaults to None.</span>
+</span><span id="BaseSection.to_dict-170"><a href="#BaseSection.to_dict-170"><span class="linenos">170</span></a>
+</span><span id="BaseSection.to_dict-171"><a href="#BaseSection.to_dict-171"><span class="linenos">171</span></a><span class="sd">        Returns:</span>
+</span><span id="BaseSection.to_dict-172"><a href="#BaseSection.to_dict-172"><span class="linenos">172</span></a><span class="sd">             dict[str, str]: 返却値</span>
+</span><span id="BaseSection.to_dict-173"><a href="#BaseSection.to_dict-173"><span class="linenos">173</span></a>
+</span><span id="BaseSection.to_dict-174"><a href="#BaseSection.to_dict-174"><span class="linenos">174</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="BaseSection.to_dict-175"><a href="#BaseSection.to_dict-175"><span class="linenos">175</span></a>        <span class="n">ret_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="BaseSection.to_dict-176"><a href="#BaseSection.to_dict-176"><span class="linenos">176</span></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="BaseSection.to_dict-177"><a href="#BaseSection.to_dict-177"><span class="linenos">177</span></a>            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+</span><span id="BaseSection.to_dict-178"><a href="#BaseSection.to_dict-178"><span class="linenos">178</span></a>                <span class="k">continue</span>
+</span><span id="BaseSection.to_dict-179"><a href="#BaseSection.to_dict-179"><span class="linenos">179</span></a>            <span class="n">ret_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span><span id="BaseSection.to_dict-180"><a href="#BaseSection.to_dict-180"><span class="linenos">180</span></a>
+</span><span id="BaseSection.to_dict-181"><a href="#BaseSection.to_dict-181"><span class="linenos">181</span></a>        <span class="k">if</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="BaseSection.to_dict-182"><a href="#BaseSection.to_dict-182"><span class="linenos">182</span></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">drop_items</span><span class="p">:</span>
+</span><span id="BaseSection.to_dict-183"><a href="#BaseSection.to_dict-183"><span class="linenos">183</span></a>                <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ret_dict</span><span class="p">:</span>
+</span><span id="BaseSection.to_dict-184"><a href="#BaseSection.to_dict-184"><span class="linenos">184</span></a>                    <span class="n">ret_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span id="BaseSection.to_dict-185"><a href="#BaseSection.to_dict-185"><span class="linenos">185</span></a>
+</span><span id="BaseSection.to_dict-186"><a href="#BaseSection.to_dict-186"><span class="linenos">186</span></a>        <span class="k">return</span> <span class="n">ret_dict</span>
 </span></pre></div>
 
 
@@ -1166,76 +1190,64 @@
 
     </div>
     <a class="headerlink" href="#SettingSection"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SettingSection-173"><a href="#SettingSection-173"><span class="linenos">173</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SettingSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
-</span><span id="SettingSection-174"><a href="#SettingSection-174"><span class="linenos">174</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;settingセクション処理&quot;&quot;&quot;</span>
-</span><span id="SettingSection-175"><a href="#SettingSection-175"><span class="linenos">175</span></a>
-</span><span id="SettingSection-176"><a href="#SettingSection-176"><span class="linenos">176</span></a>    <span class="n">remarks_word</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SettingSection-177"><a href="#SettingSection-177"><span class="linenos">177</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワード&quot;&quot;&quot;</span>
-</span><span id="SettingSection-178"><a href="#SettingSection-178"><span class="linenos">178</span></a>    <span class="n">remarks_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="SettingSection-179"><a href="#SettingSection-179"><span class="linenos">179</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワードサフィックス&quot;&quot;&quot;</span>
-</span><span id="SettingSection-180"><a href="#SettingSection-180"><span class="linenos">180</span></a>    <span class="n">rule_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
-</span><span id="SettingSection-181"><a href="#SettingSection-181"><span class="linenos">181</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール設定ファイル&quot;&quot;&quot;</span>
-</span><span id="SettingSection-182"><a href="#SettingSection-182"><span class="linenos">182</span></a>    <span class="n">default_rule</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SettingSection-183"><a href="#SettingSection-183"><span class="linenos">183</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール識別子未指定時に使用される識別子&quot;&quot;&quot;</span>
-</span><span id="SettingSection-184"><a href="#SettingSection-184"><span class="linenos">184</span></a>    <span class="n">separate</span><span class="p">:</span> <span class="nb">bool</span>
-</span><span id="SettingSection-185"><a href="#SettingSection-185"><span class="linenos">185</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;スコア入力元識別子別集計フラグ</span>
-</span><span id="SettingSection-186"><a href="#SettingSection-186"><span class="linenos">186</span></a><span class="sd">    - *True*: 識別子別に集計</span>
-</span><span id="SettingSection-187"><a href="#SettingSection-187"><span class="linenos">187</span></a><span class="sd">    - *False*: すべて集計</span>
-</span><span id="SettingSection-188"><a href="#SettingSection-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SettingSection-189"><a href="#SettingSection-189"><span class="linenos">189</span></a>    <span class="n">channel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="SettingSection-190"><a href="#SettingSection-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チャンネルIDを上書きする&quot;&quot;&quot;</span>
-</span><span id="SettingSection-191"><a href="#SettingSection-191"><span class="linenos">191</span></a>    <span class="n">time_adjust</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="SettingSection-192"><a href="#SettingSection-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;日付変更後、集計範囲に含める追加時間&quot;&quot;&quot;</span>
-</span><span id="SettingSection-193"><a href="#SettingSection-193"><span class="linenos">193</span></a>    <span class="n">search_word</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SettingSection-194"><a href="#SettingSection-194"><span class="linenos">194</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の検索文字列)&quot;&quot;&quot;</span>
-</span><span id="SettingSection-195"><a href="#SettingSection-195"><span class="linenos">195</span></a>    <span class="n">group_length</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="SettingSection-196"><a href="#SettingSection-196"><span class="linenos">196</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の集約文字数)&quot;&quot;&quot;</span>
-</span><span id="SettingSection-197"><a href="#SettingSection-197"><span class="linenos">197</span></a>    <span class="n">guest_mark</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SettingSection-198"><a href="#SettingSection-198"><span class="linenos">198</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ゲスト無効時に未登録メンバーに付与する印&quot;&quot;&quot;</span>
-</span><span id="SettingSection-199"><a href="#SettingSection-199"><span class="linenos">199</span></a>    <span class="n">database_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
-</span><span id="SettingSection-200"><a href="#SettingSection-200"><span class="linenos">200</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績管理データベースファイル名&quot;&quot;&quot;</span>
-</span><span id="SettingSection-201"><a href="#SettingSection-201"><span class="linenos">201</span></a>    <span class="n">backup_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
-</span><span id="SettingSection-202"><a href="#SettingSection-202"><span class="linenos">202</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;バックアップ先ディレクトリ&quot;&quot;&quot;</span>
-</span><span id="SettingSection-203"><a href="#SettingSection-203"><span class="linenos">203</span></a>    <span class="n">font_file</span><span class="p">:</span> <span class="n">Path</span>
-</span><span id="SettingSection-204"><a href="#SettingSection-204"><span class="linenos">204</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフ描写に使用するフォントファイル&quot;&quot;&quot;</span>
-</span><span id="SettingSection-205"><a href="#SettingSection-205"><span class="linenos">205</span></a>    <span class="n">graph_style</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SettingSection-206"><a href="#SettingSection-206"><span class="linenos">206</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフスタイル&quot;&quot;&quot;</span>
-</span><span id="SettingSection-207"><a href="#SettingSection-207"><span class="linenos">207</span></a>    <span class="n">work_dir</span><span class="p">:</span> <span class="n">Path</span>
-</span><span id="SettingSection-208"><a href="#SettingSection-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;作業ディレクトリ&quot;&quot;&quot;</span>
-</span><span id="SettingSection-209"><a href="#SettingSection-209"><span class="linenos">209</span></a>
-</span><span id="SettingSection-210"><a href="#SettingSection-210"><span class="linenos">210</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SettingSection-211"><a href="#SettingSection-211"><span class="linenos">211</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;setting&quot;</span>
-</span><span id="SettingSection-212"><a href="#SettingSection-212"><span class="linenos">212</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="SettingSection-213"><a href="#SettingSection-213"><span class="linenos">213</span></a>
-</span><span id="SettingSection-214"><a href="#SettingSection-214"><span class="linenos">214</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SettingSection-215"><a href="#SettingSection-215"><span class="linenos">215</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;麻雀メモ&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-216"><a href="#SettingSection-216"><span class="linenos">216</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_suffix</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SettingSection-217"><a href="#SettingSection-217"><span class="linenos">217</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rule_config</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="SettingSection-218"><a href="#SettingSection-218"><span class="linenos">218</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">time_adjust</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-</span><span id="SettingSection-219"><a href="#SettingSection-219"><span class="linenos">219</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_rule</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-220"><a href="#SettingSection-220"><span class="linenos">220</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">separate</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-</span><span id="SettingSection-221"><a href="#SettingSection-221"><span class="linenos">221</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="SettingSection-222"><a href="#SettingSection-222"><span class="linenos">222</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-223"><a href="#SettingSection-223"><span class="linenos">223</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span id="SettingSection-224"><a href="#SettingSection-224"><span class="linenos">224</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_mark</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;※&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-225"><a href="#SettingSection-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">database_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mahjong.db&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-226"><a href="#SettingSection-226"><span class="linenos">226</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backup_dir</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="SettingSection-227"><a href="#SettingSection-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">font_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;ipaexg.ttf&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-228"><a href="#SettingSection-228"><span class="linenos">228</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph_style</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-229"><a href="#SettingSection-229"><span class="linenos">229</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">)</span>
-</span><span id="SettingSection-230"><a href="#SettingSection-230"><span class="linenos">230</span></a>
-</span><span id="SettingSection-231"><a href="#SettingSection-231"><span class="linenos">231</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SettingSection-232"><a href="#SettingSection-232"><span class="linenos">232</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SettingSection-233"><a href="#SettingSection-233"><span class="linenos">233</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="SettingSection-234"><a href="#SettingSection-234"><span class="linenos">234</span></a>
-</span><span id="SettingSection-235"><a href="#SettingSection-235"><span class="linenos">235</span></a><span class="sd">        Args:</span>
-</span><span id="SettingSection-236"><a href="#SettingSection-236"><span class="linenos">236</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="SettingSection-237"><a href="#SettingSection-237"><span class="linenos">237</span></a>
-</span><span id="SettingSection-238"><a href="#SettingSection-238"><span class="linenos">238</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SettingSection-239"><a href="#SettingSection-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="SettingSection-240"><a href="#SettingSection-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="SettingSection-241"><a href="#SettingSection-241"><span class="linenos">241</span></a>
-</span><span id="SettingSection-242"><a href="#SettingSection-242"><span class="linenos">242</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SettingSection-189"><a href="#SettingSection-189"><span class="linenos">189</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SettingSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
+</span><span id="SettingSection-190"><a href="#SettingSection-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;settingセクション処理&quot;&quot;&quot;</span>
+</span><span id="SettingSection-191"><a href="#SettingSection-191"><span class="linenos">191</span></a>
+</span><span id="SettingSection-192"><a href="#SettingSection-192"><span class="linenos">192</span></a>    <span class="n">remarks_word</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SettingSection-193"><a href="#SettingSection-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワード&quot;&quot;&quot;</span>
+</span><span id="SettingSection-194"><a href="#SettingSection-194"><span class="linenos">194</span></a>    <span class="n">remarks_suffix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="SettingSection-195"><a href="#SettingSection-195"><span class="linenos">195</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メモ記録用キーワードサフィックス&quot;&quot;&quot;</span>
+</span><span id="SettingSection-196"><a href="#SettingSection-196"><span class="linenos">196</span></a>    <span class="n">rule_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
+</span><span id="SettingSection-197"><a href="#SettingSection-197"><span class="linenos">197</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール設定ファイル&quot;&quot;&quot;</span>
+</span><span id="SettingSection-198"><a href="#SettingSection-198"><span class="linenos">198</span></a>    <span class="n">default_rule</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SettingSection-199"><a href="#SettingSection-199"><span class="linenos">199</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ルール識別子未指定時に使用される識別子&quot;&quot;&quot;</span>
+</span><span id="SettingSection-200"><a href="#SettingSection-200"><span class="linenos">200</span></a>    <span class="n">separate</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span id="SettingSection-201"><a href="#SettingSection-201"><span class="linenos">201</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;スコア入力元識別子別集計フラグ</span>
+</span><span id="SettingSection-202"><a href="#SettingSection-202"><span class="linenos">202</span></a><span class="sd">    - *True*: 識別子別に集計</span>
+</span><span id="SettingSection-203"><a href="#SettingSection-203"><span class="linenos">203</span></a><span class="sd">    - *False*: すべて集計</span>
+</span><span id="SettingSection-204"><a href="#SettingSection-204"><span class="linenos">204</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SettingSection-205"><a href="#SettingSection-205"><span class="linenos">205</span></a>    <span class="n">channel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="SettingSection-206"><a href="#SettingSection-206"><span class="linenos">206</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チャンネルIDを上書きする&quot;&quot;&quot;</span>
+</span><span id="SettingSection-207"><a href="#SettingSection-207"><span class="linenos">207</span></a>    <span class="n">time_adjust</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="SettingSection-208"><a href="#SettingSection-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;日付変更後、集計範囲に含める追加時間&quot;&quot;&quot;</span>
+</span><span id="SettingSection-209"><a href="#SettingSection-209"><span class="linenos">209</span></a>    <span class="n">search_word</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SettingSection-210"><a href="#SettingSection-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の検索文字列)&quot;&quot;&quot;</span>
+</span><span id="SettingSection-211"><a href="#SettingSection-211"><span class="linenos">211</span></a>    <span class="n">group_length</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="SettingSection-212"><a href="#SettingSection-212"><span class="linenos">212</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コメント固定(検索時の集約文字数)&quot;&quot;&quot;</span>
+</span><span id="SettingSection-213"><a href="#SettingSection-213"><span class="linenos">213</span></a>    <span class="n">guest_mark</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SettingSection-214"><a href="#SettingSection-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ゲスト無効時に未登録メンバーに付与する印&quot;&quot;&quot;</span>
+</span><span id="SettingSection-215"><a href="#SettingSection-215"><span class="linenos">215</span></a>    <span class="n">database_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
+</span><span id="SettingSection-216"><a href="#SettingSection-216"><span class="linenos">216</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績管理データベースファイル名&quot;&quot;&quot;</span>
+</span><span id="SettingSection-217"><a href="#SettingSection-217"><span class="linenos">217</span></a>    <span class="n">backup_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span>
+</span><span id="SettingSection-218"><a href="#SettingSection-218"><span class="linenos">218</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;バックアップ先ディレクトリ&quot;&quot;&quot;</span>
+</span><span id="SettingSection-219"><a href="#SettingSection-219"><span class="linenos">219</span></a>    <span class="n">font_file</span><span class="p">:</span> <span class="n">Path</span>
+</span><span id="SettingSection-220"><a href="#SettingSection-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフ描写に使用するフォントファイル&quot;&quot;&quot;</span>
+</span><span id="SettingSection-221"><a href="#SettingSection-221"><span class="linenos">221</span></a>    <span class="n">graph_style</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SettingSection-222"><a href="#SettingSection-222"><span class="linenos">222</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;グラフスタイル&quot;&quot;&quot;</span>
+</span><span id="SettingSection-223"><a href="#SettingSection-223"><span class="linenos">223</span></a>    <span class="n">work_dir</span><span class="p">:</span> <span class="n">Path</span>
+</span><span id="SettingSection-224"><a href="#SettingSection-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;作業ディレクトリ&quot;&quot;&quot;</span>
+</span><span id="SettingSection-225"><a href="#SettingSection-225"><span class="linenos">225</span></a>
+</span><span id="SettingSection-226"><a href="#SettingSection-226"><span class="linenos">226</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SettingSection-227"><a href="#SettingSection-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;setting&quot;</span>
+</span><span id="SettingSection-228"><a href="#SettingSection-228"><span class="linenos">228</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
+</span><span id="SettingSection-229"><a href="#SettingSection-229"><span class="linenos">229</span></a>
+</span><span id="SettingSection-230"><a href="#SettingSection-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SettingSection-231"><a href="#SettingSection-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="SettingSection-232"><a href="#SettingSection-232"><span class="linenos">232</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;麻雀メモ&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-233"><a href="#SettingSection-233"><span class="linenos">233</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_suffix</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SettingSection-234"><a href="#SettingSection-234"><span class="linenos">234</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rule_config</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection-235"><a href="#SettingSection-235"><span class="linenos">235</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">time_adjust</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</span><span id="SettingSection-236"><a href="#SettingSection-236"><span class="linenos">236</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_rule</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-237"><a href="#SettingSection-237"><span class="linenos">237</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">separate</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="SettingSection-238"><a href="#SettingSection-238"><span class="linenos">238</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection-239"><a href="#SettingSection-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-240"><a href="#SettingSection-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="SettingSection-241"><a href="#SettingSection-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_mark</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;※&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-242"><a href="#SettingSection-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">database_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mahjong.db&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-243"><a href="#SettingSection-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backup_dir</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection-244"><a href="#SettingSection-244"><span class="linenos">244</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">font_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;ipaexg.ttf&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-245"><a href="#SettingSection-245"><span class="linenos">245</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph_style</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+</span><span id="SettingSection-246"><a href="#SettingSection-246"><span class="linenos">246</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1456,39 +1468,38 @@
 
 
                             </div>
-                            <div id="SettingSection.config_load" class="classattr">
-                                        <input id="SettingSection.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="SettingSection.default_reset" class="classattr">
+                                        <input id="SettingSection.default_reset-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">config_load</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">section_proxy</span><span class="p">:</span> <span class="n">configparser</span><span class="o">.</span><span class="n">SectionProxy</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">default_reset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
-                <label class="view-source-button" for="SettingSection.config_load-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="SettingSection.default_reset-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#SettingSection.config_load"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SettingSection.config_load-231"><a href="#SettingSection.config_load-231"><span class="linenos">231</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SettingSection.config_load-232"><a href="#SettingSection.config_load-232"><span class="linenos">232</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SettingSection.config_load-233"><a href="#SettingSection.config_load-233"><span class="linenos">233</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="SettingSection.config_load-234"><a href="#SettingSection.config_load-234"><span class="linenos">234</span></a>
-</span><span id="SettingSection.config_load-235"><a href="#SettingSection.config_load-235"><span class="linenos">235</span></a><span class="sd">        Args:</span>
-</span><span id="SettingSection.config_load-236"><a href="#SettingSection.config_load-236"><span class="linenos">236</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="SettingSection.config_load-237"><a href="#SettingSection.config_load-237"><span class="linenos">237</span></a>
-</span><span id="SettingSection.config_load-238"><a href="#SettingSection.config_load-238"><span class="linenos">238</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SettingSection.config_load-239"><a href="#SettingSection.config_load-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="SettingSection.config_load-240"><a href="#SettingSection.config_load-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="SettingSection.config_load-241"><a href="#SettingSection.config_load-241"><span class="linenos">241</span></a>
-</span><span id="SettingSection.config_load-242"><a href="#SettingSection.config_load-242"><span class="linenos">242</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <a class="headerlink" href="#SettingSection.default_reset"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SettingSection.default_reset-230"><a href="#SettingSection.default_reset-230"><span class="linenos">230</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SettingSection.default_reset-231"><a href="#SettingSection.default_reset-231"><span class="linenos">231</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="SettingSection.default_reset-232"><a href="#SettingSection.default_reset-232"><span class="linenos">232</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;麻雀メモ&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-233"><a href="#SettingSection.default_reset-233"><span class="linenos">233</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">remarks_suffix</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SettingSection.default_reset-234"><a href="#SettingSection.default_reset-234"><span class="linenos">234</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rule_config</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection.default_reset-235"><a href="#SettingSection.default_reset-235"><span class="linenos">235</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">time_adjust</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-236"><a href="#SettingSection.default_reset-236"><span class="linenos">236</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_rule</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-237"><a href="#SettingSection.default_reset-237"><span class="linenos">237</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">separate</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-238"><a href="#SettingSection.default_reset-238"><span class="linenos">238</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection.default_reset-239"><a href="#SettingSection.default_reset-239"><span class="linenos">239</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_word</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-240"><a href="#SettingSection.default_reset-240"><span class="linenos">240</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-241"><a href="#SettingSection.default_reset-241"><span class="linenos">241</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">guest_mark</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;※&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-242"><a href="#SettingSection.default_reset-242"><span class="linenos">242</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">database_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mahjong.db&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-243"><a href="#SettingSection.default_reset-243"><span class="linenos">243</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backup_dir</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="SettingSection.default_reset-244"><a href="#SettingSection.default_reset-244"><span class="linenos">244</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">font_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;ipaexg.ttf&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-245"><a href="#SettingSection.default_reset-245"><span class="linenos">245</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph_style</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+</span><span id="SettingSection.default_reset-246"><a href="#SettingSection.default_reset-246"><span class="linenos">246</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>設定値取り込み</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>section_proxy (SectionProxy):</strong>  読み込み先(パーサー + セクション名)</li>
-</ul>
+            <div class="docstring"><p>パラメータ初期化</p>
 </div>
 
 
@@ -1500,6 +1511,7 @@
                                 <dd id="SettingSection.main_parser" class="variable"><a href="#BaseSection.main_parser">main_parser</a></dd>
                 <dd id="SettingSection.section_proxy" class="variable"><a href="#BaseSection.section_proxy">section_proxy</a></dd>
                 <dd id="SettingSection.initialization" class="function"><a href="#BaseSection.initialization">initialization</a></dd>
+                <dd id="SettingSection.config_load" class="function"><a href="#BaseSection.config_load">config_load</a></dd>
                 <dd id="SettingSection.to_dict" class="function"><a href="#BaseSection.to_dict">to_dict</a></dd>
 
             </div>
@@ -1528,65 +1540,56 @@
 
     </div>
     <a class="headerlink" href="#AliasSection"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AliasSection-245"><a href="#AliasSection-245"><span class="linenos">245</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
-</span><span id="AliasSection-246"><a href="#AliasSection-246"><span class="linenos">246</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
-</span><span id="AliasSection-247"><a href="#AliasSection-247"><span class="linenos">247</span></a>
-</span><span id="AliasSection-248"><a href="#AliasSection-248"><span class="linenos">248</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-249"><a href="#AliasSection-249"><span class="linenos">249</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-250"><a href="#AliasSection-250"><span class="linenos">250</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-251"><a href="#AliasSection-251"><span class="linenos">251</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-252"><a href="#AliasSection-252"><span class="linenos">252</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-253"><a href="#AliasSection-253"><span class="linenos">253</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-254"><a href="#AliasSection-254"><span class="linenos">254</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-255"><a href="#AliasSection-255"><span class="linenos">255</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-256"><a href="#AliasSection-256"><span class="linenos">256</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-257"><a href="#AliasSection-257"><span class="linenos">257</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-258"><a href="#AliasSection-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-259"><a href="#AliasSection-259"><span class="linenos">259</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-260"><a href="#AliasSection-260"><span class="linenos">260</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-261"><a href="#AliasSection-261"><span class="linenos">261</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-262"><a href="#AliasSection-262"><span class="linenos">262</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-263"><a href="#AliasSection-263"><span class="linenos">263</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-264"><a href="#AliasSection-264"><span class="linenos">264</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-265"><a href="#AliasSection-265"><span class="linenos">265</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-266"><a href="#AliasSection-266"><span class="linenos">266</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
-</span><span id="AliasSection-267"><a href="#AliasSection-267"><span class="linenos">267</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="AliasSection-268"><a href="#AliasSection-268"><span class="linenos">268</span></a>
-</span><span id="AliasSection-269"><a href="#AliasSection-269"><span class="linenos">269</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="AliasSection-270"><a href="#AliasSection-270"><span class="linenos">270</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
-</span><span id="AliasSection-271"><a href="#AliasSection-271"><span class="linenos">271</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AliasSection-249"><a href="#AliasSection-249"><span class="linenos">249</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AliasSection</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">):</span>
+</span><span id="AliasSection-250"><a href="#AliasSection-250"><span class="linenos">250</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;aliasセクション処理&quot;&quot;&quot;</span>
+</span><span id="AliasSection-251"><a href="#AliasSection-251"><span class="linenos">251</span></a>
+</span><span id="AliasSection-252"><a href="#AliasSection-252"><span class="linenos">252</span></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-253"><a href="#AliasSection-253"><span class="linenos">253</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績サマリ出力コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-254"><a href="#AliasSection-254"><span class="linenos">254</span></a>    <span class="n">graph</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-255"><a href="#AliasSection-255"><span class="linenos">255</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;成績グラフ出力コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-256"><a href="#AliasSection-256"><span class="linenos">256</span></a>    <span class="n">ranking</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-257"><a href="#AliasSection-257"><span class="linenos">257</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ランキング出力コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-258"><a href="#AliasSection-258"><span class="linenos">258</span></a>    <span class="n">report</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-259"><a href="#AliasSection-259"><span class="linenos">259</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;レポート出力コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-260"><a href="#AliasSection-260"><span class="linenos">260</span></a>    <span class="n">download</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-261"><a href="#AliasSection-261"><span class="linenos">261</span></a>    <span class="n">member</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-262"><a href="#AliasSection-262"><span class="linenos">262</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;メンバーリスト表示コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-263"><a href="#AliasSection-263"><span class="linenos">263</span></a>    <span class="n">add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-264"><a href="#AliasSection-264"><span class="linenos">264</span></a>    <span class="n">delete</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-265"><a href="#AliasSection-265"><span class="linenos">265</span></a>    <span class="n">team_create</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-266"><a href="#AliasSection-266"><span class="linenos">266</span></a>    <span class="n">team_del</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-267"><a href="#AliasSection-267"><span class="linenos">267</span></a>    <span class="n">team_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-268"><a href="#AliasSection-268"><span class="linenos">268</span></a>    <span class="n">team_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-269"><a href="#AliasSection-269"><span class="linenos">269</span></a>    <span class="n">team_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="AliasSection-270"><a href="#AliasSection-270"><span class="linenos">270</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;チームリスト出力コマンド&quot;&quot;&quot;</span>
+</span><span id="AliasSection-271"><a href="#AliasSection-271"><span class="linenos">271</span></a>    <span class="n">team_clear</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 </span><span id="AliasSection-272"><a href="#AliasSection-272"><span class="linenos">272</span></a>
-</span><span id="AliasSection-273"><a href="#AliasSection-273"><span class="linenos">273</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="AliasSection-274"><a href="#AliasSection-274"><span class="linenos">274</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="s2">&quot;成績&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-275"><a href="#AliasSection-275"><span class="linenos">275</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;グラフ&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-276"><a href="#AliasSection-276"><span class="linenos">276</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ranking&quot;</span><span class="p">,</span> <span class="s2">&quot;ランキング&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-277"><a href="#AliasSection-277"><span class="linenos">277</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="s2">&quot;レポート&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-278"><a href="#AliasSection-278"><span class="linenos">278</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;ダウンロード&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-279"><a href="#AliasSection-279"><span class="linenos">279</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">,</span> <span class="s2">&quot;userlist&quot;</span><span class="p">,</span> <span class="s2">&quot;member_list&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-280"><a href="#AliasSection-280"><span class="linenos">280</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-281"><a href="#AliasSection-281"><span class="linenos">281</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;del&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-282"><a href="#AliasSection-282"><span class="linenos">282</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_create</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_create&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-283"><a href="#AliasSection-283"><span class="linenos">283</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_del&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-284"><a href="#AliasSection-284"><span class="linenos">284</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_add&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-285"><a href="#AliasSection-285"><span class="linenos">285</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_remove&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-286"><a href="#AliasSection-286"><span class="linenos">286</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_list&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-287"><a href="#AliasSection-287"><span class="linenos">287</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_clear</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_clear&quot;</span><span class="p">]</span>
-</span><span id="AliasSection-288"><a href="#AliasSection-288"><span class="linenos">288</span></a>
-</span><span id="AliasSection-289"><a href="#AliasSection-289"><span class="linenos">289</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="AliasSection-290"><a href="#AliasSection-290"><span class="linenos">290</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="AliasSection-291"><a href="#AliasSection-291"><span class="linenos">291</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="AliasSection-292"><a href="#AliasSection-292"><span class="linenos">292</span></a>
-</span><span id="AliasSection-293"><a href="#AliasSection-293"><span class="linenos">293</span></a><span class="sd">        Args:</span>
-</span><span id="AliasSection-294"><a href="#AliasSection-294"><span class="linenos">294</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="AliasSection-295"><a href="#AliasSection-295"><span class="linenos">295</span></a>
-</span><span id="AliasSection-296"><a href="#AliasSection-296"><span class="linenos">296</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AliasSection-297"><a href="#AliasSection-297"><span class="linenos">297</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="AliasSection-298"><a href="#AliasSection-298"><span class="linenos">298</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="AliasSection-299"><a href="#AliasSection-299"><span class="linenos">299</span></a>
-</span><span id="AliasSection-300"><a href="#AliasSection-300"><span class="linenos">300</span></a>        <span class="c1"># delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)</span>
-</span><span id="AliasSection-301"><a href="#AliasSection-301"><span class="linenos">301</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;del&quot;</span><span class="p">))</span>
-</span><span id="AliasSection-302"><a href="#AliasSection-302"><span class="linenos">302</span></a>
-</span><span id="AliasSection-303"><a href="#AliasSection-303"><span class="linenos">303</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+</span><span id="AliasSection-273"><a href="#AliasSection-273"><span class="linenos">273</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="AliasSection-274"><a href="#AliasSection-274"><span class="linenos">274</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;alias&quot;</span>
+</span><span id="AliasSection-275"><a href="#AliasSection-275"><span class="linenos">275</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
+</span><span id="AliasSection-276"><a href="#AliasSection-276"><span class="linenos">276</span></a>
+</span><span id="AliasSection-277"><a href="#AliasSection-277"><span class="linenos">277</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="AliasSection-278"><a href="#AliasSection-278"><span class="linenos">278</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="AliasSection-279"><a href="#AliasSection-279"><span class="linenos">279</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="s2">&quot;成績&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-280"><a href="#AliasSection-280"><span class="linenos">280</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;グラフ&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-281"><a href="#AliasSection-281"><span class="linenos">281</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ranking&quot;</span><span class="p">,</span> <span class="s2">&quot;ランキング&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-282"><a href="#AliasSection-282"><span class="linenos">282</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="s2">&quot;レポート&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-283"><a href="#AliasSection-283"><span class="linenos">283</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;ダウンロード&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-284"><a href="#AliasSection-284"><span class="linenos">284</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">,</span> <span class="s2">&quot;userlist&quot;</span><span class="p">,</span> <span class="s2">&quot;member_list&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-285"><a href="#AliasSection-285"><span class="linenos">285</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-286"><a href="#AliasSection-286"><span class="linenos">286</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;del&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-287"><a href="#AliasSection-287"><span class="linenos">287</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_create</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_create&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-288"><a href="#AliasSection-288"><span class="linenos">288</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_del&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-289"><a href="#AliasSection-289"><span class="linenos">289</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_add&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-290"><a href="#AliasSection-290"><span class="linenos">290</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_remove&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-291"><a href="#AliasSection-291"><span class="linenos">291</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_list&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-292"><a href="#AliasSection-292"><span class="linenos">292</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_clear</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_clear&quot;</span><span class="p">]</span>
+</span><span id="AliasSection-293"><a href="#AliasSection-293"><span class="linenos">293</span></a>
+</span><span id="AliasSection-294"><a href="#AliasSection-294"><span class="linenos">294</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_after_config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="AliasSection-295"><a href="#AliasSection-295"><span class="linenos">295</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;AliasSection専用の追加処理&quot;&quot;&quot;</span>
+</span><span id="AliasSection-296"><a href="#AliasSection-296"><span class="linenos">296</span></a>
+</span><span id="AliasSection-297"><a href="#AliasSection-297"><span class="linenos">297</span></a>        <span class="c1"># delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)</span>
+</span><span id="AliasSection-298"><a href="#AliasSection-298"><span class="linenos">298</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;del&quot;</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -1773,42 +1776,37 @@
 
 
                             </div>
-                            <div id="AliasSection.config_load" class="classattr">
-                                        <input id="AliasSection.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="AliasSection.default_reset" class="classattr">
+                                        <input id="AliasSection.default_reset-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">config_load</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">section_proxy</span><span class="p">:</span> <span class="n">configparser</span><span class="o">.</span><span class="n">SectionProxy</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">default_reset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
-                <label class="view-source-button" for="AliasSection.config_load-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="AliasSection.default_reset-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#AliasSection.config_load"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AliasSection.config_load-289"><a href="#AliasSection.config_load-289"><span class="linenos">289</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="AliasSection.config_load-290"><a href="#AliasSection.config_load-290"><span class="linenos">290</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="AliasSection.config_load-291"><a href="#AliasSection.config_load-291"><span class="linenos">291</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="AliasSection.config_load-292"><a href="#AliasSection.config_load-292"><span class="linenos">292</span></a>
-</span><span id="AliasSection.config_load-293"><a href="#AliasSection.config_load-293"><span class="linenos">293</span></a><span class="sd">        Args:</span>
-</span><span id="AliasSection.config_load-294"><a href="#AliasSection.config_load-294"><span class="linenos">294</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="AliasSection.config_load-295"><a href="#AliasSection.config_load-295"><span class="linenos">295</span></a>
-</span><span id="AliasSection.config_load-296"><a href="#AliasSection.config_load-296"><span class="linenos">296</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AliasSection.config_load-297"><a href="#AliasSection.config_load-297"><span class="linenos">297</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-</span><span id="AliasSection.config_load-298"><a href="#AliasSection.config_load-298"><span class="linenos">298</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="AliasSection.config_load-299"><a href="#AliasSection.config_load-299"><span class="linenos">299</span></a>
-</span><span id="AliasSection.config_load-300"><a href="#AliasSection.config_load-300"><span class="linenos">300</span></a>        <span class="c1"># delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)</span>
-</span><span id="AliasSection.config_load-301"><a href="#AliasSection.config_load-301"><span class="linenos">301</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s2">&quot;del&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;del&quot;</span><span class="p">))</span>
-</span><span id="AliasSection.config_load-302"><a href="#AliasSection.config_load-302"><span class="linenos">302</span></a>
-</span><span id="AliasSection.config_load-303"><a href="#AliasSection.config_load-303"><span class="linenos">303</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <a class="headerlink" href="#AliasSection.default_reset"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AliasSection.default_reset-277"><a href="#AliasSection.default_reset-277"><span class="linenos">277</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">default_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="AliasSection.default_reset-278"><a href="#AliasSection.default_reset-278"><span class="linenos">278</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;パラメータ初期化&quot;&quot;&quot;</span>
+</span><span id="AliasSection.default_reset-279"><a href="#AliasSection.default_reset-279"><span class="linenos">279</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="s2">&quot;成績&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-280"><a href="#AliasSection.default_reset-280"><span class="linenos">280</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;グラフ&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-281"><a href="#AliasSection.default_reset-281"><span class="linenos">281</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ranking&quot;</span><span class="p">,</span> <span class="s2">&quot;ランキング&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-282"><a href="#AliasSection.default_reset-282"><span class="linenos">282</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="s2">&quot;レポート&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-283"><a href="#AliasSection.default_reset-283"><span class="linenos">283</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;ダウンロード&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-284"><a href="#AliasSection.default_reset-284"><span class="linenos">284</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">member</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">,</span> <span class="s2">&quot;userlist&quot;</span><span class="p">,</span> <span class="s2">&quot;member_list&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-285"><a href="#AliasSection.default_reset-285"><span class="linenos">285</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-286"><a href="#AliasSection.default_reset-286"><span class="linenos">286</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">delete</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;del&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-287"><a href="#AliasSection.default_reset-287"><span class="linenos">287</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_create</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_create&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-288"><a href="#AliasSection.default_reset-288"><span class="linenos">288</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_del&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-289"><a href="#AliasSection.default_reset-289"><span class="linenos">289</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_add</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_add&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-290"><a href="#AliasSection.default_reset-290"><span class="linenos">290</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_remove&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-291"><a href="#AliasSection.default_reset-291"><span class="linenos">291</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_list&quot;</span><span class="p">]</span>
+</span><span id="AliasSection.default_reset-292"><a href="#AliasSection.default_reset-292"><span class="linenos">292</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">team_clear</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;team_clear&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>設定値取り込み</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>section_proxy (SectionProxy):</strong>  読み込み先(パーサー + セクション名)</li>
-</ul>
+            <div class="docstring"><p>パラメータ初期化</p>
 </div>
 
 
@@ -1820,6 +1818,7 @@
                                 <dd id="AliasSection.main_parser" class="variable"><a href="#BaseSection.main_parser">main_parser</a></dd>
                 <dd id="AliasSection.section_proxy" class="variable"><a href="#BaseSection.section_proxy">section_proxy</a></dd>
                 <dd id="AliasSection.initialization" class="function"><a href="#BaseSection.initialization">initialization</a></dd>
+                <dd id="AliasSection.config_load" class="function"><a href="#BaseSection.config_load">config_load</a></dd>
                 <dd id="AliasSection.to_dict" class="function"><a href="#BaseSection.to_dict">to_dict</a></dd>
 
             </div>
@@ -1848,24 +1847,11 @@
 
     </div>
     <a class="headerlink" href="#SubCommands"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SubCommands-306"><a href="#SubCommands-306"><span class="linenos">306</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SubCommands</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">,</span> <span class="n">CommandAttrs</span><span class="p">):</span>
-</span><span id="SubCommands-307"><a href="#SubCommands-307"><span class="linenos">307</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンドセクション処理&quot;&quot;&quot;</span>
-</span><span id="SubCommands-308"><a href="#SubCommands-308"><span class="linenos">308</span></a>
-</span><span id="SubCommands-309"><a href="#SubCommands-309"><span class="linenos">309</span></a>    <span class="n">default_commandword</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="SubCommands-310"><a href="#SubCommands-310"><span class="linenos">310</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンドワードデフォルト値&quot;&quot;&quot;</span>
-</span><span id="SubCommands-311"><a href="#SubCommands-311"><span class="linenos">311</span></a>
-</span><span id="SubCommands-312"><a href="#SubCommands-312"><span class="linenos">312</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SubCommands-313"><a href="#SubCommands-313"><span class="linenos">313</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SubCommands-314"><a href="#SubCommands-314"><span class="linenos">314</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="SubCommands-315"><a href="#SubCommands-315"><span class="linenos">315</span></a>
-</span><span id="SubCommands-316"><a href="#SubCommands-316"><span class="linenos">316</span></a><span class="sd">        Args:</span>
-</span><span id="SubCommands-317"><a href="#SubCommands-317"><span class="linenos">317</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="SubCommands-318"><a href="#SubCommands-318"><span class="linenos">318</span></a>
-</span><span id="SubCommands-319"><a href="#SubCommands-319"><span class="linenos">319</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SubCommands-320"><a href="#SubCommands-320"><span class="linenos">320</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
-</span><span id="SubCommands-321"><a href="#SubCommands-321"><span class="linenos">321</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="SubCommands-322"><a href="#SubCommands-322"><span class="linenos">322</span></a>
-</span><span id="SubCommands-323"><a href="#SubCommands-323"><span class="linenos">323</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SubCommands-301"><a href="#SubCommands-301"><span class="linenos">301</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SubCommands</span><span class="p">(</span><span class="n">BaseSection</span><span class="p">,</span> <span class="n">CommandAttrs</span><span class="p">):</span>
+</span><span id="SubCommands-302"><a href="#SubCommands-302"><span class="linenos">302</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;サブコマンドセクション処理&quot;&quot;&quot;</span>
+</span><span id="SubCommands-303"><a href="#SubCommands-303"><span class="linenos">303</span></a>
+</span><span id="SubCommands-304"><a href="#SubCommands-304"><span class="linenos">304</span></a>    <span class="n">default_commandword</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="SubCommands-305"><a href="#SubCommands-305"><span class="linenos">305</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;コマンドワードデフォルト値&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -1886,43 +1872,6 @@
 
 
                             </div>
-                            <div id="SubCommands.config_load" class="classattr">
-                                        <input id="SubCommands.config_load-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">config_load</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">section_proxy</span><span class="p">:</span> <span class="n">configparser</span><span class="o">.</span><span class="n">SectionProxy</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
-
-                <label class="view-source-button" for="SubCommands.config_load-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#SubCommands.config_load"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SubCommands.config_load-312"><a href="#SubCommands.config_load-312"><span class="linenos">312</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_proxy</span><span class="p">:</span> <span class="s2">&quot;SectionProxy&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SubCommands.config_load-313"><a href="#SubCommands.config_load-313"><span class="linenos">313</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SubCommands.config_load-314"><a href="#SubCommands.config_load-314"><span class="linenos">314</span></a><span class="sd">        設定値取り込み</span>
-</span><span id="SubCommands.config_load-315"><a href="#SubCommands.config_load-315"><span class="linenos">315</span></a>
-</span><span id="SubCommands.config_load-316"><a href="#SubCommands.config_load-316"><span class="linenos">316</span></a><span class="sd">        Args:</span>
-</span><span id="SubCommands.config_load-317"><a href="#SubCommands.config_load-317"><span class="linenos">317</span></a><span class="sd">            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)</span>
-</span><span id="SubCommands.config_load-318"><a href="#SubCommands.config_load-318"><span class="linenos">318</span></a>
-</span><span id="SubCommands.config_load-319"><a href="#SubCommands.config_load-319"><span class="linenos">319</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SubCommands.config_load-320"><a href="#SubCommands.config_load-320"><span class="linenos">320</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">default_reset</span><span class="p">()</span>
-</span><span id="SubCommands.config_load-321"><a href="#SubCommands.config_load-321"><span class="linenos">321</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">initialization</span><span class="p">(</span><span class="n">section_proxy</span><span class="p">)</span>
-</span><span id="SubCommands.config_load-322"><a href="#SubCommands.config_load-322"><span class="linenos">322</span></a>
-</span><span id="SubCommands.config_load-323"><a href="#SubCommands.config_load-323"><span class="linenos">323</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>設定値取り込み</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>section_proxy (SectionProxy):</strong>  読み込み先(パーサー + セクション名)</li>
-</ul>
-</div>
-
-
-                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
@@ -1932,6 +1881,7 @@
                 <dd id="SubCommands.main_parser" class="variable"><a href="#BaseSection.main_parser">main_parser</a></dd>
                 <dd id="SubCommands.section_proxy" class="variable"><a href="#BaseSection.section_proxy">section_proxy</a></dd>
                 <dd id="SubCommands.initialization" class="function"><a href="#BaseSection.initialization">initialization</a></dd>
+                <dd id="SubCommands.config_load" class="function"><a href="#BaseSection.config_load">config_load</a></dd>
                 <dd id="SubCommands.to_dict" class="function"><a href="#BaseSection.to_dict">to_dict</a></dd>
 
             </div>
