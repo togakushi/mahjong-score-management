@@ -151,8 +151,12 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
                 rating.aggregation(m)
                 adapter.api.post(m)
             case _:
-                m.status.command_type = CommandType.RESULTS
-                results_summary.aggregation(m)
+                if g.params.score_comparisons:
+                    m.status.command_type = CommandType.COMPARISON
+                    results_summary.difference(m)
+                else:
+                    m.status.command_type = CommandType.RESULTS
+                    results_summary.aggregation(m)
                 adapter.api.post(m)
 
         ui_parts.update_view(adapter, m, app_msg)
