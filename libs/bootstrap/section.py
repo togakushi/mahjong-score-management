@@ -144,6 +144,22 @@ class BaseSection(CommonMethodMixin):
                 case _:
                     setattr(self, k, self.__dict__.get(k))
 
+    def _before_config_load(self) -> None:
+        """設定値取り込み前の初期化処理"""
+        if (reset_method := getattr(self, "default_reset", None)) and callable(reset_method):
+            reset_method()
+
+    def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
+        """設定値取り込み後の追加処理"""
+
+    def config_load(self, section_proxy: "SectionProxy") -> None:
+        """設定値取り込み"""
+        self._before_config_load()
+        self.initialization(section_proxy)
+        self._after_config_load(section_proxy)
+
+        logging.trace("%s: %s", self.section, self)  # type: ignore
+
     def to_dict(self, drop_items: Optional[list[str]] = None) -> dict[str, str]:
         """
         必要なパラメータを辞書型で返す
@@ -208,9 +224,10 @@ class SettingSection(BaseSection):
 
     def __init__(self) -> None:
         self.section: str = "setting"
-        self._reset()
+        self.default_reset()
 
-    def _reset(self) -> None:
+    def default_reset(self) -> None:
+        """パラメータ初期化"""
         self.remarks_word = str("麻雀メモ")
         self.remarks_suffix = []
         self.rule_config = None
@@ -226,19 +243,6 @@ class SettingSection(BaseSection):
         self.font_file = Path("ipaexg.ttf")
         self.graph_style = str("ggplot")
         self.work_dir = Path("work")
-
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self._reset()
-        self.initialization(section_proxy)
-
-        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class AliasSection(BaseSection):
@@ -267,9 +271,10 @@ class AliasSection(BaseSection):
 
     def __init__(self) -> None:
         self.section = "alias"
-        self._reset()
+        self.default_reset()
 
-    def _reset(self) -> None:
+    def default_reset(self) -> None:
+        """パラメータ初期化"""
         self.results = ["results", "成績"]
         self.graph = ["graph", "グラフ"]
         self.ranking = ["ranking", "ランキング"]
@@ -285,21 +290,11 @@ class AliasSection(BaseSection):
         self.team_list = ["team_list"]
         self.team_clear = ["team_clear"]
 
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self._reset()
-        self.initialization(section_proxy)
+    def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
+        """AliasSection専用の追加処理"""
 
         # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
         self.delete.extend(self.getlist("del", fallback="del"))
-
-        logging.trace("%s: %s", self.section, self)  # type: ignore
 
 
 class SubCommands(BaseSection, CommandAttrs):
@@ -307,16 +302,3 @@ class SubCommands(BaseSection, CommandAttrs):
 
     default_commandword: str
     """コマンドワードデフォルト値"""
-
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self.default_reset()
-        self.initialization(section_proxy)
-
-        logging.trace("%s: %s", self.section, self)  # type: ignore
