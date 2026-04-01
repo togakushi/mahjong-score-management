@@ -127,14 +127,6 @@ class GameInfo:
         self.last_game = None
         self.last_comment = None
 
-    def conditions(self) -> dict[str, str | ExtDt | None]:
-        """検索条件を返す"""
-        return {
-            "rule_version": g.params.rule_version,
-            "starttime": g.params.starttime,
-            "endtime": g.params.endtime,
-        }
-
 
 @dataclass
 class ComparisonResults:
