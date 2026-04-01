@@ -153,7 +153,13 @@ class BaseSection(CommonMethodMixin):
         """設定値取り込み後の追加処理"""
 
     def config_load(self, section_proxy: "SectionProxy") -> None:
-        """設定値取り込み"""
+        """
+        設定値取り込み
+
+        Args:
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
+
+        """
         self._before_config_load()
         self.initialization(section_proxy)
         self._after_config_load(section_proxy)
