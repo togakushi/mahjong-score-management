@@ -3,9 +3,8 @@ libs/bootstrap/section.py
 """
 
 import logging
-from pathlib import Path, PosixPath
-from types import NoneType
-from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union, get_args, get_origin
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
 from libs.domain.datamodels import CommandAttrs
 
@@ -116,33 +115,31 @@ class BaseSection(CommonMethodMixin):
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
-            match type(self.__dict__.get(k)):
-                case v_type if k in self.__dict__ and v_type is str:
+            current_value = self.__dict__.get(k)
+            match current_value:
+                case _ if k in self.__dict__ and isinstance(current_value, str):
                     setattr(self, k, self.get(k))
-                case v_type if k in self.__dict__ and v_type is int:
-                    setattr(self, k, self.getint(k))
-                case v_type if k in self.__dict__ and v_type is float:
-                    setattr(self, k, self.getfloat(k))
-                case v_type if v_type is bool:
+                case _ if isinstance(current_value, bool):
                     setattr(self, k, self.section_proxy.getboolean(k))
-                case v_type if k in self.__dict__ and v_type is list:
+                case _ if k in self.__dict__ and isinstance(current_value, int):
+                    setattr(self, k, self.getint(k))
+                case _ if k in self.__dict__ and isinstance(current_value, float):
+                    setattr(self, k, self.getfloat(k))
+                case _ if k in self.__dict__ and isinstance(current_value, list):
                     v_list = self.getlist(k)
-                    current_list = getattr(self, k)
-                    if isinstance(current_list, list) and current_list:  # 設定済みリストは追加
-                        current_list.extend(v_list)
+                    if current_value:  # 設定済みリストは追加
+                        current_value.extend(v_list)
                     else:
                         setattr(self, k, v_list)
-                case v_type if k in self.__dict__ and get_origin(v_type) is Union and type(None) in get_args(v_type):  # 文字列 or None(未定義)
-                    setattr(self, k, self.get(k))
-                case v_type if k in self.__dict__ and v_type is PosixPath:
+                case _ if k in self.__dict__ and isinstance(current_value, Path):
                     setattr(self, k, Path(self.get(k)))
-                case v_type if k in self.__dict__ and v_type is NoneType:
+                case None if k in self.__dict__:
                     if k in ["backup_dir", "rule_config"]:  # Optional[Path]
                         setattr(self, k, Path(self.get(k)))
                     else:
                         setattr(self, k, self.get(k))
                 case _:
-                    setattr(self, k, self.__dict__.get(k))
+                    setattr(self, k, current_value)
 
     def _before_config_load(self) -> None:
         """設定値取り込み前の初期化処理"""
@@ -153,7 +150,13 @@ class BaseSection(CommonMethodMixin):
         """設定値取り込み後の追加処理"""
 
     def config_load(self, section_proxy: "SectionProxy") -> None:
-        """設定値取り込み"""
+        """
+        設定値取り込み
+
+        Args:
+            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
+
+        """
         self._before_config_load()
         self.initialization(section_proxy)
         self._after_config_load(section_proxy)
