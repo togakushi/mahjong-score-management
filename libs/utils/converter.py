@@ -57,7 +57,7 @@ def save_output(
                 floatfmt=formatter.floatfmt_adjust(df, index=options.show_index),
                 colalign=formatter.column_alignment(df, index=options.show_index),
                 headersalign=formatter.column_alignment(df, True),
-            )
+            ).replace(" ▲", "▲")
 
     # 保存
     save_file = textutil.save_file_path(options.filename, True)

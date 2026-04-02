@@ -88,6 +88,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     df["rank"] = df["rate"].rank(ascending=False, method="dense").astype("int")
+    df["rate"] = df["rate"].map(lambda v: round(v, 1))
     df = df.query("rank <= @g.params.ranked").filter(
         items=["rank", "name", "rate", "rank_distr", "rank_avg", "rank_dev", "rpoint_avg", "point_dev", "grade"],
     )
