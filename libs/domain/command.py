@@ -291,7 +291,7 @@ class CommandParser:
                     case "sql":
                         ret.update({key: f"%{val}%"})
                     case "filename":
-                        if re.search(r"^[\w\-\.]+$", val):
+                        if re.search(r"^[\w()\-\.]+$", val):
                             ret.update({key: val})
                     case "int":
                         ret.update({key: int(val)})
