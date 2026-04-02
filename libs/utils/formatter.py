@@ -4,7 +4,6 @@ libs/utils/formatter.py
 
 import random
 import re
-from typing import Any
 
 import pandas as pd
 
@@ -29,9 +28,9 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
     if df.empty:
         return fmt
 
-    field: list[Any] = df.columns.tolist()
+    field: list[str] = df.columns.tolist()
     if index:
-        field.insert(0, df.index.name)
+        field.insert(0, str(df.index.name))
 
     for x in field:
         match str(x):
@@ -53,7 +52,7 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append(".2%")
             case "top2_rate" | "連対率" | "top3_rate" | "ラス回避率":
                 fmt.append(".2%")
-            case "yakuman_rate" | "yakuman_rate" | "役満和了率":
+            case "yakuman_rate" | "役満和了率":
                 fmt.append(".2%")
             case "トビ" | "flying":
                 fmt.append(".0f")
@@ -61,12 +60,8 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append(".2%")
             case "平均順位" | "平順" | "rank_avg":
                 fmt.append(".2f")
-            case "順位差" | "トップ差":
+            case "順位差" | "トップ差" | "平均素点":
                 fmt.append(".1f")
-            case "平均素点" | "レート" | "rate":
-                fmt.append(".1f")
-            case "順位偏差" | "得点偏差":
-                fmt.append(".0f")
             case "rpoint_max" | "rpoint_min" | "rpoint_mean":
                 fmt.append(".0f")
             case "participation_rate" | "ゲーム参加率":
@@ -94,20 +89,26 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
     if df.empty:
         return fmt
 
-    field: list[Any] = df.columns.tolist()
+    field: list[str] = df.columns.tolist()
     if index:
-        field.insert(0, df.index.name)
+        field.insert(0, str(df.index.name))
 
     if header:  # ヘッダ(すべて左寄せ)
         fmt = ["left"] * len(field)
     else:
         for x in field:
             match str(x):
-                case "name" | "team" | "player" | "playtime" | "matter" | "grade":
+                case "日時" | "playtime":
                     fmt.append("left")
-                case "rank_distr" | "rank_distr4":
+                case "プレイヤー名" | "name" | "team" | "player":
                     fmt.append("left")
-                case "rank_avg":
+                case "内容" | "和了役" | "matter":
+                    fmt.append("left")
+                case "段位" | "grade":
+                    fmt.append("left")
+                case "順位分布" | "rank_distr" | "rank_distr4":
+                    fmt.append("left")
+                case "平均順位" | "rank_avg":
                     fmt.append("center")
                 case _:
                     fmt.append("right")
