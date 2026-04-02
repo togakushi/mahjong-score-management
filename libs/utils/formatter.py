@@ -33,10 +33,12 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
         field.insert(0, str(df.index.name))
 
     for x in field:
-        match str(x):
-            case "ゲーム数" | "game_count":
+        match x:
+            case v if v.endswith("_rate") or v.endswith("率") or v.endswith("(%)"):
+                fmt.append(".2%")
+            case v if v.endswith("_count"):
                 fmt.append(".0f")
-            case "win" | "lose" | "draw" | "top2" | "top3" | "yakuman_count":
+            case "ゲーム数" | "win" | "lose" | "draw" | "top2" | "top3":
                 fmt.append(".0f")
             case "通算" | "通算ポイント" | "point_sum":
                 fmt.append("+.1f")
@@ -46,26 +48,14 @@ def floatfmt_adjust(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append("+.1f")
             case "1st" | "2nd" | "3rd" | "4th" | "1位" | "2位" | "3位" | "4位" | "rank1" | "rank2" | "rank3" | "rank4":
                 fmt.append(".0f")
-            case "rank1_rate" | "rank2_rate" | "rank3_rate" | "rank4_rate" | "1位率" | "2位率" | "3位率" | "4位率":
-                fmt.append(".2%")
-            case "1位(%)" | "2位(%)" | "3位(%)" | "4位(%)":
-                fmt.append(".2%")
-            case "top2_rate" | "連対率" | "top3_rate" | "ラス回避率":
-                fmt.append(".2%")
-            case "yakuman_rate" | "役満和了率":
-                fmt.append(".2%")
             case "トビ" | "flying":
                 fmt.append(".0f")
-            case "flying_rate" | "トビ率":
-                fmt.append(".2%")
             case "平均順位" | "平順" | "rank_avg":
                 fmt.append(".2f")
             case "順位差" | "トップ差" | "平均素点":
                 fmt.append(".1f")
             case "rpoint_max" | "rpoint_min" | "rpoint_mean":
                 fmt.append(".0f")
-            case "participation_rate" | "ゲーム参加率":
-                fmt.append(".2%")
             case _:
                 fmt.append("")
 
@@ -97,7 +87,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
         fmt = ["left"] * len(field)
     else:
         for x in field:
-            match str(x):
+            match x:
                 case "日時" | "playtime":
                     fmt.append("left")
                 case "プレイヤー名" | "name" | "team" | "player":
