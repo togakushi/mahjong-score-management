@@ -23,7 +23,8 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pdoc",
+    "sphinx",
+    "python-docs-theme",
     "pytest",
     "pytest-cov",
     "mypy",

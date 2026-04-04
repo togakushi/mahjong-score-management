@@ -23,16 +23,15 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras --dev
 
-      - name: Generate documentation
+      - name: Generate documentation for sphinx
         run: |
-          rm -rf temp_docs
-          uv run pdoc -d google --logo https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig6avYSN3Ds4H-e_Hib-mB6bYwDH71xSD7vn22M6QVjtzMei0d6T29PZYPOQadAs6AqUe4dzFo4lLhN6gpKCJHugZd5rQdF8m5oXt2BL1gZAv11YQey7bds63cuhP0gFqQwk4hF9yV28sE/s128/ma-jan_pai.png --logo-link '' --output-dir temp_docs *.py libs integrations
-          touch temp_docs/.nojekyll
-        env:
-          PDOC_ALLOW_EXEC: "1"
+          rm -rf temp_docs_sphinx
+          uv run sphinx-apidoc -f -o ./temp_docs_sphinx/source/ . -d 2 --tocfile=index --module-first --separate
+          uv run sphinx-build -M html ./temp_docs_sphinx/source/ ./temp_docs_sphinx/build --conf-dir docs/dev/
+          touch temp_docs_sphinx/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./temp_docs
+          publish_dir: ./temp_docs_sphinx/html/
