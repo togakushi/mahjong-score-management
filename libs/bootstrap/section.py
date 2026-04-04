@@ -3,6 +3,7 @@ libs/bootstrap/section.py
 """
 
 import logging
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
@@ -188,64 +189,45 @@ class BaseSection(CommonMethodMixin):
         return ret_dict
 
 
+@dataclass
 class SettingSection(BaseSection):
     """settingセクション処理"""
 
-    remarks_word: str
+    section: str = "setting"
+    """セクション名"""
+    remarks_word: str = field(default="麻雀メモ")
     """メモ記録用キーワード"""
-    remarks_suffix: list[str]
+    remarks_suffix: list[str] = field(default_factory=list)
     """メモ記録用キーワードサフィックス"""
-    rule_config: Optional[Path]
+    rule_config: Optional[Path] = field(default=None)
     """ルール設定ファイル"""
-    default_rule: str
+    default_rule: str = field(default="")
     """ルール識別子未指定時に使用される識別子"""
-    separate: bool
+    separate: bool = field(default=False)
     """スコア入力元識別子別集計フラグ
     - *True*: 識別子別に集計
     - *False*: すべて集計
     """
-    channel_id: Optional[str]
+    channel_id: Optional[str] = field(default=None)
     """チャンネルIDを上書きする"""
-    time_adjust: int
+    time_adjust: int = field(default=12)
     """日付変更後、集計範囲に含める追加時間"""
-    search_word: str
+    search_word: str = field(default="")
     """コメント固定(検索時の検索文字列)"""
-    group_length: int
+    group_length: int = field(default=0)
     """コメント固定(検索時の集約文字数)"""
-    guest_mark: str
+    guest_mark: str = field(default="※")
     """ゲスト無効時に未登録メンバーに付与する印"""
-    database_file: Union[str, Path]
+    database_file: Union[str, Path] = field(default=Path("mahjong.db"))
     """成績管理データベースファイル名"""
-    backup_dir: Optional[Path]
+    backup_dir: Optional[Path] = field(default=None)
     """バックアップ先ディレクトリ"""
-    font_file: Path
+    font_file: Path = field(default=Path("ipaexg.ttf"))
     """グラフ描写に使用するフォントファイル"""
-    graph_style: str
+    graph_style: str = field(default="ggplot")
     """グラフスタイル"""
-    work_dir: Path
+    work_dir: Path = field(default=Path("work"))
     """作業ディレクトリ"""
-
-    def __init__(self) -> None:
-        self.section: str = "setting"
-        self.default_reset()
-
-    def default_reset(self) -> None:
-        """パラメータ初期化"""
-        self.remarks_word = str("麻雀メモ")
-        self.remarks_suffix = []
-        self.rule_config = None
-        self.time_adjust = int(12)
-        self.default_rule = str("")
-        self.separate = bool(False)
-        self.channel_id = None
-        self.search_word = str("")
-        self.group_length = int(0)
-        self.guest_mark = str("※")
-        self.database_file = Path("mahjong.db")
-        self.backup_dir = None
-        self.font_file = Path("ipaexg.ttf")
-        self.graph_style = str("ggplot")
-        self.work_dir = Path("work")
 
 
 class AliasSection(BaseSection):
