@@ -230,50 +230,32 @@ class SettingSection(BaseSection):
     """作業ディレクトリ"""
 
 
+@dataclass
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
-    results: list[str]
+    section: str = "alias"
+    """セクション名"""
+    results: list[str] = field(default_factory=lambda: ["results", "成績"])
     """成績サマリ出力コマンド"""
-    graph: list[str]
+    graph: list[str] = field(default_factory=lambda: ["graph", "グラフ"])
     """成績グラフ出力コマンド"""
-    ranking: list[str]
+    ranking: list[str] = field(default_factory=lambda: ["ranking", "ランキング"])
     """ランキング出力コマンド"""
-    report: list[str]
+    report: list[str] = field(default_factory=lambda: ["report", "レポート"])
     """レポート出力コマンド"""
-    download: list[str]
-    member: list[str]
+    download: list[str] = field(default_factory=lambda: ["download", "ダウンロード"])
+    member: list[str] = field(default_factory=lambda: ["member", "userlist", "member_list"])
     """メンバーリスト表示コマンド"""
-    add: list[str]
-    delete: list[str]
-    team_create: list[str]
-    team_del: list[str]
-    team_add: list[str]
-    team_remove: list[str]
-    team_list: list[str]
+    add: list[str] = field(default_factory=lambda: ["add"])
+    delete: list[str] = field(default_factory=lambda: ["del"])
+    team_create: list[str] = field(default_factory=lambda: ["team_create"])
+    team_del: list[str] = field(default_factory=lambda: ["team_del"])
+    team_add: list[str] = field(default_factory=lambda: ["team_add"])
+    team_remove: list[str] = field(default_factory=lambda: ["team_remove"])
+    team_list: list[str] = field(default_factory=lambda: ["team_list"])
     """チームリスト出力コマンド"""
-    team_clear: list[str]
-
-    def __init__(self) -> None:
-        self.section = "alias"
-        self.default_reset()
-
-    def default_reset(self) -> None:
-        """パラメータ初期化"""
-        self.results = ["results", "成績"]
-        self.graph = ["graph", "グラフ"]
-        self.ranking = ["ranking", "ランキング"]
-        self.report = ["report", "レポート"]
-        self.download = ["download", "ダウンロード"]
-        self.member = ["member", "userlist", "member_list"]
-        self.add = ["add"]
-        self.delete = ["del"]
-        self.team_create = ["team_create"]
-        self.team_del = ["team_del"]
-        self.team_add = ["team_add"]
-        self.team_remove = ["team_remove"]
-        self.team_list = ["team_list"]
-        self.team_clear = ["team_clear"]
+    team_clear: list[str] = field(default_factory=lambda: ["team_clear"])
 
     def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
         """AliasSection専用の追加処理"""
