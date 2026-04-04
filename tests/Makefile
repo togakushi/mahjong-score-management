@@ -10,6 +10,7 @@ update:
 docs:
 	rm -rf docs/dev/source/
 	uv run sphinx-apidoc -f -o docs/dev/source/ . -d 2 --tocfile=index --module-first --separate
+	uv run sphinx-build -M clean docs/dev/source/ docs/dev/build --conf-dir docs/dev/
 	uv run sphinx-build -M html docs/dev/source/ docs/dev/build --conf-dir docs/dev/
 
 prospector:

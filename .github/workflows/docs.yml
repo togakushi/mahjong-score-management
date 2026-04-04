@@ -28,10 +28,9 @@ jobs:
           rm -rf temp_docs_sphinx
           uv run sphinx-apidoc -f -o ./temp_docs_sphinx/source/ . -d 2 --tocfile=index --module-first --separate
           uv run sphinx-build -M html ./temp_docs_sphinx/source/ ./temp_docs_sphinx/build --conf-dir docs/dev/
-          touch temp_docs_sphinx/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./temp_docs_sphinx/html/
+          publish_dir: ./temp_docs_sphinx/build/html/
