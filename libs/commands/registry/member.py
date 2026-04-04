@@ -167,6 +167,7 @@ def append(argument: list[str]) -> str:
 
     Args:
         argument (list[str]): 登録情報
+
             - argument[0]: 登録するメンバー名
             - argument[1]: 登録する別名
 
@@ -276,6 +277,7 @@ def remove(argument: list[str]) -> str:
 
     Args:
         argument (list[str]): 削除情報
+
             - argument[0]: 削除するメンバー名
             - argument[1]: 削除する別名
 

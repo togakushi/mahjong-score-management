@@ -31,6 +31,7 @@ class PlaceholderBuilder(ParameterData):
     """コマンド名"""
     channel_config: Optional["Path"] = field(default=None)
     """チャンネル個別設定状況
+
     - *Path*: 追加設定ファイルパス
     - *None*: 個別設定を利用していない
     """
@@ -38,6 +39,7 @@ class PlaceholderBuilder(ParameterData):
     # ルール情報
     target_mode: int = field(default=0)
     """集計対象モードの指定
+
     - *0*: settingのデフォルトに従う
     - *not 0*: 指定値でmodeを上書き
     """
@@ -51,6 +53,7 @@ class PlaceholderBuilder(ParameterData):
     """集計対象ルール識別子"""
     mixed: bool = field(default=False)
     """ルール識別子の扱い
+
     - *True*: 定義済みすべてのルール識別子を含める
     - *False*: ルール識別子を個別指定
     """
@@ -65,11 +68,13 @@ class PlaceholderBuilder(ParameterData):
     """トビカウントの無効化"""
     draw_split: bool = field(default=False)
     """同点時の順位点の取り扱い
+
     - *True*: 山分け
     - *False*: 席順
     """
     undefined_word: int = field(default=1)
     """未登録ワードの扱い
+
     - *0*: 役満扱い
     - *1*: カウントのみ
     - *2*: 卓外清算(個人清算)
@@ -93,11 +98,13 @@ class PlaceholderBuilder(ParameterData):
     """スコア入力元識別子"""
     separate: bool = field(default=False)
     """スコア入力元識別子別集計フラグ
+
     - *True*: 識別子別に集計
     - *False*: すべて集計
     """
     collection: str = field(default="")
     """集約集計
+
     - *daily*: 日次集約
     - *weekly*: 週次集約
     - *monthly*: 月次集約
@@ -106,6 +113,7 @@ class PlaceholderBuilder(ParameterData):
     """
     aggregate_unit: Literal["A", "M", "Y", None] = field(default=None)
     """レポート生成用日付範囲デフォルト値
+
     - *A*: 全期間
     - *M*: 月別
     - *Y*: 年別
@@ -175,10 +183,12 @@ class PlaceholderBuilder(ParameterData):
             key_name (str): 探索するキー名
             val_type (type): 取り込む値の型 (bool, str)
             fallback (Any): 見つからなかった場合にセットする値
-            - *None* が指定されているときは値を更新しない
+
+                - *None* が指定されているときは値を更新しない
 
         Note:
             探索優先順序
+
             1. 個別設定ファイル内settingセクション
             2. メイン設定ファイル内チャンネル個別セクション
             3. メイン設定ファイル内サービス別セクション
@@ -379,7 +389,7 @@ class PlaceholderBuilder(ParameterData):
         プレースホルダ用辞書出力
 
         Args:
-            game_count (Optional[int]): 規定打数調整用ゲーム数. Defaults to None.
+            game_count (int, optional): 規定打数調整用ゲーム数. Defaults to None.
 
         Returns:
             dict[str, Any]: プレースホルダ

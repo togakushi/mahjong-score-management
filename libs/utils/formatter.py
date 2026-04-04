@@ -114,8 +114,9 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
         target (str): 対象プレイヤー名
         add_mark (bool, optional): ゲストマークを付与する. Defaults to False.
         not_replace (bool, optional): ゲスト置換なし(強制/個人戦) Defaults to False.
-          - *True*: ゲストを置換しない
-          - *False*: ゲストを置換する
+
+            - *True*: ゲストを置換しない
+            - *False*: ゲストを置換する
 
     Returns:
         str: 表記ブレ修正後のプレイヤー名

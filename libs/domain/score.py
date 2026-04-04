@@ -18,9 +18,9 @@ class Score:
     プレイヤー成績
 
     Note:
-        フィールド名の 'r_' プレフィックス (r_str, rpoint など) は、
-        GameResult.to_dict() によって 'p1_', 'p2_', 'p3_', 'p4_' に置換され、
-        DBテーブルのカラム名 (p1_str, p2_str など) として使用する。
+        フィールド名の ``r_`` プレフィックス ( ``r_str``, ``rpoint`` など) は、
+        GameResult.to_dict() によって ``p1_``, ``p2_``, ``p3_``, ``p4_`` に置換され、
+        DBテーブルのカラム名 ( ``p1_str``, ``p2_str`` など) として使用する。
 
     """
 
@@ -50,8 +50,8 @@ class Score:
             ScoreDict: 返却する辞書
 
         Note:
-            フィールド名の 'r_' プレフィックスは、指定された prefix に置換される。
-            例: r_str -> p1_str (prefix='p1' の場合)
+            フィールド名の `r_` プレフィックスは、指定された prefix に置換される。
+            例: r_str -> p1_str (`prefix="p1"` の場合)
 
         """
         return cast(
@@ -264,6 +264,7 @@ class GameResult:
 
         Args:
             kind (Literal, optional): 表示形式
+
                 - *simple*: 簡易情報 (Default)
                 - *detail*: 詳細情報
                 - *logging*: ロギング用
@@ -301,6 +302,7 @@ class GameResult:
 
         Args:
             kind (Literal, optional): 取得内容
+
                 - *name*: プレイヤー名 (Default)
                 - *str*: 入力された素点情報
                 - *rpoint*: 素点

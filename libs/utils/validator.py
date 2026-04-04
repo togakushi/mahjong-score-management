@@ -21,11 +21,13 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
     Args:
         name (str): チェックする名前
         kind (str): チェック種別
+
             - member
             - team
 
     Returns:
         tuple[bool, str]: 判定結果
+
         - bool: 制限チェック結果真偽
         - str: 制限理由
 

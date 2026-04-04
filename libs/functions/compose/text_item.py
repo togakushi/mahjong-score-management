@@ -23,8 +23,9 @@ def remarks(headword: bool = False) -> str | list[str]:
 
     Returns:
         Union[list, str]:
-        - `headword` がない場合はリストで返す
-        - `headword` がある場合は文字列で返す
+
+        - ``headword`` がない場合はリストで返す
+        - ``headword`` がある場合は文字列で返す
 
     """
     remark_list: list[str] = []
@@ -103,8 +104,9 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[st
 
     Returns:
         Union[list, str]:
-        - `kind` にlistが指定されている場合はリスト
-        - `kind` にstrが指定されている場合は文字列
+
+        - ``kind`` にlistが指定されている場合はリスト
+        - ``kind`` にstrが指定されている場合は文字列
 
     """
     starttime: str
@@ -138,6 +140,7 @@ def aggregation_range(
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報
         kind (str): 表示させるフォーマットを選択. Defaults to str.
+
             - list: リストで受け取る
             - str: 文字列で受け取る
 
@@ -174,8 +177,8 @@ def date_range(
 
     Args:
         kind (Format): ExtendedDatetimeのformatメソッドに渡す引数
-        prefix_a (Optional[str], optional): 単独で返った時の接頭辞. Defaults to None.
-        prefix_b (Optional[str], optional): 範囲で返った時の接頭辞. Defaults to None.
+        prefix_a (str, optional): 単独で返った時の接頭辞. Defaults to None.
+        prefix_b (str, optional): 範囲で返った時の接頭辞. Defaults to None.
 
     Returns:
         str: 生成文字列

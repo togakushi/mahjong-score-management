@@ -232,7 +232,8 @@ def check_pending(m: "MessageParserProtocol") -> bool:
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
-        bool: 真偽
+        bool: 真偽値
+
         - *True*: 保留中
         - *False*: チェック開始
 
