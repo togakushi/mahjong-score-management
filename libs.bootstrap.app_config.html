@@ -364,9 +364,12 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>個別設定読み込み結果
-- <em>Path</em>: 読み込んだ設定ファイルパス
-- <em>None</em>: 読み込める設定ファイルがない</p>
+<dd class="field-even"><p><p>個別設定読み込み結果</p>
+<ul class="simple">
+<li><p><em>Path</em>: 読み込んだ設定ファイルパス</p></li>
+<li><p><em>None</em>: 読み込める設定ファイルがない</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Optional[Path]</p>
@@ -386,7 +389,7 @@
 <dd><p>メイン設定から優先度の高いチャンネルIDを取得する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>section_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – チャンネル個別設定セクション名</p>
+<dd class="field-odd"><p><strong>section_name</strong> (<em>str</em><em>, </em><em>optional</em>) – チャンネル個別設定セクション名</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>チャンネルID</p>
@@ -439,7 +442,7 @@
 <dd><p>設定されている値、キーワードをリスト化する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>add_words</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – リストに追加するワード. Defaults to None.</p>
+<dd class="field-odd"><p><strong>add_words</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – リストに追加するワード. Defaults to None.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>リスト化されたキーワード</p>

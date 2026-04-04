@@ -297,45 +297,25 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Delimiter.HYPHEN">
 <span class="sig-name descname"><span class="pre">HYPHEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hyphen'</span></span><a class="headerlink" href="#libs.utils.timekit.Delimiter.HYPHEN" title="Link to this definition">¶</a></dt>
-<dd><p>%Y-%m-%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ハイフン(ex</p>
-</dd>
-</dl>
+<dd><p>ハイフン(ex <code class="docutils literal notranslate"><span class="pre">%Y-%m-%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Delimiter.JAPANESE">
 <span class="sig-name descname"><span class="pre">JAPANESE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'japanese'</span></span><a class="headerlink" href="#libs.utils.timekit.Delimiter.JAPANESE" title="Link to this definition">¶</a></dt>
-<dd><p>%Y%年m%月d日)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Japanese Style (ex</p>
-</dd>
-</dl>
+<dd><p>Japanese Style (ex <code class="docutils literal notranslate"><span class="pre">%Y%年m%月d日</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Delimiter.NUMBER">
 <span class="sig-name descname"><span class="pre">NUMBER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'number'</span></span><a class="headerlink" href="#libs.utils.timekit.Delimiter.NUMBER" title="Link to this definition">¶</a></dt>
-<dd><p>%Y%m%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>区切り無し (ex</p>
-</dd>
-</dl>
+<dd><p>区切り無し (ex <code class="docutils literal notranslate"><span class="pre">%Y%m%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Delimiter.SLASH">
 <span class="sig-name descname"><span class="pre">SLASH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slash'</span></span><a class="headerlink" href="#libs.utils.timekit.Delimiter.SLASH" title="Link to this definition">¶</a></dt>
-<dd><p>%Y/%m/%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>スラッシュ(ex</p>
-</dd>
-</dl>
+<dd><p>スラッシュ(ex <code class="docutils literal notranslate"><span class="pre">%Y/%m/%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -359,10 +339,12 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetime.AcceptedType">
 <span class="sig-name descname"><span class="pre">AcceptedType</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TypeAlias</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">str</span> <span class="pre">|</span> <span class="pre">float</span> <span class="pre">|</span> <span class="pre">datetime.datetime</span> <span class="pre">|</span> <span class="pre">ForwardRef('ExtendedDatetime')</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetime.AcceptedType" title="Link to this definition">¶</a></dt>
-<dd><p>引数として受け付ける型
-- <strong>str</strong>: 日付文字列（ISO形式など）
-- <strong>float</strong>: UNIXタイムスタンプ
-- <strong>datetime</strong> / <strong>ExtendedDatetime</strong>: オブジェクトをそのまま利用</p>
+<dd><p>引数として受け付ける型</p>
+<ul class="simple">
+<li><p><strong>str</strong>: 日付文字列（ISO形式など）</p></li>
+<li><p><strong>float</strong>: UNIXタイムスタンプ</p></li>
+<li><p><strong>datetime</strong> / <strong>ExtendedDatetime</strong>: オブジェクトをそのまま利用</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -384,8 +366,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime.AcceptedType" title="libs.utils.timekit.ExtendedDatetime.AcceptedType"><em>AcceptedType</em></a><em>]</em><em>, </em><em>optional</em>) – 引数. Defaults to None.
-- None: 現在時刻(<cite>datetime.now()</cite>)で初期化</p></li>
+<li><p><strong>value</strong> (<a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime.AcceptedType" title="libs.utils.timekit.ExtendedDatetime.AcceptedType"><em>AcceptedType</em></a><em>, </em><em>optional</em>) – <p>引数. Defaults to None.</p>
+<ul>
+<li><p>None: 現在時刻( <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code> )で初期化</p></li>
+</ul>
+</p></li>
 <li><p><strong>relativedelta_kwargs</strong> (<em>dict</em>) – 初期化時にrelativedelta()に渡す引数</p></li>
 </ul>
 </dd>
@@ -461,11 +446,14 @@
 <dd><p>キーワードが示す範囲をリストで返す</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>Union</em><em>[</em><em>...</em><em>]</em>) – 範囲取得キーワード
-- str: スペース区切りで分割してリスト化
-- list: スペース区切りで再分割
-- list[ExtendedDatetime]: リスト化されたExtendedDatetime型
-- ExtendedDatetimeList: ExtendedDatetimeList型</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>Union</em><em>[</em><em>...</em><em>]</em>) – <p>範囲取得キーワード</p>
+<ul class="simple">
+<li><p>str: スペース区切りで分割してリスト化</p></li>
+<li><p>list: スペース区切りで再分割</p></li>
+<li><p>list[ExtendedDatetime]: リスト化されたExtendedDatetime型</p></li>
+<li><p>ExtendedDatetimeList: ExtendedDatetimeList型</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>日付リスト</p>
@@ -519,45 +507,25 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter.HYPHEN">
 <span class="sig-name descname"><span class="pre">HYPHEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hyphen'</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.HYPHEN" title="Link to this definition">¶</a></dt>
-<dd><p>%Y-%m-%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ハイフン(ex</p>
-</dd>
-</dl>
+<dd><p>ハイフン(ex <code class="docutils literal notranslate"><span class="pre">%Y-%m-%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter.JAPANESE">
 <span class="sig-name descname"><span class="pre">JAPANESE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'japanese'</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.JAPANESE" title="Link to this definition">¶</a></dt>
-<dd><p>%Y%年m%月d日)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Japanese Style (ex</p>
-</dd>
-</dl>
+<dd><p>Japanese Style (ex <code class="docutils literal notranslate"><span class="pre">%Y%年m%月d日</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter.NUMBER">
 <span class="sig-name descname"><span class="pre">NUMBER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'number'</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.NUMBER" title="Link to this definition">¶</a></dt>
-<dd><p>%Y%m%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>区切り無し (ex</p>
-</dd>
-</dl>
+<dd><p>区切り無し (ex <code class="docutils literal notranslate"><span class="pre">%Y%m%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter.SLASH">
 <span class="sig-name descname"><span class="pre">SLASH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slash'</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.SLASH" title="Link to this definition">¶</a></dt>
-<dd><p>%Y/%m/%d)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>スラッシュ(ex</p>
-</dd>
-</dl>
+<dd><p>スラッシュ(ex <code class="docutils literal notranslate"><span class="pre">%Y/%m/%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -641,32 +609,19 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.EXT">
 <span class="sig-name descname"><span class="pre">EXT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ext'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.EXT" title="Link to this definition">¶</a></dt>
-<dd><p>ファイル拡張子用(%Y%m%d-%H%M%S)</p>
+<dd><p>ファイル拡張子用( <code class="docutils literal notranslate"><span class="pre">%Y%m%d-%H%M%S</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.HM">
 <span class="sig-name descname"><span class="pre">HM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hm'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.HM" title="Link to this definition">¶</a></dt>
-<dd><p>%M)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>時分(%H</p>
-</dd>
-</dl>
+<dd><p>時分( <code class="docutils literal notranslate"><span class="pre">%H:%M</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.HMS">
 <span class="sig-name descname"><span class="pre">HMS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hms'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.HMS" title="Link to this definition">¶</a></dt>
-<dd><p>%S)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>時分秒(%H</p>
-</dd>
-<dt class="field-even">Type<span class="colon">:</span></dt>
-<dd class="field-even"><p>%M</p>
-</dd>
-</dl>
+<dd><p>時分秒( <code class="docutils literal notranslate"><span class="pre">%H:%M:%S</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -702,15 +657,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.SQL">
 <span class="sig-name descname"><span class="pre">SQL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sql'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.SQL" title="Link to this definition">¶</a></dt>
-<dd><p>%S.%f)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SQLite用フォーマット(%Y-%m-%d %H</p>
-</dd>
-<dt class="field-even">Type<span class="colon">:</span></dt>
-<dd class="field-even"><p>%M</p>
-</dd>
-</dl>
+<dd><p>SQLite用フォーマット( <code class="docutils literal notranslate"><span class="pre">%Y-%m-%d</span> <span class="pre">%H:%M:%S.%f</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -722,44 +669,31 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.Y">
 <span class="sig-name descname"><span class="pre">Y</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'y'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.Y" title="Link to this definition">¶</a></dt>
-<dd><p>年(%Y)</p>
+<dd><p>年( <code class="docutils literal notranslate"><span class="pre">%Y</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.YM">
 <span class="sig-name descname"><span class="pre">YM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ym'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.YM" title="Link to this definition">¶</a></dt>
-<dd><p>年月(%Y/%m)</p>
+<dd><p>年月( <code class="docutils literal notranslate"><span class="pre">%Y/%m</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.YMD">
 <span class="sig-name descname"><span class="pre">YMD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ymd'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.YMD" title="Link to this definition">¶</a></dt>
-<dd><p>年月日(%Y/%m/%d)</p>
+<dd><p>年月日( <code class="docutils literal notranslate"><span class="pre">%Y/%m/%d</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.YMDHM">
 <span class="sig-name descname"><span class="pre">YMDHM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ymdhm'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.YMDHM" title="Link to this definition">¶</a></dt>
-<dd><p>%M)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>年月日時分(%Y/%m/%d %H</p>
-</dd>
-</dl>
+<dd><p>年月日時分( <code class="docutils literal notranslate"><span class="pre">%Y/%m/%d</span> <span class="pre">%H:%M</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.YMDHMS">
 <span class="sig-name descname"><span class="pre">YMDHMS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ymdhms'</span></span><a class="headerlink" href="#libs.utils.timekit.Format.YMDHMS" title="Link to this definition">¶</a></dt>
-<dd><p>%S)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>年月日時分秒(%Y/%m/%d %H</p>
-</dd>
-<dt class="field-even">Type<span class="colon">:</span></dt>
-<dd class="field-even"><p>%M</p>
-</dd>
-</dl>
+<dd><p>年月日時分秒( <code class="docutils literal notranslate"><span class="pre">%Y/%m/%d</span> <span class="pre">%H:%M:%S</span></code> )</p>
 </dd></dl>
 
 <dl class="py attribute">

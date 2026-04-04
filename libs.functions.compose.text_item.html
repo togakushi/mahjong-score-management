@@ -175,9 +175,12 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – 集計範囲のゲーム情報</p></li>
-<li><p><strong>kind</strong> (<em>str</em>) – 表示させるフォーマットを選択. Defaults to str.
-- list: リストで受け取る
-- str: 文字列で受け取る</p></li>
+<li><p><strong>kind</strong> (<em>str</em>) – <p>表示させるフォーマットを選択. Defaults to str.</p>
+<ul>
+<li><p>list: リストで受け取る</p></li>
+<li><p>str: 文字列で受け取る</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -201,8 +204,8 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>kind</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format" title="libs.utils.timekit.Format"><em>Format</em></a>) – ExtendedDatetimeのformatメソッドに渡す引数</p></li>
-<li><p><strong>prefix_a</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – 単独で返った時の接頭辞. Defaults to None.</p></li>
-<li><p><strong>prefix_b</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – 範囲で返った時の接頭辞. Defaults to None.</p></li>
+<li><p><strong>prefix_a</strong> (<em>str</em><em>, </em><em>optional</em>) – 単独で返った時の接頭辞. Defaults to None.</p></li>
+<li><p><strong>prefix_b</strong> (<em>str</em><em>, </em><em>optional</em>) – 範囲で返った時の接頭辞. Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -252,8 +255,8 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><cite>headword</cite> がない場合はリストで返す</p></li>
-<li><p><cite>headword</cite> がある場合は文字列で返す</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headword</span></code> がない場合はリストで返す</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headword</span></code> がある場合は文字列で返す</p></li>
 </ul>
 </p>
 </dd>
@@ -276,8 +279,8 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><cite>kind</cite> にlistが指定されている場合はリスト</p></li>
-<li><p><cite>kind</cite> にstrが指定されている場合は文字列</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind</span></code> にlistが指定されている場合はリスト</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind</span></code> にstrが指定されている場合は文字列</p></li>
 </ul>
 </p>
 </dd>

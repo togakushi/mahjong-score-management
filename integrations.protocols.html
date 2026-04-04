@@ -283,9 +283,12 @@
 <dd><p>botによる操作かチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>真偽値
-- <em>True</em>: botが操作
-- <em>False</em>: ユーザが操作</p>
+<dd class="field-odd"><p><p>真偽値</p>
+<ul class="simple">
+<li><p><em>True</em>: botが操作</p></li>
+<li><p><em>False</em>: ユーザが操作</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -299,9 +302,12 @@
 <dd><p>コマンドとして実行されたかチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>真偽値
-- <em>True</em>: スラッシュコマンド
-- <em>False</em>: チャンネル内呼び出しキーワード</p>
+<dd class="field-odd"><p><p>真偽値</p>
+<ul class="simple">
+<li><p><em>True</em>: スラッシュコマンド</p></li>
+<li><p><em>False</em>: チャンネル内呼び出しキーワード</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -451,12 +457,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.MsgData.reaction_ng">
 <span class="sig-name descname"><span class="pre">reaction_ng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.protocols.MsgData.reaction_ng" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>NGリアクションデータ格納用</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.MsgData.reaction_ok">
 <span class="sig-name descname"><span class="pre">reaction_ok</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.protocols.MsgData.reaction_ok" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>OKリアクションデータ格納用</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.MsgData.remarks">
@@ -479,9 +487,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.MsgData.thread_ts">
 <span class="sig-name descname"><span class="pre">thread_ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'undetermined'</span></span><a class="headerlink" href="#integrations.protocols.MsgData.thread_ts" title="Link to this definition">¶</a></dt>
-<dd><p>スレッド元タイムスタンプ
-- <em>0</em>: スレッドになっていない
-- <em>undetermined</em>: 未定義状態</p>
+<dd><p>スレッド元タイムスタンプ</p>
+<ul class="simple">
+<li><p><em>0</em>: スレッドになっていない</p></li>
+<li><p><em>undetermined</em>: 未定義状態</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -586,9 +596,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.StatusData.command_flg">
 <span class="sig-name descname"><span class="pre">command_flg</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#integrations.protocols.StatusData.command_flg" title="Link to this definition">¶</a></dt>
-<dd><p>コマンドとして実行されたかチェック
-- <em>True</em>: コマンド実行
-- <em>False</em>: キーワード呼び出し</p>
+<dd><p>コマンドとして実行されたかチェック</p>
+<ul class="simple">
+<li><p><em>True</em>: コマンド実行</p></li>
+<li><p><em>False</em>: キーワード呼び出し</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -612,9 +624,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.protocols.StatusData.reaction">
 <span class="sig-name descname"><span class="pre">reaction</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#integrations.protocols.StatusData.reaction" title="Link to this definition">¶</a></dt>
-<dd><p>データステータス状態
-- <em>True</em>: 矛盾なくデータを取り込んだ(OK)
-- <em>False</em>: 矛盾があったがデータを取り込んだ or データを取り込めなかった(NG)</p>
+<dd><p>データステータス状態</p>
+<ul class="simple">
+<li><p><em>True</em>: 矛盾なくデータを取り込んだ(OK)</p></li>
+<li><p><em>False</em>: 矛盾があったがデータを取り込んだ or データを取り込めなかった(NG)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">

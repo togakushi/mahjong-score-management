@@ -364,12 +364,15 @@
 <dd><p>指定データをリストで返す</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – 取得内容
-- <em>name</em>: プレイヤー名 (Default)
-- <em>str</em>: 入力された素点情報
-- <em>rpoint</em>: 素点
-- <em>point</em>: ポイント
-- <em>rank</em>: 順位</p>
+<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>取得内容</p>
+<ul class="simple">
+<li><p><em>name</em>: プレイヤー名 (Default)</p></li>
+<li><p><em>str</em>: 入力された素点情報</p></li>
+<li><p><em>rpoint</em>: 素点</p></li>
+<li><p><em>point</em>: ポイント</p></li>
+<li><p><em>rank</em>: 順位</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>リスト</p>
@@ -386,10 +389,13 @@
 <dd><p>データをテキストで返す</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – 表示形式
-- <em>simple</em>: 簡易情報 (Default)
-- <em>detail</em>: 詳細情報
-- <em>logging</em>: ロギング用</p>
+<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>表示形式</p>
+<ul class="simple">
+<li><p><em>simple</em>: 簡易情報 (Default)</p></li>
+<li><p><em>detail</em>: 詳細情報</p></li>
+<li><p><em>logging</em>: ロギング用</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>スコアデータ</p>
@@ -415,9 +421,9 @@
 <p>プレイヤー成績</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>フィールド名の ‘<a href="#id1"><span class="problematic" id="id2">r_</span></a>’ プレフィックス (r_str, rpoint など) は、
-GameResult.to_dict() によって ‘<a href="#id3"><span class="problematic" id="id4">p1_</span></a>’, ‘<a href="#id5"><span class="problematic" id="id6">p2_</span></a>’, ‘<a href="#id7"><span class="problematic" id="id8">p3_</span></a>’, ‘<a href="#id9"><span class="problematic" id="id10">p4_</span></a>’ に置換され、
-DBテーブルのカラム名 (p1_str, p2_str など) として使用する。</p>
+<p>フィールド名の <code class="docutils literal notranslate"><span class="pre">r_</span></code> プレフィックス ( <code class="docutils literal notranslate"><span class="pre">r_str</span></code>, <code class="docutils literal notranslate"><span class="pre">rpoint</span></code> など) は、
+GameResult.to_dict() によって <code class="docutils literal notranslate"><span class="pre">p1_</span></code>, <code class="docutils literal notranslate"><span class="pre">p2_</span></code>, <code class="docutils literal notranslate"><span class="pre">p3_</span></code>, <code class="docutils literal notranslate"><span class="pre">p4_</span></code> に置換され、
+DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span class="pre">p1_str</span></code>, <code class="docutils literal notranslate"><span class="pre">p2_str</span></code> など) として使用する。</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.Score.__init__">
@@ -496,8 +502,8 @@ DBテーブルのカラム名 (p1_str, p2_str など) として使用する。</
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>フィールド名の ‘<a href="#id11"><span class="problematic" id="id12">r_</span></a>’ プレフィックスは、指定された prefix に置換される。
-例: r_str -&gt; p1_str (prefix=’p1’ の場合)</p>
+<p>フィールド名の <cite>r_</cite> プレフィックスは、指定された prefix に置換される。
+例: r_str -&gt; p1_str (<cite>prefix=”p1”</cite> の場合)</p>
 </div>
 </dd></dl>
 

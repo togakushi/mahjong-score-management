@@ -287,11 +287,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.aggregate_unit">
 <span class="sig-name descname"><span class="pre">aggregate_unit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'A'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'M'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Y'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.aggregate_unit" title="Link to this definition">¶</a></dt>
-<dd><p>レポート生成用日付範囲デフォルト値
-- <em>A</em>: 全期間
-- <em>M</em>: 月別
-- <em>Y</em>: 年別
-- <em>None</em>: 未定義</p>
+<dd><p>レポート生成用日付範囲デフォルト値</p>
+<ul class="simple">
+<li><p><em>A</em>: 全期間</p></li>
+<li><p><em>M</em>: 月別</p></li>
+<li><p><em>Y</em>: 年別</p></li>
+<li><p><em>None</em>: 未定義</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -309,20 +311,24 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.channel_config">
 <span class="sig-name descname"><span class="pre">channel_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.channel_config" title="Link to this definition">¶</a></dt>
-<dd><p>チャンネル個別設定状況
-- <em>Path</em>: 追加設定ファイルパス
-- <em>None</em>: 個別設定を利用していない</p>
+<dd><p>チャンネル個別設定状況</p>
+<ul class="simple">
+<li><p><em>Path</em>: 追加設定ファイルパス</p></li>
+<li><p><em>None</em>: 個別設定を利用していない</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.collection">
 <span class="sig-name descname"><span class="pre">collection</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.collection" title="Link to this definition">¶</a></dt>
-<dd><p>集約集計
-- <em>daily</em>: 日次集約
-- <em>weekly</em>: 週次集約
-- <em>monthly</em>: 月次集約
-- <em>yearly</em>: 年次集約
-- <em>all</em>: 全体集約</p>
+<dd><p>集約集計</p>
+<ul class="simple">
+<li><p><em>daily</em>: 日次集約</p></li>
+<li><p><em>weekly</em>: 週次集約</p></li>
+<li><p><em>monthly</em>: 月次集約</p></li>
+<li><p><em>yearly</em>: 年次集約</p></li>
+<li><p><em>all</em>: 全体集約</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -352,9 +358,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.draw_split">
 <span class="sig-name descname"><span class="pre">draw_split</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.draw_split" title="Link to this definition">¶</a></dt>
-<dd><p>同点時の順位点の取り扱い
-- <em>True</em>: 山分け
-- <em>False</em>: 席順</p>
+<dd><p>同点時の順位点の取り扱い</p>
+<ul class="simple">
+<li><p><em>True</em>: 山分け</p></li>
+<li><p><em>False</em>: 席順</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -414,9 +422,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.mixed">
 <span class="sig-name descname"><span class="pre">mixed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.mixed" title="Link to this definition">¶</a></dt>
-<dd><p>ルール識別子の扱い
-- <em>True</em>: 定義済みすべてのルール識別子を含める
-- <em>False</em>: ルール識別子を個別指定</p>
+<dd><p>ルール識別子の扱い</p>
+<ul class="simple">
+<li><p><em>True</em>: 定義済みすべてのルール識別子を含める</p></li>
+<li><p><em>False</em>: ルール識別子を個別指定</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -466,7 +476,7 @@
 <dd><p>プレースホルダ用辞書出力</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>game_count</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – 規定打数調整用ゲーム数. Defaults to None.</p>
+<dd class="field-odd"><p><strong>game_count</strong> (<em>int</em><em>, </em><em>optional</em>) – 規定打数調整用ゲーム数. Defaults to None.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>プレースホルダ</p>
@@ -562,9 +572,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.separate">
 <span class="sig-name descname"><span class="pre">separate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.separate" title="Link to this definition">¶</a></dt>
-<dd><p>スコア入力元識別子別集計フラグ
-- <em>True</em>: 識別子別に集計
-- <em>False</em>: すべて集計</p>
+<dd><p>スコア入力元識別子別集計フラグ</p>
+<ul class="simple">
+<li><p><em>True</em>: 識別子別に集計</p></li>
+<li><p><em>False</em>: すべて集計</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -594,9 +606,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.target_mode">
 <span class="sig-name descname"><span class="pre">target_mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.target_mode" title="Link to this definition">¶</a></dt>
-<dd><p>集計対象モードの指定
-- <em>0</em>: settingのデフォルトに従う
-- <em>not 0</em>: 指定値でmodeを上書き</p>
+<dd><p>集計対象モードの指定</p>
+<ul class="simple">
+<li><p><em>0</em>: settingのデフォルトに従う</p></li>
+<li><p><em>not 0</em>: 指定値でmodeを上書き</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -608,11 +622,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.undefined_word">
 <span class="sig-name descname"><span class="pre">undefined_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.undefined_word" title="Link to this definition">¶</a></dt>
-<dd><p>未登録ワードの扱い
-- <em>0</em>: 役満扱い
-- <em>1</em>: カウントのみ
-- <em>2</em>: 卓外清算(個人清算)
-- <em>3</em>: 卓外清算(チーム清算)</p>
+<dd><p>未登録ワードの扱い</p>
+<ul class="simple">
+<li><p><em>0</em>: 役満扱い</p></li>
+<li><p><em>1</em>: カウントのみ</p></li>
+<li><p><em>2</em>: 卓外清算(個人清算)</p></li>
+<li><p><em>3</em>: 卓外清算(チーム清算)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -639,8 +655,11 @@
 <li><p><strong>main_config</strong> (<em>Path</em>) – メイン設定ファイルパス</p></li>
 <li><p><strong>key_name</strong> (<em>str</em>) – 探索するキー名</p></li>
 <li><p><strong>val_type</strong> (<a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandSpec.type" title="libs.domain.command.CommandSpec.type"><em>type</em></a>) – 取り込む値の型 (bool, str)</p></li>
-<li><p><strong>fallback</strong> (<em>Any</em>) – 見つからなかった場合にセットする値</p></li>
-<li><p><strong>が指定されているときは値を更新しない</strong> (<em>- None</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>Any</em>) – <p>見つからなかった場合にセットする値</p>
+<ul>
+<li><p><em>None</em> が指定されているときは値を更新しない</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -649,11 +668,13 @@
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>探索優先順序
-1. 個別設定ファイル内settingセクション
-2. メイン設定ファイル内チャンネル個別セクション
-3. メイン設定ファイル内サービス別セクション
-4. メイン設定ファイル内settingセクション</p>
+<p>探索優先順序</p>
+<ol class="arabic simple">
+<li><p>個別設定ファイル内settingセクション</p></li>
+<li><p>メイン設定ファイル内チャンネル個別セクション</p></li>
+<li><p>メイン設定ファイル内サービス別セクション</p></li>
+<li><p>メイン設定ファイル内settingセクション</p></li>
+</ol>
 </div>
 </dd></dl>
 
