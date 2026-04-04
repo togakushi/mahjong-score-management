@@ -47,23 +47,23 @@ class Format(StrEnum):
     TS = "ts"
     """タイムスタンプ"""
     Y = "y"
-    """年(%Y)"""
+    """年( ``%Y`` )"""
     YM = "ym"
-    """年月(%Y/%m)"""
+    """年月( ``%Y/%m`` )"""
     YMD = "ymd"
-    """年月日(%Y/%m/%d)"""
+    """年月日( ``%Y/%m/%d`` )"""
     YMDHM = "ymdhm"
-    """年月日時分(%Y/%m/%d %H:%M)"""
+    """年月日時分( ``%Y/%m/%d %H:%M`` )"""
     YMDHMS = "ymdhms"
-    """年月日時分秒(%Y/%m/%d %H:%M:%S)"""
+    """年月日時分秒( ``%Y/%m/%d %H:%M:%S`` )"""
     HM = "hm"
-    """時分(%H:%M)"""
+    """時分( ``%H:%M`` )"""
     HMS = "hms"
-    """時分秒(%H:%M:%S)"""
+    """時分秒( ``%H:%M:%S`` )"""
     SQL = "sql"
-    """SQLite用フォーマット(%Y-%m-%d %H:%M:%S.%f)"""
+    """SQLite用フォーマット( ``%Y-%m-%d %H:%M:%S.%f`` )"""
     EXT = "ext"
-    """ファイル拡張子用(%Y%m%d-%H%M%S)"""
+    """ファイル拡張子用( ``%Y%m%d-%H%M%S`` )"""
 
     JY = "jy"
     JYM = "jym"
@@ -82,13 +82,13 @@ class Delimiter(StrEnum):
     """区切り記号"""
 
     SLASH = "slash"
-    """スラッシュ(ex: %Y/%m/%d)"""
+    """スラッシュ(ex ``%Y/%m/%d`` )"""
     HYPHEN = "hyphen"
-    """ハイフン(ex: %Y-%m-%d)"""
+    """ハイフン(ex ``%Y-%m-%d`` )"""
     NUMBER = "number"
-    """区切り無し (ex: %Y%m%d)"""
+    """区切り無し (ex ``%Y%m%d`` )"""
     JAPANESE = "japanese"
-    """Japanese Style (ex: %Y%年m%月d日)"""
+    """Japanese Style (ex ``%Y%年m%月d日`` )"""
     UNDEFINED = ""
     """未定義"""
 
@@ -207,6 +207,7 @@ class ExtendedDatetime:
     # 型アノテーション用定数
     AcceptedType: TypeAlias = Union[str, float, datetime, "ExtendedDatetime"]
     """引数として受け付ける型
+
     - **str**: 日付文字列（ISO形式など）
     - **float**: UNIXタイムスタンプ
     - **datetime** / **ExtendedDatetime**: オブジェクトをそのまま利用
@@ -217,8 +218,10 @@ class ExtendedDatetime:
         ExtendedDatetimeの初期化
 
         Args:
-            value (Optional[AcceptedType], optional): 引数. Defaults to None.
-                - None: 現在時刻(`datetime.now()`)で初期化
+            value (AcceptedType, optional): 引数. Defaults to None.
+
+                - None: 現在時刻( ``datetime.now()`` )で初期化
+
             relativedelta_kwargs (dict): 初期化時にrelativedelta()に渡す引数
 
         """
@@ -427,6 +430,7 @@ class ExtendedDatetime:
 
         Args:
             value (Union[...]): 範囲取得キーワード
+
                 - str: スペース区切りで分割してリスト化
                 - list: スペース区切りで再分割
                 - list[ExtendedDatetime]: リスト化されたExtendedDatetime型

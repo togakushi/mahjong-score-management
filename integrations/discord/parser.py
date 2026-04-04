@@ -46,7 +46,8 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         Returns:
             bool: 真偽値
 
-        Note: slackに合わせてプロパティ名に`in_thread`を使う
+        Note:
+            slackに合わせてプロパティ名に `in_thread` を使う
 
         """
         if self.status.command_flg:

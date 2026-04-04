@@ -216,7 +216,7 @@ class SvcFunctions(FunctionsInterface):
 
         Returns:
             dict[str, list[str]]: リアクション
-            - str: "oK" or "ng"
+            - str: ``ok`` or ``ng``
             - list[str]: タイムスタンプ
 
         """

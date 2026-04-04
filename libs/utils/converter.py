@@ -35,8 +35,10 @@ def save_output(
         suffix (str, optional): 保存ファイル名に追加する文字列. Defaults to None.
 
     Returns:
-        Path: 保存したファイルパス
-        None: ファイル出力なし
+        Union[Path, None]: 保存状態
+
+        - Path: 保存したファイルパス
+        - None: ファイル出力なし
 
     """
     # カラムリネーム

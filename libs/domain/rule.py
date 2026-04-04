@@ -261,6 +261,7 @@ class RuleSet:
 
         Returns:
             set[str]: 成績記録キーワード
+
         """
         if items := self.data.get(rule_version):
             return set(items.keywords)
@@ -276,6 +277,7 @@ class RuleSet:
 
         Returns:
             set[str]: 非表示項目
+
         """
         if items := self.data.get(rule_version):
             return set(items.dropitems)
@@ -289,6 +291,7 @@ class RuleSet:
         Args:
             mode (int): 集計モード
             mapping (bool, optional): Defaults to True.
+
                 - *True*: キーワードマッピングに登録されているルールのみ
                 - *False*: ルールとして定義されているものすべて
 

@@ -53,6 +53,7 @@ class IntegrationsConfig(ABC):
     """設定ファイル"""
     channel_config: Optional["Path"] = field(default=None)
     """チャンネル個別設定状況
+
     - *Path*: チャンネル個別設定ファイルパス
     - *None*: 個別設定を利用していない
     """
@@ -61,22 +62,26 @@ class IntegrationsConfig(ABC):
     """スラッシュコマンド名"""
     badge_degree: bool = field(default=False)
     """プレイしたゲーム数に対して表示される称号
+
     - *True*: 表示する
     - *False*: 表示しない
     """
     badge_status: bool = field(default=False)
     """勝率に対して付く調子バッジ
+
     - *True*: 表示する
     - *False*: 表示しない
     """
     badge_grade: bool = field(default=False)
     """段位表示
+
     - *True*: 表示する
     - *False*: 表示しない
     """
 
     separate: bool = field(default=False)
     """スコア入力元識別子別集計フラグ
+
     - *True*: 識別子別に集計
     - *False*: すべて集計
     """
@@ -228,6 +233,7 @@ class MessageParserInterface(ABC):
 
         Returns:
             bool: 真偽値
+
             - *True*: リプライの形（リプライ／スレッドなど）
             - *False*: 通常メッセージ
 
@@ -241,6 +247,7 @@ class MessageParserInterface(ABC):
 
         Returns:
             bool: 真偽値
+
             - *True*: botのポスト
             - *False*: ユーザのポスト
 
@@ -254,6 +261,7 @@ class MessageParserInterface(ABC):
 
         Returns:
             bool: 真偽値
+
             - *True*: 許可
             - *False*: 禁止
 
@@ -267,6 +275,7 @@ class MessageParserInterface(ABC):
 
         Returns:
             bool: 真偽値
+
             - *True*: 存在する(操作禁止ユーザ)
             - *False*: 存在しない
 
@@ -279,6 +288,7 @@ class MessageParserInterface(ABC):
 
         Returns:
             bool: 真偽値
+
             - *True*: コマンド実行
             - *False*: 非コマンド(キーワード呼び出し)
 

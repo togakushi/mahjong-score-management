@@ -157,12 +157,12 @@ class AppConfig:
         if isinstance(self.setting.database_file, Path) and not self.setting.database_file.exists():
             self.setting.database_file = self.config_dir / str(self.setting.database_file)
 
-    def word_list(self, add_words: list[str] | None = None) -> list[str]:
+    def word_list(self, add_words: Optional[list[str]] = None) -> list[str]:
         """
         設定されている値、キーワードをリスト化する
 
         Args:
-            add_words (list[str] | None, optional): リストに追加するワード. Defaults to None.
+            add_words (list[str], optional): リストに追加するワード. Defaults to None.
 
         Returns:
             list[str]: リスト化されたキーワード
@@ -246,6 +246,7 @@ class AppConfig:
 
         Returns:
             Optional[Path]: 個別設定読み込み結果
+
             - *Path*: 読み込んだ設定ファイルパス
             - *None*: 読み込める設定ファイルがない
 
@@ -277,7 +278,7 @@ class AppConfig:
         メイン設定から優先度の高いチャンネルIDを取得する
 
         Args:
-            section_name (Optional[str]): チャンネル個別設定セクション名
+            section_name (str, optional): チャンネル個別設定セクション名
 
         Returns:
             str: チャンネルID

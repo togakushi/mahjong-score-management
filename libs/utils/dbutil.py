@@ -41,7 +41,7 @@ def execute(query: str, params: Optional[dict[str, Any]] = None) -> list[dict[st
 
     Args:
         query (str): 実行クエリ
-        params (Optional[dict[str,Any]]): プレースホルダ
+        params (dict[str,Any], optional): プレースホルダ
 
     Returns:
         list[dict[str, Any]]: 実行結果

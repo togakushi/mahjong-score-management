@@ -238,6 +238,7 @@ class ParameterData:
     # 検索条件変更フラグ
     individual: bool = field(default=True)
     """個人/チーム集計切替フラグ
+
     - *True*: 個人集計
     - *False*: チーム集計
     """
@@ -247,11 +248,13 @@ class ParameterData:
     """ゲストアリ/ナシフラグ(詳細集計用)"""
     unregistered_replace: bool = field(default=True)
     """メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
+
     - *True*: 置き換える
     - *False*: 置き換えない
     """
     friendly_fire: bool = field(default=False)
     """チーム戦集計時のチーム同卓ゲームの扱い
+
     - *True*: チーム同卓ゲームを集計(同じチームのポイントは合算される)
     - *False*: チーム同卓ゲームを集計対象外にする
     """

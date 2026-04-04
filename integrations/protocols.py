@@ -38,6 +38,7 @@ class MsgData(DataMixin):
     """イベント発生タイムスタンプ"""
     thread_ts: str = field(default="undetermined")
     """スレッド元タイムスタンプ
+
     - *0*: スレッドになっていない
     - *undetermined*: 未定義状態
     """
@@ -52,7 +53,9 @@ class MsgData(DataMixin):
     status: MessageStatus = field(default=MessageStatus.UNDETERMINED)
     """イベントステータス"""
     reaction_ok: list[str] = field(default_factory=list)
+    """OKリアクションデータ格納用"""
     reaction_ng: list[str] = field(default_factory=list)
+    """NGリアクションデータ格納用"""
     remarks: list[str] = field(default_factory=list)
     """メモ格納用"""
 
@@ -81,6 +84,7 @@ class StatusData(DataMixin):
     """実行(する/した)サブコマンド"""
     command_flg: bool = field(default=False)
     """コマンドとして実行されたかチェック
+
     - *True*: コマンド実行
     - *False*: キーワード呼び出し
     """
@@ -89,6 +93,7 @@ class StatusData(DataMixin):
 
     reaction: bool = field(default=False)
     """データステータス状態
+
     - *True*: 矛盾なくデータを取り込んだ(OK)
     - *False*: 矛盾があったがデータを取り込んだ or データを取り込めなかった(NG)
     """
@@ -131,6 +136,7 @@ class MessageParserProtocol(Protocol):
 
         Returns:
             bool: 真偽値
+
             - *True*: スラッシュコマンド
             - *False*: チャンネル内呼び出しキーワード
 
@@ -143,6 +149,7 @@ class MessageParserProtocol(Protocol):
 
         Returns:
             bool: 真偽値
+
             - *True*: botが操作
             - *False*: ユーザが操作
 
