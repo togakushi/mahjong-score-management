@@ -1,7 +1,6 @@
 {% extends "!layout.html" %}
 
 {%- macro relbar() %}
-{# modified from sphinx/themes/basic/layout.html #}
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>{{ _('Navigation') }}</h3>
       <ul>
@@ -43,18 +42,18 @@
 
 {% block footer %}
     <div class="footer">
-    &copy; {% if theme_copyright_url or hasdoc('copyright') -%}
-      <a href="{% if theme_copyright_url %}{{ theme_copyright_url }}{% else %}{{ pathto('copyright') }}{% endif %}">
-    {%- endif -%}
-    {%- trans %}Copyright{% endtrans -%}
-    {%- if theme_copyright_url or hasdoc('copyright') -%}
-    </a>
-    {%- endif %} {{ copyright|e }}.
+    {%- if show_copyright %}
+      {%- if hasdoc("copyright") %}
+        {%- trans path=pathto("copyright"), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+      {%- else %}
+        {%- trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+      {%- endif %}
+    {%- endif %}
+    {%- if release %}
+      {% trans release=release|e %}Release Version: {{ release }}.{% endtrans %}
+    {%- endif %}
     {%- if last_updated %}
       {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
     {%- endif %}
-    {% if theme_issues_url %}
-      {% trans %}<a href="{{ theme_issues_url }}">Found a bug</a>?{% endtrans %}
-    {% endif %}
     </div>
 {% endblock %}

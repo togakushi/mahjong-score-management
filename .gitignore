@@ -24,10 +24,10 @@ backup/
 *.ttf
 *.png
 *.css
-docs/html/
-docs/cov/
+
 docs/dev/build/
 docs/dev/source/
+docs/dev/coverage/
 
 !requirements.txt
 !files/**
