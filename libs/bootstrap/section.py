@@ -245,17 +245,25 @@ class AliasSection(BaseSection):
     report: list[str] = field(default_factory=lambda: ["report", "レポート"])
     """レポート出力コマンド"""
     download: list[str] = field(default_factory=lambda: ["download", "ダウンロード"])
+    """DBダウンロードコマンド"""
     member: list[str] = field(default_factory=lambda: ["member", "userlist", "member_list"])
     """メンバーリスト表示コマンド"""
     add: list[str] = field(default_factory=lambda: ["add"])
+    """メンバー追加コマンド"""
     delete: list[str] = field(default_factory=lambda: ["del"])
+    """メンバー削除コマンド"""
     team_create: list[str] = field(default_factory=lambda: ["team_create"])
+    """チーム作成コマンド"""
     team_del: list[str] = field(default_factory=lambda: ["team_del"])
+    """チーム削除コマンド"""
     team_add: list[str] = field(default_factory=lambda: ["team_add"])
+    """チーム所属コマンド"""
     team_remove: list[str] = field(default_factory=lambda: ["team_remove"])
+    """チーム脱退コマンド"""
     team_list: list[str] = field(default_factory=lambda: ["team_list"])
     """チームリスト出力コマンド"""
     team_clear: list[str] = field(default_factory=lambda: ["team_clear"])
+    """全チーム情報削除コマンド"""
 
     def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
         """AliasSection専用の追加処理"""
