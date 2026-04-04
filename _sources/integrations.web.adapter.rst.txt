@@ -1,0 +1,7 @@
+integrations.web.adapter module
+===============================
+
+.. automodule:: integrations.web.adapter
+   :members:
+   :show-inheritance:
+   :undoc-members:

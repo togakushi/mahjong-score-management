@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.stats module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.functions package" href="libs.functions.html" />
+    <link rel="prev" title="libs.domain.score module" href="libs.domain.score.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.stats module</a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed"><code class="docutils literal notranslate"><span class="pre">StatsDetailed</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.__init__"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.avg_balance"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.avg_balance()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.avg_point"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.avg_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.best_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.best_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.count"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.draw"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.draw</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.first_comment"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.first_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.first_game"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.first_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.flying"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.flying_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.flying_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.last_comment"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.last_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.last_game"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.last_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose2_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose2_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose2_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose2_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose3_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose3_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose3_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose3_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose4_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose4_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose4_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose4_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.mode"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.point_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.point_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.point_min"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.point_min</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank1"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank1_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank1_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank2_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank2_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank3"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank3_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank3_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank4"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank4_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank4_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_avg"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_avg</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_distr"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_distr</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_distr2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_distr2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rpoint_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rpoint_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rpoint_min"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rpoint_min</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank1"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank3"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank4"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top1_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top1_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top1_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top1_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top2_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top2_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top2_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top2_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top3_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top3_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top3_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top3_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.total_point"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.total_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.update_from_dict"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.update_from_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.war_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.war_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.win"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.win</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.worst_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.worst_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.yakuman"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.yakuman</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.yakuman_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.yakuman_rate</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo"><code class="docutils literal notranslate"><span class="pre">StatsInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.__init__"><code class="docutils literal notranslate"><span class="pre">StatsInfo.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.endtime"><code class="docutils literal notranslate"><span class="pre">StatsInfo.endtime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.flying_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.flying_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.mode"><code class="docutils literal notranslate"><span class="pre">StatsInfo.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.name"><code class="docutils literal notranslate"><span class="pre">StatsInfo.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_avg_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_avg_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_distr_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_distr_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_distr_list2"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_distr_list2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.read"><code class="docutils literal notranslate"><span class="pre">StatsInfo.read()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.record_df"><code class="docutils literal notranslate"><span class="pre">StatsInfo.record_df</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.result_df"><code class="docutils literal notranslate"><span class="pre">StatsInfo.result_df</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.search_word"><code class="docutils literal notranslate"><span class="pre">StatsInfo.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat0"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat0</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat1"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat2"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat3"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat4"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.set_data"><code class="docutils literal notranslate"><span class="pre">StatsInfo.set_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.set_parameter"><code class="docutils literal notranslate"><span class="pre">StatsInfo.set_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.starttime"><code class="docutils literal notranslate"><span class="pre">StatsInfo.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.summary"><code class="docutils literal notranslate"><span class="pre">StatsInfo.summary</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.yakuman_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.yakuman_list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="previous chapter">libs.domain.score module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.functions.html"
+                          title="next chapter">libs.functions package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.stats.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.functions.html" title="libs.functions package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.stats module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.stats">
+<span id="libs-domain-stats-module"></span><h1>libs.domain.stats module<a class="headerlink" href="#module-libs.domain.stats" title="Link to this heading">¶</a></h1>
+<p>libs/domain/stats.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.stats.</span></span><span class="sig-name descname"><span class="pre">StatsDetailed</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>詳細データ</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avg_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flying</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yakuman</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpoint_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpoint_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_rank1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_rank2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_rank3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_rank4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top1_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top1_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top2_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top2_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top3_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top3_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose2_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose2_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose3_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose3_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose4_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lose4_cur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>Literal</em><em>[</em><em>3</em><em>, </em><em>4</em><em>]</em>)</p></li>
+<li><p><strong>win</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose</strong> (<em>int</em>)</p></li>
+<li><p><strong>draw</strong> (<em>int</em>)</p></li>
+<li><p><strong>total_point</strong> (<em>float</em>)</p></li>
+<li><p><strong>avg_point</strong> (<em>float</em>)</p></li>
+<li><p><strong>rank1</strong> (<em>int</em>)</p></li>
+<li><p><strong>rank2</strong> (<em>int</em>)</p></li>
+<li><p><strong>rank3</strong> (<em>int</em>)</p></li>
+<li><p><strong>rank4</strong> (<em>int</em>)</p></li>
+<li><p><strong>flying</strong> (<em>int</em>)</p></li>
+<li><p><strong>yakuman</strong> (<em>int</em>)</p></li>
+<li><p><strong>rpoint_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>rpoint_min</strong> (<em>int</em>)</p></li>
+<li><p><strong>point_max</strong> (<em>float</em>)</p></li>
+<li><p><strong>point_min</strong> (<em>float</em>)</p></li>
+<li><p><strong>score</strong> (<em>int</em>)</p></li>
+<li><p><strong>score_rank1</strong> (<em>int</em>)</p></li>
+<li><p><strong>score_rank2</strong> (<em>int</em>)</p></li>
+<li><p><strong>score_rank3</strong> (<em>int</em>)</p></li>
+<li><p><strong>score_rank4</strong> (<em>int</em>)</p></li>
+<li><p><strong>top1_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>top1_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>top2_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>top2_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>top3_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>top3_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose2_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose2_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose3_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose3_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose4_max</strong> (<em>int</em>)</p></li>
+<li><p><strong>lose4_cur</strong> (<em>int</em>)</p></li>
+<li><p><strong>first_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>last_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>first_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>last_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.avg_balance">
+<span class="sig-name descname"><span class="pre">avg_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.avg_balance" title="Link to this definition">¶</a></dt>
+<dd><p>平均収支計算</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – 計算パターン</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>計算結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.avg_point">
+<span class="sig-name descname"><span class="pre">avg_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.avg_point" title="Link to this definition">¶</a></dt>
+<dd><p>平均ポイント</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.best_record">
+<span class="sig-name descname"><span class="pre">best_record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.best_record" title="Link to this definition">¶</a></dt>
+<dd><p>ベストレコード</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.count">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.count" title="Link to this definition">¶</a></dt>
+<dd><p>ゲーム数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.draw" title="Link to this definition">¶</a></dt>
+<dd><p>引き分け数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.first_comment">
+<span class="sig-name descname"><span class="pre">first_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.first_comment" title="Link to this definition">¶</a></dt>
+<dd><p>最初の記録時間のコメント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.first_game">
+<span class="sig-name descname"><span class="pre">first_game</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.first_game" title="Link to this definition">¶</a></dt>
+<dd><p>最初の記録時間</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.flying">
+<span class="sig-name descname"><span class="pre">flying</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.flying" title="Link to this definition">¶</a></dt>
+<dd><p>トビ数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.flying_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">flying_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.flying_rate" title="Link to this definition">¶</a></dt>
+<dd><p>トビ率</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.last_comment">
+<span class="sig-name descname"><span class="pre">last_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.last_comment" title="Link to this definition">¶</a></dt>
+<dd><p>最後の記録時間のコメント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.last_game">
+<span class="sig-name descname"><span class="pre">last_game</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.last_game" title="Link to this definition">¶</a></dt>
+<dd><p>最後の記録時間</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose">
+<span class="sig-name descname"><span class="pre">lose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose" title="Link to this definition">¶</a></dt>
+<dd><p>負け数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose2_cur">
+<span class="sig-name descname"><span class="pre">lose2_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose2_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続1位なし最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose2_max">
+<span class="sig-name descname"><span class="pre">lose2_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose2_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続1位なし最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose3_cur">
+<span class="sig-name descname"><span class="pre">lose3_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose3_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続逆連対最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose3_max">
+<span class="sig-name descname"><span class="pre">lose3_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose3_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続逆連対最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose4_cur">
+<span class="sig-name descname"><span class="pre">lose4_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose4_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続ラス最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.lose4_max">
+<span class="sig-name descname"><span class="pre">lose4_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.lose4_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続ラス最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計モード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.point_max">
+<span class="sig-name descname"><span class="pre">point_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.point_max" title="Link to this definition">¶</a></dt>
+<dd><p>最大獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.point_min">
+<span class="sig-name descname"><span class="pre">point_min</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.point_min" title="Link to this definition">¶</a></dt>
+<dd><p>最小獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank1">
+<span class="sig-name descname"><span class="pre">rank1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank1" title="Link to this definition">¶</a></dt>
+<dd><p>1位獲得数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank1_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank1_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank1_rate" title="Link to this definition">¶</a></dt>
+<dd><p>1位獲得率</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank2">
+<span class="sig-name descname"><span class="pre">rank2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank2" title="Link to this definition">¶</a></dt>
+<dd><p>2位獲得数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank2_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank2_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank2_rate" title="Link to this definition">¶</a></dt>
+<dd><p>2位獲得率</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank3">
+<span class="sig-name descname"><span class="pre">rank3</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank3" title="Link to this definition">¶</a></dt>
+<dd><p>3位獲得数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank3_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank3_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank3_rate" title="Link to this definition">¶</a></dt>
+<dd><p>3位獲得率</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank4">
+<span class="sig-name descname"><span class="pre">rank4</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank4" title="Link to this definition">¶</a></dt>
+<dd><p>4位獲得数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank4_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank4_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank4_rate" title="Link to this definition">¶</a></dt>
+<dd><p>4位獲得率</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank_avg">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_avg</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank_avg" title="Link to this definition">¶</a></dt>
+<dd><p>平均順位</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank_distr">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_distr</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank_distr" title="Link to this definition">¶</a></dt>
+<dd><p>順位分布(+平均順位)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rank_distr2">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_distr2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rank_distr2" title="Link to this definition">¶</a></dt>
+<dd><p>順位分布(+ゲーム数)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rpoint_max">
+<span class="sig-name descname"><span class="pre">rpoint_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rpoint_max" title="Link to this definition">¶</a></dt>
+<dd><p>最大素点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.rpoint_min">
+<span class="sig-name descname"><span class="pre">rpoint_min</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.rpoint_min" title="Link to this definition">¶</a></dt>
+<dd><p>最小素点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.score" title="Link to this definition">¶</a></dt>
+<dd><p>最終素点合計</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.score_rank1">
+<span class="sig-name descname"><span class="pre">score_rank1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.score_rank1" title="Link to this definition">¶</a></dt>
+<dd><p>最終素点合計(1位終了時)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.score_rank2">
+<span class="sig-name descname"><span class="pre">score_rank2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.score_rank2" title="Link to this definition">¶</a></dt>
+<dd><p>最終素点合計(2位終了時)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.score_rank3">
+<span class="sig-name descname"><span class="pre">score_rank3</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.score_rank3" title="Link to this definition">¶</a></dt>
+<dd><p>最終素点合計(3位終了時)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.score_rank4">
+<span class="sig-name descname"><span class="pre">score_rank4</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.score_rank4" title="Link to this definition">¶</a></dt>
+<dd><p>最終素点合計(4位終了時)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top1_cur">
+<span class="sig-name descname"><span class="pre">top1_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top1_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続1位獲得最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top1_max">
+<span class="sig-name descname"><span class="pre">top1_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top1_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続1位獲得最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top2_cur">
+<span class="sig-name descname"><span class="pre">top2_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top2_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続連対最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top2_max">
+<span class="sig-name descname"><span class="pre">top2_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top2_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続連対最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top3_cur">
+<span class="sig-name descname"><span class="pre">top3_cur</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top3_cur" title="Link to this definition">¶</a></dt>
+<dd><p>連続ラス回避最終値(現在値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.top3_max">
+<span class="sig-name descname"><span class="pre">top3_max</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.top3_max" title="Link to this definition">¶</a></dt>
+<dd><p>連続ラス回避獲得最大値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.total_point">
+<span class="sig-name descname"><span class="pre">total_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.total_point" title="Link to this definition">¶</a></dt>
+<dd><p>通算ポイント</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.update_from_dict">
+<span class="sig-name descname"><span class="pre">update_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.update_from_dict" title="Link to this definition">¶</a></dt>
+<dd><p>辞書から値を更新</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>[</em><em>Any</em><em>, </em><em>Any</em><em>]</em>) – 更新データ（キーはフィールド名）</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.war_record">
+<span class="sig-name descname"><span class="pre">war_record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.war_record" title="Link to this definition">¶</a></dt>
+<dd><p>戦績結果</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.win">
+<span class="sig-name descname"><span class="pre">win</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.win" title="Link to this definition">¶</a></dt>
+<dd><p>勝ち数</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.worst_record">
+<span class="sig-name descname"><span class="pre">worst_record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.worst_record" title="Link to this definition">¶</a></dt>
+<dd><p>ワーストレコード</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.yakuman">
+<span class="sig-name descname"><span class="pre">yakuman</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.yakuman" title="Link to this definition">¶</a></dt>
+<dd><p>役満和了数</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsDetailed.yakuman_rate">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">yakuman_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.domain.stats.StatsDetailed.yakuman_rate" title="Link to this definition">¶</a></dt>
+<dd><p>役満和了率</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.stats.</span></span><span class="sig-name descname"><span class="pre">StatsInfo</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>成績情報</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsInfo.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>)</p></li>
+<li><p><strong>seat0</strong> (<a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><em>StatsDetailed</em></a>)</p></li>
+<li><p><strong>seat1</strong> (<a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><em>StatsDetailed</em></a>)</p></li>
+<li><p><strong>seat2</strong> (<a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><em>StatsDetailed</em></a>)</p></li>
+<li><p><strong>seat3</strong> (<a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><em>StatsDetailed</em></a>)</p></li>
+<li><p><strong>seat4</strong> (<a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><em>StatsDetailed</em></a>)</p></li>
+<li><p><strong>mode</strong> (<em>Literal</em><em>[</em><em>3</em><em>, </em><em>4</em><em>]</em>)</p></li>
+<li><p><strong>rule_version</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>starttime</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>endtime</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>search_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>result_df</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>record_df</strong> (<em>DataFrame</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.endtime">
+<span class="sig-name descname"><span class="pre">endtime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.endtime" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.flying_list">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">flying_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.flying_list" title="Link to this definition">¶</a></dt>
+<dd><p>座席別トビ率</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計モード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.name" title="Link to this definition">¶</a></dt>
+<dd><p>プレイヤー名/チーム名</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.rank_avg_list">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_avg_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.rank_avg_list" title="Link to this definition">¶</a></dt>
+<dd><p>座席別平均順位</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.rank_distr_list">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_distr_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.rank_distr_list" title="Link to this definition">¶</a></dt>
+<dd><p>座席別順位分布(平均順位)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.rank_distr_list2">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rank_distr_list2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.rank_distr_list2" title="Link to this definition">¶</a></dt>
+<dd><p>座席別順位分布(ゲーム数)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsInfo.read" title="Link to this definition">¶</a></dt>
+<dd><p>データ読み込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder" title="libs.domain.placeholder.PlaceholderBuilder"><em>PlaceholderBuilder</em></a>) – プレースホルダ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.record_df">
+<span class="sig-name descname"><span class="pre">record_df</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.record_df" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.result_df">
+<span class="sig-name descname"><span class="pre">result_df</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.result_df" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.rule_version">
+<span class="sig-name descname"><span class="pre">rule_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.rule_version" title="Link to this definition">¶</a></dt>
+<dd><p>ルールセット</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.search_word">
+<span class="sig-name descname"><span class="pre">search_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.search_word" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.seat0">
+<span class="sig-name descname"><span class="pre">seat0</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><span class="pre">StatsDetailed</span></a></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.seat0" title="Link to this definition">¶</a></dt>
+<dd><p>全席</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.seat1">
+<span class="sig-name descname"><span class="pre">seat1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><span class="pre">StatsDetailed</span></a></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.seat1" title="Link to this definition">¶</a></dt>
+<dd><p>東家</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.seat2">
+<span class="sig-name descname"><span class="pre">seat2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><span class="pre">StatsDetailed</span></a></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.seat2" title="Link to this definition">¶</a></dt>
+<dd><p>南家</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.seat3">
+<span class="sig-name descname"><span class="pre">seat3</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><span class="pre">StatsDetailed</span></a></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.seat3" title="Link to this definition">¶</a></dt>
+<dd><p>西家</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.seat4">
+<span class="sig-name descname"><span class="pre">seat4</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.stats.StatsDetailed" title="libs.domain.stats.StatsDetailed"><span class="pre">StatsDetailed</span></a></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.seat4" title="Link to this definition">¶</a></dt>
+<dd><p>北家</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.set_data">
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsInfo.set_data" title="Link to this definition">¶</a></dt>
+<dd><p>集計結果取り込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – 集計結果</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.set_parameter">
+<span class="sig-name descname"><span class="pre">set_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.stats.StatsInfo.set_parameter" title="Link to this definition">¶</a></dt>
+<dd><p>パラメータ取り込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.starttime">
+<span class="sig-name descname"><span class="pre">starttime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.starttime" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.summary">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">summary</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.summary" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.stats.StatsInfo.yakuman_list">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">yakuman_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.stats.StatsInfo.yakuman_list" title="Link to this definition">¶</a></dt>
+<dd><p>座席別役満和了率</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.stats module</a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed"><code class="docutils literal notranslate"><span class="pre">StatsDetailed</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.__init__"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.avg_balance"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.avg_balance()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.avg_point"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.avg_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.best_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.best_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.count"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.draw"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.draw</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.first_comment"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.first_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.first_game"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.first_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.flying"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.flying_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.flying_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.last_comment"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.last_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.last_game"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.last_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose2_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose2_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose2_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose2_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose3_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose3_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose3_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose3_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose4_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose4_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.lose4_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.lose4_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.mode"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.point_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.point_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.point_min"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.point_min</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank1"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank1_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank1_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank2_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank2_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank3"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank3_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank3_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank4"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank4_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank4_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_avg"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_avg</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_distr"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_distr</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rank_distr2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rank_distr2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rpoint_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rpoint_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.rpoint_min"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.rpoint_min</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank1"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank2"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank3"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.score_rank4"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.score_rank4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top1_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top1_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top1_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top1_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top2_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top2_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top2_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top2_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top3_cur"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top3_cur</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.top3_max"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.top3_max</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.total_point"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.total_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.update_from_dict"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.update_from_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.war_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.war_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.win"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.win</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.worst_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.worst_record()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.yakuman"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.yakuman</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsDetailed.yakuman_rate"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.yakuman_rate</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo"><code class="docutils literal notranslate"><span class="pre">StatsInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.__init__"><code class="docutils literal notranslate"><span class="pre">StatsInfo.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.endtime"><code class="docutils literal notranslate"><span class="pre">StatsInfo.endtime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.flying_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.flying_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.mode"><code class="docutils literal notranslate"><span class="pre">StatsInfo.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.name"><code class="docutils literal notranslate"><span class="pre">StatsInfo.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_avg_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_avg_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_distr_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_distr_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rank_distr_list2"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rank_distr_list2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.read"><code class="docutils literal notranslate"><span class="pre">StatsInfo.read()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.record_df"><code class="docutils literal notranslate"><span class="pre">StatsInfo.record_df</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.result_df"><code class="docutils literal notranslate"><span class="pre">StatsInfo.result_df</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">StatsInfo.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.search_word"><code class="docutils literal notranslate"><span class="pre">StatsInfo.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat0"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat0</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat1"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat1</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat2"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat3"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat3</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.seat4"><code class="docutils literal notranslate"><span class="pre">StatsInfo.seat4</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.set_data"><code class="docutils literal notranslate"><span class="pre">StatsInfo.set_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.set_parameter"><code class="docutils literal notranslate"><span class="pre">StatsInfo.set_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.starttime"><code class="docutils literal notranslate"><span class="pre">StatsInfo.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.summary"><code class="docutils literal notranslate"><span class="pre">StatsInfo.summary</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.stats.StatsInfo.yakuman_list"><code class="docutils literal notranslate"><span class="pre">StatsInfo.yakuman_list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="previous chapter">libs.domain.score module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.functions.html"
+                          title="next chapter">libs.functions package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.stats.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.functions.html" title="libs.functions package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.stats module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

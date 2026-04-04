@@ -1,0 +1,16 @@
+tests.name\_check package
+=========================
+
+.. automodule:: tests.name_check
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.name_check.param_data
+   tests.name_check.test_name

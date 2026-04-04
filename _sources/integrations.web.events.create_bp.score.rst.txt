@@ -1,0 +1,7 @@
+integrations.web.events.create\_bp.score module
+===============================================
+
+.. automodule:: integrations.web.events.create_bp.score
+   :members:
+   :show-inheritance:
+   :undoc-members:

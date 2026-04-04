@@ -1,0 +1,7 @@
+libs.functions.compose.badge module
+===================================
+
+.. automodule:: libs.functions.compose.badge
+   :members:
+   :show-inheritance:
+   :undoc-members:

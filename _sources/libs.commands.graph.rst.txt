@@ -1,0 +1,18 @@
+libs.commands.graph package
+===========================
+
+.. automodule:: libs.commands.graph
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.commands.graph.entry
+   libs.commands.graph.personal
+   libs.commands.graph.rating
+   libs.commands.graph.summary

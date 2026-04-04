@@ -1,0 +1,7 @@
+integrations.web.events.create\_bp.member module
+================================================
+
+.. automodule:: integrations.web.events.create_bp.member
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,7 @@
+integrations.web.events.create\_bp.graph module
+===============================================
+
+.. automodule:: integrations.web.events.create_bp.graph
+   :members:
+   :show-inheritance:
+   :undoc-members:

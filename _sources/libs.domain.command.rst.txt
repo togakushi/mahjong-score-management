@@ -1,0 +1,7 @@
+libs.domain.command module
+==========================
+
+.. automodule:: libs.domain.command
+   :members:
+   :show-inheritance:
+   :undoc-members:

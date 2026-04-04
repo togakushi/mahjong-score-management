@@ -1,0 +1,7 @@
+integrations.base.interface module
+==================================
+
+.. automodule:: integrations.base.interface
+   :members:
+   :show-inheritance:
+   :undoc-members:

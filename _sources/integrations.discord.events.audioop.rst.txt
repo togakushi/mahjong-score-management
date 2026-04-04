@@ -1,0 +1,7 @@
+integrations.discord.events.audioop module
+==========================================
+
+.. automodule:: integrations.discord.events.audioop
+   :members:
+   :show-inheritance:
+   :undoc-members:

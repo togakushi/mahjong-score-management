@@ -1,0 +1,7 @@
+integrations.standard\_io.parser module
+=======================================
+
+.. automodule:: integrations.standard_io.parser
+   :members:
+   :show-inheritance:
+   :undoc-members:

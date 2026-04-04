@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>integrations.web.events.create_bp package &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="integrations.web.events.create_bp.detail module" href="integrations.web.events.create_bp.detail.html" />
+    <link rel="prev" title="integrations.web.events package" href="integrations.web.events.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.web.events.create_bp package</a><ul>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.detail_bp"><code class="docutils literal notranslate"><span class="pre">detail_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.graph_bp"><code class="docutils literal notranslate"><span class="pre">graph_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.index_bp"><code class="docutils literal notranslate"><span class="pre">index_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.member_bp"><code class="docutils literal notranslate"><span class="pre">member_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.ranking_bp"><code class="docutils literal notranslate"><span class="pre">ranking_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.report_bp"><code class="docutils literal notranslate"><span class="pre">report_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.score_bp"><code class="docutils literal notranslate"><span class="pre">score_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.summary_bp"><code class="docutils literal notranslate"><span class="pre">summary_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.user_assets_bp"><code class="docutils literal notranslate"><span class="pre">user_assets_bp()</span></code></a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.web.events.html"
+                          title="previous chapter">integrations.web.events package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.web.events.create_bp.detail.html"
+                          title="next chapter">integrations.web.events.create_bp.detail module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.web.events.create_bp.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.web.events.create_bp.detail.html" title="integrations.web.events.create_bp.detail module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.web.events.html" title="integrations.web.events package"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" accesskey="U">integrations.web.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.web.events.create_bp package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-integrations.web.events.create_bp">
+<span id="integrations-web-events-create-bp-package"></span><h1>integrations.web.events.create_bp package<a class="headerlink" href="#module-integrations.web.events.create_bp" title="Link to this heading">¶</a></h1>
+<p>ルート設定</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.detail_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">detail_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.detail_bp" title="Link to this definition">¶</a></dt>
+<dd><p>個人成績詳細ページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.graph_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">graph_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.graph_bp" title="Link to this definition">¶</a></dt>
+<dd><p>グラフ表示ページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.index_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">index_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.index_bp" title="Link to this definition">¶</a></dt>
+<dd><p>index用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.member_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">member_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.member_bp" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー管理ページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.ranking_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">ranking_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.ranking_bp" title="Link to this definition">¶</a></dt>
+<dd><p>ランキングページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.report_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">report_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.report_bp" title="Link to this definition">¶</a></dt>
+<dd><p>レポートページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.score_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">score_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.score_bp" title="Link to this definition">¶</a></dt>
+<dd><p>スコア管理ページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.summary_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">summary_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.summary_bp" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリページ用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.web.events.create_bp.user_assets_bp">
+<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.</span></span><span class="sig-name descname"><span class="pre">user_assets_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.user_assets_bp" title="Link to this definition">¶</a></dt>
+<dd><p>ユーザー指定CSS用Blueprint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Blueprint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blueprint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.detail.html">integrations.web.events.create_bp.detail module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.detail.html#integrations.web.events.create_bp.detail.detail_bp"><code class="docutils literal notranslate"><span class="pre">detail_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.graph.html">integrations.web.events.create_bp.graph module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.graph.html#integrations.web.events.create_bp.graph.graph_bp"><code class="docutils literal notranslate"><span class="pre">graph_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.index.html">integrations.web.events.create_bp.index module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.index.html#integrations.web.events.create_bp.index.index_bp"><code class="docutils literal notranslate"><span class="pre">index_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.member.html">integrations.web.events.create_bp.member module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.member.html#integrations.web.events.create_bp.member.member_bp"><code class="docutils literal notranslate"><span class="pre">member_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.ranking.html">integrations.web.events.create_bp.ranking module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.ranking.html#integrations.web.events.create_bp.ranking.ranking_bp"><code class="docutils literal notranslate"><span class="pre">ranking_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.report.html">integrations.web.events.create_bp.report module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.report.html#integrations.web.events.create_bp.report.report_bp"><code class="docutils literal notranslate"><span class="pre">report_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.score.html">integrations.web.events.create_bp.score module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.score.html#integrations.web.events.create_bp.score.score_bp"><code class="docutils literal notranslate"><span class="pre">score_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.summary.html">integrations.web.events.create_bp.summary module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.summary.html#integrations.web.events.create_bp.summary.summary_bp"><code class="docutils literal notranslate"><span class="pre">summary_bp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.events.create_bp.user_assets.html">integrations.web.events.create_bp.user_assets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.events.create_bp.user_assets.html#integrations.web.events.create_bp.user_assets.user_assets_bp"><code class="docutils literal notranslate"><span class="pre">user_assets_bp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.web.events.create_bp package</a><ul>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.detail_bp"><code class="docutils literal notranslate"><span class="pre">detail_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.graph_bp"><code class="docutils literal notranslate"><span class="pre">graph_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.index_bp"><code class="docutils literal notranslate"><span class="pre">index_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.member_bp"><code class="docutils literal notranslate"><span class="pre">member_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.ranking_bp"><code class="docutils literal notranslate"><span class="pre">ranking_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.report_bp"><code class="docutils literal notranslate"><span class="pre">report_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.score_bp"><code class="docutils literal notranslate"><span class="pre">score_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.summary_bp"><code class="docutils literal notranslate"><span class="pre">summary_bp()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.web.events.create_bp.user_assets_bp"><code class="docutils literal notranslate"><span class="pre">user_assets_bp()</span></code></a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.web.events.html"
+                          title="previous chapter">integrations.web.events package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.web.events.create_bp.detail.html"
+                          title="next chapter">integrations.web.events.create_bp.detail module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.web.events.create_bp.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.web.events.create_bp.detail.html" title="integrations.web.events.create_bp.detail module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrations.web.events.html" title="integrations.web.events package"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" >integrations.web.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.web.events.create_bp package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

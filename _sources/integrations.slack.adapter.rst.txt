@@ -1,0 +1,7 @@
+integrations.slack.adapter module
+=================================
+
+.. automodule:: integrations.slack.adapter
+   :members:
+   :show-inheritance:
+   :undoc-members:

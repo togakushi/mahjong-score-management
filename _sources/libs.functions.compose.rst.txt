@@ -1,0 +1,16 @@
+libs.functions.compose package
+==============================
+
+.. automodule:: libs.functions.compose
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.functions.compose.badge
+   libs.functions.compose.text_item

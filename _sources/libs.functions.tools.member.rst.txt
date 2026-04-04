@@ -1,0 +1,7 @@
+libs.functions.tools.member module
+==================================
+
+.. automodule:: libs.functions.tools.member
+   :members:
+   :show-inheritance:
+   :undoc-members:

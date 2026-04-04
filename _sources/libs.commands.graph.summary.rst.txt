@@ -1,0 +1,7 @@
+libs.commands.graph.summary module
+==================================
+
+.. automodule:: libs.commands.graph.summary
+   :members:
+   :show-inheritance:
+   :undoc-members:

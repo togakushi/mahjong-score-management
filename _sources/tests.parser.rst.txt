@@ -1,0 +1,18 @@
+tests.parser package
+====================
+
+.. automodule:: tests.parser
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.parser.param_data
+   tests.parser.test_parser
+   tests.parser.test_placeholder
+   tests.parser.test_score

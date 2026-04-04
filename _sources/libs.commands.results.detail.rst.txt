@@ -1,0 +1,7 @@
+libs.commands.results.detail module
+===================================
+
+.. automodule:: libs.commands.results.detail
+   :members:
+   :show-inheritance:
+   :undoc-members:

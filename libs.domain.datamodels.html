@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.datamodels module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.domain.modify module" href="libs.domain.modify.html" />
+    <link rel="prev" title="libs.domain.command module" href="libs.domain.command.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.datamodels module</a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args"><code class="docutils literal notranslate"><span class="pre">Args</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.__init__"><code class="docutils literal notranslate"><span class="pre">Args.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.compar"><code class="docutils literal notranslate"><span class="pre">Args.compar</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.config"><code class="docutils literal notranslate"><span class="pre">Args.config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.debug"><code class="docutils literal notranslate"><span class="pre">Args.debug</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.export_data"><code class="docutils literal notranslate"><span class="pre">Args.export_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.gen_test_data"><code class="docutils literal notranslate"><span class="pre">Args.gen_test_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.host"><code class="docutils literal notranslate"><span class="pre">Args.host</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.import_data"><code class="docutils literal notranslate"><span class="pre">Args.import_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.moderate"><code class="docutils literal notranslate"><span class="pre">Args.moderate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.no_cleanup"><code class="docutils literal notranslate"><span class="pre">Args.no_cleanup</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.notime"><code class="docutils literal notranslate"><span class="pre">Args.notime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.port"><code class="docutils literal notranslate"><span class="pre">Args.port</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.recalculation"><code class="docutils literal notranslate"><span class="pre">Args.recalculation</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.service"><code class="docutils literal notranslate"><span class="pre">Args.service</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.testcase"><code class="docutils literal notranslate"><span class="pre">Args.testcase</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.text"><code class="docutils literal notranslate"><span class="pre">Args.text</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.unification"><code class="docutils literal notranslate"><span class="pre">Args.unification</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.vacuum"><code class="docutils literal notranslate"><span class="pre">Args.vacuum</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.verbose"><code class="docutils literal notranslate"><span class="pre">Args.verbose</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs"><code class="docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.__init__"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.aggregation_range"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.always_argument"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.always_argument</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.command_suffix"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.command_suffix</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.commandword"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.commandword</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.dropitems"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.dropitems</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.stipulated_calculation"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.stipulated_calculation()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults"><code class="docutils literal notranslate"><span class="pre">ComparisonResults</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.__init__"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.after"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.after</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.before"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.before</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.delete"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.delete</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.invalid_score"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.invalid_score</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.mismatch"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.mismatch</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.missing"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.missing</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.output"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.output()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.pending"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.pending</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.remark_del"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.remark_del</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.remark_mod"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.remark_mod</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.score_list"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.score_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.search_after"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.search_after</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo"><code class="docutils literal notranslate"><span class="pre">GameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.__init__"><code class="docutils literal notranslate"><span class="pre">GameInfo.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.count"><code class="docutils literal notranslate"><span class="pre">GameInfo.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_game</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.default_reset"><code class="docutils literal notranslate"><span class="pre">ParameterData.default_reset()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.friendly_fire"><code class="docutils literal notranslate"><span class="pre">ParameterData.friendly_fire</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.group_length"><code class="docutils literal notranslate"><span class="pre">ParameterData.group_length</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.interval"><code class="docutils literal notranslate"><span class="pre">ParameterData.interval</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.ranked"><code class="docutils literal notranslate"><span class="pre">ParameterData.ranked</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.search_word"><code class="docutils literal notranslate"><span class="pre">ParameterData.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.statistics"><code class="docutils literal notranslate"><span class="pre">ParameterData.statistics</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated_rate"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.command.html"
+                          title="previous chapter">libs.domain.command module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.modify.html"
+                          title="next chapter">libs.domain.modify module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.datamodels.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.modify.html" title="libs.domain.modify module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.command.html" title="libs.domain.command module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.datamodels module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.datamodels">
+<span id="libs-domain-datamodels-module"></span><h1>libs.domain.datamodels module<a class="headerlink" href="#module-libs.domain.datamodels" title="Link to this heading">¶</a></h1>
+<p>libs/domain/datamodels.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">Args</span></span><a class="headerlink" href="#libs.domain.datamodels.Args" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>コマンドラインオプション</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_cleanup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moderate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unification</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recalculation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vacuum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testcase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.Args.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service</strong> (<em>str</em>)</p></li>
+<li><p><strong>config</strong> (<em>Path</em>)</p></li>
+<li><p><strong>no_cleanup</strong> (<em>bool</em>)</p></li>
+<li><p><strong>debug</strong> (<em>int</em>)</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>)</p></li>
+<li><p><strong>moderate</strong> (<em>bool</em>)</p></li>
+<li><p><strong>notime</strong> (<em>bool</em>)</p></li>
+<li><p><strong>text</strong> (<em>str</em>)</p></li>
+<li><p><strong>host</strong> (<em>str</em>)</p></li>
+<li><p><strong>port</strong> (<em>int</em>)</p></li>
+<li><p><strong>compar</strong> (<em>bool</em>)</p></li>
+<li><p><strong>unification</strong> (<em>Path</em>)</p></li>
+<li><p><strong>recalculation</strong> (<em>bool</em>)</p></li>
+<li><p><strong>export_data</strong> (<em>str</em>)</p></li>
+<li><p><strong>import_data</strong> (<em>str</em>)</p></li>
+<li><p><strong>vacuum</strong> (<em>bool</em>)</p></li>
+<li><p><strong>gen_test_data</strong> (<em>int</em>)</p></li>
+<li><p><strong>testcase</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.compar">
+<span class="sig-name descname"><span class="pre">compar</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.compar" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.config">
+<span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.config" title="Link to this definition">¶</a></dt>
+<dd><p>設定ファイルパス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.debug" title="Link to this definition">¶</a></dt>
+<dd><p>デバッグ出力フラグ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.export_data">
+<span class="sig-name descname"><span class="pre">export_data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.export_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.gen_test_data">
+<span class="sig-name descname"><span class="pre">gen_test_data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.gen_test_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.host">
+<span class="sig-name descname"><span class="pre">host</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.host" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.import_data">
+<span class="sig-name descname"><span class="pre">import_data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.import_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.moderate">
+<span class="sig-name descname"><span class="pre">moderate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.moderate" title="Link to this definition">¶</a></dt>
+<dd><p>INFO以下のログレベル出力を抑止</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.no_cleanup">
+<span class="sig-name descname"><span class="pre">no_cleanup</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.no_cleanup" title="Link to this definition">¶</a></dt>
+<dd><p>作業ディレクトリの内容を削除</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.notime">
+<span class="sig-name descname"><span class="pre">notime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.notime" title="Link to this definition">¶</a></dt>
+<dd><p>ログに日付を付与しない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.port">
+<span class="sig-name descname"><span class="pre">port</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.port" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.recalculation">
+<span class="sig-name descname"><span class="pre">recalculation</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.recalculation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.service">
+<span class="sig-name descname"><span class="pre">service</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.service" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.testcase">
+<span class="sig-name descname"><span class="pre">testcase</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.testcase" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.text" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.unification">
+<span class="sig-name descname"><span class="pre">unification</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.unification" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.vacuum">
+<span class="sig-name descname"><span class="pre">vacuum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.vacuum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.Args.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.datamodels.Args.verbose" title="Link to this definition">¶</a></dt>
+<dd><p>詳細出力フラグ</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">CommandAttrs</span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.datamodels.ParameterData" title="libs.domain.datamodels.ParameterData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterData</span></code></a></p>
+<p>サブコマンド設定パラメータ</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commandword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'当日'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_argument</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropitems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individual</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip2</strong> (<em>bool</em>)</p></li>
+<li><p><strong>unregistered_replace</strong> (<em>bool</em>)</p></li>
+<li><p><strong>friendly_fire</strong> (<em>bool</em>)</p></li>
+<li><p><strong>statistics</strong> (<em>bool</em>)</p></li>
+<li><p><strong>ranked</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated_rate</strong> (<em>float</em>)</p></li>
+<li><p><strong>interval</strong> (<em>int</em>)</p></li>
+<li><p><strong>search_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>group_length</strong> (<em>int</em>)</p></li>
+<li><p><strong>commandword</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>command_suffix</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>aggregation_range</strong> (<em>str</em>)</p></li>
+<li><p><strong>always_argument</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>dropitems</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.aggregation_range">
+<span class="sig-name descname"><span class="pre">aggregation_range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'当日'</span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.aggregation_range" title="Link to this definition">¶</a></dt>
+<dd><p>検索範囲未指定時に使用される範囲</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.always_argument">
+<span class="sig-name descname"><span class="pre">always_argument</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.always_argument" title="Link to this definition">¶</a></dt>
+<dd><p>オプションとして常に付与される文字列</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.command_suffix">
+<span class="sig-name descname"><span class="pre">command_suffix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.command_suffix" title="Link to this definition">¶</a></dt>
+<dd><p>コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.commandword">
+<span class="sig-name descname"><span class="pre">commandword</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.commandword" title="Link to this definition">¶</a></dt>
+<dd><p>呼び出しキーワード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.dropitems">
+<span class="sig-name descname"><span class="pre">dropitems</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.dropitems" title="Link to this definition">¶</a></dt>
+<dd><p>非表示にする項目</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.stipulated_calculation">
+<span class="sig-name descname"><span class="pre">stipulated_calculation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.stipulated_calculation" title="Link to this definition">¶</a></dt>
+<dd><p>規定打数をゲーム数から計算</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>game_count</strong> (<em>int</em>) – 指定ゲーム数</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>規定ゲーム数</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">ComparisonResults</span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>突合結果</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mismatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remark_mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remark_del</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invalid_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search_after</strong> (<em>int</em>)</p></li>
+<li><p><strong>score_list</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a><em>]</em>)</p></li>
+<li><p><strong>mismatch</strong> (<em>list</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><em>GameResult</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>missing</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><em>GameResult</em></a><em>]</em>)</p></li>
+<li><p><strong>delete</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><em>GameResult</em></a><em>]</em>)</p></li>
+<li><p><strong>remark_mod</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.types.html#libs.types.RemarkDict" title="libs.types.RemarkDict"><em>RemarkDict</em></a><em>]</em>)</p></li>
+<li><p><strong>remark_del</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.types.html#libs.types.RemarkDict" title="libs.types.RemarkDict"><em>RemarkDict</em></a><em>]</em>)</p></li>
+<li><p><strong>invalid_score</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><em>GameResult</em></a><em>]</em>)</p></li>
+<li><p><strong>pending</strong> (<em>list</em><em>[</em><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><em>GameResult</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.after">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">after</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.after" title="Link to this definition">¶</a></dt>
+<dd><p>突合開始日時</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.before">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">before</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.before" title="Link to this definition">¶</a></dt>
+<dd><p>突合終了日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><span class="pre">GameResult</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.delete" title="Link to this definition">¶</a></dt>
+<dd><p>スコア削除</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.invalid_score">
+<span class="sig-name descname"><span class="pre">invalid_score</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><span class="pre">GameResult</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.invalid_score" title="Link to this definition">¶</a></dt>
+<dd><p>素点合計不一致</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.mismatch">
+<span class="sig-name descname"><span class="pre">mismatch</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><span class="pre">GameResult</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.mismatch" title="Link to this definition">¶</a></dt>
+<dd><p>スコア差分</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.missing">
+<span class="sig-name descname"><span class="pre">missing</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><span class="pre">GameResult</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.missing" title="Link to this definition">¶</a></dt>
+<dd><p>スコア追加</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.output">
+<span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.output" title="Link to this definition">¶</a></dt>
+<dd><p>出力メッセージ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>[</em><em>summary</em><em>, </em><em>headline</em><em>, </em><em>pending</em><em>, </em><em>mismatch</em><em>, </em><em>missing</em><em>, </em><em>delete</em><em>, </em><em>remark_mod</em><em>, </em><em>remark_del</em><em>, </em><em>invalid_score</em><em>]</em>) – 種類</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>生成文字列</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.pending">
+<span class="sig-name descname"><span class="pre">pending</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult"><span class="pre">GameResult</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.pending" title="Link to this definition">¶</a></dt>
+<dd><p>処理保留データ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.remark_del">
+<span class="sig-name descname"><span class="pre">remark_del</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.types.html#libs.types.RemarkDict" title="libs.types.RemarkDict"><span class="pre">RemarkDict</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.remark_del" title="Link to this definition">¶</a></dt>
+<dd><p>メモ削除</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.remark_mod">
+<span class="sig-name descname"><span class="pre">remark_mod</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.types.html#libs.types.RemarkDict" title="libs.types.RemarkDict"><span class="pre">RemarkDict</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.remark_mod" title="Link to this definition">¶</a></dt>
+<dd><p>メモ変更</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.score_list">
+<span class="sig-name descname"><span class="pre">score_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><span class="pre">MessageParserProtocol</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.score_list" title="Link to this definition">¶</a></dt>
+<dd><p>スコアリスト(一時保管用)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ComparisonResults.search_after">
+<span class="sig-name descname"><span class="pre">search_after</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-7</span></span><a class="headerlink" href="#libs.domain.datamodels.ComparisonResults.search_after" title="Link to this definition">¶</a></dt>
+<dd><p>突合範囲(日数)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">GameInfo</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ゲーム集計情報</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count</strong> (<em>int</em>)</p></li>
+<li><p><strong>first_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>last_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>first_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>last_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.clear" title="Link to this definition">¶</a></dt>
+<dd><p>情報削除</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.count" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲のゲーム数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.first_comment">
+<span class="sig-name descname"><span class="pre">first_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.first_comment" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲の最初のゲームコメント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.first_game">
+<span class="sig-name descname"><span class="pre">first_game</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.first_game" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲の最初のゲーム時間</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.get" title="Link to this definition">¶</a></dt>
+<dd><p>指定条件を満たすゲーム数のカウント、最初と最後の時刻とコメントを取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.last_comment">
+<span class="sig-name descname"><span class="pre">last_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.last_comment" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲の最後のゲームコメント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.last_game">
+<span class="sig-name descname"><span class="pre">last_game</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.last_game" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲の最後のゲーム時間</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">ParameterData</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>動作パラメータ</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individual</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip2</strong> (<em>bool</em>)</p></li>
+<li><p><strong>unregistered_replace</strong> (<em>bool</em>)</p></li>
+<li><p><strong>friendly_fire</strong> (<em>bool</em>)</p></li>
+<li><p><strong>statistics</strong> (<em>bool</em>)</p></li>
+<li><p><strong>ranked</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated_rate</strong> (<em>float</em>)</p></li>
+<li><p><strong>interval</strong> (<em>int</em>)</p></li>
+<li><p><strong>search_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>group_length</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.default_reset">
+<span class="sig-name descname"><span class="pre">default_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.default_reset" title="Link to this definition">¶</a></dt>
+<dd><p>デフォルト値にリセット</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.friendly_fire">
+<span class="sig-name descname"><span class="pre">friendly_fire</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.friendly_fire" title="Link to this definition">¶</a></dt>
+<dd><p>チーム戦集計時のチーム同卓ゲームの扱い
+- <em>True</em>: チーム同卓ゲームを集計(同じチームのポイントは合算される)
+- <em>False</em>: チーム同卓ゲームを集計対象外にする</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.group_length">
+<span class="sig-name descname"><span class="pre">group_length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.group_length" title="Link to this definition">¶</a></dt>
+<dd><p>コメント検索時に指定文字数でグループ化する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.guest_skip">
+<span class="sig-name descname"><span class="pre">guest_skip</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.guest_skip" title="Link to this definition">¶</a></dt>
+<dd><p>ゲストアリ/ナシフラグ(サマリ集計用)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.guest_skip2">
+<span class="sig-name descname"><span class="pre">guest_skip2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.guest_skip2" title="Link to this definition">¶</a></dt>
+<dd><p>ゲストアリ/ナシフラグ(詳細集計用)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.individual">
+<span class="sig-name descname"><span class="pre">individual</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.individual" title="Link to this definition">¶</a></dt>
+<dd><p>個人/チーム集計切替フラグ
+- <em>True</em>: 個人集計
+- <em>False</em>: チーム集計</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">80</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.interval" title="Link to this definition">¶</a></dt>
+<dd><p>移動平均算出ゲーム数指定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.ranked">
+<span class="sig-name descname"><span class="pre">ranked</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.ranked" title="Link to this definition">¶</a></dt>
+<dd><p>ランキング/レーティングで表示する順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.search_word">
+<span class="sig-name descname"><span class="pre">search_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.search_word" title="Link to this definition">¶</a></dt>
+<dd><p>コメント検索文字列</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.statistics">
+<span class="sig-name descname"><span class="pre">statistics</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.statistics" title="Link to this definition">¶</a></dt>
+<dd><p>統計情報表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.stipulated">
+<span class="sig-name descname"><span class="pre">stipulated</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.stipulated" title="Link to this definition">¶</a></dt>
+<dd><p>規定打数指定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.stipulated_rate">
+<span class="sig-name descname"><span class="pre">stipulated_rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.05</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.stipulated_rate" title="Link to this definition">¶</a></dt>
+<dd><p>規定打数計算レート</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.unregistered_replace">
+<span class="sig-name descname"><span class="pre">unregistered_replace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.unregistered_replace" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー未登録プレイヤー名をゲストに置き換えるかフラグ
+- <em>True</em>: 置き換える
+- <em>False</em>: 置き換えない</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.datamodels module</a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args"><code class="docutils literal notranslate"><span class="pre">Args</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.__init__"><code class="docutils literal notranslate"><span class="pre">Args.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.compar"><code class="docutils literal notranslate"><span class="pre">Args.compar</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.config"><code class="docutils literal notranslate"><span class="pre">Args.config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.debug"><code class="docutils literal notranslate"><span class="pre">Args.debug</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.export_data"><code class="docutils literal notranslate"><span class="pre">Args.export_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.gen_test_data"><code class="docutils literal notranslate"><span class="pre">Args.gen_test_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.host"><code class="docutils literal notranslate"><span class="pre">Args.host</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.import_data"><code class="docutils literal notranslate"><span class="pre">Args.import_data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.moderate"><code class="docutils literal notranslate"><span class="pre">Args.moderate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.no_cleanup"><code class="docutils literal notranslate"><span class="pre">Args.no_cleanup</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.notime"><code class="docutils literal notranslate"><span class="pre">Args.notime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.port"><code class="docutils literal notranslate"><span class="pre">Args.port</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.recalculation"><code class="docutils literal notranslate"><span class="pre">Args.recalculation</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.service"><code class="docutils literal notranslate"><span class="pre">Args.service</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.testcase"><code class="docutils literal notranslate"><span class="pre">Args.testcase</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.text"><code class="docutils literal notranslate"><span class="pre">Args.text</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.unification"><code class="docutils literal notranslate"><span class="pre">Args.unification</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.vacuum"><code class="docutils literal notranslate"><span class="pre">Args.vacuum</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.Args.verbose"><code class="docutils literal notranslate"><span class="pre">Args.verbose</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs"><code class="docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.__init__"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.aggregation_range"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.always_argument"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.always_argument</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.command_suffix"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.command_suffix</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.commandword"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.commandword</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.dropitems"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.dropitems</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.CommandAttrs.stipulated_calculation"><code class="docutils literal notranslate"><span class="pre">CommandAttrs.stipulated_calculation()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults"><code class="docutils literal notranslate"><span class="pre">ComparisonResults</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.__init__"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.after"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.after</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.before"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.before</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.delete"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.delete</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.invalid_score"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.invalid_score</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.mismatch"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.mismatch</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.missing"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.missing</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.output"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.output()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.pending"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.pending</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.remark_del"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.remark_del</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.remark_mod"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.remark_mod</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.score_list"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.score_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ComparisonResults.search_after"><code class="docutils literal notranslate"><span class="pre">ComparisonResults.search_after</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo"><code class="docutils literal notranslate"><span class="pre">GameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.__init__"><code class="docutils literal notranslate"><span class="pre">GameInfo.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.count"><code class="docutils literal notranslate"><span class="pre">GameInfo.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_game</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_game</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.default_reset"><code class="docutils literal notranslate"><span class="pre">ParameterData.default_reset()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.friendly_fire"><code class="docutils literal notranslate"><span class="pre">ParameterData.friendly_fire</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.group_length"><code class="docutils literal notranslate"><span class="pre">ParameterData.group_length</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.interval"><code class="docutils literal notranslate"><span class="pre">ParameterData.interval</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.ranked"><code class="docutils literal notranslate"><span class="pre">ParameterData.ranked</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.search_word"><code class="docutils literal notranslate"><span class="pre">ParameterData.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.statistics"><code class="docutils literal notranslate"><span class="pre">ParameterData.statistics</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated_rate"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated_rate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.command.html"
+                          title="previous chapter">libs.domain.command module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.modify.html"
+                          title="next chapter">libs.domain.modify module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.datamodels.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.modify.html" title="libs.domain.modify module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.command.html" title="libs.domain.command module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.datamodels module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

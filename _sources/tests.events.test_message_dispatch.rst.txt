@@ -1,0 +1,7 @@
+tests.events.test\_message\_dispatch module
+===========================================
+
+.. automodule:: tests.events.test_message_dispatch
+   :members:
+   :show-inheritance:
+   :undoc-members:

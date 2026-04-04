@@ -1,0 +1,7 @@
+integrations.discord.functions module
+=====================================
+
+.. automodule:: integrations.discord.functions
+   :members:
+   :show-inheritance:
+   :undoc-members:

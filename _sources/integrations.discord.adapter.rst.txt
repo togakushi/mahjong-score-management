@@ -1,0 +1,7 @@
+integrations.discord.adapter module
+===================================
+
+.. automodule:: integrations.discord.adapter
+   :members:
+   :show-inheritance:
+   :undoc-members:

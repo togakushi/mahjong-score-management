@@ -1,0 +1,7 @@
+integrations.slack.parser module
+================================
+
+.. automodule:: integrations.slack.parser
+   :members:
+   :show-inheritance:
+   :undoc-members:

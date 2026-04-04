@@ -1,0 +1,7 @@
+libs.commands.report.entry module
+=================================
+
+.. automodule:: libs.commands.report.entry
+   :members:
+   :show-inheritance:
+   :undoc-members:

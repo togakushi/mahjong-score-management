@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.utils.dictutil module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.utils.formatter module" href="libs.utils.formatter.html" />
+    <link rel="prev" title="libs.utils.dbutil module" href="libs.utils.dbutil.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils.dictutil module</a><ul>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike"><code class="docutils literal notranslate"><span class="pre">SubCommandLike</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.__init__"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.aggregation_range"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.always_argument"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.always_argument</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.section"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.to_dict"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.utils.dictutil.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.placeholder"><code class="docutils literal notranslate"><span class="pre">placeholder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.utils.dbutil.html"
+                          title="previous chapter">libs.utils.dbutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.formatter.html"
+                          title="next chapter">libs.utils.formatter module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.utils.dictutil.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.formatter.html" title="libs.utils.formatter module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.dbutil.html" title="libs.utils.dbutil module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.utils.html" accesskey="U">libs.utils package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils.dictutil module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.utils.dictutil">
+<span id="libs-utils-dictutil-module"></span><h1>libs.utils.dictutil module<a class="headerlink" href="#module-libs.utils.dictutil" title="Link to this heading">¶</a></h1>
+<p>libs/utils/dictutil.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">SubCommandLike</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>placeholder生成に必要なサブコマンド設定の最小インターフェース</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.aggregation_range">
+<span class="sig-name descname"><span class="pre">aggregation_range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.aggregation_range" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.always_argument">
+<span class="sig-name descname"><span class="pre">always_argument</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.always_argument" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.section">
+<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.section" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drop_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.to_dict" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>drop_items</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, <em>Any</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.dictutil.merge_dicts">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">merge_dicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.merge_dicts" title="Link to this definition">¶</a></dt>
+<dd><p>辞書の内容をマージする</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict1</strong> (<em>dict</em><em>[</em><em>Any</em><em>, </em><em>Any</em><em>]</em>) – 1つ目の辞書</p></li>
+<li><p><strong>dict2</strong> (<em>dict</em><em>[</em><em>Any</em><em>, </em><em>Any</em><em>]</em>) – 2つ目の辞書</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>マージされた辞書</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.dictutil.placeholder">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">placeholder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subcom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.placeholder" title="Link to this definition">¶</a></dt>
+<dd><p>プレースホルダに使用する辞書を生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subcom</strong> (<a class="reference internal" href="#libs.utils.dictutil.SubCommandLike" title="libs.utils.dictutil.SubCommandLike"><em>SubCommandLike</em></a>) – サブコマンド設定</p></li>
+<li><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>プレースホルダ用データ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder" title="libs.domain.placeholder.PlaceholderBuilder">PlaceholderBuilder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils.dictutil module</a><ul>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike"><code class="docutils literal notranslate"><span class="pre">SubCommandLike</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.__init__"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.aggregation_range"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.always_argument"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.always_argument</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.section"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.to_dict"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.utils.dictutil.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.placeholder"><code class="docutils literal notranslate"><span class="pre">placeholder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.utils.dbutil.html"
+                          title="previous chapter">libs.utils.dbutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.formatter.html"
+                          title="next chapter">libs.utils.formatter module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.utils.dictutil.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.formatter.html" title="libs.utils.formatter module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.dbutil.html" title="libs.utils.dbutil module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.utils.html" >libs.utils package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils.dictutil module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

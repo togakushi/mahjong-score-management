@@ -1,0 +1,7 @@
+integrations.slack.events.comparison module
+===========================================
+
+.. automodule:: integrations.slack.events.comparison
+   :members:
+   :show-inheritance:
+   :undoc-members:

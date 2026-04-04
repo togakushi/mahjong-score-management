@@ -1,0 +1,20 @@
+libs.commands.report package
+============================
+
+.. automodule:: libs.commands.report
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.commands.report.entry
+   libs.commands.report.matrix
+   libs.commands.report.monthly
+   libs.commands.report.stats_list
+   libs.commands.report.stats_report
+   libs.commands.report.winner

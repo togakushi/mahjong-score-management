@@ -1,0 +1,7 @@
+tests.database.conftest module
+==============================
+
+.. automodule:: tests.database.conftest
+   :members:
+   :show-inheritance:
+   :undoc-members:

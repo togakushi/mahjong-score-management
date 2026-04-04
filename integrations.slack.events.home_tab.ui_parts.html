@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>integrations.slack.events.home_tab.ui_parts module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="integrations.slack.events.home_tab.versus module" href="integrations.slack.events.home_tab.versus.html" />
+    <link rel="prev" title="integrations.slack.events.home_tab.summary module" href="integrations.slack.events.home_tab.summary.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.slack.events.home_tab.ui_parts module</a><ul>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.button"><code class="docutils literal notranslate"><span class="pre">button()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.checkboxes"><code class="docutils literal notranslate"><span class="pre">checkboxes()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.divider"><code class="docutils literal notranslate"><span class="pre">divider()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.header"><code class="docutils literal notranslate"><span class="pre">header()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.input_ranked"><code class="docutils literal notranslate"><span class="pre">input_ranked()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.modalperiod_selection"><code class="docutils literal notranslate"><span class="pre">modalperiod_selection()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.multi_select_pulldown"><code class="docutils literal notranslate"><span class="pre">multi_select_pulldown()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.plain_text"><code class="docutils literal notranslate"><span class="pre">plain_text()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.radio_buttons"><code class="docutils literal notranslate"><span class="pre">radio_buttons()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.set_command_option"><code class="docutils literal notranslate"><span class="pre">set_command_option()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.update_view"><code class="docutils literal notranslate"><span class="pre">update_view()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.user_select_pulldown"><code class="docutils literal notranslate"><span class="pre">user_select_pulldown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.slack.events.home_tab.summary.html"
+                          title="previous chapter">integrations.slack.events.home_tab.summary module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.slack.events.home_tab.versus.html"
+                          title="next chapter">integrations.slack.events.home_tab.versus module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.slack.events.home_tab.ui_parts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.events.home_tab.versus.html" title="integrations.slack.events.home_tab.versus module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.events.home_tab.summary.html" title="integrations.slack.events.home_tab.summary module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.slack.html" >integrations.slack package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.slack.events.html" >integrations.slack.events package</a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="integrations.slack.events.home_tab.html" accesskey="U">integrations.slack.events.home_tab package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.slack.events.home_tab.ui_parts module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-integrations.slack.events.home_tab.ui_parts">
+<span id="integrations-slack-events-home-tab-ui-parts-module"></span><h1>integrations.slack.events.home_tab.ui_parts module<a class="headerlink" href="#module-integrations.slack.events.home_tab.ui_parts" title="Link to this heading">¶</a></h1>
+<p>integrations/slack/events/home_tab/ui_parts.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.button">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.button" title="Link to this definition">¶</a></dt>
+<dd><p>ボタン配置</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>text</strong> (<em>str</em><em>, </em><em>optional</em>) – 表示テキスト</p></li>
+<li><p><strong>action_id</strong> (<em>str</em>) – action_id</p></li>
+<li><p><strong>style</strong> (<em>str</em><em> | </em><em>bool</em><em>, </em><em>optional</em>) – 表示スタイル. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.checkboxes">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">checkboxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_suffix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.checkboxes" title="Link to this definition">¶</a></dt>
+<dd><p>チェックボックス選択メニュー</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>id_suffix</strong> (<em>str</em>) – block_id, action_id</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – 表示タイトル</p></li>
+<li><p><strong>flag</strong> (<em>Optional</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – 表示する選択項目. Defaults to None.</p></li>
+<li><p><strong>initial</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – チェック済み項目. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.divider">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">divider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.divider" title="Link to this definition">¶</a></dt>
+<dd><p>境界線を引く</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.header">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dummy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.header" title="Link to this definition">¶</a></dt>
+<dd><p>ヘッダ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>text</strong> (<em>str</em><em>, </em><em>optional</em>) – ヘッダテキスト. Defaults to “dummy”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.input_ranked">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">input_ranked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.input_ranked" title="Link to this definition">¶</a></dt>
+<dd><p>ランキング上限入力テキストボックス</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>block_id</strong> (<em>str</em><em> | </em><em>bool</em><em>, </em><em>optional</em>) – block_id. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.modalperiod_selection">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">modalperiod_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.modalperiod_selection" title="Link to this definition">¶</a></dt>
+<dd><p>日付選択</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ブロック要素</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.multi_select_pulldown">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">multi_select_pulldown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dummy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.multi_select_pulldown" title="Link to this definition">¶</a></dt>
+<dd><p>複数プレイヤー選択プルダウンメニュー</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>text</strong> (<em>str</em><em>, </em><em>optional</em>) – 表示テキスト. Defaults to “dummy”.</p></li>
+<li><p><strong>add_list</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – プレイヤーリスト. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.plain_text">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">plain_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.plain_text" title="Link to this definition">¶</a></dt>
+<dd><p>プレーンテキストの埋め込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – テキスト</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ブロック要素</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.radio_buttons">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">radio_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_suffix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.radio_buttons" title="Link to this definition">¶</a></dt>
+<dd><p>オプション選択メニュー</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>id_suffix</strong> (<em>str</em>) – block_id, action_id</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – 表示タイトル</p></li>
+<li><p><strong>flag</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – 表示する選択項目</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.set_command_option">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">set_command_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.set_command_option" title="Link to this definition">¶</a></dt>
+<dd><p>選択オプションの内容のフラグをセット</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>body</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – イベント内容</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>list[str]: コマンドに追加する文字列</p></li>
+<li><p>list[str]: viewに表示するメッセージ</p></li>
+<li><p>dict[str, Any]: 変更されるフラグ</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list[str], list[str], dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.update_view">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">update_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.update_view" title="Link to this definition">¶</a></dt>
+<dd><p>viewを更新する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプター</p></li>
+<li><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p></li>
+<li><p><strong>msg</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 表示テキスト</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.slack.events.home_tab.ui_parts.user_select_pulldown">
+<span class="sig-prename descclassname"><span class="pre">integrations.slack.events.home_tab.ui_parts.</span></span><span class="sig-name descname"><span class="pre">user_select_pulldown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dummy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.events.home_tab.ui_parts.user_select_pulldown" title="Link to this definition">¶</a></dt>
+<dd><p>プレイヤー選択プルダウンメニュー</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – アダプタインターフェース</p></li>
+<li><p><strong>text</strong> (<em>str</em><em>, </em><em>optional</em>) – 表示テキスト. Defaults to “dummy”.</p></li>
+<li><p><strong>add_list</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – プレイヤーリスト. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.slack.events.home_tab.ui_parts module</a><ul>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.button"><code class="docutils literal notranslate"><span class="pre">button()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.checkboxes"><code class="docutils literal notranslate"><span class="pre">checkboxes()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.divider"><code class="docutils literal notranslate"><span class="pre">divider()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.header"><code class="docutils literal notranslate"><span class="pre">header()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.input_ranked"><code class="docutils literal notranslate"><span class="pre">input_ranked()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.modalperiod_selection"><code class="docutils literal notranslate"><span class="pre">modalperiod_selection()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.multi_select_pulldown"><code class="docutils literal notranslate"><span class="pre">multi_select_pulldown()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.plain_text"><code class="docutils literal notranslate"><span class="pre">plain_text()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.radio_buttons"><code class="docutils literal notranslate"><span class="pre">radio_buttons()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.set_command_option"><code class="docutils literal notranslate"><span class="pre">set_command_option()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.update_view"><code class="docutils literal notranslate"><span class="pre">update_view()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.events.home_tab.ui_parts.user_select_pulldown"><code class="docutils literal notranslate"><span class="pre">user_select_pulldown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.slack.events.home_tab.summary.html"
+                          title="previous chapter">integrations.slack.events.home_tab.summary module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.slack.events.home_tab.versus.html"
+                          title="next chapter">integrations.slack.events.home_tab.versus module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.slack.events.home_tab.ui_parts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.events.home_tab.versus.html" title="integrations.slack.events.home_tab.versus module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.events.home_tab.summary.html" title="integrations.slack.events.home_tab.summary module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.slack.html" >integrations.slack package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.slack.events.html" >integrations.slack.events package</a> &#187;</li>
+          <li class="nav-item nav-item-4"><a href="integrations.slack.events.home_tab.html" >integrations.slack.events.home_tab package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.slack.events.home_tab.ui_parts module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

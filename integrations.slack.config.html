@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>integrations.slack.config module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="integrations.slack.functions module" href="integrations.slack.functions.html" />
+    <link rel="prev" title="integrations.slack.api module" href="integrations.slack.api.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.slack.config module</a><ul>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig"><code class="docutils literal notranslate"><span class="pre">SvcConfig</span></code></a><ul>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SvcConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.bot_id"><code class="docutils literal notranslate"><span class="pre">SvcConfig.bot_id</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.channel_limitations"><code class="docutils literal notranslate"><span class="pre">SvcConfig.channel_limitations</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.comparison_alias"><code class="docutils literal notranslate"><span class="pre">SvcConfig.comparison_alias</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.comparison_word"><code class="docutils literal notranslate"><span class="pre">SvcConfig.comparison_word</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.ignore_userid"><code class="docutils literal notranslate"><span class="pre">SvcConfig.ignore_userid</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.reaction_ng"><code class="docutils literal notranslate"><span class="pre">SvcConfig.reaction_ng</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.reaction_ok"><code class="docutils literal notranslate"><span class="pre">SvcConfig.reaction_ok</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_after"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_after</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_channel"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_channel</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_wait"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_wait</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.slash_command"><code class="docutils literal notranslate"><span class="pre">SvcConfig.slash_command</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.tab_var"><code class="docutils literal notranslate"><span class="pre">SvcConfig.tab_var</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.thread_report"><code class="docutils literal notranslate"><span class="pre">SvcConfig.thread_report</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.slack.api.html"
+                          title="previous chapter">integrations.slack.api module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.slack.functions.html"
+                          title="next chapter">integrations.slack.functions module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.slack.config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.functions.html" title="integrations.slack.functions module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.api.html" title="integrations.slack.api module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.slack.html" accesskey="U">integrations.slack package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.slack.config module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-integrations.slack.config">
+<span id="integrations-slack-config-module"></span><h1>integrations.slack.config module<a class="headerlink" href="#module-integrations.slack.config" title="Link to this heading">¶</a></h1>
+<p>integrations/slack/config.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">integrations.slack.config.</span></span><span class="sig-name descname"><span class="pre">SvcConfig</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libs.bootstrap.section.html#libs.bootstrap.section.BaseSection" title="libs.bootstrap.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="integrations.base.interface.html#integrations.base.interface.IntegrationsConfig" title="integrations.base.interface.IntegrationsConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegrationsConfig</span></code></a></p>
+<p>slack用個別設定値</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_parser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_command_dispatcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_keyword_dispatcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slash_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/mahjong'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">badge_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">badge_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">badge_grade</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matplotlib'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'成績チェック'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison_alias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaction_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ok'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaction_ng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ng'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_userid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_limitations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bot_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.config.SvcConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_parser</strong> (<em>ConfigParser</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>_command_dispatcher</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+<li><p><strong>_keyword_dispatcher</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+<li><p><strong>main_conf</strong> (<em>ConfigParser</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>channel_config</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>slash_command</strong> (<em>str</em>)</p></li>
+<li><p><strong>badge_degree</strong> (<em>bool</em>)</p></li>
+<li><p><strong>badge_status</strong> (<em>bool</em>)</p></li>
+<li><p><strong>badge_grade</strong> (<em>bool</em>)</p></li>
+<li><p><strong>separate</strong> (<em>bool</em>)</p></li>
+<li><p><strong>channel_id</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>plotting_backend</strong> (<em>Literal</em><em>[</em><em>'matplotlib'</em><em>, </em><em>'plotly'</em><em>]</em>)</p></li>
+<li><p><strong>comparison_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>comparison_alias</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>search_channel</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>search_after</strong> (<em>int</em>)</p></li>
+<li><p><strong>search_wait</strong> (<em>int</em>)</p></li>
+<li><p><strong>thread_report</strong> (<em>bool</em>)</p></li>
+<li><p><strong>reaction_ok</strong> (<em>str</em>)</p></li>
+<li><p><strong>reaction_ng</strong> (<em>str</em>)</p></li>
+<li><p><strong>ignore_userid</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>channel_limitations</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>bot_id</strong> (<em>str</em>)</p></li>
+<li><p><strong>tab_var</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.bot_id">
+<span class="sig-name descname"><span class="pre">bot_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.bot_id" title="Link to this definition">¶</a></dt>
+<dd><p>ボットID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.channel_limitations">
+<span class="sig-name descname"><span class="pre">channel_limitations</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.channel_limitations" title="Link to this definition">¶</a></dt>
+<dd><p>SQLが実行できるチャンネルリスト(カンマ区切りで設定)</p>
+<p>未定義はすべてのチャンネルでSQLが実行できる</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.comparison_alias">
+<span class="sig-name descname"><span class="pre">comparison_alias</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.comparison_alias" title="Link to this definition">¶</a></dt>
+<dd><p>データ突合スラッシュコマンド別名(カンマ区切りで設定)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.comparison_word">
+<span class="sig-name descname"><span class="pre">comparison_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'成績チェック'</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.comparison_word" title="Link to this definition">¶</a></dt>
+<dd><p>データ突合コマンド呼び出しキーワード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.ignore_userid">
+<span class="sig-name descname"><span class="pre">ignore_userid</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.ignore_userid" title="Link to this definition">¶</a></dt>
+<dd><p>投稿を無視するユーザのリスト(カンマ区切りで設定)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.reaction_ng">
+<span class="sig-name descname"><span class="pre">reaction_ng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ng'</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.reaction_ng" title="Link to this definition">¶</a></dt>
+<dd><p>DBに取り込んだが正確な値ではない可能性があるときに付けるリアクション</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.reaction_ok">
+<span class="sig-name descname"><span class="pre">reaction_ok</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ok'</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.reaction_ok" title="Link to this definition">¶</a></dt>
+<dd><p>DBに取り込んだ時に付けるリアクション</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.search_after">
+<span class="sig-name descname"><span class="pre">search_after</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.search_after" title="Link to this definition">¶</a></dt>
+<dd><p>データ突合時対象にする日数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.search_channel">
+<span class="sig-name descname"><span class="pre">search_channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.search_channel" title="Link to this definition">¶</a></dt>
+<dd><p>テータ突合時に成績記録ワードを検索するチャンネル名(カンマ区切りで設定)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.search_wait">
+<span class="sig-name descname"><span class="pre">search_wait</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">180</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.search_wait" title="Link to this definition">¶</a></dt>
+<dd><p>指定秒数以内にポストされているデータを突合対象から除外する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.slash_command">
+<span class="sig-name descname"><span class="pre">slash_command</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/mahjong'</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.slash_command" title="Link to this definition">¶</a></dt>
+<dd><p>スラッシュコマンド名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.tab_var">
+<span class="sig-name descname"><span class="pre">tab_var</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.tab_var" title="Link to this definition">¶</a></dt>
+<dd><p>ホームタブ用初期値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.slack.config.SvcConfig.thread_report">
+<span class="sig-name descname"><span class="pre">thread_report</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#integrations.slack.config.SvcConfig.thread_report" title="Link to this definition">¶</a></dt>
+<dd><p>スレッド内にある得点報告の扱い</p>
+<ul class="simple">
+<li><p><em>True</em>: スレッド内の点数報告も取り込む</p></li>
+<li><p><em>False</em>: スレッド内の点数報告は無視する</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.slack.config module</a><ul>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig"><code class="docutils literal notranslate"><span class="pre">SvcConfig</span></code></a><ul>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SvcConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.bot_id"><code class="docutils literal notranslate"><span class="pre">SvcConfig.bot_id</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.channel_limitations"><code class="docutils literal notranslate"><span class="pre">SvcConfig.channel_limitations</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.comparison_alias"><code class="docutils literal notranslate"><span class="pre">SvcConfig.comparison_alias</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.comparison_word"><code class="docutils literal notranslate"><span class="pre">SvcConfig.comparison_word</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.ignore_userid"><code class="docutils literal notranslate"><span class="pre">SvcConfig.ignore_userid</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.reaction_ng"><code class="docutils literal notranslate"><span class="pre">SvcConfig.reaction_ng</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.reaction_ok"><code class="docutils literal notranslate"><span class="pre">SvcConfig.reaction_ok</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_after"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_after</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_channel"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_channel</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.search_wait"><code class="docutils literal notranslate"><span class="pre">SvcConfig.search_wait</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.slash_command"><code class="docutils literal notranslate"><span class="pre">SvcConfig.slash_command</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.tab_var"><code class="docutils literal notranslate"><span class="pre">SvcConfig.tab_var</span></code></a></li>
+<li><a class="reference internal" href="#integrations.slack.config.SvcConfig.thread_report"><code class="docutils literal notranslate"><span class="pre">SvcConfig.thread_report</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.slack.api.html"
+                          title="previous chapter">integrations.slack.api module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.slack.functions.html"
+                          title="next chapter">integrations.slack.functions module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrations.slack.config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.functions.html" title="integrations.slack.functions module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrations.slack.api.html" title="integrations.slack.api module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.slack.html" >integrations.slack package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.slack.config module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

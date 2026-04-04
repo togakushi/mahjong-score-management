@@ -1,0 +1,29 @@
+libs package
+============
+
+.. automodule:: libs
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.bootstrap
+   libs.commands
+   libs.domain
+   libs.functions
+   libs.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.dispatcher
+   libs.global_value
+   libs.types

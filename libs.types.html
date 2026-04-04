@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.types module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tests package" href="tests.html" />
+    <link rel="prev" title="libs.global_value module" href="libs.global_value.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.types module</a><ul>
+<li><a class="reference internal" href="#libs.types.ActionStatus"><code class="docutils literal notranslate"><span class="pre">ActionStatus</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ChannelType"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ChannelType.CHANNEL"><code class="docutils literal notranslate"><span class="pre">ChannelType.CHANNEL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.DIRECT_MESSAGE"><code class="docutils literal notranslate"><span class="pre">ChannelType.DIRECT_MESSAGE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.PRIVATE"><code class="docutils literal notranslate"><span class="pre">ChannelType.PRIVATE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict"><code class="docutils literal notranslate"><span class="pre">GradeTableDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.addition_expression"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.addition_expression</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.name"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.table"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.table</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.MessageStatus"><code class="docutils literal notranslate"><span class="pre">MessageStatus</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.MessageStatus.APPEND"><code class="docutils literal notranslate"><span class="pre">MessageStatus.APPEND</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.CHANGED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.CHANGED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.MessageType"><code class="docutils literal notranslate"><span class="pre">MessageType</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict.data"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.data</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict.options"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.options</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.RankTableDict"><code class="docutils literal notranslate"><span class="pre">RankTableDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.RankTableDict.acquisition"><code class="docutils literal notranslate"><span class="pre">RankTableDict.acquisition</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.demote"><code class="docutils literal notranslate"><span class="pre">RankTableDict.demote</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.grade"><code class="docutils literal notranslate"><span class="pre">RankTableDict.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.point"><code class="docutils literal notranslate"><span class="pre">RankTableDict.point</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.RemarkDict"><code class="docutils literal notranslate"><span class="pre">RemarkDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.RemarkDict.event_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.event_ts</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.matter"><code class="docutils literal notranslate"><span class="pre">RemarkDict.matter</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.name"><code class="docutils literal notranslate"><span class="pre">RemarkDict.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.source"><code class="docutils literal notranslate"><span class="pre">RemarkDict.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.thread_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.thread_ts</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ScoreDict"><code class="docutils literal notranslate"><span class="pre">ScoreDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ScoreDict.comment"><code class="docutils literal notranslate"><span class="pre">ScoreDict.comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.deposit"><code class="docutils literal notranslate"><span class="pre">ScoreDict.deposit</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.mode"><code class="docutils literal notranslate"><span class="pre">ScoreDict.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.rule_version"><code class="docutils literal notranslate"><span class="pre">ScoreDict.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.source"><code class="docutils literal notranslate"><span class="pre">ScoreDict.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.ts"><code class="docutils literal notranslate"><span class="pre">ScoreDict.ts</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ServiceType"><code class="docutils literal notranslate"><span class="pre">ServiceType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ServiceType.DISCORD"><code class="docutils literal notranslate"><span class="pre">ServiceType.DISCORD</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.SLACK"><code class="docutils literal notranslate"><span class="pre">ServiceType.SLACK</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions"><code class="docutils literal notranslate"><span class="pre">StyleOptions</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.DETAILED_COMPARISON"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.DETAILED_COMPARISON</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.GENERAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.GENERAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.POINTS_DIFF"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.POINTS_DIFF</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.POINTS_TOTAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.POINTS_TOTAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RANKING"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RANKING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RATING"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RATING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RECORD_DATA"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RECORD_DATA</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RECORD_DATA_ALL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RECORD_DATA_ALL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_OTHER"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_OTHER</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_REGULATION"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_REGULATION</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_YAKUMAN"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_YAKUMAN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.SEAT_DATA"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.SEAT_DATA</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.NONE"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.NONE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.NORMAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.NORMAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.SHORT"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.SHORT</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.asdict"><code class="docutils literal notranslate"><span class="pre">StyleOptions.asdict</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.base_name"><code class="docutils literal notranslate"><span class="pre">StyleOptions.base_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.codeblock"><code class="docutils literal notranslate"><span class="pre">StyleOptions.codeblock</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.data_kind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.data_kind</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.filename"><code class="docutils literal notranslate"><span class="pre">StyleOptions.filename</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.format_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.format_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.keep_indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_indent</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.print_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.print_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.rename_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.rename_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.sub_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.sub_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.transpose"><code class="docutils literal notranslate"><span class="pre">StyleOptions.transpose</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.global_value.html"
+                          title="previous chapter">libs.global_value module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tests.html"
+                          title="next chapter">tests package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="tests package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.global_value.html" title="libs.global_value module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" accesskey="U">libs package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.types module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.types">
+<span id="libs-types-module"></span><h1>libs.types module<a class="headerlink" href="#module-libs.types" title="Link to this heading">¶</a></h1>
+<p>libs/types.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.ActionStatus">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">ActionStatus</span></span><a class="headerlink" href="#libs.types.ActionStatus" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>DBに対する操作</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ActionStatus.CHANGE">
+<span class="sig-name descname"><span class="pre">CHANGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'change'</span></span><a class="headerlink" href="#libs.types.ActionStatus.CHANGE" title="Link to this definition">¶</a></dt>
+<dd><p>insert/updateが実行された</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ActionStatus.DELETE">
+<span class="sig-name descname"><span class="pre">DELETE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'delete'</span></span><a class="headerlink" href="#libs.types.ActionStatus.DELETE" title="Link to this definition">¶</a></dt>
+<dd><p>deleteが実行された</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ActionStatus.NOTHING">
+<span class="sig-name descname"><span class="pre">NOTHING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nothing'</span></span><a class="headerlink" href="#libs.types.ActionStatus.NOTHING" title="Link to this definition">¶</a></dt>
+<dd><p>何もしてない</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ActionStatus.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ActionStatus.__new__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.ChannelType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">ChannelType</span></span><a class="headerlink" href="#libs.types.ChannelType" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>チャンネルタイプ</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.CHANNEL">
+<span class="sig-name descname"><span class="pre">CHANNEL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normal'</span></span><a class="headerlink" href="#libs.types.ChannelType.CHANNEL" title="Link to this definition">¶</a></dt>
+<dd><p>通常チャンネル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.DIRECT_MESSAGE">
+<span class="sig-name descname"><span class="pre">DIRECT_MESSAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'direct_message'</span></span><a class="headerlink" href="#libs.types.ChannelType.DIRECT_MESSAGE" title="Link to this definition">¶</a></dt>
+<dd><p>ダイレクトメッセージ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.HOME_APP">
+<span class="sig-name descname"><span class="pre">HOME_APP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'home_app'</span></span><a class="headerlink" href="#libs.types.ChannelType.HOME_APP" title="Link to this definition">¶</a></dt>
+<dd><p>Slackのホームアプリ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.PRIVATE">
+<span class="sig-name descname"><span class="pre">PRIVATE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'private'</span></span><a class="headerlink" href="#libs.types.ChannelType.PRIVATE" title="Link to this definition">¶</a></dt>
+<dd><p>プライベートチャンネル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.SEARCH">
+<span class="sig-name descname"><span class="pre">SEARCH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'search_api'</span></span><a class="headerlink" href="#libs.types.ChannelType.SEARCH" title="Link to this definition">¶</a></dt>
+<dd><p>検索API</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ChannelType.UNDETERMINED">
+<span class="sig-name descname"><span class="pre">UNDETERMINED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'undetermined'</span></span><a class="headerlink" href="#libs.types.ChannelType.UNDETERMINED" title="Link to this definition">¶</a></dt>
+<dd><p>未定義状態</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ChannelType.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ChannelType.__new__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.CommandType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">CommandType</span></span><a class="headerlink" href="#libs.types.CommandType" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>実行(する/した)サブコマンド兼設定ファイルセクション名</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.COMPARISON">
+<span class="sig-name descname"><span class="pre">COMPARISON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comparison'</span></span><a class="headerlink" href="#libs.types.CommandType.COMPARISON" title="Link to this definition">¶</a></dt>
+<dd><p>突合処理</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.GRAPH">
+<span class="sig-name descname"><span class="pre">GRAPH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'graph'</span></span><a class="headerlink" href="#libs.types.CommandType.GRAPH" title="Link to this definition">¶</a></dt>
+<dd><p>グラフ生成</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.HELP">
+<span class="sig-name descname"><span class="pre">HELP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'help'</span></span><a class="headerlink" href="#libs.types.CommandType.HELP" title="Link to this definition">¶</a></dt>
+<dd><p>ヘルプ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.MEMBER_LIST">
+<span class="sig-name descname"><span class="pre">MEMBER_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'member'</span></span><a class="headerlink" href="#libs.types.CommandType.MEMBER_LIST" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー一覧</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.RANKING">
+<span class="sig-name descname"><span class="pre">RANKING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ranking'</span></span><a class="headerlink" href="#libs.types.CommandType.RANKING" title="Link to this definition">¶</a></dt>
+<dd><p>ランキング</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.RATING">
+<span class="sig-name descname"><span class="pre">RATING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rating'</span></span><a class="headerlink" href="#libs.types.CommandType.RATING" title="Link to this definition">¶</a></dt>
+<dd><p>レーティング</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.REPORT">
+<span class="sig-name descname"><span class="pre">REPORT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'report'</span></span><a class="headerlink" href="#libs.types.CommandType.REPORT" title="Link to this definition">¶</a></dt>
+<dd><p>レポート</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.RESULTS">
+<span class="sig-name descname"><span class="pre">RESULTS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'results'</span></span><a class="headerlink" href="#libs.types.CommandType.RESULTS" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.TEAM_LIST">
+<span class="sig-name descname"><span class="pre">TEAM_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'team'</span></span><a class="headerlink" href="#libs.types.CommandType.TEAM_LIST" title="Link to this definition">¶</a></dt>
+<dd><p>チーム一覧</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.types.CommandType.UNKNOWN" title="Link to this definition">¶</a></dt>
+<dd><p>未定義</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.CommandType.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.CommandType.__new__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.GradeTableDict">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">GradeTableDict</span></span><a class="headerlink" href="#libs.types.GradeTableDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>段位テーブル用辞書</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.GradeTableDict.addition_expression">
+<span class="sig-name descname"><span class="pre">addition_expression</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.GradeTableDict.addition_expression" title="Link to this definition">¶</a></dt>
+<dd><p>素点評価式(昇段ポイントに加算)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.GradeTableDict.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.GradeTableDict.name" title="Link to this definition">¶</a></dt>
+<dd><p>識別名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.GradeTableDict.table">
+<span class="sig-name descname"><span class="pre">table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#libs.types.RankTableDict" title="libs.types.RankTableDict"><span class="pre">RankTableDict</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.types.GradeTableDict.table" title="Link to this definition">¶</a></dt>
+<dd><p>昇段ポイント計算テーブル</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.MessageStatus">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">MessageStatus</span></span><a class="headerlink" href="#libs.types.MessageStatus" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>メッセージステータス</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.APPEND">
+<span class="sig-name descname"><span class="pre">APPEND</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'message_append'</span></span><a class="headerlink" href="#libs.types.MessageStatus.APPEND" title="Link to this definition">¶</a></dt>
+<dd><p>新規ポストイベント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.CHANGED">
+<span class="sig-name descname"><span class="pre">CHANGED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'message_changed'</span></span><a class="headerlink" href="#libs.types.MessageStatus.CHANGED" title="Link to this definition">¶</a></dt>
+<dd><p>編集イベント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.DELETED">
+<span class="sig-name descname"><span class="pre">DELETED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'message_deleted'</span></span><a class="headerlink" href="#libs.types.MessageStatus.DELETED" title="Link to this definition">¶</a></dt>
+<dd><p>削除イベント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.DO_NOTHING">
+<span class="sig-name descname"><span class="pre">DO_NOTHING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'do_nothing'</span></span><a class="headerlink" href="#libs.types.MessageStatus.DO_NOTHING" title="Link to this definition">¶</a></dt>
+<dd><p>何もしなくてよいイベント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.UNDETERMINED">
+<span class="sig-name descname"><span class="pre">UNDETERMINED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'undetermined'</span></span><a class="headerlink" href="#libs.types.MessageStatus.UNDETERMINED" title="Link to this definition">¶</a></dt>
+<dd><p>未定義状態</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.MessageStatus.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.MessageStatus.__new__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="libs.types.MessageType">
+<span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">MessageType</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TypeAlias</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">ForwardRef('Path')</span> <span class="pre">|</span> <span class="pre">ForwardRef('pd.DataFrame')</span></span><a class="headerlink" href="#libs.types.MessageType" title="Link to this definition">¶</a></dt>
+<dd><p>メッセージ型
+- <em>None</em>: 空データ(なにもしない)
+- <em>str</em>: 文字列型データ(そのまま表示)
+- <em>Path</em>: ファイルパス(アップロード処理)
+- <em>DataFrame</em>: 表データ</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.MessageTypeDict">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">MessageTypeDict</span></span><a class="headerlink" href="#libs.types.MessageTypeDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>メッセージ格納辞書</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageTypeDict.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pd.DataFrame</span></span><a class="headerlink" href="#libs.types.MessageTypeDict.data" title="Link to this definition">¶</a></dt>
+<dd><p>内容</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.MessageTypeDict.options">
+<span class="sig-name descname"><span class="pre">options</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.types.StyleOptions" title="libs.types.StyleOptions"><span class="pre">StyleOptions</span></a></span><a class="headerlink" href="#libs.types.MessageTypeDict.options" title="Link to this definition">¶</a></dt>
+<dd><p>表示オプション</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.RankTableDict">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">RankTableDict</span></span><a class="headerlink" href="#libs.types.RankTableDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>昇段ポイント計算テーブル用辞書</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RankTableDict.acquisition">
+<span class="sig-name descname"><span class="pre">acquisition</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.types.RankTableDict.acquisition" title="Link to this definition">¶</a></dt>
+<dd><p>獲得ポイント(順位)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RankTableDict.demote">
+<span class="sig-name descname"><span class="pre">demote</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.types.RankTableDict.demote" title="Link to this definition">¶</a></dt>
+<dd><p>降格フラグ
+- <em>True</em>: 降格する(省略時デフォルト)
+- <em>False</em>: 降格しない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RankTableDict.grade">
+<span class="sig-name descname"><span class="pre">grade</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RankTableDict.grade" title="Link to this definition">¶</a></dt>
+<dd><p>段位名称</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RankTableDict.point">
+<span class="sig-name descname"><span class="pre">point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.types.RankTableDict.point" title="Link to this definition">¶</a></dt>
+<dd><p>初期ポイントと昇段に必要なポイント</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.RemarkDict">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">RemarkDict</span></span><a class="headerlink" href="#libs.types.RemarkDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>メモ格納用辞書</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RemarkDict.event_ts">
+<span class="sig-name descname"><span class="pre">event_ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RemarkDict.event_ts" title="Link to this definition">¶</a></dt>
+<dd><p>メモ記録時間</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RemarkDict.matter">
+<span class="sig-name descname"><span class="pre">matter</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RemarkDict.matter" title="Link to this definition">¶</a></dt>
+<dd><p>記録内容</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RemarkDict.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RemarkDict.name" title="Link to this definition">¶</a></dt>
+<dd><p>記録対象プレイヤー名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RemarkDict.source">
+<span class="sig-name descname"><span class="pre">source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RemarkDict.source" title="Link to this definition">¶</a></dt>
+<dd><p>データ入力元識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.RemarkDict.thread_ts">
+<span class="sig-name descname"><span class="pre">thread_ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.RemarkDict.thread_ts" title="Link to this definition">¶</a></dt>
+<dd><p>ゲーム終了時間</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.ScoreDict">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">ScoreDict</span></span><a class="headerlink" href="#libs.types.ScoreDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>スコアデータ格納用辞書</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.types.ScoreDict.comment" title="Link to this definition">¶</a></dt>
+<dd><p>ゲームコメント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.deposit">
+<span class="sig-name descname"><span class="pre">deposit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.deposit" title="Link to this definition">¶</a></dt>
+<dd><p>配給原点合計 - 素点合計</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.types.ScoreDict.mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計モード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p1_name">
+<span class="sig-name descname"><span class="pre">p1_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p1_name" title="Link to this definition">¶</a></dt>
+<dd><p>東家：プレイヤー名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p1_point">
+<span class="sig-name descname"><span class="pre">p1_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.types.ScoreDict.p1_point" title="Link to this definition">¶</a></dt>
+<dd><p>東家：獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p1_rank">
+<span class="sig-name descname"><span class="pre">p1_rank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p1_rank" title="Link to this definition">¶</a></dt>
+<dd><p>東家：獲得順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p1_rpoint">
+<span class="sig-name descname"><span class="pre">p1_rpoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p1_rpoint" title="Link to this definition">¶</a></dt>
+<dd><p>東家：素点(入力文字列評価後)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p1_str">
+<span class="sig-name descname"><span class="pre">p1_str</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p1_str" title="Link to this definition">¶</a></dt>
+<dd><p>東家：入力された素点情報(文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p2_name">
+<span class="sig-name descname"><span class="pre">p2_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p2_name" title="Link to this definition">¶</a></dt>
+<dd><p>南家：プレイヤー名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p2_point">
+<span class="sig-name descname"><span class="pre">p2_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.types.ScoreDict.p2_point" title="Link to this definition">¶</a></dt>
+<dd><p>東家：獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p2_rank">
+<span class="sig-name descname"><span class="pre">p2_rank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p2_rank" title="Link to this definition">¶</a></dt>
+<dd><p>南家：獲得順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p2_rpoint">
+<span class="sig-name descname"><span class="pre">p2_rpoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p2_rpoint" title="Link to this definition">¶</a></dt>
+<dd><p>南家：素点(入力文字列評価後)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p2_str">
+<span class="sig-name descname"><span class="pre">p2_str</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p2_str" title="Link to this definition">¶</a></dt>
+<dd><p>南家：入力された素点情報(文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p3_name">
+<span class="sig-name descname"><span class="pre">p3_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p3_name" title="Link to this definition">¶</a></dt>
+<dd><p>西家：プレイヤー名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p3_point">
+<span class="sig-name descname"><span class="pre">p3_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.types.ScoreDict.p3_point" title="Link to this definition">¶</a></dt>
+<dd><p>西家：獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p3_rank">
+<span class="sig-name descname"><span class="pre">p3_rank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p3_rank" title="Link to this definition">¶</a></dt>
+<dd><p>西家：獲得順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p3_rpoint">
+<span class="sig-name descname"><span class="pre">p3_rpoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p3_rpoint" title="Link to this definition">¶</a></dt>
+<dd><p>西家：素点(入力文字列評価後)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p3_str">
+<span class="sig-name descname"><span class="pre">p3_str</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p3_str" title="Link to this definition">¶</a></dt>
+<dd><p>西家：入力された素点情報(文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p4_name">
+<span class="sig-name descname"><span class="pre">p4_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p4_name" title="Link to this definition">¶</a></dt>
+<dd><p>北家：プレイヤー名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p4_point">
+<span class="sig-name descname"><span class="pre">p4_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#libs.types.ScoreDict.p4_point" title="Link to this definition">¶</a></dt>
+<dd><p>北家：獲得ポイント</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p4_rank">
+<span class="sig-name descname"><span class="pre">p4_rank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p4_rank" title="Link to this definition">¶</a></dt>
+<dd><p>北家：獲得順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p4_rpoint">
+<span class="sig-name descname"><span class="pre">p4_rpoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.types.ScoreDict.p4_rpoint" title="Link to this definition">¶</a></dt>
+<dd><p>北家：素点(入力文字列評価後)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.p4_str">
+<span class="sig-name descname"><span class="pre">p4_str</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.p4_str" title="Link to this definition">¶</a></dt>
+<dd><p>北家：入力された素点情報(文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.rule_version">
+<span class="sig-name descname"><span class="pre">rule_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.rule_version" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.source">
+<span class="sig-name descname"><span class="pre">source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.types.ScoreDict.source" title="Link to this definition">¶</a></dt>
+<dd><p>データ入力元識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ScoreDict.ts">
+<span class="sig-name descname"><span class="pre">ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.ScoreDict.ts" title="Link to this definition">¶</a></dt>
+<dd><p>ゲーム終了時間</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.ServiceType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">ServiceType</span></span><a class="headerlink" href="#libs.types.ServiceType" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>連携先サービス</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ServiceType.DISCORD">
+<span class="sig-name descname"><span class="pre">DISCORD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'discord'</span></span><a class="headerlink" href="#libs.types.ServiceType.DISCORD" title="Link to this definition">¶</a></dt>
+<dd><p>discord</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ServiceType.SLACK">
+<span class="sig-name descname"><span class="pre">SLACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slack'</span></span><a class="headerlink" href="#libs.types.ServiceType.SLACK" title="Link to this definition">¶</a></dt>
+<dd><p>slack</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ServiceType.STANDARD_IO">
+<span class="sig-name descname"><span class="pre">STANDARD_IO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'standard_io'</span></span><a class="headerlink" href="#libs.types.ServiceType.STANDARD_IO" title="Link to this definition">¶</a></dt>
+<dd><p>standard_io</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ServiceType.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.types.ServiceType.UNKNOWN" title="Link to this definition">¶</a></dt>
+<dd><p>unknown</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.ServiceType.WEB">
+<span class="sig-name descname"><span class="pre">WEB</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'web'</span></span><a class="headerlink" href="#libs.types.ServiceType.WEB" title="Link to this definition">¶</a></dt>
+<dd><p>web ui</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ServiceType.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ServiceType.__new__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.StyleOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">StyleOptions</span></span><a class="headerlink" href="#libs.types.StyleOptions" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>表示オプション</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DataKind</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>保存されているデータの種類</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.DETAILED_COMPARISON">
+<span class="sig-name descname"><span class="pre">DETAILED_COMPARISON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.DETAILED_COMPARISON" title="Link to this definition">¶</a></dt>
+<dd><p>成績詳細比較</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.GENERAL">
+<span class="sig-name descname"><span class="pre">GENERAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.GENERAL" title="Link to this definition">¶</a></dt>
+<dd><p>通常データ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.POINTS_DIFF">
+<span class="sig-name descname"><span class="pre">POINTS_DIFF</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.POINTS_DIFF" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ(ポイント差分)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.POINTS_TOTAL">
+<span class="sig-name descname"><span class="pre">POINTS_TOTAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.POINTS_TOTAL" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ(通算ポイント)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.RANKING">
+<span class="sig-name descname"><span class="pre">RANKING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.RANKING" title="Link to this definition">¶</a></dt>
+<dd><p>ランキングデータ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.RATING">
+<span class="sig-name descname"><span class="pre">RATING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.RATING" title="Link to this definition">¶</a></dt>
+<dd><p>レーティングデータ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.RECORD_DATA">
+<span class="sig-name descname"><span class="pre">RECORD_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.RECORD_DATA" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データ(簡易版)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.RECORD_DATA_ALL">
+<span class="sig-name descname"><span class="pre">RECORD_DATA_ALL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.RECORD_DATA_ALL" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データ(詳細版)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.REMARKS_OTHER">
+<span class="sig-name descname"><span class="pre">REMARKS_OTHER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.REMARKS_OTHER" title="Link to this definition">¶</a></dt>
+<dd><p>メモ(その他)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.REMARKS_REGULATION">
+<span class="sig-name descname"><span class="pre">REMARKS_REGULATION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.REMARKS_REGULATION" title="Link to this definition">¶</a></dt>
+<dd><p>メモ(卓外清算)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.REMARKS_YAKUMAN">
+<span class="sig-name descname"><span class="pre">REMARKS_YAKUMAN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.REMARKS_YAKUMAN" title="Link to this definition">¶</a></dt>
+<dd><p>メモ(役満和了)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.DataKind.SEAT_DATA">
+<span class="sig-name descname"><span class="pre">SEAT_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#libs.types.StyleOptions.DataKind.SEAT_DATA" title="Link to this definition">¶</a></dt>
+<dd><p>座席データ</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.RenameType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RenameType</span></span><a class="headerlink" href="#libs.types.StyleOptions.RenameType" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>リネームタイプ</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.RenameType.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.types.StyleOptions.RenameType.NONE" title="Link to this definition">¶</a></dt>
+<dd><p>変換しない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.RenameType.NORMAL">
+<span class="sig-name descname"><span class="pre">NORMAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#libs.types.StyleOptions.RenameType.NORMAL" title="Link to this definition">¶</a></dt>
+<dd><p>通常変換</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.RenameType.SHORT">
+<span class="sig-name descname"><span class="pre">SHORT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.types.StyleOptions.RenameType.SHORT" title="Link to this definition">¶</a></dt>
+<dd><p>短縮変換</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codeblock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summarize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_blank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rename_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RenameType.NORMAL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DataKind.GENERAL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.StyleOptions.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>)</p></li>
+<li><p><strong>sub_title</strong> (<em>bool</em>)</p></li>
+<li><p><strong>format_type</strong> (<em>Literal</em><em>[</em><em>'default'</em><em>, </em><em>'csv'</em><em>, </em><em>'txt'</em><em>]</em>)</p></li>
+<li><p><strong>base_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>codeblock</strong> (<em>bool</em>)</p></li>
+<li><p><strong>show_index</strong> (<em>bool</em>)</p></li>
+<li><p><strong>use_comment</strong> (<em>bool</em>)</p></li>
+<li><p><strong>header_hidden</strong> (<em>bool</em>)</p></li>
+<li><p><strong>key_title</strong> (<em>bool</em>)</p></li>
+<li><p><strong>summarize</strong> (<em>bool</em>)</p></li>
+<li><p><strong>indent</strong> (<em>int</em>)</p></li>
+<li><p><strong>keep_blank</strong> (<em>bool</em>)</p></li>
+<li><p><strong>keep_indent</strong> (<em>bool</em>)</p></li>
+<li><p><strong>transpose</strong> (<em>bool</em>)</p></li>
+<li><p><strong>rename_type</strong> (<a class="reference internal" href="#libs.types.StyleOptions.RenameType" title="libs.types.StyleOptions.RenameType"><em>RenameType</em></a>)</p></li>
+<li><p><strong>data_kind</strong> (<a class="reference internal" href="#libs.types.StyleOptions.DataKind" title="libs.types.StyleOptions.DataKind"><em>DataKind</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.asdict">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">asdict</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.types.StyleOptions.asdict" title="Link to this definition">¶</a></dt>
+<dd><p>辞書変換</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.base_name">
+<span class="sig-name descname"><span class="pre">base_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.types.StyleOptions.base_name" title="Link to this definition">¶</a></dt>
+<dd><p>ファイル出力時のファイル名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.codeblock">
+<span class="sig-name descname"><span class="pre">codeblock</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.codeblock" title="Link to this definition">¶</a></dt>
+<dd><p>MessageTypeがstr型ならcodeblock化
+- <em>True</em>: codeblock化
+- <em>False</em>: 何もしない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.data_kind">
+<span class="sig-name descname"><span class="pre">data_kind</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.types.StyleOptions.DataKind" title="libs.types.StyleOptions.DataKind"><span class="pre">DataKind</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.types.StyleOptions.data_kind" title="Link to this definition">¶</a></dt>
+<dd><p>データ種別</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.filename">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">filename</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.StyleOptions.filename" title="Link to this definition">¶</a></dt>
+<dd><p>出力ファイル名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.format_type">
+<span class="sig-name descname"><span class="pre">format_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'default'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'csv'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'txt'</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></span><a class="headerlink" href="#libs.types.StyleOptions.format_type" title="Link to this definition">¶</a></dt>
+<dd><p>出力フォーマット</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.header_hidden">
+<span class="sig-name descname"><span class="pre">header_hidden</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.header_hidden" title="Link to this definition">¶</a></dt>
+<dd><p>ヘッダ文を非表示にする
+- <em>True</em>: 非表示
+- <em>False</em>: 表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.indent">
+<span class="sig-name descname"><span class="pre">indent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.types.StyleOptions.indent" title="Link to this definition">¶</a></dt>
+<dd><p>出力時に付与するインデント数(TAB)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.keep_blank">
+<span class="sig-name descname"><span class="pre">keep_blank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.keep_blank" title="Link to this definition">¶</a></dt>
+<dd><p>空行の削除
+- <em>True</em>: 削除しない
+- <em>False</em>: 削除する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.keep_indent">
+<span class="sig-name descname"><span class="pre">keep_indent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.keep_indent" title="Link to this definition">¶</a></dt>
+<dd><p>保存されているメッセージのdedentの取り扱い
+- <em>True</em>: 維持する
+- <em>False</em>: 削除する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.key_title">
+<span class="sig-name descname"><span class="pre">key_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.key_title" title="Link to this definition">¶</a></dt>
+<dd><p>小見出しに辞書のキーを使う
+- <em>True</em>: 表示
+- <em>False</em>: 非表示</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.print_title">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">print_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.types.StyleOptions.print_title" title="Link to this definition">¶</a></dt>
+<dd><p>タイトル表示</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>タイトル文字列</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.rename_type">
+<span class="sig-name descname"><span class="pre">rename_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.types.StyleOptions.RenameType" title="libs.types.StyleOptions.RenameType"><span class="pre">RenameType</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#libs.types.StyleOptions.rename_type" title="Link to this definition">¶</a></dt>
+<dd><p>カラム名変換パラメータ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.show_index">
+<span class="sig-name descname"><span class="pre">show_index</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.show_index" title="Link to this definition">¶</a></dt>
+<dd><p>MessageTypeがDataFrame型なら表にIndexに含める
+- <em>True</em>: Indexを含める
+- <em>False</em>: Indexを含めない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.sub_title">
+<span class="sig-name descname"><span class="pre">sub_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.sub_title" title="Link to this definition">¶</a></dt>
+<dd><p>サブタイトル化</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.summarize">
+<span class="sig-name descname"><span class="pre">summarize</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.summarize" title="Link to this definition">¶</a></dt>
+<dd><p>MessageTypeがstr型のとき後続の要素を集約する
+- <em>True</em>: 可能な限り複数の要素をひとつにまとめる
+- <em>False</em>: 要素単位でデータを処理する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.types.StyleOptions.title" title="Link to this definition">¶</a></dt>
+<dd><p>出力タイトル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.transpose" title="Link to this definition">¶</a></dt>
+<dd><p>MessageTypeがDataFrameのとき表の縦横を変換する</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.use_comment">
+<span class="sig-name descname"><span class="pre">use_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.use_comment" title="Link to this definition">¶</a></dt>
+<dd><p>ファイルアップロード時のinitial_commentを有効にする
+- <em>True</em>: initial_commentを使う
+- <em>False</em>: initial_commentを使わない</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.types module</a><ul>
+<li><a class="reference internal" href="#libs.types.ActionStatus"><code class="docutils literal notranslate"><span class="pre">ActionStatus</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ChannelType"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ChannelType.CHANNEL"><code class="docutils literal notranslate"><span class="pre">ChannelType.CHANNEL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.DIRECT_MESSAGE"><code class="docutils literal notranslate"><span class="pre">ChannelType.DIRECT_MESSAGE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.PRIVATE"><code class="docutils literal notranslate"><span class="pre">ChannelType.PRIVATE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict"><code class="docutils literal notranslate"><span class="pre">GradeTableDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.addition_expression"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.addition_expression</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.name"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.GradeTableDict.table"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.table</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.MessageStatus"><code class="docutils literal notranslate"><span class="pre">MessageStatus</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.MessageStatus.APPEND"><code class="docutils literal notranslate"><span class="pre">MessageStatus.APPEND</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.CHANGED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.CHANGED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.MessageType"><code class="docutils literal notranslate"><span class="pre">MessageType</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict.data"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.data</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageTypeDict.options"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.options</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.RankTableDict"><code class="docutils literal notranslate"><span class="pre">RankTableDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.RankTableDict.acquisition"><code class="docutils literal notranslate"><span class="pre">RankTableDict.acquisition</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.demote"><code class="docutils literal notranslate"><span class="pre">RankTableDict.demote</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.grade"><code class="docutils literal notranslate"><span class="pre">RankTableDict.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RankTableDict.point"><code class="docutils literal notranslate"><span class="pre">RankTableDict.point</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.RemarkDict"><code class="docutils literal notranslate"><span class="pre">RemarkDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.RemarkDict.event_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.event_ts</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.matter"><code class="docutils literal notranslate"><span class="pre">RemarkDict.matter</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.name"><code class="docutils literal notranslate"><span class="pre">RemarkDict.name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.source"><code class="docutils literal notranslate"><span class="pre">RemarkDict.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.RemarkDict.thread_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.thread_ts</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ScoreDict"><code class="docutils literal notranslate"><span class="pre">ScoreDict</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ScoreDict.comment"><code class="docutils literal notranslate"><span class="pre">ScoreDict.comment</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.deposit"><code class="docutils literal notranslate"><span class="pre">ScoreDict.deposit</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.mode"><code class="docutils literal notranslate"><span class="pre">ScoreDict.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p1_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p2_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p3_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rpoint</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.p4_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_str</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.rule_version"><code class="docutils literal notranslate"><span class="pre">ScoreDict.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.source"><code class="docutils literal notranslate"><span class="pre">ScoreDict.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ScoreDict.ts"><code class="docutils literal notranslate"><span class="pre">ScoreDict.ts</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.ServiceType"><code class="docutils literal notranslate"><span class="pre">ServiceType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.ServiceType.DISCORD"><code class="docutils literal notranslate"><span class="pre">ServiceType.DISCORD</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.SLACK"><code class="docutils literal notranslate"><span class="pre">ServiceType.SLACK</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions"><code class="docutils literal notranslate"><span class="pre">StyleOptions</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.DETAILED_COMPARISON"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.DETAILED_COMPARISON</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.GENERAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.GENERAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.POINTS_DIFF"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.POINTS_DIFF</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.POINTS_TOTAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.POINTS_TOTAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RANKING"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RANKING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RATING"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RATING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RECORD_DATA"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RECORD_DATA</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.RECORD_DATA_ALL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.RECORD_DATA_ALL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_OTHER"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_OTHER</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_REGULATION"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_REGULATION</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.REMARKS_YAKUMAN"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.REMARKS_YAKUMAN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.DataKind.SEAT_DATA"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind.SEAT_DATA</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.NONE"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.NONE</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.NORMAL"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.NORMAL</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.RenameType.SHORT"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType.SHORT</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.asdict"><code class="docutils literal notranslate"><span class="pre">StyleOptions.asdict</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.base_name"><code class="docutils literal notranslate"><span class="pre">StyleOptions.base_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.codeblock"><code class="docutils literal notranslate"><span class="pre">StyleOptions.codeblock</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.data_kind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.data_kind</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.filename"><code class="docutils literal notranslate"><span class="pre">StyleOptions.filename</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.format_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.format_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.keep_indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_indent</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.print_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.print_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.rename_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.rename_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.sub_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.sub_title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.title</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.transpose"><code class="docutils literal notranslate"><span class="pre">StyleOptions.transpose</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.global_value.html"
+                          title="previous chapter">libs.global_value module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tests.html"
+                          title="next chapter">tests package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="tests package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.global_value.html" title="libs.global_value module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.types module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

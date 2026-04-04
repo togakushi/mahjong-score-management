@@ -1,0 +1,7 @@
+libs.functions.tools.comparison module
+======================================
+
+.. automodule:: libs.functions.tools.comparison
+   :members:
+   :show-inheritance:
+   :undoc-members:

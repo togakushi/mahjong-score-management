@@ -1,0 +1,7 @@
+libs.domain.placeholder module
+==============================
+
+.. automodule:: libs.domain.placeholder
+   :members:
+   :show-inheritance:
+   :undoc-members:

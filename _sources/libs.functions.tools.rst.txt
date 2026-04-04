@@ -1,0 +1,21 @@
+libs.functions.tools package
+============================
+
+.. automodule:: libs.functions.tools
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.functions.tools.comparison
+   libs.functions.tools.gen_test_data
+   libs.functions.tools.member
+   libs.functions.tools.recalculation
+   libs.functions.tools.score_simulator
+   libs.functions.tools.unification
+   libs.functions.tools.vacuum

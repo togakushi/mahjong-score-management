@@ -1,0 +1,18 @@
+tests.events package
+====================
+
+.. automodule:: tests.events
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.events.param_data
+   tests.events.test_integrations_web
+   tests.events.test_message_dispatch
+   tests.events.test_slash_dispatch

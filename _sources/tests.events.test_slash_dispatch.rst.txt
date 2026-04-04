@@ -1,0 +1,7 @@
+tests.events.test\_slash\_dispatch module
+=========================================
+
+.. automodule:: tests.events.test_slash_dispatch
+   :members:
+   :show-inheritance:
+   :undoc-members:

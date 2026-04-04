@@ -1,0 +1,7 @@
+tests.name\_check.param\_data module
+====================================
+
+.. automodule:: tests.name_check.param_data
+   :members:
+   :show-inheritance:
+   :undoc-members:

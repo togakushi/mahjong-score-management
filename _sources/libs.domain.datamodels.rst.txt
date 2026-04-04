@@ -1,0 +1,7 @@
+libs.domain.datamodels module
+=============================
+
+.. automodule:: libs.domain.datamodels
+   :members:
+   :show-inheritance:
+   :undoc-members:

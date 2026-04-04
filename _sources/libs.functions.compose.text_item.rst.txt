@@ -1,0 +1,7 @@
+libs.functions.compose.text\_item module
+========================================
+
+.. automodule:: libs.functions.compose.text_item
+   :members:
+   :show-inheritance:
+   :undoc-members:

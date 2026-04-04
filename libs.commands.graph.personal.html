@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.commands.graph.personal module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.commands.graph.rating module" href="libs.commands.graph.rating.html" />
+    <link rel="prev" title="libs.commands.graph.entry module" href="libs.commands.graph.entry.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.graph.personal module</a><ul>
+<li><a class="reference internal" href="#libs.commands.graph.personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.commands.graph.entry.html"
+                          title="previous chapter">libs.commands.graph.entry module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.commands.graph.rating.html"
+                          title="next chapter">libs.commands.graph.rating module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.commands.graph.personal.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.graph.rating.html" title="libs.commands.graph.rating module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.graph.entry.html" title="libs.commands.graph.entry module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.graph.html" accesskey="U">libs.commands.graph package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.graph.personal module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.commands.graph.personal">
+<span id="libs-commands-graph-personal-module"></span><h1>libs.commands.graph.personal module<a class="headerlink" href="#module-libs.commands.graph.personal" title="Link to this heading">¶</a></h1>
+<p>libs/commands/graph/personal.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.get_data">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.get_data" title="Link to this definition">¶</a></dt>
+<dd><p>データフレームを指定範囲で分割する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.Series</em>) – 分割するデータ</p></li>
+<li><p><strong>interval</strong> (<em>int</em>) – 1ブロックに収めるデータ数</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>分割されたデータ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plot" title="Link to this definition">¶</a></dt>
+<dd><p>個人成績のグラフを生成する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plotly_bar">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plotly_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plotly_bar" title="Link to this definition">¶</a></dt>
+<dd><p>順位分布グラフ生成(plotly用)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title_text</strong> (<em>str</em>) – グラフタイトル</p></li>
+<li><p><strong>df</strong> (<em>pd.Series</em>) – プロットするデータ</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存先ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plotly_box">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plotly_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plotly_box" title="Link to this definition">¶</a></dt>
+<dd><p>素点分布グラフ生成(plotly用)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title_text</strong> (<em>str</em>) – グラフタイトル</p></li>
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットするデータ</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存先ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plotly_line">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plotly_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plotly_line" title="Link to this definition">¶</a></dt>
+<dd><p>通算ポイント推移グラフ生成(plotly用)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title_text</strong> (<em>str</em>) – グラフタイトル</p></li>
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットするデータ</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存先ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plotly_point">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plotly_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plotly_point" title="Link to this definition">¶</a></dt>
+<dd><p>獲得ポイントグラフ(plotly用)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットするデータ</p></li>
+<li><p><strong>title_range</strong> (<em>str</em>) – 集計範囲(タイトル用)</p></li>
+<li><p><strong>total_game_count</strong> (<em>int</em>) – ゲーム数</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存先ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.plotly_rank">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">plotly_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.plotly_rank" title="Link to this definition">¶</a></dt>
+<dd><p>獲得順位グラフ(plotly用)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットするデータ</p></li>
+<li><p><strong>title_range</strong> (<em>str</em>) – 集計範囲(タイトル用)</p></li>
+<li><p><strong>total_game_count</strong> (<em>int</em>) – ゲーム数</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存先ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.statistics_plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">statistics_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.statistics_plot" title="Link to this definition">¶</a></dt>
+<dd><p>個人成績の統計グラフを生成する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.subplot_box">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">subplot_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.subplot_box" title="Link to this definition">¶</a></dt>
+<dd><p>箱ひげ図を生成する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットデータ</p></li>
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – プロット先オブジェクト</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.subplot_point">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">subplot_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.subplot_point" title="Link to this definition">¶</a></dt>
+<dd><p>ポイントデータ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.Series</em>) – プロットデータ</p></li>
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – プロット先オブジェクト</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.subplot_rank">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">subplot_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.subplot_rank" title="Link to this definition">¶</a></dt>
+<dd><p>順位データ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットデータ</p></li>
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – プロット先オブジェクト</p></li>
+<li><p><strong>total_index</strong> (<em>str</em>) – 合計値格納index</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.graph.personal.subplot_table">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.personal.</span></span><span class="sig-name descname"><span class="pre">subplot_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.personal.subplot_table" title="Link to this definition">¶</a></dt>
+<dd><p>テーブルを生成する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – プロットデータ</p></li>
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – プロット先オブジェクト</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.graph.personal module</a><ul>
+<li><a class="reference internal" href="#libs.commands.graph.personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.graph.personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.commands.graph.entry.html"
+                          title="previous chapter">libs.commands.graph.entry module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.commands.graph.rating.html"
+                          title="next chapter">libs.commands.graph.rating module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.commands.graph.personal.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.graph.rating.html" title="libs.commands.graph.rating module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.graph.entry.html" title="libs.commands.graph.entry module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.graph.html" >libs.commands.graph package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.graph.personal module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>

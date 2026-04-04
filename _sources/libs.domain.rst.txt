@@ -1,0 +1,22 @@
+libs.domain package
+===================
+
+.. automodule:: libs.domain
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.domain.aggregate
+   libs.domain.command
+   libs.domain.datamodels
+   libs.domain.modify
+   libs.domain.placeholder
+   libs.domain.rule
+   libs.domain.score
+   libs.domain.stats

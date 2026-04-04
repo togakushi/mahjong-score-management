@@ -1,0 +1,27 @@
+tests package
+=============
+
+.. automodule:: tests
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.database
+   tests.events
+   tests.name_check
+   tests.parser
+   tests.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.test

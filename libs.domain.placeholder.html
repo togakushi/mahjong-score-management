@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.placeholder module &#8212; Mahjong score management tool  documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.domain.rule module" href="libs.domain.rule.html" />
+    <link rel="prev" title="libs.domain.modify module" href="libs.domain.modify.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.placeholder module</a><ul>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.aggregate_unit"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.aggregate_unit</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.all_player"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.all_player</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.anonymous"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.anonymous</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.channel_config"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.channel_config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.collection"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.collection</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.command"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.command</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.competition_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.competition_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.database_file"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.database_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.default_rule"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.default_rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.draw_split"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.draw_split</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.endtime"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.endtime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.filename"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.filename</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.format"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.format</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.fourfold"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.fourfold</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.game_results"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.game_results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.guest_mark"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.guest_mark</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.guest_name"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.guest_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.ignore_flying"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.ignore_flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.logging_verbose"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.logging_verbose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.mixed"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.mixed</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.mode"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.named_query"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.named_query()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.onday"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.onday</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.order"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.order</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.origin_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.origin_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.placeholder"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.placeholder()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.player_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.player_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.player_name"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.player_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.query_modification"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.query_modification()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rank_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rank_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rating"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rating</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.read_data"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.read_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.return_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.return_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rule_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rule_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rule_version"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.score_comparisons"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.score_comparisons</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.separate"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.separate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.service_type"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.service_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.source"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.starttime"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_count"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_mode"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_player"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_player</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.undefined_word"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.undefined_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.update_from_dict"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.update_from_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.update_setting"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.update_setting()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.verbose"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.verbose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.versus_matrix"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.versus_matrix</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.modify.html"
+                          title="previous chapter">libs.domain.modify module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.rule.html"
+                          title="next chapter">libs.domain.rule module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.placeholder.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.rule.html" title="libs.domain.rule module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.modify.html" title="libs.domain.modify module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.placeholder module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.placeholder">
+<span id="libs-domain-placeholder-module"></span><h1>libs.domain.placeholder module<a class="headerlink" href="#module-libs.domain.placeholder" title="Link to this heading">¶</a></h1>
+<p>libs/domain/placeholder.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.placeholder.</span></span><span class="sig-name descname"><span class="pre">PlaceholderBuilder</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.ParameterData" title="libs.domain.datamodels.ParameterData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterData</span></code></a></p>
+<p>プレースホルダ構築クラス</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ServiceType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_flying</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undefined_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_player</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">competition_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_player</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onday</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_comparisons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">versus_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anonymous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fourfold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_mark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'※'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individual</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_skip2</strong> (<em>bool</em>)</p></li>
+<li><p><strong>unregistered_replace</strong> (<em>bool</em>)</p></li>
+<li><p><strong>friendly_fire</strong> (<em>bool</em>)</p></li>
+<li><p><strong>statistics</strong> (<em>bool</em>)</p></li>
+<li><p><strong>ranked</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated</strong> (<em>int</em>)</p></li>
+<li><p><strong>stipulated_rate</strong> (<em>float</em>)</p></li>
+<li><p><strong>interval</strong> (<em>int</em>)</p></li>
+<li><p><strong>search_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>group_length</strong> (<em>int</em>)</p></li>
+<li><p><strong>service_type</strong> (<a class="reference internal" href="libs.types.html#libs.types.ServiceType" title="libs.types.ServiceType"><em>ServiceType</em></a>)</p></li>
+<li><p><strong>command</strong> (<em>str</em>)</p></li>
+<li><p><strong>channel_config</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>target_mode</strong> (<em>int</em>)</p></li>
+<li><p><strong>mode</strong> (<em>int</em>)</p></li>
+<li><p><strong>default_rule</strong> (<em>str</em>)</p></li>
+<li><p><strong>rule_version</strong> (<em>str</em>)</p></li>
+<li><p><strong>rule_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>mixed</strong> (<em>bool</em>)</p></li>
+<li><p><strong>origin_point</strong> (<em>int</em>)</p></li>
+<li><p><strong>return_point</strong> (<em>int</em>)</p></li>
+<li><p><strong>rank_point</strong> (<em>str</em>)</p></li>
+<li><p><strong>ignore_flying</strong> (<em>bool</em>)</p></li>
+<li><p><strong>draw_split</strong> (<em>bool</em>)</p></li>
+<li><p><strong>undefined_word</strong> (<em>int</em>)</p></li>
+<li><p><strong>player_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>guest_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>target_player</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>player_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>competition_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>all_player</strong> (<em>bool</em>)</p></li>
+<li><p><strong>source</strong> (<em>str</em>)</p></li>
+<li><p><strong>separate</strong> (<em>bool</em>)</p></li>
+<li><p><strong>collection</strong> (<em>str</em>)</p></li>
+<li><p><strong>aggregate_unit</strong> (<em>Literal</em><em>[</em><em>'A'</em><em>, </em><em>'M'</em><em>, </em><em>'Y'</em><em>, </em><em>None</em><em>]</em>)</p></li>
+<li><p><strong>target_count</strong> (<em>int</em>)</p></li>
+<li><p><strong>starttime</strong> (<em>str</em><em> | </em><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>endtime</strong> (<em>str</em><em> | </em><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>onday</strong> (<em>str</em><em> | </em><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>score_comparisons</strong> (<em>bool</em>)</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>)</p></li>
+<li><p><strong>game_results</strong> (<em>bool</em>)</p></li>
+<li><p><strong>versus_matrix</strong> (<em>bool</em>)</p></li>
+<li><p><strong>order</strong> (<em>bool</em>)</p></li>
+<li><p><strong>rating</strong> (<em>bool</em>)</p></li>
+<li><p><strong>anonymous</strong> (<em>bool</em>)</p></li>
+<li><p><strong>fourfold</strong> (<em>bool</em>)</p></li>
+<li><p><strong>guest_mark</strong> (<em>str</em>)</p></li>
+<li><p><strong>format</strong> (<em>Literal</em><em>[</em><em>'default'</em><em>, </em><em>'csv'</em><em>, </em><em>'txt'</em><em>]</em>)</p></li>
+<li><p><strong>filename</strong> (<em>str</em>)</p></li>
+<li><p><strong>database_file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
+<li><p><strong>logging_verbose</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.aggregate_unit">
+<span class="sig-name descname"><span class="pre">aggregate_unit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'A'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'M'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Y'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.aggregate_unit" title="Link to this definition">¶</a></dt>
+<dd><p>レポート生成用日付範囲デフォルト値
+- <em>A</em>: 全期間
+- <em>M</em>: 月別
+- <em>Y</em>: 年別
+- <em>None</em>: 未定義</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.all_player">
+<span class="sig-name descname"><span class="pre">all_player</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.all_player" title="Link to this definition">¶</a></dt>
+<dd><p>検索対象に登録済みメンバー全員を加える</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.anonymous">
+<span class="sig-name descname"><span class="pre">anonymous</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.anonymous" title="Link to this definition">¶</a></dt>
+<dd><p>匿名化フラグ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.channel_config">
+<span class="sig-name descname"><span class="pre">channel_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.channel_config" title="Link to this definition">¶</a></dt>
+<dd><p>チャンネル個別設定状況
+- <em>Path</em>: 追加設定ファイルパス
+- <em>None</em>: 個別設定を利用していない</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.collection">
+<span class="sig-name descname"><span class="pre">collection</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.collection" title="Link to this definition">¶</a></dt>
+<dd><p>集約集計
+- <em>daily</em>: 日次集約
+- <em>weekly</em>: 週次集約
+- <em>monthly</em>: 月次集約
+- <em>yearly</em>: 年次集約
+- <em>all</em>: 全体集約</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.command">
+<span class="sig-name descname"><span class="pre">command</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.command" title="Link to this definition">¶</a></dt>
+<dd><p>コマンド名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.competition_list">
+<span class="sig-name descname"><span class="pre">competition_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.competition_list" title="Link to this definition">¶</a></dt>
+<dd><p>比較対象プレイヤーリスト</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.database_file">
+<span class="sig-name descname"><span class="pre">database_file</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.database_file" title="Link to this definition">¶</a></dt>
+<dd><p>成績管理データベースファイル名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.default_rule">
+<span class="sig-name descname"><span class="pre">default_rule</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.default_rule" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子(設定値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.draw_split">
+<span class="sig-name descname"><span class="pre">draw_split</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.draw_split" title="Link to this definition">¶</a></dt>
+<dd><p>同点時の順位点の取り扱い
+- <em>True</em>: 山分け
+- <em>False</em>: 席順</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.endtime">
+<span class="sig-name descname"><span class="pre">endtime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.endtime" title="Link to this definition">¶</a></dt>
+<dd><p>集計終了日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.filename" title="Link to this definition">¶</a></dt>
+<dd><p>出力ファイル名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'default'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'csv'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'txt'</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.format" title="Link to this definition">¶</a></dt>
+<dd><p>出力フォーマット指定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.fourfold">
+<span class="sig-name descname"><span class="pre">fourfold</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.fourfold" title="Link to this definition">¶</a></dt>
+<dd><p>縦持ち/横持ちデータ判定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.game_results">
+<span class="sig-name descname"><span class="pre">game_results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.game_results" title="Link to this definition">¶</a></dt>
+<dd><p>ゲーム結果表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.guest_mark">
+<span class="sig-name descname"><span class="pre">guest_mark</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'※'</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.guest_mark" title="Link to this definition">¶</a></dt>
+<dd><p>ゲスト無効時に未登録メンバーに付与する印</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.guest_name">
+<span class="sig-name descname"><span class="pre">guest_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.guest_name" title="Link to this definition">¶</a></dt>
+<dd><p>ゲストの名前</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.ignore_flying">
+<span class="sig-name descname"><span class="pre">ignore_flying</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.ignore_flying" title="Link to this definition">¶</a></dt>
+<dd><p>トビカウントの無効化</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.logging_verbose">
+<span class="sig-name descname"><span class="pre">logging_verbose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.logging_verbose" title="Link to this definition">¶</a></dt>
+<dd><p>デバッグ情報出力レベル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.mixed">
+<span class="sig-name descname"><span class="pre">mixed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.mixed" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子の扱い
+- <em>True</em>: 定義済みすべてのルール識別子を含める
+- <em>False</em>: ルール識別子を個別指定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計モード</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.named_query">
+<span class="sig-name descname"><span class="pre">named_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.named_query" title="Link to this definition">¶</a></dt>
+<dd><p>クエリにパラメータをバインドして返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> (<em>str</em>) – SQL</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>バインド済みSQL</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.onday">
+<span class="sig-name descname"><span class="pre">onday</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.onday" title="Link to this definition">¶</a></dt>
+<dd><p>time_adjust修正を含まない日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.order">
+<span class="sig-name descname"><span class="pre">order</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.order" title="Link to this definition">¶</a></dt>
+<dd><p>順位推移グラフ表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.origin_point">
+<span class="sig-name descname"><span class="pre">origin_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">250</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.origin_point" title="Link to this definition">¶</a></dt>
+<dd><p>配給原点</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.placeholder">
+<span class="sig-name descname"><span class="pre">placeholder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.placeholder" title="Link to this definition">¶</a></dt>
+<dd><p>プレースホルダ用辞書出力</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>game_count</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – 規定打数調整用ゲーム数. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>プレースホルダ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.player_list">
+<span class="sig-name descname"><span class="pre">player_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.player_list" title="Link to this definition">¶</a></dt>
+<dd><p>集計対象プレイヤーリスト</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.player_name">
+<span class="sig-name descname"><span class="pre">player_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.player_name" title="Link to this definition">¶</a></dt>
+<dd><p>集計対象プレイヤー</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.query_modification">
+<span class="sig-name descname"><span class="pre">query_modification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.query_modification" title="Link to this definition">¶</a></dt>
+<dd><p>クエリをオプションの内容で修正する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> (<em>str</em>) – 修正するクエリ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>修正後のクエリ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.rank_point">
+<span class="sig-name descname"><span class="pre">rank_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.rank_point" title="Link to this definition">¶</a></dt>
+<dd><p>順位点(空白区切りの文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.rating">
+<span class="sig-name descname"><span class="pre">rating</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.rating" title="Link to this definition">¶</a></dt>
+<dd><p>レーティング推移グラフ表示</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.read_data">
+<span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.read_data" title="Link to this definition">¶</a></dt>
+<dd><p>データベースからデータを取得する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyword</strong> (<em>str</em>) – SQL選択キーワード</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.return_point">
+<span class="sig-name descname"><span class="pre">return_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">300</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.return_point" title="Link to this definition">¶</a></dt>
+<dd><p>返し点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.rule_list">
+<span class="sig-name descname"><span class="pre">rule_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.rule_list" title="Link to this definition">¶</a></dt>
+<dd><p>集計対象ルール識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.rule_version">
+<span class="sig-name descname"><span class="pre">rule_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.rule_version" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子(指定値)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.score_comparisons">
+<span class="sig-name descname"><span class="pre">score_comparisons</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.score_comparisons" title="Link to this definition">¶</a></dt>
+<dd><p>スコア比較表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.separate">
+<span class="sig-name descname"><span class="pre">separate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.separate" title="Link to this definition">¶</a></dt>
+<dd><p>スコア入力元識別子別集計フラグ
+- <em>True</em>: 識別子別に集計
+- <em>False</em>: すべて集計</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.service_type">
+<span class="sig-name descname"><span class="pre">service_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.types.html#libs.types.ServiceType" title="libs.types.ServiceType"><span class="pre">ServiceType</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.service_type" title="Link to this definition">¶</a></dt>
+<dd><p>連携先サービス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.source">
+<span class="sig-name descname"><span class="pre">source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.source" title="Link to this definition">¶</a></dt>
+<dd><p>スコア入力元識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.starttime">
+<span class="sig-name descname"><span class="pre">starttime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.starttime" title="Link to this definition">¶</a></dt>
+<dd><p>集計開始日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.target_count">
+<span class="sig-name descname"><span class="pre">target_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.target_count" title="Link to this definition">¶</a></dt>
+<dd><p>直近ゲーム数指定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.target_mode">
+<span class="sig-name descname"><span class="pre">target_mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.target_mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計対象モードの指定
+- <em>0</em>: settingのデフォルトに従う
+- <em>not 0</em>: 指定値でmodeを上書き</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.target_player">
+<span class="sig-name descname"><span class="pre">target_player</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.target_player" title="Link to this definition">¶</a></dt>
+<dd><p>引数で受け付けたプレイヤーのリスト</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.undefined_word">
+<span class="sig-name descname"><span class="pre">undefined_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.undefined_word" title="Link to this definition">¶</a></dt>
+<dd><p>未登録ワードの扱い
+- <em>0</em>: 役満扱い
+- <em>1</em>: カウントのみ
+- <em>2</em>: 卓外清算(個人清算)
+- <em>3</em>: 卓外清算(チーム清算)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.update_from_dict">
+<span class="sig-name descname"><span class="pre">update_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.update_from_dict" title="Link to this definition">¶</a></dt>
+<dd><p>辞書の内容で値を更新する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em><em>Any</em><em>]</em>) – 更新内容</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.update_setting">
+<span class="sig-name descname"><span class="pre">update_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.update_setting" title="Link to this definition">¶</a></dt>
+<dd><p>優先度順に key_name を探索して値を更新する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>main_config</strong> (<em>Path</em>) – メイン設定ファイルパス</p></li>
+<li><p><strong>key_name</strong> (<em>str</em>) – 探索するキー名</p></li>
+<li><p><strong>val_type</strong> (<a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandSpec.type" title="libs.domain.command.CommandSpec.type"><em>type</em></a>) – 取り込む値の型 (bool, str)</p></li>
+<li><p><strong>fallback</strong> (<em>Any</em>) – 見つからなかった場合にセットする値</p></li>
+<li><p><strong>が指定されているときは値を更新しない</strong> (<em>- None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>探索優先順序
+1. 個別設定ファイル内settingセクション
+2. メイン設定ファイル内チャンネル個別セクション
+3. メイン設定ファイル内サービス別セクション
+4. メイン設定ファイル内settingセクション</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.verbose" title="Link to this definition">¶</a></dt>
+<dd><p>詳細情報表示</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.placeholder.PlaceholderBuilder.versus_matrix">
+<span class="sig-name descname"><span class="pre">versus_matrix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.placeholder.PlaceholderBuilder.versus_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>対戦マトリックス表示</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.placeholder module</a><ul>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.aggregate_unit"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.aggregate_unit</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.all_player"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.all_player</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.anonymous"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.anonymous</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.channel_config"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.channel_config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.collection"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.collection</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.command"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.command</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.competition_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.competition_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.database_file"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.database_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.default_rule"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.default_rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.draw_split"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.draw_split</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.endtime"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.endtime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.filename"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.filename</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.format"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.format</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.fourfold"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.fourfold</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.game_results"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.game_results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.guest_mark"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.guest_mark</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.guest_name"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.guest_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.ignore_flying"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.ignore_flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.logging_verbose"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.logging_verbose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.mixed"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.mixed</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.mode"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.named_query"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.named_query()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.onday"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.onday</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.order"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.order</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.origin_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.origin_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.placeholder"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.placeholder()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.player_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.player_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.player_name"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.player_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.query_modification"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.query_modification()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rank_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rank_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rating"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rating</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.read_data"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.read_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.return_point"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.return_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rule_list"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rule_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.rule_version"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.score_comparisons"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.score_comparisons</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.separate"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.separate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.service_type"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.service_type</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.source"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.starttime"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_count"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_mode"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.target_player"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.target_player</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.undefined_word"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.undefined_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.update_from_dict"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.update_from_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.update_setting"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.update_setting()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.verbose"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.verbose</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.placeholder.PlaceholderBuilder.versus_matrix"><code class="docutils literal notranslate"><span class="pre">PlaceholderBuilder.versus_matrix</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.modify.html"
+                          title="previous chapter">libs.domain.modify module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.rule.html"
+                          title="next chapter">libs.domain.rule module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.domain.placeholder.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.rule.html" title="libs.domain.rule module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.modify.html" title="libs.domain.modify module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Mahjong score management tool  documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.placeholder module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; Copyright 2026, togakushi.
+    
+    </div>
+
+  </body>
+</html>
