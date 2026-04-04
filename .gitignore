@@ -26,6 +26,8 @@ backup/
 *.css
 docs/html/
 docs/cov/
+docs/dev/build/
+docs/dev/source/
 
 !requirements.txt
 !files/**

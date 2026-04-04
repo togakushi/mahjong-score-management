@@ -8,8 +8,9 @@ update:
 # --
 .PHONY: docs
 docs:
-	rm -rf docs/html
-	uv run pdoc -d google --output-dir docs/html --logo '' --logo-link '' *.py libs integrations tests
+	rm -rf docs/dev/source/
+	uv run sphinx-apidoc -f -o docs/dev/source/ . -d 2 --tocfile=index --module-first --separate
+	uv run sphinx-build -M html docs/dev/source/ docs/dev/build --conf-dir docs/dev/
 
 prospector:
 	@uv run prospector -W mccabe ..

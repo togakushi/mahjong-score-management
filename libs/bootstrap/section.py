@@ -3,6 +3,7 @@ libs/bootstrap/section.py
 """
 
 import logging
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
@@ -188,110 +189,81 @@ class BaseSection(CommonMethodMixin):
         return ret_dict
 
 
+@dataclass
 class SettingSection(BaseSection):
     """settingセクション処理"""
 
-    remarks_word: str
+    section: str = "setting"
+    """セクション名"""
+    remarks_word: str = field(default="麻雀メモ")
     """メモ記録用キーワード"""
-    remarks_suffix: list[str]
+    remarks_suffix: list[str] = field(default_factory=list)
     """メモ記録用キーワードサフィックス"""
-    rule_config: Optional[Path]
+    rule_config: Optional[Path] = field(default=None)
     """ルール設定ファイル"""
-    default_rule: str
+    default_rule: str = field(default="")
     """ルール識別子未指定時に使用される識別子"""
-    separate: bool
+    separate: bool = field(default=False)
     """スコア入力元識別子別集計フラグ
     - *True*: 識別子別に集計
     - *False*: すべて集計
     """
-    channel_id: Optional[str]
+    channel_id: Optional[str] = field(default=None)
     """チャンネルIDを上書きする"""
-    time_adjust: int
+    time_adjust: int = field(default=12)
     """日付変更後、集計範囲に含める追加時間"""
-    search_word: str
+    search_word: str = field(default="")
     """コメント固定(検索時の検索文字列)"""
-    group_length: int
+    group_length: int = field(default=0)
     """コメント固定(検索時の集約文字数)"""
-    guest_mark: str
+    guest_mark: str = field(default="※")
     """ゲスト無効時に未登録メンバーに付与する印"""
-    database_file: Union[str, Path]
+    database_file: Union[str, Path] = field(default=Path("mahjong.db"))
     """成績管理データベースファイル名"""
-    backup_dir: Optional[Path]
+    backup_dir: Optional[Path] = field(default=None)
     """バックアップ先ディレクトリ"""
-    font_file: Path
+    font_file: Path = field(default=Path("ipaexg.ttf"))
     """グラフ描写に使用するフォントファイル"""
-    graph_style: str
+    graph_style: str = field(default="ggplot")
     """グラフスタイル"""
-    work_dir: Path
+    work_dir: Path = field(default=Path("work"))
     """作業ディレクトリ"""
 
-    def __init__(self) -> None:
-        self.section: str = "setting"
-        self.default_reset()
 
-    def default_reset(self) -> None:
-        """パラメータ初期化"""
-        self.remarks_word = str("麻雀メモ")
-        self.remarks_suffix = []
-        self.rule_config = None
-        self.time_adjust = int(12)
-        self.default_rule = str("")
-        self.separate = bool(False)
-        self.channel_id = None
-        self.search_word = str("")
-        self.group_length = int(0)
-        self.guest_mark = str("※")
-        self.database_file = Path("mahjong.db")
-        self.backup_dir = None
-        self.font_file = Path("ipaexg.ttf")
-        self.graph_style = str("ggplot")
-        self.work_dir = Path("work")
-
-
+@dataclass
 class AliasSection(BaseSection):
     """aliasセクション処理"""
 
-    results: list[str]
+    section: str = "alias"
+    """セクション名"""
+    results: list[str] = field(default_factory=lambda: ["results", "成績"])
     """成績サマリ出力コマンド"""
-    graph: list[str]
+    graph: list[str] = field(default_factory=lambda: ["graph", "グラフ"])
     """成績グラフ出力コマンド"""
-    ranking: list[str]
+    ranking: list[str] = field(default_factory=lambda: ["ranking", "ランキング"])
     """ランキング出力コマンド"""
-    report: list[str]
+    report: list[str] = field(default_factory=lambda: ["report", "レポート"])
     """レポート出力コマンド"""
-    download: list[str]
-    member: list[str]
+    download: list[str] = field(default_factory=lambda: ["download", "ダウンロード"])
+    """DBダウンロードコマンド"""
+    member: list[str] = field(default_factory=lambda: ["member", "userlist", "member_list"])
     """メンバーリスト表示コマンド"""
-    add: list[str]
-    delete: list[str]
-    team_create: list[str]
-    team_del: list[str]
-    team_add: list[str]
-    team_remove: list[str]
-    team_list: list[str]
+    add: list[str] = field(default_factory=lambda: ["add"])
+    """メンバー追加コマンド"""
+    delete: list[str] = field(default_factory=lambda: ["del"])
+    """メンバー削除コマンド"""
+    team_create: list[str] = field(default_factory=lambda: ["team_create"])
+    """チーム作成コマンド"""
+    team_del: list[str] = field(default_factory=lambda: ["team_del"])
+    """チーム削除コマンド"""
+    team_add: list[str] = field(default_factory=lambda: ["team_add"])
+    """チーム所属コマンド"""
+    team_remove: list[str] = field(default_factory=lambda: ["team_remove"])
+    """チーム脱退コマンド"""
+    team_list: list[str] = field(default_factory=lambda: ["team_list"])
     """チームリスト出力コマンド"""
-    team_clear: list[str]
-
-    def __init__(self) -> None:
-        self.section = "alias"
-        self.default_reset()
-
-    def default_reset(self) -> None:
-        """パラメータ初期化"""
-        self.results = ["results", "成績"]
-        self.graph = ["graph", "グラフ"]
-        self.ranking = ["ranking", "ランキング"]
-        self.report = ["report", "レポート"]
-        self.download = ["download", "ダウンロード"]
-        self.member = ["member", "userlist", "member_list"]
-        self.add = ["add"]
-        self.delete = ["del"]
-        self.team_create = ["team_create"]
-        self.team_del = ["team_del"]
-        self.team_add = ["team_add"]
-        self.team_remove = ["team_remove"]
-        self.team_list = ["team_list"]
-        self.team_clear = ["team_clear"]
+    team_clear: list[str] = field(default_factory=lambda: ["team_clear"])
+    """全チーム情報削除コマンド"""
 
     def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
         """AliasSection専用の追加処理"""
