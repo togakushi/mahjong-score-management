@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 
 with open("../../pyproject.toml", mode="rb") as toml_file:
     toml_data: dict[str, Any] = tomllib.load(toml_file)
-    project_data: dict[str, Any] = toml_data.get("project")
+    project_data: dict[str, Any] = toml_data.get("project", {})
 
 # -- Project information -----------------------------------------------------
 project = "Developer"
