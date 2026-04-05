@@ -155,12 +155,11 @@
 <dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
 <dd><p>show this help message and exit</p>
 </dd>
-<dt><kbd><span class="option">-c <var>CONFIG</var></span>, <span class="option">--config <var>CONFIG</var></span></kbd></dt>
+<dt><kbd><span class="option">-c <var>CONFIG</var></span>, <span class="option">--config=<var>CONFIG</var></span></kbd></dt>
 <dd><p>設定ファイル(default: config.ini)</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>–service {slack,standard_io,std,web,flask}</dt><dd><p>連携先サービス</p>
+<dt><kbd><span class="option">-s <var>SERVICE</var></span>, <span class="option">--service=<var>SERVICE</var></span></kbd></dt>
+<dd><p>連携先サービス(slack, standard_io, std,web, flask)</p>
 </dd>
 </dl>
 </dd>
@@ -183,23 +182,25 @@
 <dt><kbd><span class="option">--compar</span></kbd></dt>
 <dd><p>データ突合</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>–unification [UNIFICATION]</dt><dd><p>ファイルの内容に従って記録済みのメンバー名を修正する(default: rename.ini)</p>
+<dt><kbd><span class="option">--unification=<var>UNIFICATION</var></span></kbd></dt>
+<dd><p>ファイルの内容に従って記録済みのメンバー名を修正する(default: rename.ini)</p>
 </dd>
-</dl>
-<dl class="option-list">
 <dt><kbd><span class="option">--recalculation</span></kbd></dt>
 <dd><p>ポイント再計算</p>
 </dd>
+<dt><kbd><span class="option">--export=<var>PREFIX</var></span></kbd></dt>
+<dd><p>メンバー設定情報をエクスポート(default prefix: export)</p>
+</dd>
+<dt><kbd><span class="option">--import=<var>PREFIX</var></span></kbd></dt>
+<dd><p>メンバー設定情報をインポート(default prefix: export)</p>
+</dd>
+<dt><kbd><span class="option">--vacuum</span></kbd></dt>
+<dd><p>database vacuum</p>
+</dd>
+<dt><kbd><span class="option">--gen-test-data=<var>count</var></span></kbd></dt>
+<dd><p>テスト用サンプルデータ生成(count=生成回数, default: 1)</p>
+</dd>
 </dl>
-<p>–export [PREFIX]     メンバー設定情報をエクスポート(default prefix: export)
-–import [PREFIX]     メンバー設定情報をインポート(default prefix: export)
-–vacuum              database vacuum
-–gen-test-data [count]</p>
-<blockquote>
-<div><p>テスト用サンプルデータ生成(count=生成回数, default: 1)</p>
-</div></blockquote>
 </dd>
 </dl>
 </dd>
@@ -294,7 +295,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.1.
-      Last updated on 2026-04-04.
+      Last updated on 2026-04-05.
     </div>
 
   </body>
