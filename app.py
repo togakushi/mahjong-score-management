@@ -6,23 +6,32 @@ help:
     usage: app.py [-h] ...
 
     options:
-        -h, --help            show this help message and exit
-        -c, --config CONFIG   設定ファイル(default: config.ini)
-        -s, --service {slack,discord,standard_io,std,web,flask}
-                              連携先サービス
+        -h, --help
+            show this help message and exit
+        -c CONFIG, --config=CONFIG
+            設定ファイル(default: config.ini)
+        -s SERVICE, --service=SERVICE
+            連携先サービス(slack, discord, standard_io, std, web, flask)
 
     logging options:
-        -d, --debug           デバッグレベル(-d, -dd)
-        -v, --verbose         動作ログ出力レベル(-v, -vv, -vvv)
-        --moderate            ログレベルがエラー以下のもを非表示
-        --notime              ログフォーマットから日時を削除
+        -d, --debug
+            デバッグレベル(-d, -dd)
+        -v, --verbose
+            動作ログ出力レベル(-v, -vv, -vvv)
+        --moderate
+            ログレベルがエラー以下のもを非表示
+        --notime
+            ログフォーマットから日時を削除
 
     Only allowed when --service=standard_io:
-        --text TEXT           input text strings
+        --text TEXT
+            input text strings
 
     Only allowed when --service=web:
-        --host HOST           listen  address(default: 127.0.0.1)
-        --port PORT           bind port(default: 8000)
+        --host HOST
+            listen  address(default: 127.0.0.1)
+        --port PORT
+            bind port(default: 8000)
 """
 
 import sys
