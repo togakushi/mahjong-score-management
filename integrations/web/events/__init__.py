@@ -1,5 +1,5 @@
 """
 イベント処理
 
-- `integrations.web.events.handler`: イベントハンドラ
+- :doc:`integrations.web.events.handler`: イベントハンドラ
 """

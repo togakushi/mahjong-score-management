@@ -1,9 +1,9 @@
 """
 共通処理モジュール
 
-- `libs.functions.lookup`: 情報取得
-- `libs.functions.search`: DB検索
-- `libs.functions.message`: メッセージ
-- `libs.functions.compose`: メッセージ生成
-- `libs.functions.tools`: 外部ツール用モジュール
+- :doc:`libs.functions.lookup`: 情報取得
+- :doc:`libs.functions.search`: DB検索
+- :doc:`libs.functions.message`: メッセージ
+- :doc:`libs.functions.compose`: メッセージ生成
+- :doc:`libs.functions.tools`: 外部ツール用モジュール
 """

@@ -1,9 +1,9 @@
 """
 Web出力
 
-- `integrations.web.adapter`: サービスアダプタ定義
-- `integrations.web.api`: インターフェースAPI
-- `integrations.web.parser`: メッセージ解析クラス
-- `integrations.web.config`: 個別設定
-- `integrations.web.functions`: 専用関数
+- :doc:`integrations.web.adapter`: サービスアダプタ定義
+- :doc:`integrations.web.api`: インターフェースAPI
+- :doc:`integrations.web.parser`: メッセージ解析クラス
+- :doc:`integrations.web.config`: 個別設定
+- :doc:`integrations.web.functions`: 専用関数
 """
