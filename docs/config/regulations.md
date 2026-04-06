@@ -10,7 +10,7 @@
 チーム成績はチームメンバー全員の個人成績の総和となるため、チーム成績にも影響がある。
 
 ### regulationsセクション
-定義されているキーが [wordsテーブル](../development/datedase/schema.md#words)の`word`として事前登録される。
+定義されているキーが [wordsテーブル](../development/database/schema.md#words)の`word`として事前登録される。
 
 `yakuman_list` 及び `word_list` にはカンマで区切られたワードを並べる。\
 テーブルに登録されていないワードが使用された場合、そのワードのtypeは`undefined_word`で指定した値となる。

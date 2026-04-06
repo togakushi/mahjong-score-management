@@ -21,7 +21,7 @@
 
 `記録キーワード` は 設定ファイルの [regulationsセクション](../config/regulations.md#regulationsセクション)  で定義する。
 
-[`words` テーブル](../datedase/schema.md#words)の `type 1` として登録している単語は、祝儀や卓外ペナルティなど、素点とは別要素でポイントを増減させる。
+[`words` テーブル](../database/schema.md#words)の `type 1` として登録している単語は、祝儀や卓外ペナルティなど、素点とは別要素でポイントを増減させる。
 
 
 ## 卓外清算(チーム清算)
