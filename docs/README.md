@@ -44,5 +44,5 @@
 - [テスト](./development/test.md)
 
 ### データベース関連
-- [スキーマ](./development/datedase/schema.md)
-- [サンプルSQL](./development/datedase/sample_sql.md)
+- [スキーマ](./development/database/schema.md)
+- [サンプルSQL](./development/database/sample_sql.md)

@@ -1,5 +1,5 @@
 """
 イベント処理
 
-- `integrations.discord.events.handler`: イベントハンドラ
+- :doc:`integrations.discord.events.handler`: イベントハンドラ
 """

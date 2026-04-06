@@ -1,7 +1,7 @@
 # 開発用メモ
 
 ## データベース関連資料
-- [データベーススキーマ](./datedase/schema.md)
+- [データベーススキーマ](./database/schema.md)
 
 ## 処理アルゴリズム
 - [全体アーキテクチャ](./architecture.md)

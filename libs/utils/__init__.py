@@ -1,12 +1,12 @@
 """
 ユーティリティ
 
-- `libs.utils.dbutil`: DB操作
-- `libs.utils.dictutil`: 辞書操作
-- `libs.utils.converter`: 出力用テキスト生成
-- `libs.utils.formatter`: テキスト整形
-- `libs.utils.textutil`: テキストツール
-- `libs.utils.validator`: バリデータ
-- `libs.utils.graphutil`: グラフツール
-- `libs.utils.timekit`: datetime拡張
+- :doc:`libs.utils.dbutil`: DB操作
+- :doc:`libs.utils.dictutil`: 辞書操作
+- :doc:`libs.utils.converter`: 出力用テキスト生成
+- :doc:`libs.utils.formatter`: テキスト整形
+- :doc:`libs.utils.textutil`: テキストツール
+- :doc:`libs.utils.validator`: バリデータ
+- :doc:`libs.utils.graphutil`: グラフツール
+- :doc:`libs.utils.timekit`: datetime拡張
 """
