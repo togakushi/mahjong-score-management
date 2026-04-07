@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>成績サマリ出力 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=a7d98117" />
+    
+    <script src="../../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="グラフ生成機能" href="../graph/index.html" />
+    <link rel="prev" title="出力機能説明" href="../index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">成績サマリ出力</a><ul>
+<li><a class="reference internal" href="#id2">構文</a></li>
+<li><a class="reference internal" href="#id3">オプション</a></li>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id6">全体成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id7">個人成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id8">直接対決サマリ詳細</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">出力機能説明</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../graph/index.html"
+                          title="next chapter">グラフ生成機能</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/results/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../graph/index.html" title="グラフ生成機能"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="出力機能説明"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">出力機能説明</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績サマリ出力</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>成績サマリ出力<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>構文<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">チャンネル内呼び出し<span class="colon">:</span></dt>
+<dd class="field-odd"><p>&lt;呼び出しキーワード&gt; [オプション]</p>
+</dd>
+<dt class="field-even">スラッシュコマンド<span class="colon">:</span></dt>
+<dd class="field-even"><p>/commandname results [オプション]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は[サービス個別設定](../config/integrations.md)の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
+</div>
+</section>
+<section id="id3">
+<h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-0">
+<span id="cmdoption-arg-1"></span><span class="sig-name descname"><span class="pre">メンバー名</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-0" title="Link to this definition">¶</a></dt>
+<dd><p>指定される人数(チーム数)によって出力内容が切り替わる。</p>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 25.0%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>指定人数</p></th>
+<th class="head"><p>出力内容</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0名</p></td>
+<td><p>全体成績サマリ</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1名</p></td>
+<td><p>個人成績詳細/チーム成績詳細</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2名以上</p></td>
+<td><p>成績詳細(比較用)</p></td>
+<td><p>指定メンバー/チームの成績詳細を並べて表示</p></td>
+</tr>
+<tr class="row-odd"><td><p>2名以上 + 対戦</p></td>
+<td><p>直接対決サマリ</p></td>
+<td><p>最初に指定されているメンバー/チームが集計対象</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-2">
+<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-2" title="Link to this definition">¶</a></dt>
+<dd><p>座席データ、ベストレコード、ワーストレコードを表示</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-3">
+<span id="cmdoption-arg-4"></span><span id="cmdoption-arg-5"></span><span class="sig-name descname"><span class="pre">比較</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">点差</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">差分</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-3" title="Link to this definition">¶</a></dt>
+<dd><p>ひとつ上の順位のメンバーとの点差を表示</p>
+<ul class="simple">
+<li><p>全体成績サマリのみで有効</p></li>
+</ul>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-6">
+<span class="sig-name descname"><span class="pre">戦績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-6" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データ(ゲーム単位の素点、順位、獲得ポイント)を表示</p>
+<ul class="simple">
+<li><p>個人成績詳細/チーム成績詳細のみで有効</p></li>
+</ul>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-7">
+<span class="sig-name descname"><span class="pre">詳細</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-7" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データを4人分表示する</p>
+<ul class="simple">
+<li><p>戦績の追加オプション（戦績と同時指定した場合のみ有効）</p></li>
+</ul>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-8">
+<span class="sig-name descname"><span class="pre">対戦</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-8" title="Link to this definition">¶</a></dt>
+<dd><p>対戦結果の表示</p>
+<ul class="simple">
+<li><p>個人成績詳細/チーム成績詳細では全員分の勝敗と勝率</p></li>
+<li><p>成績詳細(比較用)で指定すると直接対戦サマリを表示する</p></li>
+</ul>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-9">
+<span id="cmdoption-arg-10"></span><span class="sig-name descname"><span class="pre">個人</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-9" title="Link to this definition">¶</a></dt>
+<dd><p>表示されるサマリ内容を切り替える</p>
+<dl class="field-list simple">
+<dt class="field-odd">個人<span class="colon">:</span></dt>
+<dd class="field-odd"><p>個人戦成績</p>
+</dd>
+<dt class="field-even">チーム<span class="colon">:</span></dt>
+<dd class="field-even"><p>チーム戦成績</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id4">
+<h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../appendix/argument_keyword.html"><span class="doc">引数に指定できる共通キーワード</span></a></p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>出力サンプル<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>全体成績サマリ詳細<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">メンバー名の指定がない場合、集計期間内で記録されている全メンバーの通算ポイント順に結果を表示する。</div>
+<div class="line">ゲスト関連のオプションによって集計内容が変わるため、特記には集計条件が記載される。</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（通常）</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
+    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    最初のゲーム：yyyy/mm/dd HH:MM:SS
+    最後のゲーム：yyyy/mm/dd HH:MM:SS
+    総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
+    特記：ゲスト置換なし(※：未登録プレイヤー)
+
+## 名前 : 通算 (平均) / 順位分布 (平均) / トビ ##
+ひと     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
+いぬ     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
+さる     ： +xx.x (+x.x) / xx-xx-xx-xx (x.xx) / x
+とり     ： ▲xx.x ( ▲x.x) / xx-xx-xx-xx (x.xx) / x
+おに(※) ： ▲xxx.x (▲xx.x) / xx-xx-xx-xx (x.xx) / x
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（比較）</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
+    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    最初のゲーム：yyyy/mm/dd HH:MM:SS
+    最後のゲーム：yyyy/mm/dd HH:MM:SS
+    総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
+    特記：ゲスト置換なし(※：未登録プレイヤー)
+
+## 名前  ： 通算   / 点差 ##
+ひと     ： +xxx.x / -----
+いぬ     ： +xxx.x /  xx.x
+さる     ：  +xx.x /  xx.x
+とり     ：  ▲xx.x /  xx.x
+おに(※) ： ▲xxx.x /  xx.x
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>個人成績サマリ詳細<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">個人成績サマリ出力サンプル</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【個人成績】
+    プレイヤー名： ひと
+    集計範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
+    対戦数：xxx 戦 (xx 勝 xx 敗 xx 分)
+    通算ポイント： +xxx.x
+    平均ポイント： +x.x
+    平均順位： x.xx
+    1位： xx 回 (xx.xx%)
+    2位： xx 回 (xx.xx%)
+    3位： xx 回 (xx.xx%)
+    4位： xx 回 (xx.xx%)
+    トビ： xx 回 (x.xx%)
+    役満： xx 回 (x.xx%)
+    特記：2ゲスト戦の結果を含む
+
+【座席データ】
+    # 席：順位分布(平順) / トビ / 役満 #
+    東家： xx-xx-xx-xx (x.xx) / x 回 / x 回
+    南家： xx-xx-xx-xx (x.xx) / x 回 / x 回
+    西家： xx-xx-xx-xx (x.xx) / x 回 / x 回
+    北家： xx-xx-xx-xx (x.xx) / x 回 / x 回
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>直接対決サマリ詳細<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">直接対決サマリ出力サンプル</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【直接対戦結果】
+    プレイヤー名： ひと
+    対戦相手：さる、いぬ
+    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    特記：2ゲスト戦の結果を含む
+
+[ ひと vs さる ]
+対戦数： xx 戦 xx 勝 xx 敗
+平均素点差： +xxxx点
+獲得ポイント合計(自分)： +xxx.xpt
+獲得ポイント合計(相手)： ▲xxx.xpt
+順位分布(自分)： xx-xx-xx-xx (x.xx)
+順位分布(相手)： xx-xx-xx-xx (x.xx)
+
+[ ひと vs いぬ ]
+対戦数： xx 戦 xx 勝 xx 敗
+平均素点差： +xxxx点
+獲得ポイント合計(自分)： +xxx.xpt
+獲得ポイント合計(相手)： ▲xxx.xpt
+順位分布(自分)： xx-xx-xx-xx (x.xx)
+順位分布(相手)： xx-xx-xx-xx (x.xx)
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">成績サマリ出力</a><ul>
+<li><a class="reference internal" href="#id2">構文</a></li>
+<li><a class="reference internal" href="#id3">オプション</a></li>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id6">全体成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id7">個人成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id8">直接対決サマリ詳細</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">出力機能説明</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../graph/index.html"
+                          title="next chapter">グラフ生成機能</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/results/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../graph/index.html" title="グラフ生成機能"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="出力機能説明"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >出力機能説明</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績サマリ出力</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

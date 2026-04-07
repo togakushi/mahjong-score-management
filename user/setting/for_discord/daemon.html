@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>systemdを使ったデーモン化 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a7d98117" />
+    
+    <script src="../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="設定ファイル説明" href="../../configuration/index.html" />
+    <link rel="prev" title="Discordセットアップ手順" href="setup.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">systemdを使ったデーモン化</a><ul>
+<li><a class="reference internal" href="#id1">実行環境準備</a></li>
+<li><a class="reference internal" href="#id2">systemd設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter">Discordセットアップ手順</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../configuration/index.html"
+                          title="next chapter">設定ファイル説明</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/setting/for_discord/daemon.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../configuration/index.html" title="設定ファイル説明"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="Discordセットアップ手順"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Discord連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">systemdを使ったデーモン化</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="systemd">
+<h1>systemdを使ったデーモン化<a class="headerlink" href="#systemd" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>実行環境準備<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>【前提条件】セットアップ手順を実施し、スクリプトが起動できるようにする。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../install/using_uv.html"><span class="doc">uvを使った実行環境構築</span></a></p></li>
+<li><p><a class="reference internal" href="../install/using_venv.html"><span class="doc">venvを使った実行環境構築</span></a></p></li>
+</ul>
+</div>
+<p>環境変数を記録したファイルを準備する( <code class="docutils literal notranslate"><span class="pre">.env</span></code> など)</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">環境変数定義</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISCORD_TOKEN</span><span class="o">=</span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="o">.</span><span class="n">XXXXXX</span><span class="o">.</span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>systemd設定<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>unitファイル作成</dt><dd><p><code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/python_app_discord.service</span></code> を作成(ファイル名は好みでよい)</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">python_app_discord.service</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">discord mahjong score management</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">User</span><span class="o">=</span><span class="s">&lt;user name&gt;</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/path/to/&lt;app-dir&gt;/</span>
+<span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">/path/to/&lt;app-dir&gt;/.env</span>
+<span class="c1">#ExecStartPre=git pull</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/path/to/&lt;venv-dir&gt;/bin/python3 /path/to/&lt;app-dir&gt;/app.py --notime</span>
+<span class="c1">#Restart=always</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">default.target</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">User</span></code> にスクリプトを起動するユーザ名を指定</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WorkingDirectory</span></code> に指定するディレクトリは`git clone`したときに作成したディレクトリ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/path/to/&lt;venv-dir&gt;/bin/python3</span></code> は仮想環境のPython</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/path/to/&lt;app-dir&gt;/.env</span></code> は環境変数を記述したファイル</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExecStartPre</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Restart</span></code> はお好みで</p></li>
+</ul>
+</dd>
+<dt>unitファイル反映</dt><dd><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">daemon-reload</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</pre></div>
+</div>
+</div>
+</dd>
+<dt>自動起動有効化</dt><dd><div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">enable</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>python_app_discord.service
+</pre></div>
+</div>
+</div>
+</dd>
+<dt>起動/停止</dt><dd><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">start</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>python_app_discord.service
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">stop</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>python_app_discord.service
+</pre></div>
+</div>
+</div>
+</dd>
+<dt>ログ確認</dt><dd><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">status</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>python_app_discord.service<span class="w"> </span>-l<span class="w"> </span>--no-pager
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">journalctl</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>journalctl<span class="w"> </span>-l<span class="w"> </span>-u<span class="w"> </span>python_app_discord.service<span class="w"> </span>--no-pager
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">systemdを使ったデーモン化</a><ul>
+<li><a class="reference internal" href="#id1">実行環境準備</a></li>
+<li><a class="reference internal" href="#id2">systemd設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter">Discordセットアップ手順</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../configuration/index.html"
+                          title="next chapter">設定ファイル説明</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/setting/for_discord/daemon.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../configuration/index.html" title="設定ファイル説明"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="Discordセットアップ手順"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Discord連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">systemdを使ったデーモン化</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

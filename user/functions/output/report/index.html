@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>レポート生成機能 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=a7d98117" />
+    
+    <script src="../../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ヘルプ" href="../help/index.html" />
+    <link rel="prev" title="ランキング機能" href="../ranking/index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">レポート生成機能</a><ul>
+<li><a class="reference internal" href="#id2">構文</a></li>
+<li><a class="reference internal" href="#id3">オプション</a></li>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">レポート内容</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../ranking/index.html"
+                          title="previous chapter">ランキング機能</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../help/index.html"
+                          title="next chapter">ヘルプ</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/report/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../help/index.html" title="ヘルプ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../ranking/index.html" title="ランキング機能"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">出力機能説明</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">レポート生成機能</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>レポート生成機能<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>構文<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">チャンネル内呼び出し<span class="colon">:</span></dt>
+<dd class="field-odd"><p>&lt;呼び出しキーワード&gt; [オプション]</p>
+</dd>
+<dt class="field-even">スラッシュコマンド<span class="colon">:</span></dt>
+<dd class="field-even"><p>/commandname report [オプション]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は[サービス個別設定](../config/integrations.md)の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
+</div>
+</section>
+<section id="id3">
+<h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>指定されるキーワードによって出力内容が切り替わる。</p>
+<blockquote>
+<div><table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 17.6%" />
+<col style="width: 23.5%" />
+<col style="width: 58.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キーワード</p></th>
+<th class="head"><p>出力内容</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>指定なし</p></td>
+<td><p>なし</p></td>
+<td><p>エラーメッセージ表示</p></td>
+</tr>
+<tr class="row-odd"><td><dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-0">
+<span class="sig-name descname"><span class="pre">順位</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>成績上位者</p></td>
+<td><p>上位5名</p></td>
+</tr>
+<tr class="row-even"><td><dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-1">
+<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>ゲーム統計</p></td>
+<td><p>検索範囲に記録されているすべての結果</p></td>
+</tr>
+<tr class="row-odd"><td><dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-2">
+<span id="cmdoption-arg-3"></span><span class="sig-name descname"><span class="pre">個人</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">個人成績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>個人成績一覧</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-4">
+<span id="cmdoption-arg-5"></span><span class="sig-name descname"><span class="pre">メンバー名</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>成績レポート</p></td>
+<td><p>PDF出力</p></td>
+</tr>
+<tr class="row-odd"><td><dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-6">
+<span class="sig-name descname"><span class="pre">対戦</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>対局対戦マトリックス表</p></td>
+<td><p>テキスト or CSV出力</p></td>
+</tr>
+<tr class="row-even"><td><p>2名以上のプレイヤー名</p></td>
+<td><p>対局対戦マトリックス表</p></td>
+<td><p>指定プレイヤーに絞って出力</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../appendix/argument_keyword.html"><span class="doc">引数に指定できる共通キーワード</span></a></p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>レポート内容<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>成績上位者</dt><dd><p>月間の通算ポイントが多い順に5名を表示。</p>
+</dd>
+<dt>統計</dt><dd><p>検索範囲のゲーム結果についてのゲーム傾向を月単位で集計。
+（ゲスト関連のオプションは無視される）</p>
+</dd>
+<dt>個人成績</dt><dd><p>個人成績の一覧表を表示。</p>
+</dd>
+<dt>成績レポート</dt><dd><p>対象メンバーの成績集計をPDFで出力。</p>
+<ul class="simple">
+<li><p>全期間</p></li>
+<li><p>月単位</p></li>
+<li><p>年単位</p></li>
+<li><p>区間</p>
+<ul>
+<li><p>100戦以上で80戦区切り</p></li>
+<li><p>240戦以上で200戦区切り</p></li>
+<li><p>500戦以上で400戦区切り</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>対局対戦マトリックス表</dt><dd><p>対局相手との勝敗をカウント。
+相手より順位が上なら勝ち、下なら負けにカウントされる。</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">レポート生成機能</a><ul>
+<li><a class="reference internal" href="#id2">構文</a></li>
+<li><a class="reference internal" href="#id3">オプション</a></li>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">レポート内容</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../ranking/index.html"
+                          title="previous chapter">ランキング機能</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../help/index.html"
+                          title="next chapter">ヘルプ</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/report/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../help/index.html" title="ヘルプ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../ranking/index.html" title="ランキング機能"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >出力機能説明</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">レポート生成機能</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

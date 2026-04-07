@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>インターフェース &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a7d98117" />
+    
+    <script src="../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="アルゴリズム" href="algorithm.html" />
+    <link rel="prev" title="regulations" href="database/schema/view_regulations.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script>
+            <script type="text/javascript" src="../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">インターフェース</a></li>
+<li><a class="reference internal" href="#id2">アダプタ</a><ul>
+<li><a class="reference internal" href="#integrationsconfig">IntegrationsConfig</a></li>
+<li><a class="reference internal" href="#apiinterface">APIInterface</a></li>
+<li><a class="reference internal" href="#functionsinterface">FunctionsInterface</a></li>
+<li><a class="reference internal" href="#messageparser">MessageParser</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">ディスパッチャー</a></li>
+<li><a class="reference internal" href="#id4">ロギング</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="database/schema/view_regulations.html"
+                          title="previous chapter">regulations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="algorithm.html"
+                          title="next chapter">アルゴリズム</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/development/architecture.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="algorithm.html" title="アルゴリズム"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="database/schema/view_regulations.html" title="regulations"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">開発用メモ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">インターフェース</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>インターフェース<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<pre  class="mermaid">
+        flowchart TB
+    event(event handler);
+    m1[[&quot;MessageParser(data)&quot;]];
+
+    event --&gt; m1 --&gt; d[&quot;dispatcher()&quot;] --&gt; f1 &amp; f2 &amp; f3 &amp; f4;
+
+    subgraph f1[Sub command]
+        direction TB
+        c([command]) --&gt; sc1 &amp; sc2 &amp; sc3 &amp; sc4;
+        sc1(results) --&gt; cp1[[CommandParser]] --&gt; p1(aggregation);
+        sc2(graph) --&gt; cp2[[CommandParser]] --&gt; p2(aggregation);
+        sc3(ranking) --&gt; cp3[[CommandParser]] --&gt; p3(aggregation);
+        sc4(report) --&gt; cp4[[CommandParser]] --&gt; p4(aggregation);
+        p1 &amp; p2 &amp; p3 &amp; p4 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+    end
+
+    subgraph f2[Results record]
+        direction TB
+        r2([record]);
+        r2 --&gt; a1(score) --&gt; results[(results)];
+        r2 --&gt; a2(remark) --&gt; remarks[(remarks)];
+        results &amp; remarks --&gt; pp2[&quot;post_processing()&quot;] --&gt; mp2[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+    end
+
+    subgraph f3[Member management]
+        direction TB
+        r1([registry]);
+        r1 --&gt; a4(team) --&gt; db2[(team)] &amp; db1;
+        r1 --&gt; a3(member) --&gt; db1[(member)] &amp; db3[(alias)];
+        r1 --&gt; a5(alias) --&gt; db3;
+        db1 &amp; db2 &amp; db3  --&gt; mp3[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+    end
+
+    subgraph f4[Others]
+        direction TB
+        h([help]) --&gt; mp4[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+    end
+
+    f1 &amp; f2 &amp; f3 &amp; f4 --&gt; post[&quot;post()&lt;br&gt;(API Interface)&quot;];
+    </pre></section>
+<section id="id2">
+<h1>アダプタ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">アプリ起動時に指定されたサービスのアダプタが設定される。</div>
+<div class="line">アダプタは以下のクラスを含む抽象化されたクラスである。</div>
+</div>
+<ul class="simple">
+<li><p>IntegrationsConfig</p></li>
+<li><p>APIInterface</p></li>
+<li><p>FunctionsInterface</p></li>
+<li><p>MessageParser</p></li>
+</ul>
+<p>関係図</p>
+<pre  class="mermaid">
+        classDiagram
+    class ServiceAdapter
+        ServiceAdapter : interface_type
+        ServiceAdapter --* IntegrationsConfig
+        ServiceAdapter --* APIInterface
+        ServiceAdapter --* FunctionsInterface
+        ServiceAdapter --* MessageParser
+
+    class IntegrationsConfig
+        IntegrationsConfig : config_file
+        IntegrationsConfig : slash_command
+        IntegrationsConfig : badge_degree
+        IntegrationsConfig : badge_status
+        IntegrationsConfig : badge_grade
+        IntegrationsConfig : plotting_backend
+        IntegrationsConfig : read_file()
+
+    class APIInterface
+        APIInterface : post()
+
+    class FunctionsInterface
+        FunctionsInterface : post_processing()
+        FunctionsInterface : get_conversations()
+
+    class MessageParser
+        MessageParser : data
+        MessageParser : post
+        MessageParser : status
+        MessageParser : parser()
+
+    class MessageParserDataMixin
+        MessageParserDataMixin &lt;|-- MessageParser
+        MessageParserDataMixin : data
+        MessageParserDataMixin : post
+        MessageParserDataMixin : status
+        MessageParserDataMixin : reset()
+        MessageParserDataMixin : get_remarks()
+    </pre><section id="integrationsconfig">
+<h2>IntegrationsConfig<a class="headerlink" href="#integrationsconfig" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">指定サービスのみで利用する設定値を保存する。</div>
+<div class="line">設定値は設定ファイルのサービス名と同じセクションに記述する。</div>
+</div>
+</section>
+<section id="apiinterface">
+<h2>APIInterface<a class="headerlink" href="#apiinterface" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">指定サービスに対して出力を行う。</div>
+<div class="line">出力する内容は <code class="docutils literal notranslate"><span class="pre">MessageParser</span></code> の <code class="docutils literal notranslate"><span class="pre">post</span></code> データクラスが保持している。</div>
+</div>
+</section>
+<section id="functionsinterface">
+<h2>FunctionsInterface<a class="headerlink" href="#functionsinterface" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">指定サービスに対するサービス専用の関数群。</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">APIInterface</span></code> 、 <code class="docutils literal notranslate"><span class="pre">MessageParser</span></code> から利用される。</div>
+</div>
+</section>
+<section id="messageparser">
+<h2>MessageParser<a class="headerlink" href="#messageparser" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">MessageParserは指定サービスから入力されたテキストデータをコマンドと引数に分ける役割を担う。</div>
+<div class="line">状態を保持するためのデータクラスを3つ持つ。</div>
+</div>
+<ul class="simple">
+<li><p>data</p></li>
+<li><p>post</p></li>
+<li><p>status</p></li>
+</ul>
+<dl class="simple">
+<dt>data</dt><dd><p>入力されたテキストデータの情報を保持する。</p>
+<ul class="simple">
+<li><p>入力テキスト</p></li>
+<li><p>イベント発生タイムスタンプ</p></li>
+<li><p>その他</p></li>
+</ul>
+</dd>
+<dt>post</dt><dd><p>各機能で集計した結果など、出力するデータを保持する。</p>
+<ul class="simple">
+<li><p>集計結果</p></li>
+<li><p>生成ファイル</p></li>
+<li><p>メッセージデータ
+- 集計期間などの補助情報</p></li>
+<li><p>その他</p></li>
+</ul>
+</dd>
+<dt>status</dt><dd><p>各機能の最終的なステータス情報を保持する。</p>
+<ul class="simple">
+<li><p>DBに対する操作</p></li>
+<li><p>更新したデータの状態
+- 矛盾したデータで更新した、など</p></li>
+<li><p>処理結果</p></li>
+<li><p>その他</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="id3">
+<h1>ディスパッチャー<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">各機能はディスパッチテーブルから呼び出される。</div>
+<div class="line">呼び出される機能は <code class="docutils literal notranslate"><span class="pre">MessageParser</span></code> を引数に取る。必要な情報は`data`データクラスから取得する。</div>
+</div>
+<div class="line-block">
+<div class="line">呼び出された機能はそれぞれ必要な処理を実施し、結果を <code class="docutils literal notranslate"><span class="pre">post</span></code> データクラスと <code class="docutils literal notranslate"><span class="pre">status</span></code> データクラスに保存する。</div>
+<div class="line">サービス単位で後処理があるものは <code class="docutils literal notranslate"><span class="pre">FunctionsInterface</span></code> の <code class="docutils literal notranslate"><span class="pre">post_processing()</span></code> で処理する。</div>
+</div>
+</section>
+<section id="id4">
+<h1>ロギング<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h1>
+<p>デバッグ/メンテナンス用のログレベルの定義</p>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>facility</p></th>
+<th class="head"><p>log level</p></th>
+<th class="head"><p>出力時の意味付け</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TRACE</p></td>
+<td><p>5</p></td>
+<td><p>処理の遷移などを表示</p></td>
+<td><p>カスタムログレベル</p></td>
+</tr>
+<tr class="row-odd"><td><p>DEBUG</p></td>
+<td><p>10</p></td>
+<td><p>各処理に必要なパラメータの表示、処理結果の表示</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>INFO</p></td>
+<td><p>20</p></td>
+<td><p>各処理の状態を表示</p></td>
+<td><p>通常ログ</p></td>
+</tr>
+<tr class="row-odd"><td><p>WARNING</p></td>
+<td><p>30</p></td>
+<td><p>想定通りの処理結果にならなかったが、動作に影響ないエラー</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ERROR</p></td>
+<td><p>40</p></td>
+<td><p>想定通りの処理結果になっておらず、テータに矛盾が生じた可能性がある状態</p></td>
+<td><p>データ修正が必要なエラー</p></td>
+</tr>
+<tr class="row-odd"><td><p>CRITICAL</p></td>
+<td><p>50</p></td>
+<td><p>動作を続けるとデータ破壊などが発生しうる状態</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">exit()</span></code> させる</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">インターフェース</a></li>
+<li><a class="reference internal" href="#id2">アダプタ</a><ul>
+<li><a class="reference internal" href="#integrationsconfig">IntegrationsConfig</a></li>
+<li><a class="reference internal" href="#apiinterface">APIInterface</a></li>
+<li><a class="reference internal" href="#functionsinterface">FunctionsInterface</a></li>
+<li><a class="reference internal" href="#messageparser">MessageParser</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">ディスパッチャー</a></li>
+<li><a class="reference internal" href="#id4">ロギング</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="database/schema/view_regulations.html"
+                          title="previous chapter">regulations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="algorithm.html"
+                          title="next chapter">アルゴリズム</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/development/architecture.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="algorithm.html" title="アルゴリズム"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="database/schema/view_regulations.html" title="regulations"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="index.html" >開発用メモ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">インターフェース</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

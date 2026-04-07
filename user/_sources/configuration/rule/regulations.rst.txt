@@ -1,0 +1,178 @@
+.. index::
+   single: ルールセット; レギュレーション設定
+
+レギュレーション設定
+====================
+
+| ゲーム結果とは別清算されるレギュレーションを設定できる。
+| 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。
+| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、``undefined_word`` のみの動作となる（[ルールセット設定](./ruleset.md#設定内容)参照）。
+
+レギュレーションの記録は[メモ機能](../functions/remarks.md)で行う。
+
+個人清算レギュレーション
+------------------------
+
+| 個人成績出力時に清算されるポイントを定義する。
+| チーム成績はチームメンバー全員の個人成績の総和となるため、チーム成績にも影響がある。
+
+
+.. _regulations-section:
+
+regulationsセクション
++++++++++++++++++++++
+
+定義されているキーが [wordsテーブル](../development/database/schema.md#words)の ``word`` として事前登録される。
+
+| ``yakuman_list`` 及び ``word_list`` にはカンマで区切られたワードを並べる。
+| テーブルに登録されていないワードが使用された場合、そのワードのtypeは ``undefined_word`` で指定した値となる。
+
+.. list-table::
+   :width: 100%
+   :widths: 15 30 15 15 40
+   :header-rows: 1
+
+   * - キー
+     - 内容
+     - 型
+     - 未定義時
+     - 備考
+   * - yakuman_list
+     - 事前登録ワード(役満)
+     - 文字列(カンマ区切り)
+     - None
+     - ``word`` に ``type=0`` として登録
+   * - word_list
+     - 事前登録ワード(個別)
+     - 文字列(カンマ区切り)
+     - None
+     - ``word`` に ``type=1`` として登録
+   * - その他（任意のワード）
+     - 卓外清算(個人)として登録される事前登録ワード
+     - 数値(追加計算される卓外ポイント)
+     -
+     - | キーを単語として登録
+       | ポイントは1000点単位
+
+チーム清算レギュレーション
+--------------------------
+
+| チーム成績出力時に清算されるポイントを定義する。
+| チームに対する清算のため、個人成績には影響はない。
+
+
+.. _regulations_team-section:
+
+regulations_teamセクション
+++++++++++++++++++++++++++
+
+.. list-table::
+   :width: 100%
+   :widths: 15 30 15 15 40
+   :header-rows: 1
+
+   * - キー
+     - 内容
+     - 型
+     - 未定義時
+     - 備考
+   * - 任意のワード
+     - 卓外清算(チーム)として登録される事前登録ワード
+     - 数値(追加計算される卓外ポイント)
+     -
+     - | キーを単語として登録
+       | ポイントは1000点単位
+
+
+レギュレーション設定例
+----------------------
+
+.. code-block:: ini
+   :caption: 卓外清算の設定例
+
+   [regulations]
+   役満祝儀 = 10
+   卓外ペナルティ = -20
+
+   [regulations_team]
+   遅刻 = -100
+
+.. important::
+   INIファイルの仕様上、セクション名及びキー名の半角英字はすべて小文字として扱われる。
+
+
+ルールセット個別レギュレーション設定
+====================================
+
+複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
+
+| 個別セクション名は :ref:`regulations-section` / :ref:`regulations_team-section` の前後のどちらかにルール識別子が付いた形となる。
+| 個別レギュレーションは :doc:`../main/index` 、及び :doc:`index` で定義可能。
+
+読み込み優先順位
+----------------
+
+| 読み込みには優先順位があり、最初に見つかった設定のみが取り込まれる。
+| 個別セクションが無い場合は :ref:`regulations-section` / :ref:`regulations_team-section` が読み込まれる。
+
+.. note::
+   レギュレーション設定が必要ない場合は、空の個別セクションを定義すること。
+
+   :ref:`regulations-section` / :ref:`regulations_team-section` の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
+
+
+個人清算レギュレーション
+++++++++++++++++++++++++
+
+.. list-table::
+   :width: 100%
+   :widths: 5 20 40
+   :header-rows: 1
+
+   * - 優先順位
+     - 定義箇所
+     - セクション名
+   * - 1
+     - :doc:`index`
+     - {rule_version}_regulations
+   * - 2
+     - :doc:`index`
+     - regulations_{rule_version}
+   * - 3
+     - :doc:`../main/index`
+     - {rule_version}_regulations
+   * - 4
+     - :doc:`../main/index`
+     - regulations_{rule_version}
+   * - 5
+     - :doc:`../main/index`
+     - regulations
+
+
+チーム清算レギュレーション
+++++++++++++++++++++++++++
+
+
+.. list-table::
+   :width: 100%
+   :widths: 5 20 40
+   :header-rows: 1
+
+   * - 優先順位
+     - 定義箇所
+     - セクション名
+   * - 1
+     - :doc:`index`
+     - {rule_version}_regulations_team
+   * - 2
+     - :doc:`index`
+     - regulations_team_{rule_version}
+   * - 3
+     - :doc:`../main/index`
+     - {rule_version}_regulations_team
+   * - 4
+     - :doc:`../main/index`
+     - regulations_team_{rule_version}
+   * - 5
+     - :doc:`../main/index`
+     - regulations_team

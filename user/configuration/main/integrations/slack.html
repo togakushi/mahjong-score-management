@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>slackセクション &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=a7d98117" />
+    
+    <script src="../../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="discordセクション" href="discord.html" />
+    <link rel="prev" title="共通設定" href="common.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">slackセクション</a><ul>
+<li><a class="reference internal" href="#slack-channel-settings">チャンネル個別設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="common.html"
+                          title="previous chapter">共通設定</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="discord.html"
+                          title="next chapter">discordセクション</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/configuration/main/integrations/slack.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="discord.html" title="discordセクション"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="common.html" title="共通設定"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">サービス別設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slackセクション</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="slack">
+<span id="slack-section"></span><h1>slackセクション<a class="headerlink" href="#slack" title="Link to this heading">¶</a></h1>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キー</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>型</p></th>
+<th class="head"><p>未定義時</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="target" id="index-0"></span>slash_command</p></td>
+<td><p>スラッシュコマンド名</p></td>
+<td><p>文字列</p></td>
+<td><p>/mahjong</p></td>
+<td><p>先頭のスラッシュも含める</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-1"></span>thread_report</p></td>
+<td><p>スレッド内にある成績記録キーワードを処理する</p></td>
+<td><p>真偽値</p></td>
+<td><p>True</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-2"></span>reaction_ok</p></td>
+<td><p>素点合計が正しい場合に付けるリアクション</p></td>
+<td><p>文字列(絵文字)</p></td>
+<td><p>ok</p></td>
+<td><p>ゲーム結果のポスト、メモに対して付く</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-3"></span>reaction_ng</p></td>
+<td><p>素点合計が誤っている場合に付けるリアクション</p></td>
+<td><p>文字列(絵文字)</p></td>
+<td><p>ng</p></td>
+<td><p>ゲーム結果のポストに対して付く</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-4"></span>ignore_userid</p></td>
+<td><p>投稿内容を無視するユーザID</p></td>
+<td><p>文字列</p></td>
+<td><p>空欄</p></td>
+<td><p>複数指定時はカンマ区切り</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-5"></span>channel_limitations</p></td>
+<td><p>SQLを発行できるチャンネルID(カンマ区切り)</p></td>
+<td><p>文字列(channel_id)</p></td>
+<td><p>None</p></td>
+<td><p>空欄(None)の場合はすべてのチャンネル</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-6"></span>comparison_word</p></td>
+<td><p>突合処理呼び出しキーワード</p></td>
+<td><p>文字列</p></td>
+<td><p>麻雀チェック</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-7"></span>comparison_alias</p></td>
+<td><p>スラッシュコマンドエイリアス(突合処理呼び出しサブコマンド)</p></td>
+<td><p>文字列(カンマ区切り)</p></td>
+<td><p>空欄</p></td>
+<td><p>サブコマンド <code class="docutils literal notranslate"><span class="pre">check</span></code> の別名を追加登録</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-8"></span>search_channel</p></td>
+<td><p>突合処理時に検索されるチャンネル名</p></td>
+<td><p>文字列(カンマ区切り)</p></td>
+<td><p>空リスト</p></td>
+<td><p>チャンネル名に先頭の <strong>#</strong> は必要</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-9"></span>search_after</p></td>
+<td><p>データ突合開始日</p></td>
+<td><p>数値(int)</p></td>
+<td><p>7</p></td>
+<td><p>突合実行日時から指定日を引いた日を検索開始範囲にする</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-10"></span>search_wait</p></td>
+<td><p>突合処理待ち時間(秒)</p></td>
+<td><p>数値(int)</p></td>
+<td><p>180</p></td>
+<td><p>イベント発生時刻から待ち時間以上経過したデータのみが突合の対象</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ignore_userid</span></code> は、botが出力する内容が検索にヒットしてしまう状況でbotのIDを指定するような利用方法を想定している。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channel_limitations</span></code> は複数のチャンネルにbotをIntegrationsしている状態で、参照専用のチャンネルを作成するような利用方法を想定している。</p></li>
+</ul>
+</div>
+<section id="slack-channel-settings">
+<span id="id1"></span><h2>チャンネル個別設定<a class="headerlink" href="#slack-channel-settings" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">メイン設定内に <code class="docutils literal notranslate"><span class="pre">slack_&lt;チャンネルID&gt;</span></code> セクションが存在すれば、そのチャンネル専用として追加で設定を読み込む。</div>
+<div class="line">slackセクションの以下のキー、および共通設定の値を上書きする。</div>
+</div>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キー</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>型</p></th>
+<th class="head"><p>未定義時</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="target" id="index-11"></span>default_rule</p></td>
+<td><p>ルール識別子未指定に使用するデフォルト値</p></td>
+<td><p>文字列</p></td>
+<td></td>
+<td><p>メイン設定の <a class="reference internal" href="../application.html#setting-section"><span class="std std-ref">settingセクション</span></a> より優先される</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-12"></span>reaction_ok</p></td>
+<td><p>素点合計が正しい場合に付けるリアクション</p></td>
+<td><p>文字列(絵文字)</p></td>
+<td><p>引継</p></td>
+<td><p><a class="reference internal" href="#slack-section"><span class="std std-ref">slackセクション</span></a> セクションの設定を上書き</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-13"></span>reaction_ng</p></td>
+<td><p>素点合計が誤っている場合に付けるリアクション</p></td>
+<td><p>文字列(絵文字)</p></td>
+<td><p>引継</p></td>
+<td><p><a class="reference internal" href="#slack-section"><span class="std std-ref">slackセクション</span></a> セクションの設定を上書き</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-14"></span>search_channel</p></td>
+<td><p>突合処理時に検索されるチャンネル</p></td>
+<td><p>文字列(チャンネル名)</p></td>
+<td><p>引継</p></td>
+<td><p><a class="reference internal" href="#slack-section"><span class="std std-ref">slackセクション</span></a> セクションの設定を上書き</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-15"></span>search_after</p></td>
+<td><p>データ突合開始日</p></td>
+<td><p>数値(int)</p></td>
+<td><p>引継</p></td>
+<td><p><a class="reference internal" href="#slack-section"><span class="std std-ref">slackセクション</span></a> セクションの設定を上書き</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">slackセクション</a><ul>
+<li><a class="reference internal" href="#slack-channel-settings">チャンネル個別設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="common.html"
+                          title="previous chapter">共通設定</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="discord.html"
+                          title="next chapter">discordセクション</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/configuration/main/integrations/slack.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="discord.html" title="discordセクション"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="common.html" title="共通設定"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >サービス別設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slackセクション</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

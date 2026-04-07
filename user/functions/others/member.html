@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>メンバー管理 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a7d98117" />
+    
+    <script src="../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="チーム管理" href="team.html" />
+    <link rel="prev" title="その他" href="index.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">メンバー管理</a><ul>
+<li><a class="reference internal" href="#id2">登録/削除</a></li>
+<li><a class="reference internal" href="#id3">レギュラーメンバー（登録済みプレイヤー）</a></li>
+<li><a class="reference internal" href="#id4">ゲストメンバー（未登録プレイヤー）</a></li>
+<li><a class="reference internal" href="#id5">プレイヤー名の敬称の取り扱い</a></li>
+<li><a class="reference internal" href="#id6">メンバー探索順序</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">その他</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="team.html"
+                          title="next chapter">チーム管理</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/functions/others/member.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="team.html" title="チーム管理"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="その他"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">その他</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">メンバー管理</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>メンバー管理<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>登録/削除<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>メンバーの登録/削除はスラッシュコマンドで行う。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は[サービス個別設定](../config/integrations.md)の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
+</div>
+<dl>
+<dt>登録</dt><dd><dl class="field-list">
+<dt class="field-odd">スラッシュコマンド構文<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="line-block">
+<div class="line">/commandname add &lt;登録するプレイヤー名&gt;</div>
+<div class="line">/commandname add &lt;プレイヤー名&gt; &lt;追加する別名&gt;</div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>削除</dt><dd><dl class="field-list">
+<dt class="field-odd">スラッシュコマンド構文<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="line-block">
+<div class="line">/commandname del &lt;削除するプレイヤー名&gt;</div>
+<div class="line">/commandname del &lt;プレイヤー名&gt; &lt;削除する別名&gt;</div>
+</div>
+</dd>
+</dl>
+<p>プレイヤー削除時、そのプレイヤーに追加されている別名もすべて削除される。</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h2>レギュラーメンバー（登録済みプレイヤー）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">メンバーとして登録されているプレイヤーは別名（ニックネーム）を定義できる。</div>
+<div class="line">スコア記録や成績サマリを出力する際に、別名で記載されていても登録したプレイヤー名に置き換えられる。</div>
+</div>
+</section>
+<section id="id4">
+<h2>ゲストメンバー（未登録プレイヤー）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">メンバー登録されていないプレイヤーは、スコア記録時に入力されたプレイヤー名で記録される。</div>
+<div class="line">成績表示など、名前が表示される場合はゲスト（設定ファイルで定義）に置換される。</div>
+</div>
+<p>ゲストでも個別の名前で記録しておくことで、あとからメンバー登録しても成績を追従できる。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ゲストからレギュラーに変更する際の注意点</p>
+<p>別名を登録したタイミングで、データベース上で見つかった別名はすべてプレイヤー名に書き換えられる。</p>
+<div class="line-block">
+<div class="line">レギュラーからゲストに変更されたプレイヤーと同じ名前を使用した場合、名前がすべて置き換えられてしまう。</div>
+<div class="line">登録、削除の順番次第ではデータが使い物にならなくなるので注意すること。</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>プレイヤー名の敬称の取り扱い<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>「Aさん」など、敬称が付いた状態で記述されているプレイヤーの敬称は削除されて処理される。</p>
+<p>削除対象の敬称は以下</p>
+<ul class="simple">
+<li><p>さん / サン</p></li>
+<li><p>くん / クン / 君</p></li>
+<li><p>ちゃん / チャン</p></li>
+</ul>
+<p>ただし、以下の条件を満たしている場合は削除されない</p>
+<ul class="simple">
+<li><p>登録されているメンバーの名前に敬称が付いている</p></li>
+<li><p>敬称の直前が促音の場合</p>
+<ul>
+<li><p>「ぐっさん」「あっくん」「ウッチャン」など</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h2>メンバー探索順序<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>以下の順序で入力された名前をメンバーリストから探索し、一致した場合にレギュラーメンバーとして処理される。</p>
+<ol class="arabic simple">
+<li><p>入力された文字列を加工せずに登録されている名前/別名と比較して一致した場合</p></li>
+<li><p>入力された文字列から敬称を削除し、登録されている名前/別名と比較して一致した場合</p></li>
+<li><p>敬称の削除後、カタカナ部分をひらがなに変換し、登録されている名前/別名と比較して一致した場合</p></li>
+<li><p>敬称の削除後、ひらがな部分をカタカナに変換し、登録されている名前/別名と比較して一致した場合</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">メンバー管理</a><ul>
+<li><a class="reference internal" href="#id2">登録/削除</a></li>
+<li><a class="reference internal" href="#id3">レギュラーメンバー（登録済みプレイヤー）</a></li>
+<li><a class="reference internal" href="#id4">ゲストメンバー（未登録プレイヤー）</a></li>
+<li><a class="reference internal" href="#id5">プレイヤー名の敬称の取り扱い</a></li>
+<li><a class="reference internal" href="#id6">メンバー探索順序</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">その他</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="team.html"
+                          title="next chapter">チーム管理</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/functions/others/member.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="team.html" title="チーム管理"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="その他"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="index.html" >その他</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">メンバー管理</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

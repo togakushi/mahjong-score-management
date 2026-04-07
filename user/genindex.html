@@ -15,6 +15,442 @@
     <script src="_static/documentation_options.js?v=b4617fb1"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
@@ -121,8 +557,1440 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
+ <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#イ"><strong>イ</strong></a>
+ | <a href="#ウ"><strong>ウ</strong></a>
+ | <a href="#ケ"><strong>ケ</strong></a>
+ | <a href="#コ"><strong>コ</strong></a>
+ | <a href="#サ"><strong>サ</strong></a>
+ | <a href="#チ"><strong>チ</strong></a>
+ | <a href="#テ"><strong>テ</strong></a>
+ | <a href="#ト"><strong>ト</strong></a>
+ | <a href="#フ"><strong>フ</strong></a>
+ | <a href="#ホ"><strong>ホ</strong></a>
+ | <a href="#マ"><strong>マ</strong></a>
+ | <a href="#メ"><strong>メ</strong></a>
+ | <a href="#ヨ"><strong>ヨ</strong></a>
+ | <a href="#ル"><strong>ル</strong></a>
+ | <a href="#レ"><strong>レ</strong></a>
+ | <a href="#一"><strong>一</strong></a>
+ | <a href="#三"><strong>三</strong></a>
+ | <a href="#今"><strong>今</strong></a>
+ | <a href="#個"><strong>個</strong></a>
+ | <a href="#先"><strong>先</strong></a>
+ | <a href="#全"><strong>全</strong></a>
+ | <a href="#区"><strong>区</strong></a>
+ | <a href="#匿"><strong>匿</strong></a>
+ | <a href="#去"><strong>去</strong></a>
+ | <a href="#四"><strong>四</strong></a>
+ | <a href="#対"><strong>対</strong></a>
+ | <a href="#差"><strong>差</strong></a>
+ | <a href="#年"><strong>年</strong></a>
+ | <a href="#当"><strong>当</strong></a>
+ | <a href="#戦"><strong>戦</strong></a>
+ | <a href="#日"><strong>日</strong></a>
+ | <a href="#昨"><strong>昨</strong></a>
+ | <a href="#最"><strong>最</strong></a>
+ | <a href="#月"><strong>月</strong></a>
+ | <a href="#期"><strong>期</strong></a>
+ | <a href="#横"><strong>横</strong></a>
+ | <a href="#比"><strong>比</strong></a>
+ | <a href="#点"><strong>点</strong></a>
+ | <a href="#直"><strong>直</strong></a>
+ | <a href="#突"><strong>突</strong></a>
+ | <a href="#素"><strong>素</strong></a>
+ | <a href="#統"><strong>統</strong></a>
+ | <a href="#規"><strong>規</strong></a>
+ | <a href="#詳"><strong>詳</strong></a>
+ | <a href="#通"><strong>通</strong></a>
+ | <a href="#週"><strong>週</strong></a>
+ | <a href="#集"><strong>集</strong></a>
+ | <a href="#順"><strong>順</strong></a>
  
 </div>
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-11"><strong>2ゲスト戦</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    command line option
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-csv">csv</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">daily</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">mix</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">mixed</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">monthly</a>
+</li>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">rating</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">team</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-text">text</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-text">txt</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">weekly</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">yearly</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">イヤーリー</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">ウイークリー</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-32">ゲストあり</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-33">ゲストなし</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-34">ゲスト無効</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-XXX">コメント&lt;XXX&gt;</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">サンマ</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">チーム</a>, <a href="functions/output/results/index.html#cmdoption-arg-9">[1]</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-0">チーム名</a>, <a href="functions/output/report/index.html#cmdoption-arg-4">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-0">[2]</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">チーム成績</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">デイリー</a>
+</li>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-NNN">トップ&lt;NNN&gt;</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">マンスリー</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-0">メンバー名</a>, <a href="functions/output/report/index.html#cmdoption-arg-4">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-0">[2]</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">ヨンマ</a>
+</li>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">レーティング</a>
+</li>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">レート</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-11">一昨年</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">三人打</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">三人打ち</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">三麻</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-8">今年</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-1">今日</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-5">今月</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-4">今週</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-30">個人</a>, <a href="functions/output/report/index.html#cmdoption-arg-2">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-9">[2]</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-30">個人成績</a>, <a href="functions/output/report/index.html#cmdoption-arg-2">[1]</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-7">先々月</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-6">先月</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-3">先週</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-11">全体</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-14">全部</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">区切</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">区切り</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">区間</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-27">匿名</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-9">去年</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">四人打</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">四人打ち</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">四麻</a>
+</li>
+        <li><a href="functions/output/report/index.html#cmdoption-arg-6">対戦</a>, <a href="functions/output/results/index.html#cmdoption-arg-8">[1]</a>
+</li>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">差分</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">年次</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-0">当日</a>
+</li>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-6">戦績</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">日次</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-9">昨年</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-2">昨日</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-12">最初</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-13">最後</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">月次</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">期間</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">横断</a>
+</li>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">比較</a>
+</li>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">点差</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-NNN">直近&lt;NNN&gt;</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-12">統計</a>, <a href="functions/output/report/index.html#cmdoption-arg-1">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-2">[2]</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-15">規定打数&lt;NNN&gt;</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-15">規定数&lt;NNN&gt;</a>
+</li>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-7">詳細</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">週次</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-17">集約&lt;NNN&gt;</a>
+</li>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-2">順位</a>, <a href="functions/output/report/index.html#cmdoption-arg-0">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    csv
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-csv">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    custom_message
+
+      <ul>
+        <li><a href="configuration/main/decoration.html#index-15">access_denied</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-12">inside_thread</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-7">invalid_argument</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-8">invalid_score</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-9">no_hits</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-10">no_target</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-14">not_implemented</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-11">restricted_channel</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-16">rule_mismatch</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-13">same_player</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    daily
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    degree
+
+      <ul>
+        <li><a href="configuration/main/decoration.html#index-1">badge</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-2">counter</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    grade
+
+      <ul>
+        <li><a href="configuration/main/decoration.html#index-5">table_name</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    integrations
+
+      <ul>
+        <li><a href="configuration/main/integrations/common.html#index-1">badge_degree</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-3">badge_grade</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-2">badge_status</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-0">channel_config</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-4">channel_id</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-6">plotting_backend</a>
+</li>
+        <li><a href="configuration/main/integrations/common.html#index-5">separate</a>
+</li>
+      </ul></li>
+      <li>
+    integrations_discord
+
+      <ul>
+        <li><a href="configuration/main/integrations/discord.html#index-1">channel_limitations</a>
+</li>
+        <li><a href="configuration/main/integrations/discord.html#index-3">comparison_alias</a>
+</li>
+        <li><a href="configuration/main/integrations/discord.html#index-2">comparison_word</a>
+</li>
+        <li><a href="configuration/main/integrations/discord.html#index-4">search_after</a>
+</li>
+        <li><a href="configuration/main/integrations/discord.html#index-0">slash_command</a>
+</li>
+      </ul></li>
+      <li>
+    integrations_slack
+
+      <ul>
+        <li><a href="configuration/main/integrations/slack.html#index-5">channel_limitations</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-7">comparison_alias</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-6">comparison_word</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-11">default_rule</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-4">ignore_userid</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-13">reaction_ng</a>, <a href="configuration/main/integrations/slack.html#index-3">[1]</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-12">reaction_ok</a>, <a href="configuration/main/integrations/slack.html#index-2">[1]</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-15">search_after</a>, <a href="configuration/main/integrations/slack.html#index-9">[1]</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-14">search_channel</a>, <a href="configuration/main/integrations/slack.html#index-8">[1]</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-10">search_wait</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-0">slash_command</a>
+</li>
+        <li><a href="configuration/main/integrations/slack.html#index-1">thread_report</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    integrations_web
+
+      <ul>
+        <li><a href="configuration/main/integrations/web.html#index-6">certificate</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-14">custom_css</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-0">host</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-11">management_member</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-12">management_score</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-4">password</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-15">plotting_backend</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-1">port</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-7">private_key</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-2">require_auth</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-13">theme</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-5">use_ssl</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-3">username</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-9">view_graph</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-10">view_ranking</a>
+</li>
+        <li><a href="configuration/main/integrations/web.html#index-8">view_summary</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    member
+
+      <ul>
+        <li><a href="configuration/main/member.html#index-5">alias_limit</a>
+</li>
+        <li><a href="configuration/main/member.html#index-4">character_limit</a>
+</li>
+        <li><a href="configuration/main/member.html#index-2">command_suffix</a>
+</li>
+        <li><a href="configuration/main/member.html#index-1">commandword</a>
+</li>
+        <li><a href="configuration/main/member.html#index-6">guest_name</a>
+</li>
+        <li><a href="configuration/main/member.html#index-3">registration_limit</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    mix
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    mixed
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    monthly
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    rating
+
+      <ul>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    rule-set
+
+      <ul>
+        <li><a href="configuration/rule/ruleset.html#index-6">draw_split</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-10">dropitems</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-5">ignore_flying</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-8">keywords</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-1">mode</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-2">point</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-4">rank_point</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-9">remarks</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-3">return</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-0">rule_version</a>
+</li>
+        <li><a href="configuration/rule/ruleset.html#index-7">undefined_word</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    setting
+
+      <ul>
+        <li><a href="configuration/main/application.html#index-14">backup_dir</a>
+</li>
+        <li><a href="configuration/main/application.html#index-4">channel_id</a>
+</li>
+        <li><a href="configuration/main/application.html#index-13">database_file</a>
+</li>
+        <li><a href="configuration/main/application.html#index-2">default_rule</a>
+</li>
+        <li><a href="configuration/main/application.html#index-10">font_file</a>
+</li>
+        <li><a href="configuration/main/application.html#index-11">graph_style</a>
+</li>
+        <li><a href="configuration/main/application.html#index-8">group_length</a>
+</li>
+        <li><a href="configuration/main/application.html#index-6">guest_mark</a>
+</li>
+        <li><a href="configuration/main/application.html#index-5">remarks_suffix</a>
+</li>
+        <li><a href="configuration/main/application.html#index-1">rule_config</a>
+</li>
+        <li><a href="configuration/main/application.html#index-7">search_word</a>
+</li>
+        <li><a href="configuration/main/application.html#index-3">separate</a>
+</li>
+        <li><a href="configuration/main/application.html#index-9">time_adjust</a>
+</li>
+        <li><a href="configuration/main/application.html#index-12">work_dir</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    status
+
+      <ul>
+        <li><a href="configuration/main/decoration.html#index-3">badge</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-4">step</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    team
+
+      <ul>
+        <li><a href="configuration/main/member.html#index-10">character_limit</a>
+</li>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">command line option</a>
+</li>
+        <li><a href="configuration/main/member.html#index-8">command_suffix</a>
+</li>
+        <li><a href="configuration/main/member.html#index-7">commandword</a>
+</li>
+        <li><a href="configuration/main/member.html#index-12">friendly_fire</a>
+</li>
+        <li><a href="configuration/main/member.html#index-11">member_limit</a>
+</li>
+        <li><a href="configuration/main/member.html#index-9">registration_limit</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    text
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-text">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    txt
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-text">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    weekly
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    yearly
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="イ">イ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    イヤーリー
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ウ">ウ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    ウイークリー
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ケ">ケ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-2"><strong>ゲスト</strong></a>
+</li>
+      <li>
+    ゲストあり
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-32">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    ゲストなし
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-33">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-4"><strong>ゲストプレイヤー</strong></a>
+</li>
+      <li><a href="glossary.html#term-3"><strong>ゲストメンバー</strong></a>
+</li>
+      <li>
+    ゲスト無効
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-34">command line option</a>
+</li>
+      </ul></li>
+      <li><a href="glossary.html#term-12"><strong>ゲーム</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="コ">コ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    コメント&lt;XXX&gt;
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-XXX">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="サ">サ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    サンマ
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="チ">チ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    チーム
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">command line option</a>, <a href="functions/output/results/index.html#cmdoption-arg-9">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    チーム名
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-0">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-4">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-0">[2]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    チーム成績
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-28">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="テ">テ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    デイリー
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ト">ト</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    トップ&lt;NNN&gt;
+
+      <ul>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-NNN">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="フ">フ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-1"><strong>プレイヤー</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ホ">ホ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-9"><strong>ポイント</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="マ">マ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    マンスリー
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="メ">メ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    メイン設定
+
+      <ul>
+        <li><a href="configuration/main/application.html#index-0">アプリケーション設定</a>
+</li>
+        <li><a href="configuration/main/integrations/index.html#index-0">サービス別設定</a>
+</li>
+        <li><a href="configuration/main/mahjong.html#index-1">マッピング定義</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-6">メッセージカスタマイズオプション</a>
+</li>
+        <li><a href="configuration/main/member.html#index-0">メンバー管理</a>
+</li>
+        <li><a href="configuration/main/mahjong.html#index-0">ルール定義</a>
+</li>
+        <li><a href="configuration/main/summary.html#index-0">成績管理</a>
+</li>
+        <li><a href="configuration/main/decoration.html#index-0">装飾オプション</a>
+</li>
+        <li><a href="configuration/main/index.html#index-0">設定ファイル</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-0"><strong>メンバー</strong></a>
+</li>
+      <li>
+    メンバー名
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-0">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-4">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-0">[2]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ヨ">ヨ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    ヨンマ
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ル">ル</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-15"><strong>ルールセット</strong></a>
+
+      <ul>
+        <li><a href="configuration/main/mahjong.html#index-1">マッピング定義</a>
+</li>
+        <li><a href="configuration/rule/regulations.html#index-0">レギュレーション設定</a>
+</li>
+        <li><a href="configuration/rule/index.html#index-0">設定ファイル</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-16"><strong>ルール識別子</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="レ">レ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-5"><strong>レギュラー</strong></a>
+</li>
+      <li><a href="glossary.html#term-7"><strong>レギュラープレイヤー</strong></a>
+</li>
+      <li><a href="glossary.html#term-6"><strong>レギュラーメンバー</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    レーティング
+
+      <ul>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    レート
+
+      <ul>
+        <li><a href="functions/output/ranking/index.html#cmdoption-arg-0">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="一">一</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    一昨年
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-11">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="三">三</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    三人打
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    三人打ち
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    三麻
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-19">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="今">今</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    今年
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-8">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    今日
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-1">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    今月
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-5">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    今週
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-4">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="個">個</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    個人
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-30">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-2">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-9">[2]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    個人成績
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-30">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-2">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="先">先</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    先々月
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-7">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    先月
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-6">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    先週
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="全">全</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    全体
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-11">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    全部
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-14">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="区">区</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    区切
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    区切り
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    区間
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="匿">匿</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    匿名
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-27">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="去">去</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    去年
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-9">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="四">四</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    四人打
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">command line option</a>
+</li>
+      </ul></li>
+      <li>
+    四人打ち
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    四麻
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-23">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="対">対</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    対戦
+
+      <ul>
+        <li><a href="functions/output/report/index.html#cmdoption-arg-6">command line option</a>, <a href="functions/output/results/index.html#cmdoption-arg-8">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="差">差</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    差分
+
+      <ul>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="年">年</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    年次
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-9">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="当">当</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    当日
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-0">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="戦">戦</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    戦績
+
+      <ul>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-6">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="日">日</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    日次
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="昨">昨</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    昨年
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-9">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    昨日
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-2">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="最">最</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    最初
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-12">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    最後
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-13">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="月">月</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    月次
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-7">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="期">期</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    期間
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-13">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="横">横</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    横断
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-18">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="比">比</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    比較
+
+      <ul>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="点">点</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    点差
+
+      <ul>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-3">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="直">直</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    直近&lt;NNN&gt;
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-NNN">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="突">突</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-13"><strong>突合</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-14"><strong>突合処理</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="素">素</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-8"><strong>素点</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="統">統</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    統計
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-12">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-1">[1]</a>, <a href="functions/output/results/index.html#cmdoption-arg-2">[2]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="規">規</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    規定打数&lt;NNN&gt;
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-15">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    規定数&lt;NNN&gt;
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-15">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="詳">詳</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    詳細
+
+      <ul>
+        <li><a href="functions/output/results/index.html#cmdoption-arg-7">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="通">通</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-10"><strong>通算ポイント</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="週">週</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    週次
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-5">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="集">集</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    集約&lt;NNN&gt;
+
+      <ul>
+        <li><a href="functions/appendix/argument_keyword.html#cmdoption-arg-17">command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="順">順</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    順位
+
+      <ul>
+        <li><a href="functions/output/graph/index.html#cmdoption-arg-2">command line option</a>, <a href="functions/output/report/index.html#cmdoption-arg-0">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 
 
             <div class="clearer"></div>

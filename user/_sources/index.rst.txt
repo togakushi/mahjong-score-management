@@ -11,6 +11,7 @@ Mahjong score management tool
    functions/input/index
    functions/output/index
    functions/appendix/index
+   glossary
 
 
 管理者向けマニュアル
@@ -20,8 +21,12 @@ Mahjong score management tool
    :name: for_administrators
    :maxdepth: 2
 
+   setting/index
    configuration/index
    functions/others/index
+   setting/gradetable
+   troubleshooting
+
 
 開発者向けガイド
 ----------------
