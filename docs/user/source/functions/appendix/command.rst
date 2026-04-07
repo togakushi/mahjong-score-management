@@ -13,6 +13,8 @@
 results
 +++++++
 
+.. program:: 成績サマリ出力機能
+
 :概要: 成績を表示
 :書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
 :引数: - 専用オプション
@@ -34,6 +36,8 @@ results
 ranking
 +++++++
 
+.. program:: ランキング機能
+
 :概要: 各成績をランキング形式で表示
 :書式: ``/commandname ranking [検索範囲] [トップNNN]``
 :引数: - 専用オプション
@@ -50,6 +54,8 @@ ranking
 
 graph
 +++++
+
+.. program:: グラフ生成機能
 
 :概要: ポイント推移グラフを表示
 :書式: ``/commandname graph [対象メンバー] [検索範囲]``
