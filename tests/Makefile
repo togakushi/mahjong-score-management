@@ -13,6 +13,9 @@ docs:
 	uv run sphinx-build -M clean docs/dev/source/ docs/dev/build --conf-dir docs/dev/
 	uv run sphinx-build -M html docs/dev/source/ docs/dev/build --silent --conf-dir docs/dev/
 
+	uv run sphinx-build -M clean docs/user/source/ docs/user/build --conf-dir docs/user/
+	uv run sphinx-build -M html docs/user/source/ docs/user/build --conf-dir docs/user/
+
 prospector:
 	@uv run prospector -W mccabe ..
 

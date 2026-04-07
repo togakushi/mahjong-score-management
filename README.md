@@ -1,14 +1,21 @@
 # mahjong-score-management
+
 ## 概要
+
 麻雀のスコアを記録、集計するツール。
 
 ### セットアップ方法
-- [Slack](docs/setting/for_slack/README.md)
-- [Discord](docs/setting/for_discord/README.md)
+
+* [Slack](docs/setting/for_slack/README.md)
+
+* [Discord](docs/setting/for_discord/README.md)
 
 ## 主な機能
-### スコア記録（[詳細](docs/functions/score_record.md)）
+
+### スコア記録
+
 以下のフォーマットに一致した投稿をデータベースに取り込む。
+
 ```
 <成績記録キーワード>
 東家プレイヤー名 東家素点
@@ -17,20 +24,26 @@
 北家プレイヤー名 北家素点
 ```
 
-### メンバー管理（[詳細](docs/functions/member_management.md)）
+### メンバー管理
+
 成績管理をするプレイヤーを登録し、スコアを蓄積する。
 
-### 成績サマリ出力機能（[詳細](docs/functions/summary.md)）
+### 成績サマリ出力機能
+
 記録されているスコアを集計し、一覧で出力する。
 
-### グラフ生成機能（[詳細](docs/functions/graph.md)）
+### グラフ生成機能
+
 記録されているスコアを集計し、グラフで出力する。
 
-### ランキング出力機能（[詳細](docs/functions/ranking.md)）
+### ランキング出力機能
+
 記録されているスコアを集計し、ランキング形式で出力する。
 
-### レポート出力機能（[詳細](docs/functions/report.md)）
+### レポート出力機能
+
 月間成績上位者、個人成績一覧、ゲーム統計情報を表形式で出力する。
 
-### スラッシュコマンド（[使い方](docs/functions/command.md)）
+### スラッシュコマンド
+
 出力結果をボットから直接DMで受け取る。
