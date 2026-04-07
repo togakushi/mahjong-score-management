@@ -14,7 +14,7 @@ with open("../../pyproject.toml", mode="rb") as toml_file:
     project_data: dict[str, Any] = toml_data.get("project", {})
 
 # -- Project information -----------------------------------------------------
-project = "Developer"
+project = "Developer Reference"
 author = "togakushi"
 copyright = f"%Y, {author}"
 version = project_data.get("version", "")
@@ -39,8 +39,12 @@ napoleon_numpy_docstring = True
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = "python_docs_theme"
-html_title = f"{project} Documentation"
+html_title = f"{project}"
 html_last_updated_fmt = "%Y-%m-%d"
 html_split_index = False
 html_show_sphinx = False
 html_show_copyright = False
+html_theme_options = {
+    "root_url": "https://github.com/togakushi/mahjong-score-management/",
+    "root_name": project_data.get("description", ""),
+}
