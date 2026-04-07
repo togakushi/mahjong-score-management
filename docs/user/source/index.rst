@@ -36,3 +36,13 @@ Mahjong score management tool
    :maxdepth: 2
 
    development/index
+
+
+コマンドラインツール
+--------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   app
+   dbtools

@@ -30,7 +30,7 @@ mahjongセクションはオプション扱いのセクションであり、省�
 
 .. tip::
    | ``keywords`` は複数定義できるので、マッピングテーブルに追加するだけなら ``keywords`` を増やせばよい。
-   | keyword_mappingセクションで追加した成績記録キーワードは[コマンド呼び出しのキーワード](./main.md#機能呼び出しキーワード)に使用されない。
+   | keyword_mappingセクションで追加した成績記録キーワードは :ref:`commandword` に使用されない。
 
 
 .. _keyword_mapping-section:

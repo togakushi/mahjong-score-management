@@ -15,4 +15,5 @@ Slack連携
    :maxdepth: 2
 
    setup
+   permission
    daemon
