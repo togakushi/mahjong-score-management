@@ -1,0 +1,7 @@
+tests.utils.test\_timekit module
+================================
+
+.. automodule:: tests.utils.test_timekit
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,7 @@
+libs.dispatcher module
+======================
+
+.. automodule:: libs.dispatcher
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,7 @@
+tests.test module
+=================
+
+.. automodule:: tests.test
+   :members:
+   :show-inheritance:
+   :undoc-members:

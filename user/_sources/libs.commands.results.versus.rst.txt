@@ -1,0 +1,7 @@
+libs.commands.results.versus module
+===================================
+
+.. automodule:: libs.commands.results.versus
+   :members:
+   :show-inheritance:
+   :undoc-members:

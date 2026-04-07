@@ -1,0 +1,7 @@
+tests.database.test\_result\_update module
+==========================================
+
+.. automodule:: tests.database.test_result_update
+   :members:
+   :show-inheritance:
+   :undoc-members:

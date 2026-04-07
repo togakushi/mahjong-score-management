@@ -1,0 +1,27 @@
+integrations.slack package
+==========================
+
+.. automodule:: integrations.slack
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.slack.events
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.slack.adapter
+   integrations.slack.api
+   integrations.slack.config
+   integrations.slack.functions
+   integrations.slack.parser

@@ -1,0 +1,7 @@
+integrations.discord.parser module
+==================================
+
+.. automodule:: integrations.discord.parser
+   :members:
+   :show-inheritance:
+   :undoc-members:

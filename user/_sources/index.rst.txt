@@ -1,0 +1,11 @@
+mahjong-score-management
+========================
+
+.. toctree::
+   :maxdepth: 2
+
+   app
+   dbtools
+   integrations
+   libs
+   tests

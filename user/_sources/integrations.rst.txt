@@ -1,0 +1,28 @@
+integrations package
+====================
+
+.. automodule:: integrations
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.base
+   integrations.discord
+   integrations.slack
+   integrations.standard_io
+   integrations.web
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.factory
+   integrations.protocols

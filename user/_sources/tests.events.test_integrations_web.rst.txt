@@ -1,0 +1,7 @@
+tests.events.test\_integrations\_web module
+===========================================
+
+.. automodule:: tests.events.test_integrations_web
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,7 @@
+integrations.slack.events.home\_tab.ui\_parts module
+====================================================
+
+.. automodule:: integrations.slack.events.home_tab.ui_parts
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,17 @@
+integrations.discord.events package
+===================================
+
+.. automodule:: integrations.discord.events
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.discord.events.audioop
+   integrations.discord.events.comparison
+   integrations.discord.events.handler

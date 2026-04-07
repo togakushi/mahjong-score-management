@@ -1,0 +1,26 @@
+libs.functions package
+======================
+
+.. automodule:: libs.functions
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.functions.compose
+   libs.functions.tools
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.functions.lookup
+   libs.functions.message
+   libs.functions.search

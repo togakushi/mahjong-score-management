@@ -1,0 +1,7 @@
+integrations.slack.config module
+================================
+
+.. automodule:: integrations.slack.config
+   :members:
+   :show-inheritance:
+   :undoc-members:

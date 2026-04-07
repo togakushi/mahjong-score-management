@@ -1,0 +1,18 @@
+libs.bootstrap package
+======================
+
+.. automodule:: libs.bootstrap
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.bootstrap.app_config
+   libs.bootstrap.configuration
+   libs.bootstrap.initialization
+   libs.bootstrap.section

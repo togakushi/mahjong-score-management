@@ -1,0 +1,7 @@
+integrations.web.events.create\_bp.user\_assets module
+======================================================
+
+.. automodule:: integrations.web.events.create_bp.user_assets
+   :members:
+   :show-inheritance:
+   :undoc-members:

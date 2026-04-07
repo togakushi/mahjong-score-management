@@ -1,0 +1,7 @@
+libs.commands.help.entry module
+===============================
+
+.. automodule:: libs.commands.help.entry
+   :members:
+   :show-inheritance:
+   :undoc-members:

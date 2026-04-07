@@ -1,0 +1,16 @@
+tests.utils package
+===================
+
+.. automodule:: tests.utils
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   tests.utils.param_data
+   tests.utils.test_timekit

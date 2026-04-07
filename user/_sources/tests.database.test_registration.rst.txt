@@ -1,0 +1,7 @@
+tests.database.test\_registration module
+========================================
+
+.. automodule:: tests.database.test_registration
+   :members:
+   :show-inheritance:
+   :undoc-members:

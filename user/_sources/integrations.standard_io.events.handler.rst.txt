@@ -1,0 +1,7 @@
+integrations.standard\_io.events.handler module
+===============================================
+
+.. automodule:: integrations.standard_io.events.handler
+   :members:
+   :show-inheritance:
+   :undoc-members:

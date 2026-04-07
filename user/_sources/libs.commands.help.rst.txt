@@ -1,0 +1,15 @@
+libs.commands.help package
+==========================
+
+.. automodule:: libs.commands.help
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.commands.help.entry

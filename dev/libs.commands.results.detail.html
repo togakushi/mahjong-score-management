@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.commands.results.detail module &#8212; Developer Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.commands.results.entry module" href="libs.commands.results.entry.html" />
+    <link rel="prev" title="libs.commands.results package" href="libs.commands.results.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.results.detail module</a><ul>
+<li><a class="reference internal" href="#libs.commands.results.detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.commands.results.html"
+                          title="previous chapter">libs.commands.results package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.commands.results.entry.html"
+                          title="next chapter">libs.commands.results.entry module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.commands.results.detail.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.results.entry.html" title="libs.commands.results.entry module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.results.html" title="libs.commands.results package"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Developer Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.results.html" accesskey="U">libs.commands.results package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.results.detail module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.commands.results.detail">
+<span id="libs-commands-results-detail-module"></span><h1>libs.commands.results.detail module<a class="headerlink" href="#module-libs.commands.results.detail" title="Link to this heading">¶</a></h1>
+<p>libs/commands/results/detail.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.aggregation">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.aggregation" title="Link to this definition">¶</a></dt>
+<dd><p>成績詳細を集計</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.comparison">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.comparison" title="Link to this definition">¶</a></dt>
+<dd><p>成績詳細を比較</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.get_headline">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">get_headline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.get_headline" title="Link to this definition">¶</a></dt>
+<dd><p>ヘッダメッセージ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – 生成内容が格納された辞書</p></li>
+<li><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – ゲーム集計情報</p></li>
+<li><p><strong>player_name</strong> (<em>str</em>) – プレイヤー名</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計データ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.get_results_details">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">get_results_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.get_results_details" title="Link to this definition">¶</a></dt>
+<dd><p>戦績(詳細)データ取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化オプション用マップ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>戦績データ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.get_results_simple">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">get_results_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.get_results_simple" title="Link to this definition">¶</a></dt>
+<dd><p>戦績(簡易)データ取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化オプション用マップ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>戦績データ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.get_totalization">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">get_totalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.get_totalization" title="Link to this definition">¶</a></dt>
+<dd><p>集計トータルメッセージ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsInfo" title="libs.domain.stats.StatsInfo"><em>StatsInfo</em></a>) – 成績情報</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>生成メッセージ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.get_versus_matrix">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">get_versus_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.get_versus_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>対戦結果データ出力用メッセージ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化用マッピングデータ</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>出力メッセージ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.results.detail.message_build">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.results.detail.</span></span><span class="sig-name descname"><span class="pre">message_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.detail.message_build" title="Link to this definition">¶</a></dt>
+<dd><p>表示する内容をテキストに起こす</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 内容</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>表示するテキスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.results.detail module</a><ul>
+<li><a class="reference internal" href="#libs.commands.results.detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.results.detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.commands.results.html"
+                          title="previous chapter">libs.commands.results package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.commands.results.entry.html"
+                          title="next chapter">libs.commands.results.entry module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.commands.results.detail.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.results.entry.html" title="libs.commands.results.entry module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.commands.results.html" title="libs.commands.results package"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Developer Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.results.html" >libs.commands.results package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.results.detail module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>

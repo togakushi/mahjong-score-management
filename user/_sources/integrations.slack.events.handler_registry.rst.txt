@@ -1,0 +1,7 @@
+integrations.slack.events.handler\_registry module
+==================================================
+
+.. automodule:: integrations.slack.events.handler_registry
+   :members:
+   :show-inheritance:
+   :undoc-members:

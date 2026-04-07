@@ -1,0 +1,7 @@
+libs.commands.graph.personal module
+===================================
+
+.. automodule:: libs.commands.graph.personal
+   :members:
+   :show-inheritance:
+   :undoc-members:

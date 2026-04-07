@@ -1,0 +1,7 @@
+integrations.web.config module
+==============================
+
+.. automodule:: integrations.web.config
+   :members:
+   :show-inheritance:
+   :undoc-members:

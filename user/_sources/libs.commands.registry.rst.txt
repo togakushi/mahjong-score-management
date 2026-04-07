@@ -1,0 +1,16 @@
+libs.commands.registry package
+==============================
+
+.. automodule:: libs.commands.registry
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   libs.commands.registry.member
+   libs.commands.registry.team

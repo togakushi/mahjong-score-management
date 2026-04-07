@@ -1,0 +1,7 @@
+integrations.standard\_io.adapter module
+========================================
+
+.. automodule:: integrations.standard_io.adapter
+   :members:
+   :show-inheritance:
+   :undoc-members:

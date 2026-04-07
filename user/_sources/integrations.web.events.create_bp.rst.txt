@@ -1,0 +1,23 @@
+integrations.web.events.create\_bp package
+==========================================
+
+.. automodule:: integrations.web.events.create_bp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 2
+
+   integrations.web.events.create_bp.detail
+   integrations.web.events.create_bp.graph
+   integrations.web.events.create_bp.index
+   integrations.web.events.create_bp.member
+   integrations.web.events.create_bp.ranking
+   integrations.web.events.create_bp.report
+   integrations.web.events.create_bp.score
+   integrations.web.events.create_bp.summary
+   integrations.web.events.create_bp.user_assets

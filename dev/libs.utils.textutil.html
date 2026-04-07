@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.utils.textutil module &#8212; Developer Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
+    
+    <script src="_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.utils.timekit module" href="libs.utils.timekit.html" />
+    <link rel="prev" title="libs.utils.graphutil module" href="libs.utils.graphutil.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://github.com/togakushi/mahjong-score-management/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils.textutil module</a><ul>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType"><code class="docutils literal notranslate"><span class="pre">ConversionType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.HtoK"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoK</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.HtoZ"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoZ</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.KtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.KtoH</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.ZtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.ZtoH</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_balanced"><code class="docutils literal notranslate"><span class="pre">split_balanced()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.utils.graphutil.html"
+                          title="previous chapter">libs.utils.graphutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.timekit.html"
+                          title="next chapter">libs.utils.timekit module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.utils.textutil.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.timekit.html" title="libs.utils.timekit module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.graphutil.html" title="libs.utils.graphutil module"
+             accesskey="P">previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Developer Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.utils.html" accesskey="U">libs.utils package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils.textutil module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.utils.textutil">
+<span id="libs-utils-textutil-module"></span><h1>libs.utils.textutil module<a class="headerlink" href="#module-libs.utils.textutil" title="Link to this heading">¶</a></h1>
+<p>libs/utils/textutil.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.utils.textutil.ConversionType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">ConversionType</span></span><a class="headerlink" href="#libs.utils.textutil.ConversionType" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>変換タイプ</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.textutil.ConversionType.HtoK">
+<span class="sig-name descname"><span class="pre">HtoK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.utils.textutil.ConversionType.HtoK" title="Link to this definition">¶</a></dt>
+<dd><p>ひらがなをカタカナに変換</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.textutil.ConversionType.HtoZ">
+<span class="sig-name descname"><span class="pre">HtoZ</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.utils.textutil.ConversionType.HtoZ" title="Link to this definition">¶</a></dt>
+<dd><p>半角文字を全角文字に変換(数字のみ)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.textutil.ConversionType.KtoH">
+<span class="sig-name descname"><span class="pre">KtoH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.utils.textutil.ConversionType.KtoH" title="Link to this definition">¶</a></dt>
+<dd><p>カタカナをひらがなに変換</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.utils.textutil.ConversionType.ZtoH">
+<span class="sig-name descname"><span class="pre">ZtoH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#libs.utils.textutil.ConversionType.ZtoH" title="Link to this definition">¶</a></dt>
+<dd><p>全角文字を半角文字に変換(数字のみ)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.textutil.save_file_path">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">save_file_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.save_file_path" title="Link to this definition">¶</a></dt>
+<dd><p>保存ファイルのフルパスを取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – デフォルトファイル名</p></li>
+<li><p><strong>delete</strong> (<em>bool</em><em>, </em><em>optional</em>) – 生成済みファイルを削除. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>保存ファイルパス</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.textutil.split_balanced">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_balanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_balanced" title="Link to this definition">¶</a></dt>
+<dd><p>リストデータを指定個数で分割</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em><em>[</em><em>list</em><em>[</em><em>Any</em><em>]</em><em>]</em>) – 対象データ</p></li>
+<li><p><strong>target_size</strong> (<em>int</em>) – 分割サイズ</p></li>
+<li><p><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – 個数誤差. Defaults to 0.15.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>分割したリスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.textutil.split_text_blocks">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_text_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_text_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>指定文字数でテキストを行単位で分割してリストにする</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – 対象文字列</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – 分割文字数. Defaults to 2000.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>分割リスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.textutil.str_conv">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">str_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.str_conv" title="Link to this definition">¶</a></dt>
+<dd><p>文字列変換</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – 変換対象文字列</p></li>
+<li><p><strong>kind</strong> (<a class="reference internal" href="#libs.utils.textutil.ConversionType" title="libs.utils.textutil.ConversionType"><em>ConversionType</em></a>) – 変換種類</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>変換後の文字列</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils.textutil module</a><ul>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType"><code class="docutils literal notranslate"><span class="pre">ConversionType</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.HtoK"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoK</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.HtoZ"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoZ</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.KtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.KtoH</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.ConversionType.ZtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.ZtoH</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_balanced"><code class="docutils literal notranslate"><span class="pre">split_balanced()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.utils.graphutil.html"
+                          title="previous chapter">libs.utils.graphutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.timekit.html"
+                          title="next chapter">libs.utils.timekit module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/libs.utils.textutil.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.timekit.html" title="libs.utils.timekit module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.graphutil.html" title="libs.utils.graphutil module"
+             >previous</a> |</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">Developer Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.utils.html" >libs.utils package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils.textutil module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.13.1.
+      Last updated on 2026-04-07.
+    </div>
+
+  </body>
+</html>
