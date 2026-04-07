@@ -104,6 +104,9 @@ settingセクション
 
 .. _Style sheets: https://matplotlib.org/stable/gallery/style_sheets/index.html
 
+----
+
+
 aliasセクション
 ---------------
 
@@ -174,7 +177,7 @@ aliasセクション
      - | 文字列
        | (カンマ区切り)
      -
-     - 備考
+     -
    * - team_del
      - チーム削除
      - | 文字列
@@ -199,7 +202,7 @@ aliasセクション
      - | 文字列
        | (カンマ区切り)
      -
-     - 備考
+     -
    * - team_clear
      - すべてのチーム情報を削除
      - | 文字列
