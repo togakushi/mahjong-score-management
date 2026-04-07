@@ -22,9 +22,9 @@
    * - addition_expression
      - 文字列
      - 0
-     - 指定された式を評価し、昇段ポイントに加える
+     - 指定された式を評価し、昇段ポイントに加える(小数点以下は切り上げ)
      - | ``rpoint`` : 素点
-       | ``origin_point`` : 配給原点(小数点以下は切り上げ)
+       | ``origin_point`` : 配給原点
    * - table
      - 配列
      - 不可
@@ -102,25 +102,25 @@
 .. code-block:: json
    :caption: 段位テーブルサンプル
 
-    {
-        "name": "雀魂",
-        "addition_expression": "({rpoint}-{origin_point})/10",
-        "table": [
-            { "grade": "初心★☆☆", "point": [0,    20  ], "acquisition": [35,  15, -5, -15 ], "demote": false },
-            { "grade": "初心★★☆", "point": [0,    80  ], "acquisition": [35,  15, -5, -15 ], "demote": false },
-            { "grade": "初心★★★", "point": [0,    200 ], "acquisition": [35,  15, -5, -15 ], "demote": false },
-            { "grade": "雀士★☆☆", "point": [300,  600 ], "acquisition": [55,  25, -5, -35 ], "demote": false },
-            { "grade": "雀士★★☆", "point": [400,  800 ], "acquisition": [55,  25, -5, -55 ] },
-            { "grade": "雀士★★★", "point": [500,  1000], "acquisition": [55,  25, -5, -75 ] },
-            { "grade": "雀傑★☆☆", "point": [600,  1200], "acquisition": [95,  45, -5, -95 ] },
-            { "grade": "雀傑★★☆", "point": [700,  1400], "acquisition": [95,  45, -5, -115] },
-            { "grade": "雀傑★★★", "point": [1000, 2000], "acquisition": [95,  45, -5, -135] },
-            { "grade": "雀豪★☆☆", "point": [1400, 2800], "acquisition": [125, 60, -5, -180] },
-            { "grade": "雀豪★★☆", "point": [1600, 3200], "acquisition": [125, 60, -5, -195] },
-            { "grade": "雀豪★★★", "point": [1800, 3600], "acquisition": [125, 60, -5, -210] },
-            { "grade": "雀聖★☆☆", "point": [2000, 4000], "acquisition": [135, 65, -5, -225] },
-            { "grade": "雀聖★★☆", "point": [3000, 6000], "acquisition": [135, 65, -5, -240] },
-            { "grade": "雀聖★★★", "point": [4500, 9000], "acquisition": [135, 65, -5, -255] },
-            { "grade": "魂天", "point": [0, 0], "acquisition": [0, 0, 0, 0], "demote": false }
-        ]
-    }
+   {
+       "name": "雀魂",
+       "addition_expression": "({rpoint}-{origin_point})/10",
+       "table": [
+           { "grade": "初心★☆☆", "point": [0,    20  ], "acquisition": [35,  15, -5, -15 ], "demote": false },
+           { "grade": "初心★★☆", "point": [0,    80  ], "acquisition": [35,  15, -5, -15 ], "demote": false },
+           { "grade": "初心★★★", "point": [0,    200 ], "acquisition": [35,  15, -5, -15 ], "demote": false },
+           { "grade": "雀士★☆☆", "point": [300,  600 ], "acquisition": [55,  25, -5, -35 ], "demote": false },
+           { "grade": "雀士★★☆", "point": [400,  800 ], "acquisition": [55,  25, -5, -55 ] },
+           { "grade": "雀士★★★", "point": [500,  1000], "acquisition": [55,  25, -5, -75 ] },
+           { "grade": "雀傑★☆☆", "point": [600,  1200], "acquisition": [95,  45, -5, -95 ] },
+           { "grade": "雀傑★★☆", "point": [700,  1400], "acquisition": [95,  45, -5, -115] },
+           { "grade": "雀傑★★★", "point": [1000, 2000], "acquisition": [95,  45, -5, -135] },
+           { "grade": "雀豪★☆☆", "point": [1400, 2800], "acquisition": [125, 60, -5, -180] },
+           { "grade": "雀豪★★☆", "point": [1600, 3200], "acquisition": [125, 60, -5, -195] },
+           { "grade": "雀豪★★★", "point": [1800, 3600], "acquisition": [125, 60, -5, -210] },
+           { "grade": "雀聖★☆☆", "point": [2000, 4000], "acquisition": [135, 65, -5, -225] },
+           { "grade": "雀聖★★☆", "point": [3000, 6000], "acquisition": [135, 65, -5, -240] },
+           { "grade": "雀聖★★★", "point": [4500, 9000], "acquisition": [135, 65, -5, -255] },
+           { "grade": "魂天", "point": [0, 0], "acquisition": [0, 0, 0, 0], "demote": false }
+       ]
+   }
