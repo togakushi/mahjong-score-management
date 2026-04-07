@@ -23,6 +23,7 @@ release = project_data.get("version", "")
 # -- General configuration ---------------------------------------------------
 extensions = [
     "sphinx.ext.githubpages",
+    "sphinxcontrib.mermaid",
 ]
 
 templates_path = ["templates"]
