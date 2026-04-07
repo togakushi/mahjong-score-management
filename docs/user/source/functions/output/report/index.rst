@@ -9,8 +9,7 @@
 :チャンネル内呼び出し: <呼び出しキーワード> [オプション]
 :スラッシュコマンド: /commandname report [オプション]
 
-.. note::
-   ``/commandname`` は[サービス個別設定](../config/integrations.md)の ``slash_command`` で定義したもの。
+.. note:: ``/commandname`` は :ref:`slack-section` 、 :ref:`discord-section`  の ``slash_command`` で定義したもの。
 
 
 オプション

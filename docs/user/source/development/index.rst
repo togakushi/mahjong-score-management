@@ -8,6 +8,7 @@
    :maxdepth: 2
 
    database/schema/index
+   database/sample_sql
 
 
 処理アルゴリズム

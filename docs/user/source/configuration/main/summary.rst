@@ -167,14 +167,16 @@
      - 集計ゲーム数 × ``stipulated_rate`` （切り上げ）+ 1
 
 
+.. _commandword:
+
 機能呼び出しキーワード
 ----------------------
 
 各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。
 
-| commandword、command_suffixの定義状況によって登録される呼び出しキーワードが変化する。
-| commandwordの定義が優先的に登録される。
-| command_suffixの定義があれば、ルールセットのkeywordsとcommand_suffixの組み合わせが登録される。
+| ``commandword`` 、 ``command_suffix`` の定義状況によって登録される呼び出しキーワードが変化する。
+| ``commandword`` の定義が優先的に登録される。
+| ``command_suffix`` の定義があれば、ルールセットの ``keywords`` と ``command_suffix`` の組み合わせが登録される。
 
 .. list-table::
    :width: 100%
