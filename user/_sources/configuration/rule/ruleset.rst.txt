@@ -56,7 +56,7 @@
      - 未定義ワードタイプ
      - 数値(int)
      - 1
-     - [レギュレーション設定](./regulations.md)で使用
+     - :ref:`regulations-section` で使用
    * - :index:`keywords <single: rule-set; keywords>`
      - 成績記録キーワード
      - | 文字列
@@ -101,7 +101,7 @@
 メモ記録用ワード省略時の挙動
 ----------------------------
 
-``remarks`` の定義が省略された場合、[settingセクション](./main.md#settingセクション)の ``remarks`` の設定の有無で登録される内容が変化する。
+``remarks`` の定義が省略された場合、 :ref:`setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
 
 .. list-table::
    :width: 100%

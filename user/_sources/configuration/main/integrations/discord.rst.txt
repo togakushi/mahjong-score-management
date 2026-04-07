@@ -1,3 +1,5 @@
+.. _discord-section:
+
 discordセクション
 =================
 

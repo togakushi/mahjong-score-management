@@ -184,7 +184,7 @@
 <p>結果はアプリからDMで通知される。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は[サービス個別設定](../config/integrations.md)の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は <a class="reference internal" href="../../configuration/main/integrations/slack.html#slack-section"><span class="std std-ref">slackセクション</span></a> 、 <a class="reference internal" href="../../configuration/main/integrations/discord.html#discord-section"><span class="std std-ref">discordセクション</span></a>  の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
 </div>
 <section id="id2">
 <h2>成績管理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
@@ -200,9 +200,9 @@
 <dt class="field-odd">引数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p>専用オプション</p></li>
-<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-arg-6"><code class="xref std std-option docutils literal notranslate"><span class="pre">戦績</span></code></a> ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力</p></li>
-<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-arg-7"><code class="xref std std-option docutils literal notranslate"><span class="pre">詳細</span></code></a> ：戦績に追加で4人分の戦績を出力</p></li>
-<li><p><a class="reference internal" href="../output/report/index.html#cmdoption-arg-6"><code class="xref std std-option docutils literal notranslate"><span class="pre">対戦</span></code></a> ：対戦結果の表示</p>
+<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-成績サマリ出力機能-arg-4"><code class="xref std std-option docutils literal notranslate"><span class="pre">戦績</span></code></a> ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力</p></li>
+<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-成績サマリ出力機能-arg-5"><code class="xref std std-option docutils literal notranslate"><span class="pre">詳細</span></code></a> ：戦績に追加で4人分の戦績を出力</p></li>
+<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-成績サマリ出力機能-arg-6"><code class="xref std std-option docutils literal notranslate"><span class="pre">対戦</span></code></a> ：対戦結果の表示</p>
 <ul>
 <li><p>対象メンバーを2名以上指定した場合、直接対戦結果を表示</p></li>
 </ul>
@@ -268,8 +268,8 @@
 <dd class="field-odd"><ul class="simple">
 <li><p>専用オプション</p>
 <ul>
-<li><p><a class="reference internal" href="../output/graph/index.html#cmdoption-arg-2"><code class="xref std std-option docutils literal notranslate"><span class="pre">順位</span></code></a> ：順位変動グラフに切り替え</p></li>
-<li><p>集約： <a class="reference internal" href="../output/graph/index.html#cmdoption-arg-3"><code class="xref std std-option docutils literal notranslate"><span class="pre">日次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-arg-7"><code class="xref std std-option docutils literal notranslate"><span class="pre">月次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-arg-9"><code class="xref std std-option docutils literal notranslate"><span class="pre">年次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-arg-11"><code class="xref std std-option docutils literal notranslate"><span class="pre">全体</span></code></a></p></li>
+<li><p><a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成機能-arg-0"><code class="xref std std-option docutils literal notranslate"><span class="pre">順位</span></code></a> ：順位変動グラフに切り替え</p></li>
+<li><p>集約： <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成機能-arg-1"><code class="xref std std-option docutils literal notranslate"><span class="pre">日次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成機能-arg-5"><code class="xref std std-option docutils literal notranslate"><span class="pre">月次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成機能-arg-7"><code class="xref std std-option docutils literal notranslate"><span class="pre">年次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成機能-arg-9"><code class="xref std std-option docutils literal notranslate"><span class="pre">全体</span></code></a></p></li>
 <li><p>対象メンバー：省略時は検索範囲に含まれるメンバー全員</p></li>
 </ul>
 </li>

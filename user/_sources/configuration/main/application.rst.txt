@@ -60,7 +60,7 @@ settingセクション
      - 集約キーワードを指定しなかった場合に集約する文字数
      - 数値(int)
      - 未定義時
-     - [集約オプション](../functions/argument_keyword.md#コメント検索)で上書き指定可
+     - 集約オプション( :option:`コメント\<XXX>` )で上書き指定可
    * - :index:`time_adjust <single: setting; time_adjust>`
      - 日付変更後、指定時間までを1日単位の集計に含める
      - 数値(int)

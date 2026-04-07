@@ -1,5 +1,7 @@
-成績サマリ出力
-==============
+成績サマリ出力機能
+==================
+
+.. program:: 成績サマリ出力機能
 
 構文
 ----
@@ -7,8 +9,7 @@
 :チャンネル内呼び出し: <呼び出しキーワード> [オプション]
 :スラッシュコマンド: /commandname results [オプション]
 
-.. note::
-   ``/commandname`` は[サービス個別設定](../config/integrations.md)の ``slash_command`` で定義したもの。
+.. note:: ``/commandname`` は :ref:`slack-section` 、 :ref:`discord-section`  の ``slash_command`` で定義したもの。
 
 
 オプション

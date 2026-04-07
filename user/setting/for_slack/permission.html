@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>出力機能説明 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用APIと要求権限 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="成績サマリ出力機能" href="results/index.html" />
-    <link rel="prev" title="メモ機能" href="../input/remarks.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="systemdを使ったデーモン化" href="daemon.html" />
+    <link rel="prev" title="Slackセットアップ手順" href="setup.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../_static/menu.js"></script>
@@ -62,19 +62,30 @@
     </select>
 </label>
   <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">利用APIと要求権限</a><ul>
+<li><a class="reference internal" href="#bot-token-scopes">Bot Token Scopes</a></li>
+<li><a class="reference internal" href="#oauth-scope">OAuth Scope</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../input/remarks.html"
-                          title="previous chapter">メモ機能</a></p>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter">Slackセットアップ手順</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="results/index.html"
-                          title="next chapter">成績サマリ出力機能</a></p>
+    <p class="topless"><a href="daemon.html"
+                          title="next chapter">systemdを使ったデーモン化</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/functions/output/index.rst.txt"
+      <li><a href="../../_sources/setting/for_slack/permission.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -99,10 +110,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="results/index.html" title="成績サマリ出力機能"
+          <a href="daemon.html" title="systemdを使ったデーモン化"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../input/remarks.html" title="メモ機能"
+          <a href="setup.html" title="Slackセットアップ手順"
              accesskey="P">previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -113,7 +124,9 @@
               <a href="../../index.html">User's Manual</a> &#187;
               
           </li>
-        <li class="nav-item nav-item-this"><a href="">出力機能説明</a></li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Slack連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">利用APIと要求権限</a></li>
                 <li class="right">
                     
 
@@ -143,43 +156,150 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>出力機能説明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="results/index.html">成績サマリ出力機能</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="results/index.html#id2">構文</a></li>
-<li class="toctree-l2"><a class="reference internal" href="results/index.html#id3">オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="results/index.html#id4">共通オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="results/index.html#id5">出力サンプル</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="graph/index.html">グラフ生成機能</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id2">構文</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id3">オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id4">個別オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id5">集計オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id6">共通オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph/index.html#id7">全体成績グラフ詳細</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ranking/index.html">ランキング機能</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ranking/index.html#id2">構文</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ranking/index.html#id3">オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ranking/index.html#id4">共通オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ranking/index.html#id5">項目説明</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="report/index.html">レポート生成機能</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="report/index.html#id2">構文</a></li>
-<li class="toctree-l2"><a class="reference internal" href="report/index.html#id3">オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="report/index.html#id4">共通オプション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="report/index.html#id5">レポート内容</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/index.html">ヘルプ</a></li>
-</ul>
+  <section id="api">
+<h1>利用APIと要求権限<a class="headerlink" href="#api" title="Link to this heading">¶</a></h1>
+<section id="bot-token-scopes">
+<h2>Bot Token Scopes<a class="headerlink" href="#bot-token-scopes" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Scope</p></th>
+<th class="head"><p>chat_postMessage</p></th>
+<th class="head"><p>files_upload_v2</p></th>
+<th class="head"><div class="line-block">
+<div class="line">reactions_add</div>
+<div class="line">reactions_remove</div>
 </div>
+</th>
+<th class="head"><p>reactions_get</p></th>
+<th class="head"><p>conversations_open</p></th>
+<th class="head"><p>conversations_replies</p></th>
+<th class="head"><p>bot events</p></th>
+<th class="head"><p>その他</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>commands</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Slash Commands</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>channels:history</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>message.channels</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>groups:history</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>message.groups</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>chat:write</p></th>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>files:write</p></th>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>im:history</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>message.im</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>im:write</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>reactions:read</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>reactions:write</p></th>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>reactions:write</p></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>app_home_opened</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="oauth-scope">
+<h2>OAuth Scope<a class="headerlink" href="#oauth-scope" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Scope</p></th>
+<th class="head"><p>search_messages</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>search:read</p></th>
+<td><p>✔</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
@@ -190,19 +310,30 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">利用APIと要求権限</a><ul>
+<li><a class="reference internal" href="#bot-token-scopes">Bot Token Scopes</a></li>
+<li><a class="reference internal" href="#oauth-scope">OAuth Scope</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../input/remarks.html"
-                          title="previous chapter">メモ機能</a></p>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter">Slackセットアップ手順</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="results/index.html"
-                          title="next chapter">成績サマリ出力機能</a></p>
+    <p class="topless"><a href="daemon.html"
+                          title="next chapter">systemdを使ったデーモン化</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/functions/output/index.rst.txt"
+      <li><a href="../../_sources/setting/for_slack/permission.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -227,10 +358,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="results/index.html" title="成績サマリ出力機能"
+          <a href="daemon.html" title="systemdを使ったデーモン化"
              >next</a> |</li>
         <li class="right" >
-          <a href="../input/remarks.html" title="メモ機能"
+          <a href="setup.html" title="Slackセットアップ手順"
              >previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -241,7 +372,9 @@
               <a href="../../index.html">User's Manual</a> &#187;
               
           </li>
-        <li class="nav-item nav-item-this"><a href="">出力機能説明</a></li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Slack連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">利用APIと要求権限</a></li>
                 <li class="right">
                     
 

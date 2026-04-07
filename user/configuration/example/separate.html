@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="その他" href="../../functions/others/index.html" />
-    <link rel="prev" title="ルールセット設定例" href="rule_set.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="prev" title="メイン設定サンプルファイル" href="sample.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../_static/menu.js"></script>
@@ -84,8 +84,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="rule_set.html"
-                          title="previous chapter">ルールセット設定例</a></p>
+    <p class="topless"><a href="sample.html"
+                          title="previous chapter">メイン設定サンプルファイル</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -123,7 +123,7 @@
           <a href="../../functions/others/index.html" title="その他"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="rule_set.html" title="ルールセット設定例"
+          <a href="sample.html" title="メイン設定サンプルファイル"
              accesskey="P">previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -170,32 +170,40 @@
 <h1>セパレート機能設定例<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <section id="id2">
 <h2>機能概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>セパレート機能は[集計機能](../../functions/README.md#集計機能)で集計するデータを <strong>チャンネル識別子</strong> で区別する設定となる。</p>
+<p>セパレート機能は <a class="reference internal" href="../../functions/output/results/index.html"><span class="doc">成績サマリ出力機能</span></a> などで集計するデータを <strong>チャンネル識別子</strong> で区別する設定となる。</p>
 <p>データに記録されるゲーム結果には「成績登録ワード」が発行されたチャンネル固有の <strong>チャンネル識別子</strong> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
 <section id="id3">
 <h3>チャンネル識別子のフォーマット<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p><strong>チャンネル識別子</strong> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> などのチャンネルを識別するためのIDが続く形をとる。
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</span>
-<span class="pre">`</span></code></p>
-<p><strong>チャンネル識別子</strong> は[<cite>settingセクション</cite>](../main.md#settingセクション) などで <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を定義することで自由に変更できる。チャンネル単位でのグループ分けを行ったり、Slackワークスペースの変更対応などで利用できる。</p>
+<p><strong>チャンネル識別子</strong> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> などのチャンネルを識別するためのIDが続く形をとる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</span></code></p>
+<div class="line-block">
+<div class="line"><strong>チャンネル識別子</strong> は <a class="reference internal" href="../main/application.html#setting-section"><span class="std std-ref">settingセクション</span></a> などで <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を定義することで自由に変更できる。</div>
+<div class="line">チャンネル単位でのグループ分けを行ったり、Slackワークスペースの変更対応などで利用できる。</div>
+</div>
 </section>
 <section id="id4">
 <h3>集計データ抽出ルール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
-<p>基本となるデータ抽出条件はルールセット単位となり、「ルール識別子」が抽出条件として指定されている。「成績登録ワード」で保存される成績は[マッピング設定](../main.md#keyword_mappingセクション)によってどのルールセットを使うかが定義されている。異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「ルール識別子」が使用される。同じルールセットを使用していれば、Discordで入力された成績データをSlackで参照できる。</p>
-<p>セパレート機能を有効にした場合、データの抽出条件に <strong>*チャンネル識別子*</strong> が追加され、集計コマンドを発行したチャンネルの <strong>*チャンネル識別子*</strong> を持つデータだけが集計対象となる。</p>
-<p>付与されるチャンネル識別子は「ヘルプ」機能で内容を[確認](#サービス個別設定状況)できる。</p>
+<div class="line-block">
+<div class="line">基本となるデータ抽出条件はルールセット単位となり、「ルール識別子」が抽出条件として指定されている。</div>
+<div class="line">「成績登録ワード」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどのルールセットを使うかが定義されている。</div>
+<div class="line">異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「ルール識別子」が使用される。</div>
+<div class="line">同じルールセットを使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
+</div>
+<p>セパレート機能を有効にした場合、データの抽出条件に <strong>チャンネル識別子</strong> が追加され、集計コマンドを発行したチャンネルの <strong>チャンネル識別子</strong> を持つデータだけが集計対象となる。</p>
+<p>付与されるチャンネル識別子は「ヘルプ」機能で内容を確認できる。</p>
 </section>
 <section id="id5">
 <h3>セパレート機能設定箇所<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
-<p><cite>separate</cite> キーを <cite>True</cite> にセットすれば有効になる。設定できるセクションは以下になる（メイン設定内限定）。</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">separate</span></code> キーを <code class="docutils literal notranslate"><span class="pre">True</span></code> にセットすれば有効になる。</div>
+<div class="line">設定できるセクションは以下になる（メイン設定内限定）。</div>
+</div>
 <ul class="simple">
 <li><p>settingセクション</p></li>
 <li><p>各サービスのセクション</p></li>
 <li><p>チャンネル個別設定</p></li>
 </ul>
 <p>設定箇所による有効範囲は以下のようになる。</p>
-<hr class="docutils" />
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-text">メイン設定</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[setting]</span>
@@ -208,7 +216,6 @@
 <li><p>Slack / Discord で入力されたデータを区別</p></li>
 <li><p>各サービス内の各チャンネルで入力されたデータを区別</p></li>
 </ul>
-<hr class="docutils" />
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-text">サービス設定</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[slack]</span>
@@ -238,7 +245,6 @@
 <li><p>など</p></li>
 </ul>
 </div>
-<hr class="docutils" />
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">チャンネル個別設定</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[slack_Cxxxxxxxxxx]</span>
@@ -405,8 +411,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="rule_set.html"
-                          title="previous chapter">ルールセット設定例</a></p>
+    <p class="topless"><a href="sample.html"
+                          title="previous chapter">メイン設定サンプルファイル</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -444,7 +450,7 @@
           <a href="../../functions/others/index.html" title="その他"
              >next</a> |</li>
         <li class="right" >
-          <a href="rule_set.html" title="ルールセット設定例"
+          <a href="sample.html" title="メイン設定サンプルファイル"
              >previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>

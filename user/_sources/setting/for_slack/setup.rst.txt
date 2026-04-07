@@ -75,7 +75,7 @@ Slackセットアップ手順
 
    追加する。
 
-   詳細は[権限リスト](permission.md)を参照。
+   詳細は :doc:`permission` を参照。
 
 #. アプリ設定
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ルールセット設定例 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メイン設定サンプルファイル &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="メイン設定サンプルファイル" href="sample.html" />
-    <link rel="prev" title="クイックスタート" href="quick_start.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="セパレート機能設定例" href="separate.html" />
+    <link rel="prev" title="ルールセット設定例" href="rule_set.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../_static/menu.js"></script>
@@ -62,33 +62,19 @@
     </select>
 </label>
   <div>
-    <h3><a href="../../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">ルールセット設定例</a><ul>
-<li><a class="reference internal" href="#id2">ルールセット設定</a></li>
-<li><a class="reference internal" href="#id3">メイン設定パターン別のルールセット登録状況の説明</a><ul>
-<li><a class="reference internal" href="#id4">追加設定なし</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="quick_start.html"
-                          title="previous chapter">クイックスタート</a></p>
+    <p class="topless"><a href="rule_set.html"
+                          title="previous chapter">ルールセット設定例</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="sample.html"
-                          title="next chapter">メイン設定サンプルファイル</a></p>
+    <p class="topless"><a href="separate.html"
+                          title="next chapter">セパレート機能設定例</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/configuration/example/rule_set.rst.txt"
+      <li><a href="../../_sources/configuration/example/sample.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -113,10 +99,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sample.html" title="メイン設定サンプルファイル"
+          <a href="separate.html" title="セパレート機能設定例"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="quick_start.html" title="クイックスタート"
+          <a href="rule_set.html" title="ルールセット設定例"
              accesskey="P">previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -129,7 +115,7 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">設定事例集</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">ルールセット設定例</a></li>
+        <li class="nav-item nav-item-this"><a href="">メイン設定サンプルファイル</a></li>
                 <li class="right">
                     
 
@@ -160,57 +146,207 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>ルールセット設定例<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<section id="id2">
-<h2>ルールセット設定<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>以下を <em>rule.ini</em> に定義する。</p>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">rule.ini</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[麻雀部ルール]</span>
-<span class="na">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">成績記録</span>
-<span class="na">rank_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20, 10, -10, -20</span>
+<h1>メイン設定サンプルファイル<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### 麻雀ルール調整 ###
+[mahjong]
+# ルール識別子(文字列)
+rule_version = 2022
+# 持ち点(100点基準：25000点→250)
+point = 250
+# 返し点(100点基準：30000点→300)
+return = 300
+# ウマ(1000点基準：20000点→20)トップから順にカンマ区切り
+rank_point = 20,10,-10,-20
+# 飛び(あり=False/なし=True)
+ignore_flying = False
+# 同点のときの順位点の決定方法(席順=False/山分け=True)
+draw_split = False
+# メモ機能で登録されたワードのうち、個別にカウントするもの(カンマ区切り)
+regulations_type2 = ヤキトリ,チョンボ
 
-<span class="k">[M-league]</span>
-<span class="na">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
-<span class="na">origin_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">250</span>
-<span class="na">return_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">300</span>
-<span class="na">rank_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30, 10, -10, -30</span>
-<span class="na">draw_split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-<span class="na">ignore_flying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 
-<span class="k">[サンマルール]</span>
-<span class="na">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
-<span class="na">rank_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20, 0, -20</span>
+### 設定 ###
+[setting]
+# 成績記録のキーワード
+keyword = 終局
+# ゲーム結果にメモを残す場合に使うキーワード
+remarks_word = 麻雀成績メモ
+# 日付変更後、指定時間までを1日単位の集計に含める
+time_adjust = 12
+
+# 固定検索ワード(リーグ戦専用化)
+#search_word = 最強戦
+# デフォルトグループ化文字数(未指定時の初期値)
+#group_length = 8
+
+# ゲストに付ける記号
+guest_mark = ※
+
+# グラフスタイル(https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html)
+graph_style = dark_background
+# フォントファイル
+font_file = ipaexg.ttf
+
+# 成績管理データベースファイル
+database_file = mahjong.db
+# 自動バックアップ保存先(空欄時はバックアップしない)
+backup_dir =
+
+# ヘルプ呼び出しキーワード
+help = 麻雀成績ヘルプ
+
+[alias] # サブコマンドエイリアス(カンマ区切り)
+results = 成績
+graph = グラフ
+ranking = ランキング
+report = レポート
+download = dbget,ダウンロード
+member = userlist,メンバー,リスト
+add = 追加,入部届
+del = 削除,退部届
+
+
+### 成績管理コマンド デフォルトオプション ###
+# commandword          : コマンド呼び出しキーワード
+# aggregation_range    : コマンド呼び出し時に集計範囲が指定されていない場合の範囲(未定義時：当日)
+# unregistered_replace : 未登録プレイヤーをゲストに置き換え(未定義時：True)
+# guest_skip           : 2ゲスト戦除外/サマリ用(未定義時：True)
+# guest_skip2          : 2ゲスト戦除外/個人成績用(未定義時：True)
+# score_comparisons    : ポイント比較モード(未定義時：False)
+# game_results         : 戦績表示(未定義時：False)
+# versus_matrix        : 対局対戦マトリックス表示(未定義時：False)
+# ranked               : ランキングに出力する順位(未定義時：3)
+
+[results] # 成績出力
+commandword = 麻雀成績
+aggregation_range = 今月
+unregistered_replace = True
+guest_skip = True
+guest_skip2 = False
+score_comparisons = False
+game_results = False
+versus_matrix = False
+
+[graph] # グラフ出力
+commandword = 麻雀グラフ
+aggregation_range = 当日
+unregistered_replace = True
+guest_skip = True
+guest_skip2 = False
+
+[ranking] # ランキング出力
+commandword = 麻雀ランキング
+aggregation_range = 全部
+unregistered_replace = True
+guest_skip = True
+### ランキング専用オプション
+# 表示順位(未定義時：3)
+ranked = 3
+# ランキング規定ゲーム数(未定義時：0.05)
+## 集計対象ゲーム数 * stipulated_rate + 2
+stipulated_rate = 0.05
+
+[report] # レポート出力
+commandword = 麻雀成績レポート
+aggregation_range = 全部
+unregistered_replace = True
+guest_skip = True
+
+
+### メンバー管理 ###
+[member]
+# memberを呼び出すチャンネル内キーワード
+commandword = メンバー一覧
+# 登録メンバー数上限
+registration_limit = 255
+# メンバー名文字数上限
+character_limit = 8
+# メンバー別名登録上限
+alias_limit = 16
+# 未登録メンバーを置き換える名前
+guest_name = ゲスト１
+
+[team]
+# team_listを呼び出すチャンネル内キーワード
+commandword = チーム一覧
+# 登録チーム数上限
+registration_limit = 32
+# チーム名文字数上限
+character_limit = 16
+# 構成メンバー上限
+member_limit = 8
+
+
+### 装飾オプション ###
+[degree] # プレイしたゲーム数に対して表示される称号
+# 表示文字と段階（カンマ区切りで badge と counter の数は合わせること）
+badge = ,:hatching_chick:,:penguin:,:monkey_face:,:skull:
+counter = 0,30,60,120,240
+
+[status] # 勝率に対して付く調子バッジ
+# 休み、絶不調、不調、普通、好調、絶好調の順に6段階
+badge = :status_oyasumi:,:status_zeffutyou:,:status_futyou:,:status_futuu:,:status_koutyou:,:status_zekkoutyou:
+# 刻み幅（50%を普通としてステータスが変動する幅）
+step = 5.0
+
+### slack用オプション ###
+[slack]
+# スラッシュコマンド名(先頭のスラッシュも含める)
+slash_command = /mahjong
+
+# 突合処理呼び出しキーワード
+comparison_word = 麻雀成績チェック
+comparison_alias = チェック
+
+# 突合処理
+search_channel = #麻雀部
+search_after = 7
+search_wait = 180
+
+# 素点合計チェックで付けるリアクション
+reaction_ok = ok
+reaction_ng = ng
+
+# スレッド内の成績報告を取り込むか
+thread_report = False
+# INSERT/UPDATE/DELETEを発行できるチャンネルの制限(チャンネルIDで指定、カンマ区切り、空欄は制限なし)
+channel_limitations =
+# ポストを無視するユーザID(カンマ区切り、空欄は制限なし)
+ignore_userid =
+
+# 装飾表示オプション
+badge_degree = True
+badge_status = True
+
+
+### カスタムメッセージ ###
+[custom_message]
+# 使用シーン別のプレフィックスが付いたキーに表示メッセージを定義
+# プレフィックス以降の文字列は任意
+# 定義されたメッセージをランダムに表示する
+
+## invalid_argument オプション解析に失敗した場合
+invalid_argument_01 = えっ？
+invalid_argument_02 = すみません、よくわかりません。
+invalid_argument_03 = 困らせないでください。
+
+## invalid_score 持ち点合計と配給原点合計に差分がある場合
+# {rpoint_diff} → 得点差分の絶対値に置き換えられる
+invalid_score_01 = {rpoint_diff}点合わないよ？
+invalid_score_02 = あれ？{rpoint_diff}点間違ってない？
+invalid_score_03 = {rpoint_diff}点…あって…ないです……。
+
+## no_hits 検索指定範囲にゲーム結果が見つからない場合
+# {start} / {end} 検索開始、終了指定範囲
+# {keyword} 成績記録のキーワード
+no_hits_01 = {start} から {end} までに {keyword} はありません。
+no_hits_02 = 見つかりません。
+
+## restricted_channel &quot;channel_limitations&quot;で許可されていないチャンネルで登録キーワードを拾った際の警告文
+restricted_channel_01 = このチャンネルの投稿はデータベースに記録されません。
+restricted_channel_02 = 誤爆してませんか？
 </pre></div>
 </div>
-</div>
-</section>
-<section id="id3">
-<h2>メイン設定パターン別のルールセット登録状況の説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>ルールセット以外の設定状況については他の設定事例を参照</p>
-</div>
-<section id="id4">
-<h3>追加設定なし<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">メイン設定</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[setting]</span>
-<span class="na">rule_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">rule.ini</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">ルールセット登録状況</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO][rule:info] keyword_mapping: {&#39;成績記録&#39;: &#39;麻雀部ルール&#39;}
-[INFO][rule:info] 麻雀部ルール: mode=4, origin_point=250, return_point=300, rank_point=[20, 10, -10, -20], draw_split=False, ignore_flying=False
-[INFO][rule:info] M-league: mode=4, origin_point=250, return_point=300, rank_point=[30, 10, -10, -30], draw_split=True, ignore_flying=True
-[INFO][rule:info] サンマルール: mode=3, origin_point=350, return_point=400, rank_point=[20, 0, -20], draw_split=False, ignore_flying=False
-</pre></div>
-</div>
-</div>
-</section>
-</section>
 </section>
 
 
@@ -221,33 +357,19 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">ルールセット設定例</a><ul>
-<li><a class="reference internal" href="#id2">ルールセット設定</a></li>
-<li><a class="reference internal" href="#id3">メイン設定パターン別のルールセット登録状況の説明</a><ul>
-<li><a class="reference internal" href="#id4">追加設定なし</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="quick_start.html"
-                          title="previous chapter">クイックスタート</a></p>
+    <p class="topless"><a href="rule_set.html"
+                          title="previous chapter">ルールセット設定例</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="sample.html"
-                          title="next chapter">メイン設定サンプルファイル</a></p>
+    <p class="topless"><a href="separate.html"
+                          title="next chapter">セパレート機能設定例</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/configuration/example/rule_set.rst.txt"
+      <li><a href="../../_sources/configuration/example/sample.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -272,10 +394,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sample.html" title="メイン設定サンプルファイル"
+          <a href="separate.html" title="セパレート機能設定例"
              >next</a> |</li>
         <li class="right" >
-          <a href="quick_start.html" title="クイックスタート"
+          <a href="rule_set.html" title="ルールセット設定例"
              >previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -288,7 +410,7 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" >設定事例集</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">ルールセット設定例</a></li>
+        <li class="nav-item nav-item-this"><a href="">メイン設定サンプルファイル</a></li>
                 <li class="right">
                     
 
