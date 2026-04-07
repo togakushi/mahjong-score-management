@@ -24,6 +24,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "sphinx",
+    "sphinxcontrib-mermaid",
     "python-docs-theme",
     "pytest",
     "pytest-cov",
