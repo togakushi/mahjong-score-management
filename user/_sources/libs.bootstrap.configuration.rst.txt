@@ -1,7 +1,0 @@
-libs.bootstrap.configuration module
-===================================
-
-.. automodule:: libs.bootstrap.configuration
-   :members:
-   :show-inheritance:
-   :undoc-members:

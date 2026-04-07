@@ -1,7 +1,0 @@
-libs.commands.report.matrix module
-==================================
-
-.. automodule:: libs.commands.report.matrix
-   :members:
-   :show-inheritance:
-   :undoc-members:

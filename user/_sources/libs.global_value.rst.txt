@@ -1,7 +1,0 @@
-libs.global\_value module
-=========================
-
-.. automodule:: libs.global_value
-   :members:
-   :show-inheritance:
-   :undoc-members:

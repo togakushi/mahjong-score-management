@@ -1,7 +1,0 @@
-libs.utils.timekit module
-=========================
-
-.. automodule:: libs.utils.timekit
-   :members:
-   :show-inheritance:
-   :undoc-members:

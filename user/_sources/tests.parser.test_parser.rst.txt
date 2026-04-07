@@ -1,7 +1,0 @@
-tests.parser.test\_parser module
-================================
-
-.. automodule:: tests.parser.test_parser
-   :members:
-   :show-inheritance:
-   :undoc-members:

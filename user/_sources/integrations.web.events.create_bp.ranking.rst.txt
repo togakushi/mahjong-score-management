@@ -1,7 +1,0 @@
-integrations.web.events.create\_bp.ranking module
-=================================================
-
-.. automodule:: integrations.web.events.create_bp.ranking
-   :members:
-   :show-inheritance:
-   :undoc-members:

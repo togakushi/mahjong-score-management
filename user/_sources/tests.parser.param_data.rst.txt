@@ -1,7 +1,0 @@
-tests.parser.param\_data module
-===============================
-
-.. automodule:: tests.parser.param_data
-   :members:
-   :show-inheritance:
-   :undoc-members:

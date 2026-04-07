@@ -1,7 +1,0 @@
-libs.types module
-=================
-
-.. automodule:: libs.types
-   :members:
-   :show-inheritance:
-   :undoc-members:

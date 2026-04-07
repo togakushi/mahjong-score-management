@@ -1,7 +1,0 @@
-integrations.web.api module
-===========================
-
-.. automodule:: integrations.web.api
-   :members:
-   :show-inheritance:
-   :undoc-members:

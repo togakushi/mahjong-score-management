@@ -1,7 +1,0 @@
-integrations.discord.api module
-===============================
-
-.. automodule:: integrations.discord.api
-   :members:
-   :show-inheritance:
-   :undoc-members:

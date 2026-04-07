@@ -1,7 +1,0 @@
-libs.commands.report.monthly module
-===================================
-
-.. automodule:: libs.commands.report.monthly
-   :members:
-   :show-inheritance:
-   :undoc-members:

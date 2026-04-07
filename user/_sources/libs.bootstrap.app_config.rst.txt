@@ -1,7 +1,0 @@
-libs.bootstrap.app\_config module
-=================================
-
-.. automodule:: libs.bootstrap.app_config
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -1,7 +1,0 @@
-libs.functions.search module
-============================
-
-.. automodule:: libs.functions.search
-   :members:
-   :show-inheritance:
-   :undoc-members:

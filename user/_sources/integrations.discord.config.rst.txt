@@ -1,7 +1,0 @@
-integrations.discord.config module
-==================================
-
-.. automodule:: integrations.discord.config
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -1,7 +1,0 @@
-tests.utils.param\_data module
-==============================
-
-.. automodule:: tests.utils.param_data
-   :members:
-   :show-inheritance:
-   :undoc-members:

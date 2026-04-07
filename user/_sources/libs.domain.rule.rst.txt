@@ -1,7 +1,0 @@
-libs.domain.rule module
-=======================
-
-.. automodule:: libs.domain.rule
-   :members:
-   :show-inheritance:
-   :undoc-members:

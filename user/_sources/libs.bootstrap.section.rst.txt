@@ -1,7 +1,0 @@
-libs.bootstrap.section module
-=============================
-
-.. automodule:: libs.bootstrap.section
-   :members:
-   :show-inheritance:
-   :undoc-members:
