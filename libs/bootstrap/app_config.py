@@ -127,6 +127,7 @@ class AppConfig:
 
     def initialization(self) -> None:
         """設定ファイル読み込み"""
+        self.setting.main_parser = self.main_parser
         self.setting.config_load(self.main_parser["setting"])
         self.alias.config_load(self.main_parser["alias"])
         self.member.config_load(self.main_parser["member"])
