@@ -56,3 +56,11 @@ html_theme_options = {
     "root_url": "https://github.com/togakushi/mahjong-score-management/",
     "root_name": project_data.get("description", ""),
 }
+html_sidebars = {
+    "**": [
+        "localtoc.html",
+        "relations.html",
+        "sourcelink.html",
+        "custom_links.html",
+    ],
+}
