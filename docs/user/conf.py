@@ -32,6 +32,7 @@ rst_epilog = """
 .. |:x:| unicode:: U+274C
 .. |:/:| unicode:: U+2714
 """
+manpages_url = "https://github.com/togakushi/mahjong-score-management/tree/main/files/{path}"
 
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
