@@ -1,3 +1,5 @@
+.. _view-regulations:
+
 regulations
 ===========
 
