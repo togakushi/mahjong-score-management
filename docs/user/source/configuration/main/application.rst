@@ -19,75 +19,75 @@ settingセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`rule_config <single: setting; rule_config>`
+   * - :index:`rule_config web section<pair: setting section; rule_config>`
      - ルールセット定義ファイルパスを指定
      - | 文字列
        | (ファイルパス)
      - None
      - mahjongセクションの定義もない場合、 ``files/default_rule.ini`` が使用される
-   * - :index:`default_rule <single: setting; default_rule>`
+   * - :index:`default_rule web section<pair: setting section; default_rule>`
      - ルール識別子未指定に使用するデフォルト値
      - 文字列
      - 最初に定義されたルールセットのルール識別子
      -
-   * - :index:`separate <single: setting; separate>`
+   * - :index:`separate web section<pair: setting section; separate>`
      - スコア入力元(チャンネル識別子)単位の集計
      - 真偽値
      - False
      - *True* : 集計条件にチャンネル識別子を追加
-   * - :index:`channel_id <single: setting; channel_id>`
+   * - :index:`channel_id web section<pair: setting section; channel_id>`
      - チャンネル識別子を上書きする
      - 文字列
      - None
      -
-   * - :index:`remarks_suffix <single: setting; remarks_suffix>`
+   * - :index:`remarks_suffix web section<pair: setting section; remarks_suffix>`
      - *成績登録ワード* と `remarks_suffix` の組み合わせをメモ登録ワードとする
      - | 文字列
        | (カンマ区切り)
      - ``remarks`` の定義がない場合のみ
      - カンマ区切りで複数ワードの設定が可能
-   * - :index:`guest_mark <single: setting; guest_mark>`
+   * - :index:`guest_mark web section<pair: setting section; guest_mark>`
      - ゲストに付ける記号
      - 文字列
      - ※
      -
-   * - :index:`search_word <single: setting; search_word>`
+   * - :index:`search_word web section<pair: setting section; search_word>`
      - キーワード「コメント」に指定文字列を常につける
      - 文字列
      -
      - コメント検索しか行わなくなる(専用化)
-   * - :index:`group_length <single: setting; group_length>`
+   * - :index:`group_length web section<pair: setting section; group_length>`
      - 集約キーワードを指定しなかった場合に集約する文字数
      - 数値(int)
      - 未定義時
      - :option:`共通(コメント検索) 集約\<NNN>` で上書きされる
-   * - :index:`time_adjust <single: setting; time_adjust>`
+   * - :index:`time_adjust web section<pair: setting section; time_adjust>`
      - 日付変更後、指定時間までを1日単位の集計に含める
      - 数値(int)
      - 12
      - 1時間単位で指定
-   * - :index:`font_file <single: setting; font_file>`
+   * - :index:`font_file web section<pair: setting section; font_file>`
      - グラフ描写に使用する日本語フォントファイル [1]_
      - 文字列
      - ``ipaexg.ttf``
      -
-   * - :index:`graph_style <single: setting; graph_style>`
+   * - :index:`graph_style web section<pair: setting section; graph_style>`
      - グラフに使用するスタイル
      - 文字列
      - ``ggplot``
      - `Style sheets`_ から選択
-   * - :index:`work_dir <single: setting; work_dir>`
+   * - :index:`work_dir web section<pair: setting section; work_dir>`
      - 生成ファイルの保存先 [1]_
      - 文字列<br>(ディレクトリ名)
      - ``work``
      - 画像ファイル、PDFファイルの保存先
-   * - :index:`database_file <single: setting; database_file>`
+   * - :index:`database_file web section<pair: setting section; database_file>`
      - 成績を記録するファイル名 [2]_
      - | 文字列
        | (ファイルパス)
      - ``mahjong.db``
      - SQLite 3.x database
-   * - :index:`backup_dir <single: setting; backup_dir>`
+   * - :index:`backup_dir web section<pair: setting section; backup_dir>`
      - 自動バックアップ保存先 [2]_
      - | 文字列
        | (ディレクトリ名)
