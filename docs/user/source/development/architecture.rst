@@ -61,47 +61,48 @@
 - FunctionsInterface
 - MessageParser
 
-関係図
+.. admonition:: 関係図
+   :collapsible: closed
 
-.. mermaid::
+   .. mermaid::
 
-   classDiagram
-       class ServiceAdapter
-           ServiceAdapter : interface_type
-           ServiceAdapter --* IntegrationsConfig
-           ServiceAdapter --* APIInterface
-           ServiceAdapter --* FunctionsInterface
-           ServiceAdapter --* MessageParser
+      classDiagram
+          class ServiceAdapter
+              ServiceAdapter : interface_type
+              ServiceAdapter --* IntegrationsConfig
+              ServiceAdapter --* APIInterface
+              ServiceAdapter --* FunctionsInterface
+              ServiceAdapter --* MessageParser
 
-       class IntegrationsConfig
-           IntegrationsConfig : config_file
-           IntegrationsConfig : slash_command
-           IntegrationsConfig : badge_degree
-           IntegrationsConfig : badge_status
-           IntegrationsConfig : badge_grade
-           IntegrationsConfig : plotting_backend
-           IntegrationsConfig : read_file()
+          class IntegrationsConfig
+              IntegrationsConfig : config_file
+              IntegrationsConfig : slash_command
+              IntegrationsConfig : badge_degree
+              IntegrationsConfig : badge_status
+              IntegrationsConfig : badge_grade
+              IntegrationsConfig : plotting_backend
+              IntegrationsConfig : read_file()
 
-       class APIInterface
-           APIInterface : post()
+          class APIInterface
+              APIInterface : post()
 
-       class FunctionsInterface
-           FunctionsInterface : post_processing()
-           FunctionsInterface : get_conversations()
+          class FunctionsInterface
+              FunctionsInterface : post_processing()
+              FunctionsInterface : get_conversations()
 
-       class MessageParser
-           MessageParser : data
-           MessageParser : post
-           MessageParser : status
-           MessageParser : parser()
+          class MessageParser
+              MessageParser : data
+              MessageParser : post
+              MessageParser : status
+              MessageParser : parser()
 
-       class MessageParserDataMixin
-           MessageParserDataMixin <|-- MessageParser
-           MessageParserDataMixin : data
-           MessageParserDataMixin : post
-           MessageParserDataMixin : status
-           MessageParserDataMixin : reset()
-           MessageParserDataMixin : get_remarks()
+          class MessageParserDataMixin
+              MessageParserDataMixin <|-- MessageParser
+              MessageParserDataMixin : data
+              MessageParserDataMixin : post
+              MessageParserDataMixin : status
+              MessageParserDataMixin : reset()
+              MessageParserDataMixin : get_remarks()
 
 
 IntegrationsConfig
