@@ -22,11 +22,11 @@ def degree(game_count: int = 0) -> str:
     badge: str = ""
 
     if g.adapter.conf.badge_degree:
-        if degree_list := g.cfg.setting.main_parser.get("degree", "badge", fallback=""):
+        if degree_list := g.cfg.main_parser.get("degree", "badge", fallback=""):
             degree_badge = degree_list.split(",")
         else:
             return ""
-        if counter_list := g.cfg.setting.main_parser.get("degree", "counter", fallback=""):
+        if counter_list := g.cfg.main_parser.get("degree", "counter", fallback=""):
             degree_counter = list(map(int, counter_list.split(",")))
             for idx, val in enumerate(degree_counter):
                 if game_count >= val:
@@ -50,12 +50,12 @@ def status(game_count: int = 0, win: int = 0) -> str:
     badge: str = ""
 
     if g.adapter.conf.badge_status:
-        if status_list := g.cfg.setting.main_parser.get("status", "badge", fallback=""):
+        if status_list := g.cfg.main_parser.get("status", "badge", fallback=""):
             status_badge = status_list.split(",")
         else:
             return badge
 
-        if status_step := g.cfg.setting.main_parser.getfloat("status", "step", fallback=""):
+        if status_step := g.cfg.main_parser.getfloat("status", "step", fallback=""):
             if not isinstance(status_step, float):
                 return badge
             if game_count == 0:

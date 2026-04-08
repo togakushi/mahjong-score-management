@@ -1,3 +1,5 @@
+.. _view-game_results:
+
 game_results
 ============
 

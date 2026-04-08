@@ -1,3 +1,5 @@
+.. _view-game_info:
+
 game_info
 =========
 
