@@ -51,7 +51,7 @@
      - matplotlib
      - ``matplotlib`` / ``plotly`` から選択
 
-.. caution:: ``plotting_backend`` は実装状況によってはデフォルト値から変更するとエラーとなる。
+.. danger:: ``plotting_backend`` は実装状況によってはデフォルト値から変更するとエラーとなる。
 
 channel_config について
 -----------------------

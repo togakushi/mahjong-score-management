@@ -108,7 +108,7 @@ Slack/Discordを利用時は突合コマンドが追加される。
 ルールセット設定
 ----------------
 
-省略されているため[*default_rule.ini*](../../files/default_rule.ini)が読み込まれる。
+省略されているため  :manpage:`default_rule.ini` が読み込まれる。
 
 .. code-block:: text
    :caption: ルールセット登録状況

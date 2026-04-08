@@ -6,7 +6,7 @@
 
 役満和了やチョンボなど、ゲーム内での出来事を記録する目的で使用する。
 
-``記録キーワード`` は :ref:`rule-set` の `remarks` で定義する。
+``記録キーワード`` は :ref:`rule-set` の ``remarks`` で定義する。
 
 .. code-block:: text
    :caption: 入力フォーマット

@@ -95,7 +95,7 @@ settingセクション
      - 空欄(None)時はバックアップしない
 
 .. tip::
-   [*default_rule.ini*](../../files/default_rule.ini)には **default_rule** (四人打ち用ルールセット)と **default_rule3** (三人打ち用ルールセット)が定義されている。\
+   :manpage:`default_rule.ini` には **default_rule** (四人打ち用ルールセット)と **default_rule3** (三人打ち用ルールセット)が定義されている。
 
 .. rubric:: 脚注
 

@@ -51,7 +51,7 @@
 共通オプション
 --------------
 
-- :doc:`../../appendix/argument_keyword`
+- :ref:`common-argument`
 
 
 レポート内容
