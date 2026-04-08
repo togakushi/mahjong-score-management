@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>webセクション &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teamセクション &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="standard_ioセクション" href="standard_io.html" />
-    <link rel="prev" title="discordセクション" href="discord.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="装飾設定" href="../decoration.html" />
+    <link rel="prev" title="memberセクション" href="member.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -63,18 +63,18 @@
 </label>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="discord.html"
-                          title="previous chapter">discordセクション</a></p>
+    <p class="topless"><a href="member.html"
+                          title="previous chapter">memberセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="standard_io.html"
-                          title="next chapter">standard_ioセクション</a></p>
+    <p class="topless"><a href="../decoration.html"
+                          title="next chapter">装飾設定</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/integrations/web.rst.txt"
+      <li><a href="../../../_sources/configuration/main/management/team.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -95,10 +95,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="standard_io.html" title="standard_ioセクション"
+          <a href="../decoration.html" title="装飾設定"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="discord.html" title="discordセクション"
+          <a href="member.html" title="memberセクション"
              accesskey="P">previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -111,8 +111,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">サービス別設定</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">webセクション</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">メンバーとチームの管理</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">teamセクション</a></li>
                 <li class="right">
                     
 
@@ -142,8 +142,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="web">
-<span id="web-section"></span><h1>webセクション<a class="headerlink" href="#web" title="Link to this heading">¶</a></h1>
+  <section id="team">
+<span id="team-section"></span><h1>teamセクション<a class="headerlink" href="#team" title="Link to this heading">¶</a></h1>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 13.0%" />
@@ -161,132 +161,52 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="target" id="index-0"></span>host</p></td>
-<td></td>
-<td><p>文字列</p></td>
-<td><p>127.0.0.1</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-1"></span>port</p></td>
-<td></td>
-<td><p>数値</p></td>
-<td><p>8000</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-2"></span>require_auth</p></td>
-<td><p>BASIC認証の利用</p></td>
-<td><p>真偽値</p></td>
-<td><p>False</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">username</span></code> / <code class="docutils literal notranslate"><span class="pre">password</span></code> のいずれかが未定義なら強制的に <code class="docutils literal notranslate"><span class="pre">False</span></code> になる</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-3"></span>username</p></td>
-<td><p>認証ユーザ名</p></td>
-<td><p>文字列</p></td>
-<td><p>空欄</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-4"></span>password</p></td>
-<td><p>認証パスワード</p></td>
-<td><p>文字列</p></td>
-<td><p>空欄</p></td>
-<td><p>平文指定</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-5"></span>use_ssl</p></td>
-<td><p>HTTPSの利用</p></td>
-<td><p>真偽値</p></td>
-<td><p>False</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">certificate</span></code> / <code class="docutils literal notranslate"><span class="pre">private_key</span></code> のいずれかが未定義なら強制的に <code class="docutils literal notranslate"><span class="pre">False</span></code> になる</p></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-6"></span>certificate</p></td>
-<td><p>サーバー証明書保存パス</p></td>
-<td><p>文字列</p></td>
-<td><p>空欄</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-7"></span>private_key</p></td>
-<td><p>秘密鍵保存パス</p></td>
-<td><p>文字列</p></td>
-<td><p>空欄</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-8"></span>view_summary</p></td>
-<td><p>成績サマリメニューの表示</p></td>
-<td><p>真偽値</p></td>
-<td><p>True</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-9"></span>view_graph</p></td>
-<td><p>グラフメニューの表示</p></td>
-<td><p>真偽値</p></td>
-<td><p>True</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-10"></span>view_ranking</p></td>
-<td><p>ランキングメニューの表示</p></td>
-<td><p>真偽値</p></td>
-<td><p>True</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-11"></span>management_member</p></td>
-<td><p>メンバー/チーム編集メニューの表示</p></td>
-<td><p>真偽値</p></td>
-<td><p>False</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="index-12"></span>management_score</p></td>
-<td><p>成績管理メニューの表示</p></td>
-<td><p>真偽値</p></td>
-<td><p>False</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="index-13"></span>theme</p></td>
-<td><p>配色テーマを選択</p></td>
-<td><p>文字列</p></td>
-<td><p>空欄</p></td>
+<tr class="row-even"><td><p><span class="target" id="index-0"></span>commandword</p></td>
+<td><p>チーム一覧を表示するコマンドを呼び出すキーワード</p></td>
 <td><div class="line-block">
-<div class="line">空欄時はどのスタイルシートも適応されない。</div>
-<div class="line">無効なキーワードは無視され、空欄となる。</div>
+<div class="line">文字列</div>
+<div class="line">(カンマ区切り)</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">black<span class="colon">:</span></dt>
-<dd class="field-odd"><p>黒色ベースのモノクロ配色</p>
-</dd>
-<dt class="field-even">midnight<span class="colon">:</span></dt>
-<dd class="field-even"><p>濃い青色ベースの配色</p>
-</dd>
-<dt class="field-odd">pastel<span class="colon">:</span></dt>
-<dd class="field-odd"><p>明るいパステル調の配色</p>
-</dd>
-<dt class="field-even">sepia<span class="colon">:</span></dt>
-<dd class="field-even"><p>明るいセピア調の配色</p>
-</dd>
-<dt class="field-odd">white<span class="colon">:</span></dt>
-<dd class="field-odd"><p>白色ベースのモノクロ配色</p>
-</dd>
-</dl>
 </td>
+<td><p>チーム一覧</p></td>
+<td><p>カンマ区切りで複数ワードの設定が可能</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-14"></span>custom_css</p></td>
-<td><p>カスタマイズスタイルシート <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
-<td><p>文字列(ファイルパス)</p></td>
+<tr class="row-odd"><td><p><span class="target" id="index-1"></span>command_suffix</p></td>
+<td><p><em>成績登録ワード</em> と <code class="docutils literal notranslate"><span class="pre">command_suffix</span></code> の組み合わせを機能を呼び出すキーワードとする</p></td>
+<td><div class="line-block">
+<div class="line">文字列</div>
+<div class="line">(カンマ区切り)</div>
+</div>
+</td>
 <td><p>空欄</p></td>
-<td><p>ファイルが存在しない場合は空欄になる</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-15"></span>plotting_backend</p></td>
-<td><p>文字列</p></td>
+<tr class="row-even"><td><p><span class="target" id="index-2"></span>registration_limit</p></td>
+<td><p>登録チーム数上限</p></td>
+<td><p>数値(int)</p></td>
+<td><p>255</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-3"></span>character_limit</p></td>
+<td><p>登録チーム名文字数上限</p></td>
+<td><p>数値(int)</p></td>
+<td><p>16</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-4"></span>member_limit</p></td>
+<td><p>チーム構成メンバー上限</p></td>
+<td><p>数値(int)</p></td>
+<td><p>16</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-5"></span>friendly_fire</p></td>
+<td><p>同じチームが同卓しているゲームを集計対象にする</p></td>
 <td><p>真偽値</p></td>
-<td><p>plotly</p></td>
-<td><p>共通設定を上書き</p></td>
+<td><p>True</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">脚注</p>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>設定ファイルからの相対パスで指定</p>
-</aside>
-</aside>
 </section>
 
 
@@ -298,18 +218,18 @@
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="discord.html"
-                          title="previous chapter">discordセクション</a></p>
+    <p class="topless"><a href="member.html"
+                          title="previous chapter">memberセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="standard_io.html"
-                          title="next chapter">standard_ioセクション</a></p>
+    <p class="topless"><a href="../decoration.html"
+                          title="next chapter">装飾設定</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/integrations/web.rst.txt"
+      <li><a href="../../../_sources/configuration/main/management/team.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -330,10 +250,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="standard_io.html" title="standard_ioセクション"
+          <a href="../decoration.html" title="装飾設定"
              >next</a> |</li>
         <li class="right" >
-          <a href="discord.html" title="discordセクション"
+          <a href="member.html" title="memberセクション"
              >previous</a> |</li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
@@ -346,8 +266,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" >サービス別設定</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">webセクション</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" >メンバーとチームの管理</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">teamセクション</a></li>
                 <li class="right">
                     
 
