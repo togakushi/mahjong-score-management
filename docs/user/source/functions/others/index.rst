@@ -6,3 +6,4 @@
 
    member
    team
+   gradetable

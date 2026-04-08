@@ -24,7 +24,6 @@ Mahjong score management tool
    setting/index
    configuration/index
    functions/others/index
-   setting/gradetable
    troubleshooting
 
 

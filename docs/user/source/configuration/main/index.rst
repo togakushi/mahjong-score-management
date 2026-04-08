@@ -16,6 +16,6 @@ INIファイル内の設定を変更することで動作変更が可能。
    mahjong
    application
    summary
-   member
+   management/index
    decoration
    integrations/index
