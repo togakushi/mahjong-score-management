@@ -14,7 +14,7 @@ with open("../../pyproject.toml", mode="rb") as toml_file:
     project_data: dict[str, Any] = toml_data.get("project", {})
 
 # -- Project information -----------------------------------------------------
-project = "Developer Reference"
+project = "API Reference"
 author = "togakushi"
 copyright = f"%Y, {author}"
 version = project_data.get("version", "")
@@ -27,7 +27,7 @@ extensions = [
     "sphinx.ext.githubpages",
 ]
 
-templates_path = ["templates"]
+templates_path = ["../templates"]
 
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
@@ -45,6 +45,14 @@ html_split_index = False
 html_show_sphinx = False
 html_show_copyright = False
 html_theme_options = {
-    "root_url": "https://github.com/togakushi/mahjong-score-management/",
-    "root_name": project_data.get("description", ""),
+    "root_url": "",
+    "root_name": "",
+}
+html_sidebars = {
+    "**": [
+        "localtoc.html",
+        "relations.html",
+        "sourcelink.html",
+        "links.html",
+    ],
 }

@@ -26,7 +26,7 @@ extensions = [
     "sphinxcontrib.mermaid",
 ]
 
-templates_path = ["templates"]
+templates_path = ["../templates"]
 rst_epilog = """
 .. |:o:| unicode:: U+2B55
 .. |:x:| unicode:: U+274C
@@ -53,14 +53,14 @@ html_static_path = ["source/_static"]
 html_css_files = ["custom.css"]
 html_theme_options = {
     "root_icon": "ma-jan_pai.png",
-    "root_url": "https://github.com/togakushi/mahjong-score-management/",
-    "root_name": project_data.get("description", ""),
+    "root_url": "",
+    "root_name": "",
 }
 html_sidebars = {
     "**": [
         "localtoc.html",
         "relations.html",
         "sourcelink.html",
-        "custom_links.html",
+        "links.html",
     ],
 }
