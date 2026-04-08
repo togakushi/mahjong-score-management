@@ -60,7 +60,7 @@ settingセクション
      - 集約キーワードを指定しなかった場合に集約する文字数
      - 数値(int)
      - 未定義時
-     - 集約オプション( :option:`コメント\<XXX>` )で上書き指定可
+     - :option:`共通(コメント検索) 集約\<NNN>` で上書きされる
    * - :index:`time_adjust <single: setting; time_adjust>`
      - 日付変更後、指定時間までを1日単位の集計に含める
      - 数値(int)
@@ -95,7 +95,7 @@ settingセクション
      - 空欄(None)時はバックアップしない
 
 .. tip::
-   [*default_rule.ini*](../../files/default_rule.ini)には ***default_rule*** (四人打ち用ルールセット)と ***default_rule3*** (三人打ち用ルールセット)が定義されている。\
+   [*default_rule.ini*](../../files/default_rule.ini)には **default_rule** (四人打ち用ルールセット)と **default_rule3** (三人打ち用ルールセット)が定義されている。\
 
 .. rubric:: 脚注
 
