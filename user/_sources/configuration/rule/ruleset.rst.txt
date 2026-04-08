@@ -13,63 +13,63 @@
      - 型
      - 省略時
      - 備考
-   * - :index:`rule_version <single: rule-set; rule_version>`
+   * - :index:`rule_version <pair: rule_set section; rule_version>`
      - ルール識別子
      - 文字列
      - :ref:`undefined-behavior` 参照
      -
-   * - :index:`mode <single: rule-set; mode>`
+   * - :index:`mode <pair: rule_set section; mode>`
      - 集計モード
      - 数値(3 or 4)
      - 4
      - 四人打ち/三人打ちの指定
-   * - :index:`point <single: rule-set; point>`
+   * - :index:`point <pair: rule_set section; point>`
      - 配給原点
      - 数値(100点単位)
      - :mode=4: 250
        :mode=3: 350
      -
-   * - :index:`return <single: rule-set; return>`
+   * - :index:`return <pair: rule_set section; return>`
      - 返し点
      - 数値(100点単位)
      - :mode=4: 300
        :mode=3: 400
      - 清算時の基準点(返し点-配給原点x人数がオカとなる)
-   * - :index:`rank_point <single: rule-set; rank_point>`
+   * - :index:`rank_point <pair: rule_set section; rank_point>`
      - 順位点
      - | カンマ区切り
        | 数値(1000点単位)
      - :mode=4: 30, 10, -10, -30
        :mode=3: 30, 0, -30
      - 1位から順に並べる(必要以上の列挙は無視される)
-   * - :index:`ignore_flying <single: rule-set; ignore_flying>`
+   * - :index:`ignore_flying <pair: rule_set section; ignore_flying>`
      - 箱下のカウント表示
      - 真偽値
      - False
      - ``True`` : トビ終了の表示をなくす
-   * - :index:`draw_split <single: rule-set; draw_split>`
+   * - :index:`draw_split <pair: rule_set section; draw_split>`
      - 順位点の山分け
      - 真偽値
      - False
      - ``True`` : 素点同点時に順位点を山分けする
-   * - :index:`undefined_word <single: rule-set; undefined_word>`
+   * - :index:`undefined_word <pair: rule_set section; undefined_word>`
      - 未定義ワードタイプ
      - 数値(int)
      - 1
      - :ref:`regulations-section` で使用
-   * - :index:`keywords <single: rule-set; keywords>`
+   * - :index:`keywords <pair: rule_set section; keywords>`
      - 成績記録キーワード
      - | 文字列
        | (カンマ区切り)
      - 空欄
      - ``keywords`` が空欄のルールセットは参照専用となる
-   * - :index:`remarks <single: rule-set; remarks>`
+   * - :index:`remarks <pair: rule_set section; remarks>`
      - メモ記録用ワード
      - | 文字列
        | (カンマ区切り)
      - 空欄
      - [メモ記録用ワード省略時の挙動](#メモ記録用ワード省略時の挙動)参照
-   * - :index:`dropitems <single: rule-set; dropitems>`
+   * - :index:`dropitems <pair: rule_set section; dropitems>`
      - 非表示にする項目を指定
      - | 文字列
        | (カンマ区切り)

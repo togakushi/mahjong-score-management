@@ -87,7 +87,7 @@
 共通オプション
 --------------
 
-- :doc:`../../appendix/argument_keyword`
+- :ref:`common-argument`
 
 
 全体成績グラフ詳細

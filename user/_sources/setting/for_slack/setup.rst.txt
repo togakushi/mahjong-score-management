@@ -107,7 +107,7 @@ Slackセットアップ手順
 実行環境構築
 ------------
 
-.. caution:: Python3.12以上の実行環境が必要
+.. important:: Python3.12以上の実行環境が必要
 
 - :doc:`../install/using_uv`
 - :doc:`../install/using_venv`

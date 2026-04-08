@@ -26,7 +26,7 @@ results
 
          - 共通オプション
 
-           - :doc:`argument_keyword`
+           - :ref:`common-argument`
 
 :デフォルトエイリアス: 成績
 :補足説明: | 登録名の指定を省略した場合は、検索範囲内の成績サマリの出力。
@@ -45,7 +45,7 @@ ranking
 
        - 共通オプション
 
-         - :doc:`argument_keyword`
+         - :ref:`common-argument`
 
 :デフォルトエイリアス: ランキング
 :補足説明:
@@ -66,7 +66,7 @@ graph
 
        - 共通オプション
 
-         - :doc:`argument_keyword`
+         - :ref:`common-argument`
 
 :デフォルトエイリアス: グラフ
 :補足説明: | 対象メンバーの指定を省略した場合は、検索範囲内で見つかった全メンバーを対象にグラフを生成する。
@@ -89,7 +89,7 @@ report
 
        - 共通オプション
 
-         - :doc:`argument_keyword`
+         - :ref:`common-argument`
 
 :デフォルトエイリアス: レポート
 :補足説明:
