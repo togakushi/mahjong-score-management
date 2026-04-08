@@ -1,3 +1,5 @@
+.. _view-individual_results:
+
 individual_results
 ==================
 
