@@ -79,7 +79,7 @@
 共通オプション
 --------------
 
-- :doc:`../../appendix/argument_keyword`
+- :ref:`common-argument`
 
 
 出力サンプル

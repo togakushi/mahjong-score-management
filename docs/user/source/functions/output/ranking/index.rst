@@ -27,7 +27,7 @@
 共通オプション
 --------------
 
-- :doc:`../../appendix/argument_keyword`
+- :ref:`common-argument`
 
 
 項目説明
