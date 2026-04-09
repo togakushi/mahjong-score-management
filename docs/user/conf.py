@@ -25,7 +25,6 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinxcontrib.mermaid",
 ]
-
 templates_path = ["../templates"]
 rst_epilog = """
 .. |:o:| unicode:: U+2B55
@@ -33,6 +32,7 @@ rst_epilog = """
 .. |:/:| unicode:: U+2714
 """
 manpages_url = "https://github.com/togakushi/mahjong-score-management/tree/main/files/{path}"
+default_role = "any"
 
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
