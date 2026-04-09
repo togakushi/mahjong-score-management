@@ -41,7 +41,7 @@ Mahjong score management tool
 --------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    app
    dbtools

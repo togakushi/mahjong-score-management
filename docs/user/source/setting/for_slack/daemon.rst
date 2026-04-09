@@ -7,8 +7,8 @@ systemdを使ったデーモン化
 .. note::
    【前提条件】セットアップ手順を実施し、スクリプトが起動できるようにする。
 
-   - :doc:`../install/using_uv`
-   - :doc:`../install/using_venv`
+   - `../install/using_uv`
+   - `../install/using_venv`
 
 環境変数を記録したファイルを準備する( ``.env`` など)
 

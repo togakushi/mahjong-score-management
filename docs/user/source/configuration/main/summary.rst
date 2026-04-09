@@ -1,5 +1,10 @@
 .. index::
    single: メイン設定; 成績管理
+   pair: メイン設定; results section
+   pair: メイン設定; graph section
+   pair: メイン設定; ranking section
+   pair: メイン設定; report section
+   pair: メイン設定; help section
 
 成績管理
 ========
@@ -123,8 +128,8 @@
      - |:/:|
      - |:/:|
      - |:/:|
-     - - ``True`` : 個人成績
-       - ``False``: チーム成績
+     - :True: 個人成績
+       :False: チーム成績
    * - statistics
      - 「統計」オプションを常に指定
      - 型
@@ -234,7 +239,7 @@
 #. ``always_argument`` の処理
 #. コマンドから与えられた引数の処理
 
-コマンドからの :ref:`date-specification` があれば指定されている範囲だけが対象になる。
+コマンドからの `date-specification` があれば指定されている範囲だけが対象になる。
 
 .. tip::
    - ``always_argument`` で ``今年`` と定義した状態でコマンドから ``今月 先月`` と指定した場合の範囲は ``今月 先月`` となる

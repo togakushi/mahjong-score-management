@@ -7,16 +7,17 @@
        event(event handler);
        m1[["MessageParser(data)"]];
 
-       event --> m1 --> d["dispatcher()"] --> f1 & f2 & f3 & f4;
+       event --> m1 --> d["dispatcher()"] --> f1 & f2 & f3;
 
        subgraph f1[Sub command]
            direction TB
-           c([command]) --> sc1 & sc2 & sc3 & sc4;
+           c([command]) --> sc1 & sc2 & sc3 & sc4 & sc5;
            sc1(results) --> cp1[[CommandParser]] --> p1(aggregation);
            sc2(graph) --> cp2[[CommandParser]] --> p2(aggregation);
            sc3(ranking) --> cp3[[CommandParser]] --> p3(aggregation);
            sc4(report) --> cp4[[CommandParser]] --> p4(aggregation);
-           p1 & p2 & p3 & p4 --> mp1[["MessageParser(post)<br>MessageParser(status)"]];
+           sc5(help) --> cp5[[CommandParser]] --> p5(text generation);
+           p1 & p2 & p3 & p4 & p5 --> mp1[["MessageParser(post)<br>MessageParser(status)"]];
        end
 
        subgraph f2[Results record]
@@ -36,12 +37,7 @@
            db1 & db2 & db3  --> mp3[["MessageParser(post)<br>MessageParser(status)"]];
        end
 
-       subgraph f4[Others]
-           direction TB
-           h([help]) --> mp4[["MessageParser(post)<br>MessageParser(status)"]];
-       end
-
-       f1 & f2 & f3 & f4 --> post["post()<br>(API Interface)"];
+       f1 & f2 & f3 --> post["post()<br>(API Interface)"];
 
 ..
    ---

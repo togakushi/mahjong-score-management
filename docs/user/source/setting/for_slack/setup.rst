@@ -75,7 +75,7 @@ Slackセットアップ手順
 
    追加する。
 
-   詳細は :doc:`permission` を参照。
+   詳細は `permission` を参照。
 
 #. アプリ設定
 
@@ -109,8 +109,8 @@ Slackセットアップ手順
 
 .. important:: Python3.12以上の実行環境が必要
 
-- :doc:`../install/using_uv`
-- :doc:`../install/using_venv`
+- `../install/using_uv`
+- `../install/using_venv`
 
 
 初期設定

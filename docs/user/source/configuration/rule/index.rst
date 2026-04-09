@@ -1,5 +1,5 @@
 .. index::
-   single: ルールセット; 設定ファイル
+   single: ルールセット; ルール設定ファイル
 
 .. _rule-config:
 
@@ -10,12 +10,12 @@
 
 ルールセットは以下で定義される。
 
-- メイン設定ファイル内「:ref:`mahjong-section`」
+- メイン設定ファイル内「`mahjong-section`」
 
   - 1セットのみ定義可能
   - セクションの省略可能
 
-- メイン設定ファイル内「:ref:`setting-section`」の ``rule_config`` で指定される設定ファイル
+- メイン設定ファイル内「 `setting-section` 」の ``rule_config`` で指定される設定ファイル
 
   - 複数セットの定義が可能
   - 省略可能

@@ -48,7 +48,7 @@ class RuleData:
     keywords: list[str] = field(default_factory=list)
     """成績記録キーワード"""
     remarks: list[str] = field(default_factory=list)
-    """メモ記録用ワード"""
+    """メモ記録ワード"""
     dropitems: list[str] = field(default_factory=list)
     """非表示にする項目"""
 
@@ -113,7 +113,7 @@ class RuleSet:
         self.keyword_mapping: dict[str, str] = {}
         """登録キーワードとルール識別子のマッピング"""
         self.remarks_words: list[str] = []
-        """メモ記録用ワードリスト"""
+        """メモ記録ワードリスト"""
 
     def data_set(self, section_name: str, rule_data: Mapping[str, Any]) -> None:
         """

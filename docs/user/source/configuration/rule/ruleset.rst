@@ -16,7 +16,7 @@
    * - :index:`rule_version <pair: rule_set section; rule_version>`
      - ルール識別子
      - 文字列
-     - :ref:`undefined-behavior` 参照
+     - `undefined-behavior` 参照
      -
    * - :index:`mode <pair: rule_set section; mode>`
      - 集計モード
@@ -56,7 +56,7 @@
      - 未定義ワードタイプ
      - 数値(int)
      - 1
-     - :ref:`regulations-section` で使用
+     - `regulations-section` で使用
    * - :index:`keywords <pair: rule_set section; keywords>`
      - 成績記録キーワード
      - | 文字列
@@ -64,11 +64,11 @@
      - 空欄
      - ``keywords`` が空欄のルールセットは参照専用となる
    * - :index:`remarks <pair: rule_set section; remarks>`
-     - メモ記録用ワード
+     - メモ記録ワード
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     - [メモ記録用ワード省略時の挙動](#メモ記録用ワード省略時の挙動)参照
+     - [メモ記録ワード省略時の挙動](#メモ記録ワード省略時の挙動)参照
    * - :index:`dropitems <pair: rule_set section; dropitems>`
      - 非表示にする項目を指定
      - | 文字列
@@ -85,7 +85,7 @@
 ルール識別子省略時の挙動
 ------------------------
 
-メイン設定ファイル内の「 :ref:`mahjong-section` 」
+メイン設定ファイル内の「 `mahjong-section` 」
 
    | ``rule_version`` は必須パラメータとなる。
    | ``rule_version`` が存在しない場合、セクション内のパラメータはすべて無視される。
@@ -98,10 +98,10 @@
    セクション名及びキー名の半角英字はすべて小文字として扱われる。
 
 
-メモ記録用ワード省略時の挙動
+メモ記録ワード省略時の挙動
 ----------------------------
 
-``remarks`` の定義が省略された場合、 :ref:`setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
+``remarks`` の定義が省略された場合、 `setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
 
 .. list-table::
    :width: 100%

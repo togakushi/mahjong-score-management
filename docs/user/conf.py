@@ -34,14 +34,6 @@ rst_epilog = """
 manpages_url = "https://github.com/togakushi/mahjong-score-management/tree/main/files/{path}"
 default_role = "any"
 
-# -- Options for autodoc -----------------------------------------------------
-autodoc_typehints = "description"
-autodoc_class_signature = "separated"
-
-# -- Napoleon settings -------------------------------------------------------
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-
 # -- Options for HTML output -------------------------------------------------
 html_theme = "python_docs_theme"
 html_title = f"{project}"

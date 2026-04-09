@@ -1,3 +1,6 @@
+.. index::
+   pair: メイン設定; team section
+
 .. _team-section:
 
 teamセクション
