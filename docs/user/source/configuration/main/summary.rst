@@ -1,5 +1,10 @@
 .. index::
    single: メイン設定; 成績管理
+   pair: メイン設定; results section
+   pair: メイン設定; graph section
+   pair: メイン設定; ranking section
+   pair: メイン設定; report section
+   pair: メイン設定; help section
 
 成績管理
 ========

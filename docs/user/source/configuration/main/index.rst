@@ -1,5 +1,5 @@
 .. index::
-   single: メイン設定; 設定ファイル
+   single: メイン設定; メイン設定ファイル
 
 .. _main-config:
 

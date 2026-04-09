@@ -1,3 +1,6 @@
+.. index::
+   pair: メイン設定; setting section
+
 .. _setting-section:
 
 settingセクション

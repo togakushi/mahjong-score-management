@@ -1,5 +1,5 @@
 .. index::
-   single: ルールセット; 設定ファイル
+   single: ルールセット; ルール設定ファイル
 
 .. _rule-config:
 

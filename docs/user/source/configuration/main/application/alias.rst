@@ -1,3 +1,6 @@
+.. index::
+   pair: メイン設定; alias section
+
 .. _alias-section:
 
 aliasセクション
