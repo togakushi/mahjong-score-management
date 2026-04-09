@@ -15,37 +15,37 @@
      - 型
      - 未定義時
      - 備考
-   * - :index:`channel_config <single: integrations; channel_config>`
+   * - :index:`channel_config <pair: integrations section; channel_config>`
      - チャンネル個別設定ファイル
      - 文字列(ファイルパス)
      - None
      - `main-config` とマージ
-   * - :index:`badge_degree <single: integrations; badge_degree>`
+   * - :index:`badge_degree <pair: integrations section; badge_degree>`
      - ゲーム数に応じて表示される称号
      - 真偽値
      - False
      - `degree-section`
-   * - :index:`badge_status <single: integrations; badge_status>`
+   * - :index:`badge_status <pair: integrations section; badge_status>`
      - 勝利によって表示される調子バッヂ
      - 真偽値
      - False
      - `status-section`
-   * - :index:`badge_grade <single: integrations; badge_grade>`
+   * - :index:`badge_grade <pair: integrations section; badge_grade>`
      - 段位表示
      - 真偽値
      - False
      - `grade-section`
-   * - :index:`channel_id <single: integrations; channel_id>`
+   * - :index:`channel_id <pair: integrations section; channel_id>`
      - チャンネル識別子を上書きする
      - 文字列
      - None
      - チャンネル個別設定のセクション名変わらない [^1]
-   * - :index:`separate <single: integrations; separate>`
+   * - :index:`separate <pair: integrations section; separate>`
      - スコア入力元(チャンネル識別子)単位の集計
      - 真偽値
      - False
-     - ``True`` : 集計条件にチャンネル識別子を追加
-   * - :index:`plotting_backend <single: integrations; plotting_backend>`
+     - :True: 集計条件にチャンネル識別子を追加
+   * - :index:`plotting_backend <pair: integrations section; plotting_backend>`
      - グラフ生成ライブラリ選択
      - 文字列
      - matplotlib

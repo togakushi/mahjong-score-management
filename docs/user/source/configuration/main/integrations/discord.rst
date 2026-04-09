@@ -53,4 +53,4 @@ discordセクション
 
 メイン設定内に ``discord_<チャンネルID>セクション`` が存在すれば、そのチャンネル専用として追加で設定を読み込む。
 
-`discord-section` の共通設定の値を上書きする。
+`discord-section` の `integrations-common` の値を上書きする。
