@@ -65,7 +65,7 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">venvを使った実行環境構築</a><ul>
-<li><a class="reference internal" href="#id1">本体インストール</a></li>
+<li><a class="reference internal" href="#id1">ツールのインストール</a></li>
 <li><a class="reference internal" href="#id2">仮想環境の作成</a></li>
 <li><a class="reference internal" href="#id3">グラフ描写用の日本語フォント</a></li>
 <li><a class="reference internal" href="#id4">環境変数</a></li>
@@ -166,7 +166,7 @@
 <p>Pythonのインストールが必要な環境なのであれば <a class="reference internal" href="using_uv.html"><span class="doc">uvを使った実行環境構築</span></a> がおすすめ。</p>
 </div>
 <section id="id1">
-<h2>本体インストール<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<h2>ツールのインストール<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">git clone</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/togakushi/mahjong-score-management.git
@@ -195,10 +195,14 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>.
 </section>
 <section id="id3">
 <h2>グラフ描写用の日本語フォント<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>IPAexフォント（ipaexg.ttf）を <cite>app.py</cite> と同じディレクトリに配置</p>
+<p>IPAexフォント（ <code class="docutils literal notranslate"><span class="pre">ipaexg.ttf</span></code> ）を <a class="reference internal" href="../../app.html#app-py"><span class="std std-ref">app.py</span></a> と同じディレクトリに配置</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://moji.or.jp/ipafont/ipafontdownload/">https://moji.or.jp/ipafont/ipafontdownload/</a></p></li>
 </ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">ipaexg.ttf</span></code> 以外のフォントを使用する場合は <a class="reference internal" href="../../configuration/main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> の <code class="docutils literal notranslate"><span class="pre">font_file</span></code> を設定する。</p>
+</div>
 </section>
 <section id="id4">
 <h2>環境変数<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
@@ -240,6 +244,14 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 </pre></div>
 </div>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>systemdを使ったデーモン化</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../for_slack/daemon.html"><span class="doc">slack</span></a></p></li>
+<li><p><a class="reference internal" href="../for_discord/daemon.html"><span class="doc">discord</span></a></p></li>
+</ul>
+</div>
 </section>
 <section id="id6">
 <h2>停止<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
@@ -258,7 +270,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">venvを使った実行環境構築</a><ul>
-<li><a class="reference internal" href="#id1">本体インストール</a></li>
+<li><a class="reference internal" href="#id1">ツールのインストール</a></li>
 <li><a class="reference internal" href="#id2">仮想環境の作成</a></li>
 <li><a class="reference internal" href="#id3">グラフ描写用の日本語フォント</a></li>
 <li><a class="reference internal" href="#id4">環境変数</a></li>
@@ -347,7 +359,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
     </div>  
     <div class="footer">
       Release Version: 0.13.1.
-      Last updated on 2026-04-08.
+      Last updated on 2026-04-09.
     </div>
 
   </body>

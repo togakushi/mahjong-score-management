@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>メモ機能 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メモ記録 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
@@ -64,7 +64,7 @@
   <div>
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">メモ機能</a><ul>
+<li><a class="reference internal" href="#">メモ記録</a><ul>
 <li><a class="reference internal" href="#id2">メモ</a></li>
 <li><a class="reference internal" href="#id3">卓外清算(個人清算)</a></li>
 <li><a class="reference internal" href="#id4">卓外清算(チーム清算)</a></li>
@@ -127,7 +127,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">入力機能説明</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">メモ機能</a></li>
+        <li class="nav-item nav-item-this"><a href="">メモ記録</a></li>
                 <li class="right">
                     
 
@@ -158,35 +158,46 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>メモ機能<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1>メモ記録<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <div class="line-block">
-<div class="line">ゲーム結果に対してメモを残せる。</div>
+<div class="line">ゲーム結果に対してメモを残す機能。</div>
 <div class="line">「誰が」「何をした」の組み合わせで記録する。</div>
 </div>
 <p>役満和了やチョンボなど、ゲーム内での出来事を記録する目的で使用する。</p>
-<p><code class="docutils literal notranslate"><span class="pre">記録キーワード</span></code> は <a class="reference internal" href="../../configuration/rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> の <code class="docutils literal notranslate"><span class="pre">remarks</span></code> で定義する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">メモ記録キーワード</span></code> は <a class="reference internal" href="../../configuration/rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> の <code class="docutils literal notranslate"><span class="pre">remarks</span></code> で定義する。</p>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">入力フォーマット</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;記録キーワード&gt;
-&lt;プレイヤー名&gt; &lt;記録内容&gt;
-&lt;プレイヤー名&gt; &lt;記録内容&gt;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;メモ記録キーワード&gt;
+&lt;プレイヤー名&gt; &lt;内容&gt;
+&lt;プレイヤー名&gt; &lt;内容&gt;
 </pre></div>
 </div>
 </div>
-<p>ひとつのメモ（記録キーワード単位）で複数のメモが記録できる。</p>
+<p>ひとつのメモ（メモ記録キーワード単位）で複数のメモが記録できる。</p>
+<p>記録された <code class="docutils literal notranslate"><span class="pre">内容</span></code> は <a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルに定義された <code class="docutils literal notranslate"><span class="pre">type</span></code> 別に集計される。</p>
 <section id="id2">
 <h2>メモ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>ゲーム内で発生した出来事を記録する。</p>
+<div class="line-block">
+<div class="line">ゲーム内で発生した出来事。</div>
+<div class="line"><a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルの <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">0</span></code> または <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">1</span></code> として登録している単語が <code class="docutils literal notranslate"><span class="pre">メモ</span></code> に該当する。</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">0</span></code> に分類される単語は「役満を和了した」ことを示す特別な単語として記録される。</p>
 </section>
 <section id="id3">
 <h2>卓外清算(個人清算)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>個人成績に対する清算。</p>
-<p>個人成績サマリ/個人成績詳細表示時に</p>
-<p><a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルの <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">1</span></code> として登録している単語は、祝儀や卓外ペナルティなど、素点とは別要素でポイントを増減させる。</p>
+<div class="line-block">
+<div class="line">個人成績に対する清算。</div>
+<div class="line"><a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルの <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">2</span></code> として登録している単語が <code class="docutils literal notranslate"><span class="pre">個人清算</span></code> に該当する。</div>
+</div>
+<p>祝儀や卓外ペナルティなどとして、素点とは別の要素として個人成績サマリ/個人成績詳細表示時にポイントを増減させる。</p>
 </section>
 <section id="id4">
 <h2>卓外清算(チーム清算)<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p>チーム成績に対する清算。</p>
+<div class="line-block">
+<div class="line">チーム成績に対する清算。</div>
+<div class="line"><a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルの <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">3</span></code> として登録している単語が <code class="docutils literal notranslate"><span class="pre">チーム清算</span></code> に該当する。</div>
+</div>
+<p>チーム成績が表示される際、チームに所属しているメンバー全員の <code class="docutils literal notranslate"><span class="pre">個人清算</span></code> を合算し、さらに <code class="docutils literal notranslate"><span class="pre">チーム清算</span></code> を加えた値をポイントに反映させる。</p>
 </section>
 <section id="id5">
 <h2>入力ルール/制約事項等<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
@@ -213,7 +224,7 @@
 <p>記録されているメモは、以下で確認できる。</p>
 <ul class="simple">
 <li><p>全体成績サマリの最後にメモとして</p></li>
-<li><p>個人成績サマリ</p>
+<li><p>個人成績サマリ / チーム成績サマリ</p>
 <ul>
 <li><p>カウントされた回数が役満の回数として</p></li>
 <li><p>戦績の結果に内容が表示される</p></li>
@@ -233,7 +244,7 @@
   <div>
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">メモ機能</a><ul>
+<li><a class="reference internal" href="#">メモ記録</a><ul>
 <li><a class="reference internal" href="#id2">メモ</a></li>
 <li><a class="reference internal" href="#id3">卓外清算(個人清算)</a></li>
 <li><a class="reference internal" href="#id4">卓外清算(チーム清算)</a></li>
@@ -296,7 +307,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="index.html" >入力機能説明</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">メモ機能</a></li>
+        <li class="nav-item nav-item-this"><a href="">メモ記録</a></li>
                 <li class="right">
                     
 
@@ -322,7 +333,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.1.
-      Last updated on 2026-04-08.
+      Last updated on 2026-04-09.
     </div>
 
   </body>

@@ -1,6 +1,8 @@
 .. index::
    single: ルールセット; 設定ファイル
 
+.. _rule-config:
+
 ルール設定ファイル
 ==================
 
@@ -26,7 +28,7 @@
 ----
 
 .. toctree::
-   :caption: 設定ファイル内容説明
+   :caption: 設定内容
    :maxdepth: 2
 
    ruleset

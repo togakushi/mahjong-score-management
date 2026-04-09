@@ -169,14 +169,14 @@
 <h1>セパレート機能設定例<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <section id="id2">
 <h2>機能概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>セパレート機能は <a class="reference internal" href="../../functions/output/results/index.html"><span class="doc">成績サマリ出力機能</span></a> などで集計するデータを <strong>チャンネル識別子</strong> で区別する設定となる。</p>
+<p>セパレート機能は <a class="reference internal" href="../../functions/output/results/index.html"><span class="doc">サマリ生成</span></a> などで集計するデータを <strong>チャンネル識別子</strong> で区別する設定となる。</p>
 <p>データに記録されるゲーム結果には「成績登録ワード」が発行されたチャンネル固有の <strong>チャンネル識別子</strong> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
 <section id="id3">
 <h3>チャンネル識別子のフォーマット<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p><strong>チャンネル識別子</strong> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> などのチャンネルを識別するためのIDが続く形をとる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</span></code></p>
 <div class="line-block">
-<div class="line"><strong>チャンネル識別子</strong> は <a class="reference internal" href="../main/application.html#setting-section"><span class="std std-ref">settingセクション</span></a> などで <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を定義することで自由に変更できる。</div>
+<div class="line"><strong>チャンネル識別子</strong> は <a class="reference internal" href="../main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> などで <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を定義することで自由に変更できる。</div>
 <div class="line">チャンネル単位でのグループ分けを行ったり、Slackワークスペースの変更対応などで利用できる。</div>
 </div>
 </section>
@@ -240,7 +240,7 @@
 <ul class="simple">
 <li><p>アプリケーションを複数立ち上げ、同じDBを参照させている
 - Slack + Web など</p></li>
-<li><p>チャンネル単位で <cite>channel_id</cite> を設定してグループを作っており、チャンネル個別設定でセパレートせずにサービス設定でまとめてセパレートしている</p></li>
+<li><p>チャンネル単位で <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を設定してグループを作っており、チャンネル個別設定でセパレートせずにサービス設定でまとめてセパレートしている</p></li>
 <li><p>など</p></li>
 </ul>
 </div>
@@ -487,7 +487,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.1.
-      Last updated on 2026-04-08.
+      Last updated on 2026-04-09.
     </div>
 
   </body>

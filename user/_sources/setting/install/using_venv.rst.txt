@@ -5,8 +5,8 @@ Python3.12以上の実行環境が必要なため、OS環境に合わせて準�
 
 .. tip:: Pythonのインストールが必要な環境なのであれば :doc:`using_uv` がおすすめ。
 
-本体インストール
-----------------
+ツールのインストール
+--------------------
 
 .. code-block:: shell
    :caption: git clone
@@ -36,9 +36,13 @@ Python3.12以上の実行環境が必要なため、OS環境に合わせて準�
 グラフ描写用の日本語フォント
 ----------------------------
 
-IPAexフォント（ipaexg.ttf）を `app.py` と同じディレクトリに配置
+IPAexフォント（ ``ipaexg.ttf`` ）を `app.py` と同じディレクトリに配置
 
 - https://moji.or.jp/ipafont/ipafontdownload/
+
+.. hint::
+
+   ``ipaexg.ttf`` 以外のフォントを使用する場合は `setting-section` の ``font_file`` を設定する。
 
 
 環境変数
@@ -80,6 +84,11 @@ IPAexフォント（ipaexg.ttf）を `app.py` と同じディレクトリに配�
    :caption:  バックグラウンド起動
 
    (venvdir) $ nohup python3 ./app.py > /dev/null 2>&1 &
+
+.. seealso:: systemdを使ったデーモン化
+
+   - `slack <../for_slack/daemon>`
+   - `discord <../for_discord/daemon>`
 
 
 停止

@@ -6,15 +6,18 @@
 メイン設定ファイル
 ==================
 
-INIファイル内の設定を変更することで動作変更が可能。
+ツールの動作環境設定、集計ルール設定、デフォルトの状態を定義する。
 
 空のINIファイルを使用したときの動作は :doc:`../example/minimal` を参照。
 
+----
+
 .. toctree::
+   :caption: 設定内容
    :maxdepth: 2
 
    mahjong
-   application
+   application/index
    summary
    management/index
    decoration

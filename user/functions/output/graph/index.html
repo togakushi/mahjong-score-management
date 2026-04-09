@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>グラフ生成機能 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフ生成 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="ランキング機能" href="../ranking/index.html" />
-    <link rel="prev" title="成績サマリ出力機能" href="../results/index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="ランキング生成" href="../ranking/index.html" />
+    <link rel="prev" title="サマリ生成" href="../results/index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -64,7 +64,7 @@
   <div>
     <h3><a href="../../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">グラフ生成機能</a><ul>
+<li><a class="reference internal" href="#">グラフ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
 <li><a class="reference internal" href="#id3">オプション</a></li>
 <li><a class="reference internal" href="#id4">個別オプション</a></li>
@@ -82,12 +82,12 @@
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="../results/index.html"
-                          title="previous chapter">成績サマリ出力機能</a></p>
+                          title="previous chapter">サマリ生成</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
     <p class="topless"><a href="../ranking/index.html"
-                          title="next chapter">ランキング機能</a></p>
+                          title="next chapter">ランキング生成</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -115,10 +115,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../ranking/index.html" title="ランキング機能"
+          <a href="../ranking/index.html" title="ランキング生成"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../results/index.html" title="成績サマリ出力機能"
+          <a href="../results/index.html" title="サマリ生成"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -131,7 +131,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">出力機能説明</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">グラフ生成機能</a></li>
+        <li class="nav-item nav-item-this"><a href="">グラフ生成</a></li>
                 <li class="right">
                     
 
@@ -162,7 +162,7 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>グラフ生成機能<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1>グラフ生成<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <section id="id2">
 <h2>構文<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
@@ -217,8 +217,8 @@
 <section id="id4">
 <h2>個別オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-0">
-<span class="sig-name descname"><span class="pre">順位</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-0" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-0">
+<span class="sig-name descname"><span class="pre">順位</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-0" title="Link to this definition">¶</a></dt>
 <dd><p>グラフのY軸を通算ポイントからゲーム終了時点の順位（ポイント順）に変更する</p>
 <ul class="simple">
 <li><p>全体成績グラフ/成績グラフ(比較用)でのみ有効</p></li>
@@ -229,32 +229,32 @@
 <section id="id5">
 <h2>集計オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-1">
-<span id="cmdoption-グラフ生成機能-arg-2"></span><span id="cmdoption-arg-daily"></span><span class="sig-name descname"><span class="pre">日次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">デイリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">daily</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-1" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-1">
+<span id="cmdoption-グラフ生成-arg-2"></span><span id="cmdoption-arg-daily"></span><span class="sig-name descname"><span class="pre">日次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">デイリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">daily</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-1" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイントを日単位で集計する</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-3">
-<span id="cmdoption-グラフ生成機能-arg-4"></span><span id="cmdoption-arg-weekly"></span><span class="sig-name descname"><span class="pre">週次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">ウイークリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">weekly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-3" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-3">
+<span id="cmdoption-グラフ生成-arg-4"></span><span id="cmdoption-arg-weekly"></span><span class="sig-name descname"><span class="pre">週次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">ウイークリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">weekly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-3" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイントを週単位で集計する</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-5">
-<span id="cmdoption-グラフ生成機能-arg-6"></span><span id="cmdoption-arg-monthly"></span><span class="sig-name descname"><span class="pre">月次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">マンスリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">monthly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-5" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-5">
+<span id="cmdoption-グラフ生成-arg-6"></span><span id="cmdoption-arg-monthly"></span><span class="sig-name descname"><span class="pre">月次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">マンスリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">monthly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-5" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイントを月単位で集計する</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-7">
-<span id="cmdoption-グラフ生成機能-arg-8"></span><span id="cmdoption-arg-yearly"></span><span class="sig-name descname"><span class="pre">年次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">イヤーリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">yearly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-7" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-7">
+<span id="cmdoption-グラフ生成-arg-8"></span><span id="cmdoption-arg-yearly"></span><span class="sig-name descname"><span class="pre">年次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">イヤーリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">yearly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-7" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイントを年単位で集計する</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-9">
-<span class="sig-name descname"><span class="pre">全体</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-9" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-9">
+<span class="sig-name descname"><span class="pre">全体</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-9" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイントを指定期間全体で集計する</p>
 <ul class="simple">
 <li><p>強制的に横棒グラフになる</p></li>
@@ -262,14 +262,14 @@
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-10">
-<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-10" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-10">
+<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-10" title="Link to this definition">¶</a></dt>
 <dd><p>指定ゲーム数(デフォルト80)区切りで集計する</p>
 </dd></dl>
 
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成機能-arg-11">
-<span id="cmdoption-グラフ生成機能-arg-12"></span><span id="cmdoption-グラフ生成機能-arg-13"></span><span id="cmdoption-グラフ生成機能-arg-14"></span><span class="sig-name descname"><span class="pre">期間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切り</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成機能-arg-11" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-11">
+<span id="cmdoption-グラフ生成-arg-12"></span><span id="cmdoption-グラフ生成-arg-13"></span><span id="cmdoption-グラフ生成-arg-14"></span><span class="sig-name descname"><span class="pre">期間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切り</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-11" title="Link to this definition">¶</a></dt>
 <dd><p>統計指定時の追加オプション</p>
 <ul class="simple">
 <li><p>集計で区切るゲーム数の変更</p></li>
@@ -337,7 +337,7 @@
   <div>
     <h3><a href="../../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">グラフ生成機能</a><ul>
+<li><a class="reference internal" href="#">グラフ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
 <li><a class="reference internal" href="#id3">オプション</a></li>
 <li><a class="reference internal" href="#id4">個別オプション</a></li>
@@ -355,12 +355,12 @@
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="../results/index.html"
-                          title="previous chapter">成績サマリ出力機能</a></p>
+                          title="previous chapter">サマリ生成</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
     <p class="topless"><a href="../ranking/index.html"
-                          title="next chapter">ランキング機能</a></p>
+                          title="next chapter">ランキング生成</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -388,10 +388,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../ranking/index.html" title="ランキング機能"
+          <a href="../ranking/index.html" title="ランキング生成"
              >next</a> |</li>
         <li class="right" >
-          <a href="../results/index.html" title="成績サマリ出力機能"
+          <a href="../results/index.html" title="サマリ生成"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -404,7 +404,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" >出力機能説明</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">グラフ生成機能</a></li>
+        <li class="nav-item nav-item-this"><a href="">グラフ生成</a></li>
                 <li class="right">
                     
 
@@ -430,7 +430,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.1.
-      Last updated on 2026-04-08.
+      Last updated on 2026-04-09.
     </div>
 
   </body>
