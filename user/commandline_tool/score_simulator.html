@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>テストデータ生成 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>score_simulator.py &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="app.py" href="../commandline_tool/app.html" />
-    <link rel="prev" title="MessageParser仕様" href="message_parser.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="prev" title="dbtools.py" href="dbtools.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../_static/copybutton.js"></script>
             <script type="text/javascript" src="../_static/menu.js"></script>
@@ -64,10 +63,9 @@
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">テストデータ生成</a><ul>
-<li><a class="reference internal" href="#id2">ツール起動</a></li>
-<li><a class="reference internal" href="#id3">データ準備</a></li>
-<li><a class="reference internal" href="#id4">データ生成</a></li>
+<li><a class="reference internal" href="#">score_simulator.py</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">コマンドライン引数</a></li>
 </ul>
 </li>
 </ul>
@@ -75,18 +73,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="message_parser.html"
-                          title="previous chapter">MessageParser仕様</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="../commandline_tool/app.html"
-                          title="next chapter">app.py</a></p>
+    <p class="topless"><a href="dbtools.html"
+                          title="previous chapter">dbtools.py</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/development/test.rst.txt"
+      <li><a href="../_sources/commandline_tool/score_simulator.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -109,10 +102,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../commandline_tool/app.html" title="app.py"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="message_parser.html" title="MessageParser仕様"
+          <a href="dbtools.html" title="dbtools.py"
              accesskey="P">previous</a> |</li>
           <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -124,8 +114,7 @@
               <a href="../index.html">User's Manual</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">開発用メモ</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">テストデータ生成</a></li>
+        <li class="nav-item nav-item-this"><a href="">score_simulator.py</a></li>
                 <li class="right">
                     
 
@@ -155,44 +144,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>テストデータ生成<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+  <section id="score-simulator-py">
+<h1>score_simulator.py<a class="headerlink" href="#score-simulator-py" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>1半荘のゲームスコアをシミュレートする。</p>
+<ul class="simple">
+<li><p>モジュールとして実行した場合はシミュレート結果をリストで返す</p></li>
+<li><p>コマンドラインツールとして実行した場合はシミュレート結果を標準出力に返す</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">実行例</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>libs/functions/tools/score_simulator.py
+最終素点:<span class="w"> </span><span class="o">[</span><span class="m">27800</span>,<span class="w"> </span>-5200,<span class="w"> </span><span class="m">34800</span>,<span class="w"> </span><span class="m">42600</span><span class="o">]</span><span class="w"> </span>素点合計<span class="w"> </span><span class="m">100000</span>
+</pre></div>
+</div>
+</div>
+</section>
 <section id="id2">
-<h2>ツール起動<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>基本設定</p></li>
-<li><p>空DB生成</p></li>
-</ul>
-</section>
-<section id="id3">
-<h2>データ準備<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">サンプルメンバーインポート</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>dbtools.py<span class="w"> </span>--import<span class="w"> </span>./tests/test_data/saki
-</pre></div>
-</div>
-</div>
-<ul class="simple">
-<li><p>1チーム5人編成</p></li>
-<li><p>16チーム</p></li>
-</ul>
-</section>
-<section id="id4">
-<h2>データ生成<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">シミュレーションデータ投入</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>dbtools.py<span class="w"> </span>--gen-test-data
-</pre></div>
-</div>
-</div>
-<ul class="simple">
-<li><p>16チーム総当たり戦</p>
-<ul>
-<li><p>2275戦/チーム</p></li>
-<li><p>455戦/人</p></li>
-</ul>
-</li>
-</ul>
+<h2>コマンドライン引数<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>なし</p>
 </section>
 </section>
 
@@ -206,10 +177,9 @@
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">テストデータ生成</a><ul>
-<li><a class="reference internal" href="#id2">ツール起動</a></li>
-<li><a class="reference internal" href="#id3">データ準備</a></li>
-<li><a class="reference internal" href="#id4">データ生成</a></li>
+<li><a class="reference internal" href="#">score_simulator.py</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">コマンドライン引数</a></li>
 </ul>
 </li>
 </ul>
@@ -217,18 +187,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="message_parser.html"
-                          title="previous chapter">MessageParser仕様</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="../commandline_tool/app.html"
-                          title="next chapter">app.py</a></p>
+    <p class="topless"><a href="dbtools.html"
+                          title="previous chapter">dbtools.py</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/development/test.rst.txt"
+      <li><a href="../_sources/commandline_tool/score_simulator.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -251,10 +216,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../commandline_tool/app.html" title="app.py"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="message_parser.html" title="MessageParser仕様"
+          <a href="dbtools.html" title="dbtools.py"
              >previous</a> |</li>
           <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -266,8 +228,7 @@
               <a href="../index.html">User's Manual</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="index.html" >開発用メモ</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">テストデータ生成</a></li>
+        <li class="nav-item nav-item-this"><a href="">score_simulator.py</a></li>
                 <li class="right">
                     
 

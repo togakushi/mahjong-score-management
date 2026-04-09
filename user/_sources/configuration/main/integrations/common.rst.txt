@@ -77,7 +77,7 @@ channel_config について
    以下の機能はDB切替実装が完了していないため、メイン設定にある ``database_file`` が利用される。
 
    - homeタブからの操作
-   - `../../../dbtools` によるDBメンテナンス
+   - `dbtools.py` によるDBメンテナンス
 
 channel_id / separate について
 ------------------------------

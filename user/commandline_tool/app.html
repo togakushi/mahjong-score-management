@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>app.py &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a7d98117" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=82640b3f" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a7d98117" />
     
-    <script src="_static/documentation_options.js?v=b4617fb1"></script>
-    <script src="_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="dbtools.py" href="dbtools.html" />
-    <link rel="prev" title="テストデータ生成" href="development/test.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
-    <link rel="shortcut icon" type="image/png" href="_static/ma-jan_pai.png">
-            <script type="text/javascript" src="_static/copybutton.js"></script>
-            <script type="text/javascript" src="_static/menu.js"></script>
-            <script type="text/javascript" src="_static/search-focus.js"></script>
-            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+    <link rel="prev" title="テストデータ生成" href="../development/test.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script>
+            <script type="text/javascript" src="../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../_static/themetoggle.js"></script> 
   </head>
 <body>
 <div class="mobile-nav">
@@ -37,10 +37,10 @@
         </label>
         <span class="nav-items-wrapper">
             <a href="" class="nav-logo">
-                <img src="_static/ma-jan_pai.png" alt="Python logo">
+                <img src="../_static/ma-jan_pai.png" alt="Python logo">
             </a>
             <span class="version_switcher_placeholder"></span>
-            <form role="search" class="search" action="search.html" method="get">
+            <form role="search" class="search" action="../search.html" method="get">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
                     <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                 </svg>
@@ -62,12 +62,13 @@
     </select>
 </label>
   <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
+    <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">app.py</a><ul>
-<li><a class="reference internal" href="#id2">コマンドライン引数</a><ul>
-<li><a class="reference internal" href="#id3">共通オプション</a></li>
-<li><a class="reference internal" href="#id4">ロギングオプション</a></li>
+<li><a class="reference internal" href="#id2">概要</a></li>
+<li><a class="reference internal" href="#id3">コマンドライン引数</a><ul>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">ロギングオプション</a></li>
 <li><a class="reference internal" href="#standard-io">個別オプション(standard_io専用)</a></li>
 <li><a class="reference internal" href="#web">個別オプション(web専用)</a></li>
 </ul>
@@ -79,7 +80,7 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="development/test.html"
+    <p class="topless"><a href="../development/test.html"
                           title="previous chapter">テストデータ生成</a></p>
   </div>
   <div>
@@ -90,13 +91,13 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/app.rst.txt"
+      <li><a href="../_sources/commandline_tool/app.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
-            <li><a href="genindex.html">Index</a></li>
+            <li><a href="../genindex.html">Index</a></li>
             <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
             <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
             <li><a href="https://togakushi.github.io/mahjong-score-management/dev/">API Reference</a></li>
@@ -110,22 +111,22 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="dbtools.html" title="dbtools.py"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="development/test.html" title="テストデータ生成"
+          <a href="../development/test.html" title="テストデータ生成"
              accesskey="P">previous</a> |</li>
-          <li><img src="_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
             <div class="version_switcher_placeholder"></div>
           </li>
           <li>
               
-              <a href="index.html">User's Manual</a> &#187;
+              <a href="../index.html">User's Manual</a> &#187;
               
           </li>
         <li class="nav-item nav-item-this"><a href="">app.py</a></li>
@@ -133,7 +134,7 @@
                     
 
     <div class="inline-search" role="search">
-        <form class="inline-search" action="search.html" method="get">
+        <form class="inline-search" action="../search.html" method="get">
           <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
           <input type="submit" value="Go">
         </form>
@@ -161,9 +162,13 @@
   <section id="app-py">
 <span id="id1"></span><h1>app.py<a class="headerlink" href="#app-py" title="Link to this heading">¶</a></h1>
 <section id="id2">
-<h2>コマンドライン引数<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<h2>概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>メインスクリプト</p>
+</section>
 <section id="id3">
-<h3>共通オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<h2>コマンドライン引数<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-app.py-h">
 <span id="cmdoption-app.py-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-app.py-h" title="Link to this definition">¶</a></dt>
@@ -216,8 +221,8 @@
 </dd></dl>
 
 </section>
-<section id="id4">
-<h3>ロギングオプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<section id="id5">
+<h3>ロギングオプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-app.py-d">
 <span id="cmdoption-app.py-debug"></span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-app.py-d" title="Link to this definition">¶</a></dt>
@@ -350,12 +355,13 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
+    <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">app.py</a><ul>
-<li><a class="reference internal" href="#id2">コマンドライン引数</a><ul>
-<li><a class="reference internal" href="#id3">共通オプション</a></li>
-<li><a class="reference internal" href="#id4">ロギングオプション</a></li>
+<li><a class="reference internal" href="#id2">概要</a></li>
+<li><a class="reference internal" href="#id3">コマンドライン引数</a><ul>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">ロギングオプション</a></li>
 <li><a class="reference internal" href="#standard-io">個別オプション(standard_io専用)</a></li>
 <li><a class="reference internal" href="#web">個別オプション(web専用)</a></li>
 </ul>
@@ -367,7 +373,7 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="development/test.html"
+    <p class="topless"><a href="../development/test.html"
                           title="previous chapter">テストデータ生成</a></p>
   </div>
   <div>
@@ -378,13 +384,13 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/app.rst.txt"
+      <li><a href="../_sources/commandline_tool/app.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
-            <li><a href="genindex.html">Index</a></li>
+            <li><a href="../genindex.html">Index</a></li>
             <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
             <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
             <li><a href="https://togakushi.github.io/mahjong-score-management/dev/">API Reference</a></li>
@@ -398,22 +404,22 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
           <a href="dbtools.html" title="dbtools.py"
              >next</a> |</li>
         <li class="right" >
-          <a href="development/test.html" title="テストデータ生成"
+          <a href="../development/test.html" title="テストデータ生成"
              >previous</a> |</li>
-          <li><img src="_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
             <div class="version_switcher_placeholder"></div>
           </li>
           <li>
               
-              <a href="index.html">User's Manual</a> &#187;
+              <a href="../index.html">User's Manual</a> &#187;
               
           </li>
         <li class="nav-item nav-item-this"><a href="">app.py</a></li>
@@ -421,7 +427,7 @@
                     
 
     <div class="inline-search" role="search">
-        <form class="inline-search" action="search.html" method="get">
+        <form class="inline-search" action="../search.html" method="get">
           <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
           <input type="submit" value="Go">
         </form>
