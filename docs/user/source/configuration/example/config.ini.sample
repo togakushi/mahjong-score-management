@@ -12,16 +12,16 @@ rank_point = 20,10,-10,-20
 ignore_flying = False
 # 同点のときの順位点の決定方法(席順=False/山分け=True)
 draw_split = False
+# 成績記録のキーワード
+keywords = 終局
+# ゲーム結果にメモを残す場合に使うキーワード
+remarks = 麻雀メモ
 # メモ機能で登録されたワードのうち、個別にカウントするもの(カンマ区切り)
 regulations_type2 = ヤキトリ,チョンボ
 
 
 ### 設定 ###
 [setting]
-# 成績記録のキーワード
-keyword = 終局
-# ゲーム結果にメモを残す場合に使うキーワード
-remarks_word = 麻雀成績メモ
 # 日付変更後、指定時間までを1日単位の集計に含める
 time_adjust = 12
 

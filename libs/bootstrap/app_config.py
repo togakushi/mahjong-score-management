@@ -174,7 +174,7 @@ class AppConfig:
             words.extend(add_words)
 
         words.extend(list(self.rule.keyword_mapping.keys()))
-        words.extend([self.setting.remarks_word])
+        words.extend(self.rule.remarks_words)
 
         for command_name in CommandType:
             if hasattr(self, str(command_name)):
@@ -214,9 +214,7 @@ class AppConfig:
         protected_values: Union[str, list[str]]
         match section_name:
             case "setting":
-                protected_values = self.setting.remarks_word  # 上書き保護
                 self.setting.config_load(additional_config_parser[section_name])
-                self.setting.remarks_word = protected_values
             case "results":
                 protected_values = self.results.commandword  # 上書き保護
                 self.results.config_load(additional_config_parser[section_name])
