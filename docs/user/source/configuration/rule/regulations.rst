@@ -4,11 +4,16 @@
 レギュレーション設定
 ====================
 
-| ゲーム結果とは別清算されるレギュレーションを設定できる。
-| 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。
-| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、``undefined_word`` のみの動作となる（ `rule-set` 参照）。
+ゲーム結果とは別清算されるレギュレーションを設定する。
 
-レギュレーションの記録は `../../functions/input/remarks` で行う。
+| 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。
+| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 ``undefined_word`` のみの動作となる（ `rule-set` 参照）。
+
+レギュレーションの記録は `remarks` で行う。
+
+
+.. index::
+   single: ルールセット; 個人清算レギュレーション
 
 個人清算レギュレーション
 ------------------------
@@ -41,18 +46,22 @@ regulationsセクション
      - 事前登録ワード(役満)
      - 文字列(カンマ区切り)
      - None
-     - ``word`` に ``type=0`` として登録
+     - 事前登録ワードを ``type=0`` として登録
    * - word_list
      - 事前登録ワード(個別)
      - 文字列(カンマ区切り)
      - None
-     - ``word`` に ``type=1`` として登録
+     - 事前登録ワードを ``type=1`` として登録
    * - その他（任意のワード）
      - 卓外清算(個人)として登録される事前登録ワード
      - 数値(追加計算される卓外ポイント)
      -
-     - | キーを単語として登録
+     - | キーで定義した単語を ``type=2`` として登録
        | ポイントは1000点単位
+
+
+.. index::
+   single: ルールセット; チーム清算レギュレーション
 
 チーム清算レギュレーション
 --------------------------
@@ -80,7 +89,7 @@ regulations_teamセクション
      - 卓外清算(チーム)として登録される事前登録ワード
      - 数値(追加計算される卓外ポイント)
      -
-     - | キーを単語として登録
+     - | キーで定義した単語を ``type=3`` として登録
        | ポイントは1000点単位
 
 
@@ -107,7 +116,7 @@ regulations_teamセクション
 複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
 
 | 個別セクション名は `regulations-section` / `regulations_team-section` の前後のどちらかにルール識別子が付いた形となる。
-| 個別レギュレーションは `../main/index` 、及び `index` で定義可能。
+| 個別レギュレーションは `main-config` 、及び `rule-config` で定義可能。
 
 読み込み優先順位
 ----------------
@@ -133,19 +142,19 @@ regulations_teamセクション
      - 定義箇所
      - セクション名
    * - 1
-     - `index`
+     - `rule-config`
      - {rule_version}_regulations
    * - 2
-     - `index`
+     - `rule-config`
      - regulations_{rule_version}
    * - 3
-     - `../main/index`
+     - `main-config`
      - {rule_version}_regulations
    * - 4
-     - `../main/index`
+     - `main-config`
      - regulations_{rule_version}
    * - 5
-     - `../main/index`
+     - `main-config`
      - regulations
 
 
@@ -162,17 +171,17 @@ regulations_teamセクション
      - 定義箇所
      - セクション名
    * - 1
-     - `index`
+     - `rule-config`
      - {rule_version}_regulations_team
    * - 2
-     - `index`
+     - `rule-config`
      - regulations_team_{rule_version}
    * - 3
-     - `../main/index`
+     - `main-config`
      - {rule_version}_regulations_team
    * - 4
-     - `../main/index`
+     - `main-config`
      - regulations_team_{rule_version}
    * - 5
-     - `../main/index`
+     - `main-config`
      - regulations_team
