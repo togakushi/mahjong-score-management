@@ -10,11 +10,11 @@ mahjongセクション
 -----------------
 
 | ルールセットを定義するセクション。
-| 設定可能なパラメータは :ref:`rule-set` を参照。
+| 設定可能なパラメータは `rule-set` を参照。
 
 セクションに ``rule_version`` が含まれない場合は、ルールセットとして扱わない。
 
-:ref:`mahjong-section` はオプション扱いのセクションであり、省略可能となる。
+`mahjong-section` はオプション扱いのセクションであり、省略可能となる。
 
 
 .. index::
@@ -31,7 +31,7 @@ mahjongセクション
 
 .. tip::
    | ``keywords`` は複数定義できるので、マッピングテーブルに追加するだけなら ``keywords`` を増やせばよい。
-   | keyword_mappingセクションで追加した成績記録キーワードは :ref:`commandword` に使用されない。
+   | keyword_mappingセクションで追加した成績記録キーワードは `commandword` に使用されない。
 
 
 .. _keyword_mapping-section:

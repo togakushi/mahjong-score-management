@@ -1,3 +1,6 @@
+.. index::
+   pair: メイン設定; setting section
+
 .. _setting-section:
 
 settingセクション
@@ -18,7 +21,7 @@ settingセクション
      - | 文字列
        | (ファイルパス)
      - None
-     - mahjongセクションの定義もない場合、 ``files/default_rule.ini`` が使用される
+     - `mahjong-section` に有効なルールセット定義もない場合、 :manpage:`default_rule.ini` が使用される
    * - :index:`default_rule <pair: setting section; default_rule>`
      - ルール識別子未指定に使用するデフォルト値
      - 文字列
@@ -28,18 +31,18 @@ settingセクション
      - スコア入力元(チャンネル識別子)単位の集計
      - 真偽値
      - False
-     - *True* : 集計条件にチャンネル識別子を追加
+     - :True: 集計条件にチャンネル識別子を追加
    * - :index:`channel_id <pair: setting section; channel_id>`
      - チャンネル識別子を上書きする
      - 文字列
      - None
      -
    * - :index:`remarks_suffix <pair: setting section; remarks_suffix>`
-     - *成績登録ワード* と ``remarks_suffix`` の組み合わせをメモ登録ワードとする
+     - *成績登録ワード* と ``remarks_suffix`` の組み合わせを *メモ記録ワード* とする
      - | 文字列
        | (カンマ区切り)
-     - ``remarks`` の定義がない場合のみ
-     - カンマ区切りで複数ワードの設定が可能
+     - 空欄
+     - `rule-set` で ``remarks`` の定義がない場合のみに使用される
    * - :index:`guest_mark <pair: setting section; guest_mark>`
      - ゲストに付ける記号
      - 文字列

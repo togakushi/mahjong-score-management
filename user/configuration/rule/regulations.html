@@ -65,11 +65,11 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">レギュレーション設定</a><ul>
-<li><a class="reference internal" href="#id2">個人清算レギュレーション</a><ul>
+<li><a class="reference internal" href="#index-1">個人清算レギュレーション</a><ul>
 <li><a class="reference internal" href="#regulations">regulationsセクション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3">チーム清算レギュレーション</a><ul>
+<li><a class="reference internal" href="#index-2">チーム清算レギュレーション</a><ul>
 <li><a class="reference internal" href="#regulations-team">regulations_teamセクション</a></li>
 </ul>
 </li>
@@ -172,14 +172,14 @@
             
   <section id="index-0">
 <span id="id1"></span><h1>レギュレーション設定<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h1>
+<p>ゲーム結果とは別清算されるレギュレーションを設定する。</p>
 <div class="line-block">
-<div class="line">ゲーム結果とは別清算されるレギュレーションを設定できる。</div>
 <div class="line">通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。</div>
-<div class="line">レギュレーション設定のセクション定義が見つからない場合は何も設定されず、<code class="docutils literal notranslate"><span class="pre">undefined_word</span></code> のみの動作となる（ <a class="reference internal" href="ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> 参照）。</div>
+<div class="line">レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 <code class="docutils literal notranslate"><span class="pre">undefined_word</span></code> のみの動作となる（ <a class="reference internal" href="ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> 参照）。</div>
 </div>
-<p>レギュレーションの記録は <a class="reference internal" href="../../functions/input/remarks.html"><span class="doc">メモ記録</span></a> で行う。</p>
-<section id="id2">
-<h2>個人清算レギュレーション<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>レギュレーションの記録は <a class="reference internal" href="../../functions/input/remarks.html#remarks"><span class="std std-ref">メモ記録</span></a> で行う。</p>
+<section id="index-1">
+<span id="id2"></span><h2>個人清算レギュレーション<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">個人成績出力時に清算されるポイントを定義する。</div>
 <div class="line">チーム成績はチームメンバー全員の個人成績の総和となるため、チーム成績にも影響がある。</div>
@@ -212,20 +212,20 @@
 <td><p>事前登録ワード(役満)</p></td>
 <td><p>文字列(カンマ区切り)</p></td>
 <td><p>None</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">word</span></code> に <code class="docutils literal notranslate"><span class="pre">type=0</span></code> として登録</p></td>
+<td><p>事前登録ワードを <code class="docutils literal notranslate"><span class="pre">type=0</span></code> として登録</p></td>
 </tr>
 <tr class="row-odd"><td><p>word_list</p></td>
 <td><p>事前登録ワード(個別)</p></td>
 <td><p>文字列(カンマ区切り)</p></td>
 <td><p>None</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">word</span></code> に <code class="docutils literal notranslate"><span class="pre">type=1</span></code> として登録</p></td>
+<td><p>事前登録ワードを <code class="docutils literal notranslate"><span class="pre">type=1</span></code> として登録</p></td>
 </tr>
 <tr class="row-even"><td><p>その他（任意のワード）</p></td>
 <td><p>卓外清算(個人)として登録される事前登録ワード</p></td>
 <td><p>数値(追加計算される卓外ポイント)</p></td>
 <td></td>
 <td><div class="line-block">
-<div class="line">キーを単語として登録</div>
+<div class="line">キーで定義した単語を <code class="docutils literal notranslate"><span class="pre">type=2</span></code> として登録</div>
 <div class="line">ポイントは1000点単位</div>
 </div>
 </td>
@@ -234,8 +234,8 @@
 </table>
 </section>
 </section>
-<section id="id3">
-<h2>チーム清算レギュレーション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="index-2">
+<span id="id3"></span><h2>チーム清算レギュレーション<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">チーム成績出力時に清算されるポイントを定義する。</div>
 <div class="line">チームに対する清算のため、個人成績には影響はない。</div>
@@ -264,7 +264,7 @@
 <td><p>数値(追加計算される卓外ポイント)</p></td>
 <td></td>
 <td><div class="line-block">
-<div class="line">キーを単語として登録</div>
+<div class="line">キーで定義した単語を <code class="docutils literal notranslate"><span class="pre">type=3</span></code> として登録</div>
 <div class="line">ポイントは1000点単位</div>
 </div>
 </td>
@@ -297,7 +297,7 @@
 <p>複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。</p>
 <div class="line-block">
 <div class="line">個別セクション名は <a class="reference internal" href="#regulations-section"><span class="std std-ref">regulationsセクション</span></a> / <a class="reference internal" href="#regulations-team-section"><span class="std std-ref">regulations_teamセクション</span></a> の前後のどちらかにルール識別子が付いた形となる。</div>
-<div class="line">個別レギュレーションは <a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a> 、及び <a class="reference internal" href="index.html"><span class="doc">ルール設定ファイル</span></a> で定義可能。</div>
+<div class="line">個別レギュレーションは <a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 、及び <a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> で定義可能。</div>
 </div>
 <section id="id6">
 <h2>読み込み優先順位<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
@@ -326,23 +326,23 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p><a class="reference internal" href="index.html"><span class="doc">ルール設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a></p></td>
 <td><p>{rule_version}_regulations</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p><a class="reference internal" href="index.html"><span class="doc">ルール設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a></p></td>
 <td><p>regulations_{rule_version}</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>{rule_version}_regulations</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>regulations_{rule_version}</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>regulations</p></td>
 </tr>
 </tbody>
@@ -364,23 +364,23 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p><a class="reference internal" href="index.html"><span class="doc">ルール設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a></p></td>
 <td><p>{rule_version}_regulations_team</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p><a class="reference internal" href="index.html"><span class="doc">ルール設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a></p></td>
 <td><p>regulations_team_{rule_version}</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>{rule_version}_regulations_team</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>regulations_team_{rule_version}</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
-<td><p><a class="reference internal" href="../main/index.html"><span class="doc">メイン設定ファイル</span></a></p></td>
+<td><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>regulations_team</p></td>
 </tr>
 </tbody>
@@ -400,11 +400,11 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">レギュレーション設定</a><ul>
-<li><a class="reference internal" href="#id2">個人清算レギュレーション</a><ul>
+<li><a class="reference internal" href="#index-1">個人清算レギュレーション</a><ul>
 <li><a class="reference internal" href="#regulations">regulationsセクション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3">チーム清算レギュレーション</a><ul>
+<li><a class="reference internal" href="#index-2">チーム清算レギュレーション</a><ul>
 <li><a class="reference internal" href="#regulations-team">regulations_teamセクション</a></li>
 </ul>
 </li>

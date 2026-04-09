@@ -602,16 +602,17 @@ window.runMermaid = runMermaid;</script>
     event(event handler);
     m1[[&quot;MessageParser(data)&quot;]];
 
-    event --&gt; m1 --&gt; d[&quot;dispatcher()&quot;] --&gt; f1 &amp; f2 &amp; f3 &amp; f4;
+    event --&gt; m1 --&gt; d[&quot;dispatcher()&quot;] --&gt; f1 &amp; f2 &amp; f3;
 
     subgraph f1[Sub command]
         direction TB
-        c([command]) --&gt; sc1 &amp; sc2 &amp; sc3 &amp; sc4;
+        c([command]) --&gt; sc1 &amp; sc2 &amp; sc3 &amp; sc4 &amp; sc5;
         sc1(results) --&gt; cp1[[CommandParser]] --&gt; p1(aggregation);
         sc2(graph) --&gt; cp2[[CommandParser]] --&gt; p2(aggregation);
         sc3(ranking) --&gt; cp3[[CommandParser]] --&gt; p3(aggregation);
         sc4(report) --&gt; cp4[[CommandParser]] --&gt; p4(aggregation);
-        p1 &amp; p2 &amp; p3 &amp; p4 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+        sc5(help) --&gt; cp5[[CommandParser]] --&gt; p5(text generation);
+        p1 &amp; p2 &amp; p3 &amp; p4 &amp; p5 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
     end
 
     subgraph f2[Results record]
@@ -631,12 +632,7 @@ window.runMermaid = runMermaid;</script>
         db1 &amp; db2 &amp; db3  --&gt; mp3[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
     end
 
-    subgraph f4[Others]
-        direction TB
-        h([help]) --&gt; mp4[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
-    end
-
-    f1 &amp; f2 &amp; f3 &amp; f4 --&gt; post[&quot;post()&lt;br&gt;(API Interface)&quot;];
+    f1 &amp; f2 &amp; f3 --&gt; post[&quot;post()&lt;br&gt;(API Interface)&quot;];
     </pre></section>
 <section id="id2">
 <h1>アダプタ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h1>

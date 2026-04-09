@@ -15,37 +15,37 @@
      - 型
      - 未定義時
      - 備考
-   * - :index:`channel_config <single: integrations; channel_config>`
+   * - :index:`channel_config <pair: integrations section; channel_config>`
      - チャンネル個別設定ファイル
      - 文字列(ファイルパス)
      - None
-     - :ref:`main-config` とマージ
-   * - :index:`badge_degree <single: integrations; badge_degree>`
+     - `main-config` とマージ
+   * - :index:`badge_degree <pair: integrations section; badge_degree>`
      - ゲーム数に応じて表示される称号
      - 真偽値
      - False
-     - :ref:`degree-section`
-   * - :index:`badge_status <single: integrations; badge_status>`
+     - `degree-section`
+   * - :index:`badge_status <pair: integrations section; badge_status>`
      - 勝利によって表示される調子バッヂ
      - 真偽値
      - False
-     - :ref:`status-section`
-   * - :index:`badge_grade <single: integrations; badge_grade>`
+     - `status-section`
+   * - :index:`badge_grade <pair: integrations section; badge_grade>`
      - 段位表示
      - 真偽値
      - False
-     - :ref:`grade-section`
-   * - :index:`channel_id <single: integrations; channel_id>`
+     - `grade-section`
+   * - :index:`channel_id <pair: integrations section; channel_id>`
      - チャンネル識別子を上書きする
      - 文字列
      - None
      - チャンネル個別設定のセクション名変わらない [^1]
-   * - :index:`separate <single: integrations; separate>`
+   * - :index:`separate <pair: integrations section; separate>`
      - スコア入力元(チャンネル識別子)単位の集計
      - 真偽値
      - False
-     - ``True`` : 集計条件にチャンネル識別子を追加
-   * - :index:`plotting_backend <single: integrations; plotting_backend>`
+     - :True: 集計条件にチャンネル識別子を追加
+   * - :index:`plotting_backend <pair: integrations section; plotting_backend>`
      - グラフ生成ライブラリ選択
      - 文字列
      - matplotlib
@@ -57,12 +57,12 @@ channel_config について
 -----------------------
 
 | ``channel_config`` で指定した設定ファイルの ``setting``、 ``results``、 ``graph``、 ``ranking``、 ``report``、 ``custom_message`` のセクションをメイン設定のパラメータとマージする。
-| :ref:`custom_message-section` 以外の各セクションで設定された値は以下の順でマージされるため、未定義の設定はメイン設定の値を引き継ぐ。
+| `custom_message-section` 以外の各セクションで設定された値は以下の順でマージされるため、未定義の設定はメイン設定の値を引き継ぐ。
 
 #. メイン設定セクション読み込み
 #. チャンネル個別設定セクション読み込み
 
-:ref:`custom_message-section` が定義されていればメイン設定の内容を上書き、未定義時はメイン設定の値が引き継がれる。
+`custom_message-section` が定義されていればメイン設定の内容を上書き、未定義時はメイン設定の値が引き継がれる。
 
 .. important:: メイン設定の ``commandword`` で指定されているキーワードは上書きできない。
 
@@ -77,7 +77,7 @@ channel_config について
    以下の機能はDB切替実装が完了していないため、メイン設定にある ``database_file`` が利用される。
 
    - homeタブからの操作
-   - :doc:`../../../dbtools` によるDBメンテナンス
+   - `../../../dbtools` によるDBメンテナンス
 
 channel_id / separate について
 ------------------------------
@@ -102,14 +102,14 @@ channel_id / separate について
      - メイン設定
      - チャンネル個別設定
 
-       - slack :ref:`slack-channel-settings`
-       - discord :ref:`discord-channel-settings`
+       - slack `slack-channel-settings`
+       - discord `discord-channel-settings`
      - 指定チャンネルの範囲
    * - 3
      - メイン設定
-     - :ref:`integrations-common`
+     - `integrations-common`
      - 連携サービスの範囲
    * - 4
      - メイン設定
-     - :ref:`setting-section`
+     - `setting-section`
      - アプリケーション全体(すべてのサービス、すべてのチャンネル)

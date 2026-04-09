@@ -143,7 +143,7 @@ Slack/Discordを利用時は突合コマンドが追加される。
 
 .. caution:: ``slash_command`` の不一致に注意！！
 
-すべて省略しているので、 :doc:`minimal` と同じになる。
+すべて省略しているので、 `minimal` と同じになる。
 
 ルールセット設定
 ----------------
@@ -157,6 +157,6 @@ Slack/Discordを利用時は突合コマンドが追加される。
    [INFO][rule:info] default_rule: mode=4, origin_point=250, return_point=300, rank_point=[30, 10, -10, 30], draw_split=False, ignore_flying=False
    [INFO][rule:info] default_rule3: mode=3, origin_point=350, return_point=400, rank_point=[30, 0, -30], draw_split=False, ignore_flying=False
 
-:ref:`mahjong-section` で定義した ``keywords`` とデフォルトルールとなる ``default_rule`` が紐付けられる。
+`mahjong-section` で定義した ``keywords`` とデフォルトルールとなる ``default_rule`` が紐付けられる。
 
 三人打ちルールの ``default_rule3`` はルール定義をすべて省略すると登録されるがデフォルトルールには指定されない。

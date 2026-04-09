@@ -4,7 +4,7 @@ words
 =====
 
 ``remarks`` に記録された単語の種別。祝儀や卓外ペナルティなど、ポイントに影響がある単語を登録。\
-単語の定義は設定ファイル内の :ref:`regulations-section` で行う。
+単語の定義は設定ファイル内の `regulations-section` で行う。
 
 
 内容

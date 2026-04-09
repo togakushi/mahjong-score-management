@@ -161,8 +161,8 @@
      - マッピングされているルールセットのみ
 
 .. seealso::
-   - :ref:`keyword_mapping-section`
-   - :ref:`rule-set`
+   - `keyword_mapping-section`
+   - `rule-set`
 
 
 出力フォーマット変更

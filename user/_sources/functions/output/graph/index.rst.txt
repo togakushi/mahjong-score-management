@@ -9,7 +9,7 @@
 :チャンネル内呼び出し: <呼び出しキーワード> [オプション]
 :スラッシュコマンド: /commandname graph [オプション]
 
-.. note:: ``/commandname`` は :ref:`slack-section` 、 :ref:`discord-section`  の ``slash_command`` で定義したもの。
+.. note:: ``/commandname`` は `slack-section` 、 `discord-section`  の ``slash_command`` で定義したもの。
 
 
 オプション
@@ -87,7 +87,7 @@
 共通オプション
 --------------
 
-- :ref:`common-argument`
+- `common-argument`
 
 
 全体成績グラフ詳細

@@ -173,4 +173,4 @@ dbtools.py
    | 動作確認用のテストデータを生成する。
    | 5人編成16チーム前提。総当たり戦。1countあたり455戦。
 
-   .. seealso:: :doc:`./development/test`
+   .. seealso:: `./development/test`
