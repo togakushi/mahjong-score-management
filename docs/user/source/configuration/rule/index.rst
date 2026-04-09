@@ -26,7 +26,7 @@
 ----
 
 .. toctree::
-   :caption: 設定ファイル内容説明
+   :caption: 設定内容
    :maxdepth: 2
 
    ruleset
