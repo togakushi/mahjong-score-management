@@ -27,7 +27,7 @@ class SvcConfig(BaseSection, IntegrationsConfig):
     """データ突合スラッシュコマンド別名(カンマ区切りで設定)"""
 
     search_channel: list[str] = field(default_factory=list)
-    """テータ突合時に成績記録ワードを検索するチャンネル名(カンマ区切りで設定)"""
+    """テータ突合時に成績記録キーワードを検索するチャンネル名(カンマ区切りで設定)"""
     search_after: int = field(default=7)
     """データ突合時対象にする日数"""
     search_wait: int = field(default=180)

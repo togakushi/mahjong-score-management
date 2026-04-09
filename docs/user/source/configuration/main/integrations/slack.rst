@@ -19,7 +19,7 @@ slackセクション
      - /mahjong
      - 先頭のスラッシュも含める
    * - :index:`thread_report <pair: slack section; thread_report>`
-     - スレッド内にある成績記録キーワードを処理する
+     - スレッド内にある *成績記録キーワード* を処理する
      - 真偽値
      - True
      -

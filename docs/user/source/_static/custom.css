@@ -1,3 +1,20 @@
 div.body {
     max-width: none;
 }
+
+:root {
+    --blue-background: #5c0eda56;
+    --blue-border: #2196f3;
+    --orange-background: #ff940045;
+    --orange-border: #f0ad4e;
+}
+
+div.body div.admonition.note {
+    background-color: var(--blue-background);
+    border-color: var(--blue-border);
+}
+
+div.body div.admonition.important {
+    background-color: var(--orange-background);
+    border-color: var(--orange-border);
+}
