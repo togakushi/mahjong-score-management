@@ -39,7 +39,7 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
 
     default_message_type = {
         "invalid_argument": "使い方が間違っています。",
-        "no_hits": "{start} ～ {end} に成績記録ワードが見つかりません。",
+        "no_hits": "{start} ～ {end} に成績記録キーワードが見つかりません。",
         "no_target": "集計対象データがありません。",
         "invalid_score": "素点合計：{rpoint_sum}\n点数差分：{rpoint_diff}",
         "restricted_channel": "<@{user_id}> この投稿はデータベースに反映されません。",

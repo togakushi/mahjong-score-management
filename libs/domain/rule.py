@@ -386,9 +386,9 @@ class RuleSet:
 
             # マッピング情報
             if keyword := [word for word, mapping_rule in self.keyword_mapping.items() if mapping_rule == rule_version]:
-                body_data.append(["成績登録ワード", "、".join(keyword)])
+                body_data.append(["成績記録キーワード", "、".join(keyword)])
             else:
-                body_data.append(["成績登録ワード", "---"])
+                body_data.append(["成績記録キーワード", "---"])
 
             # 記録時間
             body_data.append(["記録数", f"{rule.count} ゲーム"])
@@ -457,16 +457,16 @@ class RuleSet:
                     raise RuntimeError(f"ルール識別子と定義済みコマンドに重複があります。({chk_word.rule_version})")
                 if chk_word.rule_version in chk_members:
                     raise RuntimeError(f"ルール識別子と登録メンバー(チーム)に重複があります。({chk_word.rule_version})")
-            # 成績登録ワードチェック
+            # 成績記録キーワードチェック
             for chk_word in self.keyword_mapping.keys():
                 if CommandParser().is_valid_command(chk_word):
-                    raise RuntimeError(f"成績登録ワードにオプションに使用される単語が使用されています。({chk_word})")
+                    raise RuntimeError(f"成績記録キーワードにオプションに使用される単語が使用されています。({chk_word})")
                 if chk_word in ExtDt.valid_keywords():
-                    raise RuntimeError(f"成績登録ワードに検索範囲指定に使用される単語が使用されています。({chk_word})")
+                    raise RuntimeError(f"成績記録キーワードに検索範囲指定に使用される単語が使用されています。({chk_word})")
                 if chk_word in chk_commands:
-                    raise RuntimeError(f"成績登録ワードと定義済みコマンドに重複があります。({chk_word})")
+                    raise RuntimeError(f"成績記録キーワードと定義済みコマンドに重複があります。({chk_word})")
                 if chk_word in chk_members:
-                    raise RuntimeError(f"成績登録ワードと登録メンバー(チーム)に重複があります。({chk_word})")
+                    raise RuntimeError(f"成績記録キーワードと登録メンバー(チーム)に重複があります。({chk_word})")
             # デフォルトルールバージョンチェック
             if default_rule not in self.rule_list:
                 raise RuntimeError(f"デフォルトルールバージョンに指定されているルールセットが見つかりません。({default_rule})")
