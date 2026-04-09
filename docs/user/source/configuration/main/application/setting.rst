@@ -72,7 +72,8 @@ settingセクション
      - `Style sheets`_ から選択
    * - :index:`work_dir <pair: setting section; work_dir>`
      - 生成ファイルの保存先 [1]_
-     - 文字列<br>(ディレクトリ名)
+     - | 文字列
+       | (ディレクトリ名)
      - ``work``
      - 画像ファイル、PDFファイルの保存先
    * - :index:`database_file <pair: setting section; database_file>`
