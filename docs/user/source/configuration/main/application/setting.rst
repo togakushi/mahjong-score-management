@@ -95,7 +95,10 @@ settingセクション
 .. tip::
    :manpage:`default_rule.ini` には **default_rule** (四人打ち用ルールセット)と **default_rule3** (三人打ち用ルールセット)が定義されている。
 
+----
+
 .. rubric:: 脚注
+   :heading-level: 6
 
 .. [1] 設定ファイルからの相対パスで指定、見つからなければスクリプトからの相対パス
 .. [2] 設定ファイルからの相対パスで指定
