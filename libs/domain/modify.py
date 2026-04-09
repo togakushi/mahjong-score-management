@@ -303,7 +303,7 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
                     m.data.event_ts,
                     m.data.text,
                 )
-                if re.match(rf"^{g.cfg.setting.remarks_word}", m.keyword):
+                if re.match(rf"^{g.cfg.rule.remarks_words}", m.keyword):
                     check_remarks(m)
 
 

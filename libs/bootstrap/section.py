@@ -195,8 +195,6 @@ class SettingSection(BaseSection):
 
     section: str = "setting"
     """セクション名"""
-    remarks_word: str = field(default="麻雀メモ")
-    """メモ記録用キーワード"""
     remarks_suffix: list[str] = field(default_factory=list)
     """メモ記録用キーワードサフィックス"""
     rule_config: Optional[Path] = field(default=None)
