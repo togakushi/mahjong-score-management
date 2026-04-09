@@ -11,9 +11,9 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a7d98117" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c11c2dbd" />
     
-    <script src="../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../_static/documentation_options.js?v=8399f5db"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -176,7 +176,7 @@
 <section id="index-1">
 <span id="id2"></span><h1>マッピング定義<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h1>
 <div class="line-block">
-<div class="line">ゲーム結果の登録時に用いられる <em>成績記録ワード</em> と <em>ルール識別子</em> はマッピングテーブルによって紐付けられる。</div>
+<div class="line">ゲーム結果の登録時に用いられる <em>成績記録キーワード</em> と <em>ルール識別子</em> はマッピングテーブルによって紐付けられる。</div>
 <div class="line">ルールセットで定義した <code class="docutils literal notranslate"><span class="pre">keywords</span></code> と <code class="docutils literal notranslate"><span class="pre">rule_version</span></code> の組み合わせでマッピングが生成されるが、keyword_mappingセクションで自由に組み合わせを追加できる。</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">keywords</span></code> の定義がないルールセットはマッピングテーブルに存在しないため、記録に用いることができない。</p>
@@ -184,12 +184,12 @@
 <p class="admonition-title">Tip</p>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">keywords</span></code> は複数定義できるので、マッピングテーブルに追加するだけなら <code class="docutils literal notranslate"><span class="pre">keywords</span></code> を増やせばよい。</div>
-<div class="line">keyword_mappingセクションで追加した成績記録キーワードは <a class="reference internal" href="summary.html#commandword"><span class="std std-ref">機能呼び出しキーワード</span></a> に使用されない。</div>
+<div class="line">keyword_mappingセクションで追加した <em>成績記録キーワード</em> は <a class="reference internal" href="summary.html#commandword"><span class="std std-ref">機能呼び出しキーワード</span></a> に使用されない。</div>
 </div>
 </div>
 <section id="keyword-mapping">
 <span id="keyword-mapping-section"></span><h2>keyword_mappingセクション<a class="headerlink" href="#keyword-mapping" title="Link to this heading">¶</a></h2>
-<p>成績登録ワードとルール識別子を紐付ける。</p>
+<p>成績記録キーワードとルール識別子を紐付ける。</p>
 <p>keyword_mappingセクションはオプション扱いのセクションであり、省略可能となる。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -344,7 +344,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.1.
+      Release Version: 0.13.2.
       Last updated on 2026-04-09.
     </div>
 

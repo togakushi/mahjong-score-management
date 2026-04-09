@@ -11,9 +11,9 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a7d98117" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c11c2dbd" />
     
-    <script src="../../_static/documentation_options.js?v=b4617fb1"></script>
+    <script src="../../_static/documentation_options.js?v=8399f5db"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -170,7 +170,7 @@
 <section id="id2">
 <h2>機能概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p>セパレート機能は <a class="reference internal" href="../../functions/output/results/index.html"><span class="doc">サマリ生成</span></a> などで集計するデータを <strong>チャンネル識別子</strong> で区別する設定となる。</p>
-<p>データに記録されるゲーム結果には「成績登録ワード」が発行されたチャンネル固有の <strong>チャンネル識別子</strong> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
+<p>データに記録されるゲーム結果には「 <em>成績記録キーワード</em> 」が発行されたチャンネル固有の <strong>チャンネル識別子</strong> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
 <section id="id3">
 <h3>チャンネル識別子のフォーマット<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p><strong>チャンネル識別子</strong> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> などのチャンネルを識別するためのIDが続く形をとる。</p>
@@ -184,7 +184,7 @@
 <h3>集計データ抽出ルール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <div class="line-block">
 <div class="line">基本となるデータ抽出条件はルールセット単位となり、「ルール識別子」が抽出条件として指定されている。</div>
-<div class="line">「成績登録ワード」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどのルールセットを使うかが定義されている。</div>
+<div class="line">「 <em>成績記録キーワード</em> 」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどのルールセットを使うかが定義されている。</div>
 <div class="line">異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「ルール識別子」が使用される。</div>
 <div class="line">同じルールセットを使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
 </div>
@@ -486,7 +486,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.1.
+      Release Version: 0.13.2.
       Last updated on 2026-04-09.
     </div>
 
