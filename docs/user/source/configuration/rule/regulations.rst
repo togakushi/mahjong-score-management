@@ -6,9 +6,9 @@
 
 | ゲーム結果とは別清算されるレギュレーションを設定できる。
 | 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。
-| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、``undefined_word`` のみの動作となる（ :ref:`rule-set` 参照）。
+| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、``undefined_word`` のみの動作となる（ `rule-set` 参照）。
 
-レギュレーションの記録は :doc:`../../functions/input/remarks` で行う。
+レギュレーションの記録は `../../functions/input/remarks` で行う。
 
 個人清算レギュレーション
 ------------------------
@@ -22,7 +22,7 @@
 regulationsセクション
 +++++++++++++++++++++
 
-定義されているキーが :ref:`table-words` テーブルの ``word`` として事前登録される。
+定義されているキーが `table-words` テーブルの ``word`` として事前登録される。
 
 | ``yakuman_list`` 及び ``word_list`` にはカンマで区切られたワードを並べる。
 | テーブルに登録されていないワードが使用された場合、そのワードのtypeは ``undefined_word`` で指定した値となる。
@@ -106,19 +106,19 @@ regulations_teamセクション
 
 複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
 
-| 個別セクション名は :ref:`regulations-section` / :ref:`regulations_team-section` の前後のどちらかにルール識別子が付いた形となる。
-| 個別レギュレーションは :doc:`../main/index` 、及び :doc:`index` で定義可能。
+| 個別セクション名は `regulations-section` / `regulations_team-section` の前後のどちらかにルール識別子が付いた形となる。
+| 個別レギュレーションは `../main/index` 、及び `index` で定義可能。
 
 読み込み優先順位
 ----------------
 
 | 読み込みには優先順位があり、最初に見つかった設定のみが取り込まれる。
-| 個別セクションが無い場合は :ref:`regulations-section` / :ref:`regulations_team-section` が読み込まれる。
+| 個別セクションが無い場合は `regulations-section` / `regulations_team-section` が読み込まれる。
 
 .. note::
    レギュレーション設定が必要ない場合は、空の個別セクションを定義すること。
 
-   :ref:`regulations-section` / :ref:`regulations_team-section` の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
+   `regulations-section` / `regulations_team-section` の定義はすべてルールセットで読み込みが発生するため、デフォルト設定として動作する。
 
 
 個人清算レギュレーション
@@ -133,19 +133,19 @@ regulations_teamセクション
      - 定義箇所
      - セクション名
    * - 1
-     - :doc:`index`
+     - `index`
      - {rule_version}_regulations
    * - 2
-     - :doc:`index`
+     - `index`
      - regulations_{rule_version}
    * - 3
-     - :doc:`../main/index`
+     - `../main/index`
      - {rule_version}_regulations
    * - 4
-     - :doc:`../main/index`
+     - `../main/index`
      - regulations_{rule_version}
    * - 5
-     - :doc:`../main/index`
+     - `../main/index`
      - regulations
 
 
@@ -162,17 +162,17 @@ regulations_teamセクション
      - 定義箇所
      - セクション名
    * - 1
-     - :doc:`index`
+     - `index`
      - {rule_version}_regulations_team
    * - 2
-     - :doc:`index`
+     - `index`
      - regulations_team_{rule_version}
    * - 3
-     - :doc:`../main/index`
+     - `../main/index`
      - {rule_version}_regulations_team
    * - 4
-     - :doc:`../main/index`
+     - `../main/index`
      - regulations_team_{rule_version}
    * - 5
-     - :doc:`../main/index`
+     - `../main/index`
      - regulations_team

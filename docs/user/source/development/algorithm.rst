@@ -35,4 +35,4 @@
 
 #. 登録メンバー名と一致しない名前は「ゲスト」に置き換える
 
-   - 「ゲスト」の名前は :ref:`member-section` の ``guest_name`` で指定する
+   - 「ゲスト」の名前は `member-section` の ``guest_name`` で指定する

@@ -80,7 +80,7 @@ slackセクション
 ------------------
 
 | メイン設定内に ``slack_<チャンネルID>`` セクションが存在すれば、そのチャンネル専用として追加で設定を読み込む。
-| :ref:`slack-section` の以下のキー、および共通設定の値を上書きする。
+| s`slack-section` の以下のキー、および共通設定の値を上書きする。
 
 .. list-table::
    :width: 100%
@@ -96,24 +96,24 @@ slackセクション
      - ルール識別子未指定に使用するデフォルト値
      - 文字列
      -
-     - メイン設定の :ref:`setting-section` より優先される
+     - メイン設定の `setting-section` より優先される
    * - :index:`reaction_ok <pair: slack_channel section; reaction_ok>`
      - 素点合計が正しい場合に付けるリアクション
      - 文字列(絵文字)
      - 引継
-     - :ref:`slack-section` の設定を上書き
+     - `slack-section` の設定を上書き
    * - :index:`reaction_ng <pair: slack_channel section; reaction_ng>`
      - 素点合計が誤っている場合に付けるリアクション
      - 文字列(絵文字)
      - 引継
-     - :ref:`slack-section` の設定を上書き
+     - `slack-section` の設定を上書き
    * - :index:`search_channel <pair: slack_channel section; search_channel>`
      - 突合処理時に検索されるチャンネル
      - 文字列(チャンネル名)
      - 引継
-     - :ref:`slack-section` の設定を上書き
+     - `slack-section` の設定を上書き
    * - :index:`search_after <pair: slack_channel section; search_after>`
      - データ突合開始日
      - 数値(int)
      - 引継
-     - :ref:`slack-section` の設定を上書き
+     - `slack-section` の設定を上書き

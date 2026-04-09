@@ -11,9 +11,9 @@
 
 **成績記録キーワード** は設定ファイルで指定される。
 
-- :ref:`mahjong-section` の ``keywords``
-- :ref:`rule-set` の ``keywords``
-- :ref:`keyword_mapping-section` で追加したキーワード
+- `mahjong-section` の ``keywords``
+- `rule-set` の ``keywords``
+- `keyword_mapping-section` で追加したキーワード
 
 
 四人打ルールセット記録

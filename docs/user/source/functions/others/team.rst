@@ -3,7 +3,7 @@
 
 チームの管理はスラッシュコマンドで行う。
 
-.. note:: ``/commandname`` は :ref:`slack-section` 、 :ref:`discord-section`  の ``slash_command`` で定義したもの。
+.. note:: ``/commandname`` は `slack-section` 、 `discord-section`  の ``slash_command`` で定義したもの。
 
 
 チーム作成

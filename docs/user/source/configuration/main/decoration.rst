@@ -14,7 +14,7 @@ degreeセクション
 ----------------
 
 | プレイしたゲーム数に対して表示される称号。
-| 表示/非表示の設定は :ref:`integrations-common` で行う。
+| 表示/非表示の設定は `integrations-common` で行う。
 
 .. list-table::
    :width: 100%
@@ -43,7 +43,7 @@ statusセクション
 ----------------
 
 | 勝率に対して付く調子バッジ。
-| 表示/非表示の設定は :ref:`integrations-common` で行う。
+| 表示/非表示の設定は `integrations-common` で行う。
 
 .. list-table::
    :width: 100%
@@ -71,7 +71,7 @@ gradeセクション
 ---------------
 
 | 段位設定。
-| 表示/非表示の設定は :ref:`integrations-common` で行う。
+| 表示/非表示の設定は `integrations-common` で行う。
 
 .. list-table::
    :width: 100%
@@ -87,7 +87,7 @@ gradeセクション
      - 文字列(備考参照)
      - :mahjongsoul / 雀魂: 雀魂風表記
        :tenho / 天鳳: 天鳳風表記
-       :その他(JSONファイル名): オリジナル定義ファイルを使用( :ref:`gradetable` 参照)
+       :その他(JSONファイル名): オリジナル定義ファイルを使用( `gradetable` 参照)
 
 
 .. index::
