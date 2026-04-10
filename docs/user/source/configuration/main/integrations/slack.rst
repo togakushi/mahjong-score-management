@@ -93,7 +93,7 @@ slackセクション
      - 未定義時
      - 備考
    * - :index:`default_rule <pair: slack_channel section; default_rule>`
-     - ルール識別子未指定に使用するデフォルト値
+     - *ルール識別子* 未指定に使用するデフォルト値
      - 文字列
      - 引継
      - メイン設定の `setting-section` より優先される

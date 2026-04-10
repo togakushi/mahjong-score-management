@@ -115,7 +115,7 @@ regulations_teamセクション
 
 複数のルールセットを使用している場合、ルールセット毎にレギュレーション設定が行われる。
 
-| 個別セクション名は `regulations-section` / `regulations_team-section` の前後のどちらかにルール識別子が付いた形となる。
+| 個別セクション名は `regulations-section` / `regulations_team-section` の前後のどちらかに *ルール識別子* が付いた形となる。
 | 個別レギュレーションは `main-config` 、及び `rule-config` で定義可能。
 
 読み込み優先順位

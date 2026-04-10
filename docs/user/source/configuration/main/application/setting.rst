@@ -23,9 +23,9 @@ settingセクション
      - None
      - `mahjong-section` に有効なルールセット定義もない場合、 :manpage:`default_rule.ini` が使用される
    * - :index:`default_rule <pair: setting section; default_rule>`
-     - ルール識別子未指定に使用するデフォルト値
+     - *ルール識別子* 未指定に使用するデフォルト値
      - 文字列
-     - 最初に定義されたルールセットのルール識別子
+     - 最初に定義されたルールセットの *ルール識別子*
      -
    * - :index:`separate <pair: setting section; separate>`
      - スコア入力元(チャンネル識別子)単位の集計

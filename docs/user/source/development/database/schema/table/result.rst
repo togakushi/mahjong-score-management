@@ -120,7 +120,7 @@ result
    * - rule_version
      -
      - TEXT
-     - ルール識別子を示す文字列
+     - *ルール識別子* を示す文字列
    * - comment
      -
      - TEXT
