@@ -181,7 +181,7 @@
 
 | ``commandword`` 、 ``command_suffix`` の定義状況によって登録される呼び出しキーワードが変化する。
 | ``commandword`` の定義が優先的に登録される。
-| ``command_suffix`` の定義があれば、ルールセットの ``keywords`` と ``command_suffix`` の組み合わせが登録される。
+| ``command_suffix`` の定義があれば、 `ルールセット` の ``keywords`` と ``command_suffix`` の組み合わせが登録される。
 
 .. list-table::
    :width: 100%
