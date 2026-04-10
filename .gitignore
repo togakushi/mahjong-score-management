@@ -29,6 +29,7 @@ docs/dev/build/
 docs/dev/source/
 docs/dev/coverage/
 !docs/*/source/_static/**
+!docs/*/source/**/*.txt
 
 !requirements.txt
 !files/**
