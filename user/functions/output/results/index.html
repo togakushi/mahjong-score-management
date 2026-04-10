@@ -11,7 +11,7 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=c11c2dbd" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=1caed29c" />
     
     <script src="../../../_static/documentation_options.js?v=8399f5db"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -287,41 +287,59 @@
 <h3>全体成績サマリ詳細<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <div class="line-block">
 <div class="line">メンバー名の指定がない場合、集計期間内で記録されている全メンバーの通算ポイント順に結果を表示する。</div>
-<div class="line">ゲスト関連のオプションによって集計内容が変わるため、特記には集計条件が記載される。</div>
+<div class="line"><a class="reference internal" href="../../appendix/argument_keyword.html#guest-option"><span class="std std-ref">ゲスト関連</span></a> のオプションによって集計内容が変わるため、特記には集計条件が記載される。</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（通常）</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
     最初のゲーム：yyyy/mm/dd HH:MM:SS
     最後のゲーム：yyyy/mm/dd HH:MM:SS
-    総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
-    特記：ゲスト置換なし(※：未登録プレイヤー)
+    集計対象：8 ゲーム  / トバされた人（延べ）：2 人
+    特記事項：ゲスト置換なし(*：未登録プレイヤー)
 
-## 名前 : 通算 (平均) / 順位分布 (平均) / トビ ##
-ひと     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
-いぬ     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
-さる     ： +xx.x (+x.x) / xx-xx-xx-xx (x.xx) / x
-とり     ： ▲xx.x ( ▲x.x) / xx-xx-xx-xx (x.xx) / x
-おに(※) ： ▲xxx.x (▲xx.x) / xx-xx-xx-xx (x.xx) / x
+【通算ポイント】
+名前         通算   平均 順位分布         飛
+---------- ------ ------ ---------------- --
+Player_007  +57.1  +57.1 1+0+0+0=1 (1.00)  0
+Player_011  +53.0  +53.0 1+0+0+0=1 (1.00)  0
+Player_006  +43.6  +43.6 1+0+0+0=1 (1.00)  0
+Player_002  +30.8  +15.4 1+0+1+0=2 (2.00)  0
+Player_000  +14.5   +3.6 1+2+0+1=4 (2.25)  0
+Player_004   +8.0   +8.0 0+1+0+0=1 (2.00)  0
+Player_009  ▲22.2   ▲7.4 1+0+1+1=3 (2.67)  1
+Player_005  ▲22.3   ▲4.5 0+3+1+1=5 (2.60)  0
+Player_010  ▲26.5   ▲8.8 0+2+1+0=3 (2.33)  0
+Player_003  ▲28.6  ▲28.6 0+0+0+1=1 (4.00)  0
+Player_008  ▲42.4   ▲5.3 2+0+4+2=8 (2.75)  1
+Player_001  ▲65.0  ▲32.5 0+0+0+2=2 (4.00)  0
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（比較）</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
     最初のゲーム：yyyy/mm/dd HH:MM:SS
     最後のゲーム：yyyy/mm/dd HH:MM:SS
-    総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
-    特記：ゲスト置換なし(※：未登録プレイヤー)
+    集計対象：8 ゲーム  / トバされた人（延べ）：2 人
+    特記事項：ゲスト置換なし(*：未登録プレイヤー)
 
-## 名前  ： 通算   / 点差 ##
-ひと     ： +xxx.x / -----
-いぬ     ： +xxx.x /  xx.x
-さる     ：  +xx.x /  xx.x
-とり     ：  ▲xx.x /  xx.x
-おに(※) ： ▲xxx.x /  xx.x
+【通算ポイント(差分)】
+名前         通算 順位差 トップ差
+---------- ------ ------ --------
+Player_007  +57.1  *****    *****
+Player_011  +53.0    4.1      4.1
+Player_006  +43.6    9.4     13.5
+Player_002  +30.8   12.8     26.3
+Player_000  +14.5   16.3     42.6
+Player_004   +8.0    6.5     49.1
+Player_009  ▲22.2   30.2     79.3
+Player_005  ▲22.3    0.1     79.4
+Player_010  ▲26.5    4.2     83.6
+Player_003  ▲28.6    2.1     85.7
+Player_008  ▲42.4   13.8     99.5
+Player_001  ▲65.0   22.6    122.1
 </pre></div>
 </div>
 </div>
@@ -330,56 +348,101 @@
 <h3>個人成績サマリ詳細<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-text">個人成績サマリ出力サンプル</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【個人成績】
-    プレイヤー名： ひと
-    集計範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
-    対戦数：xxx 戦 (xx 勝 xx 敗 xx 分)
-    通算ポイント： +xxx.x
-    平均ポイント： +x.x
-    平均順位： x.xx
-    1位： xx 回 (xx.xx%)
-    2位： xx 回 (xx.xx%)
-    3位： xx 回 (xx.xx%)
-    4位： xx 回 (xx.xx%)
-    トビ： xx 回 (x.xx%)
-    役満： xx 回 (x.xx%)
-    特記：2ゲスト戦の結果を含む
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【個人成績詳細】
+    プレイヤー名：Player_007
+    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    特記事項：ゲスト置換なし(*：未登録プレイヤー)、2ゲスト戦の結果を含む
+    対戦数：41 戦 (25 勝 16 敗 0 分)
+
+    通算ポイント：+395.9pt
+    平均ポイント：+9.7pt
+    平均順位：2.27
+
+    1位：15 回 ( 36.59%)
+    2位：11 回 ( 26.83%)
+    3位： 4 回 (  9.76%)
+    4位：11 回 ( 26.83%)
+    トビ： 4 回 (  9.76%)
+    役満： 1 回 (  2.44%)
 
 【座席データ】
-    # 席：順位分布(平順) / トビ / 役満 #
-    東家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-    南家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-    西家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-    北家： xx-xx-xx-xx (x.xx) / x 回 / x 回
+    # 席： 順位分布(平均順位) / トビ / 役満 #
+    東家： 4+3+1+3=11 (2.27)  /   0  /   0
+    南家： 5+2+2+2=11 (2.09)  /   1  /   0
+    西家： 3+2+0+4=9 (2.56)   /   2  /   0
+    北家： 3+4+1+2=10 (2.20)  /   1  /   1
+
+【ベストレコード】
+    連続トップ：2 回目 (記録更新中)
+    連続連対：2 回目 (最大 6 連続)
+    連続ラス回避：3 回目 (最大 8 連続)
+    最大素点：+58000点
+    最大獲得ポイント：+68.0pt
+
+【ワーストレコード】
+    連続ラス：0 回 (最大 2 連続)
+    連続逆連対：0 回 (最大 3 連続)
+    連続トップなし：0 回 (最大 4 連続)
+    最大素点：▲6000点
+    最大獲得ポイント：▲57.8pt
+
+【平均収支】
+    全体：+3924.4点
+    連対時：+15246.2点
+    逆連対時：▲15700.0点
+    1着終了時：+22106.7点
+    2着終了時：+5890.9点
+    3着終了時：▲600.0点
+    4着終了時：▲21190.9点
+
+【役満和了】
+    国士無双： 1 回
+
+【その他】
+    ヤキトリ： 1 回
 </pre></div>
 </div>
 </div>
 </section>
 <section id="id8">
 <h3>直接対決サマリ詳細<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">対戦数にある勝敗の基準は対戦相手との着順で決定される。</div>
+<div class="line">自分が3着、相手が4着のゲームなら勝ちとなる。</div>
+</div>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">直接対決サマリ出力サンプル</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【直接対戦結果】
-    プレイヤー名： ひと
-    対戦相手：さる、いぬ
-    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-    特記：2ゲスト戦の結果を含む
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>直接対戦プレイヤー名：Player_007
+対戦相手：全員
+集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+特記事項：ゲスト置換なし(*：未登録プレイヤー)、2ゲスト戦の結果を含む
 
-[ ひと vs さる ]
-対戦数： xx 戦 xx 勝 xx 敗
-平均素点差： +xxxx点
-獲得ポイント合計(自分)： +xxx.xpt
-獲得ポイント合計(相手)： ▲xxx.xpt
-順位分布(自分)： xx-xx-xx-xx (x.xx)
-順位分布(相手)： xx-xx-xx-xx (x.xx)
+【Player_007 vs Player_027】
+    対戦数：1 戦 1 勝 0 敗 (100.00%)
+    平均素点差：+37200 点
+    獲得ポイント合計(自分)：+61.0pt
+    獲得ポイント合計(相手)：▲26.2pt
+    順位分布(自分)：1-0-0-0 (1.00)
+    順位分布(相手)：0-0-1-0 (3.00)
 
-[ ひと vs いぬ ]
-対戦数： xx 戦 xx 勝 xx 敗
-平均素点差： +xxxx点
-獲得ポイント合計(自分)： +xxx.xpt
-獲得ポイント合計(相手)： ▲xxx.xpt
-順位分布(自分)： xx-xx-xx-xx (x.xx)
-順位分布(相手)： xx-xx-xx-xx (x.xx)
+【Player_007 vs Player_019】
+    対戦数：22 戦 15 勝 7 敗 (68.18%)
+    平均素点差：+13200 点
+    獲得ポイント合計(自分)：+285.8pt
+    獲得ポイント合計(相手)：▲334.6pt
+    順位分布(自分)：8-8-1-5 (2.14)
+    順位分布(相手)：4-3-6-9 (2.91)
+
+【Player_007 vs Player_016】
+    対戦数：1 戦 0 勝 1 敗 (0.00%)
+    平均素点差：▲12200 点
+    獲得ポイント合計(自分)：▲43.7pt
+    獲得ポイント合計(相手)：▲21.5pt
+    順位分布(自分)：0-0-0-1 (4.00)
+    順位分布(相手)：0-0-1-0 (3.00)
+
+... 以下略 ...
 </pre></div>
 </div>
 </div>
