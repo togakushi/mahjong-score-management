@@ -183,10 +183,10 @@
 <section id="id4">
 <h3>集計データ抽出ルール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <div class="line-block">
-<div class="line">基本となるデータ抽出条件はルールセット単位となり、「ルール識別子」が抽出条件として指定されている。</div>
-<div class="line">「 <em>成績記録キーワード</em> 」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどのルールセットを使うかが定義されている。</div>
-<div class="line">異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「ルール識別子」が使用される。</div>
-<div class="line">同じルールセットを使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
+<div class="line">基本となるデータ抽出条件は <a class="reference internal" href="../../glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> 単位となり、「 <em>ルール識別子</em> 」が抽出条件として指定されている。</div>
+<div class="line">「 <em>成績記録キーワード</em> 」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどの <a class="reference internal" href="../../glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使うかが定義されている。</div>
+<div class="line">異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「 <em>ルール識別子</em> 」が使用される。</div>
+<div class="line">同じ <a class="reference internal" href="../../glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
 </div>
 <p>セパレート機能を有効にした場合、データの抽出条件に <strong>チャンネル識別子</strong> が追加され、集計コマンドを発行したチャンネルの <strong>チャンネル識別子</strong> を持つデータだけが集計対象となる。</p>
 <p>付与されるチャンネル識別子は「ヘルプ」機能で内容を確認できる。</p>
@@ -227,7 +227,7 @@
 </div>
 <div class="line-block">
 <div class="line">サービス設定のセパレート機能有効化は、Slack / Discord のデータを分ける。</div>
-<div class="line">同じルールセットの記録でもSlackで実行した集計コマンドの結果にDiscordから登録されたデータは含まれない。</div>
+<div class="line">同じ <a class="reference internal" href="../../glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録でもSlackで実行した集計コマンドの結果にDiscordから登録されたデータは含まれない。</div>
 </div>
 <p>該当サービスのすべてチャンネルでセパレート機能が有効になる。</p>
 <div class="admonition note">
@@ -255,7 +255,7 @@
 </div>
 </div>
 <p>チャンネル個別設定で使用するセクション名は「<strong>&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</strong> 」となる(変更不可)。</p>
-<p>チャンネルAで有効、チャンネルBは無効とし、同じルールセットの記録を集計する場合は以下のように集計される。</p>
+<p>チャンネルAで有効、チャンネルBは無効とし、同じ <a class="reference internal" href="../../glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録を集計する場合は以下のように集計される。</p>
 <dl class="simple">
 <dt><strong>チャンネルA</strong></dt><dd><ul class="simple">
 <li><p>集計コマンドの抽出条件に <strong>チャンネル識別子</strong> が追加される</p>
@@ -267,7 +267,7 @@
 </ul>
 </dd>
 <dt><strong>チャンネルB</strong></dt><dd><ul class="simple">
-<li><p>集計コマンドの抽出条件はルール識別子のみ</p>
+<li><p>集計コマンドの抽出条件は <em>ルール識別子</em> のみ</p>
 <ul>
 <li><p>チャンネルAで入力されたデータ：集計対象</p></li>
 <li><p>チャンネルBで入力されたデータ：集計対象</p></li>
@@ -487,7 +487,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.2.
-      Last updated on 2026-04-09.
+      Last updated on 2026-04-10.
     </div>
 
   </body>

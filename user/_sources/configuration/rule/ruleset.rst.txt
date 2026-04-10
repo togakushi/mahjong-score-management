@@ -62,7 +62,7 @@
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     - ``keywords`` が空欄のルールセットは参照専用となる
+     - ``keywords`` が空欄の `ルールセット` は参照専用となる
    * - :index:`remarks <pair: rule_set section; remarks>`
      - メモ記録ワード
      - | 文字列
@@ -90,7 +90,7 @@
    | ``rule_version`` は必須パラメータとなる。
    | ``rule_version`` が存在しない場合、セクション内のパラメータはすべて無視される。
 
-ルールセット定義ファイル内のルールセット
+`rule-config` 内の `ルールセット`
 
    ``rule_version`` が省略されている場合はセクション名が ``rule_version`` として登録される。
 

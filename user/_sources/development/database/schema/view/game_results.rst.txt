@@ -234,7 +234,7 @@ game_results
      - ``1`` = チーム同卓あり
    * - rule_version
      - result.rule_version
-     - ルール識別子を示す文字列
+     - *ルール識別子* を示す文字列
    * - mode
      - result.mode
      - 集計モード
