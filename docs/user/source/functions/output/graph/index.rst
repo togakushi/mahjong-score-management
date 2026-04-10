@@ -90,12 +90,36 @@
 - `common-argument`
 
 
+出力サンプル
+------------
+
 全体成績グラフ詳細
-------------------
+++++++++++++++++++
 
 各メンバーの通算ポイントの推移グラフを出力する。
 
 全員の通算ポイントが1つになる場合は横棒グラフに切り替わる。
+
+.. admonition:: 全体成績(折れ線グラフ)
+
+   .. image:: point_line_ggplot.png
+      :scale: 30%
+      :alt: 出力サンプル(ggplot)
+
+   .. image:: point_line_dark.png
+      :scale: 30%
+      :alt: 出力サンプル(dark_background)
+
+.. admonition:: 全体成績(棒グラフ)
+
+   .. image:: point_bar_ggplot.png
+      :scale: 30%
+      :alt: 出力サンプル(ggplot)
+
+   .. image:: point_bar_dark.png
+      :scale: 30%
+      :alt: 出力サンプル(dark_background)
+
 
 個人成績グラフ詳細
 ++++++++++++++++++

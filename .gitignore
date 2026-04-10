@@ -30,6 +30,7 @@ docs/dev/source/
 docs/dev/coverage/
 !docs/*/source/_static/**
 !docs/*/source/**/*.txt
+!docs/*/source/**/*.png
 
 !requirements.txt
 !files/**
