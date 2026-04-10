@@ -89,96 +89,28 @@
 ++++++++++++++++++
 
 | メンバー名の指定がない場合、集計期間内で記録されている全メンバーの通算ポイント順に結果を表示する。
-| ゲスト関連のオプションによって集計内容が変わるため、特記には集計条件が記載される。
+| `guest-option` のオプションによって集計内容が変わるため、特記には集計条件が記載される。
 
-.. code-block:: text
+.. literalinclude:: sample_usually.txt
    :caption: 全体成績サマリ出力サンプル（通常）
 
-   【成績サマリ】
-       検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-       最初のゲーム：yyyy/mm/dd HH:MM:SS
-       最後のゲーム：yyyy/mm/dd HH:MM:SS
-       総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
-       特記：ゲスト置換なし(※：未登録プレイヤー)
 
-   ## 名前 : 通算 (平均) / 順位分布 (平均) / トビ ##
-   ひと     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
-   いぬ     ： +xxx.x (+xx.x) / xx-xx-xx-xx (x.xx) / x
-   さる     ： +xx.x (+x.x) / xx-xx-xx-xx (x.xx) / x
-   とり     ： ▲xx.x ( ▲x.x) / xx-xx-xx-xx (x.xx) / x
-   おに(※) ： ▲xxx.x (▲xx.x) / xx-xx-xx-xx (x.xx) / x
-
-.. code-block:: text
+.. literalinclude:: sample_comparison.txt
    :caption: 全体成績サマリ出力サンプル（比較）
-
-   【成績サマリ】
-       検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-       最初のゲーム：yyyy/mm/dd HH:MM:SS
-       最後のゲーム：yyyy/mm/dd HH:MM:SS
-       総ゲーム回数： xxx 回 / トバされた人（延べ）： xx 人
-       特記：ゲスト置換なし(※：未登録プレイヤー)
-
-   ## 名前  ： 通算   / 点差 ##
-   ひと     ： +xxx.x / -----
-   いぬ     ： +xxx.x /  xx.x
-   さる     ：  +xx.x /  xx.x
-   とり     ：  ▲xx.x /  xx.x
-   おに(※) ： ▲xxx.x /  xx.x
 
 
 個人成績サマリ詳細
 ++++++++++++++++++
 
-.. code-block:: text
+.. literalinclude:: sample_individual_results.txt
    :caption: 個人成績サマリ出力サンプル
-
-   【個人成績】
-       プレイヤー名： ひと
-       集計範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
-       対戦数：xxx 戦 (xx 勝 xx 敗 xx 分)
-       通算ポイント： +xxx.x
-       平均ポイント： +x.x
-       平均順位： x.xx
-       1位： xx 回 (xx.xx%)
-       2位： xx 回 (xx.xx%)
-       3位： xx 回 (xx.xx%)
-       4位： xx 回 (xx.xx%)
-       トビ： xx 回 (x.xx%)
-       役満： xx 回 (x.xx%)
-       特記：2ゲスト戦の結果を含む
-
-   【座席データ】
-       # 席：順位分布(平順) / トビ / 役満 #
-       東家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-       南家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-       西家： xx-xx-xx-xx (x.xx) / x 回 / x 回
-       北家： xx-xx-xx-xx (x.xx) / x 回 / x 回
 
 
 直接対決サマリ詳細
 ++++++++++++++++++
 
-.. code-block:: text
+| 対戦数にある勝敗の基準は対戦相手との着順で決定される。
+| 自分が3着、相手が4着のゲームなら勝ちとなる。
+
+.. literalinclude:: sample_direct_confrontation.txt
    :caption: 直接対決サマリ出力サンプル
-
-   【直接対戦結果】
-       プレイヤー名： ひと
-       対戦相手：さる、いぬ
-       検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-       特記：2ゲスト戦の結果を含む
-
-   [ ひと vs さる ]
-   対戦数： xx 戦 xx 勝 xx 敗
-   平均素点差： +xxxx点
-   獲得ポイント合計(自分)： +xxx.xpt
-   獲得ポイント合計(相手)： ▲xxx.xpt
-   順位分布(自分)： xx-xx-xx-xx (x.xx)
-   順位分布(相手)： xx-xx-xx-xx (x.xx)
-
-   [ ひと vs いぬ ]
-   対戦数： xx 戦 xx 勝 xx 敗
-   平均素点差： +xxxx点
-   獲得ポイント合計(自分)： +xxx.xpt
-   獲得ポイント合計(相手)： ▲xxx.xpt
-   順位分布(自分)： xx-xx-xx-xx (x.xx)
-   順位分布(相手)： xx-xx-xx-xx (x.xx)

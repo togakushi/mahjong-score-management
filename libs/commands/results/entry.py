@@ -34,7 +34,7 @@ def main(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.RESULTS
     g.params = dictutil.placeholder(g.cfg.results, m)
 
-    if g.params.verbose and g.params.competition_list:
+    if g.params.versus_matrix and g.params.competition_list:
         versus.aggregation(m)  # 直接対戦
     elif g.params.score_comparisons:
         summary.difference(m)  # 成績サマリ(差分モード)
