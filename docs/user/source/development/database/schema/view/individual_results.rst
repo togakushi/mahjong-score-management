@@ -81,7 +81,7 @@ individual_results
      - 集計対象年月日(YYYY-MM-DD)
    * - rule_version
      - result.rule_version
-     - ルール識別子を示す文字列
+     - *ルール識別子* を示す文字列
    * - comment
      - result.comment
      - ゲームコメント

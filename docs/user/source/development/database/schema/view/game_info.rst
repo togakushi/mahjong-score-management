@@ -28,7 +28,7 @@ game_info
      - ゲーム内に同じチームのメンバーが存在すれば ``1``
    * - rule_version
      - result.rule_version
-     - ルール識別子を示す文字列
+     - *ルール識別子* を示す文字列
    * - comment
      - result.comment
      - ゲームコメント

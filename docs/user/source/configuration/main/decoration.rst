@@ -142,7 +142,7 @@ custom_messageセクション
      - 制限された機能にアクセスしたときに表示するメッセージ
      -
    * - :index:`rule_mismatch <pair: custom_message section; rule_mismatch>`
-     - 集計モードと指定ルールセットのモードに食い違いが発生している場合
+     - 集計モードと指定 `ルールセット` のモードに食い違いが発生している場合
      -
 
 

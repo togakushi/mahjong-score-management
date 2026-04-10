@@ -39,4 +39,4 @@ words
    * - rule_version
      -
      - TEXT
-     - 使用するルールセット
+     - 使用する `ルールセット`
