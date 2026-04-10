@@ -257,6 +257,7 @@ team_remove
 
 team_list
 +++++++++
+
 :概要: チーム名と所属メンバーを表示する
 :書式: ``/commandname team_list``
 :引数: なし
