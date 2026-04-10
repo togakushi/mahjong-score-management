@@ -9,6 +9,10 @@
 成績管理
 --------
 
+.. _slash_commands-results:
+.. index::
+   pair: slash commands; results
+
 results
 +++++++
 
@@ -32,6 +36,11 @@ results
 :補足説明: | 登録名の指定を省略した場合は、検索範囲内の成績サマリの出力。
            | 登録名を指定すると、対象メンバーの個人成績（2ゲスト戦含む）を出力。
 
+
+.. _slash_commands-ranking:
+.. index::
+   pair: slash commands; ranking
+
 ranking
 +++++++
 
@@ -50,6 +59,10 @@ ranking
 :デフォルトエイリアス: ランキング
 :補足説明:
 
+
+.. _slash_commands-graph:
+.. index::
+   pair: slash commands; graph
 
 graph
 +++++
@@ -73,6 +86,10 @@ graph
            | 複数のメンバーが指定された場合、指定されたメンバーのみを対象にグラフを生成する。
            | 単独でメンバーが指定された場合、個人成績(獲得順位、平均順位推移)グラフを追加で生成する。
 
+
+.. _slash_commands-report:
+.. index::
+   pair: slash commands; report
 
 report
 ++++++
@@ -98,6 +115,10 @@ report
 データベース関連
 ----------------
 
+.. _slash_commands-check:
+.. index::
+   pair: slash commands; check
+
 check
 +++++
 
@@ -107,6 +128,10 @@ check
 :デフォルトエイリアス:
 :補足説明:
 
+
+.. _slash_commands-download:
+.. index::
+   pair: slash commands; download
 
 download
 ++++++++
@@ -121,6 +146,11 @@ download
 メンバー管理
 ------------
 
+.. _slash_commands-member:
+.. index::
+   pair: slash commands; member
+   pair: slash commands; userlist
+
 member / userlist
 +++++++++++++++++
 
@@ -131,6 +161,11 @@ member / userlist
                        - member_list
 :補足説明:
 
+
+.. _slash_commands-member-add-del:
+.. index::
+   pair: slash commands; add
+   pair: slash commands; del
 
 add / del
 +++++++++
@@ -157,6 +192,10 @@ add / del
 チーム管理
 ----------
 
+.. _slash_commands-team_create:
+.. index::
+   pair: slash commands; team_create
+
 team_create
 +++++++++++
 
@@ -167,6 +206,10 @@ team_create
 :補足説明:
 
 
+.. _slash_commands-team_del:
+.. index::
+   pair: slash commands; team_del
+
 team_del
 ++++++++
 
@@ -176,6 +219,10 @@ team_del
 :デフォルトエイリアス:
 :補足説明: 所属していたメンバーは自動的に未所属に更新される
 
+
+.. _slash_commands-team_add:
+.. index::
+   pair: slash commands; team_add
 
 team_add
 ++++++++
@@ -190,6 +237,10 @@ team_add
            - 別チームに所属している場合、新しい情報で更新される
 
 
+.. _slash_commands-team_remove:
+.. index::
+   pair: slash commands; team_remove
+
 team_remove
 +++++++++++
 
@@ -200,6 +251,10 @@ team_remove
 :補足説明:
 
 
+.. _slash_commands-team_list:
+.. index::
+   pair: slash commands; team_list
+
 team_list
 +++++++++
 :概要: チーム名と所属メンバーを表示する
@@ -208,6 +263,10 @@ team_list
 :デフォルトエイリアス:
 :補足説明:
 
+
+.. _slash_commands-team_clear:
+.. index::
+   pair: slash commands; team_clear
 
 team_clear
 ++++++++++
