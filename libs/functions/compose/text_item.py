@@ -123,6 +123,10 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[st
             starttime = ExtDt(g.params.starttime).format(Format.YMDHMS)
             endtime = ExtDt(g.params.endtime).format(Format.YMDHMS)
 
+    if g.params.anonymous:
+        starttime = "yyyy/mm/dd HH:MM"
+        endtime = "yyyy/mm/dd HH:MM"
+
     match kind:
         case "list":
             return [starttime, endtime]
