@@ -59,3 +59,22 @@
 平均順位
    獲得着順をゲーム数で割った平均値。
    2.5が基準。小さいほうが優秀。
+
+
+出力サンプル
+------------
+
+.. admonition:: 個人ランキング
+   :collapsible: closed
+
+   .. literalinclude:: sample_ranking_individual.txt
+
+.. admonition:: チームランキング
+   :collapsible: closed
+
+   .. literalinclude:: sample_ranking_team.txt
+
+.. admonition:: チームレーティング
+   :collapsible: closed
+
+   .. literalinclude:: sample_rating_team.txt
