@@ -100,7 +100,7 @@
 
 全員の通算ポイントが1つになる場合は横棒グラフに切り替わる。
 
-.. admonition:: 全体成績(折れ線グラフ)
+.. admonition:: ポイント推移(折れ線グラフ)
 
    .. compound::
 
@@ -112,7 +112,7 @@
          :scale: 30%
          :alt: 出力サンプル(dark_background)
 
-.. admonition:: 全体成績(棒グラフ)
+.. admonition:: 通算ポイント(棒グラフ)
 
    .. compound::
 
@@ -121,6 +121,18 @@
          :alt: 出力サンプル(ggplot)
 
       .. image:: point_bar_dark.png
+         :scale: 30%
+         :alt: 出力サンプル(dark_background)
+
+.. admonition:: 順位変動(折れ線グラフ)
+
+   .. compound:: 日次集約
+
+      .. image:: rank_ggplot.png
+         :scale: 30%
+         :alt: 出力サンプル(ggplot)
+
+      .. image:: rank_dark.png
          :scale: 30%
          :alt: 出力サンプル(dark_background)
 
