@@ -28,12 +28,12 @@ settingセクション
      - 最初に定義された `ルールセット` の *ルール識別子*
      -
    * - :index:`separate <pair: setting section; separate>`
-     - スコア入力元(チャンネル識別子)単位の集計
+     - スコア入力元(チ *ャンネル識別子* )単位の集計
      - 真偽値
      - False
-     - :True: 集計条件にチャンネル識別子を追加
+     - :True: 集計条件に *チャンネル識別子* を追加
    * - :index:`channel_id <pair: setting section; channel_id>`
-     - チャンネル識別子を上書きする
+     - *チャンネル識別子* を上書きする
      - 文字列
      - None
      -
