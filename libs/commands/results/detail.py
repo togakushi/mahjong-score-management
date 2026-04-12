@@ -230,7 +230,7 @@ def comparison(m: "MessageParserProtocol") -> None:
 
     if g.params.anonymous:
         mapping_dict = formatter.anonymous_mapping(stats_df.index.to_list())
-        stats_df.index = mapping_dict.values()
+        stats_df.index = list(mapping_dict.values())
 
     # 非表示項目
     stats_df = stats_df.drop(columns=[x for x in g.cfg.rule.dropitems(g.params.rule_version) if x in stats_df.columns.to_list()])
