@@ -4,5 +4,5 @@
 .. toctree::
    :maxdepth: 2
 
-   argument_keyword
-   command
+   common_argument
+   slash_command
