@@ -161,8 +161,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>ランキング生成<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+  <section id="function-ranking">
+<span id="id1"></span><h1>ランキング生成<a class="headerlink" href="#function-ranking" title="Link to this heading">¶</a></h1>
 <p>記録された成績データを集計し、ランキングを作成する。</p>
 <section id="id2">
 <h2>構文<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
@@ -197,43 +197,49 @@
 <section id="id4">
 <h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../appendix/argument_keyword.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="../../appendix/common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
 </ul>
 </section>
 <section id="id5">
 <h2>項目説明<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <section id="id6">
 <h3>ランキング<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>通算ポイント</dt><dd><p>ウマ、オカを足して最終得点を確定させて算出したポイントの合計。</p>
+<dl class="glossary">
+<dt id="term-0">通算ポイント<a class="headerlink" href="#term-0" title="Link to this term">¶</a></dt><dd><p>ウマ、オカを足して最終得点を確定させて算出したポイントの合計。</p>
 </dd>
-<dt>平均ポイント</dt><dd><p>通算ポイントをゲーム数で割ったもの。</p>
+<dt id="term-1">平均ポイント<a class="headerlink" href="#term-1" title="Link to this term">¶</a></dt><dd><p>通算ポイントをゲーム数で割ったもの。</p>
 </dd>
-<dt>平均収支</dt><dd><p>各ゲームの「素点-配給原点」の平均点を出したもの。</p>
+<dt id="term-2">平均収支<a class="headerlink" href="#term-2" title="Link to this term">¶</a></dt><dd><p>各ゲームの「素点-配給原点」の平均点を出したもの。</p>
 </dd>
-<dt>トップ率</dt><dd><p>トップ（1位）を取った回数/ゲーム数。</p>
+<dt id="term-3">トップ率<a class="headerlink" href="#term-3" title="Link to this term">¶</a></dt><dd><p>トップ（1位）を取った回数/ゲーム数。</p>
 </dd>
-<dt>連対率</dt><dd><p>連対（1位と2位）を取った回数/ゲーム数。
-順位点がプラスの着順を取ってる率。</p>
+<dt id="term-4">連対率<a class="headerlink" href="#term-4" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">連対（1位と2位）を取った回数/ゲーム数。</div>
+<div class="line">順位点がプラスの着順を取ってる率。</div>
+</div>
 </dd>
-<dt>ラス回避率</dt><dd><p>4着以外（1位と2と3位）を取った回数/ゲーム数。</p>
+<dt id="term-5">ラス回避率<a class="headerlink" href="#term-5" title="Link to this term">¶</a></dt><dd><p>4着以外（1位と2と3位）を取った回数/ゲーム数。</p>
 </dd>
-<dt>トビ率</dt><dd><p>素点がマイナスになった率。
-トビにくいプレイヤーが上位。</p>
+<dt id="term-6">トビ率<a class="headerlink" href="#term-6" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">素点がマイナスになった率。</div>
+<div class="line">トビにくいプレイヤーが上位。</div>
+</div>
 </dd>
-<dt>平均順位</dt><dd><p>獲得着順をゲーム数で割った平均値。
-2.5が基準。小さいほうが優秀。</p>
+<dt id="term-7">平均順位<a class="headerlink" href="#term-7" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">獲得着順をゲーム数で割った平均値。</div>
+<div class="line">2.5が基準。小さいほうが優秀。</div>
+</div>
 </dd>
 </dl>
 </section>
 <section id="id7">
 <h3>レーティング<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>レート</dt><dd><p>獲得順位から計算したレーティング。初期値は1500。</p>
+<dl class="simple glossary">
+<dt id="term-8">レート<a class="headerlink" href="#term-8" title="Link to this term">¶</a></dt><dd><p>獲得順位から計算したレーティング。初期値は1500。</p>
 </dd>
-<dt>順位偏差</dt><dd><p>集計集団の中の平均順位の偏差。</p>
+<dt id="term-9">順位偏差<a class="headerlink" href="#term-9" title="Link to this term">¶</a></dt><dd><p>集計集団の中の平均順位の偏差。</p>
 </dd>
-<dt>得点偏差</dt><dd><p>集計集団の中の平均素点(ゲーム終了時点の持ち点)の偏差。</p>
+<dt id="term-10">得点偏差<a class="headerlink" href="#term-10" title="Link to this term">¶</a></dt><dd><p>集計集団の中の平均素点(ゲーム終了時点の持ち点)の偏差。</p>
 </dd>
 </dl>
 </section>
@@ -807,7 +813,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.2.
-      Last updated on 2026-04-12.
+      Last updated on 2026-04-15.
     </div>
 
   </body>
