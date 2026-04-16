@@ -27,7 +27,7 @@
      - report
      - help
      - 備考
-   * - commandword
+   * - _`commandword`
      - 機能を呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
@@ -38,8 +38,8 @@
      - |:/:|
      - |:/:|
      - カンマ区切りで複数ワードの設定が可能
-   * - command_suffix
-     - *成績記録キーワード* と ``command_suffix`` の組み合わせを機能を呼び出すキーワードとする
+   * - _`command_suffix`
+     - *成績記録キーワード* と `command_suffix <command_suffix>` の組み合わせを機能を呼び出すキーワードとする
      - | 文字列
        | (カンマ区切り)
      - 空欄
@@ -171,17 +171,18 @@
      -
      - 集計ゲーム数 × ``stipulated_rate`` （切り上げ）+ 1
 
+..
 
-.. _commandword:
+.. _function-call-keyword:
 
 機能呼び出しキーワード
 ----------------------
 
 各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。
 
-| ``commandword`` 、 ``command_suffix`` の定義状況によって登録される呼び出しキーワードが変化する。
-| ``commandword`` の定義が優先的に登録される。
-| ``command_suffix`` の定義があれば、 `ルールセット` の ``keywords`` と ``command_suffix`` の組み合わせが登録される。
+| `commandword <commandword>` 、 `command_suffix <command_suffix>` の定義状況によって登録される呼び出しキーワードが変化する。
+| `commandword <commandword>` の定義が優先的に登録される。
+| `command_suffix <command_suffix>` の定義があれば、 `rule-set` の `keywords <keywords>` と `command_suffix <command_suffix>` の組み合わせが登録される。
 
 .. list-table::
    :width: 100%
@@ -200,19 +201,19 @@
    * - |:o:|
      - |:x:|
      - |:x:|
-     - commandword
+     - `commandword <commandword>`
    * - |:o:|
      - |:x:|
      - |:o:|
-     - commandword
+     - `commandword <commandword>`
    * - |:o:|
      - |:o:|
      - |:x:|
-     - commandword
+     - `commandword <commandword>`
    * - |:o:|
      - |:o:|
      - |:o:|
-     - commandword
+     - `commandword <commandword>`
    * - |:x:|
      - |:x:|
      - |:o:|
@@ -224,7 +225,7 @@
    * - |:x:|
      - |:o:|
      - |:o:|
-     - ``keywords`` + ``command_suffix``
+     - `keywords <keywords>` + `command_suffix <command_suffix>`
 
 
 パラメータの評価順序

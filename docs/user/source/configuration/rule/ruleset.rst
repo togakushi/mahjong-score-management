@@ -13,7 +13,9 @@
      - 型
      - 省略時
      - 備考
-   * - :index:`rule_version <pair: rule_set section; rule_version>`
+   * - .. _rule_version:
+
+       :index:`rule_version <pair: rule_set section; rule_version>`
      - ルール識別子
      - 文字列
      - `undefined-behavior` 参照
@@ -57,12 +59,14 @@
      - 数値(int)
      - 1
      - `regulations-section` で使用
-   * - :index:`keywords <pair: rule_set section; keywords>`
+   * - .. _keywords:
+
+       :index:`keywords <pair: rule_set section; keywords>`
      - 成績記録キーワード
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     - ``keywords`` が空欄の `ルールセット` は参照専用となる
+     - `keywords <keywords>` が空欄の `ルールセット` は参照専用となる
    * - :index:`remarks <pair: rule_set section; remarks>`
      - メモ記録ワード
      - | 文字列
@@ -76,6 +80,8 @@
      - 空欄
      - カンマ区切りで複数指定可
 
+..
+
 | セクション内のキーが省略された場合はDEFAULTセクションに定義している値がセットされる。
 | DEFAULTセクションでの定義がない場合は上記表の通りとなる。
 
@@ -87,12 +93,12 @@
 
 メイン設定ファイル内の「 `mahjong-section` 」
 
-   | ``rule_version`` は必須パラメータとなる。
-   | ``rule_version`` が存在しない場合、セクション内のパラメータはすべて無視される。
+   | `rule_version <rule_version>` は必須パラメータとなる。
+   | `rule_version <rule_version>` が存在しない場合、セクション内のパラメータはすべて無視される。
 
 `rule-config` 内の `ルールセット`
 
-   ``rule_version`` が省略されている場合はセクション名が ``rule_version`` として登録される。
+   `rule_version <rule_version>` が省略されている場合はセクション名が `rule_version <rule_version>` として登録される。
 
 .. important::
    セクション名及びキー名の半角英字はすべて小文字として扱われる。
@@ -121,7 +127,7 @@
      - ``remarks`` の内容が登録される
    * - |:x:|
      - |:o:|
-     - ``keywords`` をプレフィックス、 ``remarks_suffix`` をサフィックスとした組み合わせが登録される
+     - `keywords <keywords>` をプレフィックス、 ``remarks_suffix`` をサフィックスとした組み合わせが登録される
    * - |:o:|
      - |:o:|
      - ``remarks`` の内容が登録される

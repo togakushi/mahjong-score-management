@@ -12,7 +12,7 @@ mahjongセクション
 | `ルールセット` を定義するセクション。
 | 設定可能なパラメータは `rule-set` を参照。
 
-このセクションに ``rule_version`` が含まれない場合は、 `ルールセット` として扱われない。
+このセクションに `rule_version <rule_version>` が含まれない場合は、 `ルールセット` として扱われない。
 
 `mahjong-section` はオプション扱いのセクションであり、省略可能となる。
 
@@ -25,13 +25,13 @@ mahjongセクション
 ==============
 
 | ゲーム結果の登録時に用いられる *成績記録キーワード* と *ルール識別子* はマッピングテーブルによって紐付けられる。
-| `ルールセット` で定義した ``keywords`` と ``rule_version`` の組み合わせでマッピングが生成されるが、keyword_mappingセクションで自由に組み合わせを追加できる。
+| `rule-set` で定義した `keywords <keywords>` と `rule_version <rule_version>` の組み合わせでマッピングが生成されるが、 `keyword_mapping-section` で自由に組み合わせを追加できる。
 
-``keywords`` の定義がない `ルールセット` はマッピングテーブルに存在しないため、記録に用いることができない。
+`keywords <keywords>` の定義がない `ルールセット` はマッピングテーブルに存在しないため、記録に用いることができない。
 
 .. tip::
-   | ``keywords`` は複数定義できるので、マッピングテーブルに追加するだけなら ``keywords`` を増やせばよい。
-   | keyword_mappingセクションで追加した *成績記録キーワード* は `commandword` に使用されない。
+   | `keywords <keywords>` は複数定義できるので、マッピングテーブルに追加するだけなら `keywords <keywords>` を増やせばよい。
+   | `keyword_mapping-section` で追加した *成績記録キーワード* は `function-call-keyword` に使用されない。
 
 
 .. _keyword_mapping-section:

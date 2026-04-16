@@ -64,7 +64,7 @@ channel_config について
 
 `custom_message-section` が定義されていればメイン設定の内容を上書き、未定義時はメイン設定の値が引き継がれる。
 
-.. important:: メイン設定の ``commandword`` で指定されているキーワードは上書きできない。
+.. important:: メイン設定の `commandword <commandword>` で指定されているキーワードは上書きできない。
 
 [^1]: ``channel_id`` で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は ``<サービス名>_<チャンネルID>`` となる。
 
