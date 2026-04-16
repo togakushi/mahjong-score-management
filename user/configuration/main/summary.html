@@ -65,7 +65,7 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
-<li><a class="reference internal" href="#commandword">機能呼び出しキーワード</a></li>
+<li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
 <li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>
@@ -188,7 +188,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>commandword</p></td>
+<tr class="row-even"><td><p><span class="target" id="commandword">commandword</span></p></td>
 <td><p>機能を呼び出すキーワード</p></td>
 <td><div class="line-block">
 <div class="line">文字列</div>
@@ -203,8 +203,8 @@
 <td><p>✔</p></td>
 <td><p>カンマ区切りで複数ワードの設定が可能</p></td>
 </tr>
-<tr class="row-odd"><td><p>command_suffix</p></td>
-<td><p><em>成績記録キーワード</em> と <code class="docutils literal notranslate"><span class="pre">command_suffix</span></code> の組み合わせを機能を呼び出すキーワードとする</p></td>
+<tr class="row-odd"><td><p><span class="target" id="command-suffix">command_suffix</span></p></td>
+<td><p><em>成績記録キーワード</em> と <a class="reference internal" href="#command-suffix"><span class="std std-ref">command_suffix</span></a> の組み合わせを機能を呼び出すキーワードとする</p></td>
 <td><div class="line-block">
 <div class="line">文字列</div>
 <div class="line">(カンマ区切り)</div>
@@ -360,13 +360,13 @@
 </tr>
 </tbody>
 </table>
-<section id="commandword">
-<span id="id2"></span><h2>機能呼び出しキーワード<a class="headerlink" href="#commandword" title="Link to this heading">¶</a></h2>
+<section id="function-call-keyword">
+<span id="id2"></span><h2>機能呼び出しキーワード<a class="headerlink" href="#function-call-keyword" title="Link to this heading">¶</a></h2>
 <p>各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">commandword</span></code> 、 <code class="docutils literal notranslate"><span class="pre">command_suffix</span></code> の定義状況によって登録される呼び出しキーワードが変化する。</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">commandword</span></code> の定義が優先的に登録される。</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">command_suffix</span></code> の定義があれば、 <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の <code class="docutils literal notranslate"><span class="pre">keywords</span></code> と <code class="docutils literal notranslate"><span class="pre">command_suffix</span></code> の組み合わせが登録される。</div>
+<div class="line"><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a> 、 <a class="reference internal" href="#command-suffix"><span class="std std-ref">command_suffix</span></a> の定義状況によって登録される呼び出しキーワードが変化する。</div>
+<div class="line"><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a> の定義が優先的に登録される。</div>
+<div class="line"><a class="reference internal" href="#command-suffix"><span class="std std-ref">command_suffix</span></a> の定義があれば、 <a class="reference internal" href="../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> の <a class="reference internal" href="../rule/ruleset.html#keywords"><span class="std std-ref">keywords</span></a> と <a class="reference internal" href="#command-suffix"><span class="std std-ref">command_suffix</span></a> の組み合わせが登録される。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -395,22 +395,22 @@
 <tr class="row-odd"><td><p>⭕</p></td>
 <td><p>❌</p></td>
 <td><p>❌</p></td>
-<td><p>commandword</p></td>
+<td><p><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>⭕</p></td>
 <td><p>❌</p></td>
 <td><p>⭕</p></td>
-<td><p>commandword</p></td>
+<td><p><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>⭕</p></td>
 <td><p>⭕</p></td>
 <td><p>❌</p></td>
-<td><p>commandword</p></td>
+<td><p><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>⭕</p></td>
 <td><p>⭕</p></td>
 <td><p>⭕</p></td>
-<td><p>commandword</p></td>
+<td><p><a class="reference internal" href="#commandword"><span class="std std-ref">commandword</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>❌</p></td>
 <td><p>❌</p></td>
@@ -425,7 +425,7 @@
 <tr class="row-odd"><td><p>❌</p></td>
 <td><p>⭕</p></td>
 <td><p>⭕</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">keywords</span></code> + <code class="docutils literal notranslate"><span class="pre">command_suffix</span></code></p></td>
+<td><p><a class="reference internal" href="../rule/ruleset.html#keywords"><span class="std std-ref">keywords</span></a> + <a class="reference internal" href="#command-suffix"><span class="std std-ref">command_suffix</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -465,7 +465,7 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
-<li><a class="reference internal" href="#commandword">機能呼び出しキーワード</a></li>
+<li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
 <li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>
@@ -551,7 +551,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.2.
-      Last updated on 2026-04-15.
+      Last updated on 2026-04-16.
     </div>
 
   </body>

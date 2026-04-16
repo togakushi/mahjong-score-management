@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>メンバーとチームの管理 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャンネル追加設定ファイル &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="memberセクション" href="member.html" />
-    <link rel="prev" title="成績管理" href="../summary.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="ルール設定ファイル" href="../../rule/index.html" />
+    <link rel="prev" title="standard_ioセクション" href="standard_io.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -62,19 +62,33 @@
     </select>
 </label>
   <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">チャンネル追加設定ファイル</a><ul>
+<li><a class="reference internal" href="#id2">パラメータのマージ</a><ul>
+<li><a class="reference internal" href="#id3">設定優先順序</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">メッセージカスタマイズ</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../summary.html"
-                          title="previous chapter">成績管理</a></p>
+    <p class="topless"><a href="standard_io.html"
+                          title="previous chapter">standard_ioセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="member.html"
-                          title="next chapter">memberセクション</a></p>
+    <p class="topless"><a href="../../rule/index.html"
+                          title="next chapter">ルール設定ファイル</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/management/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/integrations/channel_addition.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -97,10 +111,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="member.html" title="memberセクション"
+          <a href="../../rule/index.html" title="ルール設定ファイル"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../summary.html" title="成績管理"
+          <a href="standard_io.html" title="standard_ioセクション"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -113,8 +127,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">メンバーとチームの管理</a></li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">サービス別設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">チャンネル追加設定ファイル</a></li>
                 <li class="right">
                     
 
@@ -144,15 +159,47 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="index-0">
-<span id="id1"></span><h1>メンバーとチームの管理<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h1>
-<p>メンバー/チームの登録上限数、文字数制限などを設ける。</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="member.html">memberセクション</a></li>
-<li class="toctree-l1"><a class="reference internal" href="team.html">teamセクション</a></li>
-</ul>
+  <section id="channel-addition">
+<span id="id1"></span><h1>チャンネル追加設定ファイル<a class="headerlink" href="#channel-addition" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">channel_config</span></code> で指定した設定ファイルを追加で読み込む。</p>
+<section id="id2">
+<h2>パラメータのマージ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> で定義している以下のセクションのパラメータはマージされる。</div>
+<div class="line">それぞれのファイルに記述されている同名のセクションは、まとめてひとつのセクションとして扱われる。</div>
 </div>
+<ul class="simple">
+<li><p>setting</p></li>
+<li><p>results</p></li>
+<li><p>graph</p></li>
+<li><p>ranking</p></li>
+<li><p>report</p></li>
+</ul>
+<section id="id3">
+<h3>設定優先順序<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>各パラメータは下記の順に探索され、最後に見つかった値が設定値として採用される。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> の各セクションのパラメータ</p></li>
+<li><p><a class="reference internal" href="#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> の各セクションのパラメータ</p></li>
+</ol>
+<p><a class="reference internal" href="#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> で定義されていないパラメータは <a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> のパラメータを引き継ぐ。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> の各セクションの <a class="reference internal" href="../summary.html#commandword"><span class="std std-ref">commandword</span></a> で指定されているキーワードは上書きできない。</p>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>メッセージカスタマイズ<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> での <a class="reference internal" href="../decoration.html#custom-message-section"><span class="std std-ref">custom_messageセクション</span></a> の定義は <a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> の内容をすべて上書きする。</div>
+<div class="line">未定義時は <a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> の内容が引き継がれる。</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>一部だけの変更ではないことに注意。</p>
+</div>
+</section>
 </section>
 
 
@@ -163,19 +210,33 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">チャンネル追加設定ファイル</a><ul>
+<li><a class="reference internal" href="#id2">パラメータのマージ</a><ul>
+<li><a class="reference internal" href="#id3">設定優先順序</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">メッセージカスタマイズ</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../summary.html"
-                          title="previous chapter">成績管理</a></p>
+    <p class="topless"><a href="standard_io.html"
+                          title="previous chapter">standard_ioセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="member.html"
-                          title="next chapter">memberセクション</a></p>
+    <p class="topless"><a href="../../rule/index.html"
+                          title="next chapter">ルール設定ファイル</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/management/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/integrations/channel_addition.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -198,10 +259,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="member.html" title="memberセクション"
+          <a href="../../rule/index.html" title="ルール設定ファイル"
              >next</a> |</li>
         <li class="right" >
-          <a href="../summary.html" title="成績管理"
+          <a href="standard_io.html" title="standard_ioセクション"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -215,7 +276,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">メンバーとチームの管理</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" >サービス別設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">チャンネル追加設定ファイル</a></li>
                 <li class="right">
                     
 
