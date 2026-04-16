@@ -19,3 +19,4 @@
    discord
    web
    standard_io
+   channel_addition
