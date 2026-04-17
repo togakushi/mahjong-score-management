@@ -1,4 +1,6 @@
-.. _table-rule:
+.. index::
+   pair: table; rule
+   :name: table-rule
 
 rule
 ====

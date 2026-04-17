@@ -1,4 +1,6 @@
-.. _view-individual_results:
+.. index::
+   pair: view; individual_results
+   :name: view-individual_results
 
 individual_results
 ==================

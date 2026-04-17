@@ -1,4 +1,6 @@
-.. _view-regulations:
+.. index::
+   pair: view; regulations
+   :name: view-regulations
 
 regulations
 ===========

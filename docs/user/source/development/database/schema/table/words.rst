@@ -1,4 +1,6 @@
-.. _table-words:
+.. index::
+   pair: table; words
+   :name: table-words
 
 words
 =====
