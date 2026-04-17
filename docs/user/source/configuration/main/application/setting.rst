@@ -16,7 +16,9 @@ settingセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`rule_config <pair: setting section; rule_config>`
+   * - .. _rule_config:
+
+       :index:`rule_config <pair: setting section; rule_config>`
      - `rule-config` のパスを指定
      - | 文字列
        | (ファイルパス)
