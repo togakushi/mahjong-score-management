@@ -78,7 +78,7 @@ class AdapterAPI(APIInterface):
         header_text = ""
         if m.post.headline:
             header_data, header_option = m.post.headline
-            header_title = header_option.title
+            header_title = f"{header_option.print_title}\n"
             if isinstance(header_data, str):
                 header_text = header_data
         if not m.post.message:  # メッセージなし
