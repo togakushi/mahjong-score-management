@@ -30,7 +30,7 @@ Slackセットアップ手順
 
      - **Command** (任意)
 
-       - config.iniと合わせる
+       - ``config.ini`` と合わせる
        - 既存のコマンドと被らないように
 
      - **Short Description** (任意)
@@ -46,10 +46,10 @@ Slackセットアップ手順
 
      - **[Add Bot User Event]**
 
-       - *app_home_opened* ※Home Appを利用する場合のみ
-       - *message.channels*
-       - *message.groups* ※プライベートチャンネルで利用する場合のみ
-       - *message.im* ※DMから機能呼び出しキーワードを利用する場合のみ
+       - app_home_opened ※Home Appを利用する場合のみ
+       - message.channels
+       - message.groups ※プライベートチャンネルで利用する場合のみ
+       - message.im ※DMから機能呼び出しキーワードを利用する場合のみ
 
      - **[Save Changes]**
 
@@ -61,11 +61,11 @@ Slackセットアップ手順
 
    - **Bot Token Scopes**
 
-     - *chat:write*
-     - *files:write*
-     - *im:write*
-     - *reactions:read*
-     - *reactions:write*
+     - chat:write
+     - files:write
+     - im\:write
+     - reactions:read
+     - reactions:write
 
    足りないものは追加する。
 
@@ -118,7 +118,7 @@ Slackセットアップ手順
 
 #. チャンネルにアプリを登録
 
-   **Integrations** -> ** Add apps**
+   **Integrations** -> **Add apps**
 
    忘れがち。
 
