@@ -83,7 +83,9 @@ settingセクション
        | (ディレクトリ名)
      - ``work``
      - 画像ファイル、PDFファイルの保存先
-   * - :index:`database_file <pair: setting section; database_file>`
+   * - .. _database_file:
+
+       :index:`database_file <pair: setting section; database_file>`
      - 成績を記録するファイル名 [2]_
      - | 文字列
        | (ファイルパス)

@@ -63,10 +63,10 @@
 データベースファイル切替
 ------------------------
 
-``channel_config`` でメイン設定の ``database_file`` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
+``channel_config`` でメイン設定の `database_file <database_file>` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
 
 .. warning::
-   以下の機能はDB切替実装が完了していないため、メイン設定にある ``database_file`` が利用される。
+   以下の機能はDB切替実装が完了していないため、メイン設定にある `database_file <database_file>` が利用される。
 
    - homeタブからの操作
    - `dbtools.py` によるDBメンテナンス
