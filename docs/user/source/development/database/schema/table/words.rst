@@ -5,7 +5,7 @@
 words
 =====
 
-``remarks`` に記録された単語の種別。祝儀や卓外ペナルティなど、ポイントに影響がある単語を登録。\
+`table-remarks` に記録された単語の種別。祝儀や卓外ペナルティなど、ポイントに影響がある単語を登録。\
 単語の定義は設定ファイル内の `regulations-section` で行う。
 
 
@@ -24,7 +24,7 @@ words
    * - word
      - NOT NULL
      - TEXT
-     - ``remarks`` で使用される単語
+     - `table-remarks` で使用される単語
    * - type
      -
      - INTEGER

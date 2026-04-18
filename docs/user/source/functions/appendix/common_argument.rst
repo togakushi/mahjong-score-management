@@ -32,7 +32,7 @@
      - 追加される日付
      - 備考
    * - .. option:: 当日
-     - ``time_adjust`` を考慮した時間の日付
+     - `time_adjust <time_adjust>` を考慮した時間の日付
      -
    * - .. option:: 今日
      - 今日の日付
