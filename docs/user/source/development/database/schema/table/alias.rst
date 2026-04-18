@@ -1,4 +1,6 @@
-.. _table-alias:
+.. index::
+   pair: table; alias
+   :name: table-alias
 
 alias
 =====

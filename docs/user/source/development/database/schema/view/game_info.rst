@@ -1,4 +1,6 @@
-.. _view-game_info:
+.. index::
+   pair: view; team
+   :name: view-game_info
 
 game_info
 =========

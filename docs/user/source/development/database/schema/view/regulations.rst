@@ -1,9 +1,11 @@
-.. _view-regulations:
+.. index::
+   pair: view; regulations
+   :name: view-regulations
 
 regulations
 ===========
 
-``remarks`` の情報を集約。
+`table-remarks` の情報を集約。
 
 
 内容
@@ -37,7 +39,7 @@ regulations
      - 1レコードに集約された ``matter`` の個数
    * - type
      - words.type
-     - ``remarks`` の種別
+     - `remarks <remarks>` の種別
    * - ex_point
      - words.ex_point
      - 追加計算されるポイント合計(卓外ポイント合計値)

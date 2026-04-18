@@ -1,4 +1,6 @@
-.. _table-result:
+.. index::
+   pair: table; result
+   :name: table-result
 
 result
 ======

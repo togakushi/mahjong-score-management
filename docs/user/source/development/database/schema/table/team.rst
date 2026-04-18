@@ -1,4 +1,6 @@
-.. _table-team:
+.. index::
+   pair: table; team
+   :name: table-team
 
 team
 ====

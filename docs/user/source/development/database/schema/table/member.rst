@@ -1,4 +1,6 @@
-.. _table-member:
+.. index::
+   pair: table; member
+   :name: table-member
 
 member
 ======

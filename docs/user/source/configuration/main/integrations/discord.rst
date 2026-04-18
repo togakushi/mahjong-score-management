@@ -1,4 +1,6 @@
-.. _discord-section:
+.. index::
+   pair: メイン設定; discord section
+   :name: discord-section
 
 discordセクション
 =================

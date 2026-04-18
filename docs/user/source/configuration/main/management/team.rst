@@ -1,7 +1,6 @@
 .. index::
    pair: メイン設定; team section
-
-.. _team-section:
+   :name: team-section
 
 teamセクション
 --------------

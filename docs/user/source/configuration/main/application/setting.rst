@@ -1,7 +1,6 @@
 .. index::
    pair: メイン設定; setting section
-
-.. _setting-section:
+   :name: setting-section
 
 settingセクション
 =================
@@ -16,7 +15,9 @@ settingセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`rule_config <pair: setting section; rule_config>`
+   * - .. _rule_config:
+
+       :index:`rule_config <pair: setting section; rule_config>`
      - `rule-config` のパスを指定
      - | 文字列
        | (ファイルパス)
@@ -42,7 +43,7 @@ settingセクション
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     - `rule-set` で ``remarks`` の定義がない場合のみに使用される
+     - `rule-set` で `remarks <remarks>` の定義がない場合のみに使用される
    * - :index:`guest_mark <pair: setting section; guest_mark>`
      - ゲストに付ける記号
      - 文字列
@@ -58,7 +59,9 @@ settingセクション
      - 数値(int)
      - 未定義時
      - :option:`共通(コメント検索) 集約\<NNN>` で上書きされる
-   * - :index:`time_adjust <pair: setting section; time_adjust>`
+   * - .. _time_adjust:
+
+       :index:`time_adjust <pair: setting section; time_adjust>`
      - 日付変更後、指定時間までを1日単位の集計に含める
      - 数値(int)
      - 12
@@ -79,7 +82,9 @@ settingセクション
        | (ディレクトリ名)
      - ``work``
      - 画像ファイル、PDFファイルの保存先
-   * - :index:`database_file <pair: setting section; database_file>`
+   * - .. _database_file:
+
+       :index:`database_file <pair: setting section; database_file>`
      - 成績を記録するファイル名 [2]_
      - | 文字列
        | (ファイルパス)

@@ -5,4 +5,4 @@
    :maxdepth: 2
 
    score_record
-   remarks
+   remarks_record

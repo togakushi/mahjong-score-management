@@ -60,7 +60,7 @@
      -
      -
    * - unregistered_replace
-     - 未登録プレイヤーを ``guest_name`` に置き換えて表示
+     - 未登録プレイヤーを `guest_name <guest_name>` に置き換えて表示
      - 真偽値
      - True
      - |:/:|
