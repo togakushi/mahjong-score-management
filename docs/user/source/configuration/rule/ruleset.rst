@@ -54,7 +54,9 @@
      - 真偽値
      - False
      - ``True`` : 素点同点時に順位点を山分けする
-   * - :index:`undefined_word <pair: rule_set section; undefined_word>`
+   * - .. _undefined_word:
+
+       :index:`undefined_word <pair: rule_set section; undefined_word>`
      - 未定義ワードタイプ
      - 数値(int)
      - 1
