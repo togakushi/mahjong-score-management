@@ -81,7 +81,7 @@ slackセクション
 チャンネル個別設定
 ------------------
 
-| メイン設定内に ``slack_<チャンネルID>`` セクションが存在すれば、そのチャンネル専用として追加で設定を読み込む。
+| `main-config` 内に ``slack_<チャンネルID>`` セクションが存在すれば、そのチャンネル専用として追加で設定を読み込む。
 | `slack-section` の以下のキー、および `integrations-common` の値を上書きする。
 
 .. list-table::
@@ -98,7 +98,7 @@ slackセクション
      - *ルール識別子* 未指定に使用するデフォルト値
      - 文字列
      - 引継
-     - メイン設定の `setting-section` より優先される
+     - `main-config` の `setting-section` より優先される
    * - :index:`reaction_ok <pair: slack_channel section; reaction_ok>`
      - 素点合計が正しい場合に付けるリアクション
      - 文字列(絵文字)
