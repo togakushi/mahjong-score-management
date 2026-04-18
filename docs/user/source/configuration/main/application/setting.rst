@@ -66,7 +66,9 @@ settingセクション
      - 数値(int)
      - 12
      - 1時間単位で指定
-   * - :index:`font_file <pair: setting section; font_file>`
+   * - .. _font_file:
+
+       :index:`font_file <pair: setting section; font_file>`
      - グラフ描写に使用する日本語フォントファイル [1]_
      - 文字列
      - ``ipaexg.ttf``
