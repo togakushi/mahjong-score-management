@@ -111,7 +111,7 @@
 メモ記録ワード省略時の挙動
 ----------------------------
 
-`remarks <remarks>` の定義が省略された場合、 `setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
+`remarks <remarks>` の定義が省略された場合、 `setting-section` の `remarks_suffix <remarks_suffix>` の設定の有無で登録される内容が変化する。
 
 .. list-table::
    :width: 100%
@@ -129,7 +129,7 @@
      - `remarks <remarks>` の内容が登録される
    * - |:x:|
      - |:o:|
-     - `keywords <keywords>` をプレフィックス、 ``remarks_suffix`` をサフィックスとした組み合わせが登録される
+     - `keywords <keywords>` をプレフィックス、 `remarks_suffix <remarks_suffix>` をサフィックスとした組み合わせが登録される
    * - |:o:|
      - |:o:|
      - `remarks <remarks>` の内容が登録される

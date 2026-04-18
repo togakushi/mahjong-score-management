@@ -38,8 +38,10 @@ settingセクション
      - 文字列
      - None
      -
-   * - :index:`remarks_suffix <pair: setting section; remarks_suffix>`
-     - *成績記録キーワード* と ``remarks_suffix`` の組み合わせを *メモ記録ワード* とする
+   * - .. _remarks_suffix:
+
+       :index:`remarks_suffix <pair: setting section; remarks_suffix>`
+     - *成績記録キーワード* と `remarks_suffix <remarks_suffix>` の組み合わせを *メモ記録ワード* とする
      - | 文字列
        | (カンマ区切り)
      - 空欄
