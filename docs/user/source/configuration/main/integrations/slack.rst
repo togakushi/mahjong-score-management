@@ -1,4 +1,6 @@
-.. _slack-section:
+.. index::
+   pair: メイン設定; slack section
+   :name: slack-section
 
 slackセクション
 ===============

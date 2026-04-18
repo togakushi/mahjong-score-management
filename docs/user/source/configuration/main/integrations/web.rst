@@ -1,4 +1,6 @@
-.. _web-section:
+.. index::
+   pair: メイン設定; web section
+   :name: web-section
 
 webセクション
 -------------

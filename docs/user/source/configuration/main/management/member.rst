@@ -1,7 +1,6 @@
 .. index::
    pair: メイン設定; member section
-
-.. _member-section:
+   :name: member-section
 
 memberセクション
 ----------------

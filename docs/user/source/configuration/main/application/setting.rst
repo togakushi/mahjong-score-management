@@ -1,7 +1,6 @@
 .. index::
    pair: メイン設定; setting section
-
-.. _setting-section:
+   :name: setting-section
 
 settingセクション
 =================
