@@ -15,7 +15,9 @@
      - 型
      - 未定義時
      - 備考
-   * - :index:`channel_config <pair: integrations section; channel_config>`
+   * - .. _channel_config:
+
+       :index:`channel_config <pair: integrations section; channel_config>`
      - `channel-addition` を指定する
      - 文字列(ファイルパス)
      - None
@@ -35,7 +37,9 @@
      - 真偽値
      - False
      - `grade-section`
-   * - :index:`channel_id <pair: integrations section; channel_id>`
+   * - .. _channel_id:
+
+       :index:`channel_id <pair: integrations section; channel_id>`
      - *チャンネル識別子* を上書きする
      - 文字列
      - None
@@ -57,13 +61,13 @@
 
 .. rubric:: 脚注
 
-.. [#] ``channel_id`` で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は ``<サービス名>_<チャンネルID>`` となる。
+.. [#] `channel_id <channel_id>` で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は ``<サービス名>_<チャンネルID>`` となる。
 
 
 データベースファイル切替
 ------------------------
 
-``channel_config`` でメイン設定の `database_file <database_file>` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
+`channel_config <channel_config>` でメイン設定の `database_file <database_file>` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
 
 .. warning::
    以下の機能はDB切替実装が完了していないため、メイン設定にある `database_file <database_file>` が利用される。
@@ -74,7 +78,7 @@
 channel_id / separate について
 ------------------------------
 
-| ``channel_id`` / ``separate`` は複数箇所で定義できる。
+| `channel_id <channel_id>` / ``separate`` は複数箇所で定義できる。
 | 以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。
 
 .. list-table::
