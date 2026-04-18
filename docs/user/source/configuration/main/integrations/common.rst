@@ -92,7 +92,7 @@ channel_id / separate について
      - 設定が有効になる範囲
    * - 1
      - `channel-addition`
-     - `channel-addition` 内のsettingセクション
+     - `channel-addition` 内の `setting-section`
      - 指定チャンネルの範囲
    * - 2
      - `main-config`
