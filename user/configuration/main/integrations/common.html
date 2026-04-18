@@ -176,7 +176,8 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="target" id="index-0"></span>channel_config</p></td>
+<tr class="row-even"><td><p id="channel-config"><span class="target" id="index-0"></span>channel_config</p>
+</td>
 <td><p><a class="reference internal" href="channel_addition.html#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> を指定する</p></td>
 <td><p>文字列(ファイルパス)</p></td>
 <td><p>None</p></td>
@@ -200,7 +201,8 @@
 <td><p>False</p></td>
 <td><p><a class="reference internal" href="../decoration.html#grade-section"><span class="std std-ref">gradeセクション</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-4"></span>channel_id</p></td>
+<tr class="row-even"><td><p id="channel-id"><span class="target" id="index-4"></span>channel_id</p>
+</td>
 <td><p><em>チャンネル識別子</em> を上書きする</p></td>
 <td><p>文字列</p></td>
 <td><p>None</p></td>
@@ -233,15 +235,15 @@
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p><code class="docutils literal notranslate"><span class="pre">channel_id</span></code> で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は <code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;チャンネルID&gt;</span></code> となる。</p>
+<p><a class="reference internal" href="#channel-id"><span class="std std-ref">channel_id</span></a> で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は <code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;チャンネルID&gt;</span></code> となる。</p>
 </aside>
 </aside>
 <section id="id4">
 <h2>データベースファイル切替<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">channel_config</span></code> でメイン設定の <code class="docutils literal notranslate"><span class="pre">database_file</span></code> が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。</p>
+<p><a class="reference internal" href="#channel-config"><span class="std std-ref">channel_config</span></a> でメイン設定の <a class="reference internal" href="../application/setting.html#database-file"><span class="std std-ref">database_file</span></a> が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>以下の機能はDB切替実装が完了していないため、メイン設定にある <code class="docutils literal notranslate"><span class="pre">database_file</span></code> が利用される。</p>
+<p>以下の機能はDB切替実装が完了していないため、メイン設定にある <a class="reference internal" href="../application/setting.html#database-file"><span class="std std-ref">database_file</span></a> が利用される。</p>
 <ul class="simple">
 <li><p>homeタブからの操作</p></li>
 <li><p><a class="reference internal" href="../../../commandline_tool/dbtools.html#dbtools-py"><span class="std std-ref">dbtools.py</span></a> によるDBメンテナンス</p></li>
@@ -251,7 +253,7 @@
 <section id="channel-id-separate">
 <h2>channel_id / separate について<a class="headerlink" href="#channel-id-separate" title="Link to this heading">¶</a></h2>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">channel_id</span></code> / <code class="docutils literal notranslate"><span class="pre">separate</span></code> は複数箇所で定義できる。</div>
+<div class="line"><a class="reference internal" href="#channel-id"><span class="std std-ref">channel_id</span></a> / <code class="docutils literal notranslate"><span class="pre">separate</span></code> は複数箇所で定義できる。</div>
 <div class="line">以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">
@@ -271,7 +273,7 @@
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
 <td><p><a class="reference internal" href="channel_addition.html#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a></p></td>
-<td><p><a class="reference internal" href="channel_addition.html#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> 内のsettingセクション</p></td>
+<td><p><a class="reference internal" href="channel_addition.html#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> 内の <a class="reference internal" href="../application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a></p></td>
 <td><p>指定チャンネルの範囲</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
@@ -397,7 +399,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.2.
-      Last updated on 2026-04-17.
+      Last updated on 2026-04-18.
     </div>
 
   </body>

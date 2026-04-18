@@ -1,4 +1,6 @@
-.. _table-remarks:
+.. index::
+   pair: table; remarks
+   :name: table-remarks
 
 remarks
 =======

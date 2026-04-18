@@ -1,7 +1,6 @@
 .. index::
    pair: メイン設定; member section
-
-.. _member-section:
+   :name: member-section
 
 memberセクション
 ----------------
@@ -43,7 +42,9 @@ memberセクション
      - 数値(int)
      - 16
      -
-   * - :index:`guest_name <pair: member section; guest_name>`
+   * - .. _guest_name:
+
+       :index:`guest_name <pair: member section; guest_name>`
      - 未登録メンバーを置換するときの名前
      - 文字列
      - ゲスト

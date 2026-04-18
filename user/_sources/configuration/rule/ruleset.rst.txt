@@ -67,7 +67,9 @@
        | (カンマ区切り)
      - 空欄
      - `keywords <keywords>` が空欄の `ルールセット` は参照専用となる
-   * - :index:`remarks <pair: rule_set section; remarks>`
+   * - .. _remarks:
+
+       :index:`remarks <pair: rule_set section; remarks>`
      - メモ記録ワード
      - | 文字列
        | (カンマ区切り)
@@ -109,7 +111,7 @@
 メモ記録ワード省略時の挙動
 ----------------------------
 
-``remarks`` の定義が省略された場合、 `setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
+`remarks <remarks>` の定義が省略された場合、 `setting-section` の ``remarks_suffix`` の設定の有無で登録される内容が変化する。
 
 .. list-table::
    :width: 100%
@@ -124,10 +126,10 @@
      - 何も登録されない
    * - |:o:|
      - |:x:|
-     - ``remarks`` の内容が登録される
+     - `remarks <remarks>` の内容が登録される
    * - |:x:|
      - |:o:|
      - `keywords <keywords>` をプレフィックス、 ``remarks_suffix`` をサフィックスとした組み合わせが登録される
    * - |:o:|
      - |:o:|
-     - ``remarks`` の内容が登録される
+     - `remarks <remarks>` の内容が登録される
