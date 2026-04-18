@@ -5,7 +5,7 @@ Discordセットアップ手順
 ----------------------
 
 #. https://discord.com/developers/applications にアクセス
-#. [Applications] > [New Application] を選択
+#. [Applications] -> [New Application] を選択
 #. [Create an application] の [Name] にBotの名前を入力
 #. 利用規約にチェックを入れ [Create] をクリック
 
@@ -20,7 +20,7 @@ Discordセットアップ手順
    発行されたトークンは環境変数 ``DISCORD_TOKEN`` にセットして利用する。
 
 認証
-   [OAuth2] > [OAuth2 URL Generator] > [Scopes] の [bot] にチェックを入れる
+   [OAuth2] -> [OAuth2 URL Generator] -> [Scopes] の [bot] にチェックを入れる
 
    [Bot Permissions] で以下を選択
 
@@ -37,7 +37,7 @@ Discordセットアップ手順
 
 Intents 許可
 
-   [bot] > [Privileged Gateway Intents]
+   [bot] -> [Privileged Gateway Intents]
 
    - Presence Intent [OFF]
    - Server Members Intent [OFF]

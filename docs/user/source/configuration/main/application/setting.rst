@@ -38,8 +38,10 @@ settingセクション
      - 文字列
      - None
      -
-   * - :index:`remarks_suffix <pair: setting section; remarks_suffix>`
-     - *成績記録キーワード* と ``remarks_suffix`` の組み合わせを *メモ記録ワード* とする
+   * - .. _remarks_suffix:
+
+       :index:`remarks_suffix <pair: setting section; remarks_suffix>`
+     - *成績記録キーワード* と `remarks_suffix <remarks_suffix>` の組み合わせを *メモ記録ワード* とする
      - | 文字列
        | (カンマ区切り)
      - 空欄
@@ -66,7 +68,9 @@ settingセクション
      - 数値(int)
      - 12
      - 1時間単位で指定
-   * - :index:`font_file <pair: setting section; font_file>`
+   * - .. _font_file:
+
+       :index:`font_file <pair: setting section; font_file>`
      - グラフ描写に使用する日本語フォントファイル [1]_
      - 文字列
      - ``ipaexg.ttf``
@@ -96,6 +100,8 @@ settingセクション
        | (ディレクトリ名)
      - None
      - 空欄(None)時はバックアップしない
+
+..
 
 .. tip::
    :manpage:`default_rule.ini` には **default_rule** (四人打ち用ルールセット)と **default_rule3** (三人打ち用ルールセット)が定義されている。
