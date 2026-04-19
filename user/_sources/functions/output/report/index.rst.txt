@@ -13,7 +13,11 @@
 :チャンネル内呼び出し: <呼び出しキーワード> [オプション]
 :スラッシュコマンド: /commandname report [オプション]
 
-.. note:: ``/commandname`` は `slack-section` 、 `discord-section`  の ``slash_command`` で定義したもの。
+.. note::
+   ``/commandname`` は以下で定義する
+
+   - `slack-section` の `slash_command <slash_command_slack>`
+   - `discord-section` の `slash_command <slash_command_discord>`
 
 
 オプション

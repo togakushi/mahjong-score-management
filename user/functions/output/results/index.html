@@ -176,7 +176,11 @@
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は <a class="reference internal" href="../../../configuration/main/integrations/slack.html#slack-section"><span class="std std-ref">slackセクション</span></a> 、 <a class="reference internal" href="../../../configuration/main/integrations/discord.html#discord-section"><span class="std std-ref">discordセクション</span></a>  の <code class="docutils literal notranslate"><span class="pre">slash_command</span></code> で定義したもの。</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は以下で定義する</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../configuration/main/integrations/slack.html#slack-section"><span class="std std-ref">slackセクション</span></a> の <a class="reference internal" href="../../../configuration/main/integrations/slack.html#slash-command-slack"><span class="std std-ref">slash_command</span></a></p></li>
+<li><p><a class="reference internal" href="../../../configuration/main/integrations/discord.html#discord-section"><span class="std std-ref">discordセクション</span></a> の <a class="reference internal" href="../../../configuration/main/integrations/discord.html#slash-command-discord"><span class="std std-ref">slash_command</span></a></p></li>
+</ul>
 </div>
 </section>
 <section id="id3">
@@ -400,10 +404,11 @@ Player_001  ▲65.0   22.6    122.1
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">直接対決サマリ出力サンプル</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>直接対戦プレイヤー名：Player_007
-対戦相手：全員
-集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-特記事項：ゲスト置換なし(*：未登録プレイヤー)、2ゲスト戦の結果を含む
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【直接対戦】
+    プレイヤー名：Player_007
+    対戦相手：全員
+    集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    特記事項：ゲスト置換なし(*：未登録プレイヤー)、2ゲスト戦の結果を含む
 
 【Player_007 vs Player_027】
     対戦数：1 戦 1 勝 0 敗 (100.00%)
@@ -540,7 +545,7 @@ Player_001  ▲65.0   22.6    122.1
     </div>  
     <div class="footer">
       Release Version: 0.13.2.
-      Last updated on 2026-04-18.
+      Last updated on 2026-04-19.
     </div>
 
   </body>
