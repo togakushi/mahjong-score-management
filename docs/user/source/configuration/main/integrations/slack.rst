@@ -15,7 +15,9 @@ slackセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`slash_command <pair: slack section; slash_command>`
+   * - .. _slash_command_slack:
+
+       :index:`slash_command <pair: slack section; slash_command>`
      - スラッシュコマンド名
      - 文字列
      - /mahjong
@@ -70,6 +72,8 @@ slackセクション
      - 数値(int)
      - 180
      - イベント発生時刻から待ち時間以上経過したデータのみが突合の対象
+
+..
 
 .. tip::
    - ``ignore_userid`` は、botが出力する内容が検索にヒットしてしまう状況でbotのIDを指定するような利用方法を想定している。

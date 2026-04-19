@@ -15,7 +15,9 @@ discordセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`slash_command <pair: discord section; slash_command>`
+   * - .. _slash_command_discord:
+
+       :index:`slash_command <pair: discord section; slash_command>`
      - スラッシュコマンド名
      - 文字列
      - mahjong
@@ -41,6 +43,8 @@ discordセクション
      - 数値(int)
      - 7
      - 突合実行日時から指定日を引いた日を検索開始範囲にする
+
+..
 
 .. tip::
    botが参加してるチャンネルが複数ある場合、 ``channel_limitations`` を指定することで成績登録ができるチャンネルを制限できる。
