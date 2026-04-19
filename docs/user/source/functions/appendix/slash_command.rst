@@ -3,7 +3,11 @@
 
 結果はアプリからDMで通知される。
 
-.. note:: ``/commandname`` は `slack-section` 、 `discord-section`  の ``slash_command`` で定義したもの。
+.. note::
+   ``/commandname`` は以下で定義する
+
+   - `slack-section` の `slash_command <slash_command_slack>`
+   - `discord-section` の `slash_command <slash_command_discord>`
 
 
 成績管理

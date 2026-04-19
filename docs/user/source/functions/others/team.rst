@@ -3,7 +3,11 @@
 
 チームの管理はスラッシュコマンドで行う。
 
-.. note:: ``/commandname`` は `slack-section` 、 `discord-section`  の ``slash_command`` で定義したもの。
+.. note::
+   ``/commandname`` は以下で定義する
+
+   - `slack-section` の `slash_command <slash_command_slack>`
+   - `discord-section` の `slash_command <slash_command_discord>`
 
 
 チーム作成
@@ -35,6 +39,7 @@
 --------------------
 
 :スラッシュコマンド構文: /commandname team_remove <離脱させるチーム名> <離脱するメンバー名>
+
 
 チーム情報削除
 --------------
