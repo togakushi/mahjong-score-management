@@ -1,27 +1,29 @@
 """
-麻雀スコア管理ドキュメント用カスタムドメイン拡張
+Mahjong score management tool ドキュメント用カスタムドメイン拡張
 """
 
 import hashlib
-from typing import Any
+from typing import Any, ClassVar
 
-from docutils.parsers.rst import directives
+from docutils import nodes  # type: ignore[import-untyped]
+from docutils.parsers.rst import directives  # type: ignore[import-untyped]
 from sphinx import addnodes
+from sphinx.application import Sphinx
 from sphinx.directives import ObjectDescription
 from sphinx.domains import Domain, ObjType
 from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
 
 
-class MahjongObjectDescription(ObjectDescription):
+class SplitWordsDescription(ObjectDescription[Any]):
     """カンマ区切りの単語を個別にインデックス登録する基底クラス"""
 
     index_category: str = "results"
-    option_spec = {
+    option_spec: ClassVar[dict[str, Any]] = {
         "category": directives.unchanged,
     }
 
-    _marker_alphabet = ("\u200b", "\u200c", "\u200d", "\u2060")
+    _marker_alphabet: ClassVar[tuple[str, str, str, str]] = ("\u200b", "\u200c", "\u200d", "\u2060")
 
     def _index_entry_name(self, part: str) -> str:
         digest = hashlib.blake2s(self.objtype.encode("utf-8"), digest_size=4).digest()
@@ -31,7 +33,7 @@ class MahjongObjectDescription(ObjectDescription):
     def _index_group_key(self) -> str:
         return f" {self.index_category}"
 
-    def handle_signature(self, sig: str, signode) -> str:
+    def handle_signature(self, sig: str, signode: addnodes.desc_signature) -> str:
         parts = [name.strip() for name in sig.split(",")]
         for i, name in enumerate(parts):
             signode += addnodes.desc_sig_name(name, name)
@@ -39,7 +41,7 @@ class MahjongObjectDescription(ObjectDescription):
                 signode += addnodes.desc_sig_punctuation("", ", ")
         return sig
 
-    def add_target_and_index(self, sig: str, fullname: str, signode) -> None:
+    def add_target_and_index(self, name: Any, sig: str, signode: addnodes.desc_signature) -> None:
         parts = [name.strip() for name in sig.split(",")]
         domain: MahjongDomain = self.env.get_domain("mahjong")  # type: ignore[assignment]
         category = self.options.get("category", "").strip()
@@ -52,15 +54,11 @@ class MahjongObjectDescription(ObjectDescription):
             signode["ids"].append(primary_anchor)
             self.state.document.note_explicit_target(signode)
 
-        # category 分離用に objtype ハッシュから不可視マーカーを生成する。
-        # 表示文字ではないので異なるディレクティブ間で同名 category が混在しなくなる。
         digest = hashlib.blake2s(self.objtype.encode("utf-8"), digest_size=4).digest()
         objtype_marker = "".join(self._marker_alphabet[b & 0b11] for b in digest)
 
         for part in parts:
             if category:
-                # category 表示名はそのままに、内部キーに不可視マーカーを付加して
-                # 異なるディレクティブ間でのサブグループ混在を防ぐ。
                 category_key = f"{category}{objtype_marker}"
                 entry_name = f"{category_key}; {self._index_entry_name(part)}"
                 self.indexnode["entries"].append(("single", entry_name, primary_anchor, "", self._index_group_key()))
@@ -75,35 +73,35 @@ class MahjongObjectDescription(ObjectDescription):
                 anchor=primary_anchor,
             )
 
-    def run(self):
+    def run(self) -> list[nodes.Node]:
         return super().run()
 
 
-class CommonDirective(MahjongObjectDescription):
+class CommonDirective(SplitWordsDescription):
     """共通オプション"""
 
     index_category = "common options"
 
 
-class ResultsDirective(MahjongObjectDescription):
+class ResultsDirective(SplitWordsDescription):
     """成績サマリオプション"""
 
     index_category = "results options"
 
 
-class GraphDirective(MahjongObjectDescription):
+class GraphDirective(SplitWordsDescription):
     """成績グラフオプション"""
 
     index_category = "graph options"
 
 
-class RankingDirective(MahjongObjectDescription):
+class RankingDirective(SplitWordsDescription):
     """成績ランキングオプション"""
 
     index_category = "ranking options"
 
 
-class ReportDirective(MahjongObjectDescription):
+class ReportDirective(SplitWordsDescription):
     """成績レポートオプション"""
 
     index_category = "report options"
@@ -115,7 +113,7 @@ class MahjongDomain(Domain):
     name = "mahjong"
     label = "Mahjong"
 
-    object_types: dict[str, ObjType] = {
+    object_types: ClassVar[dict[str, ObjType]] = {
         "common": ObjType("common", "common"),
         "results": ObjType("results", "results"),
         "graph": ObjType("graph", "graph"),
@@ -123,7 +121,7 @@ class MahjongDomain(Domain):
         "report": ObjType("report", "report"),
     }
 
-    directives: dict[str, type] = {
+    directives: ClassVar[dict[str, type[SplitWordsDescription]]] = {
         "common": CommonDirective,
         "results": ResultsDirective,
         "graph": GraphDirective,
@@ -131,7 +129,7 @@ class MahjongDomain(Domain):
         "report": ReportDirective,
     }
 
-    roles: dict[str, Any] = {
+    roles: ClassVar[dict[str, Any]] = {
         "common": XRefRole(),
         "results": XRefRole(),
         "graph": XRefRole(),
@@ -139,7 +137,7 @@ class MahjongDomain(Domain):
         "report": XRefRole(),
     }
 
-    initial_data: dict[str, Any] = {
+    initial_data: ClassVar[dict[str, Any]] = {
         # { (objtype, name): (docname, anchor) }
         "objects": {},
     }
@@ -148,36 +146,53 @@ class MahjongDomain(Domain):
     def note_object(self, objtype: str, name: str, docname: str, anchor: str) -> None:
         self.data["objects"][(objtype, name)] = (docname, anchor)
 
-    def resolve_xref(self, env, fromdocname, builder, typ, target, node, contnode):
+    def resolve_xref(
+        self,
+        env: Any,
+        fromdocname: str,
+        builder: Any,
+        typ: str,
+        target: str,
+        node: addnodes.pending_xref,
+        contnode: nodes.Element,
+    ) -> nodes.reference | None:
         key = (typ, target)
         if key not in self.data["objects"]:
             return None
         docname, anchor = self.data["objects"][key]
         return make_refnode(builder, fromdocname, docname, anchor, contnode, target)
 
-    def resolve_any_xref(self, env, fromdocname, builder, target, node, contnode):
-        results = []
+    def resolve_any_xref(
+        self,
+        env: Any,
+        fromdocname: str,
+        builder: Any,
+        target: str,
+        node: addnodes.pending_xref,
+        contnode: nodes.Element,
+    ) -> list[tuple[str, nodes.reference]]:
+        results: list[tuple[str, nodes.reference]] = []
         for (objtype, name), (docname, anchor) in self.data["objects"].items():
             if name == target:
                 ref = make_refnode(builder, fromdocname, docname, anchor, contnode, target)
                 results.append((f"mahjong:{objtype}", ref))
         return results
 
-    def get_objects(self):
+    def get_objects(self) -> Any:
         for (objtype, name), (docname, anchor) in self.data["objects"].items():
             yield (name, name, objtype, docname, anchor, 1)
 
 
 # ----------------------------------------------------------------------------
-def setup(app) -> dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """
-    _summary_
+    Mahjong score management tool 用カスタムドメインの登録
 
     Args:
-        app (_type_): _description_
+        app (Sphinx): 拡張登録先の Sphinx アプリケーションインスタンス
 
     Returns:
-        dict[str, Any]: _description_
+        dict[str, Any]: 拡張のメタ情報（バージョンと並列ビルド可否）
     """
     app.add_domain(MahjongDomain)
     return {
