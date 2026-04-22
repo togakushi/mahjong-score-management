@@ -173,10 +173,10 @@
 <p>データに記録されるゲーム結果には「 <em>成績記録キーワード</em> 」が発行されたチャンネル固有の <em>チャンネル識別子</em> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
 <section id="id3">
 <h3>チャンネル識別子のフォーマット<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p><em>チャンネル識別子</em> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <a class="reference internal" href="../main/integrations/common.html#channel-id"><span class="std std-ref">channel_id</span></a> などのチャンネルを識別するためのIDが続く形をとる。</p>
+<p><em>チャンネル識別子</em> のデフォルトフォーマットは、連携先サービス名のプレフィックスを持ち、そのサービス内で用いられる <a class="reference internal" href="../main/application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> などのチャンネルを識別するためのIDが続く形をとる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</span></code></p>
 <div class="line-block">
-<div class="line"><em>チャンネル識別子</em> は <a class="reference internal" href="../main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> などで <a class="reference internal" href="../main/integrations/common.html#channel-id"><span class="std std-ref">channel_id</span></a> を定義することで自由に変更できる。</div>
+<div class="line"><em>チャンネル識別子</em> は <a class="reference internal" href="../main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> などで <a class="reference internal" href="../main/application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> を定義することで自由に変更できる。</div>
 <div class="line">チャンネル単位でのグループ分けを行ったり、Slackワークスペースの変更対応などで利用できる。</div>
 </div>
 </section>
@@ -240,7 +240,7 @@
 <ul class="simple">
 <li><p>アプリケーションを複数立ち上げ、同じDBを参照させている
 - Slack + Web など</p></li>
-<li><p>チャンネル単位で <a class="reference internal" href="../main/integrations/common.html#channel-id"><span class="std std-ref">channel_id</span></a> を設定してグループを作っており、チャンネル個別設定でセパレートせずにサービス設定でまとめてセパレートしている</p></li>
+<li><p>チャンネル単位で <a class="reference internal" href="../main/application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> を設定してグループを作っており、チャンネル個別設定でセパレートせずにサービス設定でまとめてセパレートしている</p></li>
 <li><p>など</p></li>
 </ul>
 </div>

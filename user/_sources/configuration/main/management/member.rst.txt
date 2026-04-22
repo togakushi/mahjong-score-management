@@ -15,36 +15,34 @@ memberセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`commandword <pair: member section; commandword>`
+   * - .. member_section:: commandword
      - メンバー一覧を表示するコマンドの呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
      - メンバー一覧
      - カンマ区切りで複数ワードの設定が可能
-   * - :index:`command_suffix <pair: member section; command_suffix>`
-     - *成績記録キーワード* と `command_suffix <command_suffix>` の組み合わせを機能を呼び出すキーワードとする
+   * - .. member_section:: command_suffix
+     - *成績記録キーワード* と :member_section:`command_suffix` の組み合わせを機能を呼び出すキーワードとする
      - | 文字列
        | (カンマ区切り)
      - 空欄
      -
-   * - :index:`registration_limit <pair: member section; registration_limit>`
+   * - .. member_section:: registration_limit
      - 登録メンバー数上限
      - 数値(int)
      - 255
      -
-   * - :index:`character_limit <pair: member section; character_limit>`
+   * - .. member_section:: character_limit
      - 登録メンバー名文字数上限
      - 数値(int)
      - 8
      -
-   * - :index:`alias_limit <pair: member section; alias_limit>`
+   * - .. member_section:: alias_limit
      - 別名登録上限数
      - 数値(int)
      - 16
      -
-   * - .. _guest_name:
-
-       :index:`guest_name <pair: member section; guest_name>`
+   * - .. member_section:: guest_name
      - 未登録メンバーを置換するときの名前
      - 文字列
      - ゲスト

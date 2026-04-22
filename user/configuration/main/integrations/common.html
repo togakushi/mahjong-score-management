@@ -176,39 +176,67 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p id="channel-config"><span class="target" id="index-0"></span>channel_config</p>
+<tr class="row-even"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-channel_config">
+<span class="n"><span class="pre">channel_config</span></span><a class="headerlink" href="#integrations_section-channel_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p><a class="reference internal" href="channel_addition.html#channel-addition"><span class="std std-ref">チャンネル追加設定ファイル</span></a> を指定する</p></td>
 <td><p>文字列(ファイルパス)</p></td>
 <td><p>None</p></td>
 <td><p><a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> とマージ</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-1"></span>badge_degree</p></td>
+<tr class="row-odd"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-badge_degree">
+<span class="n"><span class="pre">badge_degree</span></span><a class="headerlink" href="#integrations_section-badge_degree" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>ゲーム数に応じて表示される称号</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
 <td><p><a class="reference internal" href="../decoration.html#degree-section"><span class="std std-ref">degreeセクション</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-2"></span>badge_status</p></td>
+<tr class="row-even"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-badge_status">
+<span class="n"><span class="pre">badge_status</span></span><a class="headerlink" href="#integrations_section-badge_status" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>勝利によって表示される調子バッヂ</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
 <td><p><a class="reference internal" href="../decoration.html#status-section"><span class="std std-ref">statusセクション</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-3"></span>badge_grade</p></td>
+<tr class="row-odd"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-badge_grade">
+<span class="n"><span class="pre">badge_grade</span></span><a class="headerlink" href="#integrations_section-badge_grade" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>段位表示</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
 <td><p><a class="reference internal" href="../decoration.html#grade-section"><span class="std std-ref">gradeセクション</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p id="channel-id"><span class="target" id="index-4"></span>channel_id</p>
+<tr class="row-even"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-channel_id">
+<span class="n"><span class="pre">channel_id</span></span><a class="headerlink" href="#integrations_section-channel_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p><em>チャンネル識別子</em> を上書きする</p></td>
 <td><p>文字列</p></td>
 <td><p>None</p></td>
 <td><p>チャンネル個別設定のセクション名は変わらない <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-5"></span>separate</p></td>
+<tr class="row-odd"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-separate">
+<span class="n"><span class="pre">separate</span></span><a class="headerlink" href="#integrations_section-separate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>スコア入力元( <em>チャンネル識別子</em> )単位の集計</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
@@ -219,7 +247,12 @@
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-6"></span>plotting_backend</p></td>
+<tr class="row-even"><td><dl class="mahjong integrations_section">
+<dt class="sig sig-object mahjong" id="integrations_section-plotting_backend">
+<span class="n"><span class="pre">plotting_backend</span></span><a class="headerlink" href="#integrations_section-plotting_backend" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>グラフ生成ライブラリ選択</p></td>
 <td><p>文字列</p></td>
 <td><p>matplotlib</p></td>
@@ -229,21 +262,21 @@
 </table>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p><code class="docutils literal notranslate"><span class="pre">plotting_backend</span></code> は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。</p>
+<p><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">plotting_backend</span></code> は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。</p>
 </div>
 <p class="rubric">脚注</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference internal" href="#channel-id"><span class="std std-ref">channel_id</span></a> で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は <code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;チャンネルID&gt;</span></code> となる。</p>
+<p><a class="reference internal" href="../application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は <code class="docutils literal notranslate"><span class="pre">&lt;サービス名&gt;_&lt;チャンネルID&gt;</span></code> となる。</p>
 </aside>
 </aside>
 <section id="id4">
 <h2>データベースファイル切替<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p><a class="reference internal" href="#channel-config"><span class="std std-ref">channel_config</span></a> でメイン設定の <a class="reference internal" href="../application/setting.html#database-file"><span class="std std-ref">database_file</span></a> が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。</p>
+<p><a class="reference internal" href="#integrations_section-channel_config" title="channel_config"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">channel_config</span></code></a> でメイン設定の <a class="reference internal" href="../application/setting.html#setting_section-database_file" title="database_file"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">database_file</span></code></a> が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>以下の機能はDB切替実装が完了していないため、メイン設定にある <a class="reference internal" href="../application/setting.html#database-file"><span class="std std-ref">database_file</span></a> が利用される。</p>
+<p>以下の機能はDB切替実装が完了していないため、メイン設定にある <a class="reference internal" href="../application/setting.html#setting_section-database_file" title="database_file"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">database_file</span></code></a> が利用される。</p>
 <ul class="simple">
 <li><p>homeタブからの操作</p></li>
 <li><p><a class="reference internal" href="../../../commandline_tool/dbtools.html#dbtools-py"><span class="std std-ref">dbtools.py</span></a> によるDBメンテナンス</p></li>
@@ -253,7 +286,7 @@
 <section id="channel-id-separate">
 <h2>channel_id / separate について<a class="headerlink" href="#channel-id-separate" title="Link to this heading">¶</a></h2>
 <div class="line-block">
-<div class="line"><a class="reference internal" href="#channel-id"><span class="std std-ref">channel_id</span></a> / <code class="docutils literal notranslate"><span class="pre">separate</span></code> は複数箇所で定義できる。</div>
+<div class="line"><a class="reference internal" href="../application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> / <a class="reference internal" href="../application/setting.html#setting_section-separate" title="separate"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">separate</span></code></a> は複数箇所で定義できる。</div>
 <div class="line">以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">

@@ -15,41 +15,51 @@
      - 型
      - 未定義時
      - 備考
-   * - .. _channel_config:
+   * - .. integrations_section:: channel_config
+          :category: common
 
-       :index:`channel_config <pair: integrations section; channel_config>`
      - `channel-addition` を指定する
      - 文字列(ファイルパス)
      - None
      - `main-config` とマージ
-   * - :index:`badge_degree <pair: integrations section; badge_degree>`
+   * - .. integrations_section:: badge_degree
+          :category: common
+
      - ゲーム数に応じて表示される称号
      - 真偽値
      - False
      - `degree-section`
-   * - :index:`badge_status <pair: integrations section; badge_status>`
+   * - .. integrations_section:: badge_status
+          :category: common
+
      - 勝利によって表示される調子バッヂ
      - 真偽値
      - False
      - `status-section`
-   * - :index:`badge_grade <pair: integrations section; badge_grade>`
+   * - .. integrations_section:: badge_grade
+          :category: common
+
      - 段位表示
      - 真偽値
      - False
      - `grade-section`
-   * - .. _channel_id:
+   * - .. integrations_section:: channel_id
+          :category: common
 
-       :index:`channel_id <pair: integrations section; channel_id>`
      - *チャンネル識別子* を上書きする
      - 文字列
      - None
      - チャンネル個別設定のセクション名は変わらない [#]_
-   * - :index:`separate <pair: integrations section; separate>`
+   * - .. integrations_section:: separate
+          :category: common
+
      - スコア入力元( *チャンネル識別子* )単位の集計
      - 真偽値
      - False
      - :True: 集計条件に *チャンネル識別子* を追加
-   * - :index:`plotting_backend <pair: integrations section; plotting_backend>`
+   * - .. integrations_section:: plotting_backend
+          :category: common
+
      - グラフ生成ライブラリ選択
      - 文字列
      - matplotlib
@@ -57,20 +67,20 @@
 
 ..
 
-.. danger:: ``plotting_backend`` は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。
+.. danger:: :integrations_section:`plotting_backend` は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。
 
 .. rubric:: 脚注
 
-.. [#] `channel_id <channel_id>` で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は ``<サービス名>_<チャンネルID>`` となる。
+.. [#] :setting_section:`channel_id` で使用するチャンネル識別子を変更している状態でもチャンネル個別設定のセクション名は ``<サービス名>_<チャンネルID>`` となる。
 
 
 データベースファイル切替
 ------------------------
 
-`channel_config <channel_config>` でメイン設定の `database_file <database_file>` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
+:integrations_section:`channel_config` でメイン設定の :setting_section:`database_file` が再定義できるため、別のDBファイルに情報を蓄積することが可能となる。
 
 .. warning::
-   以下の機能はDB切替実装が完了していないため、メイン設定にある `database_file <database_file>` が利用される。
+   以下の機能はDB切替実装が完了していないため、メイン設定にある :setting_section:`database_file` が利用される。
 
    - homeタブからの操作
    - `dbtools.py` によるDBメンテナンス
@@ -78,7 +88,7 @@
 channel_id / separate について
 ------------------------------
 
-| `channel_id <channel_id>` / ``separate`` は複数箇所で定義できる。
+| :setting_section:`channel_id` / :setting_section:`separate` は複数箇所で定義できる。
 | 以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。
 
 .. list-table::

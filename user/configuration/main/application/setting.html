@@ -164,7 +164,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p id="rule-config"><span class="target" id="index-0"></span>rule_config</p>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-rule_config">
+<span class="n"><span class="pre">rule_config</span></span><a class="headerlink" href="#setting_section-rule_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p><a class="reference internal" href="../../rule/index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> のパスを指定</p></td>
 <td><div class="line-block">
@@ -175,13 +179,23 @@
 <td><p>None</p></td>
 <td><p><a class="reference internal" href="../mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> に有効な <a class="reference internal" href="../../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> 定義もない場合、 <em class="manpage"><a class="manpage reference external" href="https://github.com/togakushi/mahjong-score-management/tree/main/files/default_rule.ini">default_rule.ini</a></em> が使用される</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-1"></span>default_rule</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-default_rule">
+<span class="n"><span class="pre">default_rule</span></span><a class="headerlink" href="#setting_section-default_rule" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p><em>ルール識別子</em> 未指定に使用するデフォルト値</p></td>
 <td><p>文字列</p></td>
 <td><p>最初に定義された <a class="reference internal" href="../../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の <em>ルール識別子</em></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-2"></span>separate</p></td>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-separate">
+<span class="n"><span class="pre">separate</span></span><a class="headerlink" href="#setting_section-separate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>スコア入力元(チ <em>ャンネル識別子</em> )単位の集計</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
@@ -192,62 +206,104 @@
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-3"></span>channel_id</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-channel_id">
+<span class="n"><span class="pre">channel_id</span></span><a class="headerlink" href="#setting_section-channel_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p><em>チャンネル識別子</em> を上書きする</p></td>
 <td><p>文字列</p></td>
 <td><p>None</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p id="remarks-suffix"><span class="target" id="index-4"></span>remarks_suffix</p>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-remarks_suffix">
+<span class="n"><span class="pre">remarks_suffix</span></span><a class="headerlink" href="#setting_section-remarks_suffix" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
-<td><p><em>成績記録キーワード</em> と <a class="reference internal" href="#remarks-suffix"><span class="std std-ref">remarks_suffix</span></a> の組み合わせを <em>メモ記録ワード</em> とする</p></td>
+<td><p><em>成績記録キーワード</em> と <a class="reference internal" href="#setting_section-remarks_suffix" title="remarks_suffix"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">remarks_suffix</span></code></a> の組み合わせを <em>メモ記録ワード</em> とする</p></td>
 <td><div class="line-block">
 <div class="line">文字列</div>
 <div class="line">(カンマ区切り)</div>
 </div>
 </td>
 <td><p>空欄</p></td>
-<td><p><a class="reference internal" href="../../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> で <a class="reference internal" href="../../rule/ruleset.html#remarks"><span class="std std-ref">remarks</span></a> の定義がない場合のみに使用される</p></td>
+<td><p><a class="reference internal" href="../../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> で <a class="reference internal" href="../../rule/ruleset.html#rule_set_section-remarks" title="remarks"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">remarks</span></code></a> の定義がない場合のみに使用される</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-5"></span>guest_mark</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-guest_mark">
+<span class="n"><span class="pre">guest_mark</span></span><a class="headerlink" href="#setting_section-guest_mark" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>ゲストに付ける記号</p></td>
 <td><p>文字列</p></td>
 <td><p>※</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-6"></span>search_word</p></td>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-search_word">
+<span class="n"><span class="pre">search_word</span></span><a class="headerlink" href="#setting_section-search_word" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>キーワード「コメント」に指定文字列を常につける</p></td>
 <td><p>文字列</p></td>
 <td></td>
 <td><p>コメント検索しか行わなくなる(専用化)</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-7"></span>group_length</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-group_length">
+<span class="n"><span class="pre">group_length</span></span><a class="headerlink" href="#setting_section-group_length" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>集約キーワードを指定しなかった場合に集約する文字数</p></td>
 <td><p>数値(int)</p></td>
 <td><p>未定義時</p></td>
 <td><p><a class="reference internal" href="../../../functions/appendix/common_options.html#common-集約&lt;NNN&gt;" title="集約&lt;NNN&gt;"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">集約&lt;NNN&gt;</span></code></a> で上書きされる</p></td>
 </tr>
-<tr class="row-even"><td><p id="time-adjust"><span class="target" id="index-8"></span>time_adjust</p>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-time_adjust">
+<span class="n"><span class="pre">time_adjust</span></span><a class="headerlink" href="#setting_section-time_adjust" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p>日付変更後、指定時間までを1日単位の集計に含める</p></td>
 <td><p>数値(int)</p></td>
 <td><p>12</p></td>
 <td><p>1時間単位で指定</p></td>
 </tr>
-<tr class="row-odd"><td><p id="font-file"><span class="target" id="index-9"></span>font_file</p>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-font_file">
+<span class="n"><span class="pre">font_file</span></span><a class="headerlink" href="#setting_section-font_file" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p>グラフ描写に使用する日本語フォントファイル <a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td><p>文字列</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ipaexg.ttf</span></code></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="index-10"></span>graph_style</p></td>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-graph_style">
+<span class="n"><span class="pre">graph_style</span></span><a class="headerlink" href="#setting_section-graph_style" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>グラフに使用するスタイル</p></td>
 <td><p>文字列</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ggplot</span></code></p></td>
 <td><p><a class="reference external" href="https://matplotlib.org/stable/gallery/style_sheets/index.html">Style sheets</a> から選択</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-11"></span>work_dir</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-work_dir">
+<span class="n"><span class="pre">work_dir</span></span><a class="headerlink" href="#setting_section-work_dir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>生成ファイルの保存先 <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td><div class="line-block">
 <div class="line">文字列</div>
@@ -257,7 +313,11 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">work</span></code></p></td>
 <td><p>画像ファイル、PDFファイルの保存先</p></td>
 </tr>
-<tr class="row-even"><td><p id="database-file"><span class="target" id="index-12"></span>database_file</p>
+<tr class="row-even"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-database_file">
+<span class="n"><span class="pre">database_file</span></span><a class="headerlink" href="#setting_section-database_file" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p>成績を記録するファイル名 <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
 <td><div class="line-block">
@@ -268,7 +328,12 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">mahjong.db</span></code></p></td>
 <td><p>SQLite 3.x database</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="index-13"></span>backup_dir</p></td>
+<tr class="row-odd"><td><dl class="mahjong setting_section">
+<dt class="sig sig-object mahjong" id="setting_section-backup_dir">
+<span class="n"><span class="pre">backup_dir</span></span><a class="headerlink" href="#setting_section-backup_dir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>自動バックアップ保存先 <a class="footnote-reference brackets" href="#id6" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
 <td><div class="line-block">
 <div class="line">文字列</div>

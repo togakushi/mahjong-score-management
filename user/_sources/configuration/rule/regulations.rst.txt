@@ -7,7 +7,7 @@
 ゲーム結果とは別清算されるレギュレーションを設定する。
 
 | 通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。
-| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 `undefined_word <undefined_word>` のみの動作となる。
+| レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 `undefined_word` のみの動作となる。
 
 レギュレーションの記録は `remarks_record` で行う。
 
@@ -29,8 +29,8 @@ regulationsセクション
 
 定義されているキーが `table-words` テーブルの ``word`` として事前登録される。
 
-| ``yakuman_list`` 及び ``word_list`` にはカンマで区切られたワードを並べる。
-| テーブルに登録されていないワードが使用された場合、そのワードのtypeは `undefined_word <undefined_word>` で指定した値となる。
+| `yakuman_list` 及び `word_list` にはカンマで区切られたワードを並べる。
+| テーブルに登録されていないワードが使用された場合、そのワードのtypeは `undefined_word` で指定した値となる。
 
 .. list-table::
    :width: 100%
@@ -42,12 +42,12 @@ regulationsセクション
      - 型
      - 未定義時
      - 備考
-   * - yakuman_list
+   * - .. regulations_section:: yakuman_list
      - 事前登録ワード(役満)
      - 文字列(カンマ区切り)
      - None
      - 事前登録ワードを ``type=0`` として登録
-   * - word_list
+   * - .. regulations_section:: word_list
      - 事前登録ワード(個別)
      - 文字列(カンマ区切り)
      - None
@@ -59,6 +59,7 @@ regulationsセクション
      - | キーで定義した単語を ``type=2`` として登録
        | ポイントは1000点単位
 
+..
 
 .. index::
    single: ルールセット; チーム清算レギュレーション

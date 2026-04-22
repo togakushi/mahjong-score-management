@@ -19,88 +19,90 @@ aliasセクション
      - 型
      - 未定義時
      - 備考
-   * - results
+   * - .. alias_section:: results
      - 成績表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - graph
+   * - .. alias_section:: graph
      - グラフ表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - ranking
+   * - .. alias_section:: ranking
      - ランキング表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - report
+   * - .. alias_section:: report
      - レポート表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - download
+   * - .. alias_section:: download
      - データベースダウンロード
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - member
+   * - .. alias_section:: member
      - メンバーリスト表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - add
+   * - .. alias_section:: add
      - メンバー追加
      - | 文字列
        | (カンマ区切り)
      -
      - メンバー新規登録、別名登録
-   * - del
+   * - .. alias_section:: del
      - メンバー削除
      - | 文字列
        | (カンマ区切り)
      -
      - メンバー削除、別名削除
-   * - team_create
+   * - .. alias_section:: team_create
      - 新規チーム作成
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - team_del
+   * - .. alias_section:: team_del
      - チーム削除
      - | 文字列
        | (カンマ区切り)
      -
      - チームに所属していたメンバーは未所属になる
-   * - team_add
+   * - .. alias_section:: team_add
      - チームにメンバーを所属
      - | 文字列
        | (カンマ区切り)
      -
      - - 複数チームに所属できない
        - 未登録メンバー(ゲスト)はチーム所属できない
-   * - team_remove
+   * - .. alias_section:: team_remove
      - チームからメンバーを削除
      - | 文字列
        | (カンマ区切り)
      -
      - チーム所属から外れたメンバーは未所属になる
-   * - team_list
+   * - .. alias_section:: team_list
      - チーム一覧と所属メンバーの表示
      - | 文字列
        | (カンマ区切り)
      -
      -
-   * - team_clear
+   * - .. alias_section:: team_clear
      - すべてのチーム情報を削除
      - | 文字列
        | (カンマ区切り)
      -
      - すべてのチーム情報を削除し、全員未所属にする
+
+..

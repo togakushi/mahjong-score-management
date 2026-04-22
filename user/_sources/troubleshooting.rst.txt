@@ -43,4 +43,4 @@
 
       /slash_command failed with the error "dispatch_failed"
 
-   アプリケーション設定（ `./setting/for_slack/setup` -> スラッシュコマンド有効化 ）と 設定ファイル（ `slack-section` の `slash_command <slash_command_slack>` ）が一致していない。
+   アプリケーション設定（ `./setting/for_slack/setup` -> スラッシュコマンド有効化 ）と 設定ファイル（ `slack-section` の :integrations_section:`slash_command <slack section; slash_command>` ）が一致していない。

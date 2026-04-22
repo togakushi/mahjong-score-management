@@ -175,7 +175,7 @@
 <p>ゲーム結果とは別清算されるレギュレーションを設定する。</p>
 <div class="line-block">
 <div class="line">通算ポイントに対し指定されたポイントのボーナスまたはペナルティが加えられる。</div>
-<div class="line">レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 <a class="reference internal" href="ruleset.html#undefined-word"><span class="std std-ref">undefined_word</span></a> のみの動作となる。</div>
+<div class="line">レギュレーション設定のセクション定義が見つからない場合は何も設定されず、 <a class="reference internal" href="ruleset.html#rule_set_section-undefined_word" title="undefined_word"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">undefined_word</span></code></a> のみの動作となる。</div>
 </div>
 <p>レギュレーションの記録は <a class="reference internal" href="../../functions/input/remarks_record.html#remarks-record"><span class="std std-ref">メモ記録</span></a> で行う。</p>
 <section id="index-1">
@@ -188,8 +188,8 @@
 <span id="regulations-section"></span><h3>regulationsセクション<a class="headerlink" href="#regulations" title="Link to this heading">¶</a></h3>
 <p>定義されているキーが <a class="reference internal" href="../../development/database/schema/table/words.html#table-words"><span class="std std-ref">words</span></a> テーブルの <code class="docutils literal notranslate"><span class="pre">word</span></code> として事前登録される。</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">yakuman_list</span></code> 及び <code class="docutils literal notranslate"><span class="pre">word_list</span></code> にはカンマで区切られたワードを並べる。</div>
-<div class="line">テーブルに登録されていないワードが使用された場合、そのワードのtypeは <a class="reference internal" href="ruleset.html#undefined-word"><span class="std std-ref">undefined_word</span></a> で指定した値となる。</div>
+<div class="line"><a class="reference internal" href="#regulations_section-yakuman_list" title="yakuman_list"><code class="xref any mahjong mahjong-regulations_section docutils literal notranslate"><span class="pre">yakuman_list</span></code></a> 及び <a class="reference internal" href="#regulations_section-word_list" title="word_list"><code class="xref any mahjong mahjong-regulations_section docutils literal notranslate"><span class="pre">word_list</span></code></a> にはカンマで区切られたワードを並べる。</div>
+<div class="line">テーブルに登録されていないワードが使用された場合、そのワードのtypeは <a class="reference internal" href="ruleset.html#rule_set_section-undefined_word" title="undefined_word"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">undefined_word</span></code></a> で指定した値となる。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -208,13 +208,23 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>yakuman_list</p></td>
+<tr class="row-even"><td><dl class="mahjong regulations_section">
+<dt class="sig sig-object mahjong" id="regulations_section-yakuman_list">
+<span class="n"><span class="pre">yakuman_list</span></span><a class="headerlink" href="#regulations_section-yakuman_list" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>事前登録ワード(役満)</p></td>
 <td><p>文字列(カンマ区切り)</p></td>
 <td><p>None</p></td>
 <td><p>事前登録ワードを <code class="docutils literal notranslate"><span class="pre">type=0</span></code> として登録</p></td>
 </tr>
-<tr class="row-odd"><td><p>word_list</p></td>
+<tr class="row-odd"><td><dl class="mahjong regulations_section">
+<dt class="sig sig-object mahjong" id="regulations_section-word_list">
+<span class="n"><span class="pre">word_list</span></span><a class="headerlink" href="#regulations_section-word_list" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>事前登録ワード(個別)</p></td>
 <td><p>文字列(カンマ区切り)</p></td>
 <td><p>None</p></td>

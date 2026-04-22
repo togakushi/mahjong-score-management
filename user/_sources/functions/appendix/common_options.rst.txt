@@ -31,92 +31,92 @@
    * - キーワード
      - 追加される日付
      - 備考
-   * - .. mahjong:common:: 当日
+   * - .. common:: 当日
           :category: 日付指定オプション
 
      - `time_adjust <time_adjust>` を考慮した時間の日付
      -
-   * - .. mahjong:common:: 今日
+   * - .. common:: 今日
           :category: 日付指定オプション
 
      - 今日の日付
      -
-   * - .. mahjong:common:: 昨日
+   * - .. common:: 昨日
           :category: 日付指定オプション
 
      - 昨日の日付
      -
-   * - .. mahjong:common:: 先週
+   * - .. common:: 先週
           :category: 日付指定オプション
 
      - | 先週の月曜日
        | 先週の日曜日
      - 実行日から7日前の週の月曜日～日曜日
-   * - .. mahjong:common:: 今週
+   * - .. common:: 今週
           :category: 日付指定オプション
 
      - | 今週の月曜日
        | 今週の日曜日
      - | 実行日が含まれる週
        | 実行日が月曜日であればその週の日曜日まで
-   * - .. mahjong:common:: 今月
+   * - .. common:: 今月
           :category: 日付指定オプション
 
      - | 今月月初の日付
        | 今月月末の日付
      -
-   * - .. mahjong:common:: 先月
+   * - .. common:: 先月
           :category: 日付指定オプション
 
      - | 先月月初の日付
        | 先月月末の日付
      -
-   * - .. mahjong:common:: 先々月
+   * - .. common:: 先々月
           :category: 日付指定オプション
 
      - | 先々月月初の日付
        | 先々月月末の日付
      -
-   * - .. mahjong:common:: 今年
+   * - .. common:: 今年
           :category: 日付指定オプション
 
      - | 今年の1月1日
        | 今年の12月31日
      -
-   * - .. mahjong:common:: 去年, 昨年
+   * - .. common:: 去年, 昨年
           :category: 日付指定オプション
 
      - | 前年の1月1日
        | 前年の12月31日
      -
-   * - .. mahjong:common:: 一昨年
+   * - .. common:: 一昨年
           :category: 日付指定オプション
 
      - | 前々年の1月1日
        | 前々年の12月31日
      -
-   * - .. mahjong:common:: 最初
+   * - .. common:: 最初
           :category: 日付指定オプション
 
      - 記録されている最初のレコードの前日
      - 集計対象のルール識別子で異なる日付が返る
-   * - .. mahjong:common:: 最後
+   * - .. common:: 最後
           :category: 日付指定オプション
 
      - 翌日の日付
      -
-   * - .. mahjong:common:: 全部
+   * - .. common:: 全部
           :category: 日付指定オプション
 
      - | 記録されている最初のレコードの前日
        | 翌日の日付
      - 最初から最後まで
-   * - .. mahjong:common:: YYYYMMDD
+   * - .. common:: YYYYMMDD
           :category: 日付指定オプション
 
      - 指定日 （連続した数字8桁）
      - MMとDDは常に2桁で指定する
-   * - .. mahjong:common:: YYYY-MM-DD, YYYY/MM/DD
+   * - .. common:: YYYY-MM-DD, YYYY/MM/DD
           :category: 日付指定オプション
 
      - 指定日
@@ -135,12 +135,12 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: 直近<NNN>
+   * - .. common:: 直近<NNN>
           :category: 回数指定オプション
 
      - <NNN>回前からのゲームを集計
      - 数字で指定
-   * - .. mahjong:common:: 規定打数<NNN>, 規定数<NNN>
+   * - .. common:: 規定打数<NNN>, 規定数<NNN>
           :category: 回数指定オプション
 
      - プレイ数が<NNN>回以下のメンバーを非表示にする
@@ -163,12 +163,12 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: コメント<XXX>
+   * - .. common:: コメント<XXX>
           :category: コメント検索オプション
 
      - ゲームコメントを<XXX>で検索する
      - 部分一致
-   * - .. mahjong:common:: 集約<NNN>
+   * - .. common:: 集約<NNN>
           :category: コメント検索オプション
 
      - ゲームコメントの文字列を先頭から<NNN>文字目でグループ化する
@@ -188,17 +188,17 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: 横断, mix, mixed
+   * - .. common:: 横断, mix, mixed
           :category: ルール指定オプション
 
      - 未マッピングの `ルールセット` も集計対象に含める
      - 自動的に **規定打数0** が付与される
-   * - .. mahjong:common:: サンマ, 三麻, 三人打, 三人打ち
+   * - .. common:: サンマ, 三麻, 三人打, 三人打ち
           :category: ルール指定オプション
 
      - ``mode=3`` が指定されている `ルールセット` をすべて含める
      - マッピングされている `ルールセット` のみ
-   * - .. mahjong:common:: ヨンマ, 四麻, 四人打, 四人打ち
+   * - .. common:: ヨンマ, 四麻, 四人打, 四人打ち
           :category: ルール指定オプション
 
      - ``mode=4`` が指定されている `ルールセット` をすべて含める
@@ -224,12 +224,12 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: text, txt
+   * - .. common:: text, txt
           :category: フォーマット変更オプション
 
      - テキスト形式でファイル出力
      - UTF-8
-   * - .. mahjong:common:: csv
+   * - .. common:: csv
           :category: フォーマット変更オプション
 
      - CSV形式でファイル出力
@@ -252,7 +252,7 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: ゲストあり
+   * - .. common:: ゲストあり
           :category: ゲスト関連オプション
 
      - 集計結果にゲストの成績を含める
@@ -261,9 +261,9 @@
          - 1ゲームにゲストが2名以上いる場合、ゲストは同名のプレイヤーとして扱われ、成績が合算される
          - 正しく集計できないプレイヤーがゲームに存在するため、 `2ゲスト戦` で記録された成績は集計対象外になる（ゲーム自体を無効にする）
 
-       - :mahjong:common:`ゲスト無効` の指定は効果がなくなる
+       - :common:`ゲスト無効` の指定は効果がなくなる
        - 未登録メンバーはゲストに置換される
-   * - .. mahjong:common:: ゲストなし
+   * - .. common:: ゲストなし
           :category: ゲスト関連オプション
 
      - 集計結果からゲストの成績を除外する
@@ -272,8 +272,8 @@
          - 未登録メンバーはゲストに置換され、集計結果から除外される
          - `2ゲスト戦` の成績が計上されるようになる（ゲスト以外のプレイヤーの成績は集計される）
 
-       - :mahjong:common:`ゲスト無効` の指定は効果がなくなる
-   * - .. mahjong:common:: ゲスト無効
+       - :common:`ゲスト無効` の指定は効果がなくなる
+   * - .. common:: ゲスト無効
           :category: ゲスト関連オプション
 
      - 未登録メンバーをゲストに置き換えず、個別のメンバーとして集計する
@@ -296,17 +296,17 @@
    * - キーワード
      - 内容
      - 備考
-   * - .. mahjong:common:: 匿名
+   * - .. common:: 匿名
           :category: その他のオプション
 
      - プレイヤー名/チーム名を伏せる
      - ``Player_XXX`` / ``Team_XXX`` に置換
-   * - .. mahjong:common:: 個人, 個人成績
+   * - .. common:: 個人, 個人成績
           :category: その他のオプション
 
      - 個人集計を表示する
      - チーム集計オプションを上書きする
-   * - .. mahjong:common:: チーム, チーム成績, team
+   * - .. common:: チーム, チーム成績, team
           :category: その他のオプション
 
      - チーム集計を表示する
