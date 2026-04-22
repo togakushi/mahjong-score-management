@@ -25,16 +25,18 @@ degreeセクション
      - 内容
      - 値
      - 備考
-   * - :index:`badge <pair: degree section; badge>`
+   * - .. degree_section:: badge
      - 追加される文字列
      - | 文字列
        | (カンマ区切り)
-     - ``counter`` の数と合わせる
-   * - :index:`counter <pair: degree section; counter>`
+     - :degree_section:`counter` の数と合わせる
+   * - .. degree_section:: counter
      - 称号が変化するゲーム数
      - | 数値(int)
        | (カンマ区切り)
-     - ``badge`` の数と合わせる
+     - :degree_section:`badge` の数と合わせる
+
+..
 
 
 .. _status-section:
@@ -54,16 +56,17 @@ statusセクション
      - 内容
      - 値
      - 備考
-   * - :index:`badge <pair: status section; badge>`
+   * - .. status_section:: badge
      - 追加される文字列
      - | 文字列
        | (カンマ区切り)
      - 休み、絶不調、不調、普通、好調、絶好調の順に6段階すべて指定
-   * - :index:`step <pair: status section; step>`
+   * - .. status_section:: step
      - 称号が変化するゲーム数
      - 数値(float)
      - 普通を基準(勝率50%)として、上下する刻み幅
 
+..
 
 .. _grade-section:
 
@@ -82,12 +85,14 @@ gradeセクション
      - 内容
      - 値
      - 備考
-   * - :index:`table_name <pair: grade section; table_name>`
+   * - .. grade_section:: table_name
      - 使用する昇段計算テーブルの名前
      - 文字列(備考参照)
      - :mahjongsoul / 雀魂: 雀魂風表記
        :tenho / 天鳳: 天鳳風表記
        :その他(JSONファイル名): オリジナル定義ファイルを使用( `gradetable` 参照)
+
+..
 
 
 .. index::
@@ -114,36 +119,38 @@ custom_messageセクション
    * - プレフィックス
      - 使用シーン
      - 備考
-   * - :index:`invalid_argument <pair: custom_message section; invalid_argument>`
+   * - .. custom_message_section:: invalid_argument
      - オプション解析に失敗した場合
      -
-   * - :index:`invalid_score <pair: custom_message section; invalid_score>`
+   * - .. custom_message_section:: invalid_score
      - 持ち点合計と配給原点合計に差分がある場合
      -
-   * - :index:`no_hits <pair: custom_message section; no_hits>`
+   * - .. custom_message_section:: no_hits
      - 検索指定範囲にゲーム結果が見つからない場合
      -
-   * - :index:`no_target <pair: custom_message section; no_target>`
+   * - .. custom_message_section:: no_target
      - 集計対象メンバーが存在しない場合
      -
-   * - :index:`restricted_channel <pair: custom_message section; restricted_channel>`
+   * - .. custom_message_section:: restricted_channel
      - 制限チャンネルでデータ更新をしようとした場合
      -
-   * - :index:`inside_thread <pair: custom_message section; inside_thread>`
+   * - .. custom_message_section:: inside_thread
      - ``thread_report`` が ``False`` の場合にスレッド内で点数登録をしようとした場合
      -
-   * - :index:`same_player <pair: custom_message section; same_player>`
+   * - .. custom_message_section:: same_player
      - スコアデータに同名のプレイヤーが存在している場合
      -
-   * - :index:`not_implemented <pair: custom_message section; not_implemented>`
+   * - .. custom_message_section:: not_implemented
      - 未実装の機能にアクセスしたときに表示するメッセージ
      -
-   * - :index:`access_denied <pair: custom_message section; access_denied>`
+   * - .. custom_message_section:: access_denied
      - 制限された機能にアクセスしたときに表示するメッセージ
      -
-   * - :index:`rule_mismatch <pair: custom_message section; rule_mismatch>`
+   * - .. custom_message_section:: rule_mismatch
      - 集計モードと指定 `ルールセット` のモードに食い違いが発生している場合
      -
+
+..
 
 
 置き換え文字列

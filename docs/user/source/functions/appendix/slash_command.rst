@@ -6,8 +6,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 成績管理
@@ -24,9 +24,9 @@ results
 :書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
 :引数: - 専用オプション
 
-         - :mahjong:results:`戦績` ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力
-         - :mahjong:results:`詳細` ：戦績に追加で4人分の戦績を出力
-         - :mahjong:results:`対戦` ：対戦結果の表示
+         - :results:`戦績` ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力
+         - :results:`詳細` ：戦績に追加で4人分の戦績を出力
+         - :results:`対戦` ：対戦結果の表示
 
            - 対象メンバーを2名以上指定した場合、直接対戦結果を表示
 
@@ -50,8 +50,8 @@ graph
 :書式: ``/commandname graph [対象メンバー] [検索範囲]``
 :引数: - 専用オプション
 
-         - :mahjong:graph:`順位` ：順位変動グラフに切り替え
-         - 集約： :mahjong:graph:`日次` / :mahjong:graph:`月次` / :mahjong:graph:`年次` / :mahjong:graph:`全体`
+         - :graph:`順位` ：順位変動グラフに切り替え
+         - 集約： :graph:`日次` / :graph:`月次` / :graph:`年次` / :graph:`全体`
          - 対象メンバー：省略時は検索範囲に含まれるメンバー全員
 
        - 共通オプション
@@ -75,7 +75,7 @@ ranking
 :書式: ``/commandname ranking [検索範囲] [トップNNN]``
 :引数: - 専用オプション
 
-         - :mahjong:ranking:`トップ\<NNN>` ：上位NNN位まで表示する（省略時は「3」）
+         - :ranking:`トップ\<NNN>` ：上位NNN位まで表示する（省略時は「3」）
 
        - 共通オプション
 
@@ -97,9 +97,8 @@ report
 :引数: - 専用オプション
 
          - 指定なし：成績上位5名（月間）
-         - :mahjong:report:`統計` ：ゲーム統計（月間）
-         - :mahjong:report:`個人` / :mahjong:report:`個人成績` ：個人成績一覧
-         - :mahjong:report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリックス表
+         - :report:`統計` ：ゲーム統計（月間）
+         - :report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリックス表
          - プレイヤー名：指定プレイヤーの成績レポート(PDF)
 
        - 共通オプション

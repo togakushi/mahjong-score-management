@@ -6,8 +6,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 チーム作成

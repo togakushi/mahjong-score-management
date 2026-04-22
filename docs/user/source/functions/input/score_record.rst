@@ -11,8 +11,8 @@
 
 *成績記録キーワード* は設定ファイルで指定される。
 
-- `mahjong-section` の `keywords <keywords>`
-- `rule-set` の `keywords <keywords>`
+- `mahjong-section` の `keywords`
+- `rule-set` の `keywords`
 - `keyword_mapping-section` で追加したキーワード
 
 

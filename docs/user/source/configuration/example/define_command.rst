@@ -135,7 +135,7 @@ Slack/Discordを利用時は突合コマンドが追加される。
    [DEBUG][section:config_load] report: {'default_commandword': '麻雀レポート', 'section': 'report', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['成績レポート'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: report>}
    [DEBUG][section:config_load] help: {'default_commandword': '麻雀ヘルプ', 'section': 'help', 'individual': True, 'guest_skip': True, 'guest_skip2': True, 'unregistered_replace': True, 'friendly_fire': False, 'statistics': False, 'ranked': 3, 'stipulated': 0, 'stipulated_rate': 0.05, 'interval': 80, 'search_word': '', 'group_length': 0, 'commandword': ['アプリヘルプ'], 'command_suffix': [], 'aggregation_range': '当日', 'always_argument': [], 'dropitems': [], 'section_proxy': <Section: help>}
 
-定義した呼び出しキーワードは `commandword <commandword>` で確認できる。
+定義した呼び出しキーワードは :sub_commands_section:`commandword` で確認できる。
 
 
 サービス個別設定状況
@@ -157,6 +157,6 @@ Slack/Discordを利用時は突合コマンドが追加される。
    [INFO][rule:info] default_rule: mode=4, origin_point=250, return_point=300, rank_point=[30, 10, -10, 30], draw_split=False, ignore_flying=False
    [INFO][rule:info] default_rule3: mode=3, origin_point=350, return_point=400, rank_point=[30, 0, -30], draw_split=False, ignore_flying=False
 
-`mahjong-section` で定義した `keywords <keywords>` とデフォルトルールとなる ``default_rule`` が紐付けられる。
+`mahjong-section` で定義した `keywords` とデフォルトルールとなる ``default_rule`` が紐付けられる。
 
 三人打ちルールの ``default_rule3`` はルール定義をすべて省略すると登録されるがデフォルトルールには指定されない。

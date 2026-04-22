@@ -15,8 +15,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 オプション
@@ -25,7 +25,7 @@
 基本オプション
 ++++++++++++++
 
-.. mahjong:ranking:: メンバー名, チーム名
+.. ranking:: メンバー名, チーム名
    :category: 基本オプション
 
    指定メンバー / チームだけでランキングを生成する。
@@ -34,12 +34,12 @@
 個別オプション
 ++++++++++++++
 
-.. mahjong:ranking:: トップ<NNN>, top<NNN>
+.. ranking:: トップ<NNN>, top<NNN>
    :category: 個別オプション
 
    上位NNN位まで出力。
 
-.. mahjong:ranking:: レート, レーティング, rating
+.. ranking:: レート, レーティング, rating
    :category: 個別オプション
 
    レーティングを表示。
