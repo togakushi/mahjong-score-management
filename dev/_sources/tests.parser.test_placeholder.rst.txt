@@ -1,7 +1,0 @@
-tests.parser.test\_placeholder module
-=====================================
-
-.. automodule:: tests.parser.test_placeholder
-   :members:
-   :show-inheritance:
-   :undoc-members:

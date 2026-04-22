@@ -1,7 +1,0 @@
-libs.domain.stats module
-========================
-
-.. automodule:: libs.domain.stats
-   :members:
-   :show-inheritance:
-   :undoc-members:

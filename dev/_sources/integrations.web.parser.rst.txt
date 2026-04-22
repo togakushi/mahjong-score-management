@@ -1,7 +1,0 @@
-integrations.web.parser module
-==============================
-
-.. automodule:: integrations.web.parser
-   :members:
-   :show-inheritance:
-   :undoc-members:

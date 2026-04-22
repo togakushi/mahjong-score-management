@@ -1,7 +1,0 @@
-libs.functions.tools.recalculation module
-=========================================
-
-.. automodule:: libs.functions.tools.recalculation
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -1,7 +1,0 @@
-libs.functions.tools.vacuum module
-==================================
-
-.. automodule:: libs.functions.tools.vacuum
-   :members:
-   :show-inheritance:
-   :undoc-members:

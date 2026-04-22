@@ -10,17 +10,17 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="用語集" href="../../glossary.html" />
-    <link rel="prev" title="引数に指定できる共通キーワード" href="common_argument.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="prev" title="オプションに指定できる共通キーワード" href="common_options.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../_static/menu.js"></script>
@@ -67,8 +67,8 @@
 <li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
 <li><a class="reference internal" href="#id2">成績管理</a><ul>
 <li><a class="reference internal" href="#results">results</a></li>
-<li><a class="reference internal" href="#ranking">ranking</a></li>
 <li><a class="reference internal" href="#graph">graph</a></li>
+<li><a class="reference internal" href="#ranking">ranking</a></li>
 <li><a class="reference internal" href="#report">report</a></li>
 </ul>
 </li>
@@ -98,8 +98,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="common_argument.html"
-                          title="previous chapter">引数に指定できる共通キーワード</a></p>
+    <p class="topless"><a href="common_options.html"
+                          title="previous chapter">オプションに指定できる共通キーワード</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -135,7 +135,7 @@
           <a href="../../glossary.html" title="用語集"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="common_argument.html" title="引数に指定できる共通キーワード"
+          <a href="common_options.html" title="オプションに指定できる共通キーワード"
              accesskey="P">previous</a> |</li>
           <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -192,7 +192,7 @@
 <section id="id2">
 <h2>成績管理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <section id="results">
-<span id="index-0"></span><span id="slash-commands-results"></span><h3>results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
+<span id="slash-commands-results"></span><h3>results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
 <dl class="field-list">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>成績サマリを表示（参照： <a class="reference internal" href="../output/results/index.html#function-summary"><span class="std std-ref">サマリ生成</span></a> ）</p>
@@ -203,16 +203,16 @@
 <dt class="field-odd">引数<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p>専用オプション</p></li>
-<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-サマリ生成-arg-4"><code class="xref std std-option docutils literal notranslate"><span class="pre">戦績</span></code></a> ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力</p></li>
-<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-サマリ生成-arg-5"><code class="xref std std-option docutils literal notranslate"><span class="pre">詳細</span></code></a> ：戦績に追加で4人分の戦績を出力</p></li>
-<li><p><a class="reference internal" href="../output/results/index.html#cmdoption-サマリ生成-arg-6"><code class="xref std std-option docutils literal notranslate"><span class="pre">対戦</span></code></a> ：対戦結果の表示</p>
+<li><p><a class="reference internal" href="../output/results/index.html#results-戦績" title="戦績"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">戦績</span></code></a> ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力</p></li>
+<li><p><a class="reference internal" href="../output/results/index.html#results-詳細" title="詳細"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">詳細</span></code></a> ：戦績に追加で4人分の戦績を出力</p></li>
+<li><p><a class="reference internal" href="../output/results/index.html#results-対戦" title="対戦"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">対戦</span></code></a> ：対戦結果の表示</p>
 <ul>
 <li><p>対象メンバーを2名以上指定した場合、直接対戦結果を表示</p></li>
 </ul>
 </li>
 <li><p>共通オプション</p>
 <ul>
-<li><p><a class="reference internal" href="common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -228,38 +228,8 @@
 </dd>
 </dl>
 </section>
-<section id="ranking">
-<span id="index-1"></span><span id="slash-commands-ranking"></span><h3>ranking<a class="headerlink" href="#ranking" title="Link to this heading">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">概要<span class="colon">:</span></dt>
-<dd class="field-odd"><p>各成績をランキング形式で表示（参照： <a class="reference internal" href="../output/ranking/index.html#function-ranking"><span class="std std-ref">ランキング生成</span></a> ）</p>
-</dd>
-<dt class="field-even">書式<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">ranking</span> <span class="pre">[検索範囲]</span> <span class="pre">[トップNNN]</span></code></p>
-</dd>
-<dt class="field-odd">引数<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>専用オプション</p>
-<ul>
-<li><p><a class="reference internal" href="../output/ranking/index.html#cmdoption-arg-NNN"><code class="xref std std-option docutils literal notranslate"><span class="pre">トップ&lt;NNN&gt;</span></code></a> ：上位NNN位まで表示する（省略時は「3」）</p></li>
-</ul>
-</li>
-<li><p>共通オプション</p>
-<ul>
-<li><p><a class="reference internal" href="common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
-</ul>
-</li>
-</ul>
-</dd>
-<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
-<dd class="field-even"><p>ランキング</p>
-</dd>
-<dt class="field-odd">補足説明<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</section>
 <section id="graph">
-<span id="index-2"></span><span id="slash-commands-graph"></span><h3>graph<a class="headerlink" href="#graph" title="Link to this heading">¶</a></h3>
+<span id="slash-commands-graph"></span><h3>graph<a class="headerlink" href="#graph" title="Link to this heading">¶</a></h3>
 <dl class="field-list">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ポイント推移グラフを表示（参照： <a class="reference internal" href="../output/graph/index.html#function-graph"><span class="std std-ref">グラフ生成</span></a> ）</p>
@@ -271,14 +241,14 @@
 <dd class="field-odd"><ul class="simple">
 <li><p>専用オプション</p>
 <ul>
-<li><p><a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成-arg-0"><code class="xref std std-option docutils literal notranslate"><span class="pre">順位</span></code></a> ：順位変動グラフに切り替え</p></li>
-<li><p>集約： <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成-arg-1"><code class="xref std std-option docutils literal notranslate"><span class="pre">日次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成-arg-5"><code class="xref std std-option docutils literal notranslate"><span class="pre">月次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成-arg-7"><code class="xref std std-option docutils literal notranslate"><span class="pre">年次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#cmdoption-グラフ生成-arg-9"><code class="xref std std-option docutils literal notranslate"><span class="pre">全体</span></code></a></p></li>
+<li><p><a class="reference internal" href="../output/graph/index.html#graph-順位" title="順位"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">順位</span></code></a> ：順位変動グラフに切り替え</p></li>
+<li><p>集約： <a class="reference internal" href="../output/graph/index.html#graph-日次" title="日次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">日次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#graph-月次" title="月次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">月次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#graph-年次" title="年次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">年次</span></code></a> / <a class="reference internal" href="../output/graph/index.html#graph-全体" title="全体"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">全体</span></code></a></p></li>
 <li><p>対象メンバー：省略時は検索範囲に含まれるメンバー全員</p></li>
 </ul>
 </li>
 <li><p>共通オプション</p>
 <ul>
-<li><p><a class="reference internal" href="common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -295,8 +265,38 @@
 </dd>
 </dl>
 </section>
+<section id="ranking">
+<span id="slash-commands-ranking"></span><h3>ranking<a class="headerlink" href="#ranking" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>各成績をランキング形式で表示（参照： <a class="reference internal" href="../output/ranking/index.html#function-ranking"><span class="std std-ref">ランキング生成</span></a> ）</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">ranking</span> <span class="pre">[検索範囲]</span> <span class="pre">[トップNNN]</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>専用オプション</p>
+<ul>
+<li><p><a class="reference internal" href="../output/ranking/index.html#ranking-トップ&lt;NNN&gt;" title="トップ&lt;NNN&gt;"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">トップ&lt;NNN&gt;</span></code></a> ：上位NNN位まで表示する（省略時は「3」）</p></li>
+</ul>
+</li>
+<li><p>共通オプション</p>
+<ul>
+<li><p><a class="reference internal" href="common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p>ランキング</p>
+</dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
 <section id="report">
-<span id="index-3"></span><span id="slash-commands-report"></span><h3>report<a class="headerlink" href="#report" title="Link to this heading">¶</a></h3>
+<span id="slash-commands-report"></span><h3>report<a class="headerlink" href="#report" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>レポートを表示（参照： <a class="reference internal" href="../output/report/index.html#function-report"><span class="std std-ref">レポート生成</span></a> ）</p>
@@ -309,15 +309,15 @@
 <li><p>専用オプション</p>
 <ul>
 <li><p>指定なし：成績上位5名（月間）</p></li>
-<li><p>統計：ゲーム統計（月間）</p></li>
-<li><p>個人 / 個人成績：個人成績一覧</p></li>
-<li><p>対戦 / 2名以上のプレイヤー名：対局対戦マトリックス表</p></li>
+<li><p><a class="reference internal" href="../output/report/index.html#report-統計" title="統計"><code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">統計</span></code></a> ：ゲーム統計（月間）</p></li>
+<li><p><code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">個人</span></code> / <code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">個人成績</span></code> ：個人成績一覧</p></li>
+<li><p><a class="reference internal" href="../output/report/index.html#report-対戦" title="対戦"><code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">対戦</span></code></a> / 2名以上のプレイヤー名：対局対戦マトリックス表</p></li>
 <li><p>プレイヤー名：指定プレイヤーの成績レポート(PDF)</p></li>
 </ul>
 </li>
 <li><p>共通オプション</p>
 <ul>
-<li><p><a class="reference internal" href="common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +333,7 @@
 <section id="id3">
 <h2>データベース関連<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <section id="check">
-<span id="index-4"></span><span id="slash-commands-check"></span><h3>check<a class="headerlink" href="#check" title="Link to this heading">¶</a></h3>
+<span id="index-0"></span><span id="slash-commands-check"></span><h3>check<a class="headerlink" href="#check" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>データベースの突合</p>
@@ -351,7 +351,7 @@
 </dl>
 </section>
 <section id="download">
-<span id="index-5"></span><span id="slash-commands-download"></span><h3>download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><span id="slash-commands-download"></span><h3>download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>データベースのダウンロード</p>
@@ -373,7 +373,7 @@
 <section id="id4">
 <h2>メンバー管理<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <section id="member-userlist">
-<span id="index-6"></span><span id="slash-commands-member"></span><h3>member / userlist<a class="headerlink" href="#member-userlist" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><span id="slash-commands-member"></span><h3>member / userlist<a class="headerlink" href="#member-userlist" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>登録されているメンバーを表示</p>
@@ -395,7 +395,7 @@
 </dl>
 </section>
 <section id="add-del">
-<span id="index-7"></span><span id="slash-commands-member-add-del"></span><h3>add / del<a class="headerlink" href="#add-del" title="Link to this heading">¶</a></h3>
+<span id="index-3"></span><span id="slash-commands-member-add-del"></span><h3>add / del<a class="headerlink" href="#add-del" title="Link to this heading">¶</a></h3>
 <dl class="field-list">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>成績管理対象のメンバーを追加、削除</p>
@@ -437,7 +437,7 @@
 <section id="id5">
 <h2>チーム管理<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <section id="team-create">
-<span id="index-8"></span><span id="slash-commands-team-create"></span><h3>team_create<a class="headerlink" href="#team-create" title="Link to this heading">¶</a></h3>
+<span id="index-4"></span><span id="slash-commands-team-create"></span><h3>team_create<a class="headerlink" href="#team-create" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>チームの新規登録</p>
@@ -457,7 +457,7 @@
 </dl>
 </section>
 <section id="team-del">
-<span id="index-9"></span><span id="slash-commands-team-del"></span><h3>team_del<a class="headerlink" href="#team-del" title="Link to this heading">¶</a></h3>
+<span id="index-5"></span><span id="slash-commands-team-del"></span><h3>team_del<a class="headerlink" href="#team-del" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>チームの削除</p>
@@ -478,7 +478,7 @@
 </dl>
 </section>
 <section id="team-add">
-<span id="index-10"></span><span id="slash-commands-team-add"></span><h3>team_add<a class="headerlink" href="#team-add" title="Link to this heading">¶</a></h3>
+<span id="index-6"></span><span id="slash-commands-team-add"></span><h3>team_add<a class="headerlink" href="#team-add" title="Link to this heading">¶</a></h3>
 <dl class="field-list">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>チームにメンバーを所属させる</p>
@@ -506,7 +506,7 @@
 </dl>
 </section>
 <section id="team-remove">
-<span id="index-11"></span><span id="slash-commands-team-remove"></span><h3>team_remove<a class="headerlink" href="#team-remove" title="Link to this heading">¶</a></h3>
+<span id="index-7"></span><span id="slash-commands-team-remove"></span><h3>team_remove<a class="headerlink" href="#team-remove" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>メンバーを未所属にする</p>
@@ -526,7 +526,7 @@
 </dl>
 </section>
 <section id="team-list">
-<span id="index-12"></span><span id="slash-commands-team-list"></span><h3>team_list<a class="headerlink" href="#team-list" title="Link to this heading">¶</a></h3>
+<span id="index-8"></span><span id="slash-commands-team-list"></span><h3>team_list<a class="headerlink" href="#team-list" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>チーム名と所属メンバーを表示する</p>
@@ -544,7 +544,7 @@
 </dl>
 </section>
 <section id="team-clear">
-<span id="index-13"></span><span id="slash-commands-team-clear"></span><h3>team_clear<a class="headerlink" href="#team-clear" title="Link to this heading">¶</a></h3>
+<span id="index-9"></span><span id="slash-commands-team-clear"></span><h3>team_clear<a class="headerlink" href="#team-clear" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
 <dd class="field-odd"><p>チーム情報をすべて削除する</p>
@@ -581,8 +581,8 @@
 <li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
 <li><a class="reference internal" href="#id2">成績管理</a><ul>
 <li><a class="reference internal" href="#results">results</a></li>
-<li><a class="reference internal" href="#ranking">ranking</a></li>
 <li><a class="reference internal" href="#graph">graph</a></li>
+<li><a class="reference internal" href="#ranking">ranking</a></li>
 <li><a class="reference internal" href="#report">report</a></li>
 </ul>
 </li>
@@ -612,8 +612,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="common_argument.html"
-                          title="previous chapter">引数に指定できる共通キーワード</a></p>
+    <p class="topless"><a href="common_options.html"
+                          title="previous chapter">オプションに指定できる共通キーワード</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -649,7 +649,7 @@
           <a href="../../glossary.html" title="用語集"
              >next</a> |</li>
         <li class="right" >
-          <a href="common_argument.html" title="引数に指定できる共通キーワード"
+          <a href="common_options.html" title="オプションに指定できる共通キーワード"
              >previous</a> |</li>
           <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -687,8 +687,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

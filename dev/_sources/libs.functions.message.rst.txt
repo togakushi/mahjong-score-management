@@ -1,7 +1,0 @@
-libs.functions.message module
-=============================
-
-.. automodule:: libs.functions.message
-   :members:
-   :show-inheritance:
-   :undoc-members:

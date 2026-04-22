@@ -1,7 +1,0 @@
-libs.functions.tools.score\_simulator module
-============================================
-
-.. automodule:: libs.functions.tools.score_simulator
-   :members:
-   :show-inheritance:
-   :undoc-members:

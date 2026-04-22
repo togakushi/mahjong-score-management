@@ -1,7 +1,0 @@
-tests.database.test\_query module
-=================================
-
-.. automodule:: tests.database.test_query
-   :members:
-   :show-inheritance:
-   :undoc-members:

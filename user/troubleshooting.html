@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d9cdef91" />
     
-    <script src="_static/documentation_options.js?v=8399f5db"></script>
+    <script src="_static/documentation_options.js?v=27e171c2"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -158,21 +158,29 @@
 <h1>トラブルシューティング &amp; FAQ<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h1>
 <section id="id1">
 <h2>バックアップ / リストア<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<dl class="simple">
-<dt>バックアップ</dt><dd><p>使用しているDBファイル、INIファイルをすべてコピーする。</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">バックアップ</span></span></dt>
+<dd><p>使用しているDBファイル、INIファイルをすべてコピーする。</p>
 <ul class="simple">
 <li><p>ファイルとして単純コピーすればよい</p></li>
 <li><p>DBのcommit後はcloseしているので、アプリを止める必要はない</p></li>
 </ul>
-</dd>
-<dt>リストア</dt><dd><p>退避したDBファイル、INIファイルを同じパスに保存し、アプリを再起動する。</p>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">リストア</span></span></dt>
+<dd><p>退避したDBファイル、INIファイルを同じパスに保存し、アプリを再起動する。</p>
+</dd></dl>
+
 </section>
 <section id="id2">
 <h2>データ修正<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<dl>
-<dt>登録したデータの時間を修正したい</dt><dd><p>ゲーム結果のポストを誤って削除、あとから登録しなおした場合など。</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">登録したデータの時間を修正したい</span></span></dt>
+<dd><p>ゲーム結果のポストを誤って削除、あとから登録しなおした場合など。</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">修正クエリ</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">update</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">ts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;修正したい時間&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">playtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strftime</span><span class="p">(</span><span class="ss">&quot;%Y-%m-%d %H:%M:%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;修正したい時間&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;unixepoch&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;+9 hours&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;入れなおした時間&quot;</span><span class="p">;</span>
@@ -184,21 +192,23 @@
 <p class="admonition-title">Danger</p>
 <p>突合処理を動かすと Slack / Discord に記録されている時刻と異なるためデータベースの情報が更新される。</p>
 </div>
-</dd>
-</dl>
+</dd></dl>
+
 </section>
 <section id="id3">
 <h2>動作トラブル<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>Slackのスラッシュコマンドが動かない</p>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id5">
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">Slackのスラッシュコマンドが動かない</span></span></dt>
+<dd><div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">Slackbot からの応答</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/slash_command failed with the error &quot;dispatch_failed&quot;
 </pre></div>
 </div>
 </div>
 <p>アプリケーション設定（ <a class="reference internal" href="setting/for_slack/setup.html"><span class="doc">Slackセットアップ手順</span></a> -&gt; スラッシュコマンド有効化 ）と 設定ファイル（ <a class="reference internal" href="configuration/main/integrations/slack.html#slack-section"><span class="std std-ref">slackセクション</span></a> の <a class="reference internal" href="configuration/main/integrations/slack.html#slash-command-slack"><span class="std std-ref">slash_command</span></a> ）が一致していない。</p>
-</div></blockquote>
+</dd></dl>
+
 </section>
 </section>
 
@@ -297,8 +307,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,14 +66,18 @@
     <ul>
 <li><a class="reference internal" href="#">ランキング生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">項目説明</a><ul>
-<li><a class="reference internal" href="#id6">ランキング</a></li>
-<li><a class="reference internal" href="#id7">レーティング</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8">出力サンプル</a></li>
+<li><a class="reference internal" href="#id7">項目説明</a><ul>
+<li><a class="reference internal" href="#id8">ランキング</a></li>
+<li><a class="reference internal" href="#id9">レーティング</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -185,29 +189,41 @@
 </section>
 <section id="id3">
 <h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-NNN">
-<span class="sig-name descname"><span class="pre">トップ&lt;NNN&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-NNN" title="Link to this definition">¶</a></dt>
+<section id="id4">
+<h3>基本オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="mahjong ranking">
+<dt class="sig sig-object mahjong" id="ranking-メンバー名">
+<span class="n"><span class="pre">メンバー名</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">チーム名</span></span><a class="headerlink" href="#ranking-メンバー名" title="Link to this definition">¶</a></dt>
+<dd><p>指定メンバー / チームだけでランキングを生成する。</p>
+</dd></dl>
+
+</section>
+<section id="id5">
+<h3>個別オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="mahjong ranking">
+<dt class="sig sig-object mahjong" id="ranking-トップ&lt;NNN&gt;">
+<span class="n"><span class="pre">トップ&lt;NNN&gt;</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">top&lt;NNN&gt;</span></span><a class="headerlink" href="#ranking-トップ<NNN>" title="Link to this definition">¶</a></dt>
 <dd><p>上位NNN位まで出力。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg">
-<span id="cmdoption-arg"></span><span id="cmdoption-arg-rating"></span><span class="sig-name descname"><span class="pre">レート</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">レーティング</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">rating</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg" title="Link to this definition">¶</a></dt>
+<dl class="mahjong ranking">
+<dt class="sig sig-object mahjong" id="ranking-レート">
+<span class="n"><span class="pre">レート</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">レーティング</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">rating</span></span><a class="headerlink" href="#ranking-レート" title="Link to this definition">¶</a></dt>
 <dd><p>レーティングを表示。</p>
 </dd></dl>
 
 </section>
-<section id="id4">
-<h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>共通オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../appendix/common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="../../appendix/common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>項目説明<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<section id="id6">
-<h3>ランキング<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id7">
+<h2>項目説明<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3>ランキング<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <dl class="glossary">
 <dt id="term-0">通算ポイント<a class="headerlink" href="#term-0" title="Link to this term">¶</a></dt><dd><p>ウマ、オカを足して最終得点を確定させて算出したポイントの合計。</p>
 </dd>
@@ -236,8 +252,8 @@
 </dd>
 </dl>
 </section>
-<section id="id7">
-<h3>レーティング<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id9">
+<h3>レーティング<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <dl class="simple glossary">
 <dt id="term-8">レート<a class="headerlink" href="#term-8" title="Link to this term">¶</a></dt><dd><p>獲得順位から計算したレーティング。初期値は1500。</p>
 </dd>
@@ -248,8 +264,8 @@
 </dl>
 </section>
 </section>
-<section id="id8">
-<h2>出力サンプル<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h2>出力サンプル<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 <details class="admonition- admonition">
 <summary class="admonition-title">個人ランキング</summary>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【ランキング】
@@ -726,14 +742,18 @@
     <ul>
 <li><a class="reference internal" href="#">ランキング生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">項目説明</a><ul>
-<li><a class="reference internal" href="#id6">ランキング</a></li>
-<li><a class="reference internal" href="#id7">レーティング</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8">出力サンプル</a></li>
+<li><a class="reference internal" href="#id7">項目説明</a><ul>
+<li><a class="reference internal" href="#id8">ランキング</a></li>
+<li><a class="reference internal" href="#id9">レーティング</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -816,8 +836,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

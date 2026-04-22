@@ -1,7 +1,0 @@
-integrations.slack.events.home\_tab.summary module
-==================================================
-
-.. automodule:: integrations.slack.events.home_tab.summary
-   :members:
-   :show-inheritance:
-   :undoc-members:

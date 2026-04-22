@@ -1,7 +1,0 @@
-libs.utils.formatter module
-===========================
-
-.. automodule:: libs.utils.formatter
-   :members:
-   :show-inheritance:
-   :undoc-members:

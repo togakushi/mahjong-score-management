@@ -1,7 +1,0 @@
-integrations.discord.events.handler module
-==========================================
-
-.. automodule:: integrations.discord.events.handler
-   :members:
-   :show-inheritance:
-   :undoc-members:

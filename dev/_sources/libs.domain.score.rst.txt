@@ -1,7 +1,0 @@
-libs.domain.score module
-========================
-
-.. automodule:: libs.domain.score
-   :members:
-   :show-inheritance:
-   :undoc-members:

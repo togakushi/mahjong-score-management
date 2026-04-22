@@ -1,7 +1,0 @@
-dbtools module
-==============
-
-.. automodule:: dbtools
-   :members:
-   :show-inheritance:
-   :undoc-members:

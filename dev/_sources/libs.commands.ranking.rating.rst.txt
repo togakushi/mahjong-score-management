@@ -1,7 +1,0 @@
-libs.commands.ranking.rating module
-===================================
-
-.. automodule:: libs.commands.ranking.rating
-   :members:
-   :show-inheritance:
-   :undoc-members:

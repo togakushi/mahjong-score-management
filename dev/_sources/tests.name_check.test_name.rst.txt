@@ -1,7 +1,0 @@
-tests.name\_check.test\_name module
-===================================
-
-.. automodule:: tests.name_check.test_name
-   :members:
-   :show-inheritance:
-   :undoc-members:

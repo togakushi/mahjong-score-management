@@ -1,7 +1,0 @@
-integrations.slack.events.home\_tab.versus module
-=================================================
-
-.. automodule:: integrations.slack.events.home_tab.versus
-   :members:
-   :show-inheritance:
-   :undoc-members:

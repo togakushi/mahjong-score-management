@@ -1,7 +1,0 @@
-libs.commands.graph.rating module
-=================================
-
-.. automodule:: libs.commands.graph.rating
-   :members:
-   :show-inheritance:
-   :undoc-members:

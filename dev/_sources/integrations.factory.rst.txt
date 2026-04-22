@@ -1,7 +1,0 @@
-integrations.factory module
-===========================
-
-.. automodule:: integrations.factory
-   :members:
-   :show-inheritance:
-   :undoc-members:

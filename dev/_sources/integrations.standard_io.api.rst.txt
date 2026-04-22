@@ -1,7 +1,0 @@
-integrations.standard\_io.api module
-====================================
-
-.. automodule:: integrations.standard_io.api
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -1,7 +1,0 @@
-integrations.slack.events.handler module
-========================================
-
-.. automodule:: integrations.slack.events.handler
-   :members:
-   :show-inheritance:
-   :undoc-members:

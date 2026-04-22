@@ -1,7 +1,0 @@
-libs.commands.graph.entry module
-================================
-
-.. automodule:: libs.commands.graph.entry
-   :members:
-   :show-inheritance:
-   :undoc-members:

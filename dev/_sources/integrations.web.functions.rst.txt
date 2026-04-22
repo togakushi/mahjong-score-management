@@ -1,7 +1,0 @@
-integrations.web.functions module
-=================================
-
-.. automodule:: integrations.web.functions
-   :members:
-   :show-inheritance:
-   :undoc-members:

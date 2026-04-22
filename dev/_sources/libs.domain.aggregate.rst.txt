@@ -1,7 +1,0 @@
-libs.domain.aggregate module
-============================
-
-.. automodule:: libs.domain.aggregate
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,10 +66,14 @@
     <ul>
 <li><a class="reference internal" href="#">レポート生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">レポート内容</a></li>
-<li><a class="reference internal" href="#id6">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">レポート内容</a></li>
+<li><a class="reference internal" href="#id8">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +185,17 @@
 </section>
 <section id="id3">
 <h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>指定されるキーワードによって出力内容が切り替わる。</p>
+<section id="id4">
+<h3>基本オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="mahjong report">
+<dt class="sig sig-object mahjong" id="report-メンバー名">
+<span class="n"><span class="pre">メンバー名</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">チーム名</span></span><a class="headerlink" href="#report-メンバー名" title="Link to this definition">¶</a></dt>
+<dd><p>指定メンバー / チームの成績レポートを生成する。</p>
+</dd></dl>
+
+</section>
+<section id="id5">
+<h3>個別オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -200,61 +214,34 @@
 <td><p>個人/チーム成績一覧</p></td>
 <td><p>reportセクションの <code class="docutils literal notranslate"><span class="pre">individual</span></code> で変化</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg">
-<span class="sig-name descname"><span class="pre">順位</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong report">
+<dt class="sig sig-object mahjong" id="report-順位">
+<span class="n"><span class="pre">順位</span></span><a class="headerlink" href="#report-順位" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>成績上位者</p></td>
 <td><p>上位5名</p></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-レポート生成-arg-0">
-<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-レポート生成-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong report">
+<dt class="sig sig-object mahjong" id="report-統計">
+<span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#report-統計" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>ゲーム統計</p></td>
 <td><p>検索範囲に記録されているすべての結果</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-レポート生成-arg-1">
-<span id="cmdoption-レポート生成-arg-2"></span><span class="sig-name descname"><span class="pre">個人</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">個人成績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-レポート生成-arg-1" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p>個人成績一覧</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-レポート生成-arg-3">
-<span id="cmdoption-レポート生成-arg-4"></span><span class="sig-name descname"><span class="pre">チーム</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム成績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-レポート生成-arg-3" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p>チーム成績一覧</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-レポート生成-arg-5">
-<span id="cmdoption-レポート生成-arg-6"></span><span class="sig-name descname"><span class="pre">メンバー名</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-レポート生成-arg-5" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p>成績レポート</p></td>
-<td><p>PDF出力</p></td>
-</tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-レポート生成-arg-7">
-<span class="sig-name descname"><span class="pre">対戦</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-レポート生成-arg-7" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong report">
+<dt class="sig sig-object mahjong" id="report-対戦">
+<span class="n"><span class="pre">対戦</span></span><a class="headerlink" href="#report-対戦" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>対局対戦マトリックス表</p></td>
 <td><p>テキスト or CSV出力</p></td>
 </tr>
-<tr class="row-odd"><td><p>2名以上のプレイヤー名</p></td>
+<tr class="row-even"><td><p>2名以上のプレイヤー名</p></td>
 <td><p>対局対戦マトリックス表</p></td>
 <td><p>指定プレイヤーに絞って出力</p></td>
 </tr>
@@ -262,14 +249,15 @@
 </table>
 </div></blockquote>
 </section>
-<section id="id4">
-<h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>共通オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../appendix/common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="../../appendix/common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>レポート内容<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+</section>
+<section id="id7">
+<h2>レポート内容<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
 <dl class="simple">
 <dt>成績上位者</dt><dd><p>月間の通算ポイントが多い順に5名を表示。</p>
 </dd>
@@ -297,8 +285,8 @@
 </dd>
 </dl>
 </section>
-<section id="id6">
-<h2>出力サンプル<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h2>出力サンプル<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <details class="admonition- admonition">
 <summary class="admonition-title">チーム成績一覧</summary>
 <a class="reference internal image-reference" href="../../../_images/sample_team_stats_list.png"><img alt="チーム成績一覧" height="240" src="../../../_images/sample_team_stats_list.png" width="480" />
@@ -306,8 +294,8 @@
 </details>
 <details class="admonition- admonition">
 <summary class="admonition-title">対局対戦マトリックス表</summary>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">対局対戦マトリックス表</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">対局対戦マトリックス表</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-------------------+</span>
 <span class="o">|</span>          <span class="o">|</span> <span class="n">Team_009</span>        <span class="o">|</span> <span class="n">Team_001</span>        <span class="o">|</span> <span class="n">Team_007</span>        <span class="o">|</span> <span class="n">Team_002</span>        <span class="o">|</span> <span class="n">Team_005</span>        <span class="o">|</span> <span class="n">Team_003</span>        <span class="o">|</span> <span class="n">Team_014</span>        <span class="o">|</span> <span class="n">Team_000</span>        <span class="o">|</span> <span class="n">Team_011</span>        <span class="o">|</span> <span class="n">Team_015</span>        <span class="o">|</span> <span class="n">Team_013</span>        <span class="o">|</span> <span class="n">Team_006</span>        <span class="o">|</span> <span class="n">Team_004</span>        <span class="o">|</span> <span class="n">Team_008</span>        <span class="o">|</span> <span class="n">Team_012</span>        <span class="o">|</span> <span class="n">Team_010</span>        <span class="o">|</span> <span class="n">total</span>             <span class="o">|</span>
 <span class="o">+==========+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+=================+===================+</span>
@@ -347,10 +335,14 @@
     <ul>
 <li><a class="reference internal" href="#">レポート生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">レポート内容</a></li>
-<li><a class="reference internal" href="#id6">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">レポート内容</a></li>
+<li><a class="reference internal" href="#id8">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -433,8 +425,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

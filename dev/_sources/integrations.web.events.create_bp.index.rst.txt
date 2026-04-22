@@ -1,7 +1,0 @@
-integrations.web.events.create\_bp.index module
-===============================================
-
-.. automodule:: integrations.web.events.create_bp.index
-   :members:
-   :show-inheritance:
-   :undoc-members:

@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,13 +66,17 @@
     <ul>
 <li><a class="reference internal" href="#">グラフ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">個別オプション</a></li>
-<li><a class="reference internal" href="#id5">集計オプション</a></li>
-<li><a class="reference internal" href="#id6">共通オプション</a></li>
-<li><a class="reference internal" href="#id7">出力サンプル</a><ul>
-<li><a class="reference internal" href="#id8">全体成績グラフ詳細</a></li>
-<li><a class="reference internal" href="#id9">個人成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">集計オプション</a></li>
+<li><a class="reference internal" href="#id7">統計出力オプション</a></li>
+<li><a class="reference internal" href="#id8">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id10">全体成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id11">個人成績グラフ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -186,9 +190,11 @@
 </section>
 <section id="id3">
 <h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg">
-<span id="cmdoption-arg"></span><span class="sig-name descname"><span class="pre">メンバー名</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg" title="Link to this definition">¶</a></dt>
+<section id="id4">
+<h3>基本オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-メンバー名">
+<span class="n"><span class="pre">メンバー名</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">チーム名</span></span><a class="headerlink" href="#graph-メンバー名" title="Link to this definition">¶</a></dt>
 <dd><p>指定される人数(チーム数)によって出力内容が切り替わる。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -220,62 +226,68 @@
 </dd></dl>
 
 </section>
-<section id="id4">
-<h2>個別オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-0">
-<span class="sig-name descname"><span class="pre">順位</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-0" title="Link to this definition">¶</a></dt>
-<dd><p>グラフのY軸を通算ポイントからゲーム終了時点の順位（ポイント順）に変更する</p>
+<section id="id5">
+<h3>個別オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-順位">
+<span class="n"><span class="pre">順位</span></span><a class="headerlink" href="#graph-順位" title="Link to this definition">¶</a></dt>
+<dd><p>グラフのY軸を通算ポイントからゲーム終了時点の順位（ポイント順）に変更する。</p>
 <ul class="simple">
-<li><p>全体成績グラフ/成績グラフ(比較用)でのみ有効</p></li>
+<li><p>全体成績グラフ / 成績グラフ（比較用）でのみ有効</p></li>
 </ul>
 </dd></dl>
 
 </section>
-<section id="id5">
-<h2>集計オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-1">
-<span id="cmdoption-グラフ生成-arg-2"></span><span id="cmdoption-arg-daily"></span><span class="sig-name descname"><span class="pre">日次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">デイリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">daily</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-1" title="Link to this definition">¶</a></dt>
-<dd><p>通算ポイントを日単位で集計する</p>
+<section id="id6">
+<h3>集計オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-日次">
+<span class="n"><span class="pre">日次</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">デイリー</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">daily</span></span><a class="headerlink" href="#graph-日次" title="Link to this definition">¶</a></dt>
+<dd><p>グラフを日単位で集計する。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-3">
-<span id="cmdoption-グラフ生成-arg-4"></span><span id="cmdoption-arg-weekly"></span><span class="sig-name descname"><span class="pre">週次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">ウイークリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">weekly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-3" title="Link to this definition">¶</a></dt>
-<dd><p>通算ポイントを週単位で集計する</p>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-週次">
+<span class="n"><span class="pre">週次</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">ウイークリー</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">weekly</span></span><a class="headerlink" href="#graph-週次" title="Link to this definition">¶</a></dt>
+<dd><p>グラフを週単位で集計する。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-5">
-<span id="cmdoption-グラフ生成-arg-6"></span><span id="cmdoption-arg-monthly"></span><span class="sig-name descname"><span class="pre">月次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">マンスリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">monthly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-5" title="Link to this definition">¶</a></dt>
-<dd><p>通算ポイントを月単位で集計する</p>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-月次">
+<span class="n"><span class="pre">月次</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">マンスリー</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">monthly</span></span><a class="headerlink" href="#graph-月次" title="Link to this definition">¶</a></dt>
+<dd><p>グラフを月単位で集計する。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-7">
-<span id="cmdoption-グラフ生成-arg-8"></span><span id="cmdoption-arg-yearly"></span><span class="sig-name descname"><span class="pre">年次</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">イヤーリー</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">yearly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-7" title="Link to this definition">¶</a></dt>
-<dd><p>通算ポイントを年単位で集計する</p>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-年次">
+<span class="n"><span class="pre">年次</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">イヤーリー</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">yearly</span></span><a class="headerlink" href="#graph-年次" title="Link to this definition">¶</a></dt>
+<dd><p>グラフを年単位で集計する。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-9">
-<span class="sig-name descname"><span class="pre">全体</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-9" title="Link to this definition">¶</a></dt>
-<dd><p>通算ポイントを指定期間全体で集計する</p>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-全体">
+<span class="n"><span class="pre">全体</span></span><a class="headerlink" href="#graph-全体" title="Link to this definition">¶</a></dt>
+<dd><p>グラフを指定期間全体で集計する。</p>
 <ul class="simple">
 <li><p>強制的に横棒グラフになる</p></li>
 </ul>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-10">
-<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-10" title="Link to this definition">¶</a></dt>
-<dd><p>指定ゲーム数(デフォルト80)区切りで集計する</p>
+</section>
+<section id="id7">
+<h3>統計出力オプション<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-統計">
+<span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#graph-統計" title="Link to this definition">¶</a></dt>
+<dd><p>指定プレイヤーのゲーム統計情報を出力する。</p>
+<ul class="simple">
+<li><p>指定ゲーム数(デフォルト80)区切りで集計</p></li>
+</ul>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-グラフ生成-arg-11">
-<span id="cmdoption-グラフ生成-arg-12"></span><span id="cmdoption-グラフ生成-arg-13"></span><span id="cmdoption-グラフ生成-arg-14"></span><span class="sig-name descname"><span class="pre">期間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区間</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">区切り</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-グラフ生成-arg-11" title="Link to this definition">¶</a></dt>
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-期間">
+<span class="n"><span class="pre">期間</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">区間</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">区切</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">区切り</span></span><a class="headerlink" href="#graph-期間" title="Link to this definition">¶</a></dt>
 <dd><p>統計指定時の追加オプション</p>
 <ul class="simple">
 <li><p>集計で区切るゲーム数の変更</p></li>
@@ -284,16 +296,17 @@
 </dd></dl>
 
 </section>
-<section id="id6">
-<h2>共通オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3>共通オプション<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../appendix/common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="../../appendix/common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </section>
-<section id="id7">
-<h2>出力サンプル<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
-<section id="id8">
-<h3>全体成績グラフ詳細<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id9">
+<h2>出力サンプル<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h3>全体成績グラフ詳細<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>各メンバーの通算ポイントの推移グラフを出力する。</p>
 <p>全員の通算ポイントが1つになる場合は横棒グラフに切り替わる。</p>
 <div class="admonition- admonition">
@@ -325,8 +338,8 @@
 </div>
 </div>
 </section>
-<section id="id9">
-<h3>個人成績グラフ詳細<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id11">
+<h3>個人成績グラフ詳細<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>対象メンバーの以下の成績を出力する。</p>
 <ul class="simple">
 <li><p>ポイントグラフ</p>
@@ -376,13 +389,17 @@
     <ul>
 <li><a class="reference internal" href="#">グラフ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">個別オプション</a></li>
-<li><a class="reference internal" href="#id5">集計オプション</a></li>
-<li><a class="reference internal" href="#id6">共通オプション</a></li>
-<li><a class="reference internal" href="#id7">出力サンプル</a><ul>
-<li><a class="reference internal" href="#id8">全体成績グラフ詳細</a></li>
-<li><a class="reference internal" href="#id9">個人成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">集計オプション</a></li>
+<li><a class="reference internal" href="#id7">統計出力オプション</a></li>
+<li><a class="reference internal" href="#id8">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id10">全体成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id11">個人成績グラフ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -467,8 +484,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

@@ -1,7 +1,0 @@
-libs.functions.tools.unification module
-=======================================
-
-.. automodule:: libs.functions.tools.unification
-   :members:
-   :show-inheritance:
-   :undoc-members:

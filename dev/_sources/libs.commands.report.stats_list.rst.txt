@@ -1,7 +1,0 @@
-libs.commands.report.stats\_list module
-=======================================
-
-.. automodule:: libs.commands.report.stats_list
-   :members:
-   :show-inheritance:
-   :undoc-members:

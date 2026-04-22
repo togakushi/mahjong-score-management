@@ -1,7 +1,0 @@
-libs.commands.registry.team module
-==================================
-
-.. automodule:: libs.commands.registry.team
-   :members:
-   :show-inheritance:
-   :undoc-members:

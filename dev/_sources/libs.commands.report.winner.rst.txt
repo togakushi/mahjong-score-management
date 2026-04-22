@@ -1,7 +1,0 @@
-libs.commands.report.winner module
-==================================
-
-.. automodule:: libs.commands.report.winner
-   :members:
-   :show-inheritance:
-   :undoc-members:

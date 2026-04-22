@@ -1,7 +1,0 @@
-integrations.web.events.handler module
-======================================
-
-.. automodule:: integrations.web.events.handler
-   :members:
-   :show-inheritance:
-   :undoc-members:

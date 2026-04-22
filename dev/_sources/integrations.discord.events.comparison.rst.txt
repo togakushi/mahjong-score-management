@@ -1,7 +1,0 @@
-integrations.discord.events.comparison module
-=============================================
-
-.. automodule:: integrations.discord.events.comparison
-   :members:
-   :show-inheritance:
-   :undoc-members:

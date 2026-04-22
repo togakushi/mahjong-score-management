@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,12 +66,16 @@
     <ul>
 <li><a class="reference internal" href="#">サマリ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a><ul>
-<li><a class="reference internal" href="#id6">全体成績サマリ詳細</a></li>
-<li><a class="reference internal" href="#id7">個人成績サマリ詳細</a></li>
-<li><a class="reference internal" href="#id8">直接対決サマリ詳細</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id8">全体成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id9">個人成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id10">直接対決サマリ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -185,9 +189,11 @@
 </section>
 <section id="id3">
 <h2>オプション<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg">
-<span id="cmdoption-arg"></span><span class="sig-name descname"><span class="pre">メンバー名</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg" title="Link to this definition">¶</a></dt>
+<section id="id4">
+<h3>基本オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-メンバー名">
+<span class="n"><span class="pre">メンバー名</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">チーム名</span></span><a class="headerlink" href="#results-メンバー名" title="Link to this definition">¶</a></dt>
 <dd><p>指定される人数(チーム数)によって出力内容が切り替わる。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -222,43 +228,46 @@
 </table>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-サマリ生成-arg-0">
-<span class="sig-name descname"><span class="pre">統計</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-サマリ生成-arg-0" title="Link to this definition">¶</a></dt>
-<dd><p>座席データ、ベストレコード、ワーストレコードを表示</p>
+</section>
+<section id="id5">
+<h3>個別オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-統計">
+<span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#results-統計" title="Link to this definition">¶</a></dt>
+<dd><p>座席データ、ベストレコード、ワーストレコードを表示する。</p>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-サマリ生成-arg-1">
-<span id="cmdoption-サマリ生成-arg-2"></span><span id="cmdoption-サマリ生成-arg-3"></span><span class="sig-name descname"><span class="pre">比較</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">点差</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">差分</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-サマリ生成-arg-1" title="Link to this definition">¶</a></dt>
-<dd><p>ひとつ上の順位の <a class="reference internal" href="../../../glossary.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">プレイヤー</span></code></a> 、チーム との点差を表示</p>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-比較">
+<span class="n"><span class="pre">比較</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">点差</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">差分</span></span><a class="headerlink" href="#results-比較" title="Link to this definition">¶</a></dt>
+<dd><p>ひとつ上の順位の <a class="reference internal" href="../../../glossary.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">プレイヤー</span></code></a> 、チーム との点差を表示する。</p>
 <ul class="simple">
 <li><p>全体成績サマリのみで有効</p></li>
 </ul>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-サマリ生成-arg-4">
-<span class="sig-name descname"><span class="pre">戦績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-サマリ生成-arg-4" title="Link to this definition">¶</a></dt>
-<dd><p>戦績データ(ゲーム単位の素点、順位、獲得ポイント)を表示</p>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-戦績">
+<span class="n"><span class="pre">戦績</span></span><a class="headerlink" href="#results-戦績" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データ(ゲーム単位の素点、順位、獲得ポイント)を表示する。</p>
 <ul class="simple">
 <li><p>個人成績詳細/チーム成績詳細のみで有効</p></li>
 </ul>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-サマリ生成-arg-5">
-<span class="sig-name descname"><span class="pre">詳細</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-サマリ生成-arg-5" title="Link to this definition">¶</a></dt>
-<dd><p>戦績データを4人分表示する</p>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-詳細">
+<span class="n"><span class="pre">詳細</span></span><a class="headerlink" href="#results-詳細" title="Link to this definition">¶</a></dt>
+<dd><p>戦績データを4人分表示する。</p>
 <ul class="simple">
 <li><p>戦績の追加オプション（戦績と同時指定した場合のみ有効）</p></li>
 </ul>
 </dd></dl>
 
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-サマリ生成-arg-6">
-<span class="sig-name descname"><span class="pre">対戦</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-サマリ生成-arg-6" title="Link to this definition">¶</a></dt>
-<dd><p>対戦結果の表示</p>
+<dl class="mahjong results">
+<dt class="sig sig-object mahjong" id="results-対戦">
+<span class="n"><span class="pre">対戦</span></span><a class="headerlink" href="#results-対戦" title="Link to this definition">¶</a></dt>
+<dd><p>対戦結果を表示する。</p>
 <ul class="simple">
 <li><p>個人成績詳細/チーム成績詳細では全員分の勝敗と勝率</p></li>
 <li><p>成績詳細(比較用)で指定すると直接対戦サマリを表示する</p></li>
@@ -266,22 +275,23 @@
 </dd></dl>
 
 </section>
-<section id="id4">
-<h2>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>共通オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../appendix/common_argument.html#common-argument"><span class="std std-ref">引数に指定できる共通キーワード</span></a></p></li>
+<li><p><a class="reference internal" href="../../appendix/common_options.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>出力サンプル<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<section id="id6">
-<h3>全体成績サマリ詳細<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id7">
+<h2>出力サンプル<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3>全体成績サマリ詳細<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <div class="line-block">
 <div class="line">メンバー名の指定がない場合、集計期間内で記録されている全メンバーの通算ポイント順に結果を表示する。</div>
-<div class="line"><a class="reference internal" href="../../appendix/common_argument.html#guest-option"><span class="std std-ref">ゲスト関連</span></a> のオプションによって集計内容が変わるため、特記には集計条件が記載される。</div>
+<div class="line"><a class="reference internal" href="../../appendix/common_options.html#guest-option"><span class="std std-ref">ゲスト関連オプション</span></a> のオプションによって集計内容が変わるため、特記には集計条件が記載される。</div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（通常）</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（通常）</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
     最初のゲーム：yyyy/mm/dd HH:MM:SS
@@ -307,8 +317,8 @@ Player_001  ▲65.0  ▲32.5 0+0+0+2=2 (4.00)  0
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（比較）</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">全体成績サマリ出力サンプル（比較）</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
     最初のゲーム：yyyy/mm/dd HH:MM:SS
@@ -335,10 +345,10 @@ Player_001  ▲65.0   22.6    122.1
 </div>
 </div>
 </section>
-<section id="id7">
-<h3>個人成績サマリ詳細<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">個人成績サマリ出力サンプル</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<section id="id9">
+<h3>個人成績サマリ詳細<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">個人成績サマリ出力サンプル</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【個人成績詳細】
     プレイヤー名：Player_007
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
@@ -396,14 +406,14 @@ Player_001  ▲65.0   22.6    122.1
 </div>
 </div>
 </section>
-<section id="id8">
-<h3>直接対決サマリ詳細<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<section id="id10">
+<h3>直接対決サマリ詳細<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <div class="line-block">
 <div class="line">対戦数にある勝敗の基準は対戦相手との着順で決定される。</div>
 <div class="line">自分が3着、相手が4着のゲームなら勝ちとなる。</div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">直接対決サマリ出力サンプル</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">直接対決サマリ出力サンプル</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【直接対戦】
     プレイヤー名：Player_007
     対戦相手：全員
@@ -454,12 +464,16 @@ Player_001  ▲65.0   22.6    122.1
     <ul>
 <li><a class="reference internal" href="#">サマリ生成</a><ul>
 <li><a class="reference internal" href="#id2">構文</a></li>
-<li><a class="reference internal" href="#id3">オプション</a></li>
-<li><a class="reference internal" href="#id4">共通オプション</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a><ul>
-<li><a class="reference internal" href="#id6">全体成績サマリ詳細</a></li>
-<li><a class="reference internal" href="#id7">個人成績サマリ詳細</a></li>
-<li><a class="reference internal" href="#id8">直接対決サマリ詳細</a></li>
+<li><a class="reference internal" href="#id3">オプション</a><ul>
+<li><a class="reference internal" href="#id4">基本オプション</a></li>
+<li><a class="reference internal" href="#id5">個別オプション</a></li>
+<li><a class="reference internal" href="#id6">共通オプション</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">出力サンプル</a><ul>
+<li><a class="reference internal" href="#id8">全体成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id9">個人成績サマリ詳細</a></li>
+<li><a class="reference internal" href="#id10">直接対決サマリ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -544,8 +558,8 @@ Player_001  ▲65.0   22.6    122.1
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>

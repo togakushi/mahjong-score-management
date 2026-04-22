@@ -5,15 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>引数に指定できる共通キーワード &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オプションに指定できる共通キーワード &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=82640b3f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=1caed29c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=4365c8fe" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d9cdef91" />
     
-    <script src="../../_static/documentation_options.js?v=8399f5db"></script>
+    <script src="../../_static/documentation_options.js?v=27e171c2"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -64,17 +64,17 @@
   <div>
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">引数に指定できる共通キーワード</a><ul>
-<li><a class="reference internal" href="#id2">検索範囲指定</a><ul>
-<li><a class="reference internal" href="#date-specification">日付指定</a></li>
-<li><a class="reference internal" href="#id4">回数指定</a></li>
-<li><a class="reference internal" href="#id5">コメント検索</a></li>
-<li><a class="reference internal" href="#id6">集計対象ルール指定</a></li>
+<li><a class="reference internal" href="#">オプションに指定できる共通キーワード</a><ul>
+<li><a class="reference internal" href="#id2">検索範囲指定オプション</a><ul>
+<li><a class="reference internal" href="#date-specification">日付指定オプション</a></li>
+<li><a class="reference internal" href="#id4">回数指定オプション</a></li>
+<li><a class="reference internal" href="#id5">コメント検索オプション</a></li>
+<li><a class="reference internal" href="#id6">集計対象ルール指定オプション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">出力フォーマット変更</a></li>
-<li><a class="reference internal" href="#guest-option">ゲスト関連</a></li>
-<li><a class="reference internal" href="#id9">その他</a></li>
+<li><a class="reference internal" href="#id7">出力フォーマット変更オプション</a></li>
+<li><a class="reference internal" href="#guest-option">ゲスト関連オプション</a></li>
+<li><a class="reference internal" href="#id9">その他のオプション</a></li>
 </ul>
 </li>
 </ul>
@@ -93,7 +93,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/functions/appendix/common_argument.rst.txt"
+      <li><a href="../../_sources/functions/appendix/common_options.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -132,7 +132,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">付録</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">引数に指定できる共通キーワード</a></li>
+        <li class="nav-item nav-item-this"><a href="">オプションに指定できる共通キーワード</a></li>
                 <li class="right">
                     
 
@@ -162,16 +162,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="common-argument">
-<span id="id1"></span><h1>引数に指定できる共通キーワード<a class="headerlink" href="#common-argument" title="Link to this heading">¶</a></h1>
+  <section id="common-options">
+<span id="id1"></span><h1>オプションに指定できる共通キーワード<a class="headerlink" href="#common-options" title="Link to this heading">¶</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>複数のオプションが同時に指定されている場合は出現順序で処理され、結果を上書きしていく。</p>
 </div>
 <section id="id2">
-<h2>検索範囲指定<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<h2>検索範囲指定オプション<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>集計の範囲や集計ゲーム数を調整するオプション。</p>
 <section id="date-specification">
-<span id="id3"></span><h3>日付指定<a class="headerlink" href="#date-specification" title="Link to this heading">¶</a></h3>
+<span id="id3"></span><h3>日付指定オプション<a class="headerlink" href="#date-specification" title="Link to this heading">¶</a></h3>
 <p>指定されたキーワードを基にリストに追加する。</p>
 <ul class="simple">
 <li><p>キーワードは複数指定可能</p></li>
@@ -191,36 +192,36 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg">
-<span class="sig-name descname"><span class="pre">当日</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-当日">
+<span class="n"><span class="pre">当日</span></span><a class="headerlink" href="#common-当日" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p><a class="reference internal" href="../../configuration/main/application/setting.html#time-adjust"><span class="std std-ref">time_adjust</span></a> を考慮した時間の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-0">
-<span class="sig-name descname"><span class="pre">今日</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-今日">
+<span class="n"><span class="pre">今日</span></span><a class="headerlink" href="#common-今日" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>今日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-1">
-<span class="sig-name descname"><span class="pre">昨日</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-1" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-昨日">
+<span class="n"><span class="pre">昨日</span></span><a class="headerlink" href="#common-昨日" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>昨日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-2">
-<span class="sig-name descname"><span class="pre">先週</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-2" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-先週">
+<span class="n"><span class="pre">先週</span></span><a class="headerlink" href="#common-先週" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -231,9 +232,9 @@
 </td>
 <td><p>実行日から7日前の週の月曜日～日曜日</p></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-3">
-<span class="sig-name descname"><span class="pre">今週</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-3" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-今週">
+<span class="n"><span class="pre">今週</span></span><a class="headerlink" href="#common-今週" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -248,9 +249,9 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-4">
-<span class="sig-name descname"><span class="pre">今月</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-4" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-今月">
+<span class="n"><span class="pre">今月</span></span><a class="headerlink" href="#common-今月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -261,9 +262,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-5">
-<span class="sig-name descname"><span class="pre">先月</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-5" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-先月">
+<span class="n"><span class="pre">先月</span></span><a class="headerlink" href="#common-先月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -274,9 +275,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-6">
-<span class="sig-name descname"><span class="pre">先々月</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-6" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-先々月">
+<span class="n"><span class="pre">先々月</span></span><a class="headerlink" href="#common-先々月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -287,9 +288,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-7">
-<span class="sig-name descname"><span class="pre">今年</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-7" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-今年">
+<span class="n"><span class="pre">今年</span></span><a class="headerlink" href="#common-今年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -300,9 +301,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-8">
-<span id="cmdoption-共通(日付指定)-arg-9"></span><span class="sig-name descname"><span class="pre">去年</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">昨年</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-8" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-去年">
+<span class="n"><span class="pre">去年</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">昨年</span></span><a class="headerlink" href="#common-去年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -313,9 +314,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-10">
-<span class="sig-name descname"><span class="pre">一昨年</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-10" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-一昨年">
+<span class="n"><span class="pre">一昨年</span></span><a class="headerlink" href="#common-一昨年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -326,27 +327,27 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-11">
-<span class="sig-name descname"><span class="pre">最初</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-11" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-最初">
+<span class="n"><span class="pre">最初</span></span><a class="headerlink" href="#common-最初" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>記録されている最初のレコードの前日</p></td>
 <td><p>集計対象のルール識別子で異なる日付が返る</p></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-12">
-<span class="sig-name descname"><span class="pre">最後</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-12" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-最後">
+<span class="n"><span class="pre">最後</span></span><a class="headerlink" href="#common-最後" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>翌日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(日付指定)-arg-13">
-<span class="sig-name descname"><span class="pre">全部</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(日付指定)-arg-13" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-全部">
+<span class="n"><span class="pre">全部</span></span><a class="headerlink" href="#common-全部" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -357,14 +358,20 @@
 </td>
 <td><p>最初から最後まで</p></td>
 </tr>
-<tr class="row-even"><td><p>YYYYMMDD</p></td>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-YYYYMMDD">
+<span class="n"><span class="pre">YYYYMMDD</span></span><a class="headerlink" href="#common-YYYYMMDD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
 <td><p>指定日 （連続した数字8桁）</p></td>
 <td><p>MMとDDは常に2桁で指定する</p></td>
 </tr>
-<tr class="row-odd"><td><div class="line-block">
-<div class="line">YYYY-MM-DD</div>
-<div class="line">YYYY/MM/DD</div>
-</div>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-YYYY-MM-DD">
+<span class="n"><span class="pre">YYYY-MM-DD</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">YYYY/MM/DD</span></span><a class="headerlink" href="#common-YYYY-MM-DD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </td>
 <td><p>指定日</p></td>
 <td><p>MMとDDは常に2桁で指定する</p></td>
@@ -373,7 +380,7 @@
 </table>
 </section>
 <section id="id4">
-<h3>回数指定<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<h3>回数指定オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 22.2%" />
@@ -387,18 +394,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-NNN">
-<span class="sig-name descname"><span class="pre">直近&lt;NNN&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-NNN" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-直近&lt;NNN&gt;">
+<span class="n"><span class="pre">直近&lt;NNN&gt;</span></span><a class="headerlink" href="#common-直近<NNN>" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>&lt;NNN&gt;回前からのゲームを集計</p></td>
 <td><p>数字で指定</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(回数指定)-arg-0">
-<span id="cmdoption-共通(回数指定)-arg-1"></span><span class="sig-name descname"><span class="pre">規定打数&lt;NNN&gt;</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">規定数&lt;NNN&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(回数指定)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-規定打数&lt;NNN&gt;">
+<span class="n"><span class="pre">規定打数&lt;NNN&gt;</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">規定数&lt;NNN&gt;</span></span><a class="headerlink" href="#common-規定打数<NNN>" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -409,7 +416,7 @@
 </table>
 </section>
 <section id="id5">
-<h3>コメント検索<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<h3>コメント検索オプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <div class="line-block">
 <div class="line">ゲームコメントが付いているものを集計対象にする。</div>
 <div class="line">指定したコメントが付いていないゲームは集計対象外となる。</div>
@@ -427,18 +434,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-XXX">
-<span class="sig-name descname"><span class="pre">コメント&lt;XXX&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-XXX" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-コメント&lt;XXX&gt;">
+<span class="n"><span class="pre">コメント&lt;XXX&gt;</span></span><a class="headerlink" href="#common-コメント<XXX>" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>ゲームコメントを&lt;XXX&gt;で検索する</p></td>
 <td><p>部分一致</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(コメント検索)-arg-0">
-<span class="sig-name descname"><span class="pre">集約&lt;NNN&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(コメント検索)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-集約&lt;NNN&gt;">
+<span class="n"><span class="pre">集約&lt;NNN&gt;</span></span><a class="headerlink" href="#common-集約<NNN>" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -449,7 +456,7 @@
 </table>
 </section>
 <section id="id6">
-<h3>集計対象ルール指定<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<h3>集計対象ルール指定オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 22.2%" />
@@ -463,27 +470,27 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ルール指定)-arg-0">
-<span id="cmdoption-arg-mix"></span><span id="cmdoption-arg-mixed"></span><span class="sig-name descname"><span class="pre">横断</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">mix</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">mixed</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ルール指定)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-横断">
+<span class="n"><span class="pre">横断</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">mix</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">mixed</span></span><a class="headerlink" href="#common-横断" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>未マッピングの <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> も集計対象に含める</p></td>
 <td><p>自動的に <strong>規定打数0</strong> が付与される</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ルール指定)-arg-1">
-<span id="cmdoption-共通(ルール指定)-arg-2"></span><span id="cmdoption-共通(ルール指定)-arg-3"></span><span id="cmdoption-共通(ルール指定)-arg-4"></span><span class="sig-name descname"><span class="pre">サンマ</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">三麻</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">三人打</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">三人打ち</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ルール指定)-arg-1" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-サンマ">
+<span class="n"><span class="pre">サンマ</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">三麻</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">三人打</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">三人打ち</span></span><a class="headerlink" href="#common-サンマ" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">mode=3</span></code> が指定されている <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> をすべて含める</p></td>
 <td><p>マッピングされている <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> のみ</p></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ルール指定)-arg-5">
-<span id="cmdoption-共通(ルール指定)-arg-6"></span><span id="cmdoption-共通(ルール指定)-arg-7"></span><span id="cmdoption-共通(ルール指定)-arg-8"></span><span class="sig-name descname"><span class="pre">ヨンマ</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">四麻</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">四人打</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">四人打ち</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ルール指定)-arg-5" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-ヨンマ">
+<span class="n"><span class="pre">ヨンマ</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">四麻</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">四人打</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">四人打ち</span></span><a class="headerlink" href="#common-ヨンマ" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -502,7 +509,8 @@
 </section>
 </section>
 <section id="id7">
-<h2>出力フォーマット変更<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<h2>出力フォーマット変更オプション<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>集計結果をファイルで出力する。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 22.2%" />
@@ -516,18 +524,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-text">
-<span id="cmdoption-arg-txt"></span><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">txt</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-text" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-text">
+<span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">txt</span></span><a class="headerlink" href="#common-text" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>テキスト形式でファイル出力</p></td>
 <td><p>UTF-8</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-arg-csv">
-<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-csv" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-csv">
+<span class="n"><span class="pre">csv</span></span><a class="headerlink" href="#common-csv" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -538,7 +546,8 @@
 </table>
 </section>
 <section id="guest-option">
-<span id="id8"></span><h2>ゲスト関連<a class="headerlink" href="#guest-option" title="Link to this heading">¶</a></h2>
+<span id="id8"></span><h2>ゲスト関連オプション<a class="headerlink" href="#guest-option" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../../glossary.html#term-4"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲストプレイヤー</span></code></a> の扱いを変更するオプション。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 22.2%" />
@@ -552,9 +561,9 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ゲスト関連)-arg-0">
-<span class="sig-name descname"><span class="pre">ゲストあり</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ゲスト関連)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-ゲストあり">
+<span class="n"><span class="pre">ゲストあり</span></span><a class="headerlink" href="#common-ゲストあり" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -566,14 +575,14 @@
 <li><p>正しく集計できないプレイヤーがゲームに存在するため、 <a class="reference internal" href="../../glossary.html#term-10"><code class="xref any std std-term docutils literal notranslate"><span class="pre">2ゲスト戦</span></code></a> で記録された成績は集計対象外になる（ゲーム自体を無効にする）</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#cmdoption-共通(ゲスト関連)-arg-2"><code class="xref std std-option docutils literal notranslate"><span class="pre">ゲスト無効</span></code></a> の指定は効果がなくなる</p></li>
+<li><p><a class="reference internal" href="#common-ゲスト無効" title="ゲスト無効"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">ゲスト無効</span></code></a> の指定は効果がなくなる</p></li>
 <li><p>未登録メンバーはゲストに置換される</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ゲスト関連)-arg-1">
-<span class="sig-name descname"><span class="pre">ゲストなし</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ゲスト関連)-arg-1" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-ゲストなし">
+<span class="n"><span class="pre">ゲストなし</span></span><a class="headerlink" href="#common-ゲストなし" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -585,13 +594,13 @@
 <li><p><a class="reference internal" href="../../glossary.html#term-10"><code class="xref any std std-term docutils literal notranslate"><span class="pre">2ゲスト戦</span></code></a> の成績が計上されるようになる（ゲスト以外のプレイヤーの成績は集計される）</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#cmdoption-共通(ゲスト関連)-arg-2"><code class="xref std std-option docutils literal notranslate"><span class="pre">ゲスト無効</span></code></a> の指定は効果がなくなる</p></li>
+<li><p><a class="reference internal" href="#common-ゲスト無効" title="ゲスト無効"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">ゲスト無効</span></code></a> の指定は効果がなくなる</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(ゲスト関連)-arg-2">
-<span class="sig-name descname"><span class="pre">ゲスト無効</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(ゲスト関連)-arg-2" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-ゲスト無効">
+<span class="n"><span class="pre">ゲスト無効</span></span><a class="headerlink" href="#common-ゲスト無効" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -611,7 +620,7 @@
 </table>
 </section>
 <section id="id9">
-<h2>その他<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<h2>その他のオプション<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 22.2%" />
@@ -625,27 +634,27 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(その他)-arg-0">
-<span class="sig-name descname"><span class="pre">匿名</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(その他)-arg-0" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-匿名">
+<span class="n"><span class="pre">匿名</span></span><a class="headerlink" href="#common-匿名" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>プレイヤー名/チーム名を伏せる</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Player_XXX</span></code> / <code class="docutils literal notranslate"><span class="pre">Team_XXX</span></code> に置換</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(その他)-arg-1">
-<span id="cmdoption-共通(その他)-arg-2"></span><span class="sig-name descname"><span class="pre">個人</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">個人成績</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(その他)-arg-1" title="Link to this definition">¶</a></dt>
+<tr class="row-odd"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-個人">
+<span class="n"><span class="pre">個人</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">個人成績</span></span><a class="headerlink" href="#common-個人" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>個人集計を表示する</p></td>
 <td><p>チーム集計オプションを上書きする</p></td>
 </tr>
-<tr class="row-even"><td><dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-共通(その他)-arg-3">
-<span id="cmdoption-共通(その他)-arg-4"></span><span id="cmdoption-arg-team"></span><span class="sig-name descname"><span class="pre">チーム</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">チーム成績</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">team</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-共通(その他)-arg-3" title="Link to this definition">¶</a></dt>
+<tr class="row-even"><td><dl class="mahjong common">
+<dt class="sig sig-object mahjong" id="common-チーム">
+<span class="n"><span class="pre">チーム</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">チーム成績</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">team</span></span><a class="headerlink" href="#common-チーム" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -667,17 +676,17 @@
   <div>
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">引数に指定できる共通キーワード</a><ul>
-<li><a class="reference internal" href="#id2">検索範囲指定</a><ul>
-<li><a class="reference internal" href="#date-specification">日付指定</a></li>
-<li><a class="reference internal" href="#id4">回数指定</a></li>
-<li><a class="reference internal" href="#id5">コメント検索</a></li>
-<li><a class="reference internal" href="#id6">集計対象ルール指定</a></li>
+<li><a class="reference internal" href="#">オプションに指定できる共通キーワード</a><ul>
+<li><a class="reference internal" href="#id2">検索範囲指定オプション</a><ul>
+<li><a class="reference internal" href="#date-specification">日付指定オプション</a></li>
+<li><a class="reference internal" href="#id4">回数指定オプション</a></li>
+<li><a class="reference internal" href="#id5">コメント検索オプション</a></li>
+<li><a class="reference internal" href="#id6">集計対象ルール指定オプション</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">出力フォーマット変更</a></li>
-<li><a class="reference internal" href="#guest-option">ゲスト関連</a></li>
-<li><a class="reference internal" href="#id9">その他</a></li>
+<li><a class="reference internal" href="#id7">出力フォーマット変更オプション</a></li>
+<li><a class="reference internal" href="#guest-option">ゲスト関連オプション</a></li>
+<li><a class="reference internal" href="#id9">その他のオプション</a></li>
 </ul>
 </li>
 </ul>
@@ -696,7 +705,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/functions/appendix/common_argument.rst.txt"
+      <li><a href="../../_sources/functions/appendix/common_options.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -735,7 +744,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="index.html" >付録</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">引数に指定できる共通キーワード</a></li>
+        <li class="nav-item nav-item-this"><a href="">オプションに指定できる共通キーワード</a></li>
                 <li class="right">
                     
 
@@ -760,8 +769,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.2.
-      Last updated on 2026-04-19.
+      Release Version: 0.13.3.
+      Last updated on 2026-04-22.
     </div>
 
   </body>
