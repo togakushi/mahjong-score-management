@@ -15,8 +15,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 オプション
@@ -25,7 +25,7 @@
 基本オプション
 ++++++++++++++
 
-.. mahjong:report:: メンバー名, チーム名
+.. report:: メンバー名, チーム名
    :category: 基本オプション
 
    指定メンバー / チームの成績レポートを生成する。
@@ -45,16 +45,16 @@
       * - 指定なし
         - 個人/チーム成績一覧
         - reportセクションの ``individual`` で変化
-      * - .. mahjong:report:: 順位
+      * - .. report:: 順位
              :category: 個別オプション
 
         - 成績上位者
         - 上位5名
-      * - .. mahjong:report:: 統計
+      * - .. report:: 統計
              :category: 個別オプション
         - ゲーム統計
         - 検索範囲に記録されているすべての結果
-      * - .. mahjong:report:: 対戦
+      * - .. report:: 対戦
              :category: 個別オプション
 
         - 対局対戦マトリックス表

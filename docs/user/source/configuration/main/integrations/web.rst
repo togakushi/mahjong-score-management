@@ -15,72 +15,100 @@ webセクション
      - 型
      - 未定義時
      - 備考
-   * - :index:`host <pair: web section; host>`
+   * - .. integrations_section:: host
+          :category: web section
+
      -
      - 文字列
      - 127.0.0.1
      -
-   * - :index:`port <pair: web section; port>`
+   * - .. integrations_section:: port
+          :category: web section
+
      -
      - 数値
      - 8000
      -
-   * - :index:`require_auth <pair: web section; require_auth>`
+   * - .. integrations_section:: require_auth
+          :category: web section
+
      - BASIC認証の利用
      - 真偽値
      - False
      - ``username`` / ``password`` のいずれかが未定義なら強制的に ``False`` になる
-   * - :index:`username <pair: web section; username>`
+   * - .. integrations_section:: username
+          :category: web section
+
      - 認証ユーザ名
      - 文字列
      - 空欄
      -
-   * - :index:`password <pair: web section; password>`
+   * - .. integrations_section:: password
+          :category: web section
+
      - 認証パスワード
      - 文字列
      - 空欄
      - 平文指定
-   * - :index:`use_ssl <pair: web section; use_ssl>`
+   * - .. integrations_section:: use_ssl
+          :category: web section
+
      - HTTPSの利用
      - 真偽値
      - False
      - ``certificate`` / ``private_key`` のいずれかが未定義なら強制的に ``False`` になる
-   * - :index:`certificate <pair: web section; certificate>`
+   * - .. integrations_section:: certificate
+          :category: web section
+
      - サーバー証明書保存パス
      - 文字列
      - 空欄
      -
-   * - :index:`private_key <pair: web section; private_key>`
+   * - .. integrations_section:: private_key
+          :category: web section
+
      - 秘密鍵保存パス
      - 文字列
      - 空欄
      -
-   * - :index:`view_summary <pair: web section; view_summary>`
+   * - .. integrations_section:: view_summary
+          :category: web section
+
      - 成績サマリメニューの表示
      - 真偽値
      - True
      -
-   * - :index:`view_graph <pair: web section; view_graph>`
+   * - .. integrations_section:: view_graph
+          :category: web section
+
      - グラフメニューの表示
      - 真偽値
      - True
      -
-   * - :index:`view_ranking <pair: web section; view_ranking>`
+   * - .. integrations_section:: view_ranking
+          :category: web section
+
      - ランキングメニューの表示
      - 真偽値
      - True
      -
-   * - :index:`management_member <pair: web section; management_member>`
+   * - .. integrations_section:: management_member
+          :category: web section
+
      - メンバー/チーム編集メニューの表示
      - 真偽値
      - False
      -
-   * - :index:`management_score <pair: web section; management_score>`
+   * - .. integrations_section:: management_score
+          :category: web section
+
      - 成績管理メニューの表示
      - 真偽値
      - False
      -
-   * - :index:`theme <pair: web section; theme>`
+   * - .. integrations_section:: theme
+          :category: web section
+
      - 配色テーマを選択
      - 文字列
      - 空欄
@@ -92,16 +120,22 @@ webセクション
        :pastel: 明るいパステル調の配色
        :sepia: 明るいセピア調の配色
        :white: 白色ベースのモノクロ配色
-   * - :index:`custom_css <pair: web section; custom_css>`
+   * - .. integrations_section:: custom_css
+          :category: web section
+
      - カスタマイズスタイルシート [#]_
      - 文字列(ファイルパス)
      - 空欄
      - ファイルが存在しない場合は空欄になる
-   * - :index:`plotting_backend <pair: web section; plotting_backend>`
+   * - .. integrations_section:: plotting_backend
+          :category: web section
+
      - 文字列
      - 真偽値
      - plotly
      - 共通設定を上書き
+
+..
 
 .. rubric:: 脚注
 

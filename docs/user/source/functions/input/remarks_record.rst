@@ -8,7 +8,7 @@
 
 役満和了やチョンボなど、ゲーム内での出来事を記録する目的で使用する。
 
-``メモ記録キーワード`` は `rule-set` の `remarks <remarks>` で定義する。
+``メモ記録キーワード`` は `rule-set` の `remarks` で定義する。
 
 .. code-block:: text
    :caption: 入力フォーマット

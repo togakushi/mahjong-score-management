@@ -71,12 +71,14 @@ class SplitWordsDescription(ObjectDescription[Any]):
                 name=part,
                 docname=self.env.docname,
                 anchor=primary_anchor,
+                category=category or None,
             )
 
     def run(self) -> list[nodes.Node]:
         return super().run()
 
 
+# ---
 class CommonDirective(SplitWordsDescription):
     """共通オプション"""
 
@@ -107,6 +109,80 @@ class ReportDirective(SplitWordsDescription):
     index_category = "report options"
 
 
+# ---
+class SettingSectionDirective(SplitWordsDescription):
+    """settingセクション"""
+
+    index_category = "setting section"
+
+
+class IntegrationsSectionDirective(SplitWordsDescription):
+    """integrationsセクション"""
+
+    index_category = "integrations section"
+
+
+class RuleSetSectionDirective(SplitWordsDescription):
+    """rule_setセクション"""
+
+    index_category = "rule_set section"
+
+
+class RegulationsSectionDirective(SplitWordsDescription):
+    """regulationsセクション"""
+
+    index_category = "regulations section"
+
+
+class AliasSectionDirective(SplitWordsDescription):
+    """aliasセクション"""
+
+    index_category = "alias section"
+
+
+class MemberSectionDirective(SplitWordsDescription):
+    """memberセクション"""
+
+    index_category = "member section"
+
+
+class TeamSectionDirective(SplitWordsDescription):
+    """teamセクション"""
+
+    index_category = "team section"
+
+
+class DegreeSectionDirective(SplitWordsDescription):
+    """degreeセクション"""
+
+    index_category = "degree section"
+
+
+class StatusSectionDirective(SplitWordsDescription):
+    """statusセクション"""
+
+    index_category = "status section"
+
+
+class GradeSectionDirective(SplitWordsDescription):
+    """gradeセクション"""
+
+    index_category = "grade section"
+
+
+class CustomMessageSectionDirective(SplitWordsDescription):
+    """custom_messageセクション"""
+
+    index_category = "custom_message section"
+
+
+class SubCommandsSectionDirective(SplitWordsDescription):
+    """sub_commandsセクション"""
+
+    index_category = "sub_commands section"
+
+
+# ---
 class MahjongDomain(Domain):
     """mahjong ドメイン"""
 
@@ -114,6 +190,20 @@ class MahjongDomain(Domain):
     label = "Mahjong"
 
     object_types: ClassVar[dict[str, ObjType]] = {
+        # section
+        "setting_section": ObjType("setting_section", "setting_section"),
+        "integrations_section": ObjType("integrations_section", "integrations_section"),
+        "rule_set_section": ObjType("rule_set_section", "rule_set_section"),
+        "regulations_section": ObjType("regulations_section", "regulations_section"),
+        "alias_section": ObjType("alias_section", "alias_section"),
+        "member_section": ObjType("member_section", "member_section"),
+        "team_section": ObjType("team_section", "team_section"),
+        "degree_section": ObjType("degree_section", "degree_section"),
+        "status_section": ObjType("status_section", "status_section"),
+        "grade_section": ObjType("grade_section", "grade_section"),
+        "custom_message_section": ObjType("custom_message_section", "custom_message_section"),
+        "sub_commands_section": ObjType("sub_commands_section", "sub_commands_section"),
+        # option
         "common": ObjType("common", "common"),
         "results": ObjType("results", "results"),
         "graph": ObjType("graph", "graph"),
@@ -122,6 +212,20 @@ class MahjongDomain(Domain):
     }
 
     directives: ClassVar[dict[str, type[Directive]]] = {
+        # section
+        "setting_section": SettingSectionDirective,
+        "integrations_section": IntegrationsSectionDirective,
+        "rule_set_section": RuleSetSectionDirective,
+        "regulations_section": RegulationsSectionDirective,
+        "alias_section": AliasSectionDirective,
+        "member_section": MemberSectionDirective,
+        "team_section": TeamSectionDirective,
+        "degree_section": DegreeSectionDirective,
+        "status_section": StatusSectionDirective,
+        "grade_section": StatusSectionDirective,
+        "custom_message_section": CustomMessageSectionDirective,
+        "sub_commands_section": SubCommandsSectionDirective,
+        # option
         "common": CommonDirective,
         "results": ResultsDirective,
         "graph": GraphDirective,
@@ -130,6 +234,20 @@ class MahjongDomain(Domain):
     }
 
     roles: ClassVar[dict[str, Any]] = {
+        # section
+        "setting_section": XRefRole(),
+        "integrations_section": XRefRole(),
+        "rule_set_section": XRefRole(),
+        "regulations_section": XRefRole(),
+        "alias_section": XRefRole(),
+        "member_section": XRefRole(),
+        "team_section": XRefRole(),
+        "degree_section": XRefRole(),
+        "status_section": XRefRole(),
+        "grade_section": XRefRole(),
+        "custom_message_section": XRefRole(),
+        "sub_commands_section": XRefRole(),
+        # option
         "common": XRefRole(),
         "results": XRefRole(),
         "graph": XRefRole(),
@@ -138,13 +256,21 @@ class MahjongDomain(Domain):
     }
 
     initial_data: ClassVar[dict[str, Any]] = {
-        # { (objtype, name): (docname, anchor) }
+        # { (objtype, category, name): (docname, anchor) }
         "objects": {},
     }
 
+    @staticmethod
+    def _split_target(target: str) -> tuple[str | None, str]:
+        normalized = target.replace("；", ";")
+        if ";" not in normalized:
+            return None, normalized.strip()
+        category, name = normalized.split(";", 1)
+        return category.strip(), name.strip()
+
     # ------------------------------------------------------------------------
-    def note_object(self, objtype: str, name: str, docname: str, anchor: str) -> None:
-        self.data["objects"][(objtype, name)] = (docname, anchor)
+    def note_object(self, objtype: str, name: str, docname: str, anchor: str, category: str | None = None) -> None:
+        self.data["objects"][(objtype, category, name)] = (docname, anchor)
 
     def resolve_xref(
         self,
@@ -156,11 +282,25 @@ class MahjongDomain(Domain):
         node: addnodes.pending_xref,
         contnode: nodes.Element,
     ) -> nodes.reference | None:
-        key = (typ, target)
-        if key not in self.data["objects"]:
-            return None
-        docname, anchor = self.data["objects"][key]
-        return make_refnode(builder, fromdocname, docname, anchor, contnode, target)
+        category, name = self._split_target(target)
+
+        if category is not None:
+            key_with_category = (typ, category, name)
+            if key_with_category not in self.data["objects"]:
+                return None
+            docname, anchor = self.data["objects"][key_with_category]
+            return make_refnode(builder, fromdocname, docname, anchor, contnode, name)
+
+        key_without_category = (typ, None, name)
+        if key_without_category in self.data["objects"]:
+            docname, anchor = self.data["objects"][key_without_category]
+            return make_refnode(builder, fromdocname, docname, anchor, contnode, name)
+
+        matches = [value for (objtype, _category, objname), value in self.data["objects"].items() if objtype == typ and objname == name]
+        if len(matches) == 1:
+            docname, anchor = matches[0]
+            return make_refnode(builder, fromdocname, docname, anchor, contnode, name)
+        return None
 
     def resolve_any_xref(
         self,
@@ -171,15 +311,19 @@ class MahjongDomain(Domain):
         node: addnodes.pending_xref,
         contnode: nodes.Element,
     ) -> list[tuple[str, nodes.reference]]:
+        category, name = self._split_target(target)
         results: list[tuple[str, nodes.reference]] = []
-        for (objtype, name), (docname, anchor) in self.data["objects"].items():
-            if name == target:
-                ref = make_refnode(builder, fromdocname, docname, anchor, contnode, target)
-                results.append((f"mahjong:{objtype}", ref))
+        for (objtype, item_category, item_name), (docname, anchor) in self.data["objects"].items():
+            if item_name != name:
+                continue
+            if category is not None and item_category != category:
+                continue
+            ref = make_refnode(builder, fromdocname, docname, anchor, contnode, name)
+            results.append((f"mahjong:{objtype}", ref))
         return results
 
     def get_objects(self) -> Any:
-        for (objtype, name), (docname, anchor) in self.data["objects"].items():
+        for (objtype, _category, name), (docname, anchor) in self.data["objects"].items():
             yield (name, name, objtype, docname, anchor, 1)
 
 

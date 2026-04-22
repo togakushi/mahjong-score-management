@@ -14,8 +14,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 オプション
@@ -24,7 +24,7 @@
 基本オプション
 ++++++++++++++
 
-.. mahjong:graph:: メンバー名, チーム名
+.. graph:: メンバー名, チーム名
    :category: 基本オプション
 
    指定される人数(チーム数)によって出力内容が切り替わる。
@@ -51,7 +51,7 @@
 個別オプション
 ++++++++++++++
 
-.. mahjong:graph:: 順位
+.. graph:: 順位
    :category: 個別オプション
 
    グラフのY軸を通算ポイントからゲーム終了時点の順位（ポイント順）に変更する。
@@ -62,27 +62,27 @@
 集計オプション
 ++++++++++++++
 
-.. mahjong:graph:: 日次, デイリー, daily
+.. graph:: 日次, デイリー, daily
    :category: 集計オプション
 
    グラフを日単位で集計する。
 
-.. mahjong:graph:: 週次, ウイークリー, weekly
+.. graph:: 週次, ウイークリー, weekly
    :category: 集計オプション
 
    グラフを週単位で集計する。
 
-.. mahjong:graph:: 月次, マンスリー, monthly
+.. graph:: 月次, マンスリー, monthly
    :category: 集計オプション
 
    グラフを月単位で集計する。
 
-.. mahjong:graph:: 年次, イヤーリー, yearly
+.. graph:: 年次, イヤーリー, yearly
    :category: 集計オプション
 
    グラフを年単位で集計する。
 
-.. mahjong:graph:: 全体
+.. graph:: 全体
    :category: 集計オプション
 
    グラフを指定期間全体で集計する。
@@ -93,14 +93,14 @@
 統計出力オプション
 ++++++++++++++++++
 
-.. mahjong:graph:: 統計
+.. graph:: 統計
    :category: 統計出力オプション
 
    指定プレイヤーのゲーム統計情報を出力する。
 
    - 指定ゲーム数(デフォルト80)区切りで集計
 
-.. mahjong:graph:: 期間, 区間, 区切, 区切り
+.. graph:: 期間, 区間, 区切, 区切り
    :category: 統計出力オプション
 
    統計指定時の追加オプション

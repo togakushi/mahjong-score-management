@@ -39,7 +39,7 @@ regulations
      - 1レコードに集約された ``matter`` の個数
    * - type
      - words.type
-     - `remarks <remarks>` の種別
+     - `remarks` の種別
    * - ex_point
      - words.ex_point
      - 追加計算されるポイント合計(卓外ポイント合計値)

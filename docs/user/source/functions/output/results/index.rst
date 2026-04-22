@@ -15,8 +15,8 @@
 .. note::
    ``/commandname`` は以下で定義する
 
-   - `slack-section` の `slash_command <slash_command_slack>`
-   - `discord-section` の `slash_command <slash_command_discord>`
+   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 オプション
@@ -25,7 +25,7 @@
 基本オプション
 ++++++++++++++
 
-.. mahjong:results:: メンバー名, チーム名
+.. results:: メンバー名, チーム名
    :category: 基本オプション
 
    指定される人数(チーム数)によって出力内容が切り替わる。
@@ -57,33 +57,33 @@
 個別オプション
 ++++++++++++++
 
-.. mahjong:results:: 統計
+.. results:: 統計
    :category: 個別オプション
 
    座席データ、ベストレコード、ワーストレコードを表示する。
 
-.. mahjong:results:: 比較, 点差, 差分
+.. results:: 比較, 点差, 差分
    :category: 個別オプション
 
    ひとつ上の順位の `プレイヤー` 、チーム との点差を表示する。
 
    - 全体成績サマリのみで有効
 
-.. mahjong:results:: 戦績
+.. results:: 戦績
    :category: 個別オプション
 
    戦績データ(ゲーム単位の素点、順位、獲得ポイント)を表示する。
 
    - 個人成績詳細/チーム成績詳細のみで有効
 
-.. mahjong:results:: 詳細
+.. results:: 詳細
    :category: 個別オプション
 
    戦績データを4人分表示する。
 
    - 戦績の追加オプション（戦績と同時指定した場合のみ有効）
 
-.. mahjong:results:: 対戦
+.. results:: 対戦
    :category: 個別オプション
 
    対戦結果を表示する。

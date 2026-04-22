@@ -21,6 +21,7 @@ author = "togakushi"
 copyright = f"%Y, {author}"
 version = project_data.get("version", "")
 release = project_data.get("version", "")
+primary_domain = "mahjong"
 
 # -- General configuration ---------------------------------------------------
 extensions = [

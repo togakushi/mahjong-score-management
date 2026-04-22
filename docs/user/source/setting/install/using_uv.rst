@@ -27,7 +27,7 @@ IPAexフォント（ ``ipaexg.ttf`` ）を `app.py` と同じディレクトリ�
 
 .. hint::
 
-   ``ipaexg.ttf`` 以外のフォントを使用する場合は `setting-section` の `font_file <font_file>` を設定する。
+   ``ipaexg.ttf`` 以外のフォントを使用する場合は `setting-section` の `font_file` を設定する。
 
 
 環境変数

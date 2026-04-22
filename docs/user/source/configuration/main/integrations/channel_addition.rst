@@ -3,7 +3,7 @@
 チャンネル追加設定ファイル
 ==========================
 
-`channel_config <channel_config>` で指定した設定ファイルを追加で読み込む。
+`channel_config` で指定した設定ファイルを追加で読み込む。
 
 
 パラメータのマージ
@@ -29,7 +29,8 @@
 
 `channel-addition` で定義されていないパラメータは `main-config` のパラメータを引き継ぐ。
 
-.. important:: `main-config` の各セクションの `commandword <commandword>` で指定されているキーワードは上書きできない。
+.. important::
+   `main-config` の各セクションの :sub_commands_section:`commandword` で指定されているキーワードは上書きできない。
 
 
 メッセージカスタマイズ
