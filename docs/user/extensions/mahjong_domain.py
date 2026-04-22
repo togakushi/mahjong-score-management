@@ -5,8 +5,8 @@ Mahjong score management tool ドキュメント用カスタムドメイン拡�
 import hashlib
 from typing import Any, ClassVar
 
-from docutils import nodes  # type: ignore[import-untyped]
-from docutils.parsers.rst import directives  # type: ignore[import-untyped]
+from docutils import nodes
+from docutils.parsers.rst import Directive, directives
 from sphinx import addnodes
 from sphinx.application import Sphinx
 from sphinx.directives import ObjectDescription
@@ -121,7 +121,7 @@ class MahjongDomain(Domain):
         "report": ObjType("report", "report"),
     }
 
-    directives: ClassVar[dict[str, type[SplitWordsDescription]]] = {
+    directives: ClassVar[dict[str, type[Directive]]] = {
         "common": CommonDirective,
         "results": ResultsDirective,
         "graph": GraphDirective,
