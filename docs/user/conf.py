@@ -5,9 +5,11 @@ Configuration file for the Sphinx documentation builder.
 import os
 import sys
 import tomllib
+from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, os.path.abspath("../../"))
+sys.path.append(str(Path("extensions").resolve()))
 
 with open("../../pyproject.toml", mode="rb") as toml_file:
     toml_data: dict[str, Any] = tomllib.load(toml_file)
@@ -24,6 +26,7 @@ release = project_data.get("version", "")
 extensions = [
     "sphinx.ext.githubpages",
     "sphinxcontrib.mermaid",
+    "mahjong_domain",
 ]
 templates_path = ["../templates"]
 rst_epilog = """
@@ -41,6 +44,8 @@ html_last_updated_fmt = "%Y-%m-%d"
 html_split_index = False
 html_show_sphinx = False
 html_show_copyright = False
+html_search_language = "ja"
+html_show_search_summary = True
 html_static_path = ["source/_static"]
 html_css_files = ["custom.css"]
 html_theme_options = {

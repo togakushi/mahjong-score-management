@@ -1,6 +1,6 @@
 [project]
 name = "mahjong-score-management"
-version = "0.13.2"
+version = "0.13.3"
 description = "Mahjong score management tool"
 readme = "README.md"
 license = "MIT"
@@ -38,6 +38,7 @@ dev = [
     "types-tabulate",
     "types-reportlab",
     "types-tqdm",
+    "types-docutils",
 ]
 
 [tool.pytest.ini_options]

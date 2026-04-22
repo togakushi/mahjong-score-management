@@ -60,7 +60,7 @@ settingセクション
      - 集約キーワードを指定しなかった場合に集約する文字数
      - 数値(int)
      - 未定義時
-     - :option:`共通(コメント検索) 集約\<NNN>` で上書きされる
+     - :mahjong:common:`集約\<NNN>` で上書きされる
    * - .. _time_adjust:
 
        :index:`time_adjust <pair: setting section; time_adjust>`

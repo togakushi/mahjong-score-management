@@ -4,5 +4,5 @@
 .. toctree::
    :maxdepth: 2
 
-   common_argument
+   common_options
    slash_command

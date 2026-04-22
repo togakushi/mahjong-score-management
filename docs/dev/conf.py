@@ -44,6 +44,8 @@ html_last_updated_fmt = "%Y-%m-%d"
 html_split_index = False
 html_show_sphinx = False
 html_show_copyright = False
+html_copy_source = False
+html_show_sourcelink = False
 html_theme_options = {
     "root_url": "",
     "root_name": "",

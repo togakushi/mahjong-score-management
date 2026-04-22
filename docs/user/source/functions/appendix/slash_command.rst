@@ -13,77 +13,50 @@
 成績管理
 --------
 
-.. _slash_commands-results:
 .. index::
    pair: slash commands; results
+   :name: slash_commands-results
 
 results
 +++++++
-
-.. program:: サマリ生成
 
 :概要: 成績サマリを表示（参照： `function-summary` ）
 :書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
 :引数: - 専用オプション
 
-         - :option:`戦績` ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力
-         - :option:`詳細` ：戦績に追加で4人分の戦績を出力
-         - :option:`対戦` ：対戦結果の表示
+         - :mahjong:results:`戦績` ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力
+         - :mahjong:results:`詳細` ：戦績に追加で4人分の戦績を出力
+         - :mahjong:results:`対戦` ：対戦結果の表示
 
            - 対象メンバーを2名以上指定した場合、直接対戦結果を表示
 
          - 共通オプション
 
-           - `common-argument`
+           - `common-options`
 
 :デフォルトエイリアス: 成績
 :補足説明: | 登録名の指定を省略した場合は、検索範囲内の成績サマリの出力。
            | 登録名を指定すると、対象メンバーの個人成績（ `2ゲスト戦` 含む）を出力。
 
 
-.. _slash_commands-ranking:
-.. index::
-   pair: slash commands; ranking
-
-ranking
-+++++++
-
-.. program:: ランキング生成
-
-:概要: 各成績をランキング形式で表示（参照： `function-ranking` ）
-:書式: ``/commandname ranking [検索範囲] [トップNNN]``
-:引数: - 専用オプション
-
-         - :option:`トップ\<NNN>` ：上位NNN位まで表示する（省略時は「3」）
-
-       - 共通オプション
-
-         - `common-argument`
-
-:デフォルトエイリアス: ランキング
-:補足説明:
-
-
-.. _slash_commands-graph:
 .. index::
    pair: slash commands; graph
+   :name: slash_commands-graph
 
 graph
 +++++
-
-.. program:: グラフ生成
 
 :概要: ポイント推移グラフを表示（参照： `function-graph` ）
 :書式: ``/commandname graph [対象メンバー] [検索範囲]``
 :引数: - 専用オプション
 
-         - :option:`順位` ：順位変動グラフに切り替え
-         - 集約： :option:`日次` / :option:`月次` / :option:`年次` / :option:`全体`
+         - :mahjong:graph:`順位` ：順位変動グラフに切り替え
+         - 集約： :mahjong:graph:`日次` / :mahjong:graph:`月次` / :mahjong:graph:`年次` / :mahjong:graph:`全体`
          - 対象メンバー：省略時は検索範囲に含まれるメンバー全員
 
        - 共通オプション
 
-         - `common-argument`
+         - `common-options`
 
 :デフォルトエイリアス: グラフ
 :補足説明: | 対象メンバーの指定を省略した場合は、検索範囲内で見つかった全メンバーを対象にグラフを生成する。
@@ -91,9 +64,30 @@ graph
            | 単独でメンバーが指定された場合、個人成績(獲得順位、平均順位推移)グラフを追加で生成する。
 
 
-.. _slash_commands-report:
+.. index::
+   pair: slash commands; ranking
+   :name: slash_commands-ranking
+
+ranking
++++++++
+
+:概要: 各成績をランキング形式で表示（参照： `function-ranking` ）
+:書式: ``/commandname ranking [検索範囲] [トップNNN]``
+:引数: - 専用オプション
+
+         - :mahjong:ranking:`トップ\<NNN>` ：上位NNN位まで表示する（省略時は「3」）
+
+       - 共通オプション
+
+         - `common-options`
+
+:デフォルトエイリアス: ランキング
+:補足説明:
+
+
 .. index::
    pair: slash commands; report
+   :name: slash_commands-report
 
 report
 ++++++
@@ -103,14 +97,14 @@ report
 :引数: - 専用オプション
 
          - 指定なし：成績上位5名（月間）
-         - 統計：ゲーム統計（月間）
-         - 個人 / 個人成績：個人成績一覧
-         - 対戦 / 2名以上のプレイヤー名：対局対戦マトリックス表
+         - :mahjong:report:`統計` ：ゲーム統計（月間）
+         - :mahjong:report:`個人` / :mahjong:report:`個人成績` ：個人成績一覧
+         - :mahjong:report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリックス表
          - プレイヤー名：指定プレイヤーの成績レポート(PDF)
 
        - 共通オプション
 
-         - `common-argument`
+         - `common-options`
 
 :デフォルトエイリアス: レポート
 :補足説明:
