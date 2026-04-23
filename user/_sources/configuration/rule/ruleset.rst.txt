@@ -16,8 +16,14 @@
    * - .. rule_set_section:: rule_version
      - ルール識別子
      - 文字列
-     - `undefined-behavior` 参照
-     -
+     - - `main-config` 内の `mahjong-section`
+
+         - 省略不可
+
+       - `rule-config` 内の `ルールセット`
+
+         - セクション名を `rule_version` として扱う
+     - `mahjong-section` の `rule_version` が未定義の場合、 `mahjong-section` のパラメータはすべて無視される
    * - .. rule_set_section:: mode
      - 集計モード
      - 数値(3 or 4)
@@ -46,12 +52,13 @@
      - 箱下のカウント表示
      - 真偽値
      - False
-     - ``True`` : トビ終了の表示をなくす
+     - :True: トビ終了の表示をなくす
    * - .. rule_set_section:: draw_split
      - 順位点の山分け
      - 真偽値
      - False
-     - ``True`` : 素点同点時に順位点を山分けする
+     - :True: 素点同点時に順位点を山分けする（同点者の順位は同じになる）
+       :False: 席順で順位を決定し、順位点を決める
    * - .. rule_set_section:: undefined_word
      - 未定義ワードタイプ
      - 数値(int)
@@ -82,19 +89,8 @@
 | DEFAULTセクションでの定義がない場合は上記表の通りとなる。
 
 
-.. _undefined-behavior:
 
-ルール識別子省略時の挙動
-------------------------
-
-メイン設定ファイル内の「 `mahjong-section` 」
-
-   | `rule_version` は必須パラメータとなる。
-   | `rule_version` が存在しない場合、セクション内のパラメータはすべて無視される。
-
-`rule-config` 内の `ルールセット`
-
-   `rule_version` が省略されている場合はセクション名が `rule_version` として登録される。
+`rule-config` 内の `ルールセット` で定義する `rule_version` が省略されている場合はセクション名が `rule_version` として登録される。
 
 .. important::
    セクション名及びキー名の半角英字はすべて小文字として扱われる。

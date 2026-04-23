@@ -65,7 +65,6 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">ルールセット定義</a><ul>
-<li><a class="reference internal" href="#undefined-behavior">ルール識別子省略時の挙動</a></li>
 <li><a class="reference internal" href="#default-behavior">メモ記録ワード省略時の挙動</a></li>
 </ul>
 </li>
@@ -182,8 +181,20 @@
 </td>
 <td><p>ルール識別子</p></td>
 <td><p>文字列</p></td>
-<td><p><a class="reference internal" href="#undefined-behavior"><span class="std std-ref">ルール識別子省略時の挙動</span></a> 参照</p></td>
-<td></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 内の <a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a></p>
+<ul>
+<li><p>省略不可</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> 内の <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a></p>
+<ul>
+<li><p>セクション名を <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> として扱う</p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> の <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が未定義の場合、 <a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> のパラメータはすべて無視される</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong rule_set_section">
 <dt class="sig sig-object mahjong" id="rule_set_section-mode">
@@ -266,7 +277,12 @@
 <td><p>箱下のカウント表示</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> : トビ終了の表示をなくす</p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">True<span class="colon">:</span></dt>
+<dd class="field-odd"><p>トビ終了の表示をなくす</p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong rule_set_section">
 <dt class="sig sig-object mahjong" id="rule_set_section-draw_split">
@@ -277,7 +293,15 @@
 <td><p>順位点の山分け</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> : 素点同点時に順位点を山分けする</p></td>
+<td><dl class="field-list simple">
+<dt class="field-odd">True<span class="colon">:</span></dt>
+<dd class="field-odd"><p>素点同点時に順位点を山分けする（同点者の順位は同じになる）</p>
+</dd>
+<dt class="field-even">False<span class="colon">:</span></dt>
+<dd class="field-even"><p>席順で順位を決定し、順位点を決める</p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong rule_set_section">
 <dt class="sig sig-object mahjong" id="rule_set_section-undefined_word">
@@ -341,26 +365,13 @@
 <div class="line">セクション内のキーが省略された場合はDEFAULTセクションに定義している値がセットされる。</div>
 <div class="line">DEFAULTセクションでの定義がない場合は上記表の通りとなる。</div>
 </div>
-<section id="undefined-behavior">
-<span id="id2"></span><h2>ルール識別子省略時の挙動<a class="headerlink" href="#undefined-behavior" title="Link to this heading">¶</a></h2>
-<p>メイン設定ファイル内の「 <a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> 」</p>
-<blockquote>
-<div><div class="line-block">
-<div class="line"><a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> は必須パラメータとなる。</div>
-<div class="line"><a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が存在しない場合、セクション内のパラメータはすべて無視される。</div>
-</div>
-</div></blockquote>
-<p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> 内の <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a></p>
-<blockquote>
-<div><p><a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が省略されている場合はセクション名が <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> として登録される。</p>
-</div></blockquote>
+<p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> 内の <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で定義する <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が省略されている場合はセクション名が <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> として登録される。</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>セクション名及びキー名の半角英字はすべて小文字として扱われる。</p>
 </div>
-</section>
 <section id="default-behavior">
-<span id="id3"></span><h2>メモ記録ワード省略時の挙動<a class="headerlink" href="#default-behavior" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>メモ記録ワード省略時の挙動<a class="headerlink" href="#default-behavior" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="#rule_set_section-remarks" title="remarks"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">remarks</span></code></a> の定義が省略された場合、 <a class="reference internal" href="../main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> の <a class="reference internal" href="../main/application/setting.html#setting_section-remarks_suffix" title="remarks_suffix"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">remarks_suffix</span></code></a> の設定の有無で登録される内容が変化する。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -407,7 +418,6 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">ルールセット定義</a><ul>
-<li><a class="reference internal" href="#undefined-behavior">ルール識別子省略時の挙動</a></li>
 <li><a class="reference internal" href="#default-behavior">メモ記録ワード省略時の挙動</a></li>
 </ul>
 </li>
@@ -493,7 +503,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.3.
-      Last updated on 2026-04-22.
+      Last updated on 2026-04-23.
     </div>
 
   </body>

@@ -1,5 +1,6 @@
 .. index::
    single: メイン設定; サービス別設定
+   :name: integrations-config
 
 サービス別設定
 ==============

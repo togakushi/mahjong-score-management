@@ -196,7 +196,7 @@
 <td><p>ゲーム数に応じて表示される称号</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p><a class="reference internal" href="../decoration.html#degree-section"><span class="std std-ref">degreeセクション</span></a></p></td>
+<td><p><a class="reference internal" href="../decoration.html#degree-section"><span class="std std-ref">degreeセクション</span></a> で定義した内容を表示する</p></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong integrations_section">
 <dt class="sig sig-object mahjong" id="integrations_section-badge_status">
@@ -207,7 +207,7 @@
 <td><p>勝利によって表示される調子バッヂ</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p><a class="reference internal" href="../decoration.html#status-section"><span class="std std-ref">statusセクション</span></a></p></td>
+<td><p><a class="reference internal" href="../decoration.html#status-section"><span class="std std-ref">statusセクション</span></a> で定義した内容を表示する</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong integrations_section">
 <dt class="sig sig-object mahjong" id="integrations_section-badge_grade">
@@ -218,7 +218,7 @@
 <td><p>段位表示</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p><a class="reference internal" href="../decoration.html#grade-section"><span class="std std-ref">gradeセクション</span></a></p></td>
+<td><p><a class="reference internal" href="../decoration.html#grade-section"><span class="std std-ref">gradeセクション</span></a> で定義した内容を表示する</p></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong integrations_section">
 <dt class="sig sig-object mahjong" id="integrations_section-channel_id">
@@ -262,7 +262,7 @@
 </table>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">plotting_backend</span></code> は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。</p>
+<p><a class="reference internal" href="#integrations_section-plotting_backend" title="plotting_backend"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">plotting_backend</span></code></a> は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。</p>
 </div>
 <p class="rubric">脚注</p>
 <aside class="footnote-list brackets">
@@ -285,10 +285,7 @@
 </section>
 <section id="channel-id-separate">
 <h2>channel_id / separate について<a class="headerlink" href="#channel-id-separate" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line"><a class="reference internal" href="../application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> / <a class="reference internal" href="../application/setting.html#setting_section-separate" title="separate"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">separate</span></code></a> は複数箇所で定義できる。</div>
-<div class="line">以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。</div>
-</div>
+<p><a class="reference internal" href="../application/setting.html#setting_section-channel_id" title="channel_id"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">channel_id</span></code></a> / <a class="reference internal" href="../application/setting.html#setting_section-separate" title="separate"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">separate</span></code></a> は以下の順序で定義内容を探索し、最初に未定義時の状態から変更されたものが設定値として採用される。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 6.2%" />
@@ -313,8 +310,8 @@
 <td><p><a class="reference internal" href="../index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a></p></td>
 <td><p>チャンネル個別設定</p>
 <ul class="simple">
-<li><p>slack <a class="reference internal" href="slack.html#slack-channel-settings"><span class="std std-ref">チャンネル個別設定</span></a></p></li>
-<li><p>discord <a class="reference internal" href="discord.html#discord-channel-settings"><span class="std std-ref">チャンネル個別設定</span></a></p></li>
+<li><p>slack用 <a class="reference internal" href="slack.html#slack-channel-settings"><span class="std std-ref">チャンネル個別設定</span></a></p></li>
+<li><p>discord用 <a class="reference internal" href="discord.html#discord-channel-settings"><span class="std std-ref">チャンネル個別設定</span></a></p></li>
 </ul>
 </td>
 <td><p>指定チャンネルの範囲</p></td>
@@ -432,7 +429,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.13.3.
-      Last updated on 2026-04-22.
+      Last updated on 2026-04-23.
     </div>
 
   </body>

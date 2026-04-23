@@ -1,7 +1,6 @@
 .. index::
    single: メイン設定; メイン設定ファイル
-
-.. _main-config:
+   :name: main-config
 
 メイン設定ファイル
 ==================
