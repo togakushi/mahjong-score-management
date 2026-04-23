@@ -3,6 +3,21 @@
 ルールセット定義
 ================
 
+`ルールセット` の定義は以下で行う。
+
+- `main-config` 内「 `mahjong-section` 」
+
+  - 1セットのみ定義可能
+  - セクションの省略可能
+
+- `main-config` 内「 `setting-section` 」の `rule_config` で指定される設定ファイル
+
+  - 複数セットの定義が可能
+  - 定義されたセクション名の `ルールセット` を登録
+  - 省略可能
+
+.. seealso:: `example-ruleset`
+
 .. list-table::
    :width: 100%
    :widths: 15 20 15 30 50
@@ -16,7 +31,7 @@
    * - .. rule_set_section:: rule_version
      - ルール識別子
      - 文字列
-     - - `main-config` 内の `mahjong-section`
+     - - `mahjong-section`
 
          - 省略不可
 
@@ -87,10 +102,6 @@
 
 | セクション内のキーが省略された場合はDEFAULTセクションに定義している値がセットされる。
 | DEFAULTセクションでの定義がない場合は上記表の通りとなる。
-
-
-
-`rule-config` 内の `ルールセット` で定義する `rule_version` が省略されている場合はセクション名が `rule_version` として登録される。
 
 .. important::
    セクション名及びキー名の半角英字はすべて小文字として扱われる。

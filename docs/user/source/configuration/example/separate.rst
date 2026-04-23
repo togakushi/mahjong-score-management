@@ -42,8 +42,8 @@
 - `main-config` の `integrations-config`
 - `main-config` に定義されたチャンネル個別設定
 
-  - `slack チャンネル個別設定 <slack-channel-settings>`
-  - `discord チャンネル個別設定 <discord-channel-settings>`
+  - `slack 用チャンネル個別設定 <slack-channel-settings>`
+  - `discord 用チャンネル個別設定 <discord-channel-settings>`
 
 設定箇所による有効範囲は以下のようになる。
 
@@ -67,7 +67,7 @@
    [discord]
    separate = True
 
-| サービス設定のセパレート機能有効化は、Slack / Discord のデータを分ける。
+| サービス設定のセパレート機能有効化は、 Slack / Discord のデータを分ける。
 | 同じ `ルールセット` の記録でもSlackで実行した集計コマンドの結果にDiscordから登録されたデータは含まれない。
 
 該当サービスのすべてチャンネルでセパレート機能が有効になる。

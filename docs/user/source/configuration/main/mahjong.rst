@@ -4,7 +4,9 @@
 ルール定義
 ==========
 
-.. _mahjong-section:
+.. index::
+   pair: メイン設定; mahjong section
+   :name: mahjong-section
 
 mahjongセクション
 -----------------
@@ -34,7 +36,9 @@ mahjongセクション
    | `keyword_mapping-section` で追加した *成績記録キーワード* は `function-call-keyword` に使用されない。
 
 
-.. _keyword_mapping-section:
+.. index::
+   pair: メイン設定; keyword_mapping section
+   :name: keyword_mapping-section
 
 keyword_mappingセクション
 -------------------------

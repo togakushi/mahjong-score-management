@@ -135,7 +135,7 @@ custom_messageセクション
      - 制限チャンネルでデータ更新をしようとした場合
      -
    * - .. custom_message_section:: inside_thread
-     - ``thread_report`` が ``False`` の場合にスレッド内で点数登録をしようとした場合
+     - `thread_report` が ``False`` の場合にスレッド内で点数登録をしようとした場合
      -
    * - .. custom_message_section:: same_player
      - スコアデータに同名のプレイヤーが存在している場合
