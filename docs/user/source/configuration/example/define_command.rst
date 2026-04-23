@@ -72,7 +72,7 @@
            チーム一覧: <function register.<locals>.dispatch_team_list at 0x7fecc76ed260>
            チーム構成: <function register.<locals>.dispatch_team_list at 0x7fecc76ed260>
 
-Slack/Discordを利用時は突合コマンドが追加される。
+Slack / Discord を利用時は突合コマンドが追加される。
 
 .. code-block:: text
    :caption: 突合コマンド
@@ -113,7 +113,7 @@ Slack/Discordを利用時は突合コマンドが追加される。
            team_clear: <function register.<locals>.dispatch_team_clear at 0x7fecc75dbb00>
            help: <function command_help at 0x7fecc7a42980>
 
-Slack/Discordを利用時は突合コマンドが追加される。
+Slack / Discord を利用時は突合コマンドが追加される。
 
 .. code-block:: text
    :caption: 突合コマンド
