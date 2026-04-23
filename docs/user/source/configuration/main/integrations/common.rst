@@ -28,21 +28,21 @@
      - ゲーム数に応じて表示される称号
      - 真偽値
      - False
-     - `degree-section`
+     - `degree-section` で定義した内容を表示する
    * - .. integrations_section:: badge_status
           :category: common
 
      - 勝利によって表示される調子バッヂ
      - 真偽値
      - False
-     - `status-section`
+     - `status-section` で定義した内容を表示する
    * - .. integrations_section:: badge_grade
           :category: common
 
      - 段位表示
      - 真偽値
      - False
-     - `grade-section`
+     - `grade-section` で定義した内容を表示する
    * - .. integrations_section:: channel_id
           :category: common
 
@@ -67,7 +67,8 @@
 
 ..
 
-.. danger:: :integrations_section:`plotting_backend` は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。
+.. danger::
+   :integrations_section:`plotting_backend <common; plotting_backend>` は実装状況によってはデフォルト値から変更するとアプリケーションエラーとなり、正しく動作しなくなる。
 
 .. rubric:: 脚注
 
@@ -88,8 +89,7 @@
 channel_id / separate について
 ------------------------------
 
-| :setting_section:`channel_id` / :setting_section:`separate` は複数箇所で定義できる。
-| 以下の順序で探索し、最初に未定義時の状態から変更されたものが設定値として採用される。
+:setting_section:`channel_id` / :setting_section:`separate` は以下の順序で定義内容を探索し、最初に未定義時の状態から変更されたものが設定値として採用される。
 
 .. list-table::
    :width: 100%
@@ -108,8 +108,8 @@ channel_id / separate について
      - `main-config`
      - チャンネル個別設定
 
-       - slack `slack-channel-settings`
-       - discord `discord-channel-settings`
+       - slack用 `slack-channel-settings`
+       - discord用 `discord-channel-settings`
      - 指定チャンネルの範囲
    * - 3
      - `main-config`

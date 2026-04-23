@@ -35,7 +35,7 @@ webセクション
      - BASIC認証の利用
      - 真偽値
      - False
-     - ``username`` / ``password`` のいずれかが未定義なら強制的に ``False`` になる
+     - `username` / `password` のいずれかが未定義なら強制的に ``False`` になる
    * - .. integrations_section:: username
           :category: web section
 
@@ -56,7 +56,7 @@ webセクション
      - HTTPSの利用
      - 真偽値
      - False
-     - ``certificate`` / ``private_key`` のいずれかが未定義なら強制的に ``False`` になる
+     - `certificate` / `private_key` のいずれかが未定義なら強制的に ``False`` になる
    * - .. integrations_section:: certificate
           :category: web section
 
