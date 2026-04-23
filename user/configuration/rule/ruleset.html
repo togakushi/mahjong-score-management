@@ -156,6 +156,26 @@
             
   <section id="rule-set">
 <span id="id1"></span><h1>ルールセット定義<a class="headerlink" href="#rule-set" title="Link to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の定義は以下で行う。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 内「 <a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> 」</p>
+<ul>
+<li><p>1セットのみ定義可能</p></li>
+<li><p>セクションの省略可能</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 内「 <a class="reference internal" href="../main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> 」の <a class="reference internal" href="../main/application/setting.html#setting_section-rule_config" title="rule_config"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">rule_config</span></code></a> で指定される設定ファイル</p>
+<ul>
+<li><p>複数セットの定義が可能</p></li>
+<li><p>定義されたセクション名の <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を登録</p></li>
+<li><p>省略可能</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../example/ruleset.html#example-ruleset"><span class="std std-ref">ルールセット設定例</span></a></p>
+</div>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
 <col style="width: 11.5%" />
@@ -182,7 +202,7 @@
 <td><p>ルール識別子</p></td>
 <td><p>文字列</p></td>
 <td><ul class="simple">
-<li><p><a class="reference internal" href="../main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 内の <a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a></p>
+<li><p><a class="reference internal" href="../main/mahjong.html#mahjong-section"><span class="std std-ref">mahjongセクション</span></a></p>
 <ul>
 <li><p>省略不可</p></li>
 </ul>
@@ -365,7 +385,6 @@
 <div class="line">セクション内のキーが省略された場合はDEFAULTセクションに定義している値がセットされる。</div>
 <div class="line">DEFAULTセクションでの定義がない場合は上記表の通りとなる。</div>
 </div>
-<p><a class="reference internal" href="index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> 内の <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で定義する <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が省略されている場合はセクション名が <a class="reference internal" href="#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> として登録される。</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>セクション名及びキー名の半角英字はすべて小文字として扱われる。</p>

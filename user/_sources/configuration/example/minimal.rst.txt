@@ -1,10 +1,12 @@
+.. _example-minimal:
+
 最小構成
 ========
 
 メイン設定
 ----------
 
-| メイン設定ファイルに何も記述しない場合、すべてデフォルト値の状態で起動する。
+| `main-config` に何も記述しない場合、すべてデフォルト値の状態で起動する。
 | 設定される `ルールセット` 、機能呼び出しキーワードがわかればすぐに利用できる。
 
 設定状況(アプリケーション起動ログから抜粋)
@@ -27,7 +29,7 @@
            メンバー一覧: <function register.<locals>.dispatch_members_list at 0x7298fe9d7e20>
            チーム一覧: <function register.<locals>.dispatch_team_list at 0x7298fe9d7ec0>
 
-Slack/Discordを利用時は突合コマンドが追加される（ReminderはSlackのみ）。
+Slack / Discord を利用時は突合コマンドが追加される（ReminderはSlackのみ）。
 
 .. code-block:: text
    :caption: 突合コマンド
@@ -62,7 +64,7 @@ Slack/Discordを利用時は突合コマンドが追加される（ReminderはSl
            team_clear: <function register.<locals>.dispatch_team_clear at 0x7298fea0c360>
 
 
-Slack/Discordを利用時は突合コマンドが追加される。
+Slack / Discord を利用時は突合コマンドが追加される。
 
 .. code-block:: text
    :caption: 突合コマンド
