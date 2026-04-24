@@ -31,7 +31,7 @@
      - 機能を呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
-     -
+     - `function-call-keyword` 参照
      - |:/:|
      - |:/:|
      - |:/:|
@@ -59,6 +59,17 @@
      - |:/:|
      -
      -
+   * - .. sub_commands_section:: dropitems
+     - 非表示にする項目を指定
+     - | 文字列
+       | (カンマ区切り)
+     - 空欄
+     - |:/:|
+     -
+     - |:/:|
+     - |:/:|
+     - |:/:|
+     - `rule-set` の :rule_set_section:`dropitems` も追加される
    * - .. sub_commands_section:: unregistered_replace
      - 未登録プレイヤーを `guest_name` に置き換えて表示
      - 真偽値
@@ -191,8 +202,7 @@
 各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。
 
 | :sub_commands_section:`commandword` 、 :sub_commands_section:`command_suffix` の定義状況によって登録される呼び出しキーワードが変化する。
-| :sub_commands_section:`commandword` の定義が優先的に登録される。
-| :sub_commands_section:`command_suffix` の定義があれば、 `rule-set` の `keywords` と :sub_commands_section:`command_suffix` の組み合わせが登録される。
+| :sub_commands_section:`commandword` の定義が優先的に登録され、 :sub_commands_section:`command_suffix` の定義があれば、 `rule-set` の `keywords` と :sub_commands_section:`command_suffix` の組み合わせが登録される。
 
 .. list-table::
    :width: 100%
@@ -208,6 +218,12 @@
      - |:x:|
      - |:x:|
      - デフォルトキーワード
+
+       :results: 麻雀成績
+       :graph: 麻雀グラフ
+       :ranking: 麻雀ランキング
+       :report: 麻雀レポート
+       :help: 麻雀ヘルプ
    * - |:o:|
      - |:x:|
      - |:x:|
@@ -235,7 +251,8 @@
    * - |:x:|
      - |:o:|
      - |:o:|
-     - `keywords` + :sub_commands_section:`command_suffix`
+     - `keywords` + :sub_commands_section:`command_suffix` の組み合わせ
+
 
 
 パラメータの評価順序
