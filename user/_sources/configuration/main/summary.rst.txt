@@ -31,7 +31,7 @@
      - 機能を呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
-     -
+     - `function-call-keyword` 参照
      - |:/:|
      - |:/:|
      - |:/:|
@@ -59,6 +59,17 @@
      - |:/:|
      -
      -
+   * - .. sub_commands_section:: dropitems
+     - 非表示にする項目を指定
+     - | 文字列
+       | (カンマ区切り)
+     - 空欄
+     - |:/:|
+     -
+     - |:/:|
+     - |:/:|
+     - |:/:|
+     - `rule-set` の :rule_set_section:`dropitems` も追加される
    * - .. sub_commands_section:: unregistered_replace
      - 未登録プレイヤーを `guest_name` に置き換えて表示
      - 真偽値
@@ -108,7 +119,7 @@
      -
      -
      -
-     - 内部フラグ（ ``True`` 指定時は強制的表示 ）
+     - 内部フラグ（ ``True`` 指定時は強制表示 ）
    * - .. sub_commands_section:: versus_matrix
      - 対戦マトリックス表示
      - 真偽値
@@ -118,28 +129,29 @@
      -
      -
      -
-     - 内部フラグ（ ``True`` 指定時は強制的表示 ）
+     - 内部フラグ（ ``True`` 指定時は強制表示 ）
    * - .. sub_commands_section:: individual
      - デフォルトの集計対象を切り替え
      - 真偽値
+     - True
      - |:/:|
      - |:/:|
      - |:/:|
      - |:/:|
-     - |:/:|
-     - |:/:|
+     -
      - :True: 個人成績
        :False: チーム成績
    * - .. sub_commands_section:: statistics
      - 「統計」オプションを常に指定
-     - 型
-     - |:/:|
+     - 真偽値
+     - False
+     - |:/:| [#]_
+     - |:/:| [#]_
      -
+     - |:/:| [#]_
      -
-     -
-     -
-     -
-     - 座席データ、レコードを常に表示する
+     - :True: 統計情報の強制表示
+       :False: 統計オプションの指定状態に依存
    * - .. sub_commands_section:: always_argument
      - コマンドに常に指定する文字列を追加
      - 文字列
@@ -183,6 +195,11 @@
 
 ..
 
+.. [#] 座席データ、レコードデータ
+.. [#] 統計グラフ
+.. [#] 月別ゲーム統計
+
+
 .. _function-call-keyword:
 
 機能呼び出しキーワード
@@ -191,8 +208,7 @@
 各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。
 
 | :sub_commands_section:`commandword` 、 :sub_commands_section:`command_suffix` の定義状況によって登録される呼び出しキーワードが変化する。
-| :sub_commands_section:`commandword` の定義が優先的に登録される。
-| :sub_commands_section:`command_suffix` の定義があれば、 `rule-set` の `keywords` と :sub_commands_section:`command_suffix` の組み合わせが登録される。
+| :sub_commands_section:`commandword` の定義が優先的に登録され、 :sub_commands_section:`command_suffix` の定義があれば、 `rule-set` の `keywords` と :sub_commands_section:`command_suffix` の組み合わせが登録される。
 
 .. list-table::
    :width: 100%
@@ -208,6 +224,12 @@
      - |:x:|
      - |:x:|
      - デフォルトキーワード
+
+       :results: 麻雀成績
+       :graph: 麻雀グラフ
+       :ranking: 麻雀ランキング
+       :report: 麻雀レポート
+       :help: 麻雀ヘルプ
    * - |:o:|
      - |:x:|
      - |:x:|
@@ -235,7 +257,8 @@
    * - |:x:|
      - |:o:|
      - |:o:|
-     - `keywords` + :sub_commands_section:`command_suffix`
+     - `keywords` + :sub_commands_section:`command_suffix` の組み合わせ
+
 
 
 パラメータの評価順序
