@@ -168,8 +168,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         else:
             m.set_message(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
 
-    # 非表示項目を除外
-    m.post.message = [(data, options) for data, options in m.post.message if options.title not in g.cfg.rule.dropitems(g.params.rule_version)]
+    # 非表示項目を削除
+    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))
 
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 

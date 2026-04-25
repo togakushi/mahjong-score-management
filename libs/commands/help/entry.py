@@ -169,6 +169,4 @@ def help_message(m: "MessageParserProtocol") -> None:
     )
 
     # 非表示項目を削除
-    for msg, option in m.post.message:
-        if option.title in g.cfg.rule.dropitems(g.params.rule_version):
-            m.post.message.remove((msg, option))
+    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.help.dropitems))

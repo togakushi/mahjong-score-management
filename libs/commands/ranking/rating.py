@@ -94,7 +94,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     )
 
     # 非表示項目を削除
-    df = formatter.df_drop(df, list(g.cfg.rule.dropitems(g.params.rule_version)))
+    df = formatter.df_drop(df, list(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.ranking.dropitems)))
 
     m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
     options: StyleOptions = StyleOptions(
