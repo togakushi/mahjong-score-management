@@ -231,6 +231,10 @@ class AppConfig:
                 protected_values = self.report.commandword  # 上書き保護
                 self.report.config_load(additional_config_parser[section_name])
                 self.report.commandword = protected_values
+            case "help":
+                protected_values = self.help.commandword  # 上書き保護
+                self.help.config_load(additional_config_parser[section_name])
+                self.help.commandword = protected_values
             case _:
                 return
 
@@ -264,6 +268,7 @@ class AppConfig:
                     self.overwrite(config_path, "graph")
                     self.overwrite(config_path, "ranking")
                     self.overwrite(config_path, "report")
+                    self.overwrite(config_path, "help")
                 else:
                     config_path = None
 

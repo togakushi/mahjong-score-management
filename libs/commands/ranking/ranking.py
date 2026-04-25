@@ -288,7 +288,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         data.pop("役満和了率")
 
     for msg, df_data in data.items():
-        if msg in g.cfg.rule.dropitems(g.params.rule_version):  # 非表示項目
+        if msg in g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.ranking.dropitems):  # 非表示項目
             continue
         if df_data.empty:  # 対象者なし
             continue

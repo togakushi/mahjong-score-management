@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from types import NoneType
-from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar, Union
 
 import pandas as pd
 
@@ -169,11 +169,7 @@ class MessageParserDataMixin:
         self.post.reset()
         self.status.reset()
 
-    def set_headline(
-        self,
-        data: "MessageType",
-        options: "StyleOptions",
-    ) -> None:
+    def set_headline(self, data: "MessageType", options: "StyleOptions") -> None:
         """
         ヘッドラインメッセージをセット
 
@@ -188,11 +184,7 @@ class MessageParserDataMixin:
         else:
             self.post.headline = (data, options)
 
-    def set_message(
-        self,
-        data: "MessageType",
-        options: "StyleOptions",
-    ) -> None:
+    def set_message(self, data: "MessageType", options: "StyleOptions") -> None:
         """
         本文メッセージをセット
 
@@ -206,6 +198,18 @@ class MessageParserDataMixin:
             return
 
         self.post.message.append((data, options))
+
+    def hidden(self, dropitems: Union[list[str], set[str]]) -> None:
+        """
+        非表示項目を削除
+
+        Args:
+            dropitems (Union[list[str], set[str]]): 非表示にする項目
+
+        """
+        for msg, option in self.post.message:
+            if option.title in dropitems:
+                self.post.message.remove((msg, option))
 
 
 class MessageParserInterface(ABC):

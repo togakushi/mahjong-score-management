@@ -151,6 +151,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
             data = converter.save_output(df_others, options, m.post.headline, "others")
         m.set_message(data, StyleOptions(**options.asdict))
 
+    # 非表示項目を削除
+    m.hidden(list(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems)))
+
 
 def difference(m: "MessageParserProtocol") -> None:
     """
@@ -216,3 +219,6 @@ def difference(m: "MessageParserProtocol") -> None:
         options.title = headline_title
         data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
     m.set_message(data, StyleOptions(**options.asdict))
+
+    # 非表示項目を削除
+    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))

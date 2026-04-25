@@ -96,7 +96,7 @@
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     - カンマ区切りで複数指定可
+     - `main-config` の :sub_commands_section:`dropitems` に追加する
 
 ..
 
