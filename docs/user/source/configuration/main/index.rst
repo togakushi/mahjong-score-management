@@ -19,5 +19,5 @@
    application/index
    summary
    management/index
-   decoration
    integrations/index
+   appearance/index
