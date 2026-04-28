@@ -7,11 +7,15 @@ import random
 import textwrap
 from configparser import ConfigParser
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
+
+import pandas as pd
 
 import libs.global_value as g
+from libs.bootstrap.section import SubCommands
 from libs.functions.compose import text_item
-from libs.types import CommandType
+from libs.types import CommandType, StyleOptions
+from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -141,3 +145,57 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
             msg += f"{word_text}\n"
 
     return textwrap.indent(msg, "\t" * indent)
+
+
+def dropitems(m: "MessageParserProtocol") -> None:
+    """
+    非表示項目の削除
+
+    Args:
+        m (MessageParserProtocol): メッセージデータ
+
+    """
+    command = cast(SubCommands, getattr(g.cfg, g.params.command))
+    ret_items = set(command.dropitems).union(g.cfg.rule.dropitems(g.params.rule_version))
+
+    if g.params.ignore_flying:
+        ret_items.add("トビ")
+    if not g.cfg.rule.remarks_words:
+        ret_items.add("メモ")
+
+    # 関連ワードを追加
+    related_words_set: dict[str, set[str]] = {
+        "flying": {"トビ", "トビ率", "飛", "flying", "flying_mix", "flying_rate-count"},
+        "yakuman": {"役満", "役満和了", "yakuman_rate-count"},
+        "regulation": {"卓外", "卓外清算", "卓外ポイント"},
+        "other": {"その他", "メモ"},
+    }
+    for words_set in related_words_set.values():
+        if ret_items & words_set:
+            ret_items = ret_items.union(words_set)
+
+    # 削除処理
+    for idx, (msg, option) in enumerate(m.post.message):
+        if option.title in ret_items:
+            m.post.message.pop(idx)
+            continue
+        if isinstance(msg, pd.DataFrame):
+            work_drop_items = ret_items.copy()
+            rename_dict = formatter.gen_rename_dict(
+                msg.columns.to_list(),
+                StyleOptions(rename_type=StyleOptions.RenameType.NORMAL, data_kind=option.data_kind),
+            )
+            for k, v in rename_dict.items():
+                if set([k, v]) & ret_items:
+                    work_drop_items = work_drop_items.union({k, v})
+
+            rename_dict_short = formatter.gen_rename_dict(
+                msg.columns.to_list(),
+                StyleOptions(rename_type=StyleOptions.RenameType.SHORT, data_kind=option.data_kind),
+            )
+            for k, v in rename_dict_short.items():
+                if set([k, v]) & ret_items:
+                    work_drop_items = work_drop_items.union({k, v})
+
+            drop_list = work_drop_items & set(msg.columns.to_list())
+            m.post.message[idx] = (msg.drop(columns=drop_list), option)

@@ -3,7 +3,7 @@ integrations/protocols.py
 """
 
 from dataclasses import dataclass, field, fields, is_dataclass
-from typing import TYPE_CHECKING, Any, Optional, Protocol, Union
+from typing import TYPE_CHECKING, Any, Optional, Protocol
 
 from libs.types import ActionStatus, ChannelType, CommandType, MessageStatus
 
@@ -180,9 +180,6 @@ class MessageParserProtocol(Protocol):
 
     def set_message(self, data: "MessageType", options: "StyleOptions") -> None:
         """本文メッセージをセット"""
-
-    def hidden(self, dropitems: Union[list[str], set[str]]) -> None:
-        """非表示項目の削除"""
 
     def parser(self, body: Any) -> None:
         """メッセージ解析メソッド"""

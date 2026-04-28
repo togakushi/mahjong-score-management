@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 import libs.global_value as g
+from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
@@ -142,7 +143,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             pass
 
     # 非表示項目を削除
-    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))
+    message.dropitems(m)
 
 
 def tmpl_header(my_name: str, vs_name: str) -> str:

@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.bootstrap.section import SubCommands
-from libs.functions import lookup
+from libs.functions import lookup, message
 from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -169,4 +169,4 @@ def help_message(m: "MessageParserProtocol") -> None:
     )
 
     # 非表示項目を削除
-    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.help.dropitems))
+    message.dropitems(m)

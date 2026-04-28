@@ -152,7 +152,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # 非表示項目を削除
-    m.hidden(list(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems)))
+    message.dropitems(m)
 
 
 def difference(m: "MessageParserProtocol") -> None:
@@ -221,4 +221,4 @@ def difference(m: "MessageParserProtocol") -> None:
     m.set_message(data, StyleOptions(**options.asdict))
 
     # 非表示項目を削除
-    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))
+    message.dropitems(m)

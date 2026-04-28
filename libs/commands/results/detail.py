@@ -164,12 +164,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # 戦績
     if g.params.game_results:
         if g.params.verbose:
-            m.set_message(get_results_details(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False))
+            m.set_message(
+                get_results_details(mapping_dict),
+                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False),
+            )
         else:
-            m.set_message(get_results_simple(mapping_dict), StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False))
+            m.set_message(
+                get_results_simple(mapping_dict),
+                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False),
+            )
 
     # 非表示項目を削除
-    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))
+    message.dropitems(m)
 
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
