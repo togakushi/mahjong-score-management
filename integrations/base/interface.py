@@ -199,6 +199,17 @@ class MessageParserDataMixin:
 
         self.post.message.append((data, options))
 
+    def delete_items(self, hide_items: list[str]) -> None:
+        """
+        指定項目の削除
+
+        Args:
+            hide_items (list[str]): 削除項目
+        """
+        for idx, (msg, option) in enumerate(self.post.message):
+            if option.title in hide_items:
+                self.post.message.pop(idx)
+
 
 class MessageParserInterface(ABC):
     """メッセージ解析インターフェース"""

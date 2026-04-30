@@ -181,6 +181,9 @@ class MessageParserProtocol(Protocol):
     def set_message(self, data: "MessageType", options: "StyleOptions") -> None:
         """本文メッセージをセット"""
 
+    def delete_items(self, items: list[str]) -> None:
+        """指定項目の削除"""
+
     def parser(self, body: Any) -> None:
         """メッセージ解析メソッド"""
 

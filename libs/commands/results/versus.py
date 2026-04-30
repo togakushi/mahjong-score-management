@@ -8,7 +8,6 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 import libs.global_value as g
-from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import converter, formatter
@@ -141,9 +140,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
             m.set_message(converter.save_output(df_vs2, StyleOptions(format_type="txt", base_name="versus")), StyleOptions(title="成績"))
         case _:
             pass
-
-    # 非表示項目を削除
-    message.dropitems(m)
 
 
 def tmpl_header(my_name: str, vs_name: str) -> str:

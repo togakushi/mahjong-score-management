@@ -92,9 +92,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
         "flying",
     ]
 
-    if g.cfg.rule.get_ignore_flying(current_rule) or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:  # トビカウントなし
-        header_list.remove("flying")
-        filter_list.remove("flying")
+    # 非表示項目
+    df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)
+    df_remarks.drop(columns=formatter.dropitems_list(df_remarks.columns.to_list()), inplace=True)
 
     if options.format_type == "default":
         options.codeblock = True
@@ -107,7 +107,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(役満和了)
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
+    if "役満和了" not in formatter.dropitems_list():
         options.title = "役満和了"
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
@@ -121,7 +121,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.regulation:
+    if "卓外清算" not in formatter.dropitems_list():
         options.title = "卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
@@ -139,10 +139,10 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.other:
+    if "その他" not in formatter.dropitems_list():
         options.title = "その他"
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
-        df_others = df_remarks.query("type == 1").drop(columns=["type", "ex_point"])
+        df_others = df_remarks.query("type == 1").drop(columns=set(df_remarks.columns) & {"type", "ex_point"})
 
         if options.format_type == "default":
             data = df_others
@@ -150,9 +150,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
             options.base_name = "others"
             data = converter.save_output(df_others, options, m.post.headline, "others")
         m.set_message(data, StyleOptions(**options.asdict))
-
-    # 非表示項目を削除
-    message.dropitems(m)
 
 
 def difference(m: "MessageParserProtocol") -> None:
@@ -213,12 +210,12 @@ def difference(m: "MessageParserProtocol") -> None:
     header_list = ["#", "name", "total_point", "diff_from_above", "diff_from_top"]
     filter_list = ["name", "count", "total_point", "diff_from_above", "diff_from_top"]
 
+    # 非表示項目
+    df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)
+
     if options.format_type == "default":
         data = df_summary.filter(items=header_list)
     else:
         options.title = headline_title
         data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
     m.set_message(data, StyleOptions(**options.asdict))
-
-    # 非表示項目を削除
-    message.dropitems(m)

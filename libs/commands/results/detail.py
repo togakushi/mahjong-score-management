@@ -91,12 +91,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # --- 表示内容
     msg_data.update(get_headline(stats, game_info, player_name))
     msg_data.update(get_totalization(stats))
-    mode = g.params.mode
 
     # 統計
     seat_data = pd.DataFrame(
         {  # 座席データ
-            "席": ["東家", "南家", "西家", "北家"][:mode],
+            "席": ["東家", "南家", "西家", "北家"][: g.params.mode],
             "順位分布": stats.rank_distr_list2,
             "平均順位": [f"{x:.2f}".replace("0.00", "-.--") for x in stats.rank_avg_list],
             "トビ": stats.flying_list,
@@ -104,12 +103,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         }
     )
 
-    if g.params.ignore_flying or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:
-        seat_data.drop(columns=["トビ"], inplace=True)
-    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
-        seat_data.drop(columns=["役満和了"], inplace=True)
-
-    if mode == 3:
+    if g.params.mode == 3:
         balance_data = textwrap.dedent(
             f"""\
             全体：{stats.seat0.avg_balance("all"):+.1f}点
@@ -131,6 +125,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
             """.replace("+0.0点", "記録なし")
         ).replace("-", "▲")
 
+    # 非表示項目
+    seat_data.drop(columns=formatter.dropitems_list(seat_data.columns.to_list()), inplace=True)
+    stats.result_df.drop(columns=formatter.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
+    stats.record_df.drop(columns=formatter.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
+
     if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
         m.set_message(textwrap.indent(stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
@@ -142,18 +141,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
     count_df = remarks_df.groupby("matter").agg(matter_count=("matter", "count"), ex_total=("ex_point", "sum"), type=("type", "max"))
     count_df["matter"] = count_df.index
 
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
+    if "役満和了" not in formatter.dropitems_list():
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.regulation:
+    if "卓外清算" not in formatter.dropitems_list():
         if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
         m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
-    if not g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.other:
+    if "その他" not in formatter.dropitems_list():
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
@@ -173,9 +172,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 get_results_simple(mapping_dict),
                 StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False),
             )
-
-    # 非表示項目を削除
-    message.dropitems(m)
 
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
@@ -239,11 +235,7 @@ def comparison(m: "MessageParserProtocol") -> None:
         stats_df.index = list(mapping_dict.values())
 
     # 非表示項目
-    stats_df = stats_df.drop(columns=[x for x in g.cfg.rule.dropitems(g.params.rule_version) if x in stats_df.columns.to_list()])
-    if g.params.ignore_flying or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:
-        stats_df = stats_df.drop(columns=["flying_rate-count"])
-    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
-        stats_df = stats_df.drop(columns=["yakuman_rate-count"])
+    stats_df.drop(columns=formatter.dropitems_list(stats_df.columns.to_list()), inplace=True)
 
     # 出力
     options: StyleOptions = StyleOptions(
@@ -330,6 +322,11 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
         ret["4位"] = f"{data.seat0.rank4:2} 回 ({data.seat0.rank4_rate:7.2%})"
     ret["トビ"] = f"{data.seat0.flying:2} 回 ({data.seat0.flying_rate:7.2%})"
     ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
+
+    # 非表示項目
+    for drop_item in formatter.dropitems_list():
+        if drop_item in ret:
+            ret.pop(drop_item)
 
     return ret
 
