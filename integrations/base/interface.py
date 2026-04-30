@@ -206,7 +206,7 @@ class MessageParserDataMixin:
         Args:
             hide_items (list[str]): 削除項目
         """
-        for idx, (msg, option) in enumerate(self.post.message):
+        for idx, (_, option) in enumerate(self.post.message):
             if option.title in hide_items:
                 self.post.message.pop(idx)
 
