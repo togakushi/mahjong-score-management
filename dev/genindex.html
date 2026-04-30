@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=fcec9973"></script>
+    <script src="_static/documentation_options.js?v=2dee5df9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -198,8 +198,6 @@
         <li><a href="integrations.web.parser.html#integrations.web.parser.MessageParser.__init__">(integrations.web.parser.MessageParser method)</a>
 </li>
         <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.__init__">(libs.bootstrap.app_config.AppConfig method)</a>
-</li>
-        <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords.__init__">(libs.bootstrap.app_config.AppConfig.FixedWords method)</a>
 </li>
         <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.BadgeDisplay.__init__">(libs.bootstrap.app_config.BadgeDisplay method)</a>
 </li>
@@ -392,8 +390,6 @@
       <li><a href="integrations.slack.api.html#integrations.slack.api.AdapterAPI.appclient">appclient (integrations.slack.api.AdapterAPI attribute)</a>
 </li>
       <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig">AppConfig (class in libs.bootstrap.app_config)</a>
-</li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords">AppConfig.FixedWords (class in libs.bootstrap.app_config)</a>
 </li>
       <li><a href="libs.types.html#libs.types.MessageStatus.APPEND">APPEND (libs.types.MessageStatus attribute)</a>
 </li>
@@ -802,12 +798,18 @@
 </li>
       <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.delete">delete() (in module libs.commands.registry.team)</a>
 </li>
-      <li><a href="integrations.discord.functions.html#integrations.discord.functions.SvcFunctions.delete_reaction">delete_reaction() (integrations.discord.functions.SvcFunctions method)</a>
+      <li><a href="integrations.base.interface.html#integrations.base.interface.MessageParserDataMixin.delete_items">delete_items() (integrations.base.interface.MessageParserDataMixin method)</a>
+
+      <ul>
+        <li><a href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.delete_items">(integrations.protocols.MessageParserProtocol method)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.MessageStatus.DELETED">DELETED (libs.types.MessageStatus attribute)</a>
+      </ul></li>
+      <li><a href="integrations.discord.functions.html#integrations.discord.functions.SvcFunctions.delete_reaction">delete_reaction() (integrations.discord.functions.SvcFunctions method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libs.types.html#libs.types.MessageStatus.DELETED">DELETED (libs.types.MessageStatus attribute)</a>
+</li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Delimiter">Delimiter (class in libs.utils.timekit)</a>
 </li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.DEM">DEM (libs.utils.timekit.ExtendedDatetime attribute)</a>
@@ -878,15 +880,15 @@
         <li><a href="libs.domain.score.html#libs.domain.score.GameResult.draw_split">(libs.domain.score.GameResult attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.dropitems">dropitems (libs.bootstrap.app_config.AppConfig attribute)</a>
+      <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs.dropitems">dropitems (libs.domain.datamodels.CommandAttrs attribute)</a>
 
       <ul>
-        <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs.dropitems">(libs.domain.datamodels.CommandAttrs attribute)</a>
-</li>
         <li><a href="libs.domain.rule.html#libs.domain.rule.RuleData.dropitems">(libs.domain.rule.RuleData attribute)</a>
 </li>
       </ul></li>
       <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.dropitems">dropitems() (libs.domain.rule.RuleSet method)</a>
+</li>
+      <li><a href="libs.utils.formatter.html#libs.utils.formatter.dropitems_list">dropitems_list() (in module libs.utils.formatter)</a>
 </li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.dt">dt (libs.utils.timekit.ExtendedDatetime property)</a>
 </li>
@@ -972,18 +974,14 @@
 </li>
       <li><a href="libs.utils.formatter.html#libs.utils.formatter.floatfmt_adjust">floatfmt_adjust() (in module libs.utils.formatter)</a>
 </li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords.flying">flying (libs.bootstrap.app_config.AppConfig.FixedWords attribute)</a>
-
-      <ul>
-        <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.flying">(libs.domain.stats.StatsDetailed attribute)</a>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.flying">flying (libs.domain.stats.StatsDetailed attribute)</a>
 </li>
-      </ul></li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.flying_list">flying_list (libs.domain.stats.StatsInfo property)</a>
+</li>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.flying_rate">flying_rate (libs.domain.stats.StatsDetailed property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.flying_rate">flying_rate (libs.domain.stats.StatsDetailed property)</a>
-</li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.FMT">FMT (libs.utils.timekit.ExtendedDatetime attribute)</a>
 </li>
       <li><a href="libs.bootstrap.section.html#libs.bootstrap.section.SettingSection.font_file">font_file (libs.bootstrap.section.SettingSection attribute)</a>
@@ -1033,6 +1031,8 @@
       <li><a href="libs.domain.score.html#libs.domain.score.GameResult">GameResult (class in libs.domain.score)</a>
 </li>
       <li><a href="libs.commands.report.stats_report.html#libs.commands.report.stats_report.gen_pdf">gen_pdf() (in module libs.commands.report.stats_report)</a>
+</li>
+      <li><a href="libs.utils.formatter.html#libs.utils.formatter.gen_rename_dict">gen_rename_dict() (in module libs.utils.formatter)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.Args.gen_test_data">gen_test_data (libs.domain.datamodels.Args attribute)</a>
 </li>
@@ -1100,10 +1100,10 @@
 </li>
       <li><a href="libs.commands.results.detail.html#libs.commands.results.detail.get_results_details">get_results_details() (in module libs.commands.results.detail)</a>
 </li>
-      <li><a href="libs.commands.results.detail.html#libs.commands.results.detail.get_results_simple">get_results_simple() (in module libs.commands.results.detail)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libs.commands.results.detail.html#libs.commands.results.detail.get_results_simple">get_results_simple() (in module libs.commands.results.detail)</a>
+</li>
       <li><a href="libs.functions.compose.text_item.html#libs.functions.compose.text_item.get_team_list">get_team_list() (in module libs.functions.compose.text_item)</a>
 </li>
       <li><a href="libs.commands.results.detail.html#libs.commands.results.detail.get_totalization">get_totalization() (in module libs.commands.results.detail)</a>
@@ -1222,12 +1222,6 @@
 </li>
       <li><a href="libs.commands.help.entry.html#libs.commands.help.entry.HelpConfig">HelpConfig (class in libs.commands.help.entry)</a>
 </li>
-      <li><a href="integrations.base.interface.html#integrations.base.interface.MessageParserDataMixin.hidden">hidden() (integrations.base.interface.MessageParserDataMixin method)</a>
-
-      <ul>
-        <li><a href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.hidden">(integrations.protocols.MessageParserProtocol method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Format.HM">HM (libs.utils.timekit.Format attribute)</a>
@@ -2931,8 +2925,6 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords.other">other (libs.bootstrap.app_config.AppConfig.FixedWords attribute)</a>
-</li>
       <li><a href="libs.dispatcher.html#libs.dispatcher.other_words">other_words() (in module libs.dispatcher)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.output">output() (libs.domain.datamodels.ComparisonResults method)</a>
@@ -3307,8 +3299,6 @@
         <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.registration_limit">(libs.commands.registry.team.TeamSection attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords.regulation">regulation (libs.bootstrap.app_config.AppConfig.FixedWords attribute)</a>
-</li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.regulation_list">regulation_list() (in module libs.functions.lookup)</a>
 </li>
   </ul></td>
@@ -4321,20 +4311,16 @@
 </li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Format.Y_O">Y_O (libs.utils.timekit.Format attribute)</a>
 </li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.FixedWords.yakuman">yakuman (libs.bootstrap.app_config.AppConfig.FixedWords attribute)</a>
-
-      <ul>
-        <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.yakuman">(libs.domain.stats.StatsDetailed attribute)</a>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.yakuman">yakuman (libs.domain.stats.StatsDetailed attribute)</a>
 </li>
-      </ul></li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.yakuman_list">yakuman_list (libs.domain.stats.StatsInfo property)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.yakuman_rate">yakuman_rate (libs.domain.stats.StatsDetailed property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.commands.graph.summary.html#libs.commands.graph.summary.GraphParams.ylabel_text">ylabel_text (libs.commands.graph.summary.GraphParams attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Format.YM">YM (libs.utils.timekit.Format attribute)</a>
 </li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Format.YM_O">YM_O (libs.utils.timekit.Format attribute)</a>
@@ -4422,8 +4408,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.3.
-      Last updated on 2026-04-28.
+      Release Version: 0.14.0.
+      Last updated on 2026-04-30.
     </div>
 
   </body>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=fcec9973"></script>
+    <script src="_static/documentation_options.js?v=2dee5df9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -73,7 +73,7 @@
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.argument"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.argument</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.check_updatable"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.check_updatable</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.data"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.data</span></code></a></li>
-<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.hidden"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.hidden()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.delete_items"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.delete_items()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.ignore_user"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.ignore_user</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.in_thread</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_bot</span></code></a></li>
@@ -259,12 +259,12 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="integrations.protocols.MessageParserProtocol.hidden">
-<span class="sig-name descname"><span class="pre">hidden</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropitems</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.protocols.MessageParserProtocol.hidden" title="Link to this definition">¶</a></dt>
-<dd><p>非表示項目の削除</p>
+<dt class="sig sig-object py" id="integrations.protocols.MessageParserProtocol.delete_items">
+<span class="sig-name descname"><span class="pre">delete_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.protocols.MessageParserProtocol.delete_items" title="Link to this definition">¶</a></dt>
+<dd><p>指定項目の削除</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dropitems</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>set</em><em>[</em><em>str</em><em>]</em>)</p>
+<dd class="field-odd"><p><strong>items</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -688,7 +688,7 @@
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.argument"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.argument</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.check_updatable"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.check_updatable</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.data"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.data</span></code></a></li>
-<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.hidden"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.hidden()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.delete_items"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.delete_items()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.ignore_user"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.ignore_user</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.in_thread</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_bot</span></code></a></li>
@@ -819,8 +819,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.13.3.
-      Last updated on 2026-04-28.
+      Release Version: 0.14.0.
+      Last updated on 2026-04-30.
     </div>
 
   </body>
