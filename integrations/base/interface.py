@@ -6,11 +6,9 @@ from abc import ABC, abstractmethod
 from configparser import ConfigParser
 from dataclasses import dataclass, field
 from types import NoneType
-from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Generic, Literal, Optional, Type, TypeVar
 
 import pandas as pd
-
-from libs.types import RENAME_DICT
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -201,36 +199,16 @@ class MessageParserDataMixin:
 
         self.post.message.append((data, options))
 
-    def hidden(self, items: Union[list[str], set[str]]) -> None:
+    def delete_items(self, hide_items: list[str]) -> None:
         """
-        非表示項目を除外
+        指定項目の削除
 
         Args:
-            items (Union[list[str], set[str]]): 非表示にする項目
-
+            hide_items (list[str]): 削除項目
         """
-        dropitems = set(items)
-
-        # カラム名変換後の項目を追加
-        for word in items:
-            if word in RENAME_DICT:
-                dropitems.add(RENAME_DICT.get(word, word))
-
-        # 関連ワードを追加
-        related_words_set: dict[str, set[str]] = {
-            "flying": {"トビ", "トビ率"},
-            "yakuman": {"役満", "役満和了"},
-            "regulation": {"卓外", "卓外清算", "卓外ポイント"},
-            "other": {"その他", "メモ"},
-        }
-        for words_set in related_words_set.values():
-            if words_set & dropitems:
-                dropitems.union(words_set)
-
-        # 除外処理
-        for msg, option in self.post.message:
-            if option.title in dropitems:
-                self.post.message.remove((msg, option))
+        for idx, (msg, option) in enumerate(self.post.message):
+            if option.title in hide_items:
+                self.post.message.pop(idx)
 
 
 class MessageParserInterface(ABC):

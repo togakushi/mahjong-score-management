@@ -4,11 +4,13 @@ libs/utils/formatter.py
 
 import random
 import re
+from typing import Optional, cast
 
 import pandas as pd
 
 import libs.global_value as g
-from libs.types import RENAME_DICT, StyleOptions
+from libs.bootstrap.section import SubCommands
+from libs.types import StyleOptions
 from libs.utils import textutil
 
 
@@ -211,29 +213,211 @@ def anonymous_mapping(name_list: list[str], initial: int = 0) -> dict[str, str]:
     return ret
 
 
-def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
+def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
     """
-    カラム名をリネームする
+    非表示項目を集合で返す
 
     Args:
-        df (pd.DataFrame): 対象データフレーム
+        item_list (Optional[list[str]]): 表示項目リスト
+
+    Returns:
+        list[str]: 非表示項目のリスト
+
+    """
+    if not item_list:
+        item_list = []
+
+    hide_items = g.cfg.rule.dropitems(g.params.rule_version)
+    if g.params.command:
+        hide_items = hide_items.union(set(cast(SubCommands, getattr(g.cfg, g.params.command)).dropitems))
+
+    if g.params.ignore_flying:
+        hide_items.add("トビ")
+    if not g.cfg.rule.remarks_words:
+        hide_items.add("メモ")
+
+    # 関連ワードを追加
+    related_words_set: dict[str, set[str]] = {
+        "flying": {"トビ", "トビ率", "飛", "flying", "flying_mix", "flying_count", "flying_rate", "flying_rate-count"},
+        "yakuman": {"役満", "役満和了", "役満和了率", "yakuman_mix", "yakuman_count", "yakuman_rate", "yakuman_rate-count"},
+        "regulation": {"卓外", "卓外清算", "卓外ポイント"},
+        "other": {"その他", "メモ"},
+    }
+    for words_set in related_words_set.values():
+        if hide_items & words_set:
+            hide_items = hide_items.union(words_set)
+
+    rename_dict = gen_rename_dict(
+        item_list,
+        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+    )
+    for k, v in rename_dict.items():
+        if set([k, v]) & hide_items:
+            hide_items = hide_items.union({k, v})
+
+    rename_dict_short = gen_rename_dict(
+        item_list,
+        StyleOptions(rename_type=StyleOptions.RenameType.SHORT),
+    )
+    for k, v in rename_dict_short.items():
+        if set([k, v]) & hide_items:
+            hide_items = hide_items.union({k, v})
+
+    if item_list:
+        return list(hide_items & set(item_list))
+    else:
+        return list(hide_items)
+
+
+def gen_rename_dict(columns: list[str], options: StyleOptions) -> dict[str, str]:
+    """
+    カラムリネーム用辞書の生成
+
+    Args:
+        columns (list[str]): カラム名
         options (StyleOptions): 変換モード
 
     Returns:
-        pd.DataFrame: リネーム後のデータフレーム
+        dict[str,str]: リネーム用辞書
 
     """
-    rename_dict = RENAME_DICT.copy()
+    rename_dict: dict[str, str] = {
+        #
+        "p1": "東家",
+        "p2": "南家",
+        "p3": "西家",
+        "p4": "北家",
+        "alias": "別名",
+        "members": "所属メンバー",
+        "last_update": "最終更新日",
+        "elapsed_day": "経過日数",
+        #
+        "playtime": "日時",
+        "rate": "レート",
+        "participation_rate": "ゲーム参加率",
+        "total_count": "集計ゲーム数",
+        "matter_count": "回数",
+        "ex_total": "ポイント合計",
+        "deposit": "供託",
+        "comment": "コメント",
+        "source": "入力元",
+        "rule_version": "ルール識別子",
+        "war_record": "戦績(勝-敗-分)",
+        #
+        "rpoint": "素点",
+        "rpoint_avg": "平均素点",
+        "balance_avg": "平均収支",
+        "point_dev": "得点偏差",
+        "rank_dev": "順位偏差",
+        "grade": "段位",
+        #
+        "rank1_rate-count": "1位率(回)",
+        "rank1_rate": "1位率",
+        "rank2_rate-count": "2位率(回)",
+        "rank2_rate": "2位率",
+        "rank3_rate-count": "3位率(回)",
+        "rank3_rate": "3位率",
+        "rank4_rate-count": "4位率(回)",
+        "rank4_rate": "4位率",
+        "top2_rate-count": "連対率(回)",
+        "top2_rate": "連対率",
+        "top2": "連対数",
+        "top3_rate-count": "ラス回避率(回)",
+        "top3_rate": "ラス回避率",
+        "top3": "ラス回避数",
+        "flying_rate-count": "トビ率(回)",
+        "flying_rate": "トビ率",
+        "flying_count": "トビ数",
+        "yakuman_rate-count": "役満和了率(回)",
+        # 収支
+        "avg_balance": "平均収支",
+        "top2_balance": "連対収支",
+        "lose2_balance": "逆連対収支",
+        "rank1_balance": "1位収支",
+        "rank2_balance": "2位収支",
+        "rank3_balance": "3位収支",
+        "rank4_balance": "4位収支",
+        # レコード
+        "top1_max": "連続トップ",
+        "top2_max": "連続連対",
+        "top3_max": "連続ラス回避",
+        "lose2_max": "連続トップなし",
+        "lose3_max": "連続逆連対",
+        "lose4_max": "連続ラス",
+        "point_max": "最大獲得ポイント",
+        "point_min": "最小獲得ポイント",
+        "rpoint_max": "最大素点",
+        "rpoint_min": "最小素点",
+        # 直接対決
+        "results": "対戦結果",
+        "win%": "勝率",
+        "my_point_sum": "獲得ポイント(自分)",
+        "my_point_avg": "平均ポイント(自分)",
+        "vs_point_sum": "獲得ポイント(相手)",
+        "vs_point_avg": "平均ポイント(相手)",
+        "my_rpoint_avg": "平均素点(自分)",
+        "my_rank_avg": "平均順位(自分)",
+        "my_rank_distr": "順位分布(自分)",
+        "vs_rpoint_avg": "平均素点(相手)",
+        "vs_rank_avg": "平均順位(相手)",
+        "vs_rank_distr": "順位分布(相手)",
+        #
+        "p1_name": "東家 名前",
+        "p2_name": "南家 名前",
+        "p3_name": "西家 名前",
+        "p4_name": "北家 名前",
+        "p1_yakuman": "東家 メモ",
+        "p2_yakuman": "南家 メモ",
+        "p3_yakuman": "西家 メモ",
+        "p4_yakuman": "北家 メモ",
+        "p1_remarks": "東家 メモ",
+        "p2_remarks": "南家 メモ",
+        "p3_remarks": "西家 メモ",
+        "p4_remarks": "北家 メモ",
+        "p1_rpoint": "東家 素点",
+        "p2_rpoint": "南家 素点",
+        "p3_rpoint": "西家 素点",
+        "p4_rpoint": "北家 素点",
+        "p1_rank": "東家 順位",
+        "p2_rank": "南家 順位",
+        "p3_rank": "西家 順位",
+        "p4_rank": "北家 順位",
+        "p1_point": "東家 ポイント",
+        "p2_point": "南家 ポイント",
+        "p3_point": "西家 ポイント",
+        "p4_point": "北家 ポイント",
+        "p1_str": "東家 入力素点",
+        "p2_str": "南家 入力素点",
+        "p3_str": "西家 入力素点",
+        "p4_str": "北家 入力素点",
+        # レポート - 上位成績
+        "collection": "集計月",
+        "name1": "1位(名前)",
+        "point1": "1位(ポイント)",
+        "name2": "2位(名前)",
+        "point2": "2位(ポイント)",
+        "name3": "3位(名前)",
+        "point3": "3位(ポイント)",
+        "name4": "4位(名前)",
+        "point4": "4位(ポイント)",
+        "name5": "5位(名前)",
+        "point5": "5位(ポイント)",
+        # メモ
+        "regulation": "卓外清算",
+        "remarks": "メモ",
+        #
+        "memo": "備考",
+    }
 
     match options.rename_type:
         case StyleOptions.RenameType.NONE:
-            return df
+            return {x: x for x in columns}
         case StyleOptions.RenameType.NORMAL:
             short = False
         case StyleOptions.RenameType.SHORT:
             short = True
 
-    for x in df.columns:
+    for x in columns:
         match x:
             case "rank":
                 rename_dict[x] = "#" if short else "順位"
@@ -296,6 +480,23 @@ def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
 
     if not g.params.individual:
         rename_dict.update(name="チーム" if short else "チーム名")
+
+    return rename_dict
+
+
+def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
+    """
+    カラム名をリネームする
+
+    Args:
+        df (pd.DataFrame): 対象データフレーム
+        options (StyleOptions): 変換モード
+
+    Returns:
+        pd.DataFrame: リネーム後のデータフレーム
+
+    """
+    rename_dict = gen_rename_dict(df.columns.to_list(), options)
 
     return df.rename(columns=rename_dict)
 

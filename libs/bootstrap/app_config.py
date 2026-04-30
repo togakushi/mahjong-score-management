@@ -47,19 +47,6 @@ class BadgeDisplay(BaseSection):
 class AppConfig:
     """アプリケーション設定"""
 
-    @dataclass
-    class FixedWords:
-        """非表示項目用固定ワード"""
-
-        flying: set[str] = field(default_factory=lambda: {"トビ", "トビ率"})
-        """トビ関連ワード"""
-        yakuman: set[str] = field(default_factory=lambda: {"役満", "役満和了", "役満和了率"})
-        """役満関連ワード"""
-        regulation: set[str] = field(default_factory=lambda: {"卓外", "卓外清算", "卓外ポイント"})
-        """レギュレーション関連ワード"""
-        other: set[str] = field(default_factory=lambda: {"その他", "メモ"})
-        """その他ワード"""
-
     def __init__(self, config_file: Path) -> None:
         self.config_file: Path = config_file
         """メイン設定ファイルパス"""
@@ -120,8 +107,6 @@ class AppConfig:
 
         self.initialization()
 
-        self.dropitems = self.FixedWords()
-        """非表示項目リスト"""
         self.rule: RuleSet = RuleSet()
         """ルール情報"""
 

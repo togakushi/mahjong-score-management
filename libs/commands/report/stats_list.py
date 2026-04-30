@@ -58,10 +58,7 @@ def main(m: "MessageParserProtocol") -> None:
         df.drop(columns=["4th_count", "rank4_rate", "4th_mix"], inplace=True)
 
     # 非表示項目
-    if g.params.ignore_flying or g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.flying:
-        df = df.drop(columns=["flying_mix", "flying_count", "flying_rate"])
-    if g.cfg.rule.dropitems(g.params.rule_version) & g.cfg.dropitems.yakuman:
-        df = df.drop(columns=["yakuman_mix", "yakuman_count", "yakuman_rate"])
+    df.drop(columns=formatter.dropitems_list(df.columns.to_list()), inplace=True)
 
     file_path: "MessageType"
     match g.params.format.lower():
@@ -72,7 +69,6 @@ def main(m: "MessageParserProtocol") -> None:
         case _:
             file_path = graph_generation(game_info, df, title)
 
-    m.set_headline(message.header(game_info, m), StyleOptions(title=title))
     match g.adapter.interface_type:
         case "slack" | "discord":
             m.set_message(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
@@ -83,6 +79,8 @@ def main(m: "MessageParserProtocol") -> None:
                 items=["player", "team", "game", "total_mix", "avg_mix", "1st_mix", "2nd_mix", "2nd_mix", "3rd_mix", "4th_mix", "flying_mix", "yakuman_mix"]
             )
             m.set_message(df, StyleOptions())
+
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title))
 
 
 def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "MessageType":

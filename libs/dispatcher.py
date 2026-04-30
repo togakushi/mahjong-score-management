@@ -73,6 +73,7 @@ def by_keyword(m: "MessageParserProtocol") -> None:
             logging.debug("dispatch other words")
             other_words(word, m)
 
+    m.delete_items(formatter.dropitems_list())
     g.adapter.api.post(m)
 
 

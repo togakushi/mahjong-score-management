@@ -141,9 +141,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
         case _:
             pass
 
-    # 非表示項目を削除
-    m.hidden(g.cfg.rule.dropitems(g.params.rule_version).union(g.cfg.results.dropitems))
-
 
 def tmpl_header(my_name: str, vs_name: str) -> str:
     """
