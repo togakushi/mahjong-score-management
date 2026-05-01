@@ -312,7 +312,7 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     ret["通算ポイント"] = f"{data.seat0.total_point:+.1f}pt".replace("-", "▲")
     ret["平均ポイント"] = f"{data.seat0.avg_point:+.1f}pt".replace("-", "▲")
     ret["平均順位"] = f"{data.seat0.rank_avg:1.2f}"
-    if g.params.individual and g.adapter.conf.badge_grade:
+    if all([g.params.individual, g.adapter.conf.badge_grade, not g.cfg.rule.get_draw_split(g.params.rule_version)]):
         ret["段位"] = badge.grade(g.params.player_name)
     ret["_blank2"] = True
     ret["1位"] = f"{data.seat0.rank1:2} 回 ({data.seat0.rank1_rate:7.2%})"

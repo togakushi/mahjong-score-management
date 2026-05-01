@@ -72,7 +72,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df["rank_dev"] = round((df["rank_avg"] - df["rank_avg"].mean()) / df["rank_avg"].std(ddof=0) * -10 + 50, 1)
 
     # 段位
-    if g.adapter.conf.badge_grade:
+    if g.adapter.conf.badge_grade and not g.cfg.rule.get_draw_split(g.params.rule_version):
         for idx in df.index:
             name = str(df.at[idx, "name"]).replace(f"({g.cfg.setting.guest_mark})", "")
             df.at[idx, "grade"] = badge.grade(name, False)
