@@ -31,14 +31,8 @@ class StatsDetailed:
     avg_point: float = field(default=0.0)
     """平均ポイント"""
 
-    rank1: int = field(default=0)
-    """1位獲得数"""
-    rank2: int = field(default=0)
-    """2位獲得数"""
-    rank3: int = field(default=0)
-    """3位獲得数"""
-    rank4: int = field(default=0)
-    """4位獲得数"""
+    rank_list: list[float] = field(default_factory=list)
+    """順位リスト"""
     flying: int = field(default=0)
     """トビ数"""
     yakuman: int = field(default=0)
@@ -117,47 +111,74 @@ class StatsDetailed:
 
         match pattern:
             case "rank1":
-                if self.rank1:
-                    ret = round(self.score_rank1 * 100 / self.rank1, 1)
+                if self.rank(1):
+                    ret = round(self.score_rank1 * 100 / self.rank(1), 1)
             case "rank2":
-                if self.rank2:
-                    ret = round(self.score_rank2 * 100 / self.rank2, 1)
+                if self.rank(2):
+                    ret = round(self.score_rank2 * 100 / self.rank(2), 1)
             case "rank3":
-                if self.rank3:
-                    ret = round(self.score_rank3 * 100 / self.rank3, 1)
+                if self.rank(3):
+                    ret = round(self.score_rank3 * 100 / self.rank(3), 1)
             case "rank4":
-                if self.rank4:
-                    ret = round(self.score_rank4 * 100 / self.rank4, 1)
+                if self.rank(4):
+                    ret = round(self.score_rank4 * 100 / self.rank(4), 1)
             case "top2":
-                if self.rank1 + self.rank2:
-                    ret = round((self.score_rank1 + self.score_rank2) * 100 / (self.rank1 + self.rank2), 1)
+                if self.rank(1) + self.rank(2):
+                    ret = round((self.score_rank1 + self.score_rank2) * 100 / (self.rank(1) + self.rank(2)), 1)
             case "lose2":
-                if self.rank3 + self.rank4:
-                    ret = round((self.score_rank3 + self.score_rank4) * 100 / (self.rank3 + self.rank4), 1)
+                if self.rank(3) + self.rank(4):
+                    ret = round((self.score_rank3 + self.score_rank4) * 100 / (self.rank(3) + self.rank(4)), 1)
             case _:
                 if self.count:
                     ret = round(self.score * 100 / self.count, 1)
 
         return ret
 
+    def rank(self, *target_ranks: float) -> int:
+        """
+        順位の回数を返す
+
+        Args:
+            target_ranks (float): カウント対象順位
+
+        Returns:
+            int: 回数
+
+        """
+        if not target_ranks:
+            raise ValueError("at least one rank is required")
+
+        return sum(1 for rank in self.rank_list if rank in target_ranks)
+
+    def rank_rate(self, *target_ranks: float) -> float:
+        """
+        順位獲得率
+
+        Args:
+            target_ranks (float): 集計対象順位
+
+        Returns:
+            float: 集計結果
+
+        """
+        if not target_ranks:
+            raise ValueError("at least one rank is required")
+        if not self.count:
+            return 0.0
+
+        matched = sum(1 for rank in self.rank_list if rank in target_ranks)
+        return round(matched / self.count, 4)
+
     @property
     def count(self) -> int:
         """ゲーム数"""
-        match self.mode:
-            case 3:
-                return sum([self.rank1, self.rank2, self.rank3])
-            case 4:
-                return sum([self.rank1, self.rank2, self.rank3, self.rank4])
+        return len(self.rank_list)
 
     @property
     def rank_avg(self) -> float:
         """平均順位"""
         if self.count:
-            match self.mode:
-                case 3:
-                    return round((self.rank1 + self.rank2 * 2 + self.rank3 * 3) / self.count, 2)
-                case 4:
-                    return round((self.rank1 + self.rank2 * 2 + self.rank3 * 3 + self.rank4 * 4) / self.count, 2)
+            return round(sum(self.rank_list) / self.count, 2)
         return 0.00
 
     @property
@@ -165,46 +186,18 @@ class StatsDetailed:
         """順位分布(+平均順位)"""
         match self.mode:
             case 3:
-                return f"{self.rank1}-{self.rank2}-{self.rank3} ({self.rank_avg:.2f})"
+                return f"{self.rank(1)}-{self.rank(2)}-{self.rank(3)} ({self.rank_avg:.2f})"
             case 4:
-                return f"{self.rank1}-{self.rank2}-{self.rank3}-{self.rank4} ({self.rank_avg:.2f})"
+                return f"{self.rank(1)}-{self.rank(2)}-{self.rank(3)}-{self.rank(4)} ({self.rank_avg:.2f})"
 
     @property
     def rank_distr2(self) -> str:
         """順位分布(+ゲーム数)"""
         match self.mode:
             case 3:
-                return f"{self.rank1}+{self.rank2}+{self.rank3}={self.count}"
+                return f"{self.rank(1)}+{self.rank(2)}+{self.rank(3)}={self.count}"
             case 4:
-                return f"{self.rank1}+{self.rank2}+{self.rank3}+{self.rank4}={self.count}"
-
-    @property
-    def rank1_rate(self) -> float:
-        """1位獲得率"""
-        if self.count:
-            return round(self.rank1 / self.count, 4)
-        return 0.0
-
-    @property
-    def rank2_rate(self) -> float:
-        """2位獲得率"""
-        if self.count:
-            return round(self.rank2 / self.count, 4)
-        return 0.0
-
-    @property
-    def rank3_rate(self) -> float:
-        """3位獲得率"""
-        if self.count:
-            return round(self.rank3 / self.count, 4)
-        return 0.0
-
-    @property
-    def rank4_rate(self) -> float:
-        """4位獲得率"""
-        if self.count:
-            return round(self.rank4 / self.count, 4)
-        return 0.0
+                return f"{self.rank(1)}+{self.rank(2)}+{self.rank(3)}+{self.rank(4)}={self.count}"
 
     @property
     def flying_rate(self) -> float:
@@ -343,6 +336,7 @@ class StatsInfo:
     # 取り込みデータ
     result_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     record_df: pd.DataFrame = field(default_factory=pd.DataFrame)
+    rank_df: pd.DataFrame = field(default_factory=pd.DataFrame)
 
     def read(self, params: "PlaceholderBuilder") -> None:
         """
@@ -354,13 +348,15 @@ class StatsInfo:
         """
         self.result_df = params.read_data("RESULTS_INFO")
         self.record_df = params.read_data("RECORD_INFO")
+        self.rank_df = params.read_data("RANK_INFO")
 
-        if self.result_df.empty or self.record_df.empty:
+        if self.result_df.empty or self.record_df.empty or self.rank_df.empty:
             return
 
         self.set_parameter(**params.placeholder())
         self.set_data(self.result_df)
         self.set_data(self.record_df)
+        self.set_rank(self.rank_df)
 
     def set_data(self, df: "pd.DataFrame") -> None:
         """
@@ -377,6 +373,19 @@ class StatsInfo:
                 seat_id = row["id"]
                 if isinstance(seat_id, int) and seat_id in seat_map:
                     seat_map[seat_id].update_from_dict(row.to_dict())
+
+    def set_rank(self, df: "pd.DataFrame") -> None:
+        """
+        着順情報取り込み
+
+        Args:
+            df (pd.DataFrame): 集計結果
+
+        """
+        seat_map = {0: self.seat0, 1: self.seat1, 2: self.seat2, 3: self.seat3, 4: self.seat4}
+        for id, obj in seat_map.items():
+            rank_data = df.query("id == @id").filter(items=["rank"]).to_dict(orient="list")
+            obj.rank_list = rank_data.get("rank", [])
 
     def set_parameter(self, **kwargs: Any) -> None:
         """パラメータ取り込み"""
@@ -464,15 +473,12 @@ class StatsInfo:
                 "rank_avg": [self.seat0.rank_avg],
                 "total_point": [f"{self.seat0.total_point:+.1f}pt".replace("-", "▲")],
                 "avg_point": [f"{self.seat0.avg_point:+.1f}pt".replace("-", "▲")],
-                "top2_rate-count": [f"{(self.seat0.rank1 + self.seat0.rank2) / self.seat0.count:.2%}({self.seat0.rank1 + self.seat0.rank2})"],
-                "top3_rate-count": [
-                    f"{(self.seat0.rank1 + self.seat0.rank2 + self.seat0.rank3) / self.seat0.count:.2%}"
-                    + f"({self.seat0.rank1 + self.seat0.rank2 + self.seat0.rank3})",
-                ],
-                "rank1_rate-count": [f"{self.seat0.rank1_rate:.2%}({self.seat0.rank1})"],
-                "rank2_rate-count": [f"{self.seat0.rank2_rate:.2%}({self.seat0.rank2})"],
-                "rank3_rate-count": [f"{self.seat0.rank3_rate:.2%}({self.seat0.rank3})"],
-                "rank4_rate-count": [f"{self.seat0.rank4_rate:.2%}({self.seat0.rank4})"],
+                "top2_rate-count": [f"{self.seat0.rank_rate(1, 2):.2%}({self.seat0.rank(1, 2)})"],
+                "top3_rate-count": [f"{self.seat0.rank_rate(1, 2, 3):.2%}({self.seat0.rank(1, 2, 3)})"],
+                "rank1_rate-count": [f"{self.seat0.rank_rate(1):.2%}({self.seat0.rank(1)})"],
+                "rank2_rate-count": [f"{self.seat0.rank_rate(2):.2%}({self.seat0.rank(2)})"],
+                "rank3_rate-count": [f"{self.seat0.rank_rate(3):.2%}({self.seat0.rank(3)})"],
+                "rank4_rate-count": [f"{self.seat0.rank_rate(4):.2%}({self.seat0.rank(4)})"],
                 "flying_rate-count": [f"{self.seat0.flying_rate:.2%}({self.seat0.flying})"],
                 "yakuman_rate-count": [f"{self.seat0.yakuman_rate:.2%}({self.seat0.yakuman})"],
                 "avg_balance": [f"{self.seat0.avg_balance('all'):+.1f}点".replace("-", "▲")],
