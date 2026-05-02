@@ -372,6 +372,15 @@ def subplot_table(df: pd.DataFrame, ax: Axes) -> None:
         loc="center",
     )
     table.auto_set_font_size(False)
+
+    # セル背景色とFigure背景色を合わせる
+    ax_fc = ax.figure.get_facecolor()  # Figure背景色
+    ax_tc = ax.title.get_color()  # タイトル文字色
+    for cell in table.get_celld().values():
+        cell.set_facecolor(ax_fc)  # セル背景色
+        cell.set_edgecolor(ax_tc)  # 罫線
+        cell.get_text().set_color(ax_tc)  # セル文字色
+
     ax.axis("off")
 
 
