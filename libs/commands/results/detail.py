@@ -244,6 +244,22 @@ def comparison(m: "MessageParserProtocol") -> None:
         stats_df.index = list(mapping_dict.values())
 
     # 非表示項目
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
+        stats_df.drop(
+            columns=[
+                "rank1_rate-count",
+                "rank2_rate-count",
+                "rank3_rate-count",
+                "rank4_rate-count",
+                "top2_balance",
+                "lose2_balance",
+                "rank1_balance",
+                "rank2_balance",
+                "rank3_balance",
+                "rank4_balance",
+            ],
+            inplace=True,
+        )
     stats_df.drop(columns=formatter.dropitems_list(stats_df.columns.to_list()), inplace=True)
 
     # 出力
