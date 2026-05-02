@@ -117,6 +117,7 @@ def query(keyword: str) -> str:
         "TEAM_INFO": "team.info.sql",
         "REMARKS_INFO": "remarks.info.sql",
         "RECORD_INFO": "record.info.sql",
+        "RANK_INFO": "rank.info.sql",
         # 集計
         "SUMMARY_GAMEDATA": "summary/gamedata.sql",
         "SUMMARY_DETAILS": "summary/details.sql",

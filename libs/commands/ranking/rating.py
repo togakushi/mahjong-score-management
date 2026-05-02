@@ -33,7 +33,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     title: str = "レーティング"
     add_text: str = ""
 
-    if g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
+    if g.cfg.rule.get_draw_split(g.params.rule_version) or g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return
@@ -72,7 +72,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df["rank_dev"] = round((df["rank_avg"] - df["rank_avg"].mean()) / df["rank_avg"].std(ddof=0) * -10 + 50, 1)
 
     # 段位
-    if g.adapter.conf.badge_grade:
+    if g.adapter.conf.badge_grade and not g.cfg.rule.get_draw_split(g.params.rule_version):
         for idx in df.index:
             name = str(df.at[idx, "name"]).replace(f"({g.cfg.setting.guest_mark})", "")
             df.at[idx, "grade"] = badge.grade(name, False)

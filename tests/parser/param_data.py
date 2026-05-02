@@ -324,36 +324,36 @@ point_calculation_pattern02: dict[str, tuple[Any, ...]] = {
     "rpoint(250-250-250-250)": (
         ["250", "250", "250", "250"],
         {"p1_point": 0.0, "p2_point": 0.0, "p3_point": 0.0, "p4_point": 0.0},
-        {"p1_rank": 1, "p2_rank": 1, "p3_rank": 1, "p4_rank": 1},
+        {"p1_rank": 2.5, "p2_rank": 2.5, "p3_rank": 2.5, "p4_rank": 2.5},
     ),
     "rpoint(300-300-300-100)": (
         ["250+50", "250+50", "250+50", "250-50-50-50"],
         {"p1_point": 18.0, "p2_point": 16.0, "p3_point": 16.0, "p4_point": -50.0},
-        {"p1_rank": 1, "p2_rank": 1, "p3_rank": 1, "p4_rank": 4},
+        {"p1_rank": 2, "p2_rank": 2, "p3_rank": 2, "p4_rank": 4},
     ),
     "rpoint(300-300-250-150)": (
         ["250+50", "250+50", "250", "250-50-50"],
         {"p1_point": 30.0, "p2_point": 30.0, "p3_point": -15.0, "p4_point": -45.0},
-        {"p1_rank": 1, "p2_rank": 1, "p3_rank": 3, "p4_rank": 4},
+        {"p1_rank": 1.5, "p2_rank": 1.5, "p3_rank": 3, "p4_rank": 4},
     ),
     "rpoint(300-300-200-200)": (
         ["250+50", "250+50", "250-50", "250-50"],
         {"p1_point": 30.0, "p2_point": 30.0, "p3_point": -30.0, "p4_point": -30.0},
-        {"p1_rank": 1, "p2_rank": 1, "p3_rank": 3, "p4_rank": 3},
+        {"p1_rank": 1.5, "p2_rank": 1.5, "p3_rank": 3.5, "p4_rank": 3.5},
     ),
     "rpoint(200-200-200-400)": (
         ["250-50", "250-50", "250-50", "250+50+50+50"],
         {"p1_point": -20.0, "p2_point": -20.0, "p3_point": -20.0, "p4_point": 60.0},
-        {"p1_rank": 2, "p2_rank": 2, "p3_rank": 2, "p4_rank": 1},
+        {"p1_rank": 3, "p2_rank": 3, "p3_rank": 3, "p4_rank": 1},
     ),
     "rpoint(200-250-250-300)": (
         ["250-50", "250", "250", "250+50"],
         {"p1_point": -40.0, "p2_point": -5.0, "p3_point": -5.0, "p4_point": 50.0},
-        {"p1_rank": 4, "p2_rank": 2, "p3_rank": 2, "p4_rank": 1},
+        {"p1_rank": 4, "p2_rank": 2.5, "p3_rank": 2.5, "p4_rank": 1},
     ),
     "rpoint(350-250-200-200)": (
         ["250+50+50", "250", "250-50", "250-50"],
         {"p1_point": 55.0, "p2_point": 5.0, "p3_point": -30.0, "p4_point": -30.0},
-        {"p1_rank": 1, "p2_rank": 2, "p3_rank": 3, "p4_rank": 3},
+        {"p1_rank": 1, "p2_rank": 2, "p3_rank": 3.5, "p4_rank": 3.5},
     ),
 }

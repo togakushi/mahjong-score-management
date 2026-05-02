@@ -76,21 +76,25 @@ def aggregation(m: "MessageParserProtocol") -> None:
         case _:
             options.format_type = "default"
 
-    header_list = ["name", "total_point", "avg_point", "rank_distr3", "rank_distr4", "flying"]
-    filter_list = [
-        "name",
-        "count",
-        "total_point",
-        "avg_point",
-        "diff_from_above",
-        "diff_from_top",
-        "rank1",
-        "rank2",
-        "rank3",
-        "rank4",
-        "rank_avg",
-        "flying",
-    ]
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
+        header_list = ["name", "total_point", "avg_point", "rank_avg", "flying"]
+        filter_list = ["name", "count", "total_point", "avg_point", "diff_from_above", "diff_from_top", "rank_avg", "flying"]
+    else:
+        header_list = ["name", "total_point", "avg_point", "rank_distr3", "rank_distr4", "flying"]
+        filter_list = [
+            "name",
+            "count",
+            "total_point",
+            "avg_point",
+            "diff_from_above",
+            "diff_from_top",
+            "rank1",
+            "rank2",
+            "rank3",
+            "rank4",
+            "rank_avg",
+            "flying",
+        ]
 
     # 非表示項目
     df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)
@@ -207,8 +211,8 @@ def difference(m: "MessageParserProtocol") -> None:
             options.format_type = "default"
 
     # 集計結果
-    header_list = ["#", "name", "total_point", "diff_from_above", "diff_from_top"]
-    filter_list = ["name", "count", "total_point", "diff_from_above", "diff_from_top"]
+    header_list = ["#", "name", "total_point", "rank_avg", "diff_from_above", "diff_from_top"]
+    filter_list = ["name", "count", "total_point", "rank_avg", "diff_from_above", "diff_from_top"]
 
     # 非表示項目
     df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)

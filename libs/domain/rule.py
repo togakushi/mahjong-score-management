@@ -337,6 +337,19 @@ class RuleSet:
         """
         return bool(self.to_dict(rule_version).get("ignore_flying", False))
 
+    def get_draw_split(self, rule_version: str) -> bool:
+        """
+        指定ルール識別子の順位点山分けフラグを返す
+
+        Args:
+            rule_version (str): ルール識別子
+
+        Returns:
+            bool: 順位点山分けフラグ
+
+        """
+        return bool(self.to_dict(rule_version).get("draw_split", False))
+
     def get_undefined_word(self, rule_version: str) -> int:
         """
         指定ルール識別子の未定義ワードタイプを返す

@@ -84,7 +84,7 @@ class AdapterAPI(APIInterface):
                                 x["diff_from_top"] = x["diff_from_top"].map(lambda v: f"{v:.1f}pt" if pd.notna(v) else "------")
                         case StyleOptions.DataKind.RECORD_DATA:
                             if "rank" in x.columns:
-                                x["rank"] = x["rank"].map(lambda v: f"{v:.0f}位")
+                                x["rank"] = x["rank"].map(lambda v: f"{v:.0f}位" if v.is_integer() else f"{v:.1f}位")
                             if "rpoint" in x.columns:
                                 x["rpoint"] = x["rpoint"].map(lambda v: f"{v:.0f}点".replace("-", "▲"))
                             if "point" in x.columns:
@@ -92,7 +92,7 @@ class AdapterAPI(APIInterface):
                         case StyleOptions.DataKind.RECORD_DATA_ALL:
                             for prefix in ("p1", "p2", "p3", "p4"):
                                 if f"{prefix}_rank" in x.columns:
-                                    x[f"{prefix}_rank"] = x[f"{prefix}_rank"].map(lambda v: f"{v:.0f}位")
+                                    x[f"{prefix}_rank"] = x[f"{prefix}_rank"].map(lambda v: f"{v:.0f}位" if v.is_integer() else f"{v:.1f}位")
                                 if f"{prefix}_rpoint" in x.columns:
                                     x[f"{prefix}_rpoint"] = x[f"{prefix}_rpoint"].map(lambda v: f"{v:.0f}点".replace("-", "▲"))
                                 if f"{prefix}_point" in x.columns:
