@@ -242,6 +242,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
     data_list: list[str] = []
     game_results: dict[str, dict[str, Any]] = {}
 
+    # fixme: UserWarning: DataFrame columns are not unique, some columns will be omitted.
     for x in df.to_dict(orient="index").values():
         game_results[x["日時"]] = {"備考": x["備考"]}
         for seat in ("東家", "南家", "西家", "北家"):
@@ -405,16 +406,27 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                     ]
                 )
         case "平均順位":
-            alignments = [Alignment.RIGHT, Alignment.LEFT, Alignment.RIGHT, Alignment.LEFT]
-            for x in df.itertuples():
-                body.append(
-                    [
-                        f"{x.rank}:",
-                        x.name,
-                        f"{x.rank_avg}",
-                        f"({x.rank_distr}={x.count})".replace("-", "+"),
-                    ]
-                )
+            if g.cfg.rule.get_draw_split(g.params.rule_version):
+                alignments = [Alignment.RIGHT, Alignment.LEFT, Alignment.RIGHT]
+                for x in df.itertuples():
+                    body.append(
+                        [
+                            f"{x.rank}:",
+                            x.name,
+                            f"{x.rank_avg}",
+                        ]
+                    )
+            else:
+                alignments = [Alignment.RIGHT, Alignment.LEFT, Alignment.RIGHT, Alignment.LEFT]
+                for x in df.itertuples():
+                    body.append(
+                        [
+                            f"{x.rank}:",
+                            x.name,
+                            f"{x.rank_avg}",
+                            f"({x.rank_distr}={x.count})".replace("-", "+"),
+                        ]
+                    )
         case "役満和了率":
             alignments = [Alignment.RIGHT, Alignment.LEFT, Alignment.RIGHT, Alignment.LEFT]
             for x in df.itertuples():
@@ -560,16 +572,19 @@ def df_to_seat_data(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
     df = formatter.df_rename(df, options)
 
     # 表示加工
-    df["順位分布(平均順位)"] = df.apply(lambda x: f"{x['順位分布']} ({x['平均順位']})", axis=1)
-    df.drop(columns=["順位分布", "平均順位"], inplace=True)
     df["席"] = df.apply(lambda x: f"{x['席']}：", axis=1)
+    df["順位分布(平均順位)"] = df.apply(lambda x: f"{x['順位分布']} ({x['平均順位']})", axis=1)
     if "トビ" in df.columns:
         df["トビ"] = df.apply(lambda x: f"/ {x['トビ']:3d}", axis=1)
     if "役満和了" in df.columns:
         df["役満和了"] = df.apply(lambda x: f"/ {x['役満和了']:3d}", axis=1)
 
     #
-    df = df.filter(items=["席", "順位分布(平均順位)", "トビ", "役満和了"]).rename(columns={"席": "# 席：", "トビ": "/ トビ", "役満和了": "/ 役満 #"})
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
+        filter_items = ["席", "平均順位", "トビ", "役満和了"]
+    else:
+        filter_items = ["席", "順位分布(平均順位)", "トビ", "役満和了"]
+    df = df.filter(items=filter_items).rename(columns={"席": "# 席：", "トビ": "/ トビ", "役満和了": "/ 役満 #"})
 
     tbl = df.to_markdown(tablefmt="tsv", index=False).replace("0.00", "-.--").replace(" \t", "")
     return {"0": textwrap.indent(tbl, "\t" * options.indent)}

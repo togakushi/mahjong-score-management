@@ -123,10 +123,10 @@ class StatsDetailed:
                 if self.rank(4):
                     ret = round(self.score_rank4 * 100 / self.rank(4), 1)
             case "top2":
-                if self.rank(1) + self.rank(2):
+                if self.rank(1, 2):
                     ret = round((self.score_rank1 + self.score_rank2) * 100 / (self.rank(1) + self.rank(2)), 1)
             case "lose2":
-                if self.rank(3) + self.rank(4):
+                if self.rank(3, 4):
                     ret = round((self.score_rank3 + self.score_rank4) * 100 / (self.rank(3) + self.rank(4)), 1)
             case _:
                 if self.count:

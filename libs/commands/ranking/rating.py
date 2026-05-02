@@ -33,7 +33,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     title: str = "レーティング"
     add_text: str = ""
 
-    if g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
+    if g.cfg.rule.get_draw_split(g.params.rule_version) or g.params.mode == 3 or g.params.target_mode == 3:  # todo: 未実装
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions(title=title))
         m.status.result = False
         return

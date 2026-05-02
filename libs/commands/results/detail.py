@@ -103,27 +103,34 @@ def aggregation(m: "MessageParserProtocol") -> None:
         }
     )
 
-    if g.params.mode == 3:
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
         balance_data = textwrap.dedent(
             f"""\
             全体：{stats.seat0.avg_balance("all"):+.1f}点
-            1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
-            2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
-            3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
             """.replace("+0.0点", "記録なし")
         ).replace("-", "▲")
     else:
-        balance_data = textwrap.dedent(
-            f"""\
-            全体：{stats.seat0.avg_balance("all"):+.1f}点
-            連対時：{stats.seat0.avg_balance("top2"):+.1f}点
-            逆連対時：{stats.seat0.avg_balance("lose2"):+.1f}点
-            1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
-            2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
-            3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
-            4着終了時：{stats.seat0.avg_balance("rank4"):+.1f}点
-            """.replace("+0.0点", "記録なし")
-        ).replace("-", "▲")
+        if g.params.mode == 3:
+            balance_data = textwrap.dedent(
+                f"""\
+                全体：{stats.seat0.avg_balance("all"):+.1f}点
+                1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
+                2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
+                3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
+                """.replace("+0.0点", "記録なし")
+            ).replace("-", "▲")
+        else:
+            balance_data = textwrap.dedent(
+                f"""\
+                全体：{stats.seat0.avg_balance("all"):+.1f}点
+                連対時：{stats.seat0.avg_balance("top2"):+.1f}点
+                逆連対時：{stats.seat0.avg_balance("lose2"):+.1f}点
+                1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
+                2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
+                3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
+                4着終了時：{stats.seat0.avg_balance("rank4"):+.1f}点
+                """.replace("+0.0点", "記録なし")
+            ).replace("-", "▲")
 
     # 非表示項目
     seat_data.drop(columns=formatter.dropitems_list(seat_data.columns.to_list()), inplace=True)
@@ -207,6 +214,7 @@ def comparison(m: "MessageParserProtocol") -> None:
     stats_df = pd.DataFrame()
     result_df = g.params.read_data("RESULTS_INFO")
     record_df = g.params.read_data("RECORD_INFO")
+    rank_df = g.params.read_data("RANK_INFO")
 
     for name in result_df.query("id==0").sort_values("total_point", ascending=False)["name"]:
         work_stats = StatsInfo()
@@ -216,6 +224,7 @@ def comparison(m: "MessageParserProtocol") -> None:
         work_stats.name = str(name)
         work_stats.set_data(result_df.query("name == @name"))
         work_stats.set_data(record_df.query("name == @name"))
+        work_stats.set_rank(rank_df.query("name == @name"))
         stats_df = pd.concat([stats_df, work_stats.summary])
 
     if stats_df.empty:
@@ -315,11 +324,17 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     if all([g.params.individual, g.adapter.conf.badge_grade, not g.cfg.rule.get_draw_split(g.params.rule_version)]):
         ret["段位"] = badge.grade(g.params.player_name)
     ret["_blank2"] = True
-    ret["1位"] = f"{data.seat0.rank1:2} 回 ({data.seat0.rank1_rate:7.2%})"
-    ret["2位"] = f"{data.seat0.rank2:2} 回 ({data.seat0.rank2_rate:7.2%})"
-    ret["3位"] = f"{data.seat0.rank3:2} 回 ({data.seat0.rank3_rate:7.2%})"
+    ret["1位"] = f"{data.seat0.rank(1):2} 回 ({data.seat0.rank_rate(1):7.2%})"
+    if data.seat0.rank(1.5):
+        ret["1.5位"] = f"{data.seat0.rank(1.5):2} 回 ({data.seat0.rank_rate(1.5):7.2%})"
+    ret["2位"] = f"{data.seat0.rank(2):2} 回 ({data.seat0.rank_rate(2):7.2%})"
+    if data.seat0.rank(2.5):
+        ret["2.5位"] = f"{data.seat0.rank(2.5):2} 回 ({data.seat0.rank_rate(2.5):7.2%})"
+    ret["3位"] = f"{data.seat0.rank(3):2} 回 ({data.seat0.rank_rate(3):7.2%})"
+    if data.seat0.rank(3.5):
+        ret["3.5位"] = f"{data.seat0.rank(3.5):2} 回 ({data.seat0.rank_rate(3.5):7.2%})"
     if g.params.mode == 4:
-        ret["4位"] = f"{data.seat0.rank4:2} 回 ({data.seat0.rank4_rate:7.2%})"
+        ret["4位"] = f"{data.seat0.rank(4):2} 回 ({data.seat0.rank_rate(4):7.2%})"
     ret["トビ"] = f"{data.seat0.flying:2} 回 ({data.seat0.flying_rate:7.2%})"
     ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
 
