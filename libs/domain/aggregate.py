@@ -59,7 +59,7 @@ def calculation_rating() -> pd.DataFrame:
     last_ratings: dict[str, float] = {}  # 最終値格納用
 
     # 獲得スコア
-    score_mapping = {"1": 30.0, "2": 10.0, "3": -10.0, "4": -30.0}
+    score_mapping = {"1.0": 30.0, "1.5": 20.0, "2.0": 10.0, "2.5": 0.0, "3.0": -10.0, "3.5": -20.0, "4.0": -30.0}
 
     for x in df_results.itertuples():
         player_list = (str(x.p1_name), str(x.p2_name), str(x.p3_name), str(x.p4_name))
@@ -77,7 +77,7 @@ def calculation_rating() -> pd.DataFrame:
 
         for i, player in enumerate(player_list):
             rating = float(rating_list[i])
-            rank = str(rank_list[i])
+            rank = "{:.1f}".format(float(str(rank_list[i])))
 
             correction_value: float = (rating_avg - rating) / 40
             if df_ratings[player].count() >= 400:
@@ -85,7 +85,7 @@ def calculation_rating() -> pd.DataFrame:
             else:
                 match_correction = 1 - df_ratings[player].count() * 0.002
 
-            new_rating = rating + match_correction * (score_mapping[rank] + correction_value)
+            new_rating = rating + match_correction * (score_mapping.get(rank, 0.0) + correction_value)
 
             last_ratings[player] = new_rating
             df_ratings.loc[x.Index, player] = new_rating
@@ -141,7 +141,6 @@ def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int,
     return (new_point, grade_level)
 
 
-# レポート
 def matrix_table() -> pd.DataFrame:
     """
     対局対戦マトリックス表の作成

@@ -64,10 +64,16 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
                     ("", "ゲーム数"),
                     ("1位", "獲得数"),
                     ("1位", "獲得率"),
+                    ("1.5位", "獲得数"),
+                    ("1.5位", "獲得率"),
                     ("2位", "獲得数"),
                     ("2位", "獲得率"),
+                    ("2.5位", "獲得数"),
+                    ("2.5位", "獲得率"),
                     ("3位", "獲得数"),
                     ("3位", "獲得率"),
+                    ("3.5位", "獲得数"),
+                    ("3.5位", "獲得率"),
                     ("4位", "獲得数"),
                     ("4位", "獲得率"),
                     ("", "平均順位"),
@@ -76,6 +82,9 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
                     ("", "通算ポイント"),
                 ]
                 data.columns = pd.MultiIndex.from_tuples(multi)
+                for rank in ["1.5位", "2.5位", "3.5位"]:
+                    if not data[(rank, "獲得数")].sum():
+                        data.drop(columns=[(rank, "獲得数"), (rank, "獲得率")], inplace=True)
                 message += f"<h2>{options.title}</h2>\n"
                 message += adapter.functions.to_styled_html(data, padding, show_index)
 

@@ -199,10 +199,16 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         "ゲーム数": rank_df.count().astype("int"),
         "1位": rank_df[rank_df == 1].count().astype("int"),
         "1位(%)": ((rank_df[rank_df == 1].count()) / rank_df.count()),
+        "1.5位": rank_df[rank_df == 1.5].count().astype("int"),
+        "1.5位(%)": ((rank_df[rank_df == 1.5].count()) / rank_df.count()),
         "2位": rank_df[rank_df == 2].count().astype("int"),
         "2位(%)": ((rank_df[rank_df == 2].count()) / rank_df.count()),
+        "2.5位": rank_df[rank_df == 2.5].count().astype("int"),
+        "2.5位(%)": ((rank_df[rank_df == 2.5].count()) / rank_df.count()),
         "3位": rank_df[rank_df == 3].count().astype("int"),
         "3位(%)": ((rank_df[rank_df == 3].count()) / rank_df.count()),
+        "3.5位": rank_df[rank_df == 3.5].count().astype("int"),
+        "3.5位(%)": ((rank_df[rank_df == 3.5].count()) / rank_df.count()),
         "4位": rank_df[rank_df == 4].count().astype("int"),
         "4位(%)": ((rank_df[rank_df == 4].count()) / rank_df.count()),
         "平均順位": rank_df.mean().round(2),
@@ -217,10 +223,16 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
             "ゲーム数": int(count_df["ゲーム数"].sum()),
             "1位": int(count_df["1位"].sum()),
             "1位(%)": float(count_df["1位"].sum() / count_df["ゲーム数"].sum()),
+            "1.5位": int(count_df["1.5位"].sum()),
+            "1.5位(%)": float(count_df["1.5位"].sum() / count_df["ゲーム数"].sum()),
             "2位": int(count_df["2位"].sum()),
             "2位(%)": float(count_df["2位"].sum() / count_df["ゲーム数"].sum()),
+            "2.5位": int(count_df["2.5位"].sum()),
+            "2.5位(%)": float(count_df["2.5位"].sum() / count_df["ゲーム数"].sum()),
             "3位": int(count_df["3位"].sum()),
             "3位(%)": float(count_df["3位"].sum() / count_df["ゲーム数"].sum()),
+            "3.5位": int(count_df["3.5位"].sum()),
+            "3.5位(%)": float(count_df["3.5位"].sum() / count_df["ゲーム数"].sum()),
             "4位": int(count_df["4位"].sum()),
             "4位(%)": float(count_df["4位"].sum() / count_df["ゲーム数"].sum()),
             "平均順位": float(round(player_df["rank"].mean(), 2)),
@@ -232,9 +244,16 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     rank_table = pd.DataFrame()
     rank_table["ゲーム数"] = count_df["ゲーム数"].astype("int")
     rank_table["1位"] = count_df.apply(lambda row: f"{row['1位(%)']:.2%} ({row['1位']:.0f})", axis=1)
+    if count_df["1.5位"].drop(index=["全区間"]).sum():
+        rank_table["1.5位"] = count_df.apply(lambda row: f"{row['1.5位(%)']:.2%} ({row['1.5位']:.0f})", axis=1)
     rank_table["2位"] = count_df.apply(lambda row: f"{row['2位(%)']:.2%} ({row['2位']:.0f})", axis=1)
+    if count_df["2.5位"].drop(index=["全区間"]).sum():
+        rank_table["2.5位"] = count_df.apply(lambda row: f"{row['2.5位(%)']:.2%} ({row['2.5位']:.0f})", axis=1)
     rank_table["3位"] = count_df.apply(lambda row: f"{row['3位(%)']:.2%} ({row['3位']:.0f})", axis=1)
-    rank_table["4位"] = count_df.apply(lambda row: f"{row['4位(%)']:.2%} ({row['4位']:.0f})", axis=1)
+    if count_df["3.5位"].drop(index=["全区間"]).sum():
+        rank_table["3.5位"] = count_df.apply(lambda row: f"{row['3.5位(%)']:.2%} ({row['3.5位']:.0f})", axis=1)
+    if g.params.mode == 4:
+        rank_table["4位"] = count_df.apply(lambda row: f"{row['4位(%)']:.2%} ({row['4位']:.0f})", axis=1)
     rank_table["平均順位"] = count_df.apply(lambda row: f"{row['平均順位']:.2f}", axis=1)
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=f"『{player}』の成績"))
@@ -245,7 +264,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         case "plotly":
             m.set_message(count_df, StyleOptions(title="順位/ポイント情報", show_index=True))
             m.set_message(plotly_line("通算ポイント推移", point_df), StyleOptions(title="通算ポイント"))
-            m.set_message(plotly_bar("順位分布", count_df.drop(index=["全区間"])), StyleOptions(title="順位分布"))
+            m.set_message(plotly_bar("順位分布", count_df), StyleOptions(title="順位分布"))
             m.set_message(stats_df, StyleOptions(title="素点情報", show_index=True))
             m.set_message(plotly_box("素点分布", rpoint_df), StyleOptions(title="素点分布"))
         case "matplotlib":
@@ -372,6 +391,15 @@ def subplot_table(df: pd.DataFrame, ax: Axes) -> None:
         loc="center",
     )
     table.auto_set_font_size(False)
+
+    # セル背景色とFigure背景色を合わせる
+    ax_fc = ax.figure.get_facecolor()  # Figure背景色
+    ax_tc = ax.title.get_color()  # タイトル文字色
+    for cell in table.get_celld().values():
+        cell.set_facecolor(ax_fc)  # セル背景色
+        cell.set_edgecolor(ax_tc)  # 罫線
+        cell.get_text().set_color(ax_tc)  # セル文字色
+
     ax.axis("off")
 
 
@@ -414,8 +442,11 @@ def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:
 
     """
     df["1位(%)"] = df["1位(%)"] * 100
+    df["1.5位(%)"] = df["1.5位(%)"] * 100
     df["2位(%)"] = df["2位(%)"] * 100
+    df["2.5位(%)"] = df["2.5位(%)"] * 100
     df["3位(%)"] = df["3位(%)"] * 100
+    df["3.5位(%)"] = df["3.5位(%)"] * 100
     df["4位(%)"] = df["4位(%)"] * 100
 
     ax_rank_avg = ax.twinx()
@@ -433,7 +464,14 @@ def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:
     ax_rank_avg.invert_yaxis()
     ax_rank_avg.axhline(y=(1 + g.params.mode) / 2, linewidth=0.5, ls="dashed", color="grey")
 
-    filter_items = ["1位(%)", "2位(%)", "3位(%)", "4位(%)"][: g.params.mode]
+    filter_items = ["1位(%)", "1.5位(%)", "2位(%)", "2.5位(%)", "3位(%)", "3.5位(%)", "4位(%)"]
+    if g.params.mode == 3:
+        filter_items.remove("3.5位(%)")
+        filter_items.remove("4位(%)")
+    for x in ("1.5位(%)", "2.5位(%)", "3.5位(%)"):
+        if not df[x].drop(index=["全区間"]).sum() and x in filter_items:
+            filter_items.remove(x)
+
     df.filter(items=filter_items).drop(index=total_index).plot(
         ax=ax,
         kind="bar",
@@ -444,6 +482,7 @@ def subplot_rank(df: pd.DataFrame, ax: Axes, total_index: str) -> None:
         rot=90,
         ylim=[-5, 105],
     )
+
     h1, l1 = ax.get_legend_handles_labels()
     h2, l2 = ax_rank_avg.get_legend_handles_labels()
     ax.legend(
@@ -708,12 +747,23 @@ def plotly_bar(title_text: str, df: pd.DataFrame) -> "Path":
     """
     save_file = textutil.save_file_path("rank.html")
 
+    if len(df.index) <= 2:
+        df.drop(index=["全区間"], inplace=True)
+
     fig = make_subplots(specs=[[{"secondary_y": True}]])
+
     # 獲得率
     fig.add_trace(go.Bar(name="4位率", x=df.index, y=df["4位(%)"] * 100), secondary_y=False)
+    if df["3.5位"].sum():
+        fig.add_trace(go.Bar(name="3.5位率", x=df.index, y=df["3.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="3位率", x=df.index, y=df["3位(%)"] * 100), secondary_y=False)
+    if df["2.5位"].sum():
+        fig.add_trace(go.Bar(name="2.5位率", x=df.index, y=df["2.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="2位率", x=df.index, y=df["2位(%)"] * 100), secondary_y=False)
+    if df["1.5位"].sum():
+        fig.add_trace(go.Bar(name="1.5位率", x=df.index, y=df["1.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="1位率", x=df.index, y=df["1位(%)"] * 100), secondary_y=False)
+
     # 平均順位
     fig.add_trace(
         go.Scatter(
