@@ -77,7 +77,7 @@ def calculation_rating() -> pd.DataFrame:
 
         for i, player in enumerate(player_list):
             rating = float(rating_list[i])
-            rank = f"{rank_list[i]:.1f}"
+            rank = "{:.1f}".format(float(str(rank_list[i])))
 
             correction_value: float = (rating_avg - rating) / 40
             if df_ratings[player].count() >= 400:
