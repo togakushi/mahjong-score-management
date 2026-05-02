@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=2dee5df9"></script>
+    <script src="_static/documentation_options.js?v=e471fd71"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -804,10 +804,10 @@
         <li><a href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.delete_items">(integrations.protocols.MessageParserProtocol method)</a>
 </li>
       </ul></li>
-      <li><a href="integrations.discord.functions.html#integrations.discord.functions.SvcFunctions.delete_reaction">delete_reaction() (integrations.discord.functions.SvcFunctions method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="integrations.discord.functions.html#integrations.discord.functions.SvcFunctions.delete_reaction">delete_reaction() (integrations.discord.functions.SvcFunctions method)</a>
+</li>
       <li><a href="libs.types.html#libs.types.MessageStatus.DELETED">DELETED (libs.types.MessageStatus attribute)</a>
 </li>
       <li><a href="libs.utils.timekit.html#libs.utils.timekit.Delimiter">Delimiter (class in libs.utils.timekit)</a>
@@ -833,8 +833,6 @@
       <li><a href="libs.functions.tools.score_simulator.html#libs.functions.tools.score_simulator.determine_point">determine_point() (in module libs.functions.tools.score_simulator)</a>
 </li>
       <li><a href="libs.functions.tools.score_simulator.html#libs.functions.tools.score_simulator.determine_winner">determine_winner() (in module libs.functions.tools.score_simulator)</a>
-</li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.df_drop">df_drop() (in module libs.utils.formatter)</a>
 </li>
       <li><a href="libs.commands.report.stats_list.html#libs.commands.report.stats_list.df_generation">df_generation() (in module libs.commands.report.stats_list)</a>
 </li>
@@ -1073,6 +1071,8 @@
       <li><a href="libs.commands.graph.personal.html#libs.commands.graph.personal.get_data">get_data() (in module libs.commands.graph.personal)</a>
 </li>
       <li><a href="integrations.slack.functions.html#integrations.slack.functions.SvcFunctions.get_dm_channel_id">get_dm_channel_id() (integrations.slack.functions.SvcFunctions method)</a>
+</li>
+      <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.get_draw_split">get_draw_split() (libs.domain.rule.RuleSet method)</a>
 </li>
       <li><a href="libs.commands.report.stats_report.html#libs.commands.report.stats_report.get_game_results">get_game_results() (in module libs.commands.report.stats_report)</a>
 </li>
@@ -3175,25 +3175,13 @@
 </li>
       <li><a href="libs.domain.score.html#libs.domain.score.Score.rank">rank (libs.domain.score.Score attribute)</a>
 </li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank1">rank1 (libs.domain.stats.StatsDetailed attribute)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank1_rate">rank1_rate (libs.domain.stats.StatsDetailed property)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank2">rank2 (libs.domain.stats.StatsDetailed attribute)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank2_rate">rank2_rate (libs.domain.stats.StatsDetailed property)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank3">rank3 (libs.domain.stats.StatsDetailed attribute)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank3_rate">rank3_rate (libs.domain.stats.StatsDetailed property)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank4">rank4 (libs.domain.stats.StatsDetailed attribute)</a>
-</li>
-      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank4_rate">rank4_rate (libs.domain.stats.StatsDetailed property)</a>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank">rank() (libs.domain.stats.StatsDetailed method)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank_avg">rank_avg (libs.domain.stats.StatsDetailed property)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.rank_avg_list">rank_avg_list (libs.domain.stats.StatsInfo property)</a>
+</li>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.rank_df">rank_df (libs.domain.stats.StatsInfo attribute)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank_distr">rank_distr (libs.domain.stats.StatsDetailed property)</a>
 </li>
@@ -3202,6 +3190,8 @@
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.rank_distr_list">rank_distr_list (libs.domain.stats.StatsInfo property)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.rank_distr_list2">rank_distr_list2 (libs.domain.stats.StatsInfo property)</a>
+</li>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank_list">rank_list (libs.domain.stats.StatsDetailed attribute)</a>
 </li>
       <li><a href="libs.commands.graph.summary.html#libs.commands.graph.summary.rank_plot">rank_plot() (in module libs.commands.graph.summary)</a>
 </li>
@@ -3213,6 +3203,8 @@
         <li><a href="libs.domain.score.html#libs.domain.score.GameResult.rank_point">(libs.domain.score.GameResult attribute)</a>
 </li>
       </ul></li>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.rank_rate">rank_rate() (libs.domain.stats.StatsDetailed method)</a>
+</li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ParameterData.ranked">ranked (libs.domain.datamodels.ParameterData attribute)</a>
 </li>
       <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.ranking">ranking (libs.bootstrap.app_config.AppConfig attribute)</a>
@@ -3301,12 +3293,12 @@
       </ul></li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.regulation_list">regulation_list() (in module libs.functions.lookup)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.remark_del">remark_del (libs.domain.datamodels.ComparisonResults attribute)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.remark_mod">remark_mod (libs.domain.datamodels.ComparisonResults attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.types.html#libs.types.RemarkDict">RemarkDict (class in libs.types)</a>
 </li>
       <li><a href="integrations.protocols.html#integrations.protocols.MsgData.remarks">remarks (integrations.protocols.MsgData attribute)</a>
@@ -3607,12 +3599,14 @@
       </ul></li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.set_parameter">set_parameter() (libs.domain.stats.StatsInfo method)</a>
 </li>
-      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.setting">setting (libs.bootstrap.app_config.AppConfig attribute)</a>
+      <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.set_rank">set_rank() (libs.domain.stats.StatsInfo method)</a>
 </li>
-      <li><a href="libs.bootstrap.section.html#libs.bootstrap.section.SettingClassType">SettingClassType (in module libs.bootstrap.section)</a>
+      <li><a href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig.setting">setting (libs.bootstrap.app_config.AppConfig attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libs.bootstrap.section.html#libs.bootstrap.section.SettingClassType">SettingClassType (in module libs.bootstrap.section)</a>
+</li>
       <li><a href="libs.bootstrap.section.html#libs.bootstrap.section.SettingSection">SettingSection (class in libs.bootstrap.section)</a>
 </li>
       <li><a href="libs.bootstrap.configuration.html#libs.bootstrap.configuration.setup">setup() (in module libs.bootstrap.configuration)</a>
@@ -4408,8 +4402,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.0.
-      Last updated on 2026-04-30.
+      Release Version: 0.14.2.
+      Last updated on 2026-05-02.
     </div>
 
   </body>

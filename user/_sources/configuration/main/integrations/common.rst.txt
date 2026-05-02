@@ -42,7 +42,8 @@
      - 段位表示
      - 真偽値
      - False
-     - `grade-section` で定義した内容を表示する
+     - | `grade-section` で定義した内容を表示する
+       | `draw_split` が ``False`` の場合のみ有効
    * - .. integrations_section:: channel_id
           :category: common
 
