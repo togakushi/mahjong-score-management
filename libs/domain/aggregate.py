@@ -141,7 +141,6 @@ def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int,
     return (new_point, grade_level)
 
 
-# レポート
 def matrix_table() -> pd.DataFrame:
     """
     対局対戦マトリックス表の作成
