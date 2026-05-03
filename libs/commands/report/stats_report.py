@@ -23,7 +23,7 @@ from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDoc
 import libs.global_value as g
 from libs.functions import lookup, message
 from libs.types import StyleOptions
-from libs.utils import dbutil, formatter
+from libs.utils import formatter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -37,62 +37,15 @@ def get_game_results() -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_PERSONAL_DATA")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results: list[list[str]] = [
-        [
-            "",
-            "ゲーム数",
-            "通算\nポイント",
-            "平均\nポイント",
-            "1位",
-            "",
-            "2位",
-            "",
-            "3位",
-            "",
-            "4位",
-            "",
-            "平均\n順位",
-            "トビ",
-            "",
-        ]
-    ]
-
-    for row in rows.fetchall():
-        if row["ゲーム数"] == 0:
-            break
-
-        results.append(
-            [
-                row["集計"],
-                row["ゲーム数"],
-                str(row["通算ポイント"]).replace("-", "▲") + "pt",
-                str(row["平均ポイント"]).replace("-", "▲") + "pt",
-                row["1位"],
-                f"{row['1位率']:.2f}%",
-                row["2位"],
-                f"{row['2位率']:.2f}%",
-                row["3位"],
-                f"{row['3位率']:.2f}%",
-                row["4位"],
-                f"{row['4位率']:.2f}%",
-                f"{row['平均順位']:.2f}",
-                row["トビ"],
-                f"{row['トビ率']:.2f}%",
-            ]
-        )
-    logging.debug("return record: %s", len(results))
-    resultdb.close()
-
-    if len(results) == 1:  # ヘッダのみ
+    df = formatter.adjusting_values(g.params.read_data("REPORT_PERSONAL_DATA"), True)
+    if df.empty:
         return []
 
+    results: list[list[str]] = [df.columns.to_list()]
+    for x in df.T.to_dict(orient="list").values():
+        results.append(x)
+
+    logging.debug("return record: %s", len(results))
     return results
 
 
@@ -108,64 +61,15 @@ def get_count_results(game_count: int) -> list[list[str]]:
 
     """
     g.params.interval = game_count
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_COUNT_DATA")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results = [
-        [
-            "開始",
-            "終了",
-            "ゲーム数",
-            "通算\nポイント",
-            "平均\nポイント",
-            "1位",
-            "",
-            "2位",
-            "",
-            "3位",
-            "",
-            "4位",
-            "",
-            "平均\n順位",
-            "トビ",
-            "",
-        ]
-    ]
-
-    for row in rows.fetchall():
-        if row["ゲーム数"] == 0:
-            break
-
-        results.append(
-            [
-                row["開始"],
-                row["終了"],
-                row["ゲーム数"],
-                str(row["通算ポイント"]).replace("-", "▲") + "pt",
-                str(row["平均ポイント"]).replace("-", "▲") + "pt",
-                row["1位"],
-                f"{row['1位率']:.2f}%",
-                row["2位"],
-                f"{row['2位率']:.2f}%",
-                row["3位"],
-                f"{row['3位率']:.2f}%",
-                row["4位"],
-                f"{row['4位率']:.2f}%",
-                f"{row['平均順位']:.2f}",
-                row["トビ"],
-                f"{row['トビ率']:.2f}%",
-            ]
-        )
-    logging.debug("return record: %s", len(results))
-    resultdb.close()
-
-    if len(results) == 1:  # ヘッダのみ
+    df = formatter.adjusting_values(g.params.read_data("REPORT_COUNT_DATA"), True)
+    if df.empty:
         return []
 
+    results: list[list[str]] = [df.columns.to_list()]
+    for x in df.T.to_dict(orient="list").values():
+        results.append(x)
+
+    logging.debug("return record: %s", len(results))
     return results
 
 
@@ -180,21 +84,11 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
         list[dict[str, Any]]: 集計結果のリスト
 
     """
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.interval = game_count
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_COUNT_MOVING")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results = []
-    for row in rows.fetchall():
-        results.append(dict(row))
+    df = g.params.read_data("REPORT_COUNT_MOVING")
+    results = df.to_dict(orient="records")
 
     logging.debug("return record: %s", len(results))
-    resultdb.close()
-
     return results
 
 
