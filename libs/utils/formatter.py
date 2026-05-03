@@ -579,3 +579,32 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     if result:
         return result
     return [msg]
+
+
+def adjusting_values(df: pd.DataFrame, short: bool = False) -> pd.DataFrame:
+    """
+    単位の追加、桁数の調整
+
+    Args:
+        df (pd.DataFrame): 対象データ
+        short (bool): カラム名を折り返す
+
+    Returns:
+        pd.DataFrame: 調整後のデータ
+
+    """
+    for column_name in df.columns:
+        match column_name:
+            case x if x.endswith("ポイント"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
+                if short:
+                    new_name = "\n".join([x if x else "ポイント" for x in column_name.split("ポイント")])
+                    df.rename(columns={column_name: new_name}, inplace=True)
+            case x if x.endswith("率"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:.2f}%")
+            case "平均順位":
+                df[column_name] = df[column_name].map(lambda v: f"{v:.2f}")
+                if short:
+                    df.rename(columns={column_name: "平均\n順位"}, inplace=True)
+
+    return df
