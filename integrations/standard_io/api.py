@@ -69,36 +69,7 @@ class AdapterAPI(APIInterface):
                     print(self._text_formatter(x, options))
                 case x if isinstance(x, pd.DataFrame):
                     options.rename_type = StyleOptions.RenameType.NORMAL
-                    match options.data_kind:  # 単位付与/文字列変換
-                        case StyleOptions.DataKind.POINTS_TOTAL:
-                            if "total_point" in x.columns:
-                                x["total_point"] = x["total_point"].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                            if "avg_point" in x.columns:
-                                x["avg_point"] = x["avg_point"].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                        case StyleOptions.DataKind.POINTS_DIFF:
-                            if "total_point" in x.columns:
-                                x["total_point"] = x["total_point"].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                            if "diff_from_above" in x.columns:
-                                x["diff_from_above"] = x["diff_from_above"].map(lambda v: f"{v:.1f}pt" if pd.notna(v) else "------")
-                            if "diff_from_top" in x.columns:
-                                x["diff_from_top"] = x["diff_from_top"].map(lambda v: f"{v:.1f}pt" if pd.notna(v) else "------")
-                        case StyleOptions.DataKind.RECORD_DATA:
-                            if "rank" in x.columns:
-                                x["rank"] = x["rank"].map(lambda v: f"{v:.0f}位" if v.is_integer() else f"{v:.1f}位")
-                            if "rpoint" in x.columns:
-                                x["rpoint"] = x["rpoint"].map(lambda v: f"{v:.0f}点".replace("-", "▲"))
-                            if "point" in x.columns:
-                                x["point"] = x["point"].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                        case StyleOptions.DataKind.RECORD_DATA_ALL:
-                            for prefix in ("p1", "p2", "p3", "p4"):
-                                if f"{prefix}_rank" in x.columns:
-                                    x[f"{prefix}_rank"] = x[f"{prefix}_rank"].map(lambda v: f"{v:.0f}位" if v.is_integer() else f"{v:.1f}位")
-                                if f"{prefix}_rpoint" in x.columns:
-                                    x[f"{prefix}_rpoint"] = x[f"{prefix}_rpoint"].map(lambda v: f"{v:.0f}点".replace("-", "▲"))
-                                if f"{prefix}_point" in x.columns:
-                                    x[f"{prefix}_point"] = x[f"{prefix}_point"].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                        case _:
-                            pass
+                    x = formatter.adjusting_values(x)  # 単位付与/文字列変換
                     disp = formatter.df_rename(x, options).to_markdown(
                         index=options.show_index,
                         tablefmt="simple_outline",

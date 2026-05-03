@@ -606,5 +606,13 @@ def adjusting_values(df: pd.DataFrame, short: bool = False) -> pd.DataFrame:
                 df[column_name] = df[column_name].map(lambda v: f"{v:.2f}")
                 if short:
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)
+            case x if x == "point" or x.endswith("_point"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
+            case x if x == "rpoint" or x.endswith("_rpoint"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:.0f}点".replace("-", "▲"))
+            case x if x == "rank" or x.endswith("_rank"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:.0f}位" if v.is_integer() else f"{v:.1f}位")
+            case x if x.startswith("diff_from_"):
+                df[column_name] = df[column_name].map(lambda v: f"{v:.1f}pt" if pd.notna(v) else "------")
 
     return df
