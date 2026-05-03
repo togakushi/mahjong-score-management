@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Hashable, Literal
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -73,7 +73,7 @@ def get_count_results(game_count: int) -> list[list[str]]:
     return results
 
 
-def get_count_moving(game_count: int) -> list[dict[str, Any]]:
+def get_count_moving(game_count: int) -> list[dict[Hashable, Any]]:
     """
     移動平均を取得する
 
@@ -81,7 +81,7 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
         game_count (int): 平滑化するゲーム数
 
     Returns:
-        list[dict[str, Any]]: 集計結果のリスト
+        list[dict[Hashable, Any]]: 集計結果のリスト
 
     """
     g.params.interval = game_count

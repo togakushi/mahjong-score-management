@@ -581,13 +581,13 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     return [msg]
 
 
-def adjusting_values(df: pd.DataFrame, short: bool = False) -> pd.DataFrame:
+def adjusting_values(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
     """
     単位の追加、桁数の調整
 
     Args:
         df (pd.DataFrame): 対象データ
-        short (bool): カラム名を折り返す
+        compact (bool): カラム名を折り返す
 
     Returns:
         pd.DataFrame: 調整後のデータ
@@ -597,14 +597,14 @@ def adjusting_values(df: pd.DataFrame, short: bool = False) -> pd.DataFrame:
         match column_name:
             case x if x.endswith("ポイント"):
                 df[column_name] = df[column_name].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
-                if short:
+                if compact:
                     new_name = "\n".join([x if x else "ポイント" for x in column_name.split("ポイント")])
                     df.rename(columns={column_name: new_name}, inplace=True)
             case x if x.endswith("率"):
                 df[column_name] = df[column_name].map(lambda v: f"{v:.2f}%")
             case "平均順位":
                 df[column_name] = df[column_name].map(lambda v: f"{v:.2f}")
-                if short:
+                if compact:
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)
             case x if x == "point" or x.endswith("_point"):
                 df[column_name] = df[column_name].map(lambda v: f"{v:+.1f}pt".replace("-", "▲"))
