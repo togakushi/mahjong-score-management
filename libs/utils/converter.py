@@ -237,12 +237,12 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
         dict[str, str]: 整形テキスト
 
     """
+    df = formatter.adjusting_values(df)
     df = formatter.df_rename(df, options)
 
     data_list: list[str] = []
     game_results: dict[str, dict[str, Any]] = {}
 
-    # fixme: UserWarning: DataFrame columns are not unique, some columns will be omitted.
     for x in df.to_dict(orient="index").values():
         game_results[x["日時"]] = {"備考": x["備考"]}
         for seat in ("東家", "南家", "西家", "北家"):
@@ -250,9 +250,9 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
                 {
                     seat: [
                         x[f"{seat} 名前"],
-                        f"{(x[f'{seat} 素点'])}点".replace("-", "▲"),
-                        f"{(x[f'{seat} 順位'])}位",
-                        f"({float(x[f'{seat} ポイント']):+.1f}pt)".replace("-", "▲"),
+                        x[f"{seat} 素点"],
+                        x[f"{seat} 順位"],
+                        x[f"{seat} ポイント"],
                         x[f"{seat} メモ"],
                     ]
                 }
@@ -285,6 +285,7 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
         dict[str, str]: 整形テキスト
 
     """
+    df = formatter.adjusting_values(df)
     df = formatter.df_rename(df, options)
 
     data_list: list[str] = []
@@ -292,10 +293,9 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
         vs_guest = ""
         if x["備考"] != "":
             vs_guest = f"({g.cfg.setting.guest_mark}) "
-
-        ret = f"　{vs_guest}{str(x['日時']).replace('-', '/')}  "
-        ret += f"{x['座席']}\t{x['順位']}位\t{x['素点']:8d}点\t{x['獲得ポイント']:7.1f}pt\t{x['メモ']}".replace("-", "▲")
-        data_list.append(ret)
+        data_list.append(
+            f"　{vs_guest}{x['日時']}\t{x['座席']}\t{x['順位']}\t{x['素点']}\t{x['獲得ポイント']}\t{x['メモ']}",
+        )
 
     return {str(idx): x for idx, x in enumerate(formatter.group_strings(data_list, limit))}
 
@@ -528,16 +528,10 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
         dict[str, str]: 整形テキスト
 
     """
+    df = formatter.adjusting_values(df)
     df = formatter.df_rename(df, options)
 
     key_name = "名前" if g.params.individual else "チーム"
-    for col in df.columns:
-        match col:
-            case "日時":
-                df["日時"] = df["日時"].map(lambda x: str(x).replace("-", "/"))
-            case "ポイント":
-                df["ポイント"] = df["ポイント"].map(lambda x: f"{x}pt".replace("-", "▲"))
-
     if "日時" in df.columns:
         if "ポイント" in df.columns:
             df["表示"] = df.apply(lambda x: f"{x['日時']} {x['ポイント']} {x['内容']} （{x[key_name]}）", axis=1)
@@ -547,7 +541,7 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
             df["表示"] = df.apply(lambda x: f"{x['日時']} {x['内容']} （{x[key_name]}）", axis=1)
     elif "回数" in df.columns:
         if "ポイント" in df.columns:
-            df["表示"] = df.apply(lambda x: f"{x['内容']}： {x['回数']} 回 ({x['ポイント合計']:.1f}pt)".replace("-", "▲"), axis=1)
+            df["表示"] = df.apply(lambda x: f"{x['内容']}： {x['回数']} 回 ({x['ポイント合計']})", axis=1)
         elif "和了役" in df.columns:
             df["表示"] = df.apply(lambda x: f"{x['和了役']}： {x['回数']} 回", axis=1)
         else:

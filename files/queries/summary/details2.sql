@@ -10,7 +10,6 @@ select
     p1_rank,
     --[individual] p1_point,
     --[team] t1_point as p1_point,
-    --[individual] p1_remarks,
     p1_remarks,
     -- 南家
     --[individual] --[unregistered_replace] case when p2_guest = 0 then p2_name else :guest_name end as p2_name, -- ゲスト有効
@@ -20,7 +19,6 @@ select
     p2_rank,
     --[individual] p2_point,
     --[team] t2_point as p2_point,
-    --[individual] p2_remarks,
     p2_remarks,
     -- 西家
     --[individual] --[unregistered_replace] case when p3_guest = 0 then p3_name else :guest_name end as p3_name, -- ゲスト有効
@@ -30,7 +28,6 @@ select
     p3_rank,
     --[individual] p3_point,
     --[team] t3_point as p3_point,
-    --[individual] p3_remarks,
     p3_remarks,
     -- 北家
     --[individual] --[unregistered_replace] case when p4_guest = 0 then p4_name else :guest_name end as p4_name, -- ゲスト有効
@@ -40,8 +37,7 @@ select
     p4_rank,
     --[individual] p4_point,
     --[team] t4_point as p4_point,
-    --[individual] p4_remarks,
-    p4_remarks as p4_remarks,
+    p4_remarks,
     game_info.guest_count,
     game_info.same_team
 from
