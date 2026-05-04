@@ -606,7 +606,9 @@ def adjusting_values(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.2f}")
                 if compact:
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)
-            case x if x == "point" or x.endswith("_point"):
+            case "playtime":
+                df[column_name] = df[column_name].map(lambda v: str(v).replace("-", "/"))
+            case x if x == "point" or x.endswith(("_point", "_total")):
                 df[column_name] = df[column_name].map(lambda v: str(v) if str(v).endswith("pt") else f"{float(v):+.1f}pt".replace("-", "▲"))
             case x if x == "rpoint" or x.endswith("_rpoint"):
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.0f}点".replace("-", "▲"))
