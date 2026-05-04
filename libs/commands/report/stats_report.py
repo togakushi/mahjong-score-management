@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Hashable, Literal
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDoc
 import libs.global_value as g
 from libs.functions import lookup, message
 from libs.types import StyleOptions
-from libs.utils import dbutil, formatter
+from libs.utils import formatter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -37,62 +37,20 @@ def get_game_results() -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_PERSONAL_DATA")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results: list[list[str]] = [
-        [
-            "",
-            "ゲーム数",
-            "通算\nポイント",
-            "平均\nポイント",
-            "1位",
-            "",
-            "2位",
-            "",
-            "3位",
-            "",
-            "4位",
-            "",
-            "平均\n順位",
-            "トビ",
-            "",
-        ]
-    ]
-
-    for row in rows.fetchall():
-        if row["ゲーム数"] == 0:
-            break
-
-        results.append(
-            [
-                row["集計"],
-                row["ゲーム数"],
-                str(row["通算ポイント"]).replace("-", "▲") + "pt",
-                str(row["平均ポイント"]).replace("-", "▲") + "pt",
-                row["1位"],
-                f"{row['1位率']:.2f}%",
-                row["2位"],
-                f"{row['2位率']:.2f}%",
-                row["3位"],
-                f"{row['3位率']:.2f}%",
-                row["4位"],
-                f"{row['4位率']:.2f}%",
-                f"{row['平均順位']:.2f}",
-                row["トビ"],
-                f"{row['トビ率']:.2f}%",
-            ]
-        )
-    logging.debug("return record: %s", len(results))
-    resultdb.close()
-
-    if len(results) == 1:  # ヘッダのみ
+    df = formatter.adjusting_values(g.params.read_data("REPORT_PERSONAL_DATA"), True)
+    if df.empty:
         return []
 
+    # 0回の同着を削除
+    for col in ("1.5位", "2.5位", "3.5位"):
+        if not df[col].sum():
+            df.drop(columns=[f"{col}", f"{col}率"], inplace=True)
+
+    results: list[list[str]] = [df.columns.to_list()]
+    for x in df.T.to_dict(orient="list").values():
+        results.append(x)
+
+    logging.debug("return record: %s", len(results))
     return results
 
 
@@ -108,68 +66,24 @@ def get_count_results(game_count: int) -> list[list[str]]:
 
     """
     g.params.interval = game_count
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_COUNT_DATA")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results = [
-        [
-            "開始",
-            "終了",
-            "ゲーム数",
-            "通算\nポイント",
-            "平均\nポイント",
-            "1位",
-            "",
-            "2位",
-            "",
-            "3位",
-            "",
-            "4位",
-            "",
-            "平均\n順位",
-            "トビ",
-            "",
-        ]
-    ]
-
-    for row in rows.fetchall():
-        if row["ゲーム数"] == 0:
-            break
-
-        results.append(
-            [
-                row["開始"],
-                row["終了"],
-                row["ゲーム数"],
-                str(row["通算ポイント"]).replace("-", "▲") + "pt",
-                str(row["平均ポイント"]).replace("-", "▲") + "pt",
-                row["1位"],
-                f"{row['1位率']:.2f}%",
-                row["2位"],
-                f"{row['2位率']:.2f}%",
-                row["3位"],
-                f"{row['3位率']:.2f}%",
-                row["4位"],
-                f"{row['4位率']:.2f}%",
-                f"{row['平均順位']:.2f}",
-                row["トビ"],
-                f"{row['トビ率']:.2f}%",
-            ]
-        )
-    logging.debug("return record: %s", len(results))
-    resultdb.close()
-
-    if len(results) == 1:  # ヘッダのみ
+    df = formatter.adjusting_values(g.params.read_data("REPORT_COUNT_DATA"), True)
+    if df.empty:
         return []
 
+    # 0回の同着を削除
+    for col in ("1.5位", "2.5位", "3.5位"):
+        if not df[col].sum():
+            df.drop(columns=[f"{col}", f"{col}率"], inplace=True)
+
+    results: list[list[str]] = [df.columns.to_list()]
+    for x in df.T.to_dict(orient="list").values():
+        results.append(x)
+
+    logging.debug("return record: %s", len(results))
     return results
 
 
-def get_count_moving(game_count: int) -> list[dict[str, Any]]:
+def get_count_moving(game_count: int) -> list[dict[Hashable, Any]]:
     """
     移動平均を取得する
 
@@ -177,24 +91,14 @@ def get_count_moving(game_count: int) -> list[dict[str, Any]]:
         game_count (int): 平滑化するゲーム数
 
     Returns:
-        list[dict[str, Any]]: 集計結果のリスト
+        list[dict[Hashable, Any]]: 集計結果のリスト
 
     """
-    resultdb = dbutil.connection(g.cfg.setting.database_file)
     g.params.interval = game_count
-    rows = resultdb.execute(
-        g.params.query_modification(dbutil.query("REPORT_COUNT_MOVING")),
-        g.params.placeholder(),
-    )
-
-    # --- データ収集
-    results = []
-    for row in rows.fetchall():
-        results.append(dict(row))
+    df = g.params.read_data("REPORT_COUNT_MOVING")
+    results = df.to_dict(orient="records")
 
     logging.debug("return record: %s", len(results))
-    resultdb.close()
-
     return results
 
 
@@ -497,48 +401,47 @@ def entire_aggregate(style: dict[str, Any]) -> list[Any]:
 
     elements.append(Paragraph("全期間", style["Left"]))
     elements.append(Spacer(1, 5 * mm))
-    data: list[list[str]] = []
     g.params.aggregate_unit = "A"
     tmp_data = get_game_results()
 
     if not tmp_data:
         return []
 
-    for _, val in enumerate(tmp_data):  # ゲーム数を除外
+    # --- テーブルデータ生成
+    data: list[list[str]] = []
+    for val in tmp_data:  # ゲーム数を除外
         data.append(val[1:])
+
+    cell_style = [
+        ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
+        ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        # ヘッダ行
+        ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+    ]
+    for idx, col in enumerate(data[0]):  # 獲得数と獲得率を結合
+        if col.endswith("率"):
+            cell_style.append(
+                ("SPAN", (idx - 1, 0), (idx, 0)),
+            )
+
     tt = LongTable(data, repeatRows=1)
-    tt.setStyle(
-        TableStyle(
-            [
-                ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
-                ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
-                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                ("SPAN", (3, 0), (4, 0)),
-                ("SPAN", (5, 0), (6, 0)),
-                ("SPAN", (7, 0), (8, 0)),
-                ("SPAN", (9, 0), (10, 0)),
-                ("SPAN", (12, 0), (13, 0)),
-                # ヘッダ行
-                ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-            ]
-        )
-    )
+    tt.setStyle(TableStyle(cell_style))  # type: ignore[arg-type]
     elements.append(tt)
 
     # 順位分布
     imgdata = BytesIO()
+    rank_dist_label: list[str] = []
+    rank_dist_data: list[float] = []
+    for idx, col in enumerate(data[0]):
+        if col.startswith(("1", "2", "3", "4")) and col.endswith("率"):
+            rank_dist_label.append(col)
+            rank_dist_data.append(float(data[1][idx].replace("%", "")))
     gdata = pd.DataFrame(
-        {
-            "順位分布": [
-                float(str(data[1][4]).replace("%", "")),
-                float(str(data[1][6]).replace("%", "")),
-                float(str(data[1][8]).replace("%", "")),
-                float(str(data[1][10]).replace("%", "")),
-            ],
-        },
-        index=["1位率", "2位率", "3位率", "4位率"],
+        {"順位分布": rank_dist_data},
+        index=rank_dist_label,
     )
     gdata.plot(
         kind="pie",
@@ -591,6 +494,8 @@ def periodic_aggregation(style: dict[str, Any]) -> list[Any]:
 
     """
     elements: list[Any] = []
+    rank_dist_label: list[str] = []
+    rank_dist_data: dict[str, list[float]] = {}
 
     pattern: list[tuple[str, str, Literal["A", "M", "Y"]]] = [
         # 表タイトル, グラフタイトル, フラグ
@@ -602,33 +507,30 @@ def periodic_aggregation(style: dict[str, Any]) -> list[Any]:
         elements.append(Paragraph(table_title, style["Left"]))
         elements.append(Spacer(1, 5 * mm))
 
-        data: list[list[str]] = []
         g.params.aggregate_unit = flag
-        tmp_data = get_game_results()
+        data = get_game_results()
 
-        if not tmp_data:
+        if not data:
             return []
 
-        for _, val in enumerate(tmp_data):  # 日時を除外
-            data.append(val[:15])
+        # --- テーブルデータ生成
+        cell_style = [
+            ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
+            ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            # ヘッダ行
+            ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ]
+        for idx, val in enumerate(data[0]):  # 獲得数と獲得率を結合
+            if val.endswith("率"):
+                cell_style.append(
+                    ("SPAN", (idx - 1, 0), (idx, 0)),
+                )
 
         tt = LongTable(data, repeatRows=1)
-        ts = TableStyle(
-            [
-                ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
-                ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
-                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                ("SPAN", (4, 0), (5, 0)),
-                ("SPAN", (6, 0), (7, 0)),
-                ("SPAN", (8, 0), (9, 0)),
-                ("SPAN", (10, 0), (11, 0)),
-                ("SPAN", (13, 0), (14, 0)),
-                # ヘッダ行
-                ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-            ]
-        )
+        ts = TableStyle(cell_style)  # type: ignore[arg-type]
 
         if len(data) > 4:
             for i in range(len(data) - 2):
@@ -639,16 +541,13 @@ def periodic_aggregation(style: dict[str, Any]) -> list[Any]:
         elements.append(Spacer(1, 10 * mm))
 
         # 順位分布
-        df = pd.DataFrame(
-            {
-                "1位率": [float(str(data[x + 1][5]).replace("%", "")) for x in range(len(data) - 1)],
-                "2位率": [float(str(data[x + 1][7]).replace("%", "")) for x in range(len(data) - 1)],
-                "3位率": [float(str(data[x + 1][9]).replace("%", "")) for x in range(len(data) - 1)],
-                "4位率": [float(str(data[x + 1][11]).replace("%", "")) for x in range(len(data) - 1)],
-            },
-            index=[data[x + 1][0] for x in range(len(data) - 1)],
-        )
+        rank_dist_label = [data[x + 1][0] for x in range(len(data) - 1)]
+        rank_dist_data.clear()
+        for idx, col in enumerate(data[0]):
+            if col.startswith(("1", "2", "3", "4")) and col.endswith("率"):
+                rank_dist_data.update({col: [float(data[x + 1][idx].replace("%", "")) for x in range(len(data) - 1)]})
 
+        df = pd.DataFrame(rank_dist_data, index=rank_dist_label)
         imgdata = graphing_rank_distribution(df, graph_title)
         elements.append(Spacer(1, 5 * mm))
         elements.append(Image(imgdata, width=1200 * 0.5, height=700 * 0.5))
@@ -689,23 +588,24 @@ def sectional_aggregate(style: dict[str, Any], target_info: dict[str, Any]) -> l
             if not data:
                 return []
 
+            # --- テーブルデータ生成
+            cell_style = [
+                ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
+                ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                # ヘッダ行
+                ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ]
+            for idx, val in enumerate(data[0]):  # 獲得数と獲得率を結合
+                if val.endswith("率"):
+                    cell_style.append(
+                        ("SPAN", (idx - 1, 0), (idx, 0)),
+                    )
+
             tt = LongTable(data, repeatRows=1)
-            ts = TableStyle(
-                [
-                    ("FONT", (0, 0), (-1, -1), "ReportFont", 10),
-                    ("GRID", (0, 0), (-1, -1), 0.25, colors.black),
-                    ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                    ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                    ("SPAN", (5, 0), (6, 0)),
-                    ("SPAN", (7, 0), (8, 0)),
-                    ("SPAN", (9, 0), (10, 0)),
-                    ("SPAN", (11, 0), (12, 0)),
-                    ("SPAN", (14, 0), (15, 0)),
-                    # ヘッダ行
-                    ("BACKGROUND", (0, 0), (-1, 0), colors.navy),
-                    ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-                ]
-            )
+            ts = TableStyle(cell_style)  # type: ignore[arg-type]
             if len(data) > 4:
                 for i in range(len(data) - 2):
                     if i % 2 == 0:
