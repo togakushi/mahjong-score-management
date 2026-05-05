@@ -6,8 +6,6 @@ import random
 import re
 from typing import Optional, cast
 
-import pandas as pd
-
 import libs.global_value as g
 from libs.bootstrap.section import SubCommands
 from libs.types import StyleOptions
@@ -173,23 +171,6 @@ def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
         return list(hide_items & set(item_list))
     else:
         return list(hide_items)
-
-
-def df_rename(df: pd.DataFrame, options: StyleOptions) -> pd.DataFrame:
-    """
-    カラム名をリネームする
-
-    Args:
-        df (pd.DataFrame): 対象データフレーム
-        options (StyleOptions): 変換モード
-
-    Returns:
-        pd.DataFrame: リネーム後のデータフレーム
-
-    """
-    rename_dict = dictutil.rename_dicts(df.columns.to_list(), options)
-
-    return df.rename(columns=rename_dict)
 
 
 def group_strings(lines: list[str], limit: int = 3000) -> list[str]:

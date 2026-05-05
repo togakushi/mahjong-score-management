@@ -10,7 +10,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import converter, formatter
+from libs.utils import converter, dictutil, formatter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -97,18 +97,16 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     # --- ファイル出力
-    if len(df_data) != 0:
+    if len(df_data):
         df_data["座席"] = df_data["seat"].apply(lambda x: ["東家", "南家", "西家", "北家"][x - 1])
         df_data["rpoint"] = df_data["rpoint"] * 100
-    df_data = formatter.df_rename(
-        df_data.filter(items=["playtime", "座席", "name", "rank", "rpoint", "point", "yakuman"]).drop_duplicates(),
-        StyleOptions(),
-    )
+        df_data = df_data.filter(items=["playtime", "座席", "name", "rank", "rpoint", "point", "yakuman"]).drop_duplicates()
+        df_data.rename(columns=dictutil.rename_dicts(df_data.columns.to_list(), StyleOptions()), inplace=True)
 
     df_vs["対戦相手"] = df_vs["vs_name"].apply(lambda x: str(x).strip())
     df_vs["my_rpoint_avg"] = (df_vs["my_rpoint_avg"] * 100).astype("int")
     df_vs["vs_rpoint_avg"] = (df_vs["vs_rpoint_avg"] * 100).astype("int")
-    df_vs = formatter.df_rename(df_vs, StyleOptions())
+    df_vs.rename(columns=dictutil.rename_dicts(df_vs.columns.to_list(), StyleOptions()), inplace=True)
     df_vs2 = (
         df_vs.query("vs_name == @g.params.competition_list")
         .filter(

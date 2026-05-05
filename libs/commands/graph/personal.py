@@ -17,7 +17,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import formatter, graphutil, textutil
+from libs.utils import dictutil, formatter, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -63,7 +63,11 @@ def plot(m: "MessageParserProtocol") -> None:
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
     m.set_message(
-        formatter.df_rename(df.drop(columns=["count", "name"]), StyleOptions()),
+        df.drop(
+            columns=["count", "name"],
+        ).rename(
+            columns=dictutil.rename_dicts(df.drop(columns=["count", "name"]).columns.to_list(), StyleOptions()),
+        ),
         StyleOptions(title="個人成績", header_hidden=True, key_title=False),
     )
 

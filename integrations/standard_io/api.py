@@ -11,7 +11,7 @@ import pandas as pd
 from integrations.base.interface import APIInterface
 from libs.functions import adjusting
 from libs.types import StyleOptions
-from libs.utils import formatter
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -71,7 +71,9 @@ class AdapterAPI(APIInterface):
                 case x if isinstance(x, pd.DataFrame):
                     options.rename_type = StyleOptions.RenameType.NORMAL
                     x = adjusting.add_units(x)  # 単位付与/文字列変換
-                    disp = formatter.df_rename(x, options).to_markdown(
+                    disp = x.rename(
+                        columns=dictutil.rename_dicts(x.columns.to_list(), options),
+                    ).to_markdown(
                         index=options.show_index,
                         tablefmt="simple_outline",
                         floatfmt=adjusting.floatfmt(x, index=options.show_index),

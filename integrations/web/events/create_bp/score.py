@@ -12,7 +12,7 @@ import libs.global_value as g
 from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
-from libs.utils import dbutil, formatter
+from libs.utils import dbutil, dictutil, formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -42,9 +42,8 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
         m = adapter.parser()
 
         def score_table() -> str:
-            df = formatter.df_rename(
-                pd.read_sql(
-                    sql="""
+            df = pd.read_sql(
+                sql="""
                 select
                     '<input type="radio" name="ts" value="' || ts || '">' as '#',
                     playtime,
@@ -60,10 +59,9 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
                 limit 0, 10
                 ;
                 """,
-                    con=dbutil.connection(g.cfg.setting.database_file),
-                ),
-                options=StyleOptions(),
+                con=dbutil.connection(g.cfg.setting.database_file),
             )
+            df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
 
             if not isinstance(df.columns, pd.MultiIndex):
                 new_columns = [tuple(col.split(" ")) if " " in col else ("", col) for col in df.columns]

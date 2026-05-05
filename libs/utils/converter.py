@@ -12,7 +12,7 @@ from tabulate import tabulate
 import libs.global_value as g
 from libs.functions import adjusting
 from libs.types import StyleOptions
-from libs.utils import formatter, textutil
+from libs.utils import dictutil, formatter, textutil
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -44,7 +44,7 @@ def save_output(
     """
     # カラムリネーム
     options.rename_type = StyleOptions.RenameType.NORMAL
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
     if options.transpose:
         df = df.T
 
@@ -97,7 +97,7 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
         dict[str, str]: 生成テーブル
 
     """
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     # ヘッダ/位置
     header: list[str] = []
@@ -171,7 +171,7 @@ def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
         dict: 生成テーブル
 
     """
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     # 表生成/分割
     my_style = PresetStyle.plain
@@ -239,7 +239,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
 
     """
     df = adjusting.add_units(df)
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     data_list: list[str] = []
     game_results: dict[str, dict[str, Any]] = {}
@@ -287,7 +287,7 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
 
     """
     df = adjusting.add_units(df)
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     data_list: list[str] = []
     for x in df.to_dict(orient="index").values():
@@ -530,7 +530,7 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
 
     """
     df = adjusting.add_units(df)
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     key_name = "名前" if g.params.individual else "チーム"
     if "日時" in df.columns:
@@ -564,7 +564,7 @@ def df_to_seat_data(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
         dict[str, str]: 整形テキスト
 
     """
-    df = formatter.df_rename(df, options)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
 
     # 表示加工
     df["席"] = df.apply(lambda x: f"{x['席']}：", axis=1)
