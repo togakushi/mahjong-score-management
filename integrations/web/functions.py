@@ -9,7 +9,7 @@ from flask import make_response, render_template
 
 from integrations.base.interface import FunctionsInterface
 from libs.types import StyleOptions
-from libs.utils import formatter
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     import pandas as pd
@@ -34,8 +34,7 @@ class SvcFunctions(FunctionsInterface):
             str: HTML表
 
         """
-        df = formatter.df_rename(df, StyleOptions(rename_type=StyleOptions.RenameType.NORMAL))
-        df = df.rename(columns={"name": "プレイヤー名", "point": "ポイント", "rank": "順位"})
+        df = df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions(rename_type=StyleOptions.RenameType.NORMAL)))
         styled = (
             df.style.format(
                 {

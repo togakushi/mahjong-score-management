@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions import message
+from libs.functions import adjusting, message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import formatter, graphutil, textutil
+from libs.utils import dictutil, formatter, graphutil, textutil
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
@@ -99,26 +99,24 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
     if g.adapter.conf.plotting_backend == "plotly":
         return None
 
-    df = formatter.df_rename(
-        df.filter(
-            items=[
-                "player",
-                "team",
-                "game",
-                "total_mix",
-                "avg_mix",
-                "rank_avg",
-                "1st_mix",
-                "2nd_mix",
-                "3rd_mix",
-                "4th_mix",
-                "rank_dist",
-                "flying_mix",
-                "yakuman_mix",
-            ]
-        ),
-        StyleOptions(),
+    df = df.filter(
+        items=[
+            "player",
+            "team",
+            "game",
+            "total_mix",
+            "avg_mix",
+            "rank_avg",
+            "1st_mix",
+            "2nd_mix",
+            "3rd_mix",
+            "4th_mix",
+            "rank_dist",
+            "flying_mix",
+            "yakuman_mix",
+        ]
     )
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
 
     # フォント/色彩設定
     graphutil.setup()
@@ -219,8 +217,8 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
             "yakuman_rate",
         ]
     )
-    fmt = formatter.floatfmt_adjust(df, index=True)
-    df = formatter.df_rename(df, StyleOptions())
+    fmt = adjusting.floatfmt(df, index=True)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
     df.to_markdown(report_file_path, tablefmt="outline", floatfmt=fmt)
 
     return report_file_path
@@ -310,4 +308,4 @@ def df_generation(df: "pd.DataFrame") -> "MessageType":
         ]
     )
 
-    return formatter.df_rename(df, StyleOptions())
+    return df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()))

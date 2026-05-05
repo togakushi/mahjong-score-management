@@ -15,7 +15,7 @@ from libs.domain.stats import StatsInfo
 from libs.functions import message
 from libs.functions.compose import badge, text_item
 from libs.types import StyleOptions
-from libs.utils import converter, formatter
+from libs.utils import converter, dictutil, formatter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -281,7 +281,7 @@ def comparison(m: "MessageParserProtocol") -> None:
             data = converter.save_output(stats_df, options, m.post.headline)
         case _:
             options.key_title = False
-            data = formatter.df_rename(stats_df, options).T
+            data = stats_df.rename(columns=dictutil.rename_dicts(stats_df.columns.to_list(), options)).T
 
     m.set_message(data, options)
     m.post.thread = True
