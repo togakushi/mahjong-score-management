@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions import message
+from libs.functions import adjusting, message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import formatter, graphutil, textutil
@@ -219,7 +219,7 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
             "yakuman_rate",
         ]
     )
-    fmt = formatter.floatfmt_adjust(df, index=True)
+    fmt = adjusting.floatfmt(df, index=True)
     df = formatter.df_rename(df, StyleOptions())
     df.to_markdown(report_file_path, tablefmt="outline", floatfmt=fmt)
 

@@ -10,6 +10,7 @@ from table2ascii import Alignment, PresetStyle, table2ascii
 from tabulate import tabulate
 
 import libs.global_value as g
+from libs.functions import adjusting
 from libs.types import StyleOptions
 from libs.utils import formatter, textutil
 
@@ -56,9 +57,9 @@ def save_output(
             data = df.to_markdown(
                 index=options.show_index,
                 tablefmt="outline",
-                floatfmt=formatter.floatfmt_adjust(df, index=options.show_index),
-                colalign=formatter.column_alignment(df, index=options.show_index),
-                headersalign=formatter.column_alignment(df, True),
+                floatfmt=adjusting.floatfmt(df, index=options.show_index),
+                colalign=adjusting.column_alignment(df, index=options.show_index),
+                headersalign=adjusting.column_alignment(df, True),
             ).replace(" ▲", "▲")
 
     # 保存
@@ -237,7 +238,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
         dict[str, str]: 整形テキスト
 
     """
-    df = formatter.adjusting_values(df)
+    df = adjusting.add_units(df)
     df = formatter.df_rename(df, options)
 
     data_list: list[str] = []
@@ -285,7 +286,7 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
         dict[str, str]: 整形テキスト
 
     """
-    df = formatter.adjusting_values(df)
+    df = adjusting.add_units(df)
     df = formatter.df_rename(df, options)
 
     data_list: list[str] = []
@@ -528,7 +529,7 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions) -> dict[str, str]:
         dict[str, str]: 整形テキスト
 
     """
-    df = formatter.adjusting_values(df)
+    df = adjusting.add_units(df)
     df = formatter.df_rename(df, options)
 
     key_name = "名前" if g.params.individual else "チーム"

@@ -21,7 +21,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDocTemplate, Spacer, TableStyle
 
 import libs.global_value as g
-from libs.functions import lookup, message
+from libs.functions import adjusting, lookup, message
 from libs.types import StyleOptions
 from libs.utils import formatter
 
@@ -37,7 +37,7 @@ def get_game_results() -> list[list[str]]:
         list[list[str]]: 集計結果のリスト
 
     """
-    df = formatter.adjusting_values(g.params.read_data("REPORT_PERSONAL_DATA"), True)
+    df = adjusting.add_units(g.params.read_data("REPORT_PERSONAL_DATA"), True)
     if df.empty:
         return []
 
@@ -66,7 +66,7 @@ def get_count_results(game_count: int) -> list[list[str]]:
 
     """
     g.params.interval = game_count
-    df = formatter.adjusting_values(g.params.read_data("REPORT_COUNT_DATA"), True)
+    df = adjusting.add_units(g.params.read_data("REPORT_COUNT_DATA"), True)
     if df.empty:
         return []
 

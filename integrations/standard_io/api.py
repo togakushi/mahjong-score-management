@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 from integrations.base.interface import APIInterface
+from libs.functions import adjusting
 from libs.types import StyleOptions
 from libs.utils import formatter
 
@@ -69,12 +70,12 @@ class AdapterAPI(APIInterface):
                     print(self._text_formatter(x, options))
                 case x if isinstance(x, pd.DataFrame):
                     options.rename_type = StyleOptions.RenameType.NORMAL
-                    x = formatter.adjusting_values(x)  # 単位付与/文字列変換
+                    x = adjusting.add_units(x)  # 単位付与/文字列変換
                     disp = formatter.df_rename(x, options).to_markdown(
                         index=options.show_index,
                         tablefmt="simple_outline",
-                        floatfmt=formatter.floatfmt_adjust(x, index=options.show_index),
-                        colalign=formatter.column_alignment(x, index=options.show_index),
+                        floatfmt=adjusting.floatfmt(x, index=options.show_index),
+                        colalign=adjusting.column_alignment(x, index=options.show_index),
                     )
                     print(disp)
                 case x if isinstance(x, Path):
