@@ -64,17 +64,11 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.utils.formatter module</a><ul>
-<li><a class="reference internal" href="#libs.utils.formatter.adjusting_values"><code class="docutils literal notranslate"><span class="pre">adjusting_values()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.anonymous_mapping"><code class="docutils literal notranslate"><span class="pre">anonymous_mapping()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.column_alignment"><code class="docutils literal notranslate"><span class="pre">column_alignment()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.df_rename"><code class="docutils literal notranslate"><span class="pre">df_rename()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.dropitems_list"><code class="docutils literal notranslate"><span class="pre">dropitems_list()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.floatfmt_adjust"><code class="docutils literal notranslate"><span class="pre">floatfmt_adjust()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.gen_rename_dict"><code class="docutils literal notranslate"><span class="pre">gen_rename_dict()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.group_strings"><code class="docutils literal notranslate"><span class="pre">group_strings()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.honor_remove"><code class="docutils literal notranslate"><span class="pre">honor_remove()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.name_replace"><code class="docutils literal notranslate"><span class="pre">name_replace()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -163,26 +157,6 @@
 <span id="libs-utils-formatter-module"></span><h1>libs.utils.formatter module<a class="headerlink" href="#module-libs.utils.formatter" title="Link to this heading">¶</a></h1>
 <p>libs/utils/formatter.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.adjusting_values">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">adjusting_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.adjusting_values" title="Link to this definition">¶</a></dt>
-<dd><p>単位の追加、桁数の調整</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – 対象データ</p></li>
-<li><p><strong>compact</strong> (<em>bool</em>) – カラム名を折り返す</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>調整後のデータ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="libs.utils.formatter.anonymous_mapping">
 <span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">anonymous_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.anonymous_mapping" title="Link to this definition">¶</a></dt>
 <dd><p>名前リストから変換用辞書を生成</p>
@@ -203,47 +177,6 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.column_alignment">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">column_alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.column_alignment" title="Link to this definition">¶</a></dt>
-<dd><p>カラム位置</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – チェックするデータ</p></li>
-<li><p><strong>header</strong> (<em>bool</em><em>, </em><em>optional</em>) – ヘッダを対象にする</p></li>
-<li><p><strong>index</strong> (<em>bool</em><em>, </em><em>optional</em>) – リストにIndexを含める. Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>colalignに指定するリスト</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.df_rename">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">df_rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.df_rename" title="Link to this definition">¶</a></dt>
-<dd><p>カラム名をリネームする</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – 対象データフレーム</p></li>
-<li><p><strong>options</strong> (<a class="reference internal" href="libs.types.html#libs.types.StyleOptions" title="libs.types.StyleOptions"><em>StyleOptions</em></a>) – 変換モード</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>リネーム後のデータフレーム</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="libs.utils.formatter.dropitems_list">
 <span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">dropitems_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.dropitems_list" title="Link to this definition">¶</a></dt>
 <dd><p>非表示項目を集合で返す</p>
@@ -256,46 +189,6 @@
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.floatfmt_adjust">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">floatfmt_adjust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.floatfmt_adjust" title="Link to this definition">¶</a></dt>
-<dd><p>カラム名に応じたfloatfmtのリストを返す</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – チェックするデータ</p></li>
-<li><p><strong>index</strong> (<em>bool</em><em>, </em><em>optional</em>) – リストにIndexを含める. Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>floatfmtに指定するリスト</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.gen_rename_dict">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">gen_rename_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.gen_rename_dict" title="Link to this definition">¶</a></dt>
-<dd><p>カラムリネーム用辞書の生成</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – カラム名</p></li>
-<li><p><strong>options</strong> (<a class="reference internal" href="libs.types.html#libs.types.StyleOptions" title="libs.types.StyleOptions"><em>StyleOptions</em></a>) – 変換モード</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>リネーム用辞書</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict[str,str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -363,26 +256,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.formatter.split_strings">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.formatter.</span></span><span class="sig-name descname"><span class="pre">split_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.formatter.split_strings" title="Link to this definition">¶</a></dt>
-<dd><p>指定文字数で分割</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>msg</strong> (<em>str</em>) – 分割対象</p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – 分割文字数. Defaults to 3000.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>分割結果</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -396,17 +269,11 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.utils.formatter module</a><ul>
-<li><a class="reference internal" href="#libs.utils.formatter.adjusting_values"><code class="docutils literal notranslate"><span class="pre">adjusting_values()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.anonymous_mapping"><code class="docutils literal notranslate"><span class="pre">anonymous_mapping()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.column_alignment"><code class="docutils literal notranslate"><span class="pre">column_alignment()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.df_rename"><code class="docutils literal notranslate"><span class="pre">df_rename()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.dropitems_list"><code class="docutils literal notranslate"><span class="pre">dropitems_list()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.floatfmt_adjust"><code class="docutils literal notranslate"><span class="pre">floatfmt_adjust()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.gen_rename_dict"><code class="docutils literal notranslate"><span class="pre">gen_rename_dict()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.group_strings"><code class="docutils literal notranslate"><span class="pre">group_strings()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.honor_remove"><code class="docutils literal notranslate"><span class="pre">honor_remove()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.formatter.name_replace"><code class="docutils literal notranslate"><span class="pre">name_replace()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.formatter.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -487,7 +354,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.14.5.
-      Last updated on 2026-05-04.
+      Last updated on 2026-05-05.
     </div>
 
   </body>

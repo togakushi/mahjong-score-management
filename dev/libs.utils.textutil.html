@@ -73,6 +73,7 @@
 </li>
 <li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.split_balanced"><code class="docutils literal notranslate"><span class="pre">split_balanced()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
 </ul>
@@ -235,6 +236,26 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.textutil.split_strings">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_strings" title="Link to this definition">¶</a></dt>
+<dd><p>指定文字数で分割</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<em>str</em>) – 分割対象</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – 分割文字数. Defaults to 3000.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>分割結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="libs.utils.textutil.split_text_blocks">
 <span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_text_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_text_blocks" title="Link to this definition">¶</a></dt>
 <dd><p>指定文字数でテキストを行単位で分割してリストにする</p>
@@ -296,6 +317,7 @@
 </li>
 <li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.split_balanced"><code class="docutils literal notranslate"><span class="pre">split_balanced()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
 </ul>
@@ -378,7 +400,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.14.5.
-      Last updated on 2026-05-04.
+      Last updated on 2026-05-05.
     </div>
 
   </body>

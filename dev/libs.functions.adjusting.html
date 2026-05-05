@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>integrations.web.events.handler module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.functions.adjusting module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="integrations.web.adapter module" href="integrations.web.adapter.html" />
-    <link rel="prev" title="integrations.web.events.create_bp.user_assets module" href="integrations.web.events.create_bp.user_assets.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.functions.lookup module" href="libs.functions.lookup.html" />
+    <link rel="prev" title="libs.functions.tools.vacuum module" href="libs.functions.tools.vacuum.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,8 +63,10 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">integrations.web.events.handler module</a><ul>
-<li><a class="reference internal" href="#integrations.web.events.handler.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.functions.adjusting module</a><ul>
+<li><a class="reference internal" href="#libs.functions.adjusting.add_units"><code class="docutils literal notranslate"><span class="pre">add_units()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.adjusting.column_alignment"><code class="docutils literal notranslate"><span class="pre">column_alignment()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.adjusting.floatfmt"><code class="docutils literal notranslate"><span class="pre">floatfmt()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -72,13 +74,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.user_assets.html"
-                          title="previous chapter">integrations.web.events.create_bp.user_assets module</a></p>
+    <p class="topless"><a href="libs.functions.tools.vacuum.html"
+                          title="previous chapter">libs.functions.tools.vacuum module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="integrations.web.adapter.html"
-                          title="next chapter">integrations.web.adapter module</a></p>
+    <p class="topless"><a href="libs.functions.lookup.html"
+                          title="next chapter">libs.functions.lookup module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -102,10 +104,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="integrations.web.adapter.html" title="integrations.web.adapter module"
+          <a href="libs.functions.lookup.html" title="libs.functions.lookup module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.user_assets.html" title="integrations.web.events.create_bp.user_assets module"
+          <a href="libs.functions.tools.vacuum.html" title="libs.functions.tools.vacuum module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -117,10 +119,9 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" accesskey="U">integrations.web.events package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">integrations.web.events.handler module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.functions.html" accesskey="U">libs.functions package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.functions.adjusting module</a></li>
                 <li class="right">
                     
 
@@ -150,19 +151,66 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-integrations.web.events.handler">
-<span id="integrations-web-events-handler-module"></span><h1>integrations.web.events.handler module<a class="headerlink" href="#module-integrations.web.events.handler" title="Link to this heading">¶</a></h1>
-<p>integrations/web/events/handler.py</p>
+  <section id="module-libs.functions.adjusting">
+<span id="libs-functions-adjusting-module"></span><h1>libs.functions.adjusting module<a class="headerlink" href="#module-libs.functions.adjusting" title="Link to this heading">¶</a></h1>
+<p>libs/functions/adjusting.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="integrations.web.events.handler.main">
-<span class="sig-prename descclassname"><span class="pre">integrations.web.events.handler.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.handler.main" title="Link to this definition">¶</a></dt>
-<dd><p>メイン処理</p>
+<dt class="sig sig-object py" id="libs.functions.adjusting.add_units">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.adjusting.</span></span><span class="sig-name descname"><span class="pre">add_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.adjusting.add_units" title="Link to this definition">¶</a></dt>
+<dd><p>単位の追加、桁数の調整</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – 対象データ</p></li>
+<li><p><strong>compact</strong> (<em>bool</em>) – カラム名を折り返す</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>調整後のデータ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.functions.adjusting.column_alignment">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.adjusting.</span></span><span class="sig-name descname"><span class="pre">column_alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.adjusting.column_alignment" title="Link to this definition">¶</a></dt>
+<dd><p>カラム位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – チェックするデータ</p></li>
+<li><p><strong>header</strong> (<em>bool</em><em>, </em><em>optional</em>) – ヘッダを対象にする</p></li>
+<li><p><strong>index</strong> (<em>bool</em><em>, </em><em>optional</em>) – リストにIndexを含める. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>colalignに指定するリスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.functions.adjusting.floatfmt">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.adjusting.</span></span><span class="sig-name descname"><span class="pre">floatfmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.adjusting.floatfmt" title="Link to this definition">¶</a></dt>
+<dd><p>カラム名に応じたfloatfmtのリストを返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – チェックするデータ</p></li>
+<li><p><strong>index</strong> (<em>bool</em><em>, </em><em>optional</em>) – リストにIndexを含める. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>floatfmtに指定するリスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -179,8 +227,10 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">integrations.web.events.handler module</a><ul>
-<li><a class="reference internal" href="#integrations.web.events.handler.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.functions.adjusting module</a><ul>
+<li><a class="reference internal" href="#libs.functions.adjusting.add_units"><code class="docutils literal notranslate"><span class="pre">add_units()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.adjusting.column_alignment"><code class="docutils literal notranslate"><span class="pre">column_alignment()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.adjusting.floatfmt"><code class="docutils literal notranslate"><span class="pre">floatfmt()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -188,13 +238,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.user_assets.html"
-                          title="previous chapter">integrations.web.events.create_bp.user_assets module</a></p>
+    <p class="topless"><a href="libs.functions.tools.vacuum.html"
+                          title="previous chapter">libs.functions.tools.vacuum module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="integrations.web.adapter.html"
-                          title="next chapter">integrations.web.adapter module</a></p>
+    <p class="topless"><a href="libs.functions.lookup.html"
+                          title="next chapter">libs.functions.lookup module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -218,10 +268,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="integrations.web.adapter.html" title="integrations.web.adapter module"
+          <a href="libs.functions.lookup.html" title="libs.functions.lookup module"
              >next</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.user_assets.html" title="integrations.web.events.create_bp.user_assets module"
+          <a href="libs.functions.tools.vacuum.html" title="libs.functions.tools.vacuum module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -233,10 +283,9 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" >integrations.web.events package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">integrations.web.events.handler module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.functions.html" >libs.functions package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.functions.adjusting module</a></li>
                 <li class="right">
                     
 

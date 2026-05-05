@@ -316,9 +316,9 @@
 </li>
       <li><a href="integrations.discord.events.audioop.html#integrations.discord.events.audioop.add">add() (in module integrations.discord.events.audioop)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.GradeTableDict.addition_expression">addition_expression (libs.types.GradeTableDict attribute)</a>
+      <li><a href="libs.functions.adjusting.html#libs.functions.adjusting.add_units">add_units() (in module libs.functions.adjusting)</a>
 </li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.adjusting_values">adjusting_values() (in module libs.utils.formatter)</a>
+      <li><a href="libs.types.html#libs.types.GradeTableDict.addition_expression">addition_expression (libs.types.GradeTableDict attribute)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.after">after (libs.domain.datamodels.ComparisonResults property)</a>
 </li>
@@ -579,7 +579,7 @@
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.collection">collection (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 </li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.column_alignment">column_alignment() (in module libs.utils.formatter)</a>
+      <li><a href="libs.functions.adjusting.html#libs.functions.adjusting.column_alignment">column_alignment() (in module libs.functions.adjusting)</a>
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.command">command (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 
@@ -838,8 +838,6 @@
 </li>
       <li><a href="libs.commands.report.stats_list.html#libs.commands.report.stats_list.df_generation">df_generation() (in module libs.commands.report.stats_list)</a>
 </li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.df_rename">df_rename() (in module libs.utils.formatter)</a>
-</li>
       <li><a href="libs.utils.converter.html#libs.utils.converter.df_to_ranking">df_to_ranking() (in module libs.utils.converter)</a>
 </li>
       <li><a href="libs.utils.converter.html#libs.utils.converter.df_to_remarks">df_to_remarks() (in module libs.utils.converter)</a>
@@ -972,7 +970,7 @@
 </li>
       <li><a href="libs.domain.command.html#libs.domain.command.ParsedCommand.flags">flags (libs.domain.command.ParsedCommand attribute)</a>
 </li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.floatfmt_adjust">floatfmt_adjust() (in module libs.utils.formatter)</a>
+      <li><a href="libs.functions.adjusting.html#libs.functions.adjusting.floatfmt">floatfmt() (in module libs.functions.adjusting)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.flying">flying (libs.domain.stats.StatsDetailed attribute)</a>
 </li>
@@ -1031,8 +1029,6 @@
       <li><a href="libs.domain.score.html#libs.domain.score.GameResult">GameResult (class in libs.domain.score)</a>
 </li>
       <li><a href="libs.commands.report.stats_report.html#libs.commands.report.stats_report.gen_pdf">gen_pdf() (in module libs.commands.report.stats_report)</a>
-</li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.gen_rename_dict">gen_rename_dict() (in module libs.utils.formatter)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.Args.gen_test_data">gen_test_data (libs.domain.datamodels.Args attribute)</a>
 </li>
@@ -2192,6 +2188,13 @@
 </li>
       </ul></li>
       <li>
+    libs.functions.adjusting
+
+      <ul>
+        <li><a href="libs.functions.adjusting.html#module-libs.functions.adjusting">module</a>
+</li>
+      </ul></li>
+      <li>
     libs.functions.compose
 
       <ul>
@@ -2758,6 +2761,8 @@
 </li>
         <li><a href="libs.functions.html#module-libs.functions">libs.functions</a>
 </li>
+        <li><a href="libs.functions.adjusting.html#module-libs.functions.adjusting">libs.functions.adjusting</a>
+</li>
         <li><a href="libs.functions.compose.html#module-libs.functions.compose">libs.functions.compose</a>
 </li>
         <li><a href="libs.functions.compose.badge.html#module-libs.functions.compose.badge">libs.functions.compose.badge</a>
@@ -3299,10 +3304,10 @@
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.remark_mod">remark_mod (libs.domain.datamodels.ComparisonResults attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.types.html#libs.types.RemarkDict">RemarkDict (class in libs.types)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="integrations.protocols.html#integrations.protocols.MsgData.remarks">remarks (integrations.protocols.MsgData attribute)</a>
 
       <ul>
@@ -3335,6 +3340,8 @@
         <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.remove">(in module libs.commands.registry.team)</a>
 </li>
       </ul></li>
+      <li><a href="libs.utils.dictutil.html#libs.utils.dictutil.rename_dicts">rename_dicts() (in module libs.utils.dictutil)</a>
+</li>
       <li><a href="libs.types.html#libs.types.StyleOptions.rename_type">rename_type (libs.types.StyleOptions attribute)</a>
 </li>
       <li><a href="integrations.base.interface.html#integrations.base.interface.MessageParserInterface.reply_ts">reply_ts (integrations.base.interface.MessageParserInterface property)</a>
@@ -3665,7 +3672,7 @@
       </ul></li>
       <li><a href="libs.utils.textutil.html#libs.utils.textutil.split_balanced">split_balanced() (in module libs.utils.textutil)</a>
 </li>
-      <li><a href="libs.utils.formatter.html#libs.utils.formatter.split_strings">split_strings() (in module libs.utils.formatter)</a>
+      <li><a href="libs.utils.textutil.html#libs.utils.textutil.split_strings">split_strings() (in module libs.utils.textutil)</a>
 </li>
       <li><a href="libs.utils.textutil.html#libs.utils.textutil.split_text_blocks">split_text_blocks() (in module libs.utils.textutil)</a>
 </li>
@@ -4405,7 +4412,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.14.5.
-      Last updated on 2026-05-04.
+      Last updated on 2026-05-05.
     </div>
 
   </body>
