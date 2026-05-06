@@ -73,12 +73,12 @@ def main(m: "MessageParserProtocol") -> None:
         case "slack" | "discord":
             m.set_message(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
         case "web":
-            m.set_message(df_generation(df), StyleOptions())
+            m.set_message(df_generation(df), StyleOptions(title=title))
         case _:
             df = df.filter(
                 items=["player", "team", "game", "total_mix", "avg_mix", "1st_mix", "2nd_mix", "2nd_mix", "3rd_mix", "4th_mix", "flying_mix", "yakuman_mix"]
             )
-            m.set_message(df, StyleOptions())
+            m.set_message(df, StyleOptions(title=title))
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title))
 

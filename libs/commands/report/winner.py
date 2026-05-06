@@ -12,7 +12,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import dictutil, formatter, graphutil, textutil
+from libs.utils import formatter, graphutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -136,9 +136,6 @@ def plot(m: "MessageParserProtocol") -> None:
         case "slack" | "discord":
             m.set_message(report_file_path, StyleOptions(title="成績上位者", use_comment=True, header_hidden=True))
         case "web":
-            m.set_message(
-                results_df.rename(columns=dictutil.rename_dicts(results_df.columns.to_list(), StyleOptions())),
-                StyleOptions(title="成績上位者"),
-            )
+            m.set_message(results_df, StyleOptions(title="成績上位者"))
         case _:
-            m.set_message(pd.DataFrame(results).T, StyleOptions())
+            m.set_message(pd.DataFrame(results).T, StyleOptions(title="成績上位者"))
