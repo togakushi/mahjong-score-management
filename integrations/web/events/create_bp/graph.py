@@ -11,6 +11,9 @@ from flask import Blueprint, abort, current_app, request
 
 import libs.dispatcher
 import libs.global_value as g
+from libs.functions import adjusting
+from libs.types import StyleOptions
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from flask import Response
@@ -50,43 +53,51 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
             if isinstance(data, PosixPath) and data.exists():
                 message += f"<p>\n{data.read_text(encoding='utf-8')}\n</p>\n"
 
-            if isinstance(data, pd.DataFrame) and options.title == "素点情報":
-                show_index = options.show_index
-                data["ゲーム数"] = data["ゲーム数"].astype("float")
-                data.rename(columns={"平均値(x)": "平均値", "中央値(|)": "中央値"}, inplace=True)
-                message += f"<h2>{options.title}</h2>\n"
-                message += adapter.functions.to_styled_html(data, padding, show_index)
+            if isinstance(data, pd.DataFrame):
+                data = adjusting.add_units(data)
+                data.rename(
+                    columns=dictutil.rename_dicts(
+                        data.columns.to_list(),
+                        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+                    ),
+                    inplace=True,
+                )
 
-            if isinstance(data, pd.DataFrame) and options.title == "順位/ポイント情報":
-                show_index = options.show_index
-                data["ゲーム数"] = data["ゲーム数"].astype("float")
-                multi = [
-                    ("", "ゲーム数"),
-                    ("1位", "獲得数"),
-                    ("1位", "獲得率"),
-                    ("1.5位", "獲得数"),
-                    ("1.5位", "獲得率"),
-                    ("2位", "獲得数"),
-                    ("2位", "獲得率"),
-                    ("2.5位", "獲得数"),
-                    ("2.5位", "獲得率"),
-                    ("3位", "獲得数"),
-                    ("3位", "獲得率"),
-                    ("3.5位", "獲得数"),
-                    ("3.5位", "獲得率"),
-                    ("4位", "獲得数"),
-                    ("4位", "獲得率"),
-                    ("", "平均順位"),
-                    ("区間成績", "区間ポイント"),
-                    ("区間成績", "区間平均"),
-                    ("", "通算ポイント"),
-                ]
-                data.columns = pd.MultiIndex.from_tuples(multi)
-                for rank in ["1.5位", "2.5位", "3.5位"]:
-                    if not data[(rank, "獲得数")].sum():
-                        data.drop(columns=[(rank, "獲得数"), (rank, "獲得率")], inplace=True)
-                message += f"<h2>{options.title}</h2>\n"
-                message += adapter.functions.to_styled_html(data, padding, show_index)
+                if options.title == "素点情報":
+                    show_index = options.show_index
+                    data.rename(columns={"平均値(x)": "平均値", "中央値(|)": "中央値"}, inplace=True)
+                    message += f"<h2>{options.title}</h2>\n"
+                    message += adapter.functions.to_styled_html(data, padding, show_index)
+
+                if options.title == "順位/ポイント情報":
+                    show_index = options.show_index
+                    multi = [
+                        ("", "ゲーム数"),
+                        ("1位", "獲得数"),
+                        ("1位", "獲得率"),
+                        ("1.5位", "獲得数"),
+                        ("1.5位", "獲得率"),
+                        ("2位", "獲得数"),
+                        ("2位", "獲得率"),
+                        ("2.5位", "獲得数"),
+                        ("2.5位", "獲得率"),
+                        ("3位", "獲得数"),
+                        ("3位", "獲得率"),
+                        ("3.5位", "獲得数"),
+                        ("3.5位", "獲得率"),
+                        ("4位", "獲得数"),
+                        ("4位", "獲得率"),
+                        ("", "平均順位"),
+                        ("区間成績", "区間ポイント"),
+                        ("区間成績", "区間平均"),
+                        ("", "通算ポイント"),
+                    ]
+                    data.columns = pd.MultiIndex.from_tuples(multi)
+                    for rank in ["1.5位", "2.5位", "3.5位"]:
+                        if not data[(rank, "獲得数")].sum():
+                            data.drop(columns=[(rank, "獲得数"), (rank, "獲得率")], inplace=True)
+                    message += f"<h2>{options.title}</h2>\n"
+                    message += adapter.functions.to_styled_html(data, padding, show_index)
 
         cookie_data.update(body=message, **asdict(adapter.conf))
         page = adapter.functions.set_cookie("graph.html", request, cookie_data)

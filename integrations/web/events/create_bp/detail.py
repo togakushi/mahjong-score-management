@@ -10,6 +10,9 @@ from flask import Blueprint, abort, current_app, request
 
 import libs.dispatcher
 import libs.global_value as g
+from libs.functions import adjusting
+from libs.types import StyleOptions
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from flask import Response
@@ -52,6 +55,14 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
+                data = adjusting.add_units(data)
+                data.rename(
+                    columns=dictutil.rename_dicts(
+                        data.columns.to_list(),
+                        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+                    ),
+                    inplace=True,
+                )
                 if options.title == "戦績" and g.params.verbose:
                     padding = "0.25em 0.75em"
                     data = _conv_verbose(data)
@@ -81,7 +92,7 @@ def _conv_verbose(df: pd.DataFrame) -> pd.DataFrame:
 
     """
     if not isinstance(df.columns, pd.MultiIndex):
-        new_columns = [tuple(col.split("_")) if len(col.split("_")) != 1 else ("", col) for col in df.columns]
+        new_columns = [tuple(col.split(" ")) if len(col.split(" ")) != 1 else ("", col) for col in df.columns]
         df.columns = pd.MultiIndex.from_tuples(new_columns, names=["座席", "項目"])
 
     return df

@@ -10,6 +10,9 @@ from flask import Blueprint, abort, current_app, request
 
 import libs.dispatcher
 import libs.global_value as g
+from libs.functions import adjusting
+from libs.types import StyleOptions
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from flask import Response
@@ -51,6 +54,14 @@ def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
 
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
+                data = adjusting.add_units(data)
+                data.rename(
+                    columns=dictutil.rename_dicts(
+                        data.columns.to_list(),
+                        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+                    ),
+                    inplace=True,
+                )
                 message += adapter.functions.to_styled_html(data, padding, show_index)
 
             if isinstance(data, str):

@@ -10,10 +10,10 @@ import pytest
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration, initialization
-from libs.domain import modify
+from libs.domain import modify, validator
 from libs.domain.score import GameResult
 from libs.types import ServiceType
-from libs.utils import dbutil, validator
+from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 from tests.database import param_data
 

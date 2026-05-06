@@ -6,7 +6,6 @@
 - :doc:`libs.utils.converter`: 出力用テキスト生成
 - :doc:`libs.utils.formatter`: テキスト整形
 - :doc:`libs.utils.textutil`: テキストツール
-- :doc:`libs.utils.validator`: バリデータ
 - :doc:`libs.utils.graphutil`: グラフツール
 - :doc:`libs.utils.timekit`: datetime拡張
 """

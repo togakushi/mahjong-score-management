@@ -7,9 +7,9 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap.section import BaseSection
-from libs.domain import modify
+from libs.domain import modify, validator
 from libs.types import CommandType
-from libs.utils import dbutil, textutil, validator
+from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
     from configparser import ConfigParser, SectionProxy
