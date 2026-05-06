@@ -10,6 +10,9 @@ from flask import Blueprint, abort, current_app, request
 
 import libs.dispatcher
 import libs.global_value as g
+from libs.functions import adjusting
+from libs.types import StyleOptions
+from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from flask import Response
@@ -40,17 +43,26 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
         m = adapter.parser()
         cookie_data = adapter.functions.get_cookie(request)
         text = " ".join(cookie_data.values())
-        m.data.text = f"{g.cfg.report.commandword[0]} {text}"
+        m.data.text = f"{g.cfg.report.commandword[0]} {text}".strip()
         libs.dispatcher.by_keyword(m)
 
         headline_title, message = adapter.functions.header_message(m)
 
+        # todo: 成績一覧 / 対局対戦マトリックス
         for data, options in m.post.message:
             if not options.title.isnumeric() and options.title:
                 message += f"<h2>{options.title}</h2>\n"
-
             if isinstance(data, pd.DataFrame):
                 show_index = options.show_index
+                data = adjusting.add_units(data)
+                data.rename(
+                    columns=dictutil.rename_dicts(
+                        data.columns.to_list(),
+                        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+                    ),
+                    inplace=True,
+                )
+
                 if {"個人成績一覧", "チーム成績一覧"} & set(headline_title):
                     check_column = data.columns.to_list()
                     multi = [
