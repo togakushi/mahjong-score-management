@@ -201,19 +201,19 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
     count_stats = {
         "ゲーム数": rank_df.count().astype("int"),
-        "1位": rank_df[rank_df == 1].count().astype("int"),
+        "1位数": rank_df[rank_df == 1].count().astype("int"),
         "1位(%)": ((rank_df[rank_df == 1].count()) / rank_df.count()),
-        "1.5位": rank_df[rank_df == 1.5].count().astype("int"),
+        "1.5位数": rank_df[rank_df == 1.5].count().astype("int"),
         "1.5位(%)": ((rank_df[rank_df == 1.5].count()) / rank_df.count()),
-        "2位": rank_df[rank_df == 2].count().astype("int"),
+        "2位数": rank_df[rank_df == 2].count().astype("int"),
         "2位(%)": ((rank_df[rank_df == 2].count()) / rank_df.count()),
-        "2.5位": rank_df[rank_df == 2.5].count().astype("int"),
+        "2.5位数": rank_df[rank_df == 2.5].count().astype("int"),
         "2.5位(%)": ((rank_df[rank_df == 2.5].count()) / rank_df.count()),
-        "3位": rank_df[rank_df == 3].count().astype("int"),
+        "3位数": rank_df[rank_df == 3].count().astype("int"),
         "3位(%)": ((rank_df[rank_df == 3].count()) / rank_df.count()),
-        "3.5位": rank_df[rank_df == 3.5].count().astype("int"),
+        "3.5位数": rank_df[rank_df == 3.5].count().astype("int"),
         "3.5位(%)": ((rank_df[rank_df == 3.5].count()) / rank_df.count()),
-        "4位": rank_df[rank_df == 4].count().astype("int"),
+        "4位数": rank_df[rank_df == 4].count().astype("int"),
         "4位(%)": ((rank_df[rank_df == 4].count()) / rank_df.count()),
         "平均順位": rank_df.mean().round(2),
         "区間ポイント": point_sum_df.sum().round(1),
@@ -225,20 +225,20 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     count_df.loc[total_index] = pd.Series(
         {
             "ゲーム数": int(count_df["ゲーム数"].sum()),
-            "1位": int(count_df["1位"].sum()),
-            "1位(%)": float(count_df["1位"].sum() / count_df["ゲーム数"].sum()),
-            "1.5位": int(count_df["1.5位"].sum()),
-            "1.5位(%)": float(count_df["1.5位"].sum() / count_df["ゲーム数"].sum()),
-            "2位": int(count_df["2位"].sum()),
-            "2位(%)": float(count_df["2位"].sum() / count_df["ゲーム数"].sum()),
-            "2.5位": int(count_df["2.5位"].sum()),
-            "2.5位(%)": float(count_df["2.5位"].sum() / count_df["ゲーム数"].sum()),
-            "3位": int(count_df["3位"].sum()),
-            "3位(%)": float(count_df["3位"].sum() / count_df["ゲーム数"].sum()),
-            "3.5位": int(count_df["3.5位"].sum()),
-            "3.5位(%)": float(count_df["3.5位"].sum() / count_df["ゲーム数"].sum()),
-            "4位": int(count_df["4位"].sum()),
-            "4位(%)": float(count_df["4位"].sum() / count_df["ゲーム数"].sum()),
+            "1位数": int(count_df["1位数"].sum()),
+            "1位(%)": float(count_df["1位数"].sum() / count_df["ゲーム数"].sum()),
+            "1.5位数": int(count_df["1.5位数"].sum()),
+            "1.5位(%)": float(count_df["1.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "2位数": int(count_df["2位数"].sum()),
+            "2位(%)": float(count_df["2位数"].sum() / count_df["ゲーム数"].sum()),
+            "2.5位数": int(count_df["2.5位数"].sum()),
+            "2.5位(%)": float(count_df["2.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "3位数": int(count_df["3位数"].sum()),
+            "3位(%)": float(count_df["3位数"].sum() / count_df["ゲーム数"].sum()),
+            "3.5位数": int(count_df["3.5位数"].sum()),
+            "3.5位(%)": float(count_df["3.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "4位数": int(count_df["4位数"].sum()),
+            "4位(%)": float(count_df["4位数"].sum() / count_df["ゲーム数"].sum()),
             "平均順位": float(round(player_df["rank"].mean(), 2)),
             "区間ポイント": float(round(player_df["point"].sum(), 1)),
             "区間平均": float(round(player_df["point"].mean(), 1)),
@@ -247,17 +247,17 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     # テーブル用データ
     rank_table = pd.DataFrame()
     rank_table["ゲーム数"] = count_df["ゲーム数"].astype("int")
-    rank_table["1位"] = count_df.apply(lambda row: f"{row['1位(%)']:.2%} ({row['1位']:.0f})", axis=1)
-    if count_df["1.5位"].drop(index=["全区間"]).sum():
-        rank_table["1.5位"] = count_df.apply(lambda row: f"{row['1.5位(%)']:.2%} ({row['1.5位']:.0f})", axis=1)
-    rank_table["2位"] = count_df.apply(lambda row: f"{row['2位(%)']:.2%} ({row['2位']:.0f})", axis=1)
-    if count_df["2.5位"].drop(index=["全区間"]).sum():
-        rank_table["2.5位"] = count_df.apply(lambda row: f"{row['2.5位(%)']:.2%} ({row['2.5位']:.0f})", axis=1)
-    rank_table["3位"] = count_df.apply(lambda row: f"{row['3位(%)']:.2%} ({row['3位']:.0f})", axis=1)
-    if count_df["3.5位"].drop(index=["全区間"]).sum():
-        rank_table["3.5位"] = count_df.apply(lambda row: f"{row['3.5位(%)']:.2%} ({row['3.5位']:.0f})", axis=1)
+    rank_table["1位"] = count_df.apply(lambda row: f"{row['1位(%)']:.2%} ({row['1位数']:.0f})", axis=1)
+    if count_df["1.5位数"].drop(index=["全区間"]).sum():
+        rank_table["1.5位"] = count_df.apply(lambda row: f"{row['1.5位(%)']:.2%} ({row['1.5位数']:.0f})", axis=1)
+    rank_table["2位"] = count_df.apply(lambda row: f"{row['2位(%)']:.2%} ({row['2位数']:.0f})", axis=1)
+    if count_df["2.5位数"].drop(index=["全区間"]).sum():
+        rank_table["2.5位"] = count_df.apply(lambda row: f"{row['2.5位(%)']:.2%} ({row['2.5位数']:.0f})", axis=1)
+    rank_table["3位"] = count_df.apply(lambda row: f"{row['3位(%)']:.2%} ({row['3位数']:.0f})", axis=1)
+    if count_df["3.5位数"].drop(index=["全区間"]).sum():
+        rank_table["3.5位"] = count_df.apply(lambda row: f"{row['3.5位(%)']:.2%} ({row['3.5位数']:.0f})", axis=1)
     if g.params.mode == 4:
-        rank_table["4位"] = count_df.apply(lambda row: f"{row['4位(%)']:.2%} ({row['4位']:.0f})", axis=1)
+        rank_table["4位"] = count_df.apply(lambda row: f"{row['4位(%)']:.2%} ({row['4位数']:.0f})", axis=1)
     rank_table["平均順位"] = count_df.apply(lambda row: f"{row['平均順位']:.2f}", axis=1)
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=f"『{player}』の成績"))
@@ -758,13 +758,13 @@ def plotly_bar(title_text: str, df: pd.DataFrame) -> "Path":
 
     # 獲得率
     fig.add_trace(go.Bar(name="4位率", x=df.index, y=df["4位(%)"] * 100), secondary_y=False)
-    if df["3.5位"].sum():
+    if df["3.5位数"].sum():
         fig.add_trace(go.Bar(name="3.5位率", x=df.index, y=df["3.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="3位率", x=df.index, y=df["3位(%)"] * 100), secondary_y=False)
-    if df["2.5位"].sum():
+    if df["2.5位数"].sum():
         fig.add_trace(go.Bar(name="2.5位率", x=df.index, y=df["2.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="2位率", x=df.index, y=df["2位(%)"] * 100), secondary_y=False)
-    if df["1.5位"].sum():
+    if df["1.5位数"].sum():
         fig.add_trace(go.Bar(name="1.5位率", x=df.index, y=df["1.5位(%)"] * 100), secondary_y=False)
     fig.add_trace(go.Bar(name="1位率", x=df.index, y=df["1位(%)"] * 100), secondary_y=False)
 

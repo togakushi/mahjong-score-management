@@ -42,7 +42,7 @@ select
 from (
     select
         collection,
-        rank() over (partition by collection order by round(sum(point), 1) desc) as rank,
+        row_number() over (partition by collection order by round(sum(point), 1) desc) as rank,
         name,
         round(sum(point), 1) as total
     from

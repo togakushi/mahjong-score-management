@@ -126,6 +126,8 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                 df[column_name] = df[column_name].map(
                     lambda v: str(v) if str(v).endswith("%") else f"{float(v):.2f}%",
                 )
+            case x if x.endswith("(%)"):
+                df[column_name] = df[column_name].map(lambda v: f"{float(v):.2%}")
             case "平均順位":
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.2f}")
                 if compact:
@@ -135,6 +137,10 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             case x if x == "point" or x.endswith(("_point", "_total")):
                 df[column_name] = df[column_name].map(
                     lambda v: str(v) if str(v).endswith("pt") else f"{float(v):+.1f}pt".replace("-", "▲"),
+                )
+            case x if x.startswith("point") and x.endswith(tuple(map(str, range(1, 6)))):
+                df[column_name] = df[column_name].map(
+                    lambda v: str(v) if str(v).endswith("pt") or not v else f"{float(v):+.1f}pt".replace("-", "▲"),
                 )
             case x if x == "rpoint" or x.endswith("_rpoint"):
                 df[column_name] = df[column_name].map(
