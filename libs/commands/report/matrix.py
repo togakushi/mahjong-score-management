@@ -48,6 +48,6 @@ def plot(m: "MessageParserProtocol") -> None:
         case "slack" | "discord":
             m.set_message(file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
         case "web":
-            m.set_message(df, StyleOptions(show_index=True))
+            m.set_message(df, StyleOptions(title=title, show_index=True))
         case _:
-            m.set_message(df, StyleOptions(show_index=True))
+            m.set_message(df, StyleOptions(title=title, show_index=True))

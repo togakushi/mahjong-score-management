@@ -48,7 +48,6 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
 
         headline_title, message = adapter.functions.header_message(m)
 
-        # todo: 成績一覧 / 対局対戦マトリックス
         for data, options in m.post.message:
             if not options.title.isnumeric() and options.title:
                 message += f"<h2>{options.title}</h2>\n"
@@ -63,7 +62,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                     inplace=True,
                 )
 
-                if {"個人成績一覧", "チーム成績一覧"} & set(headline_title):
+                if options.title in {"個人成績一覧", "チーム成績一覧"}:
                     check_column = data.columns.to_list()
                     multi = [
                         ("", "プレイヤー名" if g.params.individual else "チーム名"),
@@ -85,7 +84,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                         ("役満", "和了率") if {"役満和了数", "役満和了率"}.issubset(check_column) else None,
                     ]
                     data.columns = pd.MultiIndex.from_tuples([x for x in multi if x is not None])
-                elif "成績上位者" in headline_title:
+                elif options.title in {"成績上位者"}:
                     name = "名前" if g.params.individual else "チーム"
                     check_column = data.columns.to_list()
                     multi = [
@@ -102,6 +101,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                         ("5位", "獲得ポイント"),
                     ]
                     data.columns = pd.MultiIndex.from_tuples([x for x in multi if x is not None])
+
                 message += adapter.functions.to_styled_html(data, padding, show_index)
 
             if isinstance(data, str):
