@@ -32,57 +32,52 @@ with target_data as (
     order by
         results.playtime desc
     --[recent] limit :target_count * 4 -- 直近N(縦持ちなので4倍する)
+),
+summary_data as (
+    select
+        name,
+        count() as "game",
+        round(sum(point), 1) as "total_point",
+        round(avg(point), 1) as "avg_point",
+        count(rank = 1 or null) as "rank1_count",
+        cast(count(rank = 1 or null) as real) / count() as "rank1_rate",
+        count(rank = 1.5 or null) as "rank1.5_count",
+        cast(count(rank = 1.5 or null) as real) / count() as "rank1.5_rate",
+        count(rank = 2 or null) as "rank2_count",
+        cast(count(rank = 2 or null) as real) / count() as "rank2_rate",
+        count(rank = 2.5 or null) as "rank2.5_count",
+        cast(count(rank = 2.5 or null) as real) / count() as "rank2.5_rate",
+        count(rank = 3 or null) as "rank3_count",
+        cast(count(rank = 3 or null) as real) / count() as "rank3_rate",
+        count(rank = 3.5 or null) as "rank3.5_count",
+        cast(count(rank = 3.5 or null) as real) / count() as "rank3.5_rate",
+        count(rank = 4 or null) as "rank4_count",
+        cast(count(rank = 4 or null) as real) / count() as "rank4_rate",
+        avg(rank) as "rank_avg",
+        count(rpoint < 0 or null) as "flying_count",
+        cast(count(rpoint < 0 or null) as real) / count() as "flying_rate",
+        ifnull(sum(yakuman_count), 0) as "yakuman_count",
+        cast(ifnull(sum(yakuman_count), 0) as real) / count() as "yakuman_rate"
+    from
+        target_data
+    group by
+        name
+    having
+        count() >= :stipulated -- 規定打数
+    order by
+        sum(point) desc
 )
 select
-    name,
-    count() as "game",
-    replace(printf("%+.1fpt", round(sum(point), 1)), "-", "▲") as "total_mix",
-    round(sum(point), 1) as "point_sum",
-    replace(printf("%+.1fpt", round(avg(point), 1)), "-", "▲") as "avg_mix",
-    round(avg(point), 1) as "point_avg",
-    count(rank = 1 or null) as "1st_count",
-    cast(count(rank = 1 or null) as real) / count() as "rank1_rate",
-    printf("%3d (%6.2f%%)",
-        count(rank = 1 or null),
-        round(cast(count(rank = 1 or null) as real) / count() * 100, 2)
-    ) as "1st_mix",
-    count(rank = 2 or null) as "2nd_count",
-    cast(count(rank = 2 or null) as real) / count() as "rank2_rate",
-    printf("%3d (%6.2f%%)",
-        count(rank = 2 or null),
-        round(cast(count(rank = 2 or null) as real) / count() * 100, 2)
-    ) as "2nd_mix",
-    count(rank = 3 or null) as "3rd_count",
-    cast(count(rank = 3 or null) as real) / count() as "rank3_rate",
-    printf("%3d (%6.2f%%)",
-        count(rank = 3 or null),
-        round(cast(count(rank = 3 or null) as real) / count() * 100, 2)
-    ) as "3rd_mix",
-    count(rank = 4 or null) as "4th_count",
-    cast(count(rank = 4 or null) as real) / count() as "rank4_rate",
-    printf("%3d (%6.2f%%)",
-        count(rank = 4 or null),
-        round(cast(count(rank = 4 or null) AS real) / count() * 100, 2)
-    ) as "4th_mix",
-    printf("%.2f", avg(rank)) as "rank_avg",
-    count(rpoint < 0 or null) as "flying_count",
-    cast(count(rpoint < 0 or null) as real) / count() as 'flying_rate',
-    printf("%3d (%6.2f%%)",
-        count(rpoint < 0 or null),
-        round(cast(count(rpoint < 0 or null) as real) / count() * 100, 2)
-    ) as "flying_mix",
-    ifnull(sum(yakuman_count), 0) as "yakuman_count",
-    cast(ifnull(sum(yakuman_count), 0) as real) / count() as 'yakuman_rate',
-    printf("%3d (%6.2f%%)",
-        ifnull(sum(yakuman_count), 0),
-        round(cast(ifnull(sum(yakuman_count), 0) as real) / count() * 100, 2)
-    ) as "yakuman_mix"
+    printf("%3d (%6.2f%%)", "rank1_count", "rank1_rate" * 100) as "rank1_mix",
+    printf("%3d (%6.2f%%)", "rank1.5_count", "rank1.5_rate" * 100) as "rank1.5_mix",
+    printf("%3d (%6.2f%%)", "rank2_count", "rank2_rate" * 100) as "rank2_mix",
+    printf("%3d (%6.2f%%)", "rank2.5_count", "rank2.5_rate" * 100) as "rank2.5_mix",
+    printf("%3d (%6.2f%%)", "rank3_count", "rank3_rate" * 100) as "rank3_mix",
+    printf("%3d (%6.2f%%)", "rank3.5_count", "rank3.5_rate" * 100) as "rank3.5_mix",
+    printf("%3d (%6.2f%%)", "rank4_count", "rank4_rate" * 100) as "rank4_mix",
+    printf("%3d (%6.2f%%)", "flying_count", "flying_rate" * 100) as "flying_mix",
+    printf("%3d (%6.2f%%)", "yakuman_count", "yakuman_rate" * 100) as "yakuman_mix",
+    *
 from
-    target_data
-group by
-    name
-having
-    count() >= :stipulated -- 規定打数
-order by
-    sum(point) desc
+    summary_data
 ;

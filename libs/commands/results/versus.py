@@ -188,8 +188,8 @@ def tmpl_vs_table(data: dict[Any, Any]) -> str:
                 ),
                 textwrap.dedent(
                     f"""\
-                    順位分布(自分)：{data["my_1st"]}-{data["my_2nd"]}-{data["my_3rd"]}-{data["my_4th"]} ({data["my_rank_avg"]:1.2f})
-                    順位分布(相手)：{data["vs_1st"]}-{data["vs_2nd"]}-{data["vs_3rd"]}-{data["vs_4th"]} ({data["vs_rank_avg"]:1.2f})
+                    順位分布(自分)：{data["my_rank1"]}-{data["my_rank2"]}-{data["my_rank3"]}-{data["my_rank4"]} ({data["my_rank_avg"]:1.2f})
+                    順位分布(相手)：{data["vs_rank1"]}-{data["vs_rank2"]}-{data["vs_rank3"]}-{data["vs_rank4"]} ({data["vs_rank_avg"]:1.2f})
                     """  # noqa: E501
                 ),
             ]

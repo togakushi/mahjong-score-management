@@ -54,8 +54,12 @@ def main(m: "MessageParserProtocol") -> None:
         title = "チーム成績一覧"
         df = df.rename(columns={"name": "team"})
 
+    # 未使用順位の削除
+    for col in ("rank1.5_count", "rank2.5_count", "rank3.5_count"):
+        if not df[col].sum():
+            df.drop(columns=[f"{col}", f"{col}".replace("count", "rate"), f"{col}".replace("count", "mix")], inplace=True)
     if g.params.mode == 3:
-        df.drop(columns=["4th_count", "rank4_rate", "4th_mix"], inplace=True)
+        df.drop(columns=["rank4_count", "rank4_rate", "rank4_mix"], inplace=True)
 
     # 非表示項目
     df.drop(columns=formatter.dropitems_list(df.columns.to_list()), inplace=True)
@@ -76,7 +80,23 @@ def main(m: "MessageParserProtocol") -> None:
             m.set_message(df_generation(df), StyleOptions(title=title))
         case _:
             df = df.filter(
-                items=["player", "team", "game", "total_mix", "avg_mix", "1st_mix", "2nd_mix", "2nd_mix", "3rd_mix", "4th_mix", "flying_mix", "yakuman_mix"]
+                items=[
+                    "player",
+                    "team",
+                    "game",
+                    "total_point",
+                    "avg_point",
+                    "rank1_mix",
+                    "rank1.5_mix",
+                    "rank2_mix",
+                    "rank2.5_mix",
+                    "rank2_mix",
+                    "rank3_mix",
+                    "rank3.5_mix",
+                    "rank4_mix",
+                    "flying_mix",
+                    "yakuman_mix",
+                ]
             )
             m.set_message(df, StyleOptions(title=title))
 
@@ -107,10 +127,14 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
             "total_mix",
             "avg_mix",
             "rank_avg",
-            "1st_mix",
-            "2nd_mix",
-            "3rd_mix",
-            "4th_mix",
+            "rank1_mix",
+            "rank1.5_mix",
+            "rank2_mix",
+            "rank2.5_mix",
+            "rank2_mix",
+            "rank3_mix",
+            "rank3.5_mix",
+            "rank4_mix",
             "rank_dist",
             "flying_mix",
             "yakuman_mix",
@@ -202,13 +226,13 @@ def text_generation(df: "pd.DataFrame") -> "MessageType":
             "game",
             "point_sum",
             "point_avg",
-            "1st_count",
+            "rank1_count",
             "rank1_rate",
-            "2nd_count",
+            "rank2_count",
             "rank2_rate",
-            "3rd_count",
+            "rank3_count",
             "rank3_rate",
-            "4th_count",
+            "rank4_count",
             "rank4_rate",
             "rank_avg",
             "flying_count",
@@ -244,13 +268,19 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
             "game",
             "point_sum",
             "point_avg",
-            "1st_count",
+            "rank1_count",
             "rank1_rate",
-            "2nd_count",
+            "rank1.5_count",
+            "rank1.5_rate",
+            "rank2_count",
             "rank2_rate",
-            "3rd_count",
+            "rank2.5_count",
+            "rank2.5_rate",
+            "rank3_count",
             "rank3_rate",
-            "4th_count",
+            "rank3.5_count",
+            "rank3.5_rate",
+            "rank4_count",
             "rank4_rate",
             "rank_avg",
             "flying_count",
@@ -292,13 +322,19 @@ def df_generation(df: "pd.DataFrame") -> "MessageType":
             "game",
             "point_sum",
             "point_avg",
-            "1st_count",
+            "rank1_count",
             "rank1_rate",
-            "2nd_count",
+            "rank1.5_count",
+            "rank1.5_rate",
+            "rank2_count",
             "rank2_rate",
-            "3rd_count",
+            "rank2.5_count",
+            "rank2.5_rate",
+            "rank3_count",
             "rank3_rate",
-            "4th_count",
+            "rank3.5_count",
+            "rank3.5_rate",
+            "rank4_count",
             "rank4_rate",
             "rank_avg",
             "flying_count",

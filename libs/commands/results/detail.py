@@ -102,6 +102,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
             "役満和了": stats.yakuman_list,
         }
     )
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
+        seat_data.drop(columns=["順位分布"], inplace=True)
 
     if g.cfg.rule.get_draw_split(g.params.rule_version):
         balance_data = textwrap.dedent(
