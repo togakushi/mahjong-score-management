@@ -176,7 +176,7 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             case x if x.endswith("(%)"):
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.2%}")
             # 順位
-            case "平均順位":
+            case x if x in {"平均順位", "rank_avg"}:
                 df[column_name] = [format_cell(v, digits=2) for v in df[column_name]]
                 if compact and x == "平均順位":
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)

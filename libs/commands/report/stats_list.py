@@ -54,6 +54,10 @@ def main(m: "MessageParserProtocol") -> None:
         title = "チーム成績一覧"
         df = df.rename(columns={"name": "team"})
 
+    # 未使用順位の削除
+    for col in ("rank1.5_count", "rank2.5_count", "rank3.5_count"):
+        if not df[col].sum():
+            df.drop(columns=[f"{col}", f"{col}".replace("count", "rate"), f"{col}".replace("count", "mix")], inplace=True)
     if g.params.mode == 3:
         df.drop(columns=["rank4_count", "rank4_rate", "rank4_mix"], inplace=True)
 
@@ -80,12 +84,15 @@ def main(m: "MessageParserProtocol") -> None:
                     "player",
                     "team",
                     "game",
-                    "total_mix",
-                    "avg_mix",
+                    "total_point",
+                    "avg_point",
                     "rank1_mix",
+                    "rank1.5_mix",
                     "rank2_mix",
+                    "rank2.5_mix",
                     "rank2_mix",
                     "rank3_mix",
+                    "rank3.5_mix",
                     "rank4_mix",
                     "flying_mix",
                     "yakuman_mix",
@@ -121,8 +128,12 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
             "avg_mix",
             "rank_avg",
             "rank1_mix",
+            "rank1.5_mix",
+            "rank2_mix",
+            "rank2.5_mix",
             "rank2_mix",
             "rank3_mix",
+            "rank3.5_mix",
             "rank4_mix",
             "rank_dist",
             "flying_mix",
@@ -259,10 +270,16 @@ def csv_generation(df: "pd.DataFrame") -> "MessageType":
             "point_avg",
             "rank1_count",
             "rank1_rate",
+            "rank1.5_count",
+            "rank1.5_rate",
             "rank2_count",
             "rank2_rate",
+            "rank2.5_count",
+            "rank2.5_rate",
             "rank3_count",
             "rank3_rate",
+            "rank3.5_count",
+            "rank3.5_rate",
             "rank4_count",
             "rank4_rate",
             "rank_avg",
@@ -307,10 +324,16 @@ def df_generation(df: "pd.DataFrame") -> "MessageType":
             "point_avg",
             "rank1_count",
             "rank1_rate",
+            "rank1.5_count",
+            "rank1.5_rate",
             "rank2_count",
             "rank2_rate",
+            "rank2.5_count",
+            "rank2.5_rate",
             "rank3_count",
             "rank3_rate",
+            "rank3.5_count",
+            "rank3.5_rate",
             "rank4_count",
             "rank4_rate",
             "rank_avg",

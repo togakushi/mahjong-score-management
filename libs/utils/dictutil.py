@@ -391,10 +391,16 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
                 rename_dict[x] = "平順" if short else "平均順位"
             case "rank1" | "rank1_count" | "rank1_mix":
                 rename_dict[x] = "1位数"
+            case "rank1.5" | "rank1.5_count" | "rank1.5_mix":
+                rename_dict[x] = "1.5位数"
             case "rank2" | "rank2_count" | "rank2_mix":
                 rename_dict[x] = "2位数"
+            case "rank2.5" | "rank2.5_count" | "rank2.5_mix":
+                rename_dict[x] = "2.5位数"
             case "rank3" | "rank3_count" | "rank3_mix":
                 rename_dict[x] = "3位数"
+            case "rank3.5" | "rank3.5_count" | "rank3.5_mix":
+                rename_dict[x] = "3.5位数"
             case "rank4" | "rank4_count" | "rank4_mix":
                 rename_dict[x] = "4位数"
             case "flying" | "flying_mix":
