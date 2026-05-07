@@ -41,7 +41,7 @@ def floatfmt(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append("+.1f")
             case "1位(ポイント)" | "2位(ポイント)" | "3位(ポイント)" | "4位(ポイント)" | "5位(ポイント)":
                 fmt.append("+.1f")
-            case "1st" | "2nd" | "3rd" | "4th" | "1位" | "2位" | "3位" | "4位" | "rank1" | "rank2" | "rank3" | "rank4":
+            case "1位" | "2位" | "3位" | "4位" | "rank1" | "rank2" | "rank3" | "rank4":
                 fmt.append(".0f")
             case "トビ" | "flying":
                 fmt.append(".0f")
