@@ -2,6 +2,8 @@
 libs/functions/adjusting.py
 """
 
+from typing import Optional
+
 import pandas as pd
 
 
@@ -111,50 +113,82 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
         pd.DataFrame: 調整後のデータ
 
     """
+
+    def format_cell(
+        v: object,
+        unit: Optional[str] = None,
+        signed: bool = False,
+        digits: int = 0,
+        nan_text: Optional[str] = None,
+    ) -> str:
+        ret: str = ""
+        if isinstance(v, float) and pd.isna(v):
+            return nan_text if nan_text else "該当なし"
+        elif isinstance(v, str):
+            if not v.strip():
+                return nan_text if nan_text else "該当なし"
+            if unit is not None and v.endswith(unit):
+                return v
+            else:
+                try:
+                    v = float(v)
+                except ValueError:
+                    return str(v)
+        else:
+            v = float(v)  # type: ignore
+
+        match unit:
+            case x if x is None:
+                ret = f"{v:.0f}" if v.is_integer() else f"{v:.{digits}f}"
+            case "位":
+                ret = f"{v:.0f}位" if v.is_integer() else f"{v:.{digits}f}位"
+            case _:
+                if signed:
+                    ret = f"{v:+.{digits}f}{unit}".replace("-", "▲")
+                else:
+                    ret = f"{v:.{digits}f}{unit}"
+
+        return ret
+
     for column_name in df.columns:
         match column_name:
-            case x if x.endswith(("ポイント", "(ポイント)")) or x == "区間平均":
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("pt") else f"{float(v):+.1f}pt".replace("-", "▲"),
-                )
-                if compact:
+            # ポイント
+            case x if x in {"point", "区間平均"} or x.endswith(("ポイント", "(ポイント)", "_point", "_total")):
+                df[column_name] = [format_cell(v, "pt", True, 1) for v in df[column_name]]
+                if compact and x.endswith("ポイント"):
                     new_name = "\n".join([x if x else "ポイント" for x in column_name.split("ポイント")])
                     df.rename(columns={column_name: new_name}, inplace=True)
+                    df[new_name] = df[new_name].astype(str)
+            case x if x.startswith("point") and x.endswith(tuple(map(str, range(1, 6)))):
+                df[column_name] = [format_cell(v, "pt", True, 1) for v in df[column_name]]
+            case x if x.startswith("diff_from_"):
+                df[column_name] = [format_cell(v, "pt", False, 1, "-------") for v in df[column_name]]
+            # 素点
+            case x if x == "rpoint" or x.endswith("_rpoint"):
+                df[column_name] = [format_cell(v, "点", True, 0) for v in df[column_name]]
+            case x if x == "rpoint_avg":
+                df[column_name] = [format_cell(v, "点", True, 1) for v in df[column_name]]
+            # 個数/率
             case x if x.endswith("数"):
-                df[column_name] = df[column_name].map(lambda v: f"{float(v):.0f}")
+                df[column_name] = [format_cell(v) for v in df[column_name]]
             case x if x.endswith("率"):
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("%") else f"{float(v):.2f}%",
-                )
+                df[column_name] = [format_cell(v, "%", False, 2) for v in df[column_name]]
             case x if x.endswith("(%)"):
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.2%}")
+            # 順位
             case "平均順位":
-                df[column_name] = df[column_name].map(lambda v: f"{float(v):.2f}")
-                if compact:
+                df[column_name] = [format_cell(v, digits=2) for v in df[column_name]]
+                if compact and x == "平均順位":
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)
+            case x if x == "rank" or x.endswith("_rank"):
+                df[column_name] = [format_cell(v, "位", False, 1) for v in df[column_name]]
+            # その他
             case "playtime":
                 df[column_name] = df[column_name].map(lambda v: str(v).replace("-", "/"))
-            case x if x == "point" or x.endswith(("_point", "_total")):
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("pt") else f"{float(v):+.1f}pt".replace("-", "▲"),
-                )
-            case x if x.startswith("point") and x.endswith(tuple(map(str, range(1, 6)))):
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("pt") or not v else f"{float(v):+.1f}pt".replace("-", "▲"),
-                )
-            case x if x == "rpoint" or x.endswith("_rpoint"):
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("点") else f"{float(v):+.0f}点".replace("-", "▲"),
-                )
-            case x if x == "rpoint_avg":
-                df[column_name] = df[column_name].map(
-                    lambda v: str(v) if str(v).endswith("点") else f"{float(v):.1f}点".replace("-", "▲"),
-                )
-            case x if x == "rank" or x.endswith("_rank"):
-                df[column_name] = df[column_name].map(lambda v: f"{float(v):.0f}位" if v.is_integer() else f"{v:.1f}位")
-            case x if x.startswith("diff_from_"):
-                df[column_name] = df[column_name].map(lambda v: f"{float(v):.1f}pt" if pd.notna(v) else "------")
             case x if x == "rate" or x.endswith("_dev"):
-                df[column_name] = df[column_name].map(lambda v: f"{float(v):.1f}")
+                df[column_name] = [format_cell(v, digits=1) for v in df[column_name]]
+
+        if column_name in df.columns:
+            df[column_name] = df[column_name].astype(str)
 
     return df
