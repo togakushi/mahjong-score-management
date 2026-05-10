@@ -207,8 +207,6 @@ def merge_dicts(dict1: dict[Any, Any], dict2: dict[Any, Any]) -> dict[Any, Any]:
 
         if isinstance(val1, (int, float)) and isinstance(val2, (int, float)):
             merged[key] = val1 + val2
-        elif isinstance(val1, str) and isinstance(val2, str):
-            merged[key] = val1 + val2
         elif isinstance(val1, list) and isinstance(val2, list):
             merged[key] = sorted(list(set(val1 + val2)))
         else:
