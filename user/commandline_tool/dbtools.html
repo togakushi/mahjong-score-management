@@ -187,10 +187,8 @@
 <dt class="field-odd">内容<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ヘルプ表示</p>
 </dd>
-<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dt class="field-even">備考<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
-<dt class="field-odd">備考<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
 </dd></dl>
 
@@ -313,10 +311,8 @@
 <dt class="field-odd">内容<span class="colon">:</span></dt>
 <dd class="field-odd"><p>データ突合</p>
 </dd>
-<dt class="field-even">省略時<span class="colon">:</span></dt>
-<dd class="field-even"><p></p></dd>
-<dt class="field-odd">備考<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">--service</span></code> で指定されている連携先と接続する</p>
+<dt class="field-even">備考<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">--service</span></code> で指定されている連携先と接続する</p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,19 +343,20 @@
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-dbtools.py-recalculation">
-<span class="sig-name descname"><span class="pre">--recalculation</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-recalculation" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">--recalculation</span></span><span class="sig-prename descclassname"><span class="pre">=[RULE_VERSION</span> <span class="pre">...]</span></span><a class="headerlink" href="#cmdoption-dbtools.py-recalculation" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">内容<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ポイント再計算</p>
 </dd>
 <dt class="field-even">省略時<span class="colon">:</span></dt>
-<dd class="field-even"><p></p></dd>
+<dd class="field-even"><p>全ルールバージョン</p>
+</dd>
 <dt class="field-odd">備考<span class="colon">:</span></dt>
 <dd class="field-odd"><p>記録済みデータの素点からポイントを再計算する</p>
 </dd>
 </dl>
 <div class="line-block">
-<div class="line">DBからスコア情報を取り込み、定義済みの <a class="reference internal" href="../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> と一致する <a class="reference internal" href="../configuration/rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> であればその <a class="reference internal" href="../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の集計方法で再計算する。</div>
+<div class="line">DBからスコア情報を取り込み、引数で指定した <a class="reference internal" href="../configuration/rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a>  の <a class="reference internal" href="../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で再計算する。</div>
 <div class="line">過去のデータを含め、すべてのレコードのポイントを再計算して更新する(変更点がなくても必ずupdateされる)。</div>
 </div>
 </dd></dl>
@@ -572,7 +569,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.14.6.
-      Last updated on 2026-05-07.
+      Last updated on 2026-05-10.
     </div>
 
   </body>

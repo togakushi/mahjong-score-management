@@ -32,7 +32,6 @@ dbtools.py
 .. option:: -h, --help
 
    :内容: ヘルプ表示
-   :省略時:
    :備考:
 
 .. option:: -c CONFIG, --config=CONFIG
@@ -91,7 +90,6 @@ dbtools.py
 .. option:: --compar
 
    :内容: データ突合
-   :省略時:
    :備考: ``--service`` で指定されている連携先と接続する
 
 .. option:: --unification=UNIFICATION
@@ -108,13 +106,13 @@ dbtools.py
       [rename]
       置き換え後の名前 = 置き換え前の名前, 置き換え前の名前, ...
 
-.. option:: --recalculation
+.. option:: --recalculation=[RULE_VERSION ...]
 
    :内容: ポイント再計算
-   :省略時:
+   :省略時: 全ルールバージョン
    :備考: 記録済みデータの素点からポイントを再計算する
 
-   | DBからスコア情報を取り込み、定義済みの `ルールセット` と一致する `rule_version` であればその `ルールセット` の集計方法で再計算する。
+   | DBからスコア情報を取り込み、引数で指定した `rule_version`  の `ルールセット` で再計算する。
    | 過去のデータを含め、すべてのレコードのポイントを再計算して更新する(変更点がなくても必ずupdateされる)。
 
 .. option:: --export=PREFIX
