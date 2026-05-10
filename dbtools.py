@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
     if g.args.compar:
         comparison.main()
-    if g.args.recalculation:
+    if g.args.recalculation or g.args.recalculation is not None:
         recalculation.main()
     if g.args.unification:
         unification.main()
