@@ -50,7 +50,7 @@ class Args:
     # dbtools
     compar: bool
     unification: "Path"
-    recalculation: bool
+    recalculation: list[str]
     export_data: str
     import_data: str
     vacuum: bool
