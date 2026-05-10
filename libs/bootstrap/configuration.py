@@ -153,8 +153,10 @@ def arg_parser() -> Args:
             )
             exclusive.add_argument(
                 "--recalculation",
-                action="store_true",
-                help="ポイント再計算",
+                type=str,
+                nargs="*",
+                metavar="RULE_VERSION",
+                help="ポイント再計算(引数なし=全ルール, 引数あり=指定ルールのみ)",
             )
             exclusive.add_argument(
                 "--export",
