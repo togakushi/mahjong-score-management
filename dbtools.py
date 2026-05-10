@@ -28,8 +28,8 @@ help:
             データ突合
         --unification=UNIFICATION
             ファイルの内容に従って記録済みのメンバー名を修正する(default: rename.ini)
-        --recalculation
-            ポイント再計算
+        --recalculation [RULE_VERSION ...]
+            ポイント再計算(引数なし=全ルール, 引数あり=指定ルールのみ)
         --export=PREFIX
             メンバー設定情報をエクスポート(default prefix: export)
         --import=PREFIX

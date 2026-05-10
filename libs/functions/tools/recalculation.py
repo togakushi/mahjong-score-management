@@ -28,7 +28,6 @@ def main() -> None:
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
         for rule_version in target_rule:
-            print(rule_version)
             logging.info("%s", vars(g.cfg.rule.data.get(rule_version)))
             rows = cur.execute(
                 """
