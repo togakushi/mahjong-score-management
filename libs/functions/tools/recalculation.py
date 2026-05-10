@@ -15,11 +15,21 @@ def main() -> None:
     """ポイント再計算"""
     g.cfg.initialization()
 
+    target_rule: set[str] = set()
+    for x in g.args.recalculation:
+        if chk := g.cfg.rule.keyword_mapping.get(x):
+            target_rule.add(chk)
+        if x in g.cfg.rule.rule_list:
+            target_rule.add(x)
+    if not target_rule:
+        target_rule.update(g.cfg.rule.rule_list)
+
     modify.db_backup()
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as cur:
-        for rule_version, rule_set in g.cfg.rule.data.items():
-            logging.info("%s", rule_set)
+        for rule_version in target_rule:
+            print(rule_version)
+            logging.info("%s", vars(g.cfg.rule.data.get(rule_version)))
             rows = cur.execute(
                 """
                 select
