@@ -140,6 +140,7 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
             "yakuman_mix",
         ]
     )
+    df = adjusting.add_units(df)
     df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
 
     # フォント/色彩設定
