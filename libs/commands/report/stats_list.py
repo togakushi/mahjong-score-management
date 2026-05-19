@@ -57,9 +57,9 @@ def main(m: "MessageParserProtocol") -> None:
     # 未使用順位の削除
     for col in ("rank1.5_count", "rank2.5_count", "rank3.5_count"):
         if not df[col].sum():
-            df.drop(columns=[f"{col}", f"{col}".replace("count", "rate"), f"{col}".replace("count", "mix")], inplace=True)
+            df.drop(columns=[f"{col}", f"{col}".replace("count", "rate"), f"{col}".replace("count", "rate-count")], inplace=True)
     if g.params.mode == 3:
-        df.drop(columns=["rank4_count", "rank4_rate", "rank4_mix"], inplace=True)
+        df.drop(columns=["rank4_count", "rank4_rate", "rank4_rate-count"], inplace=True)
 
     # 非表示項目
     df.drop(columns=formatter.dropitems_list(df.columns.to_list()), inplace=True)
@@ -86,16 +86,15 @@ def main(m: "MessageParserProtocol") -> None:
                     "game",
                     "total_point",
                     "avg_point",
-                    "rank1_mix",
-                    "rank1.5_mix",
-                    "rank2_mix",
-                    "rank2.5_mix",
-                    "rank2_mix",
-                    "rank3_mix",
-                    "rank3.5_mix",
-                    "rank4_mix",
-                    "flying_mix",
-                    "yakuman_mix",
+                    "rank1_rate-count",
+                    "rank1.5_rate-count",
+                    "rank2_rate-count",
+                    "rank2.5_rate-count",
+                    "rank3_rate-count",
+                    "rank3.5_rate-count",
+                    "rank4_rate-count",
+                    "flying_rate-count",
+                    "yakuman_rate-count",
                 ]
             )
             m.set_message(df, StyleOptions(title=title))
@@ -127,19 +126,19 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
             "total_mix",
             "avg_mix",
             "rank_avg",
-            "rank1_mix",
-            "rank1.5_mix",
-            "rank2_mix",
-            "rank2.5_mix",
-            "rank2_mix",
-            "rank3_mix",
-            "rank3.5_mix",
-            "rank4_mix",
+            "rank1_rate-count",
+            "rank1.5_rate-count",
+            "rank2_rate-count",
+            "rank2.5_rate-count",
+            "rank3_rate-count",
+            "rank3.5_rate-count",
+            "rank4_rate-count",
             "rank_dist",
-            "flying_mix",
-            "yakuman_mix",
+            "flying_rate-count",
+            "yakuman_rate-count",
         ]
     )
+    df = adjusting.add_units(df)
     df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
 
     # フォント/色彩設定

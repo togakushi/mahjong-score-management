@@ -256,13 +256,22 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "point_dev": "得点偏差",
         "rank_dev": "順位偏差",
         "grade": "段位",
+        "pt_diff": "差分",
+        "diff_from_above": "順位差",
+        "diff_from_top": "トップ差",
         #
         "rank1_rate-count": "1位率(回)",
         "rank1_rate": "1位率",
+        "rank1.5_rate-count": "1.5位率(回)",
+        "rank1.5_rate": "1.5位率",
         "rank2_rate-count": "2位率(回)",
         "rank2_rate": "2位率",
+        "rank2.5_rate-count": "2.5位率(回)",
+        "rank2.5_rate": "2.5位率",
         "rank3_rate-count": "3位率(回)",
         "rank3_rate": "3位率",
+        "rank3.5_rate-count": "3.5位率(回)",
+        "rank3.5_rate": "3.5位率",
         "rank4_rate-count": "4位率(回)",
         "rank4_rate": "4位率",
         "top2_rate-count": "連対率(回)",
@@ -275,6 +284,7 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "flying_rate": "トビ率",
         "flying_count": "トビ数",
         "yakuman_rate-count": "役満和了率(回)",
+        "yakuman_rate": "役満和了率",
         # 収支
         "avg_balance": "平均収支",
         "top2_balance": "連対収支",
@@ -387,34 +397,24 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
                 rename_dict[x] = "順位分布"
             case "rank_avg":
                 rename_dict[x] = "平順" if short else "平均順位"
-            case "rank1" | "rank1_count" | "rank1_mix":
+            case "rank1" | "rank1_count":
                 rename_dict[x] = "1位数"
-            case "rank1.5" | "rank1.5_count" | "rank1.5_mix":
+            case "rank1.5" | "rank1.5_count":
                 rename_dict[x] = "1.5位数"
-            case "rank2" | "rank2_count" | "rank2_mix":
+            case "rank2" | "rank2_count":
                 rename_dict[x] = "2位数"
-            case "rank2.5" | "rank2.5_count" | "rank2.5_mix":
+            case "rank2.5" | "rank2.5_count":
                 rename_dict[x] = "2.5位数"
-            case "rank3" | "rank3_count" | "rank3_mix":
+            case "rank3" | "rank3_count":
                 rename_dict[x] = "3位数"
-            case "rank3.5" | "rank3.5_count" | "rank3.5_mix":
+            case "rank3.5" | "rank3.5_count":
                 rename_dict[x] = "3.5位数"
-            case "rank4" | "rank4_count" | "rank4_mix":
+            case "rank4" | "rank4_count":
                 rename_dict[x] = "4位数"
-            case "flying" | "flying_mix":
+            case "flying":
                 rename_dict[x] = "飛" if short else "トビ"
-            case "pt_diff":
-                rename_dict[x] = "差分"
-            case "diff_from_above":
-                rename_dict[x] = "順位差"
-            case "diff_from_top":
-                rename_dict[x] = "トップ差"
-            case "yakuman_mix":
-                rename_dict[x] = "役満和了"
             case "yakuman_count" | "yakuman":
                 rename_dict[x] = "役満和了数"
-            case "yakuman_rate":
-                rename_dict[x] = "役満和了率"
             case "win":
                 rename_dict[x] = "勝" if short else "勝ち"
             case "lose":
