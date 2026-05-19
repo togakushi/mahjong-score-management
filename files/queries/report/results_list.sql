@@ -68,15 +68,15 @@ summary_data as (
         sum(point) desc
 )
 select
-    printf("%3d (%6.2f%%)", "rank1_count", "rank1_rate" * 100) as "rank1_mix",
-    printf("%3d (%6.2f%%)", "rank1.5_count", "rank1.5_rate" * 100) as "rank1.5_mix",
-    printf("%3d (%6.2f%%)", "rank2_count", "rank2_rate" * 100) as "rank2_mix",
-    printf("%3d (%6.2f%%)", "rank2.5_count", "rank2.5_rate" * 100) as "rank2.5_mix",
-    printf("%3d (%6.2f%%)", "rank3_count", "rank3_rate" * 100) as "rank3_mix",
-    printf("%3d (%6.2f%%)", "rank3.5_count", "rank3.5_rate" * 100) as "rank3.5_mix",
-    printf("%3d (%6.2f%%)", "rank4_count", "rank4_rate" * 100) as "rank4_mix",
-    printf("%3d (%6.2f%%)", "flying_count", "flying_rate" * 100) as "flying_mix",
-    printf("%3d (%6.2f%%)", "yakuman_count", "yakuman_rate" * 100) as "yakuman_mix",
+    printf("%6.2f%% (%3d)", "rank1_rate" * 100, "rank1_count" ) as "rank1_rate-count",
+    printf("%6.2f%% (%3d)", "rank1.5_rate" * 100, "rank1.5_count") as "rank1.5_rate-count",
+    printf("%6.2f%% (%3d)", "rank2_rate" * 100, "rank2_count" ) as "rank2_rate-count",
+    printf("%6.2f%% (%3d)", "rank2.5_rate" * 100, "rank2.5_count") as "rank2.5_rate-count",
+    printf("%6.2f%% (%3d)", "rank3_rate" * 100, "rank3_count" ) as "rank3_rate-count",
+    printf("%6.2f%% (%3d)", "rank3.5_rate" * 100, "rank3.5_count") as "rank3.5_rate-count",
+    printf("%6.2f%% (%3d)", "rank4_rate" * 100, "rank4_count" ) as "rank4_rate-count",
+    printf("%6.2f%% (%3d)", "flying_rate" * 100, "flying_count" ) as "flying_rate-count",
+    printf("%6.2f%% (%3d)", "yakuman_rate" * 100, "yakuman_count") as "yakuman_rate-count",
     *
 from
     summary_data

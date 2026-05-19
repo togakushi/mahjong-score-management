@@ -142,8 +142,8 @@ def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
 
     # 関連ワードを追加
     related_words_set: dict[str, set[str]] = {
-        "flying": {"トビ", "トビ率", "飛", "flying", "flying_mix", "flying_count", "flying_rate", "flying_rate-count"},
-        "yakuman": {"役満", "役満和了", "役満和了率", "yakuman_mix", "yakuman_count", "yakuman_rate", "yakuman_rate-count"},
+        "flying": {"トビ", "トビ率", "飛", "flying", "flying_count", "flying_rate", "flying_rate-count"},
+        "yakuman": {"役満", "役満和了", "役満和了率", "yakuman_count", "yakuman_rate", "yakuman_rate-count"},
         "regulation": {"卓外", "卓外清算", "卓外ポイント"},
         "other": {"その他", "メモ"},
     }
