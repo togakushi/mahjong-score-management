@@ -139,7 +139,7 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
 
         match unit:
             case x if x is None:
-                ret = f"{v:.0f}" if v.is_integer() else f"{v:.{digits}f}"
+                ret = f"{v:.{digits}f}"
             case "位":
                 ret = f"{v:.0f}位" if v.is_integer() else f"{v:.{digits}f}位"
             case _:
