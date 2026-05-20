@@ -76,14 +76,15 @@
 </li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection"><code class="docutils literal notranslate"><span class="pre">MemberSection</span></code></a><ul>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.__init__"><code class="docutils literal notranslate"><span class="pre">MemberSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.after_loading"><code class="docutils literal notranslate"><span class="pre">MemberSection.after_loading()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.all_lists"><code class="docutils literal notranslate"><span class="pre">MemberSection.all_lists</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.character_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.character_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.command_suffix"><code class="docutils literal notranslate"><span class="pre">MemberSection.command_suffix</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.commandword"><code class="docutils literal notranslate"><span class="pre">MemberSection.commandword</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.config_load"><code class="docutils literal notranslate"><span class="pre">MemberSection.config_load()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_commandword"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_commandword</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_reset"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_reset()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.get_info"><code class="docutils literal notranslate"><span class="pre">MemberSection.get_info</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.guest_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.guest_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.info"><code class="docutils literal notranslate"><span class="pre">MemberSection.info</span></code></a></li>
@@ -252,6 +253,17 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.after_loading">
+<span class="sig-name descname"><span class="pre">after_loading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.after_loading" title="Link to this definition">¶</a></dt>
+<dd><p>呼び出しキーワード取り込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.alias">
 <span class="sig-name descname"><span class="pre">alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.alias" title="Link to this definition">¶</a></dt>
 <dd><p>指定メンバーの別名をリストで返す</p>
@@ -306,24 +318,21 @@
 <dd><p>呼び出しキーワード</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.config_load">
-<span class="sig-name descname"><span class="pre">config_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_proxy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.config_load" title="Link to this definition">¶</a></dt>
-<dd><p>設定値取り込み</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>section_proxy</strong> (<em>SectionProxy</em>) – 読み込み先(パーサー + セクション名)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.default_commandword">
 <span class="sig-name descname"><span class="pre">default_commandword</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.default_commandword" title="Link to this definition">¶</a></dt>
 <dd><p>コマンドワードデフォルト値</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.default_reset">
+<span class="sig-name descname"><span class="pre">default_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.default_reset" title="Link to this definition">¶</a></dt>
+<dd><p>デフォルト値にリセット</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -464,14 +473,15 @@
 </li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection"><code class="docutils literal notranslate"><span class="pre">MemberSection</span></code></a><ul>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.__init__"><code class="docutils literal notranslate"><span class="pre">MemberSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.after_loading"><code class="docutils literal notranslate"><span class="pre">MemberSection.after_loading()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.all_lists"><code class="docutils literal notranslate"><span class="pre">MemberSection.all_lists</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.character_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.character_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.command_suffix"><code class="docutils literal notranslate"><span class="pre">MemberSection.command_suffix</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.commandword"><code class="docutils literal notranslate"><span class="pre">MemberSection.commandword</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.config_load"><code class="docutils literal notranslate"><span class="pre">MemberSection.config_load()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_commandword"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_commandword</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_reset"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_reset()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.get_info"><code class="docutils literal notranslate"><span class="pre">MemberSection.get_info</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.guest_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.guest_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.info"><code class="docutils literal notranslate"><span class="pre">MemberSection.info</span></code></a></li>
