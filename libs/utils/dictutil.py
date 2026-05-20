@@ -40,6 +40,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
 
     """
     # 初期化
+    g.cfg.initialization()
     parser: CommandParser = CommandParser()
     params: PlaceholderBuilder = PlaceholderBuilder()
     rule_version: str | None = None
