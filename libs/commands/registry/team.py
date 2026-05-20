@@ -13,7 +13,7 @@ from libs.types import CommandType
 from libs.utils import dbutil, formatter, textutil
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser, SectionProxy
+    from configparser import ConfigParser
 
     from libs.bootstrap.app_config import AppConfig
 
@@ -57,9 +57,10 @@ class TeamSection(BaseSection):
         self.default_commandword = "チーム一覧"
         self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
-        self._reset()
+        self.default_reset()
 
-    def _reset(self) -> None:
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -68,18 +69,8 @@ class TeamSection(BaseSection):
         self.member_limit = int(16)
         self.friendly_fire = bool(True)
 
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self._reset()
-        self.initialization(section_proxy)
-
-        # 呼び出しキーワード取り込み
+    def after_loading(self) -> None:
+        """呼び出しキーワード取り込み"""
         self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.trace("%s: %s", self.section, self)  # type: ignore

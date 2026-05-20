@@ -12,7 +12,7 @@ from libs.types import CommandType
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser, SectionProxy
+    from configparser import ConfigParser
 
     from libs.bootstrap.app_config import AppConfig
 
@@ -64,9 +64,10 @@ class MemberSection(BaseSection):
         self.default_commandword = "メンバー一覧"
         self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
-        self._reset()
+        self.default_reset()
 
-    def _reset(self) -> None:
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
         self.info = []
         self.commandword = []
         self.command_suffix = []
@@ -75,18 +76,8 @@ class MemberSection(BaseSection):
         self.alias_limit = int(16)
         self.guest_name = str("ゲスト")
 
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self._reset()
-        self.initialization(section_proxy)
-
-        # 呼び出しキーワード取り込み
+    def after_loading(self) -> None:
+        """呼び出しキーワード取り込み"""
         self.commandword = self.getlist("commandword", fallback=self.default_commandword)
 
         logging.trace("%s: %s", self.section, self)  # type: ignore

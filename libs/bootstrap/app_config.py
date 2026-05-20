@@ -112,16 +112,16 @@ class AppConfig:
 
     def initialization(self) -> None:
         """設定ファイル読み込み"""
-        self.setting.config_load(self.main_parser["setting"])
-        self.alias.config_load(self.main_parser["alias"])
-        self.member.config_load(self.main_parser["member"])
-        self.team.config_load(self.main_parser["team"])
+        self.setting.initialization(self.main_parser["setting"])
+        self.alias.initialization(self.main_parser["alias"])
+        self.member.initialization(self.main_parser["member"])
+        self.team.initialization(self.main_parser["team"])
 
-        self.results.config_load(self.main_parser["results"])
-        self.graph.config_load(self.main_parser["graph"])
-        self.ranking.config_load(self.main_parser["ranking"])
-        self.report.config_load(self.main_parser["report"])
-        self.help.config_load(self.main_parser["help"])
+        self.results.initialization(self.main_parser["results"])
+        self.graph.initialization(self.main_parser["graph"])
+        self.ranking.initialization(self.main_parser["ranking"])
+        self.report.initialization(self.main_parser["report"])
+        self.help.initialization(self.main_parser["help"])
 
         # フォントファイルチェック
         for chk_dir in (self.config_dir, self.script_dir):
@@ -199,26 +199,26 @@ class AppConfig:
         protected_values: Union[str, list[str]]
         match section_name:
             case "setting":
-                self.setting.config_load(additional_config_parser[section_name])
+                self.setting.initialization(additional_config_parser[section_name])
             case "results":
                 protected_values = self.results.commandword  # 上書き保護
-                self.results.config_load(additional_config_parser[section_name])
+                self.results.initialization(additional_config_parser[section_name])
                 self.results.commandword = protected_values
             case "graph":
                 protected_values = self.graph.commandword  # 上書き保護
-                self.graph.config_load(additional_config_parser[section_name])
+                self.graph.initialization(additional_config_parser[section_name])
                 self.graph.commandword = protected_values
             case "ranking":
                 protected_values = self.ranking.commandword  # 上書き保護
-                self.ranking.config_load(additional_config_parser[section_name])
+                self.ranking.initialization(additional_config_parser[section_name])
                 self.ranking.commandword = protected_values
             case "report":
                 protected_values = self.report.commandword  # 上書き保護
-                self.report.config_load(additional_config_parser[section_name])
+                self.report.initialization(additional_config_parser[section_name])
                 self.report.commandword = protected_values
             case "help":
                 protected_values = self.help.commandword  # 上書き保護
-                self.help.config_load(additional_config_parser[section_name])
+                self.help.initialization(additional_config_parser[section_name])
                 self.help.commandword = protected_values
             case _:
                 return

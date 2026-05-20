@@ -113,6 +113,11 @@ class BaseSection(CommonMethodMixin):
 
         """
         self.section_proxy = section_proxy
+
+        # 設定値取り込み前の初期化処理
+        if (reset_method := getattr(self, "default_reset", None)) and callable(reset_method):
+            reset_method()
+
         for k in self.section_proxy.keys():
             if k not in self.to_dict():
                 continue  # インスタンス変数と一致しない項目はスキップ
@@ -142,25 +147,9 @@ class BaseSection(CommonMethodMixin):
                 case _:
                     setattr(self, k, current_value)
 
-    def _before_config_load(self) -> None:
-        """設定値取り込み前の初期化処理"""
-        if (reset_method := getattr(self, "default_reset", None)) and callable(reset_method):
-            reset_method()
-
-    def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
-        """設定値取り込み後の追加処理"""
-
-    def config_load(self, section_proxy: "SectionProxy") -> None:
-        """
-        設定値取り込み
-
-        Args:
-            section_proxy (SectionProxy): 読み込み先(パーサー + セクション名)
-
-        """
-        self._before_config_load()
-        self.initialization(section_proxy)
-        self._after_config_load(section_proxy)
+        # 設定値取り込み後の追加処理
+        if (after_method := getattr(self, "after_loading", None)) and callable(after_method):
+            after_method()
 
         logging.trace("%s: %s", self.section, self)  # type: ignore
 
@@ -271,10 +260,10 @@ class AliasSection(BaseSection):
     team_clear: list[str] = field(default_factory=lambda: ["team_clear"])
     """全チーム情報削除コマンド"""
 
-    def _after_config_load(self, _section_proxy: "SectionProxy") -> None:
+    def after_loading(self) -> None:
         """AliasSection専用の追加処理"""
 
-        # delのエイリアス取り込み(設定ファイルに`delete`と書かれていない)
+        # delのエイリアス取り込み(設定ファイルに ``delete`` と書かれていない)
         self.delete.extend(self.getlist("del", fallback="del"))
 
 
