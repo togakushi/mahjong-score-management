@@ -74,7 +74,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
         params.separate = False  # DM / HomeApp(slack) はセパレートしない
 
     # ルール識別子探索
-    params.update_setting(main_config=g.cfg.config_file, key_name="default_rule", val_type=str)
+    params.update_setting(main_config=g.cfg.config_file, key_name="default_rule", val_type=str, fallback="default_rule")
     if (command_suffix := subcom.to_dict().get("command_suffix")) and isinstance(command_suffix, list):
         rule_version = lookup.get_current_rule_version(m, command_suffix)
     rule_version = rule_version if rule_version else params.default_rule

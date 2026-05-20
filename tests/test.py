@@ -87,6 +87,7 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         )
 
     # ---------------------------------------------------------------------------------------------
+    configuration.setup()
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
     target_loop: list[str] = []
