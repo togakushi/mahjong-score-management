@@ -3,7 +3,7 @@ libs/bootstrap/section.py
 """
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import MISSING, dataclass, field, fields
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
@@ -226,6 +226,14 @@ class SettingSection(BaseSection):
     """グラフスタイル"""
     work_dir: Path = field(default=Path("work"))
     """作業ディレクトリ"""
+
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
+        for f in fields(self):
+            if f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
 
 
 @dataclass
