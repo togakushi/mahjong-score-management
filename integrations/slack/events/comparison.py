@@ -6,10 +6,10 @@ import logging
 from typing import TYPE_CHECKING, cast
 
 import libs.global_value as g
-from libs.domain import modify, validator
+from libs.domain import modify
 from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
-from libs.functions import lookup, search
+from libs.functions import lookup, search, validator
 from libs.types import ActionStatus, CommandType, StyleOptions
 from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt

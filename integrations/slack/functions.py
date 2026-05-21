@@ -7,8 +7,7 @@ from typing import TYPE_CHECKING, Any, Union, cast
 
 import libs.global_value as g
 from integrations.base.interface import FunctionsInterface
-from libs.domain import validator
-from libs.functions import lookup
+from libs.functions import lookup, validator
 from libs.types import ActionStatus
 from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt

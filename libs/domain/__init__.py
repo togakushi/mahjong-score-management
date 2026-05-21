@@ -2,6 +2,7 @@
 アプリケーションロジック
 
 - :doc:`libs.domain.datamodels`: データモデル
+- :doc:`libs.domain.section`: 設定ファイル取り込み
 - :doc:`libs.domain.command`: コマンド引数解析
 - :doc:`libs.domain.score`: スコア解析
 - :doc:`libs.domain.stats`: 成績解析
@@ -9,5 +10,4 @@
 - :doc:`libs.domain.placeholder`: プレースホルダ構築
 - :doc:`libs.domain.aggregate`: データ集計
 - :doc:`libs.domain.modify`: DBデータ操作
-- :doc:`libs.domain.validator`: バリデータ
 """

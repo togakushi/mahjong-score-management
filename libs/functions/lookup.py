@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.section import SubCommands
+    from libs.domain.section import SubCommands
 
 
 def get_config_value(

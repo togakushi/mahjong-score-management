@@ -6,7 +6,7 @@ import textwrap
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.bootstrap.section import SubCommands
+from libs.domain.section import SubCommands
 from libs.functions import lookup
 from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil, formatter

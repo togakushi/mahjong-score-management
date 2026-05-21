@@ -8,8 +8,7 @@ from typing import Any, Generator
 import pytest
 
 from libs.bootstrap import configuration
-from libs.domain import validator
-from libs.functions import lookup
+from libs.functions import lookup, validator
 from tests.name_check import param_data
 
 TEST_ARGS = ["progname", "--config=tests/test_data/saki.ini"]

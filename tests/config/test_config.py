@@ -16,7 +16,7 @@ from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 
 if TYPE_CHECKING:
-    from libs.bootstrap.section import SubCommands
+    from libs.domain.section import SubCommands
 
 
 def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -7,7 +7,7 @@ import re
 from typing import Optional, cast
 
 import libs.global_value as g
-from libs.bootstrap.section import SubCommands
+from libs.domain.section import SubCommands
 from libs.types import StyleOptions
 from libs.utils import dictutil, textutil
 

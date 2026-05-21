@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from integrations.base.interface import IntegrationsConfig
-from libs.bootstrap.section import BaseSection
+from libs.domain.section import BaseSection
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
