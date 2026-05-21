@@ -12,7 +12,7 @@ from libs.bootstrap import configuration
 from tests.config import param_data
 
 if TYPE_CHECKING:
-    from libs.bootstrap.section import SubCommands
+    from libs.domain.section import SubCommands
 
 
 @pytest.mark.parametrize(

@@ -5,8 +5,8 @@ libs/commands/graph/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.bootstrap.section import SubCommands
 from libs.commands.graph import personal, rating, summary
+from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil
 

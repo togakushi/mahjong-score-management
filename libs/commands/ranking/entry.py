@@ -5,8 +5,8 @@ libs/commands/ranking/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.bootstrap.section import SubCommands
 from libs.commands.ranking import ranking, rating
+from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil
 

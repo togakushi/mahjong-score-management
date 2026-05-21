@@ -9,7 +9,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from libs.bootstrap.section import AliasSection, BaseSection, SettingSection, SubCommands
 from libs.commands.graph.entry import GraphConfig
 from libs.commands.help.entry import HelpConfig
 from libs.commands.ranking.entry import RankingConfig
@@ -18,6 +17,7 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.domain.rule import RuleSet
+from libs.domain.section import AliasSection, BaseSection, SettingSection, SubCommands
 from libs.functions.lookup import read_memberslist
 from libs.types import CommandType, GradeTableDict, ServiceType
 

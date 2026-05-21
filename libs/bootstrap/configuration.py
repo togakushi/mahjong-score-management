@@ -28,7 +28,7 @@ from libs.types import ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.section import SubCommands
+    from libs.domain.section import SubCommands
 
 
 def set_loglevel() -> None:

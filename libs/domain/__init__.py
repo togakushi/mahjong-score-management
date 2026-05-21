@@ -2,6 +2,7 @@
 アプリケーションロジック
 
 - :doc:`libs.domain.datamodels`: データモデル
+- :doc:`libs.domain.section`: 設定ファイル取り込み
 - :doc:`libs.domain.command`: コマンド引数解析
 - :doc:`libs.domain.score`: スコア解析
 - :doc:`libs.domain.stats`: 成績解析
