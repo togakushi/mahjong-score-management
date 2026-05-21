@@ -10,5 +10,4 @@
 - :doc:`libs.domain.placeholder`: プレースホルダ構築
 - :doc:`libs.domain.aggregate`: データ集計
 - :doc:`libs.domain.modify`: DBデータ操作
-- :doc:`libs.domain.validator`: バリデータ
 """

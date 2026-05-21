@@ -7,4 +7,6 @@
 - :doc:`libs.functions.compose`: メッセージ生成
 - :doc:`libs.functions.adjusting`: 表・桁数・調整
 - :doc:`libs.functions.tools`: 外部ツール用モジュール
+- :doc:`libs.functions.validator`: バリデータ
+
 """

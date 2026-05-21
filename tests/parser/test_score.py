@@ -10,8 +10,8 @@ import pytest
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration, initialization
-from libs.domain import validator
 from libs.domain.score import GameResult
+from libs.functions import validator
 from libs.types import ServiceType
 from tests.parser import param_data
 

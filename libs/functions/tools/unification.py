@@ -6,8 +6,8 @@ import configparser
 import logging
 
 import libs.global_value as g
-from libs.domain import modify, validator
-from libs.functions import lookup
+from libs.domain import modify
+from libs.functions import lookup, validator
 from libs.utils import dbutil, textutil
 
 

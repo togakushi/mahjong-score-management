@@ -7,9 +7,9 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from integrations import factory
-from libs.domain import modify, validator
+from libs.domain import modify
 from libs.domain.score import GameResult
-from libs.functions import lookup, message
+from libs.functions import lookup, message, validator
 from libs.types import MessageStatus, StyleOptions
 from libs.utils import formatter
 
