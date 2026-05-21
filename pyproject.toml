@@ -1,6 +1,6 @@
 [project]
 name = "mahjong-score-management"
-version = "0.14.6"
+version = "0.14.7"
 description = "Mahjong score management tool"
 readme = "README.md"
 license = "MIT"
