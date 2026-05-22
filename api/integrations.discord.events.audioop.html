@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>integrations.discord.events.audioop module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="integrations.discord.events.comparison module" href="integrations.discord.events.comparison.html" />
+    <link rel="prev" title="integrations.discord.events package" href="integrations.discord.events.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.discord.events.audioop module</a><ul>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.mul"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.bias"><code class="docutils literal notranslate"><span class="pre">bias()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.getsample"><code class="docutils literal notranslate"><span class="pre">getsample()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.rms"><code class="docutils literal notranslate"><span class="pre">rms()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.discord.events.html"
+                          title="previous chapter">integrations.discord.events package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.discord.events.comparison.html"
+                          title="next chapter">integrations.discord.events.comparison module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.discord.events.comparison.html" title="integrations.discord.events.comparison module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.discord.events.html" title="integrations.discord.events package"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.discord.html" >integrations.discord package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.discord.events.html" accesskey="U">integrations.discord.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.discord.events.audioop module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-integrations.discord.events.audioop">
+<span id="integrations-discord-events-audioop-module"></span><h1>integrations.discord.events.audioop module<a class="headerlink" href="#module-integrations.discord.events.audioop" title="Link to this heading">¶</a></h1>
+<p>integrations/discord/events/audioop.py</p>
+<ul class="simple">
+<li><p>audioop.py - ダミーモジュール（音声機能を使用しないため空実装）</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.mul">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.mul" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.add">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.add" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.bias">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">bias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.bias" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.getsample">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">getsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.getsample" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.max">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.max" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="integrations.discord.events.audioop.rms">
+<span class="sig-prename descclassname"><span class="pre">integrations.discord.events.audioop.</span></span><span class="sig-name descname"><span class="pre">rms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.events.audioop.rms" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations.discord.events.audioop module</a><ul>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.mul"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.bias"><code class="docutils literal notranslate"><span class="pre">bias()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.getsample"><code class="docutils literal notranslate"><span class="pre">getsample()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.events.audioop.rms"><code class="docutils literal notranslate"><span class="pre">rms()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.discord.events.html"
+                          title="previous chapter">integrations.discord.events package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.discord.events.comparison.html"
+                          title="next chapter">integrations.discord.events.comparison module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.discord.events.comparison.html" title="integrations.discord.events.comparison module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrations.discord.events.html" title="integrations.discord.events package"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="integrations.discord.html" >integrations.discord package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="integrations.discord.events.html" >integrations.discord.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">integrations.discord.events.audioop module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

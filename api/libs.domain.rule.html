@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.rule module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.domain.score module" href="libs.domain.score.html" />
+    <link rel="prev" title="libs.domain.placeholder module" href="libs.domain.placeholder.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.rule module</a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData"><code class="docutils literal notranslate"><span class="pre">RuleData</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.rule_version"><code class="docutils literal notranslate"><span class="pre">RuleData.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.mode"><code class="docutils literal notranslate"><span class="pre">RuleData.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.origin_point"><code class="docutils literal notranslate"><span class="pre">RuleData.origin_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.return_point"><code class="docutils literal notranslate"><span class="pre">RuleData.return_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.rank_point"><code class="docutils literal notranslate"><span class="pre">RuleData.rank_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.ignore_flying"><code class="docutils literal notranslate"><span class="pre">RuleData.ignore_flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.draw_split"><code class="docutils literal notranslate"><span class="pre">RuleData.draw_split</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.undefined_word"><code class="docutils literal notranslate"><span class="pre">RuleData.undefined_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.keywords"><code class="docutils literal notranslate"><span class="pre">RuleData.keywords</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.remarks"><code class="docutils literal notranslate"><span class="pre">RuleData.remarks</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.dropitems"><code class="docutils literal notranslate"><span class="pre">RuleData.dropitems</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.first_time"><code class="docutils literal notranslate"><span class="pre">RuleData.first_time</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.last_time"><code class="docutils literal notranslate"><span class="pre">RuleData.last_time</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.count"><code class="docutils literal notranslate"><span class="pre">RuleData.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.update"><code class="docutils literal notranslate"><span class="pre">RuleData.update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.__init__"><code class="docutils literal notranslate"><span class="pre">RuleData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet"><code class="docutils literal notranslate"><span class="pre">RuleSet</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.__init__"><code class="docutils literal notranslate"><span class="pre">RuleSet.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.config"><code class="docutils literal notranslate"><span class="pre">RuleSet.config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.data"><code class="docutils literal notranslate"><span class="pre">RuleSet.data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.keyword_mapping"><code class="docutils literal notranslate"><span class="pre">RuleSet.keyword_mapping</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.remarks_words"><code class="docutils literal notranslate"><span class="pre">RuleSet.remarks_words</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.data_set"><code class="docutils literal notranslate"><span class="pre">RuleSet.data_set()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.read_config"><code class="docutils literal notranslate"><span class="pre">RuleSet.read_config()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.status_update"><code class="docutils literal notranslate"><span class="pre">RuleSet.status_update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.remarks_words_update"><code class="docutils literal notranslate"><span class="pre">RuleSet.remarks_words_update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.to_dict"><code class="docutils literal notranslate"><span class="pre">RuleSet.to_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.keywords"><code class="docutils literal notranslate"><span class="pre">RuleSet.keywords()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.dropitems"><code class="docutils literal notranslate"><span class="pre">RuleSet.dropitems()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_version"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_version()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_mode"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_mode()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_ignore_flying"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_ignore_flying()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_draw_split"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_draw_split()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_undefined_word"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_undefined_word()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.print"><code class="docutils literal notranslate"><span class="pre">RuleSet.print()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.info"><code class="docutils literal notranslate"><span class="pre">RuleSet.info()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.check"><code class="docutils literal notranslate"><span class="pre">RuleSet.check()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.register_to_database"><code class="docutils literal notranslate"><span class="pre">RuleSet.register_to_database()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.rule_list"><code class="docutils literal notranslate"><span class="pre">RuleSet.rule_list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.placeholder.html"
+                          title="previous chapter">libs.domain.placeholder module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="next chapter">libs.domain.score module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.placeholder.html" title="libs.domain.placeholder module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.rule module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.rule">
+<span id="libs-domain-rule-module"></span><h1>libs.domain.rule module<a class="headerlink" href="#module-libs.domain.rule" title="Link to this heading">¶</a></h1>
+<p>libs/domain/rule.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.rule.</span></span><span class="sig-name descname"><span class="pre">RuleData</span></span><a class="headerlink" href="#libs.domain.rule.RuleData" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ルールデータ</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.rule_version">
+<span class="sig-name descname"><span class="pre">rule_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.rule_version" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.mode" title="Link to this definition">¶</a></dt>
+<dd><p>集計モード切替(四人打ち/三人打ち)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.origin_point">
+<span class="sig-name descname"><span class="pre">origin_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">250</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.origin_point" title="Link to this definition">¶</a></dt>
+<dd><p>配給原点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.return_point">
+<span class="sig-name descname"><span class="pre">return_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">300</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.return_point" title="Link to this definition">¶</a></dt>
+<dd><p>返し点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.rank_point">
+<span class="sig-name descname"><span class="pre">rank_point</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleData.rank_point" title="Link to this definition">¶</a></dt>
+<dd><p>順位点</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.ignore_flying">
+<span class="sig-name descname"><span class="pre">ignore_flying</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.ignore_flying" title="Link to this definition">¶</a></dt>
+<dd><p>トビカウント
+- <em>True</em>: なし
+- <em>False</em>: あり</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.draw_split">
+<span class="sig-name descname"><span class="pre">draw_split</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.draw_split" title="Link to this definition">¶</a></dt>
+<dd><p>同点時の順位点
+- <em>True</em>: 山分けにする
+- <em>False</em>: 席順で決める</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.undefined_word">
+<span class="sig-name descname"><span class="pre">undefined_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.undefined_word" title="Link to this definition">¶</a></dt>
+<dd><p>未定義ワードタイプ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.keywords">
+<span class="sig-name descname"><span class="pre">keywords</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleData.keywords" title="Link to this definition">¶</a></dt>
+<dd><p>成績記録キーワード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.remarks">
+<span class="sig-name descname"><span class="pre">remarks</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleData.remarks" title="Link to this definition">¶</a></dt>
+<dd><p>メモ記録ワード</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.dropitems">
+<span class="sig-name descname"><span class="pre">dropitems</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleData.dropitems" title="Link to this definition">¶</a></dt>
+<dd><p>非表示にする項目</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.first_time">
+<span class="sig-name descname"><span class="pre">first_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.first_time" title="Link to this definition">¶</a></dt>
+<dd><p>記録開始日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.last_time">
+<span class="sig-name descname"><span class="pre">last_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.last_time" title="Link to this definition">¶</a></dt>
+<dd><p>最終記録日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.rule.RuleData.count" title="Link to this definition">¶</a></dt>
+<dd><p>記録回数</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleData.update" title="Link to this definition">¶</a></dt>
+<dd><p>ルール更新</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_data</strong> (<em>Mapping</em>) – 更新データ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_flying</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undefined_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remarks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropitems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1900-01-01</span> <span class="pre">00:00:00.000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleData.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_version</strong> (<em>str</em>)</p></li>
+<li><p><strong>mode</strong> (<em>Literal</em><em>[</em><em>3</em><em>, </em><em>4</em><em>]</em>)</p></li>
+<li><p><strong>origin_point</strong> (<em>int</em>)</p></li>
+<li><p><strong>return_point</strong> (<em>int</em>)</p></li>
+<li><p><strong>rank_point</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>)</p></li>
+<li><p><strong>ignore_flying</strong> (<em>bool</em>)</p></li>
+<li><p><strong>draw_split</strong> (<em>bool</em>)</p></li>
+<li><p><strong>undefined_word</strong> (<em>int</em>)</p></li>
+<li><p><strong>keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>remarks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>dropitems</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>first_time</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>last_time</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a>)</p></li>
+<li><p><strong>count</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.rule.</span></span><span class="sig-name descname"><span class="pre">RuleSet</span></span><a class="headerlink" href="#libs.domain.rule.RuleSet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ルールセット</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.config">
+<span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ConfigParser</span></span><a class="headerlink" href="#libs.domain.rule.RuleSet.config" title="Link to this definition">¶</a></dt>
+<dd><p>ルール設定ファイル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.rule.RuleData" title="libs.domain.rule.RuleData"><span class="pre">RuleData</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleSet.data" title="Link to this definition">¶</a></dt>
+<dd><p>ルール情報格納辞書</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.keyword_mapping">
+<span class="sig-name descname"><span class="pre">keyword_mapping</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleSet.keyword_mapping" title="Link to this definition">¶</a></dt>
+<dd><p>登録キーワードとルール識別子のマッピング</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.remarks_words">
+<span class="sig-name descname"><span class="pre">remarks_words</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleSet.remarks_words" title="Link to this definition">¶</a></dt>
+<dd><p>メモ記録ワードリスト</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.data_set">
+<span class="sig-name descname"><span class="pre">data_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.data_set" title="Link to this definition">¶</a></dt>
+<dd><p>ルール登録</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section_name</strong> (<em>str</em>) – セクション名</p></li>
+<li><p><strong>rule_data</strong> (<em>Mapping</em>) – 更新データ情報</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.read_config">
+<span class="sig-name descname"><span class="pre">read_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.read_config" title="Link to this definition">¶</a></dt>
+<dd><p>設定ファイル読み込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Path</em>) – ルール設定ファイル</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.status_update">
+<span class="sig-name descname"><span class="pre">status_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.status_update" title="Link to this definition">¶</a></dt>
+<dd><p>ステータス更新</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – プレースホルダ</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.remarks_words_update">
+<span class="sig-name descname"><span class="pre">remarks_words_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.remarks_words_update" title="Link to this definition">¶</a></dt>
+<dd><p>メモ記録ワードリストを更新する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>suffix</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – メモに追加するサフィックス</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.to_dict" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子の情報を辞書で返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ルール情報</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.keywords">
+<span class="sig-name descname"><span class="pre">keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.keywords" title="Link to this definition">¶</a></dt>
+<dd><p>成績記録キーワードの取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>成績記録キーワード</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.dropitems">
+<span class="sig-name descname"><span class="pre">dropitems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.dropitems" title="Link to this definition">¶</a></dt>
+<dd><p>非表示項目の取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>非表示項目</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.get_version">
+<span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.get_version" title="Link to this definition">¶</a></dt>
+<dd><p>指定した条件のルール識別子をリストで返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>int</em>) – 集計モード</p></li>
+<li><p><strong>mapping</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Defaults to True.</p>
+<ul>
+<li><p><em>True</em>: キーワードマッピングに登録されているルールのみ</p></li>
+<li><p><em>False</em>: ルールとして定義されているものすべて</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ルール識別子</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.get_mode">
+<span class="sig-name descname"><span class="pre">get_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.get_mode" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子の集計モードを返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計モード</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.get_ignore_flying">
+<span class="sig-name descname"><span class="pre">get_ignore_flying</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.get_ignore_flying" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子のトビカウントフラグを返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>トビカウントフラグ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.get_draw_split">
+<span class="sig-name descname"><span class="pre">get_draw_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.get_draw_split" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子の順位点山分けフラグを返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>順位点山分けフラグ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.get_undefined_word">
+<span class="sig-name descname"><span class="pre">get_undefined_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.get_undefined_word" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子の未定義ワードタイプを返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>未定義ワードタイプ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.print" title="Link to this definition">¶</a></dt>
+<dd><p>指定ルール識別子の内容を出力する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_version</strong> (<em>str</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>内容</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.info" title="Link to this definition">¶</a></dt>
+<dd><p>定義ルールをログに出力する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chk_commands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chk_members</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_rule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.check" title="Link to this definition">¶</a></dt>
+<dd><p>キーワード重複チェック</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chk_commands</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – チェック対象コマンド名</p></li>
+<li><p><strong>chk_members</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – チェック対象メンバー名/チーム名</p></li>
+<li><p><strong>default_rule</strong> (<em>str</em>) – デフォルトルールバージョン</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – 重複あり</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.register_to_database">
+<span class="sig-name descname"><span class="pre">register_to_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.rule.RuleSet.register_to_database" title="Link to this definition">¶</a></dt>
+<dd><p>ルールセット情報をDBに登録する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.rule.RuleSet.rule_list">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rule_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.rule.RuleSet.rule_list" title="Link to this definition">¶</a></dt>
+<dd><p>定義済みルール識別子の列挙</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ルール識別子</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.rule module</a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData"><code class="docutils literal notranslate"><span class="pre">RuleData</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.rule_version"><code class="docutils literal notranslate"><span class="pre">RuleData.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.mode"><code class="docutils literal notranslate"><span class="pre">RuleData.mode</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.origin_point"><code class="docutils literal notranslate"><span class="pre">RuleData.origin_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.return_point"><code class="docutils literal notranslate"><span class="pre">RuleData.return_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.rank_point"><code class="docutils literal notranslate"><span class="pre">RuleData.rank_point</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.ignore_flying"><code class="docutils literal notranslate"><span class="pre">RuleData.ignore_flying</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.draw_split"><code class="docutils literal notranslate"><span class="pre">RuleData.draw_split</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.undefined_word"><code class="docutils literal notranslate"><span class="pre">RuleData.undefined_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.keywords"><code class="docutils literal notranslate"><span class="pre">RuleData.keywords</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.remarks"><code class="docutils literal notranslate"><span class="pre">RuleData.remarks</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.dropitems"><code class="docutils literal notranslate"><span class="pre">RuleData.dropitems</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.first_time"><code class="docutils literal notranslate"><span class="pre">RuleData.first_time</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.last_time"><code class="docutils literal notranslate"><span class="pre">RuleData.last_time</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.count"><code class="docutils literal notranslate"><span class="pre">RuleData.count</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.update"><code class="docutils literal notranslate"><span class="pre">RuleData.update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleData.__init__"><code class="docutils literal notranslate"><span class="pre">RuleData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet"><code class="docutils literal notranslate"><span class="pre">RuleSet</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.__init__"><code class="docutils literal notranslate"><span class="pre">RuleSet.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.config"><code class="docutils literal notranslate"><span class="pre">RuleSet.config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.data"><code class="docutils literal notranslate"><span class="pre">RuleSet.data</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.keyword_mapping"><code class="docutils literal notranslate"><span class="pre">RuleSet.keyword_mapping</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.remarks_words"><code class="docutils literal notranslate"><span class="pre">RuleSet.remarks_words</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.data_set"><code class="docutils literal notranslate"><span class="pre">RuleSet.data_set()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.read_config"><code class="docutils literal notranslate"><span class="pre">RuleSet.read_config()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.status_update"><code class="docutils literal notranslate"><span class="pre">RuleSet.status_update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.remarks_words_update"><code class="docutils literal notranslate"><span class="pre">RuleSet.remarks_words_update()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.to_dict"><code class="docutils literal notranslate"><span class="pre">RuleSet.to_dict()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.keywords"><code class="docutils literal notranslate"><span class="pre">RuleSet.keywords()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.dropitems"><code class="docutils literal notranslate"><span class="pre">RuleSet.dropitems()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_version"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_version()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_mode"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_mode()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_ignore_flying"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_ignore_flying()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_draw_split"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_draw_split()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.get_undefined_word"><code class="docutils literal notranslate"><span class="pre">RuleSet.get_undefined_word()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.print"><code class="docutils literal notranslate"><span class="pre">RuleSet.print()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.info"><code class="docutils literal notranslate"><span class="pre">RuleSet.info()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.check"><code class="docutils literal notranslate"><span class="pre">RuleSet.check()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.register_to_database"><code class="docutils literal notranslate"><span class="pre">RuleSet.register_to_database()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.rule.RuleSet.rule_list"><code class="docutils literal notranslate"><span class="pre">RuleSet.rule_list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.placeholder.html"
+                          title="previous chapter">libs.domain.placeholder module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="next chapter">libs.domain.score module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.placeholder.html" title="libs.domain.placeholder module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.rule module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

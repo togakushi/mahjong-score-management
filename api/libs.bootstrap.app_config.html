@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.bootstrap.app_config module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.bootstrap.configuration module" href="libs.bootstrap.configuration.html" />
+    <link rel="prev" title="libs.bootstrap package" href="libs.bootstrap.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.bootstrap.app_config module</a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig"><code class="docutils literal notranslate"><span class="pre">AppConfig</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AppConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_file"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.main_parser"><code class="docutils literal notranslate"><span class="pre">AppConfig.main_parser</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.script_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.script_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.selected_service"><code class="docutils literal notranslate"><span class="pre">AppConfig.selected_service</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.setting"><code class="docutils literal notranslate"><span class="pre">AppConfig.setting</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.alias"><code class="docutils literal notranslate"><span class="pre">AppConfig.alias</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.member"><code class="docutils literal notranslate"><span class="pre">AppConfig.member</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.team"><code class="docutils literal notranslate"><span class="pre">AppConfig.team</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.badge"><code class="docutils literal notranslate"><span class="pre">AppConfig.badge</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.results"><code class="docutils literal notranslate"><span class="pre">AppConfig.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.graph"><code class="docutils literal notranslate"><span class="pre">AppConfig.graph</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.ranking"><code class="docutils literal notranslate"><span class="pre">AppConfig.ranking</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.report"><code class="docutils literal notranslate"><span class="pre">AppConfig.report</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.help"><code class="docutils literal notranslate"><span class="pre">AppConfig.help</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.rule"><code class="docutils literal notranslate"><span class="pre">AppConfig.rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.initialization"><code class="docutils literal notranslate"><span class="pre">AppConfig.initialization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.word_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.word_list()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.overwrite"><code class="docutils literal notranslate"><span class="pre">AppConfig.overwrite()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.read_channel_config"><code class="docutils literal notranslate"><span class="pre">AppConfig.read_channel_config()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id"><code class="docutils literal notranslate"><span class="pre">AppConfig.resolve_channel_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.bootstrap.html"
+                          title="previous chapter">libs.bootstrap package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.bootstrap.configuration.html"
+                          title="next chapter">libs.bootstrap.configuration module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.configuration.html" title="libs.bootstrap.configuration module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.html" title="libs.bootstrap package"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.bootstrap.html" accesskey="U">libs.bootstrap package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.bootstrap.app_config module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.bootstrap.app_config">
+<span id="libs-bootstrap-app-config-module"></span><h1>libs.bootstrap.app_config module<a class="headerlink" href="#module-libs.bootstrap.app_config" title="Link to this heading">¶</a></h1>
+<p>libs/bootstrap/app_config.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.bootstrap.app_config.</span></span><span class="sig-name descname"><span class="pre">BadgeDisplay</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
+<p>バッジ表示</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BadgeGradeSpec</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>段位</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name">
+<span class="sig-name descname"><span class="pre">table_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table">
+<span class="sig-name descname"><span class="pre">table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><span class="pre">GradeTableDict</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>table</strong> (<a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><em>GradeTableDict</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.grade">
+<span class="sig-name descname"><span class="pre">grade</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec" title="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><span class="pre">BadgeGradeSpec</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">BadgeDisplay.BadgeGradeSpec(table_name='',</span> <span class="pre">table={})</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.grade" title="Link to this definition">¶</a></dt>
+<dd><p>段位情報</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outer</strong> (<a class="reference internal" href="#libs.bootstrap.app_config.AppConfig" title="libs.bootstrap.app_config.AppConfig"><em>AppConfig</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.bootstrap.app_config.</span></span><span class="sig-name descname"><span class="pre">AppConfig</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>アプリケーション設定</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config_file</strong> (<em>Path</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.config_file">
+<span class="sig-name descname"><span class="pre">config_file</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.config_file" title="Link to this definition">¶</a></dt>
+<dd><p>メイン設定ファイルパス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.main_parser">
+<span class="sig-name descname"><span class="pre">main_parser</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ConfigParser</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.main_parser" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.script_dir">
+<span class="sig-name descname"><span class="pre">script_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.script_dir" title="Link to this definition">¶</a></dt>
+<dd><p>スクリプトが保存されているディレクトリパス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.config_dir">
+<span class="sig-name descname"><span class="pre">config_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.config_dir" title="Link to this definition">¶</a></dt>
+<dd><p>設定ファイルが保存されているディレクトリパス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.selected_service">
+<span class="sig-name descname"><span class="pre">selected_service</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.types.html#libs.types.ServiceType" title="libs.types.ServiceType"><span class="pre">ServiceType</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.selected_service" title="Link to this definition">¶</a></dt>
+<dd><p>連携先サービス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.setting">
+<span class="sig-name descname"><span class="pre">setting</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection" title="libs.domain.section.SettingSection"><span class="pre">SettingSection</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.setting" title="Link to this definition">¶</a></dt>
+<dd><p>settingセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.alias">
+<span class="sig-name descname"><span class="pre">alias</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection" title="libs.domain.section.AliasSection"><span class="pre">AliasSection</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.alias" title="Link to this definition">¶</a></dt>
+<dd><p>aliasセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.member">
+<span class="sig-name descname"><span class="pre">member</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection" title="libs.commands.registry.member.MemberSection"><span class="pre">MemberSection</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.member" title="Link to this definition">¶</a></dt>
+<dd><p>memberセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.team">
+<span class="sig-name descname"><span class="pre">team</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection" title="libs.commands.registry.team.TeamSection"><span class="pre">TeamSection</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.team" title="Link to this definition">¶</a></dt>
+<dd><p>teamセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.badge">
+<span class="sig-name descname"><span class="pre">badge</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay" title="libs.bootstrap.app_config.BadgeDisplay"><span class="pre">BadgeDisplay</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.badge" title="Link to this definition">¶</a></dt>
+<dd><p>バッジ設定</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><span class="pre">SubCommands</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.results" title="Link to this definition">¶</a></dt>
+<dd><p>resultsセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.graph">
+<span class="sig-name descname"><span class="pre">graph</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><span class="pre">SubCommands</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.graph" title="Link to this definition">¶</a></dt>
+<dd><p>graphセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.ranking">
+<span class="sig-name descname"><span class="pre">ranking</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><span class="pre">SubCommands</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.ranking" title="Link to this definition">¶</a></dt>
+<dd><p>rankingセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><span class="pre">SubCommands</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.report" title="Link to this definition">¶</a></dt>
+<dd><p>reportセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.help">
+<span class="sig-name descname"><span class="pre">help</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><span class="pre">SubCommands</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.help" title="Link to this definition">¶</a></dt>
+<dd><p>helpセクション設定値</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.rule">
+<span class="sig-name descname"><span class="pre">rule</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.rule.html#libs.domain.rule.RuleSet" title="libs.domain.rule.RuleSet"><span class="pre">RuleSet</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.rule" title="Link to this definition">¶</a></dt>
+<dd><p>ルール情報</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.initialization">
+<span class="sig-name descname"><span class="pre">initialization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.initialization" title="Link to this definition">¶</a></dt>
+<dd><p>設定ファイル読み込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.word_list">
+<span class="sig-name descname"><span class="pre">word_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">add_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.word_list" title="Link to this definition">¶</a></dt>
+<dd><p>設定されている値、キーワードをリスト化する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>add_words</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – リストに追加するワード. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>リスト化されたキーワード</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.overwrite">
+<span class="sig-name descname"><span class="pre">overwrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">additional_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.overwrite" title="Link to this definition">¶</a></dt>
+<dd><p>指定セクションを上書き</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>additional_config</strong> (<em>Path</em>) – 追加設定ファイルパス</p></li>
+<li><p><strong>section_name</strong> (<em>str</em>) – セクション名</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.read_channel_config">
+<span class="sig-name descname"><span class="pre">read_channel_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.read_channel_config" title="Link to this definition">¶</a></dt>
+<dd><p>チャンネル個別設定読み込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section_name</strong> (<em>str</em>) – チャンネル個別設定セクション名</p></li>
+<li><p><strong>ret_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – パラメータ</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>個別設定読み込み結果</p>
+<ul class="simple">
+<li><p><em>Path</em>: 読み込んだ設定ファイルパス</p></li>
+<li><p><em>None</em>: 読み込める設定ファイルがない</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Path]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.resolve_channel_id">
+<span class="sig-name descname"><span class="pre">resolve_channel_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id" title="Link to this definition">¶</a></dt>
+<dd><p>メイン設定から優先度の高いチャンネルIDを取得する</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>section_name</strong> (<em>str</em><em>, </em><em>optional</em>) – チャンネル個別設定セクション名</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>チャンネルID</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.bootstrap.app_config module</a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig"><code class="docutils literal notranslate"><span class="pre">AppConfig</span></code></a><ul>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AppConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_file"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.main_parser"><code class="docutils literal notranslate"><span class="pre">AppConfig.main_parser</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.script_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.script_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.selected_service"><code class="docutils literal notranslate"><span class="pre">AppConfig.selected_service</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.setting"><code class="docutils literal notranslate"><span class="pre">AppConfig.setting</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.alias"><code class="docutils literal notranslate"><span class="pre">AppConfig.alias</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.member"><code class="docutils literal notranslate"><span class="pre">AppConfig.member</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.team"><code class="docutils literal notranslate"><span class="pre">AppConfig.team</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.badge"><code class="docutils literal notranslate"><span class="pre">AppConfig.badge</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.results"><code class="docutils literal notranslate"><span class="pre">AppConfig.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.graph"><code class="docutils literal notranslate"><span class="pre">AppConfig.graph</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.ranking"><code class="docutils literal notranslate"><span class="pre">AppConfig.ranking</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.report"><code class="docutils literal notranslate"><span class="pre">AppConfig.report</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.help"><code class="docutils literal notranslate"><span class="pre">AppConfig.help</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.rule"><code class="docutils literal notranslate"><span class="pre">AppConfig.rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.initialization"><code class="docutils literal notranslate"><span class="pre">AppConfig.initialization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.word_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.word_list()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.overwrite"><code class="docutils literal notranslate"><span class="pre">AppConfig.overwrite()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.read_channel_config"><code class="docutils literal notranslate"><span class="pre">AppConfig.read_channel_config()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id"><code class="docutils literal notranslate"><span class="pre">AppConfig.resolve_channel_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.bootstrap.html"
+                          title="previous chapter">libs.bootstrap package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.bootstrap.configuration.html"
+                          title="next chapter">libs.bootstrap.configuration module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.configuration.html" title="libs.bootstrap.configuration module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.html" title="libs.bootstrap package"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.bootstrap.html" >libs.bootstrap package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.bootstrap.app_config module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

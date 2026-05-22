@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs package &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.bootstrap package" href="libs.bootstrap.html" />
+    <link rel="prev" title="integrations.protocols module" href="integrations.protocols.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.protocols.html"
+                          title="previous chapter">integrations.protocols module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.bootstrap.html"
+                          title="next chapter">libs.bootstrap package</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.html" title="libs.bootstrap package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrations.protocols.html" title="integrations.protocols module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">libs package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs">
+<span id="libs-package"></span><h1>libs package<a class="headerlink" href="#module-libs" title="Link to this heading">¶</a></h1>
+<p>ライブラリ/モジュール</p>
+<p>アプリケーションライブラリ:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="libs.bootstrap.html"><span class="doc">libs.bootstrap package</span></a>: アプリケーション起動処理</p></li>
+<li><p><a class="reference internal" href="libs.domain.html"><span class="doc">libs.domain package</span></a>: アプリケーションロジック</p></li>
+<li><p><a class="reference internal" href="libs.commands.html"><span class="doc">libs.commands package</span></a>: サブコマンド</p></li>
+</ul>
+<p>アプリケーションモジュール:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="libs.types.html"><span class="doc">libs.types module</span></a>: 共通型定義</p></li>
+<li><p><a class="reference internal" href="libs.global_value.html"><span class="doc">libs.global_value module</span></a>: モジュール間共通変数</p></li>
+<li><p><a class="reference internal" href="libs.dispatcher.html"><span class="doc">libs.dispatcher module</span></a>: コマンドディスパッチャ</p></li>
+</ul>
+<p>共有ライブラリ:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="libs.functions.html"><span class="doc">libs.functions package</span></a>: 共通処理ライブラリ</p></li>
+<li><p><a class="reference internal" href="libs.utils.html"><span class="doc">libs.utils package</span></a>: ユーティリティ</p></li>
+</ul>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.bootstrap.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.app_config.html">libs.bootstrap.app_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.configuration.html">libs.bootstrap.configuration module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.initialization.html">libs.bootstrap.initialization module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.commands.html">libs.commands package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.commands.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.graph.html">libs.commands.graph package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.help.html">libs.commands.help package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.ranking.html">libs.commands.ranking package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.registry.html">libs.commands.registry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.report.html">libs.commands.report package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.results.html">libs.commands.results package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.html">libs.domain package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.aggregate.html">libs.domain.aggregate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html">libs.domain.command module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.datamodels.html">libs.domain.datamodels module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.modify.html">libs.domain.modify module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.placeholder.html">libs.domain.placeholder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.rule.html">libs.domain.rule module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html">libs.domain.score module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html">libs.domain.section module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.stats.html">libs.domain.stats module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.functions.html">libs.functions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.compose.html">libs.functions.compose package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.tools.html">libs.functions.tools package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.adjusting.html">libs.functions.adjusting module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.lookup.html">libs.functions.lookup module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.message.html">libs.functions.message module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.search.html">libs.functions.search module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.validator.html">libs.functions.validator module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.html">libs.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.converter.html">libs.utils.converter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dbutil.html">libs.utils.dbutil module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html">libs.utils.dictutil module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.formatter.html">libs.utils.formatter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.graphutil.html">libs.utils.graphutil module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.textutil.html">libs.utils.textutil module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html">libs.utils.timekit module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libs.dispatcher.html">libs.dispatcher module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.by_keyword"><code class="docutils literal notranslate"><span class="pre">by_keyword()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.other_words"><code class="docutils literal notranslate"><span class="pre">other_words()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_append"><code class="docutils literal notranslate"><span class="pre">message_append()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_changed"><code class="docutils literal notranslate"><span class="pre">message_changed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_deleted"><code class="docutils literal notranslate"><span class="pre">message_deleted()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.global_value.html">libs.global_value module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.adapter"><code class="docutils literal notranslate"><span class="pre">adapter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.keyword_dispatcher"><code class="docutils literal notranslate"><span class="pre">keyword_dispatcher</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.command_dispatcher"><code class="docutils literal notranslate"><span class="pre">command_dispatcher</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.args"><code class="docutils literal notranslate"><span class="pre">args</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.cfg"><code class="docutils literal notranslate"><span class="pre">cfg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.global_value.html#libs.global_value.params"><code class="docutils literal notranslate"><span class="pre">params</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.types.html">libs.types module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.MessageType"><code class="docutils literal notranslate"><span class="pre">MessageType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus"><code class="docutils literal notranslate"><span class="pre">MessageStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.APPEND"><code class="docutils literal notranslate"><span class="pre">MessageStatus.APPEND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.CHANGED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.CHANGED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus"><code class="docutils literal notranslate"><span class="pre">ActionStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.ChannelType"><code class="docutils literal notranslate"><span class="pre">ChannelType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.CHANNEL"><code class="docutils literal notranslate"><span class="pre">ChannelType.CHANNEL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.PRIVATE"><code class="docutils literal notranslate"><span class="pre">ChannelType.PRIVATE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.DIRECT_MESSAGE"><code class="docutils literal notranslate"><span class="pre">ChannelType.DIRECT_MESSAGE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.ServiceType"><code class="docutils literal notranslate"><span class="pre">ServiceType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.SLACK"><code class="docutils literal notranslate"><span class="pre">ServiceType.SLACK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.DISCORD"><code class="docutils literal notranslate"><span class="pre">ServiceType.DISCORD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions"><code class="docutils literal notranslate"><span class="pre">StyleOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.RenameType"><code class="docutils literal notranslate"><span class="pre">StyleOptions.RenameType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.DataKind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.DataKind</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.sub_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.sub_title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.format_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.format_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.base_name"><code class="docutils literal notranslate"><span class="pre">StyleOptions.base_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.codeblock"><code class="docutils literal notranslate"><span class="pre">StyleOptions.codeblock</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.keep_indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_indent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.transpose"><code class="docutils literal notranslate"><span class="pre">StyleOptions.transpose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.rename_type"><code class="docutils literal notranslate"><span class="pre">StyleOptions.rename_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.data_kind"><code class="docutils literal notranslate"><span class="pre">StyleOptions.data_kind</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.print_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.print_title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.filename"><code class="docutils literal notranslate"><span class="pre">StyleOptions.filename</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.asdict"><code class="docutils literal notranslate"><span class="pre">StyleOptions.asdict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.MessageTypeDict"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageTypeDict.data"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageTypeDict.options"><code class="docutils literal notranslate"><span class="pre">MessageTypeDict.options</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict"><code class="docutils literal notranslate"><span class="pre">ScoreDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.ts"><code class="docutils literal notranslate"><span class="pre">ScoreDict.ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p1_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p1_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p1_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rpoint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p1_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p1_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p1_rank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p2_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p2_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p2_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rpoint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p2_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p2_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p2_rank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p3_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p3_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p3_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rpoint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p3_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p3_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p3_rank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p4_name"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p4_str"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p4_rpoint"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rpoint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p4_point"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.p4_rank"><code class="docutils literal notranslate"><span class="pre">ScoreDict.p4_rank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.deposit"><code class="docutils literal notranslate"><span class="pre">ScoreDict.deposit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.comment"><code class="docutils literal notranslate"><span class="pre">ScoreDict.comment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.rule_version"><code class="docutils literal notranslate"><span class="pre">ScoreDict.rule_version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.source"><code class="docutils literal notranslate"><span class="pre">ScoreDict.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ScoreDict.mode"><code class="docutils literal notranslate"><span class="pre">ScoreDict.mode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict"><code class="docutils literal notranslate"><span class="pre">RemarkDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict.thread_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.thread_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict.event_ts"><code class="docutils literal notranslate"><span class="pre">RemarkDict.event_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict.name"><code class="docutils literal notranslate"><span class="pre">RemarkDict.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict.matter"><code class="docutils literal notranslate"><span class="pre">RemarkDict.matter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RemarkDict.source"><code class="docutils literal notranslate"><span class="pre">RemarkDict.source</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.RankTableDict"><code class="docutils literal notranslate"><span class="pre">RankTableDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RankTableDict.grade"><code class="docutils literal notranslate"><span class="pre">RankTableDict.grade</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RankTableDict.point"><code class="docutils literal notranslate"><span class="pre">RankTableDict.point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RankTableDict.acquisition"><code class="docutils literal notranslate"><span class="pre">RankTableDict.acquisition</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.RankTableDict.demote"><code class="docutils literal notranslate"><span class="pre">RankTableDict.demote</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict"><code class="docutils literal notranslate"><span class="pre">GradeTableDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict.name"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict.addition_expression"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.addition_expression</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict.table"><code class="docutils literal notranslate"><span class="pre">GradeTableDict.table</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="integrations.protocols.html"
+                          title="previous chapter">integrations.protocols module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.bootstrap.html"
+                          title="next chapter">libs.bootstrap package</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.bootstrap.html" title="libs.bootstrap package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrations.protocols.html" title="integrations.protocols module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">libs package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

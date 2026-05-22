@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.section module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.domain.stats module" href="libs.domain.stats.html" />
+    <link rel="prev" title="libs.domain.score module" href="libs.domain.score.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.section module</a><ul>
+<li><a class="reference internal" href="#libs.domain.section.ServiceClassType"><code class="docutils literal notranslate"><span class="pre">ServiceClassType</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingClassType"><code class="docutils literal notranslate"><span class="pre">SettingClassType</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.section_proxy"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.section_proxy</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.get"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.get()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getint"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getint()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getfloat"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getfloat()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getboolean"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getboolean()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getlist"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getlist()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.keys"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.keys()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.values"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.values()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.items"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.items()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection"><code class="docutils literal notranslate"><span class="pre">BaseSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.section"><code class="docutils literal notranslate"><span class="pre">BaseSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.section_proxy"><code class="docutils literal notranslate"><span class="pre">BaseSection.section_proxy</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.__init__"><code class="docutils literal notranslate"><span class="pre">BaseSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.main_parser"><code class="docutils literal notranslate"><span class="pre">BaseSection.main_parser</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.initialization"><code class="docutils literal notranslate"><span class="pre">BaseSection.initialization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.to_dict"><code class="docutils literal notranslate"><span class="pre">BaseSection.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection"><code class="docutils literal notranslate"><span class="pre">SettingSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.section"><code class="docutils literal notranslate"><span class="pre">SettingSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.remarks_suffix"><code class="docutils literal notranslate"><span class="pre">SettingSection.remarks_suffix</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.rule_config"><code class="docutils literal notranslate"><span class="pre">SettingSection.rule_config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.default_rule"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.separate"><code class="docutils literal notranslate"><span class="pre">SettingSection.separate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.channel_id"><code class="docutils literal notranslate"><span class="pre">SettingSection.channel_id</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.time_adjust"><code class="docutils literal notranslate"><span class="pre">SettingSection.time_adjust</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.search_word"><code class="docutils literal notranslate"><span class="pre">SettingSection.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.group_length"><code class="docutils literal notranslate"><span class="pre">SettingSection.group_length</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.guest_mark"><code class="docutils literal notranslate"><span class="pre">SettingSection.guest_mark</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.database_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.database_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.backup_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.backup_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.font_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.font_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.graph_style"><code class="docutils literal notranslate"><span class="pre">SettingSection.graph_style</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.work_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.work_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.default_reset"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_reset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection"><code class="docutils literal notranslate"><span class="pre">AliasSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.section"><code class="docutils literal notranslate"><span class="pre">AliasSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.results"><code class="docutils literal notranslate"><span class="pre">AliasSection.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.graph"><code class="docutils literal notranslate"><span class="pre">AliasSection.graph</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.ranking"><code class="docutils literal notranslate"><span class="pre">AliasSection.ranking</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.report"><code class="docutils literal notranslate"><span class="pre">AliasSection.report</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.download"><code class="docutils literal notranslate"><span class="pre">AliasSection.download</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.member"><code class="docutils literal notranslate"><span class="pre">AliasSection.member</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.add"><code class="docutils literal notranslate"><span class="pre">AliasSection.add</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.delete"><code class="docutils literal notranslate"><span class="pre">AliasSection.delete</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_create"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_create</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_del"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_del</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_add"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_add</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_remove"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_remove</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_list"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_clear"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_clear</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.after_loading"><code class="docutils literal notranslate"><span class="pre">AliasSection.after_loading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.SubCommands"><code class="docutils literal notranslate"><span class="pre">SubCommands</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.SubCommands.default_commandword"><code class="docutils literal notranslate"><span class="pre">SubCommands.default_commandword</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="previous chapter">libs.domain.score module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.stats.html"
+                          title="next chapter">libs.domain.stats module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.stats.html" title="libs.domain.stats module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.section module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.section">
+<span id="libs-domain-section-module"></span><h1>libs.domain.section module<a class="headerlink" href="#module-libs.domain.section" title="Link to this heading">¶</a></h1>
+<p>libs/domain/section.py</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="libs.domain.section.ServiceClassType">
+<span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">ServiceClassType</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TypeAlias</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ForwardRef('SlackConfig')</span> <span class="pre">|</span> <span class="pre">ForwardRef('DiscordConfig')</span> <span class="pre">|</span> <span class="pre">ForwardRef('WebConfig')</span> <span class="pre">|</span> <span class="pre">ForwardRef('StdConfig')</span></span><a class="headerlink" href="#libs.domain.section.ServiceClassType" title="Link to this definition">¶</a></dt>
+<dd><p>連携サービスクラス</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="libs.domain.section.SettingClassType">
+<span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">SettingClassType</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TypeAlias</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ForwardRef('SettingSection')</span> <span class="pre">|</span> <span class="pre">ForwardRef('MemberSection')</span> <span class="pre">|</span> <span class="pre">ForwardRef('TeamSection')</span> <span class="pre">|</span> <span class="pre">ForwardRef('AliasSection')</span> <span class="pre">|</span> <span class="pre">ForwardRef('BadgeDisplay')</span></span><a class="headerlink" href="#libs.domain.section.SettingClassType" title="Link to this definition">¶</a></dt>
+<dd><p>設定関連クラス</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">CommonMethodMixin</span></span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>共通メソッド</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.section_proxy">
+<span class="sig-name descname"><span class="pre">section_proxy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SectionProxy</span></span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.section_proxy" title="Link to this definition">¶</a></dt>
+<dd><p>読み込み先(パーサー + セクション名)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.get" title="Link to this definition">¶</a></dt>
+<dd><p>値の取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.getint">
+<span class="sig-name descname"><span class="pre">getint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.getint" title="Link to this definition">¶</a></dt>
+<dd><p>整数値の取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.getfloat">
+<span class="sig-name descname"><span class="pre">getfloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.getfloat" title="Link to this definition">¶</a></dt>
+<dd><p>数値の取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.getboolean">
+<span class="sig-name descname"><span class="pre">getboolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.getboolean" title="Link to this definition">¶</a></dt>
+<dd><p>真偽値の取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.getlist">
+<span class="sig-name descname"><span class="pre">getlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.getlist" title="Link to this definition">¶</a></dt>
+<dd><p>リストの取得</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>fallback</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.keys" title="Link to this definition">¶</a></dt>
+<dd><p>キーリストの返却</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.values" title="Link to this definition">¶</a></dt>
+<dd><p>値リストの返却</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.items" title="Link to this definition">¶</a></dt>
+<dd><p>ItemsViewを返却</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[tuple[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">BaseSection</span></span><a class="headerlink" href="#libs.domain.section.BaseSection" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.section.CommonMethodMixin" title="libs.domain.section.CommonMethodMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommonMethodMixin</span></code></a></p>
+<p>基底クラス</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.section">
+<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.section.BaseSection.section" title="Link to this definition">¶</a></dt>
+<dd><p>セクション名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.section_proxy">
+<span class="sig-name descname"><span class="pre">section_proxy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SectionProxy</span></span><a class="headerlink" href="#libs.domain.section.BaseSection.section_proxy" title="Link to this definition">¶</a></dt>
+<dd><p>読み込み先(パーサー + セクション名)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.BaseSection.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outer</strong> (<a class="reference internal" href="#libs.domain.section.SettingClassType" title="libs.domain.section.SettingClassType"><em>SettingClassType</em></a><em> | </em><a class="reference internal" href="#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><em>SubCommands</em></a><em> | </em><a class="reference internal" href="#libs.domain.section.ServiceClassType" title="libs.domain.section.ServiceClassType"><em>ServiceClassType</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.main_parser">
+<span class="sig-name descname"><span class="pre">main_parser</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ConfigParser</span></span><a class="headerlink" href="#libs.domain.section.BaseSection.main_parser" title="Link to this definition">¶</a></dt>
+<dd><p>設定パーサー</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.initialization">
+<span class="sig-name descname"><span class="pre">initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_proxy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.BaseSection.initialization" title="Link to this definition">¶</a></dt>
+<dd><p>設定ファイルから値の取り込み</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>section_proxy</strong> (<em>SectionProxy</em>) – 読み込み先(パーサー + セクション名)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.BaseSection.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drop_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.BaseSection.to_dict" title="Link to this definition">¶</a></dt>
+<dd><p>必要なパラメータを辞書型で返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>drop_items</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – 返却に含めないキーリスト. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>返却値</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">SettingSection</span></span><a class="headerlink" href="#libs.domain.section.SettingSection" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
+<p>settingセクション処理</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.section">
+<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'setting'</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.section" title="Link to this definition">¶</a></dt>
+<dd><p>セクション名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.remarks_suffix">
+<span class="sig-name descname"><span class="pre">remarks_suffix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.SettingSection.remarks_suffix" title="Link to this definition">¶</a></dt>
+<dd><p>メモ記録用キーワードサフィックス</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.rule_config">
+<span class="sig-name descname"><span class="pre">rule_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.rule_config" title="Link to this definition">¶</a></dt>
+<dd><p>ルール設定ファイル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.default_rule">
+<span class="sig-name descname"><span class="pre">default_rule</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.default_rule" title="Link to this definition">¶</a></dt>
+<dd><p>ルール識別子未指定時に使用される識別子</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.separate">
+<span class="sig-name descname"><span class="pre">separate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.separate" title="Link to this definition">¶</a></dt>
+<dd><p>スコア入力元識別子別集計フラグ
+- <em>True</em>: 識別子別に集計
+- <em>False</em>: すべて集計</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.channel_id">
+<span class="sig-name descname"><span class="pre">channel_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.channel_id" title="Link to this definition">¶</a></dt>
+<dd><p>チャンネルIDを上書きする</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.time_adjust">
+<span class="sig-name descname"><span class="pre">time_adjust</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.time_adjust" title="Link to this definition">¶</a></dt>
+<dd><p>日付変更後、集計範囲に含める追加時間</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.search_word">
+<span class="sig-name descname"><span class="pre">search_word</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.search_word" title="Link to this definition">¶</a></dt>
+<dd><p>コメント固定(検索時の検索文字列)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.group_length">
+<span class="sig-name descname"><span class="pre">group_length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.group_length" title="Link to this definition">¶</a></dt>
+<dd><p>コメント固定(検索時の集約文字数)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.guest_mark">
+<span class="sig-name descname"><span class="pre">guest_mark</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'※'</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.guest_mark" title="Link to this definition">¶</a></dt>
+<dd><p>ゲスト無効時に未登録メンバーに付与する印</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.database_file">
+<span class="sig-name descname"><span class="pre">database_file</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('mahjong.db')</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.database_file" title="Link to this definition">¶</a></dt>
+<dd><p>成績管理データベースファイル名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.backup_dir">
+<span class="sig-name descname"><span class="pre">backup_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.backup_dir" title="Link to this definition">¶</a></dt>
+<dd><p>バックアップ先ディレクトリ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.font_file">
+<span class="sig-name descname"><span class="pre">font_file</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('ipaexg.ttf')</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.font_file" title="Link to this definition">¶</a></dt>
+<dd><p>グラフ描写に使用するフォントファイル</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.graph_style">
+<span class="sig-name descname"><span class="pre">graph_style</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ggplot'</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.graph_style" title="Link to this definition">¶</a></dt>
+<dd><p>グラフスタイル</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'setting'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remarks_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_mark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'※'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('mahjong.db')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('ipaexg.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ggplot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('work')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.SettingSection.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>)</p></li>
+<li><p><strong>remarks_suffix</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>rule_config</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>default_rule</strong> (<em>str</em>)</p></li>
+<li><p><strong>separate</strong> (<em>bool</em>)</p></li>
+<li><p><strong>channel_id</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>time_adjust</strong> (<em>int</em>)</p></li>
+<li><p><strong>search_word</strong> (<em>str</em>)</p></li>
+<li><p><strong>group_length</strong> (<em>int</em>)</p></li>
+<li><p><strong>guest_mark</strong> (<em>str</em>)</p></li>
+<li><p><strong>database_file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
+<li><p><strong>backup_dir</strong> (<em>Path</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>font_file</strong> (<em>Path</em>)</p></li>
+<li><p><strong>graph_style</strong> (<em>str</em>)</p></li>
+<li><p><strong>work_dir</strong> (<em>Path</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.work_dir">
+<span class="sig-name descname"><span class="pre">work_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('work')</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.work_dir" title="Link to this definition">¶</a></dt>
+<dd><p>作業ディレクトリ</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.default_reset">
+<span class="sig-name descname"><span class="pre">default_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.SettingSection.default_reset" title="Link to this definition">¶</a></dt>
+<dd><p>デフォルト値にリセット</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">AliasSection</span></span><a class="headerlink" href="#libs.domain.section.AliasSection" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
+<p>aliasセクション処理</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'alias'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_del</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.AliasSection.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>)</p></li>
+<li><p><strong>results</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>graph</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>ranking</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>report</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>download</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>member</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>add</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>delete</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_create</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_del</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_add</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_remove</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>team_clear</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.section">
+<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alias'</span></span><a class="headerlink" href="#libs.domain.section.AliasSection.section" title="Link to this definition">¶</a></dt>
+<dd><p>セクション名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.results" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ出力コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.graph">
+<span class="sig-name descname"><span class="pre">graph</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.graph" title="Link to this definition">¶</a></dt>
+<dd><p>成績グラフ出力コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.ranking">
+<span class="sig-name descname"><span class="pre">ranking</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.ranking" title="Link to this definition">¶</a></dt>
+<dd><p>ランキング出力コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.report" title="Link to this definition">¶</a></dt>
+<dd><p>レポート出力コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.download">
+<span class="sig-name descname"><span class="pre">download</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.download" title="Link to this definition">¶</a></dt>
+<dd><p>DBダウンロードコマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.member">
+<span class="sig-name descname"><span class="pre">member</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.member" title="Link to this definition">¶</a></dt>
+<dd><p>メンバーリスト表示コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.add" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー追加コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.delete" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー削除コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_create">
+<span class="sig-name descname"><span class="pre">team_create</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_create" title="Link to this definition">¶</a></dt>
+<dd><p>チーム作成コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_del">
+<span class="sig-name descname"><span class="pre">team_del</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_del" title="Link to this definition">¶</a></dt>
+<dd><p>チーム削除コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_add">
+<span class="sig-name descname"><span class="pre">team_add</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_add" title="Link to this definition">¶</a></dt>
+<dd><p>チーム所属コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_remove">
+<span class="sig-name descname"><span class="pre">team_remove</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_remove" title="Link to this definition">¶</a></dt>
+<dd><p>チーム脱退コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_list">
+<span class="sig-name descname"><span class="pre">team_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_list" title="Link to this definition">¶</a></dt>
+<dd><p>チームリスト出力コマンド</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.team_clear">
+<span class="sig-name descname"><span class="pre">team_clear</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.team_clear" title="Link to this definition">¶</a></dt>
+<dd><p>全チーム情報削除コマンド</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.after_loading">
+<span class="sig-name descname"><span class="pre">after_loading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.AliasSection.after_loading" title="Link to this definition">¶</a></dt>
+<dd><p>AliasSection専用の追加処理</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.SubCommands">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">SubCommands</span></span><a class="headerlink" href="#libs.domain.section.SubCommands" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs" title="libs.domain.datamodels.CommandAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a></p>
+<p>サブコマンドセクション処理</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SubCommands.default_commandword">
+<span class="sig-name descname"><span class="pre">default_commandword</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.section.SubCommands.default_commandword" title="Link to this definition">¶</a></dt>
+<dd><p>コマンドワードデフォルト値</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.section module</a><ul>
+<li><a class="reference internal" href="#libs.domain.section.ServiceClassType"><code class="docutils literal notranslate"><span class="pre">ServiceClassType</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingClassType"><code class="docutils literal notranslate"><span class="pre">SettingClassType</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.section_proxy"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.section_proxy</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.get"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.get()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getint"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getint()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getfloat"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getfloat()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getboolean"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getboolean()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.getlist"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.getlist()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.keys"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.keys()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.values"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.values()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.CommonMethodMixin.items"><code class="docutils literal notranslate"><span class="pre">CommonMethodMixin.items()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection"><code class="docutils literal notranslate"><span class="pre">BaseSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.section"><code class="docutils literal notranslate"><span class="pre">BaseSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.section_proxy"><code class="docutils literal notranslate"><span class="pre">BaseSection.section_proxy</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.__init__"><code class="docutils literal notranslate"><span class="pre">BaseSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.main_parser"><code class="docutils literal notranslate"><span class="pre">BaseSection.main_parser</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.initialization"><code class="docutils literal notranslate"><span class="pre">BaseSection.initialization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BaseSection.to_dict"><code class="docutils literal notranslate"><span class="pre">BaseSection.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection"><code class="docutils literal notranslate"><span class="pre">SettingSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.section"><code class="docutils literal notranslate"><span class="pre">SettingSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.remarks_suffix"><code class="docutils literal notranslate"><span class="pre">SettingSection.remarks_suffix</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.rule_config"><code class="docutils literal notranslate"><span class="pre">SettingSection.rule_config</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.default_rule"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_rule</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.separate"><code class="docutils literal notranslate"><span class="pre">SettingSection.separate</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.channel_id"><code class="docutils literal notranslate"><span class="pre">SettingSection.channel_id</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.time_adjust"><code class="docutils literal notranslate"><span class="pre">SettingSection.time_adjust</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.search_word"><code class="docutils literal notranslate"><span class="pre">SettingSection.search_word</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.group_length"><code class="docutils literal notranslate"><span class="pre">SettingSection.group_length</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.guest_mark"><code class="docutils literal notranslate"><span class="pre">SettingSection.guest_mark</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.database_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.database_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.backup_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.backup_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.font_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.font_file</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.graph_style"><code class="docutils literal notranslate"><span class="pre">SettingSection.graph_style</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.work_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.work_dir</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.default_reset"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_reset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection"><code class="docutils literal notranslate"><span class="pre">AliasSection</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.section"><code class="docutils literal notranslate"><span class="pre">AliasSection.section</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.results"><code class="docutils literal notranslate"><span class="pre">AliasSection.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.graph"><code class="docutils literal notranslate"><span class="pre">AliasSection.graph</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.ranking"><code class="docutils literal notranslate"><span class="pre">AliasSection.ranking</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.report"><code class="docutils literal notranslate"><span class="pre">AliasSection.report</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.download"><code class="docutils literal notranslate"><span class="pre">AliasSection.download</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.member"><code class="docutils literal notranslate"><span class="pre">AliasSection.member</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.add"><code class="docutils literal notranslate"><span class="pre">AliasSection.add</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.delete"><code class="docutils literal notranslate"><span class="pre">AliasSection.delete</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_create"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_create</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_del"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_del</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_add"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_add</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_remove"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_remove</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_list"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_list</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.team_clear"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_clear</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.after_loading"><code class="docutils literal notranslate"><span class="pre">AliasSection.after_loading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.SubCommands"><code class="docutils literal notranslate"><span class="pre">SubCommands</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.SubCommands.default_commandword"><code class="docutils literal notranslate"><span class="pre">SubCommands.default_commandword</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.score.html"
+                          title="previous chapter">libs.domain.score module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.stats.html"
+                          title="next chapter">libs.domain.stats module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.stats.html" title="libs.domain.stats module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.score.html" title="libs.domain.score module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.section module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

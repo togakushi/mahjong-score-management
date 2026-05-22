@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.utils package &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.utils.converter module" href="libs.utils.converter.html" />
+    <link rel="prev" title="libs.functions.validator module" href="libs.functions.validator.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.functions.validator.html"
+                          title="previous chapter">libs.functions.validator module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.converter.html"
+                          title="next chapter">libs.utils.converter module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.converter.html" title="libs.utils.converter module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.functions.validator.html" title="libs.functions.validator module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" accesskey="U">libs package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.utils">
+<span id="libs-utils-package"></span><h1>libs.utils package<a class="headerlink" href="#module-libs.utils" title="Link to this heading">¶</a></h1>
+<p>ユーティリティ</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="libs.utils.dbutil.html"><span class="doc">libs.utils.dbutil module</span></a>: DB操作</p></li>
+<li><p><a class="reference internal" href="libs.utils.dictutil.html"><span class="doc">libs.utils.dictutil module</span></a>: 辞書操作</p></li>
+<li><p><a class="reference internal" href="libs.utils.converter.html"><span class="doc">libs.utils.converter module</span></a>: 出力用テキスト生成</p></li>
+<li><p><a class="reference internal" href="libs.utils.formatter.html"><span class="doc">libs.utils.formatter module</span></a>: テキスト整形</p></li>
+<li><p><a class="reference internal" href="libs.utils.textutil.html"><span class="doc">libs.utils.textutil module</span></a>: テキストツール</p></li>
+<li><p><a class="reference internal" href="libs.utils.graphutil.html"><span class="doc">libs.utils.graphutil module</span></a>: グラフツール</p></li>
+<li><p><a class="reference internal" href="libs.utils.timekit.html"><span class="doc">libs.utils.timekit module</span></a>: datetime拡張</p></li>
+</ul>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.converter.html">libs.utils.converter module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.save_output"><code class="docutils literal notranslate"><span class="pre">save_output()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_text_table"><code class="docutils literal notranslate"><span class="pre">df_to_text_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_text_table2"><code class="docutils literal notranslate"><span class="pre">df_to_text_table2()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_results_details"><code class="docutils literal notranslate"><span class="pre">df_to_results_details()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_results_simple"><code class="docutils literal notranslate"><span class="pre">df_to_results_simple()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_ranking"><code class="docutils literal notranslate"><span class="pre">df_to_ranking()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_remarks"><code class="docutils literal notranslate"><span class="pre">df_to_remarks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.converter.html#libs.utils.converter.df_to_seat_data"><code class="docutils literal notranslate"><span class="pre">df_to_seat_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.dbutil.html">libs.utils.dbutil module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dbutil.html#libs.utils.dbutil.connection"><code class="docutils literal notranslate"><span class="pre">connection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dbutil.html#libs.utils.dbutil.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dbutil.html#libs.utils.dbutil.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dbutil.html#libs.utils.dbutil.table_info"><code class="docutils literal notranslate"><span class="pre">table_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.dictutil.html">libs.utils.dictutil module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike"><code class="docutils literal notranslate"><span class="pre">SubCommandLike</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike.section"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.section</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike.always_argument"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.always_argument</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike.aggregation_range"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.aggregation_range</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike.to_dict"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.SubCommandLike.__init__"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.placeholder"><code class="docutils literal notranslate"><span class="pre">placeholder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.dictutil.html#libs.utils.dictutil.rename_dicts"><code class="docutils literal notranslate"><span class="pre">rename_dicts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.formatter.html">libs.utils.formatter module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.formatter.html#libs.utils.formatter.name_replace"><code class="docutils literal notranslate"><span class="pre">name_replace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.formatter.html#libs.utils.formatter.honor_remove"><code class="docutils literal notranslate"><span class="pre">honor_remove()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.formatter.html#libs.utils.formatter.anonymous_mapping"><code class="docutils literal notranslate"><span class="pre">anonymous_mapping()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.formatter.html#libs.utils.formatter.dropitems_list"><code class="docutils literal notranslate"><span class="pre">dropitems_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.formatter.html#libs.utils.formatter.group_strings"><code class="docutils literal notranslate"><span class="pre">group_strings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.graphutil.html">libs.utils.graphutil module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.graphutil.html#libs.utils.graphutil.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.graphutil.html#libs.utils.graphutil.gen_xlabel"><code class="docutils literal notranslate"><span class="pre">gen_xlabel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.graphutil.html#libs.utils.graphutil.xticks_parameter"><code class="docutils literal notranslate"><span class="pre">xticks_parameter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.textutil.html">libs.utils.textutil module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.ConversionType"><code class="docutils literal notranslate"><span class="pre">ConversionType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.ConversionType.HtoZ"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoZ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.ConversionType.ZtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.ZtoH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.ConversionType.HtoK"><code class="docutils literal notranslate"><span class="pre">ConversionType.HtoK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.ConversionType.KtoH"><code class="docutils literal notranslate"><span class="pre">ConversionType.KtoH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.split_balanced"><code class="docutils literal notranslate"><span class="pre">split_balanced()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.textutil.html#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.utils.timekit.html">libs.utils.timekit module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format"><code class="docutils literal notranslate"><span class="pre">Format</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.TS"><code class="docutils literal notranslate"><span class="pre">Format.TS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.Y"><code class="docutils literal notranslate"><span class="pre">Format.Y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YM"><code class="docutils literal notranslate"><span class="pre">Format.YM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YMD"><code class="docutils literal notranslate"><span class="pre">Format.YMD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YMDHM"><code class="docutils literal notranslate"><span class="pre">Format.YMDHM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YMDHMS"><code class="docutils literal notranslate"><span class="pre">Format.YMDHMS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.HM"><code class="docutils literal notranslate"><span class="pre">Format.HM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.HMS"><code class="docutils literal notranslate"><span class="pre">Format.HMS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.SQL"><code class="docutils literal notranslate"><span class="pre">Format.SQL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.EXT"><code class="docutils literal notranslate"><span class="pre">Format.EXT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JY"><code class="docutils literal notranslate"><span class="pre">Format.JY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JYM"><code class="docutils literal notranslate"><span class="pre">Format.JYM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JYMD"><code class="docutils literal notranslate"><span class="pre">Format.JYMD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JY_O"><code class="docutils literal notranslate"><span class="pre">Format.JY_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JYM_O"><code class="docutils literal notranslate"><span class="pre">Format.JYM_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.JYMD_O"><code class="docutils literal notranslate"><span class="pre">Format.JYMD_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.Y_O"><code class="docutils literal notranslate"><span class="pre">Format.Y_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YM_O"><code class="docutils literal notranslate"><span class="pre">Format.YM_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.YMD_O"><code class="docutils literal notranslate"><span class="pre">Format.YMD_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format.__new__"><code class="docutils literal notranslate"><span class="pre">Format.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter"><code class="docutils literal notranslate"><span class="pre">Delimiter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.SLASH"><code class="docutils literal notranslate"><span class="pre">Delimiter.SLASH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.HYPHEN"><code class="docutils literal notranslate"><span class="pre">Delimiter.HYPHEN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.NUMBER"><code class="docutils literal notranslate"><span class="pre">Delimiter.NUMBER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.JAPANESE"><code class="docutils literal notranslate"><span class="pre">Delimiter.JAPANESE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.UNDEFINED"><code class="docutils literal notranslate"><span class="pre">Delimiter.UNDEFINED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Delimiter.__new__"><code class="docutils literal notranslate"><span class="pre">Delimiter.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.DateRangeSpec"><code class="docutils literal notranslate"><span class="pre">DateRangeSpec</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.DateRangeSpec.keyword"><code class="docutils literal notranslate"><span class="pre">DateRangeSpec.keyword</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.DateRangeSpec.range"><code class="docutils literal notranslate"><span class="pre">DateRangeSpec.range</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.DATE_RANGE_MAP"><code class="docutils literal notranslate"><span class="pre">DATE_RANGE_MAP</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.FMT"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.FMT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.DEM"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.DEM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.AcceptedType"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.AcceptedType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.__init__"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.dt"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.dt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.set"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.format"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.range"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.valid_keywords"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.valid_keywords()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.print_range"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.print_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime.convert"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetime.convert()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.Delimiter"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.start"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.start</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.end"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.period"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.period</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.format"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetimeList.dict_format"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.dict_format()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.functions.validator.html"
+                          title="previous chapter">libs.functions.validator module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.utils.converter.html"
+                          title="next chapter">libs.utils.converter module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.utils.converter.html" title="libs.utils.converter module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.functions.validator.html" title="libs.functions.validator module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.utils package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>

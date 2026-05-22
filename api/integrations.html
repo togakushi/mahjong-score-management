@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>integrations package &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
+    
+    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="integrations.base package" href="integrations.base.html" />
+    <link rel="prev" title="dbtools module" href="dbtools.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="dbtools.html"
+                          title="previous chapter">dbtools module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.base.html"
+                          title="next chapter">integrations.base package</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.base.html" title="integrations.base package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dbtools.html" title="dbtools module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">integrations package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-integrations">
+<span id="integrations-package"></span><h1>integrations package<a class="headerlink" href="#module-integrations" title="Link to this heading">¶</a></h1>
+<p>統合インターフェース定義</p>
+<p>Subpackages:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="integrations.base.html"><span class="doc">integrations.base package</span></a>: 抽象基底クラス</p></li>
+<li><p><a class="reference internal" href="integrations.slack.html"><span class="doc">integrations.slack package</span></a>: slackインターフェース</p></li>
+<li><p><a class="reference internal" href="integrations.discord.html"><span class="doc">integrations.discord package</span></a>: discordインターフェース</p></li>
+<li><p><a class="reference internal" href="integrations.web.html"><span class="doc">integrations.web package</span></a>: webインターフェース</p></li>
+<li><p><a class="reference internal" href="integrations.standard_io.html"><span class="doc">integrations.standard_io package</span></a>: 標準入出力インターフェース</p></li>
+</ul>
+<p>Submodules:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="integrations.factory.html"><span class="doc">integrations.factory module</span></a>: インターフェースセレクター</p></li>
+<li><p><a class="reference internal" href="integrations.protocols.html"><span class="doc">integrations.protocols module</span></a>: プロトコル定義</p></li>
+</ul>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrations.base.html">integrations.base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.base.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.base.interface.html">integrations.base.interface module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.discord.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.events.html">integrations.discord.events package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.discord.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.adapter.html">integrations.discord.adapter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.api.html">integrations.discord.api module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.config.html">integrations.discord.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.functions.html">integrations.discord.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.parser.html">integrations.discord.parser module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.slack.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.events.html">integrations.slack.events package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.slack.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.adapter.html">integrations.slack.adapter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.api.html">integrations.slack.api module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.config.html">integrations.slack.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.functions.html">integrations.slack.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.parser.html">integrations.slack.parser module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.standard_io.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.events.html">integrations.standard_io.events package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.standard_io.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.adapter.html">integrations.standard_io.adapter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.api.html">integrations.standard_io.api module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.config.html">integrations.standard_io.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.functions.html">integrations.standard_io.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.parser.html">integrations.standard_io.parser module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.web.html">integrations.web package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.events.html">integrations.web.events package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.web.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.adapter.html">integrations.web.adapter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.api.html">integrations.web.api module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.config.html">integrations.web.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.functions.html">integrations.web.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.parser.html">integrations.web.parser module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrations.factory.html">integrations.factory module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.factory.html#integrations.factory.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.factory.html#integrations.factory.select_adapter"><code class="docutils literal notranslate"><span class="pre">select_adapter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.protocols.html">integrations.protocols module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.DataMixin"><code class="docutils literal notranslate"><span class="pre">DataMixin</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.DataMixin.reset"><code class="docutils literal notranslate"><span class="pre">DataMixin.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData"><code class="docutils literal notranslate"><span class="pre">MsgData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.text"><code class="docutils literal notranslate"><span class="pre">MsgData.text</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.event_ts"><code class="docutils literal notranslate"><span class="pre">MsgData.event_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.thread_ts"><code class="docutils literal notranslate"><span class="pre">MsgData.thread_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.edited_ts"><code class="docutils literal notranslate"><span class="pre">MsgData.edited_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.channel_id"><code class="docutils literal notranslate"><span class="pre">MsgData.channel_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.channel_type"><code class="docutils literal notranslate"><span class="pre">MsgData.channel_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.user_id"><code class="docutils literal notranslate"><span class="pre">MsgData.user_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.status"><code class="docutils literal notranslate"><span class="pre">MsgData.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.reaction_ok"><code class="docutils literal notranslate"><span class="pre">MsgData.reaction_ok</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.reaction_ng"><code class="docutils literal notranslate"><span class="pre">MsgData.reaction_ng</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.remarks"><code class="docutils literal notranslate"><span class="pre">MsgData.remarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData.__init__"><code class="docutils literal notranslate"><span class="pre">MsgData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData"><code class="docutils literal notranslate"><span class="pre">PostData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.headline"><code class="docutils literal notranslate"><span class="pre">PostData.headline</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.message"><code class="docutils literal notranslate"><span class="pre">PostData.message</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.thread"><code class="docutils literal notranslate"><span class="pre">PostData.thread</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.ts"><code class="docutils literal notranslate"><span class="pre">PostData.ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.thread_title"><code class="docutils literal notranslate"><span class="pre">PostData.thread_title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData.__init__"><code class="docutils literal notranslate"><span class="pre">PostData.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData"><code class="docutils literal notranslate"><span class="pre">StatusData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.command_type"><code class="docutils literal notranslate"><span class="pre">StatusData.command_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.command_flg"><code class="docutils literal notranslate"><span class="pre">StatusData.command_flg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.command_name"><code class="docutils literal notranslate"><span class="pre">StatusData.command_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.reaction"><code class="docutils literal notranslate"><span class="pre">StatusData.reaction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.action"><code class="docutils literal notranslate"><span class="pre">StatusData.action</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.__init__"><code class="docutils literal notranslate"><span class="pre">StatusData.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.target_ts"><code class="docutils literal notranslate"><span class="pre">StatusData.target_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">StatusData.rpoint_sum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.result"><code class="docutils literal notranslate"><span class="pre">StatusData.result</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.message"><code class="docutils literal notranslate"><span class="pre">StatusData.message</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData.source"><code class="docutils literal notranslate"><span class="pre">StatusData.source</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.__init__"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.data"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.post"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.post</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.status"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.in_thread</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.is_command"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_command</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_bot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.keyword"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.keyword</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.argument"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.argument</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.reply_ts"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.reply_ts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.check_updatable"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.check_updatable</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.ignore_user"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.ignore_user</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_headline"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.set_headline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_message"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.set_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.delete_items"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.delete_items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.parser"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.reset"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">integrations package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="dbtools.html"
+                          title="previous chapter">dbtools module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="integrations.base.html"
+                          title="next chapter">integrations.base package</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="integrations.base.html" title="integrations.base package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dbtools.html" title="dbtools module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">integrations package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.14.7.
+      Last updated on 2026-05-22.
+    </div>
+
+  </body>
+</html>
