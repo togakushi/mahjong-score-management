@@ -1,4 +1,6 @@
-"""モジュール間データ共有用"""
+"""
+モジュール間データ共有用
+"""
 
 from typing import TYPE_CHECKING, Any, Callable, Union
 

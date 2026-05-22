@@ -32,6 +32,8 @@ templates_path = ["../templates"]
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
 autodoc_class_signature = "separated"
+autodoc_member_order = "bysource"
+autoclass_content = "both"
 
 # -- Napoleon settings -------------------------------------------------------
 napoleon_google_docstring = True

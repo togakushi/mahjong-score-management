@@ -8,10 +8,10 @@ update:
 # --
 .PHONY: docs
 docs:
-	rm -rf docs/dev/source/
-	uv run sphinx-apidoc -f -o docs/dev/source/ . -d 2 --tocfile=index --module-first --separate
-	uv run sphinx-build -M clean docs/dev/source/ docs/dev/build --conf-dir docs/dev/
-	uv run sphinx-build -M html docs/dev/source/ docs/dev/build --silent --conf-dir docs/dev/
+	rm -rf docs/api/source/
+	uv run sphinx-apidoc -f -o docs/api/source/ . -d 3 --tocfile=index --module-first --separate
+	uv run sphinx-build -M clean docs/api/source/ docs/api/build --conf-dir docs/api/
+	uv run sphinx-build -M html docs/api/source/ docs/api/build --silent --conf-dir docs/api/
 
 	uv run sphinx-build -M clean docs/user/source/ docs/user/build --conf-dir docs/user/
 	uv run sphinx-build -M html docs/user/source/ docs/user/build --conf-dir docs/user/

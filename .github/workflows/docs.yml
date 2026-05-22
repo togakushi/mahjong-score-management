@@ -28,9 +28,9 @@ jobs:
           rm -rf ./temp_docs
           mkdir -p ./temp_docs/html/
 
-          uv run sphinx-apidoc -f -o ./temp_docs/source/ . -d 2 --tocfile=index --module-first --separate
-          uv run sphinx-build -M html ./temp_docs/source/ ./temp_docs/dev/build --conf-dir ./docs/dev/
-          cp -r ./temp_docs/dev/build/html ./temp_docs/html/dev
+          uv run sphinx-apidoc -f -o ./temp_docs/source/ . -d 3 --tocfile=index --module-first --separate
+          uv run sphinx-build -M html ./temp_docs/source/ ./temp_docs/api/build --conf-dir ./docs/api/
+          cp -r ./temp_docs/api/build/html ./temp_docs/html/api
 
           uv run sphinx-build -M html ./docs/user/source/ ./temp_docs/user/build --conf-dir ./docs/user/
           cp -r ./temp_docs/user/build/html ./temp_docs/html/user
