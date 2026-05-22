@@ -25,9 +25,9 @@ backup/
 *.png
 *.css
 
-docs/dev/build/
-docs/dev/source/
-docs/dev/coverage/
+docs/api/build/
+docs/api/source/
+docs/api/coverage/
 !docs/*/source/_static/**
 !docs/*/source/**/*.txt
 !docs/*/source/**/*.png
