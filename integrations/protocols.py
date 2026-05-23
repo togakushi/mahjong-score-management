@@ -106,6 +106,7 @@ class StatusData(DataMixin):
 
     result: bool = field(default=True)
     """メッセージデータに対する処理結果
+
     - *True*: 目的の処理が達成できた
     - *False*: 何らかの原因で処理が達成できなかった
     """
