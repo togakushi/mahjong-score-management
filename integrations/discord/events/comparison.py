@@ -13,7 +13,7 @@ import libs.global_value as g
 from libs.domain import modify
 from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
-from libs.functions import search, validator
+from libs.functions import lookup, validator
 from libs.types import ActionStatus, CommandType, RemarkDict, StyleOptions
 from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -121,7 +121,7 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
             results.score_list.update({work_m.data.event_ts: work_m})
             logging.debug(score.to_text("logging"))
 
-    db_score = search.for_db_score(float(results.after.format(ExtDt.FMT.TS)))
+    db_score = lookup.search_db_score(float(results.after.format(ExtDt.FMT.TS)))
 
     # DISCORD -> DATABASE
     ts_list = [x.ts for x in db_score]
@@ -197,7 +197,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
                     }
                 )
 
-    db_remarks = search.for_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
+    db_remarks = lookup.search_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
 
     # DISCORD -> DATABASE
     work_m = g.adapter.parser()

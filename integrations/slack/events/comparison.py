@@ -9,7 +9,7 @@ import libs.global_value as g
 from libs.domain import modify
 from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
-from libs.functions import lookup, search, validator
+from libs.functions import lookup, validator
 from libs.types import ActionStatus, CommandType, StyleOptions
 from libs.utils import formatter
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -100,7 +100,7 @@ def check_omission(results: ComparisonResults) -> None:
     else:
         first_ts = float(results.after.format(ExtDt.FMT.TS))
 
-    db_score = search.for_db_score(first_ts)
+    db_score = lookup.search_db_score(first_ts)
 
     # SLACK -> DATABASE
     ts_list = [x.ts for x in db_score]
@@ -176,7 +176,7 @@ def check_remarks(results: ComparisonResults) -> None:
                 }
             )
 
-    db_remarks = search.for_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
+    db_remarks = lookup.search_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
 
     # SLACK -> DATABASE
     work_m = cast("MessageParserProtocol", g.adapter.parser())
