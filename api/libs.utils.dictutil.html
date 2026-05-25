@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/documentation_options.js?v=d9bd031f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.utils.formatter module" href="libs.utils.formatter.html" />
+    <link rel="next" title="libs.utils.graphutil module" href="libs.utils.graphutil.html" />
     <link rel="prev" title="libs.utils.dbutil module" href="libs.utils.dbutil.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -64,17 +64,10 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.utils.dictutil module</a><ul>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike"><code class="docutils literal notranslate"><span class="pre">SubCommandLike</span></code></a><ul>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.section"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.section</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.always_argument"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.always_argument</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.aggregation_range"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.aggregation_range</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.to_dict"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.__init__"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.__init__()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#libs.utils.dictutil.placeholder"><code class="docutils literal notranslate"><span class="pre">placeholder()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.dictutil.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.dictutil.rename_dicts"><code class="docutils literal notranslate"><span class="pre">rename_dicts()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.dropitems_list"><code class="docutils literal notranslate"><span class="pre">dropitems_list()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -87,8 +80,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.utils.formatter.html"
-                          title="next chapter">libs.utils.formatter module</a></p>
+    <p class="topless"><a href="libs.utils.graphutil.html"
+                          title="next chapter">libs.utils.graphutil module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -112,7 +105,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.utils.formatter.html" title="libs.utils.formatter module"
+          <a href="libs.utils.graphutil.html" title="libs.utils.graphutil module"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="libs.utils.dbutil.html" title="libs.utils.dbutil module"
@@ -162,46 +155,6 @@
   <section id="module-libs.utils.dictutil">
 <span id="libs-utils-dictutil-module"></span><h1>libs.utils.dictutil module<a class="headerlink" href="#module-libs.utils.dictutil" title="Link to this heading">¶</a></h1>
 <p>libs/utils/dictutil.py</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">SubCommandLike</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
-<p>placeholder生成に必要なサブコマンド設定の最小インターフェース</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.section">
-<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.section" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.always_argument">
-<span class="sig-name descname"><span class="pre">always_argument</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.always_argument" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.aggregation_range">
-<span class="sig-name descname"><span class="pre">aggregation_range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.aggregation_range" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.to_dict">
-<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drop_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.to_dict" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>drop_items</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict[str, <em>Any</em>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.utils.dictutil.SubCommandLike.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.SubCommandLike.__init__" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.utils.dictutil.placeholder">
 <span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">placeholder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subcom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.placeholder" title="Link to this definition">¶</a></dt>
@@ -209,7 +162,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>subcom</strong> (<a class="reference internal" href="#libs.utils.dictutil.SubCommandLike" title="libs.utils.dictutil.SubCommandLike"><em>SubCommandLike</em></a>) – サブコマンド設定</p></li>
+<li><p><strong>subcom</strong> (<a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><em>SubCommands</em></a>) – サブコマンド設定</p></li>
 <li><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p></li>
 </ul>
 </dd>
@@ -262,6 +215,23 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.dictutil.dropitems_list">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.dictutil.</span></span><span class="sig-name descname"><span class="pre">dropitems_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.dictutil.dropitems_list" title="Link to this definition">¶</a></dt>
+<dd><p>非表示項目を集合で返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item_list</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – 表示項目リスト</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>非表示項目のリスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -275,17 +245,10 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.utils.dictutil module</a><ul>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike"><code class="docutils literal notranslate"><span class="pre">SubCommandLike</span></code></a><ul>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.section"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.section</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.always_argument"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.always_argument</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.aggregation_range"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.aggregation_range</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.to_dict"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.dictutil.SubCommandLike.__init__"><code class="docutils literal notranslate"><span class="pre">SubCommandLike.__init__()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#libs.utils.dictutil.placeholder"><code class="docutils literal notranslate"><span class="pre">placeholder()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.dictutil.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.dictutil.rename_dicts"><code class="docutils literal notranslate"><span class="pre">rename_dicts()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.dictutil.dropitems_list"><code class="docutils literal notranslate"><span class="pre">dropitems_list()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -298,8 +261,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.utils.formatter.html"
-                          title="next chapter">libs.utils.formatter module</a></p>
+    <p class="topless"><a href="libs.utils.graphutil.html"
+                          title="next chapter">libs.utils.graphutil module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -323,7 +286,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.utils.formatter.html" title="libs.utils.formatter module"
+          <a href="libs.utils.graphutil.html" title="libs.utils.graphutil module"
              >next</a> |</li>
         <li class="right" >
           <a href="libs.utils.dbutil.html" title="libs.utils.dbutil module"
@@ -365,8 +328,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.7.
-      Last updated on 2026-05-24.
+      Release Version: 0.14.9.
+      Last updated on 2026-05-25.
     </div>
 
   </body>

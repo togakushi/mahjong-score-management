@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/documentation_options.js?v=d9bd031f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -154,12 +154,11 @@
 <p>共通処理モジュール</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="libs.functions.lookup.html"><span class="doc">libs.functions.lookup module</span></a>: 情報取得</p></li>
-<li><p><a class="reference internal" href="libs.functions.search.html"><span class="doc">libs.functions.search module</span></a>: DB検索</p></li>
 <li><p><a class="reference internal" href="libs.functions.message.html"><span class="doc">libs.functions.message module</span></a>: メッセージ</p></li>
-<li><p><a class="reference internal" href="libs.functions.compose.html"><span class="doc">libs.functions.compose package</span></a>: メッセージ生成</p></li>
 <li><p><a class="reference internal" href="libs.functions.adjusting.html"><span class="doc">libs.functions.adjusting module</span></a>: 表・桁数・調整</p></li>
-<li><p><a class="reference internal" href="libs.functions.tools.html"><span class="doc">libs.functions.tools package</span></a>: 外部ツール用モジュール</p></li>
 <li><p><a class="reference internal" href="libs.functions.validator.html"><span class="doc">libs.functions.validator module</span></a>: バリデータ</p></li>
+<li><p><a class="reference internal" href="libs.functions.compose.html"><span class="doc">libs.functions.compose package</span></a>: メッセージ生成</p></li>
+<li><p><a class="reference internal" href="libs.functions.tools.html"><span class="doc">libs.functions.tools package</span></a>: 外部ツール用モジュール</p></li>
 </ul>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
@@ -200,6 +199,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.lookup.html">libs.functions.lookup module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.search_db_score"><code class="docutils literal notranslate"><span class="pre">search_db_score()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.search_db_remarks"><code class="docutils literal notranslate"><span class="pre">search_db_remarks()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.get_config_value"><code class="docutils literal notranslate"><span class="pre">get_config_value()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.resolve_separate_flag"><code class="docutils literal notranslate"><span class="pre">resolve_separate_flag()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.member_info"><code class="docutils literal notranslate"><span class="pre">member_info()</span></code></a></li>
@@ -207,6 +208,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.get_current_rule_version"><code class="docutils literal notranslate"><span class="pre">get_current_rule_version()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.regulation_list"><code class="docutils literal notranslate"><span class="pre">regulation_list()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.resolve_commands"><code class="docutils literal notranslate"><span class="pre">resolve_commands()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.first_record"><code class="docutils literal notranslate"><span class="pre">first_record()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.exsist_record"><code class="docutils literal notranslate"><span class="pre">exsist_record()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.read_memberslist"><code class="docutils literal notranslate"><span class="pre">read_memberslist()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.enumeration_all_members"><code class="docutils literal notranslate"><span class="pre">enumeration_all_members()</span></code></a></li>
@@ -215,12 +217,6 @@
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.message.html">libs.functions.message module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.random_reply"><code class="docutils literal notranslate"><span class="pre">random_reply()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.header"><code class="docutils literal notranslate"><span class="pre">header()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="libs.functions.search.html">libs.functions.search module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libs.functions.search.html#libs.functions.search.for_db_score"><code class="docutils literal notranslate"><span class="pre">for_db_score()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.functions.search.html#libs.functions.search.for_db_remarks"><code class="docutils literal notranslate"><span class="pre">for_db_remarks()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.functions.search.html#libs.functions.search.first_record"><code class="docutils literal notranslate"><span class="pre">first_record()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.validator.html">libs.functions.validator module</a><ul>
@@ -324,8 +320,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.7.
-      Last updated on 2026-05-24.
+      Release Version: 0.14.9.
+      Last updated on 2026-05-25.
     </div>
 
   </body>

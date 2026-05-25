@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=c8f06a64"></script>
+    <script src="_static/documentation_options.js?v=d9bd031f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -64,6 +64,8 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.functions.lookup module</a><ul>
+<li><a class="reference internal" href="#libs.functions.lookup.search_db_score"><code class="docutils literal notranslate"><span class="pre">search_db_score()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.lookup.search_db_remarks"><code class="docutils literal notranslate"><span class="pre">search_db_remarks()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.get_config_value"><code class="docutils literal notranslate"><span class="pre">get_config_value()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.resolve_separate_flag"><code class="docutils literal notranslate"><span class="pre">resolve_separate_flag()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.member_info"><code class="docutils literal notranslate"><span class="pre">member_info()</span></code></a></li>
@@ -71,6 +73,7 @@
 <li><a class="reference internal" href="#libs.functions.lookup.get_current_rule_version"><code class="docutils literal notranslate"><span class="pre">get_current_rule_version()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.regulation_list"><code class="docutils literal notranslate"><span class="pre">regulation_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.resolve_commands"><code class="docutils literal notranslate"><span class="pre">resolve_commands()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.lookup.first_record"><code class="docutils literal notranslate"><span class="pre">first_record()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.exsist_record"><code class="docutils literal notranslate"><span class="pre">exsist_record()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.read_memberslist"><code class="docutils literal notranslate"><span class="pre">read_memberslist()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.enumeration_all_members"><code class="docutils literal notranslate"><span class="pre">enumeration_all_members()</span></code></a></li>
@@ -161,6 +164,40 @@
   <section id="module-libs.functions.lookup">
 <span id="libs-functions-lookup-module"></span><h1>libs.functions.lookup module<a class="headerlink" href="#module-libs.functions.lookup" title="Link to this heading">¶</a></h1>
 <p>libs/functions/lookup.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.functions.lookup.search_db_score">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.lookup.</span></span><span class="sig-name descname"><span class="pre">search_db_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_ts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.lookup.search_db_score" title="Link to this definition">¶</a></dt>
+<dd><p>データベースからスコアを検索して返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>first_ts</strong> (<em>float</em>) – 検索を開始する時刻</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>検索した結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult" title="libs.domain.score.GameResult">GameResult</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.functions.lookup.search_db_remarks">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.lookup.</span></span><span class="sig-name descname"><span class="pre">search_db_remarks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_ts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.lookup.search_db_remarks" title="Link to this definition">¶</a></dt>
+<dd><p>データベースからメモを検索して返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>first_ts</strong> (<em>float</em>) – 検索を開始する時刻</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>検索した結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="libs.types.html#libs.types.RemarkDict" title="libs.types.RemarkDict">RemarkDict</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.functions.lookup.get_config_value">
 <span class="sig-prename descclassname"><span class="pre">libs.functions.lookup.</span></span><span class="sig-name descname"><span class="pre">get_config_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.lookup.get_config_value" title="Link to this definition">¶</a></dt>
@@ -302,6 +339,23 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="libs.functions.lookup.first_record">
+<span class="sig-prename descclassname"><span class="pre">libs.functions.lookup.</span></span><span class="sig-name descname"><span class="pre">first_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.lookup.first_record" title="Link to this definition">¶</a></dt>
+<dd><p>最初のゲーム記録時間を返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – ルール識別子</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>最初のゲーム記録時間</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime">ExtendedDatetime</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="libs.functions.lookup.exsist_record">
 <span class="sig-prename descclassname"><span class="pre">libs.functions.lookup.</span></span><span class="sig-name descname"><span class="pre">exsist_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.functions.lookup.exsist_record" title="Link to this definition">¶</a></dt>
 <dd><p>記録されているゲーム結果を返す</p>
@@ -356,6 +410,8 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.functions.lookup module</a><ul>
+<li><a class="reference internal" href="#libs.functions.lookup.search_db_score"><code class="docutils literal notranslate"><span class="pre">search_db_score()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.lookup.search_db_remarks"><code class="docutils literal notranslate"><span class="pre">search_db_remarks()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.get_config_value"><code class="docutils literal notranslate"><span class="pre">get_config_value()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.resolve_separate_flag"><code class="docutils literal notranslate"><span class="pre">resolve_separate_flag()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.member_info"><code class="docutils literal notranslate"><span class="pre">member_info()</span></code></a></li>
@@ -363,6 +419,7 @@
 <li><a class="reference internal" href="#libs.functions.lookup.get_current_rule_version"><code class="docutils literal notranslate"><span class="pre">get_current_rule_version()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.regulation_list"><code class="docutils literal notranslate"><span class="pre">regulation_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.resolve_commands"><code class="docutils literal notranslate"><span class="pre">resolve_commands()</span></code></a></li>
+<li><a class="reference internal" href="#libs.functions.lookup.first_record"><code class="docutils literal notranslate"><span class="pre">first_record()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.exsist_record"><code class="docutils literal notranslate"><span class="pre">exsist_record()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.read_memberslist"><code class="docutils literal notranslate"><span class="pre">read_memberslist()</span></code></a></li>
 <li><a class="reference internal" href="#libs.functions.lookup.enumeration_all_members"><code class="docutils literal notranslate"><span class="pre">enumeration_all_members()</span></code></a></li>
@@ -445,8 +502,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.7.
-      Last updated on 2026-05-24.
+      Release Version: 0.14.9.
+      Last updated on 2026-05-25.
     </div>
 
   </body>
