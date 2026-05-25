@@ -3,7 +3,7 @@ libs/utils/dictutil.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Any, Optional, Protocol, cast
+from typing import TYPE_CHECKING, Any, Optional, cast
 
 import libs.global_value as g
 from libs.domain.command import CommandParser
@@ -18,22 +18,12 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class SubCommandLike(Protocol):
-    """placeholder生成に必要なサブコマンド設定の最小インターフェース"""
-
-    section: str
-    always_argument: list[str]
-    aggregation_range: str
-
-    def to_dict(self, drop_items: list[str] | None = None) -> dict[str, Any]: ...
-
-
-def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> PlaceholderBuilder:
+def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderBuilder:
     """
     プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommandLike): サブコマンド設定
+        subcom (SubCommands): サブコマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
