@@ -12,7 +12,7 @@ from tabulate import tabulate
 import libs.global_value as g
 from libs.functions import adjusting
 from libs.types import StyleOptions
-from libs.utils import dictutil, formatter, textutil
+from libs.utils import dictutil, textutil
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -270,7 +270,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
         )
         data_list.append(f"{k.replace('-', '/')} {v['備考']}\n" + output + "\n")
 
-    return {str(idx): x for idx, x in enumerate(formatter.group_strings(data_list, limit))}
+    return {str(idx): x for idx, x in enumerate(textutil.group_strings(data_list, limit))}
 
 
 def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> dict[str, str]:
@@ -298,7 +298,7 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
             f"　{vs_guest}{x['日時']}\t{x['座席']}\t{x['順位']}\t{x['素点']}\t{x['獲得ポイント']}\t{x['メモ']}",
         )
 
-    return {str(idx): x for idx, x in enumerate(formatter.group_strings(data_list, limit))}
+    return {str(idx): x for idx, x in enumerate(textutil.group_strings(data_list, limit))}
 
 
 def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str]:

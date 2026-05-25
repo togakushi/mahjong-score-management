@@ -11,7 +11,7 @@ import pandas as pd
 
 from integrations.base.interface import APIInterface
 from libs.types import StyleOptions
-from libs.utils import converter, formatter
+from libs.utils import converter, textutil
 
 if TYPE_CHECKING:
     from slack_sdk.web import SlackResponse
@@ -137,7 +137,7 @@ class AdapterAPI(APIInterface):
                         pass
 
         if options.summarize:
-            post_msg = formatter.group_strings(post_msg)
+            post_msg = textutil.group_strings(post_msg)
 
         for msg in post_msg:
             if msg != msg.lstrip() or (not msg.find("*【戦績】*") and block_layout):

@@ -218,3 +218,43 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     if result:
         return result
     return [msg]
+
+
+def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
+    """
+    指定文字数まで改行で連結
+
+    Args:
+        lines (list[str]): 連結対象
+        limit (int, optional): 制限値. Defaults to 3000.
+
+    Returns:
+        list[str]: 連結結果
+
+    """
+    result: list[str] = []
+    buffer: list[str] = []
+
+    for i, line in enumerate(lines):
+        is_last = i == len(lines) - 1  # 最終ブロック判定
+        max_char = limit * 1.5 if is_last else limit  # 1ブロックの最大値
+
+        # 仮に追加したときの文字列長を計算
+        temp = buffer + [line]
+        total_len = len("".join(temp))
+
+        if total_len <= max_char:
+            buffer.append(line)
+        else:
+            if buffer:
+                result.append("\n".join(buffer))
+            buffer = [line]
+
+    if buffer:
+        result.append("\n".join(buffer))
+
+    # 改行の集約
+    result = [str(x).replace("\n```\n\n```\n", "\n```\n```\n") for x in result]
+    result = [str(x).replace("\n\n\t", "\n\t") for x in result]
+
+    return result
