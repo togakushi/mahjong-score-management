@@ -9,7 +9,7 @@ from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import formatter, textutil
+from libs.utils import textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -28,7 +28,7 @@ def plot(m: "MessageParserProtocol") -> None:
     game_info = GameInfo()
     df = aggregate.matrix_table()
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df.index.tolist())
+        mapping_dict = textutil.anonymous_mapping(df.index.tolist())
         df = df.rename(columns=mapping_dict, index=mapping_dict)
 
     if df.empty:

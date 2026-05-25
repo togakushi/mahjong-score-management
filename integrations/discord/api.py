@@ -14,7 +14,7 @@ from table2ascii import PresetStyle, table2ascii
 import integrations.discord.events.audioop as _audioop
 from integrations.base.interface import APIInterface
 from libs.types import CommandType, StyleOptions
-from libs.utils import converter, formatter, textutil
+from libs.utils import converter, textutil
 from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -150,7 +150,7 @@ class AdapterAPI(APIInterface):
             if m.status.command_type == CommandType.RANKING:
                 post_msg = textutil.split_text_blocks("".join(post_msg), 1900)
             else:
-                post_msg = formatter.group_strings(post_msg, limit=1800)
+                post_msg = textutil.group_strings(post_msg, limit=1800)
 
         if thread_msg and m.post.thread:
             date_suffix = ExtDt(float(m.data.event_ts)).format(Format.YMDHMS, Delimiter.SLASH)

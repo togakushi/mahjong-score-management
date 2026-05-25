@@ -323,11 +323,10 @@ def set_command_option(
 
     if "bid-user_select" in search_options:
         user_select = search_options["bid-user_select"]["player"]["selected_option"]
-        if user_select is not None:
-            if "value" in user_select:
-                player = str(user_select["value"])
-                app_msg.append(f"対象プレイヤー：{player}")
-                argument.append(player)
+        if user_select is not None and "value" in user_select:
+            player = str(user_select["value"])
+            app_msg.append(f"対象プレイヤー：{player}")
+            argument.append(player)
 
     if "bid-multi_select" in search_options:
         user_list = search_options["bid-multi_select"]["player"]["selected_options"]
@@ -372,6 +371,8 @@ def set_command_option(
                         adapter.conf.tab_var.update(operation=None)
                     case _ as option:
                         adapter.conf.tab_var.update(operation=option)
+
+    argument.append(g.cfg.rule.rule_list[0])
 
     app_msg.append("集計中…")
     return (argument, app_msg, update_flag)

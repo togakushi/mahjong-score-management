@@ -15,7 +15,7 @@ from libs.domain.stats import StatsInfo
 from libs.functions import message
 from libs.functions.compose import badge, text_item
 from libs.types import StyleOptions
-from libs.utils import converter, dictutil, formatter
+from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -82,9 +82,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    player_name = formatter.name_replace(g.params.player_name, add_mark=True)
+    player_name = textutil.name_replace(g.params.player_name, add_mark=True)
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(stats.result_df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(stats.result_df["name"].unique().tolist())
         stats.result_df["name"] = stats.result_df["name"].replace(mapping_dict)
         player_name = mapping_dict[player_name]
 
@@ -135,9 +135,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
             ).replace("-", "▲")
 
     # 非表示項目
-    seat_data.drop(columns=formatter.dropitems_list(seat_data.columns.to_list()), inplace=True)
-    stats.result_df.drop(columns=formatter.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
-    stats.record_df.drop(columns=formatter.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
+    seat_data.drop(columns=dictutil.dropitems_list(seat_data.columns.to_list()), inplace=True)
+    stats.result_df.drop(columns=dictutil.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
+    stats.record_df.drop(columns=dictutil.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
 
     if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
@@ -150,18 +150,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
     count_df = remarks_df.groupby("matter").agg(matter_count=("matter", "count"), ex_total=("ex_point", "sum"), type=("type", "max"))
     count_df["matter"] = count_df.index
 
-    if "役満和了" not in formatter.dropitems_list():
+    if "役満和了" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
-    if "卓外清算" not in formatter.dropitems_list():
+    if "卓外清算" not in dictutil.dropitems_list():
         if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
         m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
-    if "その他" not in formatter.dropitems_list():
+    if "その他" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
@@ -242,7 +242,7 @@ def comparison(m: "MessageParserProtocol") -> None:
         return
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(stats_df.index.to_list())
+        mapping_dict = textutil.anonymous_mapping(stats_df.index.to_list())
         stats_df.index = list(mapping_dict.values())
 
     # 非表示項目
@@ -262,7 +262,7 @@ def comparison(m: "MessageParserProtocol") -> None:
             ],
             inplace=True,
         )
-    stats_df.drop(columns=formatter.dropitems_list(stats_df.columns.to_list()), inplace=True)
+    stats_df.drop(columns=dictutil.dropitems_list(stats_df.columns.to_list()), inplace=True)
 
     # 出力
     options: StyleOptions = StyleOptions(
@@ -357,7 +357,7 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
 
     # 非表示項目
-    for drop_item in formatter.dropitems_list():
+    for drop_item in dictutil.dropitems_list():
         if drop_item in ret:
             ret.pop(drop_item)
 
@@ -375,11 +375,11 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
         pd.DataFrame: 戦績データ
 
     """
-    target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)
+    target_player = textutil.name_replace(g.params.target_player[0], add_mark=True)
 
     df = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
     if g.params.anonymous:
-        mapping_dict.update(formatter.anonymous_mapping(df["name"].unique().tolist(), len(mapping_dict)))
+        mapping_dict.update(textutil.anonymous_mapping(df["name"].unique().tolist(), len(mapping_dict)))
         df["name"] = df["name"].replace(mapping_dict)
         target_player = mapping_dict.get(target_player, target_player)
 
@@ -407,7 +407,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
         pd.DataFrame: 戦績データ
 
     """
-    target_player = formatter.name_replace(g.params.target_player[0], add_mark=True)  # noqa: F841
+    target_player = textutil.name_replace(g.params.target_player[0], add_mark=True)  # noqa: F841
 
     df = g.params.read_data("SUMMARY_DETAILS2").fillna(value="")
     if g.params.anonymous:
@@ -416,7 +416,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
         name_list.extend(df["p2_name"].unique().tolist())
         name_list.extend(df["p3_name"].unique().tolist())
         name_list.extend(df["p4_name"].unique().tolist())
-        mapping_dict.update(formatter.anonymous_mapping(list(set(name_list)), len(mapping_dict)))
+        mapping_dict.update(textutil.anonymous_mapping(list(set(name_list)), len(mapping_dict)))
         df["p1_name"] = df["p1_name"].replace(mapping_dict)
         df["p2_name"] = df["p2_name"].replace(mapping_dict)
         df["p3_name"] = df["p3_name"].replace(mapping_dict)
@@ -463,7 +463,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         return ""
 
     if g.params.anonymous:
-        mapping_dict.update(formatter.anonymous_mapping(df["vs_name"].unique().tolist(), len(mapping_dict)))
+        mapping_dict.update(textutil.anonymous_mapping(df["vs_name"].unique().tolist(), len(mapping_dict)))
         df["my_name"] = df["my_name"].replace(mapping_dict)
         df["vs_name"] = df["vs_name"].replace(mapping_dict)
 

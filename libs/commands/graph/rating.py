@@ -13,7 +13,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import formatter, graphutil, textutil
+from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
@@ -70,7 +70,7 @@ def plot(m: "MessageParserProtocol") -> None:
     df_sorted.ffill(inplace=True)
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df_sorted.columns.to_list())
+        mapping_dict = textutil.anonymous_mapping(df_sorted.columns.to_list())
         df_sorted = df_sorted.rename(columns=mapping_dict)
 
     if df_sorted.empty:

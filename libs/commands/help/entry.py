@@ -9,7 +9,7 @@ import libs.global_value as g
 from libs.domain.section import SubCommands
 from libs.functions import lookup
 from libs.types import CommandType, StyleOptions
-from libs.utils import dictutil, formatter
+from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -169,4 +169,4 @@ def help_message(m: "MessageParserProtocol") -> None:
     )
 
     # 非表示項目を削除
-    m.delete_items(formatter.dropitems_list())
+    m.delete_items(dictutil.dropitems_list())

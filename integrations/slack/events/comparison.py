@@ -9,9 +9,9 @@ import libs.global_value as g
 from libs.domain import modify
 from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
-from libs.functions import lookup, search, validator
+from libs.functions import lookup, validator
 from libs.types import ActionStatus, CommandType, StyleOptions
-from libs.utils import formatter
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -87,7 +87,7 @@ def check_omission(results: ComparisonResults) -> None:
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             # 保留チェック
             if check_pending(work_m):
                 results.pending.append(score)
@@ -100,7 +100,7 @@ def check_omission(results: ComparisonResults) -> None:
     else:
         first_ts = float(results.after.format(ExtDt.FMT.TS))
 
-    db_score = search.for_db_score(first_ts)
+    db_score = lookup.search_db_score(first_ts)
 
     # SLACK -> DATABASE
     ts_list = [x.ts for x in db_score]
@@ -151,7 +151,7 @@ def check_remarks(results: ComparisonResults) -> None:
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             score_list.update({loop_m.data.event_ts: score})
 
     for loop_m in g.adapter.functions.pickup_remarks():
@@ -161,7 +161,7 @@ def check_remarks(results: ComparisonResults) -> None:
                 continue  # リプライになっていない
             if loop_m.data.thread_ts not in score_list:
                 continue  # ゲーム結果に紐付かない
-            pname = formatter.name_replace(str(name), not_replace=True)
+            pname = textutil.name_replace(str(name), not_replace=True)
             if pname not in score_list[loop_m.data.thread_ts].to_list("name"):
                 continue  # ゲーム結果に名前がない
             if loop_m.data.thread_ts in [x.ts for x in results.pending]:
@@ -176,7 +176,7 @@ def check_remarks(results: ComparisonResults) -> None:
                 }
             )
 
-    db_remarks = search.for_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
+    db_remarks = lookup.search_db_remarks(float(results.after.format(ExtDt.FMT.TS)))
 
     # SLACK -> DATABASE
     work_m = cast("MessageParserProtocol", g.adapter.parser())
@@ -219,7 +219,7 @@ def check_total_score(results: ComparisonResults) -> None:
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             if score.deposit:
                 results.invalid_score.append(score)
 

@@ -11,7 +11,7 @@ from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.functions import lookup, message, validator
 from libs.types import MessageStatus, StyleOptions
-from libs.utils import formatter
+from libs.utils import dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -73,7 +73,7 @@ def by_keyword(m: "MessageParserProtocol") -> None:
             logging.debug("dispatch other words")
             other_words(word, m)
 
-    m.delete_items(formatter.dropitems_list())
+    m.delete_items(dictutil.dropitems_list())
     g.adapter.api.post(m)
 
 
@@ -95,7 +95,7 @@ def other_words(word: str, m: "MessageParserProtocol") -> None:
             # 名前ブレ修正
             for k, p in score.to_dict().items():
                 if k.endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(p), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(p), not_replace=True)})
                     continue
 
             match m.data.status:

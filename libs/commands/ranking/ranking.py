@@ -10,7 +10,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import formatter
+from libs.utils import dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -67,7 +67,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         df["rank_distr"] = [f"{x.rank1}-{x.rank2}-{x.rank3}-{x.rank4}" for x in df.itertuples()]
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     # 集計
@@ -282,7 +282,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         )
 
     # 項目整理
-    dropitems = formatter.dropitems_list(df.columns.to_list()) + formatter.dropitems_list()
+    dropitems = dictutil.dropitems_list(df.columns.to_list()) + dictutil.dropitems_list()
     for msg, df_data in data.items():
         if msg in dropitems:  # 非表示項目
             continue

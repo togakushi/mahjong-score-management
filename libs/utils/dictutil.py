@@ -3,36 +3,27 @@ libs/utils/dictutil.py
 """
 
 import logging
-from typing import TYPE_CHECKING, Any, Protocol
+from typing import TYPE_CHECKING, Any, Optional, cast
 
 import libs.global_value as g
 from libs.domain.command import CommandParser
 from libs.domain.placeholder import PlaceholderBuilder
-from libs.functions import lookup, search
+from libs.domain.section import SubCommands
+from libs.functions import lookup
 from libs.types import ChannelType, StyleOptions
-from libs.utils import formatter
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class SubCommandLike(Protocol):
-    """placeholder生成に必要なサブコマンド設定の最小インターフェース"""
-
-    section: str
-    always_argument: list[str]
-    aggregation_range: str
-
-    def to_dict(self, drop_items: list[str] | None = None) -> dict[str, Any]: ...
-
-
-def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> PlaceholderBuilder:
+def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderBuilder:
     """
     プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommandLike): サブコマンド設定
+        subcom (SubCommands): サブコマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
@@ -142,7 +133,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             if name in g.cfg.team.lists:  # チーム名がある場合は所属メンバーに展開
                 target_player.extend(g.cfg.team.member(name))
             else:
-                target_player.append(formatter.name_replace(name, not_replace=True))
+                target_player.append(textutil.name_replace(name, not_replace=True))
     else:  # チーム名
         if params.all_player:
             check_list.extend(g.cfg.team.lists)
@@ -178,7 +169,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             params.stipulated = 1
 
     if departure_time.range(search_range).start == ExtDt("1900-01-01 00:00:00.000000"):
-        params.starttime = search.first_record(
+        params.starttime = lookup.first_record(
             g.cfg.rule.get_version(
                 mode=params.mode,
                 mapping=not (params.mixed),
@@ -435,3 +426,59 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         rename_dict.update(name="チーム" if short else "チーム名")
 
     return rename_dict
+
+
+def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
+    """
+    非表示項目を集合で返す
+
+    Args:
+        item_list (Optional[list[str]]): 表示項目リスト
+
+    Returns:
+        list[str]: 非表示項目のリスト
+
+    """
+    if not item_list:
+        item_list = []
+
+    hide_items = g.cfg.rule.dropitems(g.params.rule_version)
+    if g.params.command:
+        hide_items = hide_items.union(set(cast(SubCommands, getattr(g.cfg, g.params.command)).dropitems))
+
+    if g.params.ignore_flying:
+        hide_items.add("トビ")
+    if not g.cfg.rule.remarks_words:
+        hide_items.add("メモ")
+
+    # 関連ワードを追加
+    related_words_set: dict[str, set[str]] = {
+        "flying": {"トビ", "トビ率", "飛", "flying", "flying_count", "flying_rate", "flying_rate-count"},
+        "yakuman": {"役満", "役満和了", "役満和了率", "yakuman_count", "yakuman_rate", "yakuman_rate-count"},
+        "regulation": {"卓外", "卓外清算", "卓外ポイント"},
+        "other": {"その他", "メモ"},
+    }
+    for words_set in related_words_set.values():
+        if hide_items & words_set:
+            hide_items = hide_items.union(words_set)
+
+    rename_dict = rename_dicts(
+        item_list,
+        StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
+    )
+    for k, v in rename_dict.items():
+        if set([k, v]) & hide_items:
+            hide_items = hide_items.union({k, v})
+
+    rename_dict_short = rename_dicts(
+        item_list,
+        StyleOptions(rename_type=StyleOptions.RenameType.SHORT),
+    )
+    for k, v in rename_dict_short.items():
+        if set([k, v]) & hide_items:
+            hide_items = hide_items.union({k, v})
+
+    if item_list:
+        return list(hide_items & set(item_list))
+    else:
+        return list(hide_items)

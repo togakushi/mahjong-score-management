@@ -11,7 +11,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import adjusting, message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import dictutil, formatter, graphutil, textutil
+from libs.utils import dictutil, graphutil, textutil
 
 if TYPE_CHECKING:
     from pathlib import Path  # noqa: F401
@@ -43,7 +43,7 @@ def main(m: "MessageParserProtocol") -> None:
         return
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     # 見出し設定
@@ -62,7 +62,7 @@ def main(m: "MessageParserProtocol") -> None:
         df.drop(columns=["rank4_count", "rank4_rate", "rank4_rate-count"], inplace=True)
 
     # 非表示項目
-    df.drop(columns=formatter.dropitems_list(df.columns.to_list()), inplace=True)
+    df.drop(columns=dictutil.dropitems_list(df.columns.to_list()), inplace=True)
 
     file_path: "MessageType"
     match g.params.format.lower():

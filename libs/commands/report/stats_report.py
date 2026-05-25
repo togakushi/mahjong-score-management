@@ -23,7 +23,7 @@ from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDoc
 import libs.global_value as g
 from libs.functions import adjusting, lookup, message
 from libs.types import StyleOptions
-from libs.utils import formatter
+from libs.utils import textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -364,7 +364,7 @@ def cover_page(style: dict[str, Any], target_info: dict[str, Any]) -> list[Any]:
     )
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
+        mapping_dict = textutil.anonymous_mapping([g.params.player_name])
         target_player = next(iter(mapping_dict.values()))
     else:
         target_player = g.params.player_name

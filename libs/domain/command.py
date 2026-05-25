@@ -9,7 +9,7 @@ from typing import Any, Callable, Literal, TypedDict, Union
 
 import pandas as pd
 
-from libs.utils import formatter, textutil
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 CommandResult = Mapping[str, Union[str, int, bool, tuple[str, ...]]]
@@ -264,7 +264,7 @@ class CommandParser:
                     continue
                 break
             else:
-                unknown.append(formatter.name_replace(keyword, add_mark=False, not_replace=True))
+                unknown.append(textutil.name_replace(keyword, add_mark=False, not_replace=True))
 
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 

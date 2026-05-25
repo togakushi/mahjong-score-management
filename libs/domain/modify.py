@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, Any, cast
 import libs.global_value as g
 from libs.functions import lookup, message
 from libs.types import ActionStatus, MessageStatus, StyleOptions
-from libs.utils import dbutil, formatter
+from libs.utils import dbutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -257,7 +257,7 @@ def check_remarks(m: "MessageParserProtocol") -> None:
             remark: "RemarkDict" = {
                 "thread_ts": m.data.thread_ts,
                 "event_ts": m.data.event_ts,
-                "name": formatter.name_replace(name, not_replace=True),
+                "name": textutil.name_replace(name, not_replace=True),
                 "matter": matter,
                 "source": m.status.source,
             }
