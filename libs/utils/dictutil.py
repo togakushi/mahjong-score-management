@@ -10,7 +10,7 @@ from libs.domain.command import CommandParser
 from libs.domain.placeholder import PlaceholderBuilder
 from libs.functions import lookup
 from libs.types import ChannelType, StyleOptions
-from libs.utils import formatter
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -142,7 +142,7 @@ def placeholder(subcom: "SubCommandLike", m: "MessageParserProtocol") -> Placeho
             if name in g.cfg.team.lists:  # チーム名がある場合は所属メンバーに展開
                 target_player.extend(g.cfg.team.member(name))
             else:
-                target_player.append(formatter.name_replace(name, not_replace=True))
+                target_player.append(textutil.name_replace(name, not_replace=True))
     else:  # チーム名
         if params.all_player:
             check_list.extend(g.cfg.team.lists)

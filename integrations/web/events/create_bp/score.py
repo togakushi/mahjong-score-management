@@ -12,7 +12,7 @@ import libs.global_value as g
 from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.types import StyleOptions
-from libs.utils import dbutil, dictutil, formatter
+from libs.utils import dbutil, dictutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -93,13 +93,13 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
                         g.params.unregistered_replace = False
                         data.update(request.form.to_dict(), players=players)
                         if p1_name := request.form.get("p1_other"):
-                            data.update(p1_name=formatter.name_replace(p1_name))
+                            data.update(p1_name=textutil.name_replace(p1_name))
                         if p2_name := request.form.get("p2_other"):
-                            data.update(p2_name=formatter.name_replace(p2_name))
+                            data.update(p2_name=textutil.name_replace(p2_name))
                         if p3_name := request.form.get("p3_other"):
-                            data.update(p3_name=formatter.name_replace(p3_name))
+                            data.update(p3_name=textutil.name_replace(p3_name))
                         if p4_name := request.form.get("p4_other"):
-                            data.update(p4_name=formatter.name_replace(p4_name))
+                            data.update(p4_name=textutil.name_replace(p4_name))
                         if not request.form.get("comment"):
                             data.update(comment=None)
 

@@ -13,7 +13,7 @@ from integrations.standard_io.adapter import ServiceAdapter
 from libs.bootstrap import configuration
 from libs.functions import lookup
 from libs.types import ServiceType
-from libs.utils import dictutil, formatter
+from libs.utils import dictutil, textutil
 from tests.parser import param_data
 
 TEST_ARGS = ["progname", "--config=tests/test_data/saki.ini"]
@@ -101,7 +101,7 @@ def test_guest_check(input_args: str, player_name: str, replace_name: str, parse
     g.params = dictutil.placeholder(g.cfg.results, m)
 
     parsed_name = g.params.player_name
-    check_name = formatter.name_replace(parsed_name)
+    check_name = textutil.name_replace(parsed_name)
 
     assert parsed_name == player_name
     assert replace_name == check_name

@@ -43,7 +43,7 @@ def main(m: "MessageParserProtocol") -> None:
         return
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     # 見出し設定

@@ -10,7 +10,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import converter, dictutil, formatter
+from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -34,12 +34,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_game = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
     df_data = pd.DataFrame(columns=df_game.columns)  # ファイル出力用
 
-    my_name = formatter.name_replace(g.params.player_name, add_mark=True)
-    vs_list = [formatter.name_replace(x, add_mark=True) for x in g.params.competition_list]
+    my_name = textutil.name_replace(g.params.player_name, add_mark=True)
+    vs_list = [textutil.name_replace(x, add_mark=True) for x in g.params.competition_list]
 
     # --- 匿名化
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping([my_name] + vs_list)
+        mapping_dict = textutil.anonymous_mapping([my_name] + vs_list)
         my_name = mapping_dict[my_name]
         vs_list = [mapping_dict[name] for name in vs_list]
         df_vs["my_name"] = df_vs["my_name"].replace(mapping_dict)

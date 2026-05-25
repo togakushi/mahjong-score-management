@@ -11,7 +11,7 @@ from libs.domain import modify
 from libs.domain.section import BaseSection
 from libs.functions import validator
 from libs.types import CommandType
-from libs.utils import dbutil, formatter, textutil
+from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
     from configparser import ConfigParser
@@ -231,7 +231,7 @@ def append(argument: list[str]) -> str:
         g.params.unregistered_replace = False
 
         team_name = textutil.str_conv(argument[0], textutil.ConversionType.HtoZ)
-        player_name = formatter.name_replace(argument[1])
+        player_name = textutil.name_replace(argument[1])
         registration_flg = True
         team_id = None
 
@@ -292,7 +292,7 @@ def remove(argument: list[str]) -> str:
     if len(argument) == 2:  # チーム名指
         g.params.unregistered_replace = False
         team_name = textutil.str_conv(argument[0], textutil.ConversionType.HtoZ)
-        player_name = formatter.name_replace(argument[1])
+        player_name = textutil.name_replace(argument[1])
 
         registration_flg = True
         team_id = None

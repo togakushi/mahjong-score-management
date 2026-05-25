@@ -15,7 +15,7 @@ from libs.domain.datamodels import ComparisonResults
 from libs.domain.score import GameResult
 from libs.functions import lookup, validator
 from libs.types import ActionStatus, CommandType, RemarkDict, StyleOptions
-from libs.utils import formatter
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -116,7 +116,7 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             discord_score.append(score)
             results.score_list.update({work_m.data.event_ts: work_m})
             logging.debug(score.to_text("logging"))
@@ -173,7 +173,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             score_list.update({loop_m.data.event_ts: score})
 
         if loop_m.keyword in g.cfg.rule.remarks_words:
@@ -183,7 +183,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
                     continue  # リプライになっていない
                 if loop_m.data.thread_ts not in score_list:
                     continue  # ゲーム結果に紐付かない
-                pname = formatter.name_replace(str(name), not_replace=True)
+                pname = textutil.name_replace(str(name), not_replace=True)
                 if pname not in score_list[loop_m.data.thread_ts].to_list("name"):
                     continue  # ゲーム結果に名前がない
 
@@ -236,6 +236,6 @@ async def check_total_score(results: ComparisonResults, messages_list: list["Mes
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
                 if str(k).endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(v), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(v), not_replace=True)})
             if score.deposit:
                 results.invalid_score.append(score)

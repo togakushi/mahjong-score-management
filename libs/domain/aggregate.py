@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 import libs.global_value as g
-from libs.utils import formatter
+from libs.utils import textutil
 
 
 def game_summary(
@@ -159,14 +159,14 @@ def matrix_table() -> pd.DataFrame:
     l_data: dict[str, Any] = {}
     for pname in plist:
         if g.params.individual:  # 個人集計
-            l_name = formatter.name_replace(pname)
+            l_name = textutil.name_replace(pname)
             # プレイヤー指定があるなら対象以外をスキップ
             if g.params.player_list:
                 if l_name not in g.params.player_list:
                     continue
             # ゲスト置換
             if g.params.guest_skip:  # ゲストあり
-                l_name = formatter.name_replace(pname, add_mark=True)
+                l_name = textutil.name_replace(pname, add_mark=True)
             else:  # ゲストなし
                 if pname == g.cfg.member.guest_name:
                     continue

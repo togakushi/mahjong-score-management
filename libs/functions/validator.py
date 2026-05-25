@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any, Literal, Optional
 
 import libs.global_value as g
 from libs.domain.command import CommandParser
-from libs.utils import formatter, textutil
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -42,7 +42,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
 
         return list(set(ret))
 
-    check_pattern = _pattern_gen([name, formatter.honor_remove(name)])  # 入力パターン
+    check_pattern = _pattern_gen([name, textutil.honor_remove(name)])  # 入力パターン
     ret_flg: bool = True
     ret_msg: str = "OK"
 

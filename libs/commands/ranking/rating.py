@@ -12,7 +12,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import badge
 from libs.types import CommandType, StyleOptions
-from libs.utils import converter, formatter
+from libs.utils import converter, formatter, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -79,7 +79,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # 表示
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
 
     if df.empty:

@@ -17,7 +17,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import dictutil, formatter, graphutil, textutil
+from libs.utils import dictutil, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -44,9 +44,9 @@ def plot(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    player = formatter.name_replace(g.params.player_name, add_mark=True)
+    player = textutil.name_replace(g.params.player_name, add_mark=True)
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
+        mapping_dict = textutil.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
     # 最終値（凡例/ラベル追加用）
@@ -147,7 +147,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         return
 
     if g.params.individual:  # 個人成績
-        player = formatter.name_replace(g.params.player_name, add_mark=True)
+        player = textutil.name_replace(g.params.player_name, add_mark=True)
     else:  # チーム成績
         player = g.params.player_name
 
@@ -164,7 +164,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     player_df["sum_point"] = player_df["point"].cumsum()
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping([g.params.player_name])
+        mapping_dict = textutil.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
     title_text = f"『{player}』の成績 (検索範囲：{text_item.date_range(ExtDt.FMT.YMD_O)})"

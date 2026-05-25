@@ -14,7 +14,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import formatter, graphutil, textutil
+from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
@@ -179,7 +179,7 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
     target_data["position"] = target_data["last_point"].rank(ascending=False).astype(int)
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
         df["name"] = df["name"].replace(mapping_dict)
         target_data["name"] = target_data["name"].replace(mapping_dict)
 

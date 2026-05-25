@@ -9,7 +9,7 @@ from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import converter, formatter
+from libs.utils import converter, formatter, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -40,7 +40,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_summary.index += 1
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df_game["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df_game["name"].unique().tolist())
         df_game["name"] = df_game["name"].replace(mapping_dict)
         df_summary["name"] = df_summary["name"].replace(mapping_dict)
         df_remarks["name"] = df_remarks["name"].replace(mapping_dict)
@@ -175,7 +175,7 @@ def difference(m: "MessageParserProtocol") -> None:
     df_summary.index += 1
 
     if g.params.anonymous:
-        mapping_dict = formatter.anonymous_mapping(df_game["name"].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(df_game["name"].unique().tolist())
         df_game["name"] = df_game["name"].replace(mapping_dict)
         df_summary["name"] = df_summary["name"].replace(mapping_dict)
 

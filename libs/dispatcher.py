@@ -11,7 +11,7 @@ from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.functions import lookup, message, validator
 from libs.types import MessageStatus, StyleOptions
-from libs.utils import formatter
+from libs.utils import formatter, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -95,7 +95,7 @@ def other_words(word: str, m: "MessageParserProtocol") -> None:
             # 名前ブレ修正
             for k, p in score.to_dict().items():
                 if k.endswith("_name"):
-                    score.set(**{k: formatter.name_replace(str(p), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(p), not_replace=True)})
                     continue
 
             match m.data.status:

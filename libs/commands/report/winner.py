@@ -12,7 +12,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
-from libs.utils import formatter, graphutil, textutil
+from libs.utils import graphutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -39,7 +39,7 @@ def plot(m: "MessageParserProtocol") -> None:
         name_list: list[Any] = []
         for col in [f"name{x}" for x in range(1, 6)]:
             name_list.extend(results_df[col].unique().tolist())
-        mapping_dict = formatter.anonymous_mapping(list(set(name_list)))
+        mapping_dict = textutil.anonymous_mapping(list(set(name_list)))
         for col in [f"name{x}" for x in range(1, 6)]:
             results_df[col] = results_df[col].replace(mapping_dict)
 
