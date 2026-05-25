@@ -10,7 +10,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import formatter, textutil
+from libs.utils import dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -282,7 +282,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         )
 
     # 項目整理
-    dropitems = formatter.dropitems_list(df.columns.to_list()) + formatter.dropitems_list()
+    dropitems = dictutil.dropitems_list(df.columns.to_list()) + dictutil.dropitems_list()
     for msg, df_data in data.items():
         if msg in dropitems:  # 非表示項目
             continue

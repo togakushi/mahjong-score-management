@@ -9,7 +9,7 @@ from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import converter, formatter, textutil
+from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -97,8 +97,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         ]
 
     # 非表示項目
-    df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)
-    df_remarks.drop(columns=formatter.dropitems_list(df_remarks.columns.to_list()), inplace=True)
+    df_summary.drop(columns=dictutil.dropitems_list(df_summary.columns.to_list()), inplace=True)
+    df_remarks.drop(columns=dictutil.dropitems_list(df_remarks.columns.to_list()), inplace=True)
 
     if options.format_type == "default":
         options.codeblock = True
@@ -111,7 +111,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(役満和了)
-    if "役満和了" not in formatter.dropitems_list():
+    if "役満和了" not in dictutil.dropitems_list():
         options.title = "役満和了"
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
@@ -125,7 +125,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
-    if "卓外清算" not in formatter.dropitems_list():
+    if "卓外清算" not in dictutil.dropitems_list():
         options.title = "卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
@@ -143,7 +143,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
-    if "その他" not in formatter.dropitems_list():
+    if "その他" not in dictutil.dropitems_list():
         options.title = "その他"
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
         df_others = df_remarks.query("type == 1").drop(columns=set(df_remarks.columns) & {"type", "ex_point"})
@@ -215,7 +215,7 @@ def difference(m: "MessageParserProtocol") -> None:
     filter_list = ["name", "count", "total_point", "rank_avg", "diff_from_above", "diff_from_top"]
 
     # 非表示項目
-    df_summary.drop(columns=formatter.dropitems_list(df_summary.columns.to_list()), inplace=True)
+    df_summary.drop(columns=dictutil.dropitems_list(df_summary.columns.to_list()), inplace=True)
 
     if options.format_type == "default":
         data = df_summary.filter(items=header_list)

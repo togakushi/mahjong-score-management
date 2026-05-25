@@ -15,7 +15,7 @@ from libs.domain.stats import StatsInfo
 from libs.functions import message
 from libs.functions.compose import badge, text_item
 from libs.types import StyleOptions
-from libs.utils import converter, dictutil, formatter, textutil
+from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -135,9 +135,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
             ).replace("-", "▲")
 
     # 非表示項目
-    seat_data.drop(columns=formatter.dropitems_list(seat_data.columns.to_list()), inplace=True)
-    stats.result_df.drop(columns=formatter.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
-    stats.record_df.drop(columns=formatter.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
+    seat_data.drop(columns=dictutil.dropitems_list(seat_data.columns.to_list()), inplace=True)
+    stats.result_df.drop(columns=dictutil.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
+    stats.record_df.drop(columns=dictutil.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
 
     if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
@@ -150,18 +150,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
     count_df = remarks_df.groupby("matter").agg(matter_count=("matter", "count"), ex_total=("ex_point", "sum"), type=("type", "max"))
     count_df["matter"] = count_df.index
 
-    if "役満和了" not in formatter.dropitems_list():
+    if "役満和了" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
-    if "卓外清算" not in formatter.dropitems_list():
+    if "卓外清算" not in dictutil.dropitems_list():
         if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
         m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
-    if "その他" not in formatter.dropitems_list():
+    if "その他" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
@@ -262,7 +262,7 @@ def comparison(m: "MessageParserProtocol") -> None:
             ],
             inplace=True,
         )
-    stats_df.drop(columns=formatter.dropitems_list(stats_df.columns.to_list()), inplace=True)
+    stats_df.drop(columns=dictutil.dropitems_list(stats_df.columns.to_list()), inplace=True)
 
     # 出力
     options: StyleOptions = StyleOptions(
@@ -357,7 +357,7 @@ def get_totalization(data: StatsInfo) -> dict[str, Any]:
     ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
 
     # 非表示項目
-    for drop_item in formatter.dropitems_list():
+    for drop_item in dictutil.dropitems_list():
         if drop_item in ret:
             ret.pop(drop_item)
 
