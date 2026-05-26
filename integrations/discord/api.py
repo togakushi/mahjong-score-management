@@ -15,7 +15,6 @@ import integrations.discord.events.audioop as _audioop
 from integrations.base.interface import APIInterface
 from libs.types import CommandType, StyleOptions
 from libs.utils import converter, textutil
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 sys.modules["audioop"] = _audioop
@@ -153,7 +152,7 @@ class AdapterAPI(APIInterface):
                 post_msg = textutil.group_strings(post_msg, limit=1800)
 
         if thread_msg and m.post.thread:
-            date_suffix = ExtDt(float(m.data.event_ts)).format(Format.YMDHMS, Delimiter.SLASH)
+            date_suffix = ExtDt(float(m.data.event_ts)).format(ExtDt.FMT.YMDHMS, ExtDt.DEM.SLASH)
             if not m.post.thread_title.isnumeric() and m.post.thread_title:
                 thread = await thread_msg.create_thread(name=f"{m.post.thread_title} - {date_suffix}")
                 for msg in post_msg:
