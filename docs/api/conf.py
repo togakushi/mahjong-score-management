@@ -27,7 +27,7 @@ extensions = [
     "sphinx.ext.githubpages",
 ]
 
-templates_path = ["../templates"]
+templates_path = ["../customization/templates"]
 
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
@@ -48,6 +48,8 @@ html_show_sphinx = False
 html_show_copyright = False
 html_copy_source = False
 html_show_sourcelink = False
+html_static_path = ["../customization/static"]
+# html_css_files = ["custom.css"]
 html_theme_options = {
     "root_url": "",
     "root_name": "",
