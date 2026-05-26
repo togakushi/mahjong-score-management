@@ -10,7 +10,6 @@ from typing import TYPE_CHECKING, Any, cast
 import libs.dispatcher
 from integrations.slack.events.handler_registry import register, register_all
 from integrations.slack.events.home_tab import home
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -109,8 +108,8 @@ def register_event_handlers(app: "App", adapter: "ServiceAdapter") -> None:
             "view_id": None,
             "screen": None,
             "operation": None,
-            "sday": adapter.conf.tab_var.get("sday", ExtDt().format(Format.YMD, Delimiter.HYPHEN)),
-            "eday": adapter.conf.tab_var.get("eday", ExtDt().format(Format.YMD, Delimiter.HYPHEN)),
+            "sday": adapter.conf.tab_var.get("sday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN)),
+            "eday": adapter.conf.tab_var.get("eday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN)),
         }
 
         adapter.conf.tab_var["user_id"] = event["user"]

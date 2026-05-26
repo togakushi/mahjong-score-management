@@ -12,7 +12,6 @@ from integrations.slack.events.home_tab import ui_parts
 from libs.commands.results import versus
 from libs.types import CommandType
 from libs.utils import dictutil
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -27,8 +26,8 @@ def build_versus_menu(adapter: ServiceAdapter) -> "View":
     adapter.conf.tab_var["screen"] = "VersusMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
-    adapter.conf.tab_var.setdefault("sday", ExtDt().format(Format.YMD, Delimiter.HYPHEN))
-    adapter.conf.tab_var.setdefault("eday", ExtDt().format(Format.YMD, Delimiter.HYPHEN))
+    adapter.conf.tab_var.setdefault("sday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN))
+    adapter.conf.tab_var.setdefault("eday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN))
     ui_parts.header(adapter, text="【直接対戦】")
 
     # プレイヤー選択リスト
@@ -36,7 +35,7 @@ def build_versus_menu(adapter: ServiceAdapter) -> "View":
     ui_parts.multi_select_pulldown(adapter, text="対戦相手", add_list=["全員"])
 
     # 検索範囲設定
-    date_dict = {x: ExtDt(hours=-g.cfg.setting.time_adjust).range(x).dict_format(Format.YMD, Delimiter.HYPHEN) for x in ["今月", "先月", "全部"]}
+    date_dict = {x: ExtDt(hours=-g.cfg.setting.time_adjust).range(x).dict_format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN) for x in ["今月", "先月", "全部"]}
     ui_parts.divider(adapter)
     ui_parts.radio_buttons(
         adapter=adapter,

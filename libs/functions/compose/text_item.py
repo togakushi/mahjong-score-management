@@ -7,11 +7,11 @@ from typing import TYPE_CHECKING, Literal, Optional
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from libs.domain.datamodels import GameInfo
+    from libs.utils.timekit import Format
 
 
 def remarks(headword: bool = False) -> str | list[str]:
@@ -114,14 +114,14 @@ def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[st
 
     match time_pattern:
         case "day":
-            starttime = ExtDt(g.params.starttime).format(Format.TS)
-            endtime = ExtDt(g.params.endtime).format(Format.TS)
+            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.TS)
+            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.TS)
         case "time":
-            starttime = ExtDt(g.params.starttime).format(Format.YMDHM)
-            endtime = ExtDt(g.params.endtime).format(Format.YMDHM)
+            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHM)
+            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHM)
         case _:
-            starttime = ExtDt(g.params.starttime).format(Format.YMDHMS)
-            endtime = ExtDt(g.params.endtime).format(Format.YMDHMS)
+            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHMS)
+            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHMS)
 
     if g.params.anonymous:
         starttime = "yyyy/mm/dd HH:MM"
@@ -161,8 +161,8 @@ def aggregation_range(
         first = game_info.first_comment
         last = game_info.last_comment
     else:
-        first = game_info.first_game.format(Format.YMDHM)
-        last = game_info.last_game.format(Format.YMDHM)
+        first = game_info.first_game.format(ExtDt.FMT.YMDHM)
+        last = game_info.last_game.format(ExtDt.FMT.YMDHM)
 
     match kind:
         case "list":
@@ -172,7 +172,7 @@ def aggregation_range(
 
 
 def date_range(
-    kind: Format,
+    kind: "Format",
     prefix_a: Optional[str] = None,
     prefix_b: Optional[str] = None,
 ) -> str:
@@ -202,7 +202,7 @@ def date_range(
         str_st = st.format(kind)
         str_et = et.format(kind)
 
-    if st.format(kind, Delimiter.NUMBER) == ot.format(kind, Delimiter.NUMBER):
+    if st.format(kind, ExtDt.DEM.NUMBER) == ot.format(kind, ExtDt.DEM.NUMBER):
         if prefix_a and prefix_b:
             ret = f"{prefix_a} ({str_st})"
         else:

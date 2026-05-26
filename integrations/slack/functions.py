@@ -9,7 +9,6 @@ import libs.global_value as g
 from integrations.base.interface import FunctionsInterface
 from libs.functions import lookup, validator
 from libs.types import ActionStatus
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -55,7 +54,7 @@ class SvcFunctions(FunctionsInterface):
             words = " ".join(words)
 
         # 検索クエリ
-        after = ExtDt(days=-self.conf.search_after, hours=g.cfg.setting.time_adjust).format(Format.YMD, Delimiter.HYPHEN)
+        after = ExtDt(days=-self.conf.search_after, hours=g.cfg.setting.time_adjust).format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN)
         channel = " ".join([f"in:{x}" for x in self.conf.search_channel])
         query = f"{words} {channel} after:{after}"
         logging.info("query=%s, check_db=%s", query, g.cfg.setting.database_file)

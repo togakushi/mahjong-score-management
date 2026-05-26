@@ -12,7 +12,6 @@ from integrations.slack.events.home_tab import ui_parts
 from libs.commands.ranking import ranking
 from libs.types import CommandType
 from libs.utils import dictutil
-from libs.utils.timekit import Delimiter, Format
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -33,12 +32,12 @@ def build_ranking_menu(adapter: ServiceAdapter) -> "View":
     adapter.conf.tab_var["screen"] = "RankingMenu"
     adapter.conf.tab_var["no"] = 0
     adapter.conf.tab_var["view"] = {"type": "home", "blocks": []}
-    adapter.conf.tab_var.setdefault("sday", ExtDt().format(Format.YMD, Delimiter.HYPHEN))
-    adapter.conf.tab_var.setdefault("eday", ExtDt().format(Format.YMD, Delimiter.HYPHEN))
+    adapter.conf.tab_var.setdefault("sday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN))
+    adapter.conf.tab_var.setdefault("eday", ExtDt().format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN))
     ui_parts.header(adapter, text="【ランキング】")
 
     # 検索範囲設定
-    date_dict = {x: ExtDt(hours=-g.cfg.setting.time_adjust).range(x).dict_format(Format.YMD, Delimiter.HYPHEN) for x in ["今月", "先月", "全部"]}
+    date_dict = {x: ExtDt(hours=-g.cfg.setting.time_adjust).range(x).dict_format(ExtDt.FMT.YMD, ExtDt.DEM.HYPHEN) for x in ["今月", "先月", "全部"]}
     ui_parts.divider(adapter)
     ui_parts.radio_buttons(
         adapter=adapter,
