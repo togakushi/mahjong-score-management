@@ -36,7 +36,8 @@ jobs:
           cp -r ./temp_docs/user/build/html ./temp_docs/html/user
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/deploy-pages@v4
+
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./temp_docs/html/
