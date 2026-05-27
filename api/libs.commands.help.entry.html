@@ -162,11 +162,14 @@
 <dt class="sig sig-object py" id="libs.commands.help.entry.HelpConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.help.entry.</span></span><span class="sig-name descname"><span class="pre">HelpConfig</span></span><a class="headerlink" href="#libs.commands.help.entry.HelpConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
-<p>helpセクション処理</p>
+<p>ヘルプ表示サブコマンド（helpセクション）の設定を管理するクラス。</p>
+<p>設定ファイルからヘルプコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.help.entry.HelpConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.entry.HelpConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>HelpConfig クラスの初期化。</p>
+<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
 </dd>
@@ -178,10 +181,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.commands.help.entry.main">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.help.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.entry.main" title="Link to this definition">¶</a></dt>
-<dd><p>ヘルプ処理エントリーポイント</p>
+<dd><p>ヘルプ処理のエントリーポイント。</p>
+<p>受信したメッセージデータに基づいてヘルプパラメータを解析し、ユーザー向けのヘルプ案内メッセージを構築する。
+メッセージの送信スレッドのタイトルやタイムスタンプなどの投稿メタデータもここで設定される。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -192,13 +197,30 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.commands.help.entry.help_message">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.help.entry.</span></span><span class="sig-name descname"><span class="pre">help_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.entry.help_message" title="Link to this definition">¶</a></dt>
-<dd><p>呼び出しキーワードヘルプメッセージ</p>
+<dd><p>ユーザーに提示する各機能の呼び出しキーワードや設定情報のヘルプメッセージを動的に構築する。</p>
+<p>内部では、チャンネルの個別設定やルール識別子の状態を最新に更新した上で、以下の各セクションに関する
+ヘルプ内容（呼び出しワードや規定打数などのデフォルト値）を、 <code class="docutils literal notranslate"><span class="pre">m.set_message</span></code> を用いて多層的に組み立てる。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージを蓄積・設定するためのメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>構築されるヘルプ情報セクション:</dt><dd><ul class="simple">
+<li><p><strong>機能呼び出し</strong>: 基本的な使い方のフォーマットと適用中のルール識別子。</p></li>
+<li><p><strong>成績サマリ (RESULTS)</strong>: 成績サマリの呼び出しワードと検索範囲の初期値。</p></li>
+<li><p><strong>成績グラフ (GRAPH)</strong>: グラフ描画の呼び出しワードと検索範囲の初期値。</p></li>
+<li><p><strong>ランキング (RANKING)</strong>: ランキングの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。</p></li>
+<li><p><strong>レポート (REPORT)</strong>: レポート生成の呼び出しワードと検索範囲の初期値。</p></li>
+<li><p><strong>メンバー・チーム一覧</strong>: 登録されているメンバーやチームのリストを出力する呼び出しワード。</p></li>
+<li><p><strong>検索範囲</strong>: 期間指定などで利用できる有効な検索ワードの一覧。</p></li>
+<li><p><strong>メモ機能</strong>: 個別カウントや役満カウントなどのレギュレーションに準じたメモ記録ワードと仕様。</p></li>
+<li><p><strong>ルールセット・レギュレーション</strong>: 卓外清算ワード（個人/チーム）やルール情報の詳細。</p></li>
+<li><p><strong>チャンネル設定情報</strong>: 現在のチャンネルID、デフォルトルール、個別設定ファイルの有無、セパレート機能の成否。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

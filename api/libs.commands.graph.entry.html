@@ -161,11 +161,14 @@
 <dt class="sig sig-object py" id="libs.commands.graph.entry.GraphConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.graph.entry.</span></span><span class="sig-name descname"><span class="pre">GraphConfig</span></span><a class="headerlink" href="#libs.commands.graph.entry.GraphConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
-<p>graphセクション処理</p>
+<p>グラフ描画サブコマンド（graphセクション）の設定を管理するクラス。</p>
+<p>設定ファイルからグラフコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.graph.entry.GraphConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.entry.GraphConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>GraphConfig クラスの初期化。</p>
+<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
 </dd>
@@ -177,13 +180,40 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.commands.graph.entry.main">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.graph.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.entry.main" title="Link to this definition">¶</a></dt>
-<dd><p>グラフ生成処理エントリーポイント</p>
+<dd><p>グラフ生成・描画処理のエントリーポイント。</p>
+<p>受信したメッセージデータを解析し、指定されたプレイヤーの人数やオプションフラグ
+（統計、レーティング、順位など）の組み合わせに応じて、最適なグラフ描画関数へルーティングする。</p>
+<p>内部では、グローバルパラメータ（ <code class="docutils literal notranslate"><span class="pre">g.params</span></code> ）にメッセージから抽出したプレースホルダーの
+解析結果を展開して判定に使用する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Routing Logic:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><strong>プレイヤーが1人の場合</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">statistics</span></code> フラグあり: 個人統計グラフ（ <code class="docutils literal notranslate"><span class="pre">personal.statistics_plot</span></code> ）</p></li>
+<li><p>フラグなし: 個人成績推移グラフ（ <code class="docutils literal notranslate"><span class="pre">personal.plot</span></code> ）</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>プレイヤーが複数（2人以上）の場合</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグあり: レーティング推移グラフ（ <code class="docutils literal notranslate"><span class="pre">rating.plot</span></code> ）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> なし ＋ <code class="docutils literal notranslate"><span class="pre">order</span></code> フラグあり: 複数人順位推移グラフ（ <code class="docutils literal notranslate"><span class="pre">summary.rank_plot</span></code> ）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> なし ＋ <code class="docutils literal notranslate"><span class="pre">order</span></code> フラグなし: 複数人ポイント推移グラフ（ <code class="docutils literal notranslate"><span class="pre">summary.point_plot</span></code> ）</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

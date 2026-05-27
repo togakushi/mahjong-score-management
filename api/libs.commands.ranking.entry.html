@@ -161,11 +161,22 @@
 <dt class="sig sig-object py" id="libs.commands.ranking.entry.RankingConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.ranking.entry.</span></span><span class="sig-name descname"><span class="pre">RankingConfig</span></span><a class="headerlink" href="#libs.commands.ranking.entry.RankingConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
-<p>rankingセクション処理</p>
+<p>ランキング出力サブコマンド（rankingセクション）の設定を管理するクラス。</p>
+<p>設定ファイルからランキングコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_commandword</strong> (<em>str</em>) – コマンドのデフォルト起動文字列（”麻雀ランキング”）</p></li>
+<li><p><strong>section</strong> (<em>str</em>) – 設定ファイル内の対応するセクション名（CommandType.RANKING の文字列値）</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.ranking.entry.RankingConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.ranking.entry.RankingConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>RankingConfig クラスの初期化。</p>
+<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
 </dd>
@@ -177,13 +188,36 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.commands.ranking.entry.main">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.ranking.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.ranking.entry.main" title="Link to this definition">¶</a></dt>
-<dd><p>ランキング生成処理エントリーポイント</p>
+<dd><p>ランキングおよびレーティング出力処理のエントリーポイント。</p>
+<p>受信したメッセージデータを解析し、レーティングオプションフラグの有無に応じて
+通常の成績ランキング（順位・ポイントなど）か、レーティングシステムの集計・出力かへ
+処理をルーティングする。</p>
+<p>内部では、グローバルパラメータ（ <code class="docutils literal notranslate"><span class="pre">g.params</span></code> ）にメッセージから抽出したプレースホルダーの
+解析結果を展開し、判定および出力内容の決定に使用する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Routing Logic:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><strong>レーティングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグが立っている場合。
+コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">rating.aggregation</span></code> を実行する。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>通常ランキングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグがない（デフォルト）場合。
+コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">ranking.aggregation</span></code> を実行する。</p>
+</dd>
+</dl>
+</li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

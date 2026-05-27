@@ -161,11 +161,22 @@
 <dt class="sig sig-object py" id="libs.commands.results.entry.ResultsConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.results.entry.</span></span><span class="sig-name descname"><span class="pre">ResultsConfig</span></span><a class="headerlink" href="#libs.commands.results.entry.ResultsConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
-<p>resultsセクション処理</p>
+<p>成績集計サブコマンド（resultsセクション）の設定を管理するクラス。</p>
+<p>設定ファイルから成績コマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_commandword</strong> (<em>str</em>) – コマンドのデフォルト起動文字列（”麻雀成績”）</p></li>
+<li><p><strong>section</strong> (<em>str</em>) – 設定ファイル内の対応するセクション名（CommandType.RESULTS の文字列値）</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.results.entry.ResultsConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.entry.ResultsConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>ResultsConfig クラスの初期化。</p>
+<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
 </dd>
@@ -177,13 +188,55 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.commands.results.entry.main">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.results.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.results.entry.main" title="Link to this definition">¶</a></dt>
-<dd><p>成績集計処理エントリーポイント</p>
+<dd><p>成績集計処理のエントリーポイント。</p>
+<p>受信したメッセージデータを解析し、指定されたプレイヤーの有無、
+および各種フラグ（直接対戦マトリクス、スコア比較など）の優先順位に基づいて、
+適切な成績集計・表示関数へルーティングする。</p>
+<p>内部では、グローバルパラメータ（ <code class="docutils literal notranslate"><span class="pre">g.params</span></code> ）にメッセージから抽出したプレースホルダーの
+解析結果を展開して判定に使用する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Routing Logic:</dt><dd><p>探索は以下の条件分岐の優先順位（上から順に判定）に従って実行される。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>直接対戦（対戦マトリクス）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">versus_matrix</span></code> フラグと <code class="docutils literal notranslate"><span class="pre">competition_list</span></code> がどちらも存在する場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">versus.aggregation</span></code> （直接対戦の集計）を実行。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>成績サマリ（差分モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> （スコア比較）フラグが立っている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">summary.difference</span></code> （成績サマリの差分表示）を実行。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>成績詳細（比較モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">competition_list</span></code> のみ指定されている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">detail.comparison</span></code> （詳細成績比較）を実行。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>成績詳細（単独モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">player_list</span></code> （対象プレイヤー）が指定されている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">detail.aggregation</span></code> （特定プレイヤーの単独詳細成績集計）を実行。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>成績サマリ（通常モード）</strong>:</dt><dd><p>上記のいずれの条件にも該当しない場合のデフォルト挙動。
+-&gt; <code class="docutils literal notranslate"><span class="pre">summary.aggregation</span></code> （全体の成績サマリ集計）を実行。</p>
+</dd>
+</dl>
+</li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

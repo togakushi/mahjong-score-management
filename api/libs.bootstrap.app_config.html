@@ -179,16 +179,24 @@
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.bootstrap.app_config.</span></span><span class="sig-name descname"><span class="pre">AppConfig</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>アプリケーション設定</p>
+<p>アプリケーション全体の構成設定と各コマンドセクションを集中管理するクラス。</p>
+<p>設定ファイル（INI形式）の読み込み、不足セクションの自動補完、パスの正規化、
+およびチャンネルごとの個別設定による上書きなどのライフサイクルを一元管理する。</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>AppConfig クラスの初期化。</p>
+<p>設定ファイルを読み込み、必須セクションの存在チェックと自動生成、
+および各設定セクション・サブコマンドオブジェクトの構築を行う。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config_file</strong> (<em>Path</em>)</p>
+<dd class="field-odd"><p><strong>config_file</strong> (<em>Path</em>) – 読み込むメイン設定ファイルのパス。</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – 設定ファイルの読み込みやパースに失敗した場合。</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -286,7 +294,9 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.initialization">
 <span class="sig-name descname"><span class="pre">initialization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.initialization" title="Link to this definition">¶</a></dt>
-<dd><p>設定ファイル読み込み</p>
+<dd><p>設定ファイルから各セクションのデータを読み込み、パスやフォントの検証を行う。</p>
+<p>フォントファイルの存在チェックを行い、相対パス（作業ディレクトリ、DBパス）を
+適切な絶対パスへ解決する。フォントが見つからない場合はプロセスを異常終了する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -297,13 +307,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.word_list">
 <span class="sig-name descname"><span class="pre">word_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">add_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.word_list" title="Link to this definition">¶</a></dt>
-<dd><p>設定されている値、キーワードをリスト化する</p>
+<dd><p>ルール設定、エイリアス、各種コマンドワードを集約したキーワードリストを生成する。</p>
+<p>引数で指定された単語、麻雀ルールのマッピングキー、各サブコマンドの起動ワードや接尾辞、
+および登録されているエイリアスをすべて統合し、重複と空文字を排除して返す。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>add_words</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – リストに追加するワード. Defaults to None.</p>
+<dd class="field-odd"><p><strong>add_words</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – リストに追加したい独自の単語リスト。
+デフォルトは None。</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>リスト化されたキーワード</p>
+<dd class="field-even"><p>統合・重複排除されたキーワード文字列のリスト。</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[str]</p>
@@ -314,12 +327,14 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.overwrite">
 <span class="sig-name descname"><span class="pre">overwrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">additional_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.overwrite" title="Link to this definition">¶</a></dt>
-<dd><p>指定セクションを上書き</p>
+<dd><p>追加の設定ファイルから指定されたセクションの設定を読み込み、上書きする。</p>
+<p>サブコマンドセクション（results, graph など）を上書きする際、
+既に設定されている <code class="docutils literal notranslate"><span class="pre">commandword</span></code> 属性は上書きされないよう保護される。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>additional_config</strong> (<em>Path</em>) – 追加設定ファイルパス</p></li>
-<li><p><strong>section_name</strong> (<em>str</em>) – セクション名</p></li>
+<li><p><strong>additional_config</strong> (<em>Path</em>) – 追加読み込みを行う設定ファイルのパス。</p></li>
+<li><p><strong>section_name</strong> (<em>str</em>) – 上書き対象のセクション名。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -331,20 +346,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.read_channel_config">
 <span class="sig-name descname"><span class="pre">read_channel_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.read_channel_config" title="Link to this definition">¶</a></dt>
-<dd><p>チャンネル個別設定読み込み</p>
+<dd><p>特定のチャンネル専用の設定を読み込み、必要に応じて全体設定をリロードする。</p>
+<p>指定セクションから <code class="docutils literal notranslate"><span class="pre">default_rule</span></code> や個別設定ファイルパス（<code class="docutils literal notranslate"><span class="pre">channel_config</span></code>）を取得し、
+ファイルが存在する場合は全体インスタンスの初期化を再実行する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>section_name</strong> (<em>str</em>) – チャンネル個別設定セクション名</p></li>
-<li><p><strong>ret_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – パラメータ</p></li>
+<li><p><strong>section_name</strong> (<em>str</em>) – チャンネル個別の設定が記述されているセクション名。</p></li>
+<li><p><strong>ret_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – 読み込んだパラメータ（default_rule等）を格納・更新する辞書。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><p>個別設定読み込み結果</p>
-<ul class="simple">
-<li><p><em>Path</em>: 読み込んだ設定ファイルパス</p></li>
-<li><p><em>None</em>: 読み込める設定ファイルがない</p></li>
-</ul>
+<dd class="field-even"><p><dl class="simple">
+<dt>読み込みに成功した場合は個別設定ファイルのパス、</dt><dd><p>対象セクションや設定ファイルが存在しない場合は None。</p>
+</dd>
+</dl>
 </p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -356,13 +372,22 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.resolve_channel_id">
 <span class="sig-name descname"><span class="pre">resolve_channel_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id" title="Link to this definition">¶</a></dt>
-<dd><p>メイン設定から優先度の高いチャンネルIDを取得する</p>
+<dd><p>メイン設定および個別セクションから優先度の高いチャンネルIDを解決して取得する。</p>
+<p>引数で渡されたセクション名、現在選択されている連携サービス、共通システム設定の順に
+設定ファイルを探索し、最初に見つかった <code class="docutils literal notranslate"><span class="pre">channel_id</span></code> を返す。
+いずれのセクションにもIDが定義されておらず、かつ <code class="docutils literal notranslate"><span class="pre">section_name</span></code> が指定されている場合は、
+そのセクション名自体をチャンネルIDとみなして返却する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>section_name</strong> (<em>str</em><em>, </em><em>optional</em>) – チャンネル個別設定セクション名</p>
+<dd class="field-odd"><p><strong>section_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – チャンネル個別の設定セクション名。
+デフォルトは None。</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>チャンネルID</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>探索により決定されたチャンネルID。</dt><dd><p>該当するIDが見つからず、<code class="docutils literal notranslate"><span class="pre">section_name</span></code> も未指定の場合は空文字を返す。</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
