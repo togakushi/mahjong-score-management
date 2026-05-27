@@ -28,7 +28,6 @@ backup/
 docs/api/build/
 docs/api/source/
 docs/api/coverage/
-!docs/*/source/_static/**
 !docs/*/source/**/*.txt
 !docs/*/source/**/*.png
 
