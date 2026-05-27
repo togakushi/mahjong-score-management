@@ -1,5 +1,5 @@
 """
-tests/database/test_result_update.py
+得点登録処理のDB反映結果を検証するテスト。
 """
 
 import sys
@@ -25,7 +25,12 @@ from tests.database import param_data
     ids=list(param_data.score_insert_case_01.keys()),
 )
 def test_score_insert(draw_split: bool, game_result: str, get_point: dict[str, float], get_rank: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
-    """スコア登録テスト"""
+    """
+    スコア登録結果がDBへ正しく保存されることを検証する。
+
+    入力文字列の解析結果を登録し、point/rank 列を抽出して期待辞書と一致するか確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え

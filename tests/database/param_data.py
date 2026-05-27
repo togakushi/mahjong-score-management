@@ -1,5 +1,5 @@
 """
-テスト用パラメータ
+database テストで利用する入力パターン定義。
 """
 
 from typing import Any

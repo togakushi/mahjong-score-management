@@ -1,7 +1,5 @@
 """
-tests/database/conftest.py
-
-テスト共通前処理
+database テスト共通の前処理フィクスチャを提供する。
 """
 
 from contextlib import closing
@@ -23,7 +21,12 @@ if TYPE_CHECKING:
 
 @pytest.fixture(scope="package")
 def database_connection() -> Generator["Connection", Any, None]:
-    """共有インメモリDBと接続"""
+    """
+    共有インメモリDB接続を提供する。
+
+    パッケージ全体で同じ接続を再利用し、終了時に確実にクローズする。
+
+    """
     configuration.setup(init_db=False)
     g.cfg = AppConfig(Path("tests/testdata/empty.ini"))
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"
@@ -34,7 +37,12 @@ def database_connection() -> Generator["Connection", Any, None]:
 
 @pytest.fixture(scope="package", autouse=True)
 def initialize_database(database_connection: Any) -> None:
-    """DB初期化"""
+    """
+    テスト用DBを初期化して基礎データを投入する。
+
+    member/team/alias テーブルを準備し、参照系テストの前提を整える。
+
+    """
     _ = database_connection  # pylint (W0613: Unused argument)
     initialization.setup_resultdb(g.cfg.setting.database_file)
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:

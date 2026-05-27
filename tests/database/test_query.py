@@ -1,5 +1,5 @@
 """
-tests/database/test_query.py
+SQLテンプレートの構文整合性を検証するテスト。
 """
 
 from pprint import pprint
@@ -84,7 +84,13 @@ param_list = [pytest.param(name, flags, id=name) for name, flags in params_table
 @pytest.mark.parametrize("param_name, flags", param_list)
 @pytest.mark.parametrize("query_name", query_list)
 def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -> None:
-    """クエリ構文チェック"""
+    """
+    SQL定義が各条件で読み出し可能であることを検証する。
+
+    クエリ名とパラメータの全組み合わせでプレースホルダを評価し、
+    構文崩れを検出する。
+
+    """
     p = PlaceholderBuilder()
     p.update_from_dict(
         {
