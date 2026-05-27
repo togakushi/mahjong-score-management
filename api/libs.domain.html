@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.domain.aggregate module" href="libs.domain.aggregate.html" />
+    <link rel="next" title="libs.domain.command module" href="libs.domain.command.html" />
     <link rel="prev" title="libs.commands.results.versus module" href="libs.commands.results.versus.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -77,8 +77,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.aggregate.html"
-                          title="next chapter">libs.domain.aggregate module</a></p>
+    <p class="topless"><a href="libs.domain.command.html"
+                          title="next chapter">libs.domain.command module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -102,7 +102,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.aggregate.html" title="libs.domain.aggregate module"
+          <a href="libs.domain.command.html" title="libs.domain.command module"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="libs.commands.results.versus.html" title="libs.commands.results.versus module"
@@ -159,20 +159,12 @@
 <li><p><a class="reference internal" href="libs.domain.stats.html"><span class="doc">libs.domain.stats module</span></a>: 成績解析</p></li>
 <li><p><a class="reference internal" href="libs.domain.rule.html"><span class="doc">libs.domain.rule module</span></a>: ルールセット管理</p></li>
 <li><p><a class="reference internal" href="libs.domain.placeholder.html"><span class="doc">libs.domain.placeholder module</span></a>: プレースホルダ構築</p></li>
-<li><p><a class="reference internal" href="libs.domain.aggregate.html"><span class="doc">libs.domain.aggregate module</span></a>: データ集計</p></li>
 <li><p><a class="reference internal" href="libs.domain.modify.html"><span class="doc">libs.domain.modify module</span></a>: DBデータ操作</p></li>
 </ul>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="libs.domain.aggregate.html">libs.domain.aggregate module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libs.domain.aggregate.html#libs.domain.aggregate.game_summary"><code class="docutils literal notranslate"><span class="pre">game_summary()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.domain.aggregate.html#libs.domain.aggregate.calculation_rating"><code class="docutils literal notranslate"><span class="pre">calculation_rating()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.domain.aggregate.html#libs.domain.aggregate.grade_promotion_check"><code class="docutils literal notranslate"><span class="pre">grade_promotion_check()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.domain.aggregate.html#libs.domain.aggregate.matrix_table"><code class="docutils literal notranslate"><span class="pre">matrix_table()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="libs.domain.command.html">libs.domain.command module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandResult"><code class="docutils literal notranslate"><span class="pre">CommandResult</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandAction"><code class="docutils literal notranslate"><span class="pre">CommandAction</span></code></a></li>
@@ -195,6 +187,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandParser.day_format"><code class="docutils literal notranslate"><span class="pre">CommandParser.day_format</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandParser.is_valid_command"><code class="docutils literal notranslate"><span class="pre">CommandParser.is_valid_command()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandParser.analysis_argument"><code class="docutils literal notranslate"><span class="pre">CommandParser.analysis_argument()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandParser._parse_match"><code class="docutils literal notranslate"><span class="pre">CommandParser._parse_match()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -288,6 +281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.modify.html#libs.domain.modify.remarks_delete_compar"><code class="docutils literal notranslate"><span class="pre">remarks_delete_compar()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.modify.html#libs.domain.modify.check_remarks"><code class="docutils literal notranslate"><span class="pre">check_remarks()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.modify.html#libs.domain.modify.reprocessing_remarks"><code class="docutils literal notranslate"><span class="pre">reprocessing_remarks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.modify.html#libs.domain.modify._score_check"><code class="docutils literal notranslate"><span class="pre">_score_check()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.domain.placeholder.html">libs.domain.placeholder module</a><ul>
@@ -420,12 +414,18 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.rank_point"><code class="docutils literal notranslate"><span class="pre">GameResult.rank_point</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.draw_split"><code class="docutils literal notranslate"><span class="pre">GameResult.draw_split</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.source"><code class="docutils literal notranslate"><span class="pre">GameResult.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.__bool__"><code class="docutils literal notranslate"><span class="pre">GameResult.__bool__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.__eq__"><code class="docutils literal notranslate"><span class="pre">GameResult.__eq__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.__lt__"><code class="docutils literal notranslate"><span class="pre">GameResult.__lt__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.has_valid_data"><code class="docutils literal notranslate"><span class="pre">GameResult.has_valid_data()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.set"><code class="docutils literal notranslate"><span class="pre">GameResult.set()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.to_dict"><code class="docutils literal notranslate"><span class="pre">GameResult.to_dict()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.to_text"><code class="docutils literal notranslate"><span class="pre">GameResult.to_text()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.to_list"><code class="docutils literal notranslate"><span class="pre">GameResult.to_list()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.calc"><code class="docutils literal notranslate"><span class="pre">GameResult.calc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult._normalized_expression"><code class="docutils literal notranslate"><span class="pre">GameResult._normalized_expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult._calculation_point3"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult._calculation_point4"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point4()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.score.html#libs.domain.score.GameResult.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">GameResult.rpoint_sum</span></code></a></li>
 </ul>
 </li>
@@ -470,15 +470,15 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.backup_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.backup_dir</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.font_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.font_file</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.graph_style"><code class="docutils literal notranslate"><span class="pre">SettingSection.graph_style</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.work_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.work_dir</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.default_reset"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection"><code class="docutils literal notranslate"><span class="pre">AliasSection</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.section"><code class="docutils literal notranslate"><span class="pre">AliasSection.section</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.results"><code class="docutils literal notranslate"><span class="pre">AliasSection.results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.graph"><code class="docutils literal notranslate"><span class="pre">AliasSection.graph</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.ranking"><code class="docutils literal notranslate"><span class="pre">AliasSection.ranking</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.report"><code class="docutils literal notranslate"><span class="pre">AliasSection.report</span></code></a></li>
@@ -493,6 +493,12 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.team_list"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_list</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.team_clear"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_clear</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.AliasSection.after_loading"><code class="docutils literal notranslate"><span class="pre">AliasSection.after_loading()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands"><code class="docutils literal notranslate"><span class="pre">SubCommands</span></code></a><ul>
@@ -551,6 +557,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.war_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.war_record()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.best_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.best_record()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsDetailed.worst_record"><code class="docutils literal notranslate"><span class="pre">StatsDetailed.worst_record()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsDetailed._work"><code class="docutils literal notranslate"><span class="pre">StatsDetailed._work()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsInfo"><code class="docutils literal notranslate"><span class="pre">StatsInfo</span></code></a><ul>
@@ -612,8 +619,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.aggregate.html"
-                          title="next chapter">libs.domain.aggregate module</a></p>
+    <p class="topless"><a href="libs.domain.command.html"
+                          title="next chapter">libs.domain.command module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -637,7 +644,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.aggregate.html" title="libs.domain.aggregate module"
+          <a href="libs.domain.command.html" title="libs.domain.command module"
              >next</a> |</li>
         <li class="right" >
           <a href="libs.commands.results.versus.html" title="libs.commands.results.versus module"
@@ -678,8 +685,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

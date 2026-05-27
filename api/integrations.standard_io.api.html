@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -65,6 +65,7 @@
     <ul>
 <li><a class="reference internal" href="#">integrations.standard_io.api module</a><ul>
 <li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI"><code class="docutils literal notranslate"><span class="pre">AdapterAPI</span></code></a><ul>
+<li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI._text_formatter"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._text_formatter()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI.post"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.post()</span></code></a></li>
 </ul>
 </li>
@@ -161,6 +162,26 @@
 <dd><p>Bases: <a class="reference internal" href="integrations.base.interface.html#integrations.base.interface.APIInterface" title="integrations.base.interface.APIInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIInterface</span></code></a></p>
 <p>インターフェースAPI操作クラス</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="integrations.standard_io.api.AdapterAPI._text_formatter">
+<span class="sig-name descname"><span class="pre">_text_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.standard_io.api.AdapterAPI._text_formatter" title="Link to this definition">¶</a></dt>
+<dd><p>テキスト整形</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – 対象テキスト</p></li>
+<li><p><strong>style</strong> (<a class="reference internal" href="libs.types.html#libs.types.StyleOptions" title="libs.types.StyleOptions"><em>StyleOptions</em></a>) – 修飾オプション</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>整形済みテキスト</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="integrations.standard_io.api.AdapterAPI.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.standard_io.api.AdapterAPI.post" title="Link to this definition">¶</a></dt>
 <dd><p>メッセージ出力</p>
@@ -190,6 +211,7 @@
     <ul>
 <li><a class="reference internal" href="#">integrations.standard_io.api module</a><ul>
 <li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI"><code class="docutils literal notranslate"><span class="pre">AdapterAPI</span></code></a><ul>
+<li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI._text_formatter"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._text_formatter()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.standard_io.api.AdapterAPI.post"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.post()</span></code></a></li>
 </ul>
 </li>
@@ -272,8 +294,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

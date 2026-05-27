@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -64,21 +64,9 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.bootstrap.app_config module</a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig"><code class="docutils literal notranslate"><span class="pre">AppConfig</span></code></a><ul>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AppConfig.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_file"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_file</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.main_parser"><code class="docutils literal notranslate"><span class="pre">AppConfig.main_parser</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.script_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.script_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.selected_service"><code class="docutils literal notranslate"><span class="pre">AppConfig.selected_service</span></code></a></li>
@@ -188,65 +176,6 @@
 <span id="libs-bootstrap-app-config-module"></span><h1>libs.bootstrap.app_config module<a class="headerlink" href="#module-libs.bootstrap.app_config" title="Link to this heading">¶</a></h1>
 <p>libs/bootstrap/app_config.py</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.bootstrap.app_config.</span></span><span class="sig-name descname"><span class="pre">BadgeDisplay</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
-<p>バッジ表示</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BadgeGradeSpec</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>段位</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name">
-<span class="sig-name descname"><span class="pre">table_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table">
-<span class="sig-name descname"><span class="pre">table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><span class="pre">GradeTableDict</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>table_name</strong> (<em>str</em>)</p></li>
-<li><p><strong>table</strong> (<a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><em>GradeTableDict</em></a>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.grade">
-<span class="sig-name descname"><span class="pre">grade</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec" title="libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><span class="pre">BadgeGradeSpec</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">BadgeDisplay.BadgeGradeSpec(table_name='',</span> <span class="pre">table={})</span></span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.grade" title="Link to this definition">¶</a></dt>
-<dd><p>段位情報</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.BadgeDisplay.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.BadgeDisplay.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>outer</strong> (<a class="reference internal" href="#libs.bootstrap.app_config.AppConfig" title="libs.bootstrap.app_config.AppConfig"><em>AppConfig</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.bootstrap.app_config.</span></span><span class="sig-name descname"><span class="pre">AppConfig</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -269,11 +198,6 @@
 <span class="sig-name descname"><span class="pre">config_file</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.config_file" title="Link to this definition">¶</a></dt>
 <dd><p>メイン設定ファイルパス</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.main_parser">
-<span class="sig-name descname"><span class="pre">main_parser</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ConfigParser</span></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.main_parser" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.script_dir">
@@ -319,7 +243,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.badge">
-<span class="sig-name descname"><span class="pre">badge</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay" title="libs.bootstrap.app_config.BadgeDisplay"><span class="pre">BadgeDisplay</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.badge" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">badge</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.section.html#libs.domain.section.BadgeDisplay" title="libs.domain.section.BadgeDisplay"><span class="pre">BadgeDisplay</span></a></span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.badge" title="Link to this definition">¶</a></dt>
 <dd><p>バッジ設定</p>
 </dd></dl>
 
@@ -461,21 +385,9 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.bootstrap.app_config module</a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig"><code class="docutils literal notranslate"><span class="pre">AppConfig</span></code></a><ul>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AppConfig.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_file"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_file</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.main_parser"><code class="docutils literal notranslate"><span class="pre">AppConfig.main_parser</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.script_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.script_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.config_dir"><code class="docutils literal notranslate"><span class="pre">AppConfig.config_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.selected_service"><code class="docutils literal notranslate"><span class="pre">AppConfig.selected_service</span></code></a></li>
@@ -576,8 +488,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

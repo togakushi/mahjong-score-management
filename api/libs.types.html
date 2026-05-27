@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -71,6 +71,7 @@
 <li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">MessageStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -78,6 +79,7 @@
 <li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ActionStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -88,6 +90,7 @@
 <li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ChannelType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -102,6 +105,7 @@
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -111,6 +115,7 @@
 <li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ServiceType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -345,6 +350,12 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.types.MessageStatus._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.MessageStatus._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.types.MessageStatus.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.MessageStatus.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -372,6 +383,12 @@
 <dt class="sig sig-object py" id="libs.types.ActionStatus.NOTHING">
 <span class="sig-name descname"><span class="pre">NOTHING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nothing'</span></span><a class="headerlink" href="#libs.types.ActionStatus.NOTHING" title="Link to this definition">¶</a></dt>
 <dd><p>何もしてない</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ActionStatus._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ActionStatus._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -420,6 +437,12 @@
 <dt class="sig sig-object py" id="libs.types.ChannelType.UNDETERMINED">
 <span class="sig-name descname"><span class="pre">UNDETERMINED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'undetermined'</span></span><a class="headerlink" href="#libs.types.ChannelType.UNDETERMINED" title="Link to this definition">¶</a></dt>
 <dd><p>未定義状態</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ChannelType._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ChannelType._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -495,6 +518,12 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.types.CommandType._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.CommandType._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.types.CommandType.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.CommandType.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -534,6 +563,12 @@
 <dt class="sig sig-object py" id="libs.types.ServiceType.UNKNOWN">
 <span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.types.ServiceType.UNKNOWN" title="Link to this definition">¶</a></dt>
 <dd><p>unknown</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.types.ServiceType._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ServiceType._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1119,6 +1154,7 @@
 <li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.MessageStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">MessageStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1126,6 +1162,7 @@
 <li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ActionStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ActionStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1136,6 +1173,7 @@
 <li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ChannelType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ChannelType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1150,6 +1188,7 @@
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1159,6 +1198,7 @@
 <li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.ServiceType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ServiceType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1339,8 +1379,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

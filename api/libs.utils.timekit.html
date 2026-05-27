@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -84,6 +84,7 @@
 <li><a class="reference internal" href="#libs.utils.timekit.Format.Y_O"><code class="docutils literal notranslate"><span class="pre">Format.Y_O</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.YM_O"><code class="docutils literal notranslate"><span class="pre">Format.YM_O</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.YMD_O"><code class="docutils literal notranslate"><span class="pre">Format.YMD_O</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.timekit.Format._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">Format._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.__new__"><code class="docutils literal notranslate"><span class="pre">Format.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -93,6 +94,7 @@
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.NUMBER"><code class="docutils literal notranslate"><span class="pre">Delimiter.NUMBER</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.JAPANESE"><code class="docutils literal notranslate"><span class="pre">Delimiter.JAPANESE</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.UNDEFINED"><code class="docutils literal notranslate"><span class="pre">Delimiter.UNDEFINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.timekit.Delimiter._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">Delimiter._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.__new__"><code class="docutils literal notranslate"><span class="pre">Delimiter.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -118,6 +120,7 @@
 </li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList</span></code></a><ul>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.__new__"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.__new__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.SLASH"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.SLASH</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.HYPHEN"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.HYPHEN</span></code></a></li>
@@ -369,6 +372,12 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.utils.timekit.Format._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.Format._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.utils.timekit.Format.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.Format.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -411,6 +420,12 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.utils.timekit.Delimiter._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.Delimiter._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.utils.timekit.Delimiter.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.Delimiter.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -445,19 +460,6 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.utils.timekit.</span></span><span class="sig-name descname"><span class="pre">ExtendedDatetime</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetime" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>datetime拡張クラス</p>
-<p>ExtendedDatetimeの初期化</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime.AcceptedType" title="libs.utils.timekit.ExtendedDatetime.AcceptedType"><em>AcceptedType</em></a><em>, </em><em>optional</em>) – <p>引数. Defaults to None.</p>
-<ul>
-<li><p>None: 現在時刻( <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code> )で初期化</p></li>
-</ul>
-</p></li>
-<li><p><strong>relativedelta_kwargs</strong> (<em>dict</em>) – 初期化時にrelativedelta()に渡す引数</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetime.FMT">
 <span class="sig-name descname"><span class="pre">FMT</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetime.FMT" title="Link to this definition">¶</a></dt>
@@ -627,6 +629,12 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
 <p>区切り記号</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter._generate_next_value_">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter._generate_next_value_" title="Link to this definition">¶</a></dt>
+<dd><p>Return the lower-cased version of the member name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.Delimiter.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -756,6 +764,7 @@
 <li><a class="reference internal" href="#libs.utils.timekit.Format.Y_O"><code class="docutils literal notranslate"><span class="pre">Format.Y_O</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.YM_O"><code class="docutils literal notranslate"><span class="pre">Format.YM_O</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.YMD_O"><code class="docutils literal notranslate"><span class="pre">Format.YMD_O</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.timekit.Format._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">Format._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Format.__new__"><code class="docutils literal notranslate"><span class="pre">Format.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -765,6 +774,7 @@
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.NUMBER"><code class="docutils literal notranslate"><span class="pre">Delimiter.NUMBER</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.JAPANESE"><code class="docutils literal notranslate"><span class="pre">Delimiter.JAPANESE</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.UNDEFINED"><code class="docutils literal notranslate"><span class="pre">Delimiter.UNDEFINED</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.timekit.Delimiter._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">Delimiter._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.Delimiter.__new__"><code class="docutils literal notranslate"><span class="pre">Delimiter.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -790,6 +800,7 @@
 </li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList</span></code></a><ul>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter</span></code></a><ul>
+<li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.__new__"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.__new__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.SLASH"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.SLASH</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetimeList.Delimiter.HYPHEN"><code class="docutils literal notranslate"><span class="pre">ExtendedDatetimeList.Delimiter.HYPHEN</span></code></a></li>
@@ -884,8 +895,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

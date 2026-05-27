@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -195,7 +195,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.domain.html">libs.domain package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="libs.domain.aggregate.html">libs.domain.aggregate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html">libs.domain.command module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.datamodels.html">libs.domain.datamodels module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.modify.html">libs.domain.modify module</a></li>
@@ -248,6 +247,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_append"><code class="docutils literal notranslate"><span class="pre">message_append()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_changed"><code class="docutils literal notranslate"><span class="pre">message_changed()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher.message_deleted"><code class="docutils literal notranslate"><span class="pre">message_deleted()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.dispatcher.html#libs.dispatcher._thread_check"><code class="docutils literal notranslate"><span class="pre">_thread_check()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.global_value.html">libs.global_value module</a><ul>
@@ -267,6 +267,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">MessageStatus._generate_next_value_()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -274,6 +275,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ActionStatus._generate_next_value_()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -284,6 +286,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ChannelType._generate_next_value_()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -298,6 +301,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -307,6 +311,7 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ServiceType._generate_next_value_()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -487,8 +492,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

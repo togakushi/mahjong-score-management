@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -91,12 +91,18 @@
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rank_point"><code class="docutils literal notranslate"><span class="pre">GameResult.rank_point</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.draw_split"><code class="docutils literal notranslate"><span class="pre">GameResult.draw_split</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.source"><code class="docutils literal notranslate"><span class="pre">GameResult.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__bool__"><code class="docutils literal notranslate"><span class="pre">GameResult.__bool__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__eq__"><code class="docutils literal notranslate"><span class="pre">GameResult.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__lt__"><code class="docutils literal notranslate"><span class="pre">GameResult.__lt__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.has_valid_data"><code class="docutils literal notranslate"><span class="pre">GameResult.has_valid_data()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.set"><code class="docutils literal notranslate"><span class="pre">GameResult.set()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_dict"><code class="docutils literal notranslate"><span class="pre">GameResult.to_dict()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_text"><code class="docutils literal notranslate"><span class="pre">GameResult.to_text()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_list"><code class="docutils literal notranslate"><span class="pre">GameResult.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.calc"><code class="docutils literal notranslate"><span class="pre">GameResult.calc()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._normalized_expression"><code class="docutils literal notranslate"><span class="pre">GameResult._normalized_expression()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point3"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point3()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point4"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point4()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">GameResult.rpoint_sum</span></code></a></li>
 </ul>
 </li>
@@ -191,11 +197,11 @@
 <dt class="sig sig-object py" id="libs.domain.score.Score">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.score.</span></span><span class="sig-name descname"><span class="pre">Score</span></span><a class="headerlink" href="#libs.domain.score.Score" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>プレイヤー成績</p>
+<p>プレイヤー個人の成績データを保持するクラス</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>フィールド名の <code class="docutils literal notranslate"><span class="pre">r_</span></code> プレフィックス ( <code class="docutils literal notranslate"><span class="pre">r_str</span></code>, <code class="docutils literal notranslate"><span class="pre">rpoint</span></code> など) は、
-GameResult.to_dict() によって <code class="docutils literal notranslate"><span class="pre">p1_</span></code>, <code class="docutils literal notranslate"><span class="pre">p2_</span></code>, <code class="docutils literal notranslate"><span class="pre">p3_</span></code>, <code class="docutils literal notranslate"><span class="pre">p4_</span></code> に置換され、
+<p><code class="docutils literal notranslate"><span class="pre">r_str</span></code> の <code class="docutils literal notranslate"><span class="pre">r_</span></code> プレフィックスは、 GameResult.to_dict() によって
+<code class="docutils literal notranslate"><span class="pre">p1_</span></code>, <code class="docutils literal notranslate"><span class="pre">p2_</span></code>, <code class="docutils literal notranslate"><span class="pre">p3_</span></code>, <code class="docutils literal notranslate"><span class="pre">p4_</span></code> に置換され、
 DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span class="pre">p1_str</span></code>, <code class="docutils literal notranslate"><span class="pre">p2_str</span></code> など) として使用する。</p>
 </div>
 <dl class="py attribute">
@@ -233,8 +239,11 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <span class="sig-name descname"><span class="pre">has_valid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.Score.has_valid_data" title="Link to this definition">¶</a></dt>
 <dd><p>有効なデータを持っているかチェック</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>初期状態（空）でなければ True、それ以外は False。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,7 +254,7 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dd><p>データを辞書で返す</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>prefix</strong> (<em>str</em>) – キーに付与する接頭辞 (p1, p2, p3, p4)</p>
+<dd class="field-odd"><p><strong>prefix</strong> (<em>str</em>) – キーに付与する接頭辞 (<code class="docutils literal notranslate"><span class="pre">p1</span></code>, <code class="docutils literal notranslate"><span class="pre">p2</span></code>, <code class="docutils literal notranslate"><span class="pre">p3</span></code>, <code class="docutils literal notranslate"><span class="pre">p4</span></code>)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>返却する辞書</p>
@@ -256,7 +265,7 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>フィールド名の <cite>r_</cite> プレフィックスは、指定された prefix に置換される。
+<p>フィールド名の <code class="docutils literal notranslate"><span class="pre">r_</span></code> プレフィックスは、指定された prefix に置換される。
 例: r_str -&gt; p1_str (<cite>prefix=”p1”</cite> の場合)</p>
 </div>
 </dd></dl>
@@ -286,13 +295,18 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dt class="sig sig-object py" id="libs.domain.score.GameResult">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.score.</span></span><span class="sig-name descname"><span class="pre">GameResult</span></span><a class="headerlink" href="#libs.domain.score.GameResult" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>スコアデータ</p>
+<p>1ゲームの対局結果および集計ルールを管理するクラス</p>
+<p>各プレイヤー（東家〜北家）の成績、対局のタイムスタンプ、供託などのゲーム結果情報に加え、
+三人打ち/四人打ちのモード設定や順位点などの計算規則を保持する。</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.__init__" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>GameResult クラスの初期化</p>
+<p>引数で受け取ったキーワード引数を元にデータを設定し、スコアの再計算を行う。
+<code class="docutils literal notranslate"><span class="pre">set</span></code> メソッドが対応するキー（<code class="docutils literal notranslate"><span class="pre">ts</span></code>, <code class="docutils literal notranslate"><span class="pre">p1_name</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code> など）を指定可能。</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kwargs</strong> (<em>Any</em>)</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – 初期データおよびルール設定用のキーワード引数。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -385,10 +399,38 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.score.GameResult.has_valid_data">
-<span class="sig-name descname"><span class="pre">has_valid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.has_valid_data" title="Link to this definition">¶</a></dt>
-<dd><p>DB更新に必要なデータを持っているかチェック</p>
+<dt class="sig sig-object py" id="libs.domain.score.GameResult.__bool__">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.__bool__" title="Link to this definition">¶</a></dt>
+<dd><p>オブジェクトの真偽値を評価する。</p>
 <dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>全プレイヤーの名前と素点文字列が入力されている場合は True、</dt><dd><p>いずれかが欠けている場合は False。</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.__eq__" title="Link to this definition">¶</a></dt>
+<dd><p>他の GameResult オブジェクトと等価性を比較する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Any</em>) – 比較対象のオブジェクト。</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、</dt><dd><p>ルール、コメント、ソースがすべて一致する場合は True、それ以外は False。</p>
+</dd>
+</dl>
+</p>
+</dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
@@ -396,12 +438,46 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.score.GameResult.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.set" title="Link to this definition">¶</a></dt>
-<dd><p>データ取り込み</p>
+<dt class="sig sig-object py" id="libs.domain.score.GameResult.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.__lt__" title="Link to this definition">¶</a></dt>
+<dd><p>タイムスタンプを基準にオブジェクトの大小（前後）関係を比較する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kwargs</strong> (<em>Any</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Any</em>) – 比較対象のオブジェクト。</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>自身のタイムスタンプが相手より古い（小さい）場合は True、それ以外は False。</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult.has_valid_data">
+<span class="sig-name descname"><span class="pre">has_valid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.has_valid_data" title="Link to this definition">¶</a></dt>
+<dd><p>DB更新に必要な必須データがすべて揃っているかチェックする。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>タイムスタンプが存在し、全プレイヤーのスコアデータおよび順位が有効であれば True、それ以外は False。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.set" title="Link to this definition">¶</a></dt>
+<dd><p>外部から受け取ったキーワード引数を解析し、対応するプロパティにデータを取り込む。</p>
+<p>文字列の正規化や、型チェックを行った上で各属性へ割り当てる。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – 設定するデータのキーワード引数。
+接頭辞付きプレイヤーデータ（例: <cite>p1_name</cite>, <cite>p2_str</cite>）や
+ゲーム設定（例: <cite>mode</cite>, <cite>ts</cite>, <cite>rank_point</cite>）を受け付ける。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -412,10 +488,10 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.to_dict" title="Link to this definition">¶</a></dt>
-<dd><p>データを辞書で返す</p>
+<dd><p>オブジェクト全体のデータをフラットな辞書形式に変換する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>スコアデータ</p>
+<dd class="field-odd"><p>DB保存やAPI返却に適した、プレフィックス付きキーを含む対局結果データ。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="libs.types.html#libs.types.ScoreDict" title="libs.types.ScoreDict">ScoreDict</a></p>
@@ -426,19 +502,19 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.to_text">
 <span class="sig-name descname"><span class="pre">to_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.to_text" title="Link to this definition">¶</a></dt>
-<dd><p>データをテキストで返す</p>
+<dd><p>対局結果のデータを可読性の高いテキスト（文字列）形式に変換する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>表示形式</p>
+<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>出力するテキストの表示形式。</p>
 <ul class="simple">
 <li><p><em>simple</em>: 簡易情報 (Default)</p></li>
-<li><p><em>detail</em>: 詳細情報</p></li>
-<li><p><em>logging</em>: ロギング用</p></li>
+<li><p><em>detail</em>: 詳細な対局データ</p></li>
+<li><p><em>logging</em>: ログ出力用のフォーマット</p></li>
 </ul>
 </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>スコアデータ</p>
+<dd class="field-even"><p>指定された形式で整形された対局結果テキスト。</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -449,10 +525,10 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.to_list">
 <span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.to_list" title="Link to this definition">¶</a></dt>
-<dd><p>指定データをリストで返す</p>
+<dd><p>各プレイヤーの指定された属性の値をリストにして取得する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>取得内容</p>
+<dd class="field-odd"><p><strong>kind</strong> (<em>Literal</em><em>, </em><em>optional</em>) – <p>取得したい Score クラスの属性名</p>
 <ul class="simple">
 <li><p><em>name</em>: プレイヤー名 (Default)</p></li>
 <li><p><em>str</em>: 入力された素点情報</p></li>
@@ -463,7 +539,7 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>リスト</p>
+<dd class="field-even"><p>各プレイヤーから抽出した属性値のリスト。</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[str | int | float]</p>
@@ -474,13 +550,58 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.calc">
 <span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.calc" title="Link to this definition">¶</a></dt>
-<dd><p>獲得ポイント計算</p>
+<dd><p>入力されたデータを元に、スコア・順位・ポイントの計算を行う。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>kwargs</strong> (<em>Any</em>)</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – 更新するデータがある場合に指定するキーワード引数。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult._normalized_expression">
+<span class="sig-name descname"><span class="pre">_normalized_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._normalized_expression" title="Link to this definition">¶</a></dt>
+<dd><p>入力文字列を式として評価し、計算結果を返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expr</strong> (<em>str</em>) – 入力式</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>計算結果</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult._calculation_point3">
+<span class="sig-name descname"><span class="pre">_calculation_point3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._calculation_point3" title="Link to this definition">¶</a></dt>
+<dd><p>獲得ポイントと順位を計算する(三人打ち)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>更新用辞書(順位と獲得ポイントのデータ)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.score.GameResult._calculation_point4">
+<span class="sig-name descname"><span class="pre">_calculation_point4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._calculation_point4" title="Link to this definition">¶</a></dt>
+<dd><p>獲得ポイントと順位を計算する(四人打ち)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>更新用辞書(順位と獲得ポイントのデータ)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -541,12 +662,18 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rank_point"><code class="docutils literal notranslate"><span class="pre">GameResult.rank_point</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.draw_split"><code class="docutils literal notranslate"><span class="pre">GameResult.draw_split</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.source"><code class="docutils literal notranslate"><span class="pre">GameResult.source</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__bool__"><code class="docutils literal notranslate"><span class="pre">GameResult.__bool__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__eq__"><code class="docutils literal notranslate"><span class="pre">GameResult.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult.__lt__"><code class="docutils literal notranslate"><span class="pre">GameResult.__lt__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.has_valid_data"><code class="docutils literal notranslate"><span class="pre">GameResult.has_valid_data()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.set"><code class="docutils literal notranslate"><span class="pre">GameResult.set()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_dict"><code class="docutils literal notranslate"><span class="pre">GameResult.to_dict()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_text"><code class="docutils literal notranslate"><span class="pre">GameResult.to_text()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_list"><code class="docutils literal notranslate"><span class="pre">GameResult.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.calc"><code class="docutils literal notranslate"><span class="pre">GameResult.calc()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._normalized_expression"><code class="docutils literal notranslate"><span class="pre">GameResult._normalized_expression()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point3"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point3()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point4"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point4()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">GameResult.rpoint_sum</span></code></a></li>
 </ul>
 </li>
@@ -629,8 +756,8 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>

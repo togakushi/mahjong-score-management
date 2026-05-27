@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=d9bd031f"></script>
+    <script src="_static/documentation_options.js?v=3ea739bb"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -102,15 +102,15 @@
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.backup_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.backup_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.font_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.font_file</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.graph_style"><code class="docutils literal notranslate"><span class="pre">SettingSection.graph_style</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.work_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.work_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.default_reset"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_reset()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection"><code class="docutils literal notranslate"><span class="pre">AliasSection</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.section"><code class="docutils literal notranslate"><span class="pre">AliasSection.section</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.results"><code class="docutils literal notranslate"><span class="pre">AliasSection.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.graph"><code class="docutils literal notranslate"><span class="pre">AliasSection.graph</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.ranking"><code class="docutils literal notranslate"><span class="pre">AliasSection.ranking</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.report"><code class="docutils literal notranslate"><span class="pre">AliasSection.report</span></code></a></li>
@@ -125,6 +125,17 @@
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.team_list"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_list</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.team_clear"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_clear</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.after_loading"><code class="docutils literal notranslate"><span class="pre">AliasSection.after_loading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.section.SubCommands"><code class="docutils literal notranslate"><span class="pre">SubCommands</span></code></a><ul>
@@ -234,7 +245,8 @@
 <dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">CommonMethodMixin</span></span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>共通メソッド</p>
+<p>共通的な取得メソッドを提供するMixin</p>
+<p>ConfigParser の SectionProxy を介して値を取得するためのユーティリティをまとめる。</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.section.CommonMethodMixin.section_proxy">
 <span class="sig-name descname"><span class="pre">section_proxy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SectionProxy</span></span><a class="headerlink" href="#libs.domain.section.CommonMethodMixin.section_proxy" title="Link to this definition">¶</a></dt>
@@ -366,6 +378,8 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">BaseSection</span></span><a class="headerlink" href="#libs.domain.section.BaseSection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.section.CommonMethodMixin" title="libs.domain.section.CommonMethodMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommonMethodMixin</span></code></a></p>
 <p>基底クラス</p>
+<p>ConfigParser のセクションを読み込み、インスタンス変数へ自動的に値を反映する仕組みを提供する。
+default_reset と after_loading をオーバーライドすることで、読み込み前後の処理を拡張できる。</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.section.BaseSection.section">
 <span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.section.BaseSection.section" title="Link to this definition">¶</a></dt>
@@ -434,7 +448,8 @@
 <dt class="sig sig-object py" id="libs.domain.section.SettingSection">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">SettingSection</span></span><a class="headerlink" href="#libs.domain.section.SettingSection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
-<p>settingセクション処理</p>
+<p>setting セクションの設定値を管理するクラス</p>
+<p>成績管理やグラフ描画、バックアップ設定など、アプリケーション全体の動作に関わる基本設定を保持する。</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.section.SettingSection.section">
 <span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'setting'</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.section" title="Link to this definition">¶</a></dt>
@@ -521,6 +536,23 @@
 <dd><p>グラフスタイル</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.work_dir">
+<span class="sig-name descname"><span class="pre">work_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('work')</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.work_dir" title="Link to this definition">¶</a></dt>
+<dd><p>作業ディレクトリ</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.SettingSection.default_reset">
+<span class="sig-name descname"><span class="pre">default_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.SettingSection.default_reset" title="Link to this definition">¶</a></dt>
+<dd><p>デフォルト値にリセット</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.section.SettingSection.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'setting'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remarks_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_mark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'※'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('mahjong.db')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('ipaexg.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ggplot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('work')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.SettingSection.__init__" title="Link to this definition">¶</a></dt>
@@ -550,30 +582,27 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.domain.section.SettingSection.work_dir">
-<span class="sig-name descname"><span class="pre">work_dir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('work')</span></span><a class="headerlink" href="#libs.domain.section.SettingSection.work_dir" title="Link to this definition">¶</a></dt>
-<dd><p>作業ディレクトリ</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.section.SettingSection.default_reset">
-<span class="sig-name descname"><span class="pre">default_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.SettingSection.default_reset" title="Link to this definition">¶</a></dt>
-<dd><p>デフォルト値にリセット</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="libs.domain.section.AliasSection">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">AliasSection</span></span><a class="headerlink" href="#libs.domain.section.AliasSection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
-<p>aliasセクション処理</p>
+<p>alias セクションの設定値を管理するクラス</p>
+<p>各種コマンドに対するエイリアス（別名）を保持し、
+設定ファイルから読み込んだ値をもとにコマンド呼び出しを可能にする。</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.section">
+<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alias'</span></span><a class="headerlink" href="#libs.domain.section.AliasSection.section" title="Link to this definition">¶</a></dt>
+<dd><p>セクション名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.AliasSection.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.results" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ出力コマンド</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.section.AliasSection.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'alias'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_del</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.AliasSection.__init__" title="Link to this definition">¶</a></dt>
@@ -601,18 +630,6 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.domain.section.AliasSection.section">
-<span class="sig-name descname"><span class="pre">section</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alias'</span></span><a class="headerlink" href="#libs.domain.section.AliasSection.section" title="Link to this definition">¶</a></dt>
-<dd><p>セクション名</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.domain.section.AliasSection.results">
-<span class="sig-name descname"><span class="pre">results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.domain.section.AliasSection.results" title="Link to this definition">¶</a></dt>
-<dd><p>成績サマリ出力コマンド</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -707,10 +724,78 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">BadgeDisplay</span></span><a class="headerlink" href="#libs.domain.section.BadgeDisplay" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a></p>
+<p>バッジ表示に関する設定を管理するクラス</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.BadgeGradeSpec">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BadgeGradeSpec</span></span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>段位のデータ仕様および参照テーブルを保持するデータクラス</p>
+<p>設定ファイルの <code class="docutils literal notranslate"><span class="pre">grade</span></code> セクションから情報を読み込み、段位データの仕様や
+参照するテーブル名を保持する。</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.BadgeGradeSpec.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>table</strong> (<a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><em>GradeTableDict</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.BadgeGradeSpec.table_name">
+<span class="sig-name descname"><span class="pre">table_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table_name" title="Link to this definition">¶</a></dt>
+<dd><p>参照する段位テーブルの名前</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.BadgeGradeSpec.table">
+<span class="sig-name descname"><span class="pre">table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.types.html#libs.types.GradeTableDict" title="libs.types.GradeTableDict"><span class="pre">GradeTableDict</span></a></span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table" title="Link to this definition">¶</a></dt>
+<dd><p>段位テーブルのデータを格納する辞書</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.grade">
+<span class="sig-name descname"><span class="pre">grade</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec" title="libs.domain.section.BadgeDisplay.BadgeGradeSpec"><span class="pre">BadgeGradeSpec</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">BadgeDisplay.BadgeGradeSpec(table_name='',</span> <span class="pre">table={})</span></span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.grade" title="Link to this definition">¶</a></dt>
+<dd><p>段位情報</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.domain.section.BadgeDisplay.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.section.BadgeDisplay.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>BadgeDisplay クラスの初期化。</p>
+<p>AppConfig からパーサーを引き継ぎ、<code class="docutils literal notranslate"><span class="pre">grade</span></code> セクションが存在する場合は
+設定値を読み込んで grade 属性に設定する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outer</strong> (<a class="reference internal" href="libs.bootstrap.app_config.html#libs.bootstrap.app_config.AppConfig" title="libs.bootstrap.app_config.AppConfig"><em>AppConfig</em></a>) – アプリケーション全体の設定を取りまとめる上位の設定オブジェクト</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="libs.domain.section.SubCommands">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.section.</span></span><span class="sig-name descname"><span class="pre">SubCommands</span></span><a class="headerlink" href="#libs.domain.section.SubCommands" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs" title="libs.domain.datamodels.CommandAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a></p>
-<p>サブコマンドセクション処理</p>
+<p>サブコマンドセクションの設定値を管理するクラス</p>
+<p>コマンド体系の中で、サブコマンドに関する設定値を保持する。
+CommandAttrs と BaseSection の機能を組み合わせて動作する。</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.section.SubCommands.default_commandword">
 <span class="sig-name descname"><span class="pre">default_commandword</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.section.SubCommands.default_commandword" title="Link to this definition">¶</a></dt>
@@ -770,15 +855,15 @@
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.backup_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.backup_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.font_file"><code class="docutils literal notranslate"><span class="pre">SettingSection.font_file</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.graph_style"><code class="docutils literal notranslate"><span class="pre">SettingSection.graph_style</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.work_dir"><code class="docutils literal notranslate"><span class="pre">SettingSection.work_dir</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.SettingSection.default_reset"><code class="docutils literal notranslate"><span class="pre">SettingSection.default_reset()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.SettingSection.__init__"><code class="docutils literal notranslate"><span class="pre">SettingSection.__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection"><code class="docutils literal notranslate"><span class="pre">AliasSection</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.section"><code class="docutils literal notranslate"><span class="pre">AliasSection.section</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.results"><code class="docutils literal notranslate"><span class="pre">AliasSection.results</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.AliasSection.__init__"><code class="docutils literal notranslate"><span class="pre">AliasSection.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.graph"><code class="docutils literal notranslate"><span class="pre">AliasSection.graph</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.ranking"><code class="docutils literal notranslate"><span class="pre">AliasSection.ranking</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.report"><code class="docutils literal notranslate"><span class="pre">AliasSection.report</span></code></a></li>
@@ -793,6 +878,17 @@
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.team_list"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_list</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.team_clear"><code class="docutils literal notranslate"><span class="pre">AliasSection.team_clear</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.section.AliasSection.after_loading"><code class="docutils literal notranslate"><span class="pre">AliasSection.after_loading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table_name"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table_name</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.BadgeGradeSpec.table"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.BadgeGradeSpec.table</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.grade"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.grade</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.section.BadgeDisplay.__init__"><code class="docutils literal notranslate"><span class="pre">BadgeDisplay.__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.section.SubCommands"><code class="docutils literal notranslate"><span class="pre">SubCommands</span></code></a><ul>
@@ -878,8 +974,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.9.
-      Last updated on 2026-05-26.
+      Release Version: 0.14.10.
+      Last updated on 2026-05-27.
     </div>
 
   </body>
