@@ -285,12 +285,24 @@ class ExtendedDatetime:
 
     @property
     def dt(self) -> datetime:
-        """datetime型を返すプロパティ"""
+        """
+        datetime型を返すプロパティ。
+
+        Returns:
+            datetime: 内部で保持している日時オブジェクト。
+
+        """
         return self._dt
 
     @dt.setter
     def dt(self, value: AcceptedType) -> None:
-        """dtに対するsetter"""
+        """
+        dtに対するsetter。
+
+        Args:
+            value (AcceptedType): 設定する日時値。
+
+        """
         self._dt = self.convert(value)
 
     def set(self, value: AcceptedType) -> None:
@@ -544,17 +556,35 @@ class ExtendedDatetimeList(list):  # type: ignore[type-arg]
 
     @property
     def start(self) -> ExtendedDatetime | None:
-        """最小日付を返す。空ならNone。"""
+        """
+        最小日付を返す。
+
+        Returns:
+            ExtendedDatetime | None: リストが空でなければ最小日付、空ならNone。
+
+        """
         return min(self) if self else None
 
     @property
     def end(self) -> ExtendedDatetime | None:
-        """最大日付を返す。空ならNone。"""
+        """
+        最大日付を返す。
+
+        Returns:
+            ExtendedDatetime | None: リストが空でなければ最大日付、空ならNone。
+
+        """
         return max(self) if self else None
 
     @property
     def period(self) -> list[ExtendedDatetime | None]:
-        """最小値と最大値をリストで返す"""
+        """
+        最小値と最大値をリストで返す。
+
+        Returns:
+            list[ExtendedDatetime | None]: [最小値, 最大値] の2要素リスト。
+
+        """
         min_dt = min(self) if self else None
         max_dt = max(self) if self else None
 

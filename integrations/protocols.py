@@ -128,7 +128,13 @@ class MessageParserProtocol(Protocol):
 
     @property
     def in_thread(self) -> bool:
-        """スレッド内のメッセージか判定"""
+        """
+        スレッド内のメッセージか判定する。
+
+        Returns:
+            bool: スレッド返信であればTrue、そうでなければFalse。
+
+        """
 
     @property
     def is_command(self) -> bool:
@@ -158,23 +164,53 @@ class MessageParserProtocol(Protocol):
 
     @property
     def keyword(self) -> str:
-        """コマンドとして認識している文字列を返す"""
+        """
+        コマンドとして認識している文字列を返す。
+
+        Returns:
+            str: 認識済みのコマンドキーワード。
+
+        """
 
     @property
     def argument(self) -> list[str]:
-        """コマンド引数として認識しているオプションを文字列のリストで返す"""
+        """
+        コマンド引数として認識しているオプションを返す。
+
+        Returns:
+            list[str]: 認識済みのオプション文字列リスト。
+
+        """
 
     @property
     def reply_ts(self) -> str:
-        """リプライ先のタイムスタンプ"""
+        """
+        リプライ先のタイムスタンプを返す。
+
+        Returns:
+            str: 返信先メッセージのタイムスタンプ。
+
+        """
 
     @property
     def check_updatable(self) -> bool:
-        """DB更新可能チャンネルか判定"""
+        """
+        DB更新可能チャンネルか判定する。
+
+        Returns:
+            bool: 更新可能ならTrue、不可ならFalse。
+
+        """
 
     @property
     def ignore_user(self) -> bool:
-        """コマンドを拒否するユーザか判定"""
+        """
+        コマンドを拒否するユーザか判定する。
+
+        Returns:
+            bool: 拒否対象ユーザならTrue、対象外ならFalse。
+
+        """
 
     def set_headline(self, data: "MessageType", options: "StyleOptions") -> None:
         """ヘッドラインメッセージをセット"""

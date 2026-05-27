@@ -1,5 +1,5 @@
 """
-テスト用パラメータ
+config テストで利用するパラメータ定義。
 """
 
 from typing import Any

@@ -57,35 +57,103 @@ class CommonMethodMixin:
     """読み込み先(パーサー + セクション名)"""
 
     def get(self, key: str, fallback: Any = None) -> Any:
-        """値の取得"""
+        """
+        値の取得。
+
+        Args:
+            key (str): 取得対象のキー。
+            fallback (Any, optional): キーが存在しない場合の代替値。
+
+        Returns:
+            Any: 取得した値。
+
+        """
         return self.section_proxy.get(key, fallback)
 
     def getint(self, key: str, fallback: int = 0) -> int:
-        """整数値の取得"""
+        """
+        整数値の取得。
+
+        Args:
+            key (str): 取得対象のキー。
+            fallback (int, optional): キーが存在しない場合の代替値。
+
+        Returns:
+            int: 取得した整数値。
+
+        """
         return self.section_proxy.getint(key, fallback)
 
     def getfloat(self, key: str, fallback: float = 0.0) -> float:
-        """数値の取得"""
+        """
+        数値の取得。
+
+        Args:
+            key (str): 取得対象のキー。
+            fallback (float, optional): キーが存在しない場合の代替値。
+
+        Returns:
+            float: 取得した浮動小数点値。
+
+        """
         return self.section_proxy.getfloat(key, fallback)
 
     def getboolean(self, key: str, fallback: bool = False) -> bool:
-        """真偽値の取得"""
+        """
+        真偽値の取得。
+
+        Args:
+            key (str): 取得対象のキー。
+            fallback (bool, optional): キーが存在しない場合の代替値。
+
+        Returns:
+            bool: 取得した真偽値。
+
+        """
         return self.section_proxy.getboolean(key, fallback)
 
     def getlist(self, key: str, fallback: str = "") -> list[str]:
-        """リストの取得"""
+        """
+        カンマ区切り文字列をリストとして取得する。
+
+        Args:
+            key (str): 取得対象のキー。
+            fallback (str, optional): キーが存在しない場合の代替値。
+
+        Returns:
+            list[str]: カンマ区切りを分割して整形した文字列リスト。
+
+        """
         return [x.strip() for x in self.section_proxy.get(key, fallback).split(",")]
 
     def keys(self) -> list[str]:
-        """キーリストの返却"""
+        """
+        キー一覧を返す。
+
+        Returns:
+            list[str]: セクション内のキー一覧。
+
+        """
         return list(self.section_proxy.keys())
 
     def values(self) -> list[str]:
-        """値リストの返却"""
+        """
+        値一覧を返す。
+
+        Returns:
+            list[str]: セクション内の値一覧。
+
+        """
         return list(self.section_proxy.values())
 
     def items(self) -> list[tuple[str, str]]:
-        """ItemsViewを返却"""
+        """
+        キーと値の組を返す。
+
+        Returns:
+            list[tuple[str, str]]: セクション内のキー・値ペア一覧。
+
+        """
         return list(self.section_proxy.items())
 
 

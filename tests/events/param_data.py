@@ -1,5 +1,5 @@
 """
-テスト用パラメータ
+events テストで利用する疑似イベントデータ定義。
 """
 
 from typing import Any, TypedDict
@@ -8,7 +8,12 @@ from slack_bolt import App
 
 
 class FakeBodyDict(TypedDict, total=False):
-    """テスト用疑似Body"""
+    """
+    イベントテスト用の疑似Body構造を表す型。
+
+    最小限のキーだけで柔軟にテストできるよう total=False で定義する。
+
+    """
 
     command: str
     type: str

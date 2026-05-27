@@ -44,7 +44,16 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
     """
 
     def graph_point(m: "MessageParserProtocol") -> None:
-        """ポイント推移グラフ"""
+        """
+        ポイント推移グラフを生成する。
+
+        プレイヤー数に応じて描画先を切り替え、単独指定時は個人推移、
+        複数指定時はサマリ推移を出力する。
+
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
+
+        """
         if len(g.params.player_list) == 1:
             graph_personal.plot(m)
             pprint(
@@ -65,7 +74,15 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             )
 
     def graph_rank(m: "MessageParserProtocol") -> None:
-        """順位変動グラフ"""
+        """
+        順位変動グラフを生成する。
+
+        サマリ描画関数を呼び出し、順位推移の確認に必要な出力を行う。
+
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
+
+        """
         graph_summary.point_plot(m)
         pprint(
             [
@@ -76,7 +93,15 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         )
 
     def graph_statistics(m: "MessageParserProtocol") -> None:
-        """統計グラフ"""
+        """
+        個人成績の統計グラフを生成する。
+
+        統計オプションが有効なケースで利用し、実行パラメータの確認出力も行う。
+
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
+
+        """
         graph_personal.statistics_plot(m)
         pprint(
             [
@@ -238,7 +263,12 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
 
 
 def main() -> None:
-    """メイン処理"""
+    """
+    テストケース定義に従ってパターン実行を行う。
+
+    設定ファイルを読み込み、対象パターンごとに前処理を適用したうえで test_pattern を呼び出す。
+
+    """
     g.args = arg_parser()
     assert isinstance(g.args.testcase, Path)
 

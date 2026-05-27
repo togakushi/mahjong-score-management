@@ -1,5 +1,5 @@
 """
-テスト用パラメータ
+utils テストで利用する日時変換パラメータ定義。
 """
 
 from typing import Any
