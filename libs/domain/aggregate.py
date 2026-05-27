@@ -2,46 +2,10 @@
 libs/domain/aggregate.py
 """
 
-from typing import Optional
-
 import numpy as np
 import pandas as pd
 
 import libs.global_value as g
-
-
-def game_summary(
-    filter_items: Optional[list[str]] = None,
-    drop_items: Optional[list[str]] = None,
-) -> pd.DataFrame:
-    """
-    ゲーム結果をサマライズする
-
-    Args:
-        filter_items (Optional[list[str]]): 抽出するカラム. Defaults to None.
-        drop_items (Optional[list[str]]): 除外するカラム. Defaults to None.
-
-    Returns:
-        pd.DataFrame: 集計結果
-
-    """
-    # データ収集
-    df = g.params.read_data("SUMMARY_TOTAL")
-
-    # 順位分布選択
-    match g.params.mode:
-        case 3:
-            df = df.drop(columns=["rank_distr4"])
-        case 4:
-            df = df.drop(columns=["rank_distr3"])
-
-    if isinstance(filter_items, list):
-        df = df.filter(items=filter_items)
-
-    if isinstance(drop_items, list):
-        df = df.drop(columns=drop_items)
-
-    return df
 
 
 def calculation_rating() -> pd.DataFrame:

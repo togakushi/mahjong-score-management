@@ -5,7 +5,6 @@ libs/commands/results/summary.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.domain import aggregate
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
@@ -27,17 +26,24 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # --- データ収集
     data: "MessageType"
     game_info = GameInfo()
-    df_summary = aggregate.game_summary()
+    df_summary = g.params.read_data("SUMMARY_TOTAL")
     df_game = g.params.read_data("SUMMARY_DETAILS")
     df_remarks = g.params.read_data("REMARKS_INFO")
 
-    current_rule: str = ""
-    for rule in g.params.rule_list:
-        current_rule = rule
+    # 順位分布選択
+    match g.params.mode:
+        case 3:
+            df_summary.drop(columns=["rank_distr4"], inplace=True)
+        case 4:
+            df_summary.drop(columns=["rank_distr3"], inplace=True)
 
     # インデックスの振りなおし
     df_summary.reset_index(inplace=True, drop=True)
     df_summary.index += 1
+
+    current_rule: str = ""
+    for rule in g.params.rule_list:
+        current_rule = rule
 
     if g.params.anonymous:
         mapping_dict = textutil.anonymous_mapping(df_game["name"].unique().tolist())
@@ -167,8 +173,15 @@ def difference(m: "MessageParserProtocol") -> None:
     # データ収集
     data: "MessageType"
     game_info = GameInfo()
-    df_summary = aggregate.game_summary()
+    df_summary = g.params.read_data("SUMMARY_TOTAL")
     df_game = g.params.read_data("SUMMARY_DETAILS")
+
+    # 順位分布選択
+    match g.params.mode:
+        case 3:
+            df_summary.drop(columns=["rank_distr4"], inplace=True)
+        case 4:
+            df_summary.drop(columns=["rank_distr3"], inplace=True)
 
     # インデックスの振りなおし
     df_summary.reset_index(inplace=True, drop=True)
