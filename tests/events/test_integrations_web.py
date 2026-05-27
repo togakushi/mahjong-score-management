@@ -1,5 +1,5 @@
 """
-tests/events/test_integrations_web.py
+Web統合ルートの公開範囲と認証動作を検証するテスト。
 """
 
 import os
@@ -20,7 +20,12 @@ from libs.types import ServiceType
 
 @pytest.fixture(scope="module", autouse=True)
 def patch_by_keyword() -> Any:
-    """libs.dispatcher.by_keyword を全テストでモック"""
+    """
+    Web統合テスト全体で by_keyword をモック化する。
+
+    ルーティング検証に集中するため、内部コマンド実行の副作用を抑止する。
+
+    """
     with patch("libs.dispatcher.by_keyword") as mock_by_keyword:
         mock_by_keyword.return_value = None
         yield mock_by_keyword
@@ -28,7 +33,12 @@ def patch_by_keyword() -> Any:
 
 @pytest.fixture(name="flask_client")
 def client(request: pytest.FixtureRequest) -> Any:
-    """Flask テストクライアント"""
+    """
+    設定別に初期化済みの Flask テストクライアントを生成する。
+
+    Blueprint と認証フックを含む構成をテスト環境へ組み立てて提供する。
+
+    """
     config_path = request.param
     sys.argv = ["app.py", "--service=web", f"--config=tests/testdata/{config_path}"]
     configuration.setup(init_db=False)
@@ -116,7 +126,12 @@ def client(request: pytest.FixtureRequest) -> Any:
     indirect=["flask_client"],
 )
 def test_route_access(flask_client: str, url: str, expected_status: int) -> None:
-    """ルート選択テスト"""
+    """
+    URLごとのアクセス結果ステータスを検証する。
+
+    設定パターン別の公開/制限ルート判定が期待どおりかを確認する。
+
+    """
     print("-->", url)
 
     response = cast(testing.FlaskClient, flask_client).get(url)

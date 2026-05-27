@@ -1,5 +1,5 @@
 """
-tests/events/test_message_dispatch.py
+メッセージイベントのキーワードディスパッチを検証するテスト。
 """
 
 import sys
@@ -20,7 +20,12 @@ if TYPE_CHECKING:
 
 
 def _init() -> "MessageParserProtocol":
-    """初期化処理"""
+    """
+    メッセージディスパッチ用パーサを初期化する。
+
+    標準入出力アダプタを生成し、コマンド判定フラグを事前設定する。
+
+    """
     configuration.setup(init_db=False)
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
@@ -35,7 +40,12 @@ def _init() -> "MessageParserProtocol":
     ids=list(param_data.message_event.keys()),
 )
 def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
-    """キーワード呼び出しテスト(サブコマンド)"""
+    """
+    キーワード入力で対象サブコマンドが呼び出されることを検証する。
+
+    設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
