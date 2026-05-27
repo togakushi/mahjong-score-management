@@ -1,5 +1,5 @@
 """
-テスト用パラメータ
+name_check テストで利用する名前判定パラメータ定義。
 """
 
 from typing import Any
