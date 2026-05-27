@@ -27,17 +27,21 @@ extensions = [
     "sphinx.ext.githubpages",
 ]
 
-templates_path = ["../templates"]
+templates_path = ["../customization/templates"]
 
 # -- Options for autodoc -----------------------------------------------------
 autodoc_typehints = "description"
 autodoc_class_signature = "separated"
 autodoc_member_order = "bysource"
-autoclass_content = "both"
+autoclass_content = "class"
 
 # -- Napoleon settings -------------------------------------------------------
 napoleon_google_docstring = True
-napoleon_numpy_docstring = True
+napoleon_numpy_docstring = False
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = True
+napoleon_include_special_with_doc = True
+napoleon_use_ivar = True
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = "python_docs_theme"
@@ -48,6 +52,8 @@ html_show_sphinx = False
 html_show_copyright = False
 html_copy_source = False
 html_show_sourcelink = False
+html_static_path = ["../customization/static"]
+# html_css_files = ["custom.css"]
 html_theme_options = {
     "root_url": "",
     "root_name": "",

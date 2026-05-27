@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
 from libs.domain.datamodels import CommandAttrs
+from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
     from configparser import ConfigParser, SectionProxy
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from integrations.slack.config import SvcConfig as SlackConfig
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
-    from libs.bootstrap.app_config import BadgeDisplay
+    from libs.bootstrap.app_config import AppConfig
     from libs.commands.registry.member import MemberSection
     from libs.commands.registry.team import TeamSection
 
@@ -45,7 +46,12 @@ SubClassType: TypeAlias = Union[
 
 
 class CommonMethodMixin:
-    """共通メソッド"""
+    """
+    共通的な取得メソッドを提供するMixin
+
+    ConfigParser の SectionProxy を介して値を取得するためのユーティリティをまとめる。
+
+    """
 
     section_proxy: "SectionProxy"
     """読み込み先(パーサー + セクション名)"""
@@ -84,7 +90,13 @@ class CommonMethodMixin:
 
 
 class BaseSection(CommonMethodMixin):
-    """基底クラス"""
+    """
+    基底クラス
+
+    ConfigParser のセクションを読み込み、インスタンス変数へ自動的に値を反映する仕組みを提供する。
+    default_reset と after_loading をオーバーライドすることで、読み込み前後の処理を拡張できる。
+
+    """
 
     section: str
     """セクション名"""
@@ -180,7 +192,12 @@ class BaseSection(CommonMethodMixin):
 
 @dataclass
 class SettingSection(BaseSection):
-    """settingセクション処理"""
+    """
+    setting セクションの設定値を管理するクラス
+
+    成績管理やグラフ描画、バックアップ設定など、アプリケーション全体の動作に関わる基本設定を保持する。
+
+    """
 
     section: str = "setting"
     """セクション名"""
@@ -227,7 +244,13 @@ class SettingSection(BaseSection):
 
 @dataclass
 class AliasSection(BaseSection):
-    """aliasセクション処理"""
+    """
+    alias セクションの設定値を管理するクラス
+
+    各種コマンドに対するエイリアス（別名）を保持し、
+    設定ファイルから読み込んだ値をもとにコマンド呼び出しを可能にする。
+
+    """
 
     section: str = "alias"
     """セクション名"""
@@ -267,8 +290,56 @@ class AliasSection(BaseSection):
         self.delete.extend(self.getlist("del", fallback="del"))
 
 
+class BadgeDisplay(BaseSection):
+    """
+    バッジ表示に関する設定を管理するクラス
+    """
+
+    @dataclass
+    class BadgeGradeSpec:
+        """
+        段位のデータ仕様および参照テーブルを保持するデータクラス
+
+        設定ファイルの ``grade`` セクションから情報を読み込み、段位データの仕様や
+        参照するテーブル名を保持する。
+
+        """
+
+        table_name: str = field(default=str())
+        """参照する段位テーブルの名前"""
+        table: GradeTableDict = field(default_factory=GradeTableDict)
+        """段位テーブルのデータを格納する辞書"""
+
+    grade: "BadgeGradeSpec" = BadgeGradeSpec()
+    """段位情報"""
+
+    def __init__(self, outer: "AppConfig") -> None:
+        """
+        BadgeDisplay クラスの初期化。
+
+        AppConfig からパーサーを引き継ぎ、``grade`` セクションが存在する場合は
+        設定値を読み込んで grade 属性に設定する。
+
+        Args:
+            outer (AppConfig): アプリケーション全体の設定を取りまとめる上位の設定オブジェクト
+
+        """
+        self.section = "grade"
+        self.main_parser = outer.main_parser
+
+        if self.main_parser.has_section(self.section):
+            self.section_proxy = self.main_parser[self.section]
+            self.grade.table_name = self.get("table_name", fallback="")
+
+
 class SubCommands(BaseSection, CommandAttrs):
-    """サブコマンドセクション処理"""
+    """
+    サブコマンドセクションの設定値を管理するクラス
+
+    コマンド体系の中で、サブコマンドに関する設定値を保持する。
+    CommandAttrs と BaseSection の機能を組み合わせて動作する。
+
+    """
 
     default_commandword: str
     """コマンドワードデフォルト値"""

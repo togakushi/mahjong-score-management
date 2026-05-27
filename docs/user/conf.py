@@ -29,7 +29,7 @@ extensions = [
     "sphinxcontrib.mermaid",
     "mahjong_domain",
 ]
-templates_path = ["../templates"]
+templates_path = ["../customization/templates"]
 rst_epilog = """
 .. |:o:| unicode:: U+2B55
 .. |:x:| unicode:: U+274C
@@ -47,8 +47,8 @@ html_show_sphinx = False
 html_show_copyright = False
 html_search_language = "ja"
 html_show_search_summary = True
-html_static_path = ["source/_static"]
-html_css_files = ["custom.css"]
+html_static_path = ["../customization/static"]
+html_css_files = ["user_doc.css"]
 html_theme_options = {
     "root_icon": "ma-jan_pai.png",
     "root_url": "",
