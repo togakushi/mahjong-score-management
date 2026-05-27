@@ -90,6 +90,11 @@ def test_syntax_check(query_name: str, param_name: str, flags: dict[str, Any]) -
     クエリ名とパラメータの全組み合わせでプレースホルダを評価し、
     構文崩れを検出する。
 
+    Args:
+        query_name (str): 実行対象のSQLテンプレート名。
+        param_name (str): 適用するパラメータパターン名。
+        flags (dict[str, Any]): プレースホルダへ反映する条件フラグ。
+
     """
     p = PlaceholderBuilder()
     p.update_from_dict(

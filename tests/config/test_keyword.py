@@ -26,6 +26,12 @@ def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.Mon
 
     対象サブコマンドの commandword に期待語が含まれるかを確認する。
 
+    Args:
+        parameter (str): 確認対象のサブコマンド属性名。
+        config (str): 読み込むテスト設定ファイル名。
+        word (str): commandword に含まれるべき期待キーワード。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
@@ -44,6 +50,11 @@ def test_help(config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
     ヘルプキーワードが設定から反映されることを検証する。
 
     初期化後の help.commandword に期待語が存在するかを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        word (str): help.commandword に含まれるべき期待キーワード。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])

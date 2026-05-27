@@ -38,6 +38,11 @@ def test_member_add(user_name: str, ret_meg: str, registered: bool) -> None:
 
     応答メッセージ判定と member テーブルの登録有無の両方で期待値を確認する。
 
+    Args:
+        user_name (str): 登録対象名と追加情報を含む入力文字列。
+        ret_meg (str): 応答メッセージに含まれるべき文字列。
+        registered (bool): 登録結果として期待するDB反映可否。
+
     """
     ret = member.append(str(user_name).split())
     print(ret)
@@ -64,6 +69,12 @@ def test_team_create(team_name: str, ret_meg: str, registered: bool) -> None:
     チーム作成コマンドの結果とDB反映を検証する。
 
     返却メッセージと team テーブルの登録有無を照合して成功/失敗判定の整合性を確認する。
+
+    Args:
+        team_name (str): 作成対象チーム名と追加情報を含む入力文字列。
+        ret_meg (str): 応答メッセージに含まれるべき文字列。
+        registered (bool): 登録結果として期待するDB反映可否。
+
     """
     ret = team.create(str(team_name).split())
     assert ret_meg in ret

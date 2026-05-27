@@ -25,6 +25,12 @@ def _init() -> "MessageParserProtocol":
 
     テスト共通のアダプタ生成とコマンド判定フラグ設定を行う。
 
+    Args:
+        None.
+
+    Returns:
+        MessageParserProtocol: 初期化済みのメッセージパーサ。
+
     """
     configuration.setup(init_db=False)
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
@@ -44,6 +50,11 @@ def test_help(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> Non
     help コマンド入力時のディスパッチ経路を検証する。
 
     イベント解析から dispatcher 到達までの振る舞いが成立することを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -75,6 +86,11 @@ def test_results(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> 
 
     疑似イベント本文を与えて dispatcher を実行し、対象モックの呼び出しを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -98,6 +114,11 @@ def test_graph(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> No
     graph コマンドが graph エントリへ委譲されることを検証する。
 
     キーワード分岐の結果として graph 側ハンドラのみが呼ばれることを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -123,6 +144,11 @@ def test_ranking(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> 
 
     parser 後の dispatcher 実行で ranking 側モックが呼び出されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -146,6 +172,11 @@ def test_report(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> N
     report コマンドが report エントリへ委譲されることを検証する。
 
     設定差分や別名入力を含むケースで同一経路に到達することを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -171,6 +202,11 @@ def test_check(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> No
 
     標準入出力向け制約があるため、現状は dispatcher 呼び出し自体を確認対象とする。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -194,6 +230,11 @@ def test_download(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
     download コマンドの出力内容と装飾情報を検証する。
 
     返却本文と StyleOptions の値を照合し、期待レスポンスを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -226,6 +267,11 @@ def test_member_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
 
     dispatcher の分岐結果として get_members_list が実行されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -249,6 +295,11 @@ def test_member_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
     add コマンドでメンバー追加処理が呼ばれることを検証する。
 
     別名キーワードを含むケースでも member.append に委譲されることを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -274,6 +325,11 @@ def test_member_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
 
     parser 実行後に member.remove が1回呼び出されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -297,6 +353,11 @@ def test_team_create(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
     team_create コマンドでチーム作成処理が呼ばれることを検証する。
 
     キーワード解析結果が team.create 呼び出しへ到達することを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -322,6 +383,11 @@ def test_team_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
 
     dispatcher の分岐結果として team.delete が呼び出されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -345,6 +411,11 @@ def test_team_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
     team_add コマンドでチーム所属追加処理が呼ばれることを検証する。
 
     解析済みイベントから team.append が呼び出されることを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
@@ -370,6 +441,11 @@ def test_team_remove(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
 
     dispatcher 経由で team.remove が1回呼び出されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -394,6 +470,11 @@ def test_team_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -
 
     一覧系の分岐先として get_team_list が実行されることを確認する。
 
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
 
@@ -417,6 +498,11 @@ def test_team_clear(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
     team_clear コマンドでチーム情報クリア処理が呼ばれることを検証する。
 
     dispatcher 実行後に team.clear が呼び出されることを確認する。
+
+    Args:
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するスラッシュコマンド文字列。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])

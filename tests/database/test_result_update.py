@@ -24,11 +24,24 @@ from tests.database import param_data
     list(param_data.score_insert_case_01.values()),
     ids=list(param_data.score_insert_case_01.keys()),
 )
-def test_score_insert(draw_split: bool, game_result: str, get_point: dict[str, float], get_rank: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
+def test_score_insert(
+    draw_split: bool,
+    game_result: str,
+    get_point: dict[str, float],
+    get_rank: dict[str, int],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """
     スコア登録結果がDBへ正しく保存されることを検証する。
 
     入力文字列の解析結果を登録し、point/rank 列を抽出して期待辞書と一致するか確認する。
+
+    Args:
+        draw_split (bool): 同点時のポイント処理方式（山分け有無）。
+        game_result (str): 得点報告の入力文字列。
+        get_point (dict[str, float]): 期待するポイント辞書。
+        get_rank (dict[str, int]): 期待する順位辞書。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])

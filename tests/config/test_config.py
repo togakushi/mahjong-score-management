@@ -25,6 +25,9 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
 
     最小構成ファイル読込後、主要サブコマンドのエイリアスが欠落しないことを確認する。
 
+    Args:
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -47,6 +50,10 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
 
     コマンド種別ごとの初期 commandword を含む主要パラメータを
     比較して回帰を防ぐ。
+
+    Args:
+        input_args (str): 検証対象のサブコマンド名。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])

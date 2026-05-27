@@ -25,6 +25,12 @@ def _init() -> "MessageParserProtocol":
 
     標準入出力アダプタを生成し、コマンド判定フラグを事前設定する。
 
+    Args:
+        None.
+
+    Returns:
+        MessageParserProtocol: 初期化済みのメッセージパーサ。
+
     """
     configuration.setup(init_db=False)
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
@@ -44,6 +50,12 @@ def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pyte
     キーワード入力で対象サブコマンドが呼び出されることを検証する。
 
     設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。
+
+    Args:
+        module (str): モック対象とするサブコマンドモジュール名。
+        config (str): 読み込むテスト設定ファイル名。
+        keyword (str): 入力するコマンドキーワード。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])

@@ -32,6 +32,12 @@ def test_score_report(
 
     抽出済み項目と point 計算値を期待データと照合し、再計算時の安定性も確認する。
 
+    Args:
+        input_str (str): 得点報告の入力文字列。
+        result_dict (dict[str, Any]): 期待する抽出結果辞書。
+        get_point (dict[str, float]): 期待するポイント辞書。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -83,6 +89,12 @@ def test_point_calc_seat(
 
     draw_split=False 条件で point/rank と供託値が期待どおりかを確認する。
 
+    Args:
+        rpoint_list (list[str]): 各プレイヤーの素点入力文字列。
+        point_dict (dict[str, float]): 期待するポイント辞書。
+        rank_dict (dict[str, int]): 期待する順位辞書。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
+
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
@@ -132,6 +144,12 @@ def test_point_calc_division(
     同点時に山分けルールで順位・ポイントが決まることを検証する。
 
     draw_split=True 条件で point/rank と供託値が期待どおりかを確認する。
+
+    Args:
+        rpoint_list (list[str]): 各プレイヤーの素点入力文字列。
+        point_dict (dict[str, float]): 期待するポイント辞書。
+        rank_dict (dict[str, int]): 期待する順位辞書。
+        monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])

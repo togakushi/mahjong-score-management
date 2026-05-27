@@ -26,6 +26,9 @@ def database_connection() -> Generator["Connection", Any, None]:
 
     パッケージ全体で同じ接続を再利用し、終了時に確実にクローズする。
 
+    Returns:
+        Generator[Connection, Any, None]: テストで共有するSQLite接続をyieldするジェネレータ。
+
     """
     configuration.setup(init_db=False)
     g.cfg = AppConfig(Path("tests/testdata/empty.ini"))
@@ -41,6 +44,9 @@ def initialize_database(database_connection: Any) -> None:
     テスト用DBを初期化して基礎データを投入する。
 
     member/team/alias テーブルを準備し、参照系テストの前提を整える。
+
+    Args:
+        database_connection (Any): 共有DB接続フィクスチャ。初期化順制御のために受け取る。
 
     """
     _ = database_connection  # pylint (W0613: Unused argument)

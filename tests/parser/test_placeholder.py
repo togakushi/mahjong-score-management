@@ -26,6 +26,12 @@ def parser_instance() -> Generator[ServiceAdapter, Any, None]:
 
     設定読込とメンバー一覧準備を行い、名前解決の前提を整える。
 
+    Args:
+        None.
+
+    Returns:
+        Generator[ServiceAdapter, Any, None]: 初期化済みのServiceAdapterをyieldするジェネレータ。
+
     """
     old_argv = sys.argv[:]
     sys.argv = TEST_ARGS[:]
@@ -57,6 +63,13 @@ def test_command_check(
 
     player_name/player_list/competition_list の各項目が期待値と一致するか確認する。
 
+    Args:
+        input_args (str): 解析対象の入力文字列。
+        player_name (str): 期待する代表プレイヤー名。
+        player_list (list[str]): 期待する対象プレイヤー一覧。
+        competition_list (list[str]): 期待する比較対象一覧。
+        parser_instance (Any): 初期化済みのパーサフィクスチャ。
+
     """
     m = cast(ServiceAdapter, parser_instance).parser()
     param = dictutil.placeholder(g.cfg.results, m)
@@ -84,6 +97,13 @@ def test_player_check(
     プレイヤー名入力の解釈結果を検証する。
 
     ルールキーワード付き入力から抽出される対象者情報を照合する。
+
+    Args:
+        input_args (str): 解析対象の入力文字列。
+        player_name (str): 期待する代表プレイヤー名。
+        player_list (list[str]): 期待する対象プレイヤー一覧。
+        competition_list (list[str]): 期待する比較対象一覧。
+        parser_instance (Any): 初期化済みのパーサフィクスチャ。
 
     """
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
@@ -114,6 +134,13 @@ def test_team_check(
 
     event.text 形式の入力でも対象者抽出が期待どおり動作するか確認する。
 
+    Args:
+        input_args (str): 解析対象の入力文字列。
+        player_name (str): 期待する代表プレイヤー名。
+        player_list (list[str]): 期待する対象プレイヤー一覧。
+        competition_list (list[str]): 期待する比較対象一覧。
+        parser_instance (Any): 初期化済みのパーサフィクスチャ。
+
     """
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
     m = cast(ServiceAdapter, parser_instance).parser()
@@ -136,6 +163,12 @@ def test_guest_check(input_args: str, player_name: str, replace_name: str, parse
     ゲスト名入力時の解析名と置換表示名を検証する。
 
     placeholder の結果と name_replace 後の文字列が期待値に一致するか確認する。
+
+    Args:
+        input_args (str): 解析対象の入力文字列。
+        player_name (str): 期待する解析後プレイヤー名。
+        replace_name (str): 期待する置換後表示名。
+        parser_instance (Any): 初期化済みのパーサフィクスチャ。
 
     """
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]

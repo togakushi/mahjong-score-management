@@ -50,6 +50,9 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         プレイヤー数に応じて描画先を切り替え、単独指定時は個人推移、
         複数指定時はサマリ推移を出力する。
 
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
+
         """
         if len(g.params.player_list) == 1:
             graph_personal.plot(m)
@@ -76,6 +79,9 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
 
         サマリ描画関数を呼び出し、順位推移の確認に必要な出力を行う。
 
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
+
         """
         graph_summary.point_plot(m)
         pprint(
@@ -91,6 +97,9 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         個人成績の統計グラフを生成する。
 
         統計オプションが有効なケースで利用し、実行パラメータの確認出力も行う。
+
+        Args:
+            m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
 
         """
         graph_personal.statistics_plot(m)

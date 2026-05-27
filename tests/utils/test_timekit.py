@@ -21,6 +21,11 @@ def test_keyword_range(date: str, keyword_list: list[str], period: list[str]) ->
 
     同一基準日に対する複数キーワードの period が期待値と一致するか確認する。
 
+    Args:
+        date (str): 基準日として扱う日付文字列。
+        keyword_list (list[str]): 範囲算出に用いるキーワード群。
+        period (list[str]): 期待する開始/終了日時文字列。
+
     """
     for keyword in keyword_list:
         dt = ExtDt(date).range(keyword)
@@ -39,6 +44,11 @@ def test_format_conv(date: str, option: list[Any], output: str) -> None:
     日付フォーマット変換結果を検証する。
 
     書式・区切り指定の組み合わせごとに format の出力を期待値と照合する。
+
+    Args:
+        date (str): 変換対象の日付文字列。
+        option (list[Any]): 書式または区切り指定のオプション一覧。
+        output (str): 期待するフォーマット後文字列。
 
     """
     args: dict[str, Any] = {}
