@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
-from libs.domain import aggregate
+from libs.commands.ranking.rating import calculation_rating
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
@@ -42,7 +42,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     # --- データ収集
     game_info = GameInfo()
-    df_ratings = aggregate.calculation_rating()
+    df_ratings = calculation_rating()
 
     if df_ratings.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
