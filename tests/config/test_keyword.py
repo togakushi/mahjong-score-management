@@ -1,5 +1,5 @@
 """
-tests/config/test_keyword.py
+設定ファイルから読み込むキーワード反映を検証するテスト。
 """
 
 import sys
@@ -21,7 +21,12 @@ if TYPE_CHECKING:
     ids=list(param_data.keyword_test.keys()),
 )
 def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
-    """呼び出しキーワード取り込みチェック"""
+    """
+    呼び出しキーワードが設定から反映されることを検証する。
+
+    対象サブコマンドの commandword に期待語が含まれるかを確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
 
@@ -35,7 +40,12 @@ def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.Mon
     ids=list(param_data.help_word.keys()),
 )
 def test_help(config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
-    """ヘルプキーワード取り込みチェック"""
+    """
+    ヘルプキーワードが設定から反映されることを検証する。
+
+    初期化後の help.commandword に期待語が存在するかを確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
     configuration.setup(init_db=False)
 

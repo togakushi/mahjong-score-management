@@ -1,5 +1,5 @@
 """
-tests/config/test_config.py
+設定値のデフォルト補完と初期状態を検証するテスト。
 """
 
 import sys
@@ -20,7 +20,12 @@ if TYPE_CHECKING:
 
 
 def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
-    """空設定チェック"""
+    """
+    空設定時に必須エイリアスが補完されることを検証する。
+
+    最小構成ファイル読込後、主要サブコマンドのエイリアスが欠落しないことを確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
 
@@ -37,7 +42,13 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
 
 @pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report", "help"])
 def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) -> None:
-    """サブコマンドデフォルト値チェック"""
+    """
+    サブコマンド設定のデフォルト値が期待どおりであることを検証する。
+
+    コマンド種別ごとの初期 commandword を含む主要パラメータを
+    比較して回帰を防ぐ。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
 
