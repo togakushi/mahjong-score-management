@@ -15,9 +15,24 @@ if TYPE_CHECKING:
 
 
 class ResultsConfig(SubCommands):
-    """resultsセクション処理"""
+    """
+    成績集計サブコマンド（resultsセクション）の設定を管理するクラス。
+
+    設定ファイルから成績コマンド固有のパラメータを読み込み、保持する役割を持つ。
+
+    Attributes:
+        default_commandword (str): コマンドのデフォルト起動文字列（"麻雀成績"）
+        section (str): 設定ファイル内の対応するセクション名（CommandType.RESULTS の文字列値）
+
+    """
 
     def __init__(self) -> None:
+        """
+        ResultsConfig クラスの初期化。
+
+        デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
+
+        """
         self.default_commandword: str = "麻雀成績"
         self.section: str = str(CommandType.RESULTS)
         self.default_reset()
@@ -25,10 +40,37 @@ class ResultsConfig(SubCommands):
 
 def main(m: "MessageParserProtocol") -> None:
     """
-    成績集計処理エントリーポイント
+    成績集計処理のエントリーポイント。
+
+    受信したメッセージデータを解析し、指定されたプレイヤーの有無、
+    および各種フラグ（直接対戦マトリクス、スコア比較など）の優先順位に基づいて、
+    適切な成績集計・表示関数へルーティングする。
+
+    内部では、グローバルパラメータ（ ``g.params`` ）にメッセージから抽出したプレースホルダーの
+    解析結果を展開して判定に使用する。
 
     Args:
-        m (MessageParserProtocol): メッセージデータ
+        m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
+
+    Notes:
+        Routing Logic:
+            探索は以下の条件分岐の優先順位（上から順に判定）に従って実行される。
+
+            - **直接対戦（対戦マトリクス）**:
+                ``versus_matrix`` フラグと ``competition_list`` がどちらも存在する場合。
+                -> ``versus.aggregation`` （直接対戦の集計）を実行。
+            - **成績サマリ（差分モード）**:
+                ``score_comparisons`` （スコア比較）フラグが立っている場合。
+                -> ``summary.difference`` （成績サマリの差分表示）を実行。
+            - **成績詳細（比較モード）**:
+                ``competition_list`` のみ指定されている場合。
+                -> ``detail.comparison`` （詳細成績比較）を実行。
+            - **成績詳細（単独モード）**:
+                ``player_list`` （対象プレイヤー）が指定されている場合。
+                -> ``detail.aggregation`` （特定プレイヤーの単独詳細成績集計）を実行。
+            - **成績サマリ（通常モード）**:
+                上記のいずれの条件にも該当しない場合のデフォルト挙動。
+                -> ``summary.aggregation`` （全体の成績サマリ集計）を実行。
 
     """
     m.status.command_type = CommandType.RESULTS
