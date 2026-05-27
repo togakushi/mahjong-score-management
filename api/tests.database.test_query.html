@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -151,17 +151,19 @@
             
   <section id="module-tests.database.test_query">
 <span id="tests-database-test-query-module"></span><h1>tests.database.test_query module<a class="headerlink" href="#module-tests.database.test_query" title="Link to this heading">¶</a></h1>
-<p>tests/database/test_query.py</p>
+<p>SQLテンプレートの構文整合性を検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.database.test_query.test_syntax_check">
 <span class="sig-prename descclassname"><span class="pre">tests.database.test_query.</span></span><span class="sig-name descname"><span class="pre">test_syntax_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.database.test_query.test_syntax_check" title="Link to this definition">¶</a></dt>
-<dd><p>クエリ構文チェック</p>
+<dd><p>SQL定義が各条件で読み出し可能であることを検証する。</p>
+<p>クエリ名とパラメータの全組み合わせでプレースホルダを評価し、
+構文崩れを検出する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query_name</strong> (<em>str</em>)</p></li>
-<li><p><strong>param_name</strong> (<em>str</em>)</p></li>
-<li><p><strong>flags</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+<li><p><strong>query_name</strong> (<em>str</em>) – 実行対象のSQLテンプレート名。</p></li>
+<li><p><strong>param_name</strong> (<em>str</em>) – 適用するパラメータパターン名。</p></li>
+<li><p><strong>flags</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – プレースホルダへ反映する条件フラグ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -263,7 +265,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

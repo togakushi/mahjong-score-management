@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -152,12 +152,19 @@
             
   <section id="module-tests.events.test_message_dispatch">
 <span id="tests-events-test-message-dispatch-module"></span><h1>tests.events.test_message_dispatch module<a class="headerlink" href="#module-tests.events.test_message_dispatch" title="Link to this heading">¶</a></h1>
-<p>tests/events/test_message_dispatch.py</p>
+<p>メッセージイベントのキーワードディスパッチを検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_message_dispatch._init">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_message_dispatch.</span></span><span class="sig-name descname"><span class="pre">_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_message_dispatch._init" title="Link to this definition">¶</a></dt>
-<dd><p>初期化処理</p>
+<dd><p>メッセージディスパッチ用パーサを初期化する。</p>
+<p>標準入出力アダプタを生成し、コマンド判定フラグを事前設定する。</p>
 <dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None.</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>初期化済みのメッセージパーサ。</p>
+</dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol">MessageParserProtocol</a></p>
 </dd>
@@ -167,14 +174,15 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_message_dispatch.test_keyword_event">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_message_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_keyword_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_message_dispatch.test_keyword_event" title="Link to this definition">¶</a></dt>
-<dd><p>キーワード呼び出しテスト(サブコマンド)</p>
+<dd><p>キーワード入力で対象サブコマンドが呼び出されることを検証する。</p>
+<p>設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>module</strong> (<em>str</em>)</p></li>
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>module</strong> (<em>str</em>) – モック対象とするサブコマンドモジュール名。</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するコマンドキーワード。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -277,7 +285,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

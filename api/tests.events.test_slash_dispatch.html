@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -167,12 +167,19 @@
             
   <section id="module-tests.events.test_slash_dispatch">
 <span id="tests-events-test-slash-dispatch-module"></span><h1>tests.events.test_slash_dispatch module<a class="headerlink" href="#module-tests.events.test_slash_dispatch" title="Link to this heading">¶</a></h1>
-<p>tests/events/test_slash_dispatch.py</p>
+<p>スラッシュコマンド入力時のディスパッチ経路を検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch._init">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch._init" title="Link to this definition">¶</a></dt>
-<dd><p>初期化処理</p>
+<dd><p>スラッシュコマンド検証用パーサを初期化する。</p>
+<p>テスト共通のアダプタ生成とコマンド判定フラグ設定を行う。</p>
 <dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None.</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>初期化済みのメッセージパーサ。</p>
+</dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol">MessageParserProtocol</a></p>
 </dd>
@@ -182,13 +189,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_help">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_help" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(help)</p>
+<dd><p>help コマンド入力時のディスパッチ経路を検証する。</p>
+<p>イベント解析から dispatcher 到達までの振る舞いが成立することを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -200,13 +208,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_results">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_results" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(results)</p>
+<dd><p>results コマンドが results エントリへ委譲されることを検証する。</p>
+<p>疑似イベント本文を与えて dispatcher を実行し、対象モックの呼び出しを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -218,13 +227,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_graph">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_graph" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(graph)</p>
+<dd><p>graph コマンドが graph エントリへ委譲されることを検証する。</p>
+<p>キーワード分岐の結果として graph 側ハンドラのみが呼ばれることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -236,13 +246,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_ranking">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_ranking" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(ranking)</p>
+<dd><p>ranking コマンドが ranking エントリへ委譲されることを検証する。</p>
+<p>parser 後の dispatcher 実行で ranking 側モックが呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -254,13 +265,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_report">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_report" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(report)</p>
+<dd><p>report コマンドが report エントリへ委譲されることを検証する。</p>
+<p>設定差分や別名入力を含むケースで同一経路に到達することを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -272,13 +284,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_check">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_check" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(check)</p>
+<dd><p>check コマンド入力時のディスパッチ到達を検証する。</p>
+<p>標準入出力向け制約があるため、現状は dispatcher 呼び出し自体を確認対象とする。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -290,13 +303,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_download">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_download" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(download)</p>
+<dd><p>download コマンドの出力内容と装飾情報を検証する。</p>
+<p>返却本文と StyleOptions の値を照合し、期待レスポンスを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -308,13 +322,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_member_list">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_member_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_member_list" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(member)</p>
+<dd><p>member コマンドでメンバー一覧取得処理が呼ばれることを検証する。</p>
+<p>dispatcher の分岐結果として get_members_list が実行されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -326,13 +341,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_member_add">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_member_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_member_add" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(add)</p>
+<dd><p>add コマンドでメンバー追加処理が呼ばれることを検証する。</p>
+<p>別名キーワードを含むケースでも member.append に委譲されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -344,13 +360,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_member_del">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_member_del</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_member_del" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(del)</p>
+<dd><p>del コマンドでメンバー削除処理が呼ばれることを検証する。</p>
+<p>parser 実行後に member.remove が1回呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -362,13 +379,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_create">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_create" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_create)</p>
+<dd><p>team_create コマンドでチーム作成処理が呼ばれることを検証する。</p>
+<p>キーワード解析結果が team.create 呼び出しへ到達することを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -380,13 +398,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_del">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_del</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_del" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_del)</p>
+<dd><p>team_del コマンドでチーム削除処理が呼ばれることを検証する。</p>
+<p>dispatcher の分岐結果として team.delete が呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -398,13 +417,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_add">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_add" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_add)</p>
+<dd><p>team_add コマンドでチーム所属追加処理が呼ばれることを検証する。</p>
+<p>解析済みイベントから team.append が呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -416,13 +436,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_remove">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_remove" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_remove)</p>
+<dd><p>team_remove コマンドでチーム所属解除処理が呼ばれることを検証する。</p>
+<p>dispatcher 経由で team.remove が1回呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -434,13 +455,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_list">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_list" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_list)</p>
+<dd><p>team_list コマンドでチーム一覧取得処理が呼ばれることを検証する。</p>
+<p>一覧系の分岐先として get_team_list が実行されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -452,13 +474,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_team_clear">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_team_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_team_clear" title="Link to this definition">¶</a></dt>
-<dd><p>スラッシュコマンドイベントテスト(team_clear)</p>
+<dd><p>team_clear コマンドでチーム情報クリア処理が呼ばれることを検証する。</p>
+<p>dispatcher 実行後に team.clear が呼び出されることを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
+<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -576,7 +599,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

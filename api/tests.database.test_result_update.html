@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -151,19 +151,20 @@
             
   <section id="module-tests.database.test_result_update">
 <span id="tests-database-test-result-update-module"></span><h1>tests.database.test_result_update module<a class="headerlink" href="#module-tests.database.test_result_update" title="Link to this heading">¶</a></h1>
-<p>tests/database/test_result_update.py</p>
+<p>得点登録処理のDB反映結果を検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.database.test_result_update.test_score_insert">
 <span class="sig-prename descclassname"><span class="pre">tests.database.test_result_update.</span></span><span class="sig-name descname"><span class="pre">test_score_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">draw_split</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_rank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.database.test_result_update.test_score_insert" title="Link to this definition">¶</a></dt>
-<dd><p>スコア登録テスト</p>
+<dd><p>スコア登録結果がDBへ正しく保存されることを検証する。</p>
+<p>入力文字列の解析結果を登録し、point/rank 列を抽出して期待辞書と一致するか確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>draw_split</strong> (<em>bool</em>)</p></li>
-<li><p><strong>game_result</strong> (<em>str</em>)</p></li>
-<li><p><strong>get_point</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>)</p></li>
-<li><p><strong>get_rank</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>)</p></li>
-<li><p><strong>monkeypatch</strong> (<em>MonkeyPatch</em>)</p></li>
+<li><p><strong>draw_split</strong> (<em>bool</em>) – 同点時のポイント処理方式（山分け有無）。</p></li>
+<li><p><strong>game_result</strong> (<em>str</em>) – 得点報告の入力文字列。</p></li>
+<li><p><strong>get_point</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – 期待するポイント辞書。</p></li>
+<li><p><strong>get_rank</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – 期待する順位辞書。</p></li>
+<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -265,7 +266,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

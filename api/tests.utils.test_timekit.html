@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -152,17 +152,18 @@
             
   <section id="module-tests.utils.test_timekit">
 <span id="tests-utils-test-timekit-module"></span><h1>tests.utils.test_timekit module<a class="headerlink" href="#module-tests.utils.test_timekit" title="Link to this heading">¶</a></h1>
-<p>tests/utils/test_timekit.py</p>
+<p>日付範囲計算とフォーマット変換を検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.utils.test_timekit.test_keyword_range">
 <span class="sig-prename descclassname"><span class="pre">tests.utils.test_timekit.</span></span><span class="sig-name descname"><span class="pre">test_keyword_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.utils.test_timekit.test_keyword_range" title="Link to this definition">¶</a></dt>
-<dd><p>日付範囲キーワード</p>
+<dd><p>日付範囲キーワードごとの期間算出結果を検証する。</p>
+<p>同一基準日に対する複数キーワードの period が期待値と一致するか確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>date</strong> (<em>str</em>)</p></li>
-<li><p><strong>keyword_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
-<li><p><strong>period</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>date</strong> (<em>str</em>) – 基準日として扱う日付文字列。</p></li>
+<li><p><strong>keyword_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 範囲算出に用いるキーワード群。</p></li>
+<li><p><strong>period</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 期待する開始/終了日時文字列。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -174,13 +175,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.utils.test_timekit.test_format_conv">
 <span class="sig-prename descclassname"><span class="pre">tests.utils.test_timekit.</span></span><span class="sig-name descname"><span class="pre">test_format_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.utils.test_timekit.test_format_conv" title="Link to this definition">¶</a></dt>
-<dd><p>フォーマット変換</p>
+<dd><p>日付フォーマット変換結果を検証する。</p>
+<p>書式・区切り指定の組み合わせごとに format の出力を期待値と照合する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>date</strong> (<em>str</em>)</p></li>
-<li><p><strong>option</strong> (<em>list</em><em>[</em><em>Any</em><em>]</em>)</p></li>
-<li><p><strong>output</strong> (<em>str</em>)</p></li>
+<li><p><strong>date</strong> (<em>str</em>) – 変換対象の日付文字列。</p></li>
+<li><p><strong>option</strong> (<em>list</em><em>[</em><em>Any</em><em>]</em>) – 書式または区切り指定のオプション一覧。</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – 期待するフォーマット後文字列。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -283,7 +285,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -504,7 +504,15 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetime.dt">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dt</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetime.dt" title="Link to this definition">¶</a></dt>
-<dd><p>datetime型を返すプロパティ</p>
+<dd><p>datetime型を返すプロパティ。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>内部で保持している日時オブジェクト。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>datetime</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -674,19 +682,43 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.start">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">start</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.start" title="Link to this definition">¶</a></dt>
-<dd><p>最小日付を返す。空ならNone。</p>
+<dd><p>最小日付を返す。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>リストが空でなければ最小日付、空ならNone。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime">ExtendedDatetime</a> | None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.end">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">end</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.end" title="Link to this definition">¶</a></dt>
-<dd><p>最大日付を返す。空ならNone。</p>
+<dd><p>最大日付を返す。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>リストが空でなければ最大日付、空ならNone。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime">ExtendedDatetime</a> | None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="libs.utils.timekit.ExtendedDatetimeList.period">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">period</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#libs.utils.timekit.ExtendedDatetimeList.period" title="Link to this definition">¶</a></dt>
-<dd><p>最小値と最大値をリストで返す</p>
+<dd><p>最小値と最大値をリストで返す。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[最小値, 最大値] の2要素リスト。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime">ExtendedDatetime</a> | None]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -895,7 +927,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 

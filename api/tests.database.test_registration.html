@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=3ea739bb"></script>
+    <script src="_static/documentation_options.js?v=5a68e9ff"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -153,11 +153,12 @@
             
   <section id="module-tests.database.test_registration">
 <span id="tests-database-test-registration-module"></span><h1>tests.database.test_registration module<a class="headerlink" href="#module-tests.database.test_registration" title="Link to this heading">¶</a></h1>
-<p>tests/database/test_registration.py</p>
+<p>メンバー・チーム登録処理の結果を検証するテスト。</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.database.test_registration.test_guest_name">
 <span class="sig-prename descclassname"><span class="pre">tests.database.test_registration.</span></span><span class="sig-name descname"><span class="pre">test_guest_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.database.test_registration.test_guest_name" title="Link to this definition">¶</a></dt>
-<dd><p>ゲスト登録チェック</p>
+<dd><p>ゲストユーザ名の初期登録内容を検証する。</p>
+<p>member テーブルの id=0 レコードが設定値の guest_name と一致することを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -168,13 +169,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.database.test_registration.test_member_add">
 <span class="sig-prename descclassname"><span class="pre">tests.database.test_registration.</span></span><span class="sig-name descname"><span class="pre">test_member_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_meg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.database.test_registration.test_member_add" title="Link to this definition">¶</a></dt>
-<dd><p>ユーザ登録テスト</p>
+<dd><p>メンバー追加コマンドの結果とDB反映を検証する。</p>
+<p>応答メッセージ判定と member テーブルの登録有無の両方で期待値を確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_name</strong> (<em>str</em>)</p></li>
-<li><p><strong>ret_meg</strong> (<em>str</em>)</p></li>
-<li><p><strong>registered</strong> (<em>bool</em>)</p></li>
+<li><p><strong>user_name</strong> (<em>str</em>) – 登録対象名と追加情報を含む入力文字列。</p></li>
+<li><p><strong>ret_meg</strong> (<em>str</em>) – 応答メッセージに含まれるべき文字列。</p></li>
+<li><p><strong>registered</strong> (<em>bool</em>) – 登録結果として期待するDB反映可否。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -186,13 +188,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.database.test_registration.test_team_create">
 <span class="sig-prename descclassname"><span class="pre">tests.database.test_registration.</span></span><span class="sig-name descname"><span class="pre">test_team_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_meg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.database.test_registration.test_team_create" title="Link to this definition">¶</a></dt>
-<dd><p>チーム作成テスト</p>
+<dd><p>チーム作成コマンドの結果とDB反映を検証する。</p>
+<p>返却メッセージと team テーブルの登録有無を照合して成功/失敗判定の整合性を確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>team_name</strong> (<em>str</em>)</p></li>
-<li><p><strong>ret_meg</strong> (<em>str</em>)</p></li>
-<li><p><strong>registered</strong> (<em>bool</em>)</p></li>
+<li><p><strong>team_name</strong> (<em>str</em>) – 作成対象チーム名と追加情報を含む入力文字列。</p></li>
+<li><p><strong>ret_meg</strong> (<em>str</em>) – 応答メッセージに含まれるべき文字列。</p></li>
+<li><p><strong>registered</strong> (<em>bool</em>) – 登録結果として期待するDB反映可否。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -296,7 +299,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.10.
+      Release Version: 0.14.11.
       Last updated on 2026-05-27.
     </div>
 
