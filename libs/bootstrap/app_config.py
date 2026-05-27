@@ -22,9 +22,29 @@ from libs.types import CommandType, ServiceType
 
 
 class AppConfig:
-    """アプリケーション設定"""
+    """
+    アプリケーション全体の構成設定と各コマンドセクションを集中管理するクラス。
+
+    設定ファイル（INI形式）の読み込み、不足セクションの自動補完、パスの正規化、
+    およびチャンネルごとの個別設定による上書きなどのライフサイクルを一元管理する。
+
+    """
 
     def __init__(self, config_file: Path) -> None:
+        """
+        AppConfig クラスの初期化。
+
+        設定ファイルを読み込み、必須セクションの存在チェックと自動生成、
+        および各設定セクション・サブコマンドオブジェクトの構築を行う。
+
+        Args:
+            config_file (Path): 読み込むメイン設定ファイルのパス。
+
+        Raises:
+            RuntimeError: 設定ファイルの読み込みやパースに失敗した場合。
+
+        """
+
         self.config_file: Path = config_file
         """メイン設定ファイルパス"""
 
@@ -88,7 +108,13 @@ class AppConfig:
         """ルール情報"""
 
     def initialization(self) -> None:
-        """設定ファイル読み込み"""
+        """
+        設定ファイルから各セクションのデータを読み込み、パスやフォントの検証を行う。
+
+        フォントファイルの存在チェックを行い、相対パス（作業ディレクトリ、DBパス）を
+        適切な絶対パスへ解決する。フォントが見つからない場合はプロセスを異常終了する。
+
+        """
         self.setting.initialization(self.main_parser["setting"])
         self.alias.initialization(self.main_parser["alias"])
         self.member.initialization(self.main_parser["member"])
@@ -121,13 +147,17 @@ class AppConfig:
 
     def word_list(self, add_words: Optional[list[str]] = None) -> list[str]:
         """
-        設定されている値、キーワードをリスト化する
+        ルール設定、エイリアス、各種コマンドワードを集約したキーワードリストを生成する。
+
+        引数で指定された単語、麻雀ルールのマッピングキー、各サブコマンドの起動ワードや接尾辞、
+        および登録されているエイリアスをすべて統合し、重複と空文字を排除して返す。
 
         Args:
-            add_words (list[str], optional): リストに追加するワード. Defaults to None.
+            add_words (Optional[list[str]]): リストに追加したい独自の単語リスト。
+                デフォルトは None。
 
         Returns:
-            list[str]: リスト化されたキーワード
+            list[str]: 統合・重複排除されたキーワード文字列のリスト。
 
         """
         words: list[str] = []
@@ -156,11 +186,14 @@ class AppConfig:
 
     def overwrite(self, additional_config: Path, section_name: str) -> None:
         """
-        指定セクションを上書き
+        追加の設定ファイルから指定されたセクションの設定を読み込み、上書きする。
+
+        サブコマンドセクション（results, graph など）を上書きする際、
+        既に設定されている ``commandword`` 属性は上書きされないよう保護される。
 
         Args:
-            additional_config (Path): 追加設定ファイルパス
-            section_name (str): セクション名
+            additional_config (Path): 追加読み込みを行う設定ファイルのパス。
+            section_name (str): 上書き対象のセクション名。
 
         """
         if not additional_config.exists():
@@ -202,17 +235,18 @@ class AppConfig:
 
     def read_channel_config(self, section_name: str, ret_dict: dict[str, Any]) -> Optional[Path]:
         """
-        チャンネル個別設定読み込み
+        特定のチャンネル専用の設定を読み込み、必要に応じて全体設定をリロードする。
+
+        指定セクションから ``default_rule`` や個別設定ファイルパス（``channel_config``）を取得し、
+        ファイルが存在する場合は全体インスタンスの初期化を再実行する。
 
         Args:
-            section_name (str): チャンネル個別設定セクション名
-            ret_dict (dict[str, Any]): パラメータ
+            section_name (str): チャンネル個別の設定が記述されているセクション名。
+            ret_dict (dict[str, Any]): 読み込んだパラメータ（default_rule等）を格納・更新する辞書。
 
         Returns:
-            Optional[Path]: 個別設定読み込み結果
-
-            - *Path*: 読み込んだ設定ファイルパス
-            - *None*: 読み込める設定ファイルがない
+            Optional[Path]: 読み込みに成功した場合は個別設定ファイルのパス、
+                対象セクションや設定ファイルが存在しない場合は None。
 
         """
         config_path: Optional[Path] = None
@@ -240,13 +274,20 @@ class AppConfig:
 
     def resolve_channel_id(self, section_name: Optional[str] = None) -> str:
         """
-        メイン設定から優先度の高いチャンネルIDを取得する
+        メイン設定および個別セクションから優先度の高いチャンネルIDを解決して取得する。
+
+        引数で渡されたセクション名、現在選択されている連携サービス、共通システム設定の順に
+        設定ファイルを探索し、最初に見つかった ``channel_id`` を返す。
+        いずれのセクションにもIDが定義されておらず、かつ ``section_name`` が指定されている場合は、
+        そのセクション名自体をチャンネルIDとみなして返却する。
 
         Args:
-            section_name (str, optional): チャンネル個別設定セクション名
+            section_name (Optional[str]): チャンネル個別の設定セクション名。
+                デフォルトは None。
 
         Returns:
-            str: チャンネルID
+            str: 探索により決定されたチャンネルID。
+                該当するIDが見つからず、``section_name`` も未指定の場合は空文字を返す。
 
         """
         for section in (section_name, self.selected_service, "setting"):

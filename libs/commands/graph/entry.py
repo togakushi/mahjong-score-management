@@ -15,9 +15,20 @@ if TYPE_CHECKING:
 
 
 class GraphConfig(SubCommands):
-    """graphセクション処理"""
+    """
+    グラフ描画サブコマンド（graphセクション）の設定を管理するクラス。
+
+    設定ファイルからグラフコマンド固有のパラメータを読み込み、保持する役割を持つ。
+
+    """
 
     def __init__(self) -> None:
+        """
+        GraphConfig クラスの初期化。
+
+        デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
+
+        """
         self.default_commandword: str = "麻雀グラフ"
         self.section: str = str(CommandType.GRAPH)
         self.default_reset()
@@ -25,10 +36,26 @@ class GraphConfig(SubCommands):
 
 def main(m: "MessageParserProtocol") -> None:
     """
-    グラフ生成処理エントリーポイント
+    グラフ生成・描画処理のエントリーポイント。
+
+    受信したメッセージデータを解析し、指定されたプレイヤーの人数やオプションフラグ
+    （統計、レーティング、順位など）の組み合わせに応じて、最適なグラフ描画関数へルーティングする。
+
+    内部では、グローバルパラメータ（ ``g.params`` ）にメッセージから抽出したプレースホルダーの
+    解析結果を展開して判定に使用する。
 
     Args:
-        m (MessageParserProtocol): メッセージデータ
+        m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
+
+    Notes:
+        Routing Logic:
+            - **プレイヤーが1人の場合**:
+                - ``statistics`` フラグあり: 個人統計グラフ（ ``personal.statistics_plot`` ）
+                - フラグなし: 個人成績推移グラフ（ ``personal.plot`` ）
+            - **プレイヤーが複数（2人以上）の場合**:
+                - ``rating`` フラグあり: レーティング推移グラフ（ ``rating.plot`` ）
+                - ``rating`` なし ＋ ``order`` フラグあり: 複数人順位推移グラフ（ ``summary.rank_plot`` ）
+                - ``rating`` なし ＋ ``order`` フラグなし: 複数人ポイント推移グラフ（ ``summary.point_plot`` ）
 
     """
     m.status.command_type = CommandType.GRAPH
