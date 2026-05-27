@@ -158,6 +158,9 @@ class AdapterAPI(APIInterface):
         """
         slackにメッセージをポストする
 
+        Args:
+            **kwargs (Any): Slack API chat_postMessage に渡す可変キーワード引数。
+
         Returns:
             SlackResponse: API response
 
@@ -180,6 +183,9 @@ class AdapterAPI(APIInterface):
     def _call_files_upload(self, **kwargs: Any) -> "SlackResponse":
         """
         slackにファイルをアップロードする
+
+        Args:
+            **kwargs (Any): Slack API files_upload_v2 に渡す可変キーワード引数。
 
         Returns:
             SlackResponse | Any: API response

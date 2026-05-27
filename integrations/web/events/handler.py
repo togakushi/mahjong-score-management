@@ -16,7 +16,13 @@ if TYPE_CHECKING:
 
 
 def main(adapter: "ServiceAdapter") -> None:
-    """メイン処理"""
+    """
+    メイン処理。
+
+    Args:
+        adapter (ServiceAdapter): Web向けインターフェースアダプタ。
+
+    """
     app = Flask(
         __name__,
         static_folder=os.path.join(g.cfg.script_dir, "files/html/static"),
