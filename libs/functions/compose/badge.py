@@ -5,7 +5,6 @@ libs/functions/compose/badge.py
 import math
 
 import libs.global_value as g
-from libs.domain import aggregate
 
 
 def degree(game_count: int = 0) -> str:
@@ -86,6 +85,34 @@ def grade(name: str, detail: bool = True) -> str:
         str: 称号
 
     """
+
+    def _promotion_check(grade_level: int, point: int, rank: int) -> tuple[int, int]:
+        """
+        昇段チェック
+
+        Args:
+            grade_level (int): 現在のレベル(段位)
+            point (int): 現在の昇段ポイント
+            rank (int): 獲得順位
+
+        Returns:
+            tuple[int, int]: チェック後の昇段ポイント, チェック後のレベル(段位)
+
+        """
+        tbl_data = g.cfg.badge.grade.table["table"]
+        new_point = point + int(tbl_data[grade_level]["acquisition"][rank - 1])
+
+        if new_point >= int(tbl_data[grade_level]["point"][1]):  # level up
+            grade_level = min(grade_level + 1, len(tbl_data) - 1)
+            new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
+        elif new_point < 0:  # level down
+            new_point = int(0)
+            if tbl_data[grade_level]["demote"]:
+                grade_level = max(grade_level - 1, 0)
+                new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
+
+        return (new_point, grade_level)
+
     if name not in g.cfg.member.lists:  # レギュラーメンバー以外
         return ""
 
@@ -106,7 +133,7 @@ def grade(name: str, detail: bool = True) -> str:
         rank = data["rank"]
         rpoint = data["rpoint"]
         addition_point = math.ceil(eval(addition_expression.format(rpoint=rpoint, origin_point=g.params.origin_point)))
-        point, grade_level = aggregate.grade_promotion_check(grade_level, point + addition_point, rank)
+        point, grade_level = _promotion_check(grade_level, point + addition_point, rank)
 
     next_point = g.cfg.badge.grade.table["table"][grade_level]["point"][1]
     grade_name = g.cfg.badge.grade.table["table"][grade_level]["grade"]

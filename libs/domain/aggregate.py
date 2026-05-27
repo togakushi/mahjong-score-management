@@ -110,31 +110,3 @@ def calculation_rating() -> pd.DataFrame:
         df_ratings = pd.concat([df_ratings.head(1), ratings])
 
     return df_ratings
-
-
-def grade_promotion_check(grade_level: int, point: int, rank: int) -> tuple[int, int]:
-    """
-    昇段チェック
-
-    Args:
-        grade_level (int): 現在のレベル(段位)
-        point (int): 現在の昇段ポイント
-        rank (int): 獲得順位
-
-    Returns:
-        tuple[int, int]: チェック後の昇段ポイント, チェック後のレベル(段位)
-
-    """
-    tbl_data = g.cfg.badge.grade.table["table"]
-    new_point = point + int(tbl_data[grade_level]["acquisition"][rank - 1])
-
-    if new_point >= int(tbl_data[grade_level]["point"][1]):  # level up
-        grade_level = min(grade_level + 1, len(tbl_data) - 1)
-        new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
-    elif new_point < 0:  # level down
-        new_point = int(0)
-        if tbl_data[grade_level]["demote"]:
-            grade_level = max(grade_level - 1, 0)
-            new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
-
-    return (new_point, grade_level)
