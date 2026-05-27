@@ -15,11 +15,11 @@ if TYPE_CHECKING:
 @dataclass
 class Score:
     """
-    プレイヤー成績
+    プレイヤー個人の成績データを保持するクラス
 
     Note:
-        フィールド名の ``r_`` プレフィックス ( ``r_str``, ``rpoint`` など) は、
-        GameResult.to_dict() によって ``p1_``, ``p2_``, ``p3_``, ``p4_`` に置換され、
+        ``r_str`` の ``r_`` プレフィックスは、 GameResult.to_dict() によって
+        ``p1_``, ``p2_``, ``p3_``, ``p4_`` に置換され、
         DBテーブルのカラム名 ( ``p1_str``, ``p2_str`` など) として使用する。
 
     """
@@ -36,7 +36,13 @@ class Score:
     """獲得順位"""
 
     def has_valid_data(self) -> bool:
-        """有効なデータを持っているかチェック"""
+        """
+        有効なデータを持っているかチェック
+
+        Returns:
+            bool: 初期状態（空）でなければ True、それ以外は False。
+
+        """
         return self != Score()
 
     def to_dict(self, prefix: str) -> "ScoreDict":
@@ -44,13 +50,13 @@ class Score:
         データを辞書で返す
 
         Args:
-            prefix (str): キーに付与する接頭辞 (p1, p2, p3, p4)
+            prefix (str): キーに付与する接頭辞 (``p1``, ``p2``, ``p3``, ``p4``)
 
         Returns:
             ScoreDict: 返却する辞書
 
         Note:
-            フィールド名の `r_` プレフィックスは、指定された prefix に置換される。
+            フィールド名の ``r_`` プレフィックスは、指定された prefix に置換される。
             例: r_str -> p1_str (`prefix="p1"` の場合)
 
         """
@@ -67,9 +73,25 @@ class Score:
 
 
 class GameResult:
-    """スコアデータ"""
+    """
+    1ゲームの対局結果および集計ルールを管理するクラス
+
+    各プレイヤー（東家〜北家）の成績、対局のタイムスタンプ、供託などのゲーム結果情報に加え、
+    三人打ち/四人打ちのモード設定や順位点などの計算規則を保持する。
+
+    """
 
     def __init__(self, **kwargs: Any) -> None:
+        """
+        GameResult クラスの初期化
+
+        引数で受け取ったキーワード引数を元にデータを設定し、スコアの再計算を行う。
+        ``set`` メソッドが対応するキー（``ts``, ``p1_name``, ``mode`` など）を指定可能。
+
+        Args:
+            **kwargs (Any): 初期データおよびルール設定用のキーワード引数。
+
+        """
         # ゲーム結果
         self.ts: str = ""
         """タイムスタンプ"""
@@ -105,9 +127,28 @@ class GameResult:
         self.calc(**kwargs)
 
     def __bool__(self) -> bool:
+        """
+        オブジェクトの真偽値を評価する。
+
+        Returns:
+            bool: 全プレイヤーの名前と素点文字列が入力されている場合は True、
+                いずれかが欠けている場合は False。
+
+        """
         return all(self.to_list("name") + self.to_list("str"))
 
     def __eq__(self, other: Any) -> bool:
+        """
+        他の GameResult オブジェクトと等価性を比較する。
+
+        Args:
+            other (Any): 比較対象のオブジェクト。
+
+        Returns:
+            bool: モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、
+                ルール、コメント、ソースがすべて一致する場合は True、それ以外は False。
+
+        """
         if not isinstance(other, GameResult):
             return NotImplemented
 
@@ -130,12 +171,28 @@ class GameResult:
         )
 
     def __lt__(self, other: Any) -> bool:
+        """
+        タイムスタンプを基準にオブジェクトの大小（前後）関係を比較する。
+
+        Args:
+            other (Any): 比較対象のオブジェクト。
+
+        Returns:
+            bool: 自身のタイムスタンプが相手より古い（小さい）場合は True、それ以外は False。
+
+        """
         if not isinstance(other, GameResult):
             return NotImplemented
         return self.ts < other.ts
 
     def has_valid_data(self) -> bool:
-        """DB更新に必要なデータを持っているかチェック"""
+        """
+        DB更新に必要な必須データがすべて揃っているかチェックする。
+
+        Returns:
+            bool: タイムスタンプが存在し、全プレイヤーのスコアデータおよび順位が有効であれば True、それ以外は False。
+
+        """
         # スコアデータ
         match self.mode:
             case 3:
@@ -161,7 +218,17 @@ class GameResult:
         return all([self.ts, isinstance(self.ts, str), score_data, all(self.to_list("rank"))])
 
     def set(self, **kwargs: Any) -> None:
-        """データ取り込み"""
+        """
+        外部から受け取ったキーワード引数を解析し、対応するプロパティにデータを取り込む。
+
+        文字列の正規化や、型チェックを行った上で各属性へ割り当てる。
+
+        Args:
+            **kwargs (Any): 設定するデータのキーワード引数。
+                接頭辞付きプレイヤーデータ（例: `p1_name`, `p2_str`）や
+                ゲーム設定（例: `mode`, `ts`, `rank_point`）を受け付ける。
+
+        """
 
         def _normalize_score_string(s: str) -> str:
             """
@@ -239,10 +306,10 @@ class GameResult:
 
     def to_dict(self) -> "ScoreDict":
         """
-        データを辞書で返す
+        オブジェクト全体のデータをフラットな辞書形式に変換する。
 
         Returns:
-            ScoreDict: スコアデータ
+            ScoreDict: DB保存やAPI返却に適した、プレフィックス付きキーを含む対局結果データ。
 
         """
         return {
@@ -260,17 +327,17 @@ class GameResult:
 
     def to_text(self, kind: Literal["simple", "detail", "logging"] = "simple") -> str:
         """
-        データをテキストで返す
+        対局結果のデータを可読性の高いテキスト（文字列）形式に変換する。
 
         Args:
-            kind (Literal, optional): 表示形式
+            kind (Literal, optional): 出力するテキストの表示形式。
 
                 - *simple*: 簡易情報 (Default)
-                - *detail*: 詳細情報
-                - *logging*: ロギング用
+                - *detail*: 詳細な対局データ
+                - *logging*: ログ出力用のフォーマット
 
         Returns:
-            str: スコアデータ
+            str: 指定された形式で整形された対局結果テキスト。
 
         """
         ret_text: str = ""
@@ -298,10 +365,10 @@ class GameResult:
 
     def to_list(self, kind: Literal["name", "str", "rpoint", "point", "rank"] = "name") -> list[str | int | float]:
         """
-        指定データをリストで返す
+        各プレイヤーの指定された属性の値をリストにして取得する。
 
         Args:
-            kind (Literal, optional): 取得内容
+            kind (Literal, optional): 取得したい Score クラスの属性名
 
                 - *name*: プレイヤー名 (Default)
                 - *str*: 入力された素点情報
@@ -310,7 +377,7 @@ class GameResult:
                 - *rank*: 順位
 
         Returns:
-            list[str | int | float]: リスト
+            list[str | int | float]: 各プレイヤーから抽出した属性値のリスト。
 
         """
         ret_list: list[str | int | float] = []
@@ -331,7 +398,13 @@ class GameResult:
         return ret_list[: self.mode]
 
     def calc(self, **kwargs: Any) -> None:
-        """獲得ポイント計算"""
+        """
+        入力されたデータを元に、スコア・順位・ポイントの計算を行う。
+
+        Args:
+            **kwargs (Any): 更新するデータがある場合に指定するキーワード引数。
+
+        """
         if kwargs:
             self.set(**kwargs)
 

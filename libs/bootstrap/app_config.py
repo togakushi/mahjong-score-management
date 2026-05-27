@@ -5,7 +5,6 @@ libs/bootstrap/app_config.py
 import logging
 import sys
 from configparser import ConfigParser
-from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional, Union
 
@@ -17,31 +16,9 @@ from libs.commands.registry.team import TeamSection
 from libs.commands.report.entry import ReportConfig
 from libs.commands.results.entry import ResultsConfig
 from libs.domain.rule import RuleSet
-from libs.domain.section import AliasSection, BaseSection, SettingSection, SubCommands
+from libs.domain.section import AliasSection, BadgeDisplay, SettingSection, SubCommands
 from libs.functions.lookup import read_memberslist
-from libs.types import CommandType, GradeTableDict, ServiceType
-
-
-class BadgeDisplay(BaseSection):
-    """バッジ表示"""
-
-    @dataclass
-    class BadgeGradeSpec:
-        """段位"""
-
-        table_name: str = field(default=str())
-        table: GradeTableDict = field(default_factory=GradeTableDict)
-
-    grade: "BadgeGradeSpec" = BadgeGradeSpec()
-    """段位情報"""
-
-    def __init__(self, outer: "AppConfig") -> None:
-        self.section = "grade"
-        self.main_parser = outer.main_parser
-
-        if self.main_parser.has_section(self.section):
-            self.section_proxy = self.main_parser[self.section]
-            self.grade.table_name = self.get("table_name", fallback="")
+from libs.types import CommandType, ServiceType
 
 
 class AppConfig:
