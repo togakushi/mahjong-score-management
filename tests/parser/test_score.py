@@ -1,5 +1,5 @@
 """
-tests/parser/test_score.py
+得点入力の解析とポイント計算を検証するテスト。
 """
 
 import sys
@@ -21,8 +21,18 @@ from tests.parser import param_data
     list(param_data.score_pattern.values()),
     ids=list(param_data.score_pattern.keys()),
 )
-def test_score_report(input_str: str, result_dict: dict[str, Any], get_point: dict[str, float], monkeypatch: pytest.MonkeyPatch) -> None:
-    """得点入力"""
+def test_score_report(
+    input_str: str,
+    result_dict: dict[str, Any],
+    get_point: dict[str, float],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """
+    得点入力文字列の解析結果と計算結果を検証する。
+
+    抽出済み項目と point 計算値を期待データと照合し、再計算時の安定性も確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
@@ -62,8 +72,18 @@ def test_score_report(input_str: str, result_dict: dict[str, Any], get_point: di
     list(param_data.point_calculation_pattern01.values()),
     ids=list(param_data.point_calculation_pattern01.keys()),
 )
-def test_point_calc_seat(rpoint_list: list[str], point_dict: dict[str, float], rank_dict: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
-    """ポイント計算 (同点席順)"""
+def test_point_calc_seat(
+    rpoint_list: list[str],
+    point_dict: dict[str, float],
+    rank_dict: dict[str, int],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """
+    同点時に席順優先ルールで順位・ポイントが決まることを検証する。
+
+    draw_split=False 条件で point/rank と供託値が期待どおりかを確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
@@ -102,8 +122,18 @@ def test_point_calc_seat(rpoint_list: list[str], point_dict: dict[str, float], r
     list(param_data.point_calculation_pattern02.values()),
     ids=list(param_data.point_calculation_pattern02.keys()),
 )
-def test_point_calc_division(rpoint_list: list[str], point_dict: dict[str, float], rank_dict: dict[str, int], monkeypatch: pytest.MonkeyPatch) -> None:
-    """ポイント計算 (同点山分け)"""
+def test_point_calc_division(
+    rpoint_list: list[str],
+    point_dict: dict[str, float],
+    rank_dict: dict[str, int],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """
+    同点時に山分けルールで順位・ポイントが決まることを検証する。
+
+    draw_split=True 条件で point/rank と供託値が期待どおりかを確認する。
+
+    """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
