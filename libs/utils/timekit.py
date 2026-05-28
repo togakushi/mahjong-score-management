@@ -213,7 +213,7 @@ class ExtendedDatetime:
     - **datetime** / **ExtendedDatetime**: オブジェクトをそのまま利用
     """
 
-    def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs: Any):
+    def __init__(self, value: Optional[AcceptedType] = None, **relativedelta_kwargs: Any) -> None:
         """
         ExtendedDatetimeの初期化
 

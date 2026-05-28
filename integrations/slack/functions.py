@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 class SvcFunctions(FunctionsInterface):
     """slack専用関数"""
 
-    def __init__(self, api: "AdapterAPI", conf: "SvcConfig"):
+    def __init__(self, api: "AdapterAPI", conf: "SvcConfig") -> None:
         super().__init__()
 
         try:
