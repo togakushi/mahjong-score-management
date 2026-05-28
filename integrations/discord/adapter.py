@@ -20,7 +20,7 @@ class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, Messa
 
     interface_type = ServiceType.DISCORD
 
-    def __init__(self, parser: "ConfigParser"):
+    def __init__(self, parser: "ConfigParser") -> None:
         self.conf = SvcConfig(main_conf=parser)
         self.api = AdapterAPI()
         self.functions = SvcFunctions(api=self.api, conf=self.conf)
