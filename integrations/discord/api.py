@@ -31,6 +31,7 @@ class AdapterAPI(APIInterface):
     bot: "Bot"
 
     def __init__(self) -> None:
+        """Discord APIラッパーで利用する依存オブジェクトを初期化する。"""
         super().__init__()
 
         from discord import File as discord_file

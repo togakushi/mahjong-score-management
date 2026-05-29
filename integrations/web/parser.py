@@ -17,6 +17,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
     status: StatusData
 
     def __init__(self) -> None:
+        """Webメッセージ解析に必要な状態を初期化する。"""
         MessageParserDataMixin.__init__(self)
         self.data = MsgData()
         self.post = PostData()

@@ -106,6 +106,7 @@ class RuleSet:
     """ルールセット"""
 
     def __init__(self) -> None:
+        """ルール設定と派生キャッシュの格納先を初期化する。"""
         self.config: ConfigParser = ConfigParser()
         """ルール設定ファイル"""
         self.data: dict[str, RuleData] = {}

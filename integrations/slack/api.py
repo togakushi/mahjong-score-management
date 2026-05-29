@@ -30,6 +30,7 @@ class AdapterAPI(APIInterface):
     """WebClient(userトークン使用)"""
 
     def __init__(self) -> None:
+        """Slack APIクライアント関連の初期設定を行う。"""
         super().__init__()
 
         try:

@@ -14,6 +14,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
     """メッセージ解析クラス"""
 
     def __init__(self) -> None:
+        """標準入出力メッセージ解析の初期状態を構築する。"""
         MessageParserDataMixin.__init__(self)
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
