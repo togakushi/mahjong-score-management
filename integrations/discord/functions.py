@@ -24,6 +24,14 @@ class SvcFunctions(FunctionsInterface):
     """discord専用関数"""
 
     def __init__(self, api: "AdapterAPI", conf: "SvcConfig") -> None:
+        """
+        Discord向け関数オブジェクトを初期化する。
+
+        Args:
+            api (AdapterAPI): Discord連携で利用するAPIラッパー。
+            conf (SvcConfig): Discord向け設定情報。
+
+        """
         super().__init__()
 
         self.api = api

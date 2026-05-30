@@ -62,6 +62,13 @@ class MemberSection(BaseSection):
     """未登録メンバー名称"""
 
     def __init__(self, outer: "AppConfig") -> None:
+        """
+        memberセクション設定の初期値を準備する。
+
+        Args:
+            outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
+
+        """
         self.default_commandword = "メンバー一覧"
         self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser

@@ -24,6 +24,14 @@ class SvcFunctions(FunctionsInterface):
     """slack専用関数"""
 
     def __init__(self, api: "AdapterAPI", conf: "SvcConfig") -> None:
+        """
+        Slack向け関数オブジェクトを初期化する。
+
+        Args:
+            api (AdapterAPI): Slack連携で利用するAPIラッパー。
+            conf (SvcConfig): Slack向け設定情報。
+
+        """
         super().__init__()
 
         try:

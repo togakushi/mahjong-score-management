@@ -55,6 +55,13 @@ class TeamSection(BaseSection):
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
     def __init__(self, outer: "AppConfig") -> None:
+        """
+        teamセクション設定の初期値を準備する。
+
+        Args:
+            outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
+
+        """
         self.default_commandword = "チーム一覧"
         self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
