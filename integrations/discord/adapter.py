@@ -21,6 +21,13 @@ class ServiceAdapter(AdapterInterface[SvcConfig, AdapterAPI, SvcFunctions, Messa
     interface_type = ServiceType.DISCORD
 
     def __init__(self, parser: "ConfigParser") -> None:
+        """
+        Discord連携用アダプタを初期化する。
+
+        Args:
+            parser (ConfigParser): アプリケーション設定を保持する設定パーサー。
+
+        """
         self.conf = SvcConfig(main_conf=parser)
         self.api = AdapterAPI()
         self.functions = SvcFunctions(api=self.api, conf=self.conf)

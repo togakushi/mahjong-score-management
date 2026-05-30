@@ -174,6 +174,13 @@ class BaseSection(CommonMethodMixin):
     """読み込み先(パーサー + セクション名)"""
 
     def __init__(self, outer: SubClassType) -> None:
+        """
+        設定パーサーから対象セクションを初期化する。
+
+        Args:
+            outer (SubClassType): main_parser を保持する外部設定オブジェクト。
+
+        """
         self.main_parser = outer.main_parser
         assert self.main_parser
         if not hasattr(self, "section") or self.section not in self.main_parser:
