@@ -25,7 +25,7 @@
    * - .. integrations_section:: badge_degree
           :category: common
 
-     - ゲーム数に応じて表示される称号
+     - 対戦数に応じて表示される称号
      - 真偽値
      - False
      - `degree-section` で定義した内容を表示する

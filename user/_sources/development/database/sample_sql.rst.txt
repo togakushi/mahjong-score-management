@@ -22,7 +22,7 @@
 
    SELECT
        name AS プレイヤー名,
-       count() AS ゲーム数,
+       count() AS 対戦数,
        round(sum(point), 1) AS 通算ポイント,
        round(avg(point), 1) AS 平均ポイント,
        count(rank = 1 OR NULL) AS "1位",
@@ -46,7 +46,7 @@
    GROUP BY
        name
    HAVING
-       ゲーム数 > (SELECT count() * 0.01 FROM result WHERE playtime BETWEEN datetime(strftime('%Y-01-01 12:00:00')) AND datetime(strftime('%Y-12-01 12:00:00'), '1 month', '-1 second')) -- 規定打数
+       対戦数 > (SELECT count() * 0.01 FROM result WHERE playtime BETWEEN datetime(strftime('%Y-01-01 12:00:00')) AND datetime(strftime('%Y-12-01 12:00:00'), '1 month', '-1 second')) -- 規定打数
    ORDER BY
        通算ポイント DESC
    ;
@@ -58,19 +58,19 @@
        collection AS 集計月,
        max(CASE WHEN rank = 1 THEN name END) AS "1位",
        max(CASE WHEN rank = 1 THEN total END) AS "ポイント",
-       max(CASE WHEN rank = 1 THEN game_count END) AS "ゲーム数",
+       max(CASE WHEN rank = 1 THEN game_count END) AS "対戦数",
        max(CASE WHEN rank = 2 THEN name END) AS "2位",
        max(CASE WHEN rank = 2 THEN total END) AS "ポイント",
-       max(CASE WHEN rank = 2 THEN game_count END) AS "ゲーム数",
+       max(CASE WHEN rank = 2 THEN game_count END) AS "対戦数",
        max(CASE WHEN rank = 3 THEN name END) AS "3位",
        max(CASE WHEN rank = 3 THEN total END) AS "ポイント",
-       max(CASE WHEN rank = 3 THEN game_count END) AS "ゲーム数",
+       max(CASE WHEN rank = 3 THEN game_count END) AS "対戦数",
        max(CASE WHEN rank = 4 THEN name END) AS "4位",
        max(CASE WHEN rank = 4 THEN total END) AS "ポイント",
-       max(CASE WHEN rank = 4 THEN game_count END) AS "ゲーム数",
+       max(CASE WHEN rank = 4 THEN game_count END) AS "対戦数",
        max(CASE WHEN rank = 5 THEN name END) AS "5位",
        max(CASE WHEN rank = 5 THEN total END) AS "ポイント",
-       max(CASE WHEN rank = 5 THEN game_count END) AS "ゲーム数"
+       max(CASE WHEN rank = 5 THEN game_count END) AS "対戦数"
    FROM (
        SELECT
            substr(collection_daily, 1, 7) AS collection,
@@ -94,7 +94,7 @@
 
    SELECT
        substr(collection_daily, 1, 7) AS 集計月,
-       count() / 4 AS ゲーム数,
+       count() / 4 AS 対戦数,
        round(sum(point), 1) AS 供託,
        count(rpoint < -1 OR NULL) AS "飛んだ人数(延べ)",
        round(CAST(count(rpoint < -1 OR NULL) AS REAL) / CAST(count() / 4 AS REAL) * 100, 2) AS トビ終了率,
@@ -113,7 +113,7 @@
 
    SELECT
        substr(collection_daily, 1, 7) AS 集計月,
-       count() AS ゲーム数,
+       count() AS 対戦数,
        round(sum(point), 1) AS 通算ポイント,
        round(avg(point), 1) AS 平均ポイント,
        count(rank = 1 OR NULL) AS "1位",
@@ -152,7 +152,7 @@
            "<Player Name>" IN (p1_name, p2_name, p3_name, p4_name)
        ORDER BY
            playtime DESC
-       LIMIT 30 -- 直近のゲーム数
+       LIMIT 30 -- 直近の対戦数
    )
    ORDER BY
        playtime

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=4365c8fe" />
     <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=d9cdef91" />
     
-    <script src="../../_static/documentation_options.js?v=1fc69a67"></script>
+    <script src="../../_static/documentation_options.js?v=283e100d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -166,7 +166,7 @@
 <div class="code-block-caption"><span class="caption-text">全体成績サマリ(年間)</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
     <span class="n">name</span> <span class="n">AS</span> <span class="n">プレイヤー名</span><span class="p">,</span>
-    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">ゲーム数</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">通算ポイント</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均ポイント</span><span class="p">,</span>
     <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
@@ -190,7 +190,7 @@
 <span class="n">GROUP</span> <span class="n">BY</span>
     <span class="n">name</span>
 <span class="n">HAVING</span>
-    <span class="n">ゲーム数</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">count</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.01</span> <span class="n">FROM</span> <span class="n">result</span> <span class="n">WHERE</span> <span class="n">playtime</span> <span class="n">BETWEEN</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-01-01 12:00:00&#39;</span><span class="p">))</span> <span class="n">AND</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-12-01 12:00:00&#39;</span><span class="p">),</span> <span class="s1">&#39;1 month&#39;</span><span class="p">,</span> <span class="s1">&#39;-1 second&#39;</span><span class="p">))</span> <span class="o">--</span> <span class="n">規定打数</span>
+    <span class="n">対戦数</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">count</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.01</span> <span class="n">FROM</span> <span class="n">result</span> <span class="n">WHERE</span> <span class="n">playtime</span> <span class="n">BETWEEN</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-01-01 12:00:00&#39;</span><span class="p">))</span> <span class="n">AND</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-12-01 12:00:00&#39;</span><span class="p">),</span> <span class="s1">&#39;1 month&#39;</span><span class="p">,</span> <span class="s1">&#39;-1 second&#39;</span><span class="p">))</span> <span class="o">--</span> <span class="n">規定打数</span>
 <span class="n">ORDER</span> <span class="n">BY</span>
     <span class="n">通算ポイント</span> <span class="n">DESC</span>
 <span class="p">;</span>
@@ -203,19 +203,19 @@
     <span class="n">collection</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ゲーム数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;2位&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ゲーム数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;3位&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ゲーム数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;4位&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ゲーム数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;5位&quot;</span><span class="p">,</span>
     <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ゲーム数&quot;</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span>
 <span class="n">FROM</span> <span class="p">(</span>
     <span class="n">SELECT</span>
         <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">collection</span><span class="p">,</span>
@@ -240,7 +240,7 @@
 <div class="code-block-caption"><span class="caption-text">ゲーム傾向</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
     <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
-    <span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="n">AS</span> <span class="n">ゲーム数</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">供託</span><span class="p">,</span>
     <span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;飛んだ人数(延べ)&quot;</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トビ終了率</span><span class="p">,</span>
@@ -260,7 +260,7 @@
 <div class="code-block-caption"><span class="caption-text">個人成績</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
     <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
-    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">ゲーム数</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">通算ポイント</span><span class="p">,</span>
     <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均ポイント</span><span class="p">,</span>
     <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
@@ -299,7 +299,7 @@
         <span class="s2">&quot;&lt;Player Name&gt;&quot;</span> <span class="n">IN</span> <span class="p">(</span><span class="n">p1_name</span><span class="p">,</span> <span class="n">p2_name</span><span class="p">,</span> <span class="n">p3_name</span><span class="p">,</span> <span class="n">p4_name</span><span class="p">)</span>
     <span class="n">ORDER</span> <span class="n">BY</span>
         <span class="n">playtime</span> <span class="n">DESC</span>
-    <span class="n">LIMIT</span> <span class="mi">30</span> <span class="o">--</span> <span class="n">直近のゲーム数</span>
+    <span class="n">LIMIT</span> <span class="mi">30</span> <span class="o">--</span> <span class="n">直近の対戦数</span>
 <span class="p">)</span>
 <span class="n">ORDER</span> <span class="n">BY</span>
     <span class="n">playtime</span>
@@ -439,8 +439,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.11.
-      Last updated on 2026-05-30.
+      Release Version: 0.14.12.
+      Last updated on 2026-05-31.
     </div>
 
   </body>
