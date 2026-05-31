@@ -31,7 +31,7 @@ if TYPE_CHECKING:
 
 def get_game_results() -> list[list[str]]:
     """
-    月/年単位のゲーム結果集計
+    月/年単位のゲーム結果を集計する。
 
     Returns:
         list[list[str]]: 集計結果のリスト
@@ -56,10 +56,10 @@ def get_game_results() -> list[list[str]]:
 
 def get_count_results(game_count: int) -> list[list[str]]:
     """
-    指定間隔区切りのゲーム結果集計
+    指定した間隔で区切ってゲーム結果を集計する。
 
     Args:
-        game_count (int): 区切るゲーム数
+        game_count (int): 区切る対戦数
 
     Returns:
         list[list[str]]: 集計結果のリスト
@@ -85,10 +85,10 @@ def get_count_results(game_count: int) -> list[list[str]]:
 
 def get_count_moving(game_count: int) -> list[dict[Hashable, Any]]:
     """
-    移動平均を取得する
+    移動平均を取得する。
 
     Args:
-        game_count (int): 平滑化するゲーム数
+        game_count (int): 平滑化する対戦数
 
     Returns:
         list[dict[Hashable, Any]]: 集計結果のリスト
@@ -104,7 +104,7 @@ def get_count_moving(game_count: int) -> list[dict[Hashable, Any]]:
 
 def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
     """
-    平均順位の折れ線グラフを生成
+    平均順位の折れ線グラフを生成する。
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -150,7 +150,7 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
         ax.invert_yaxis()
 
     # X軸設定
-    plt.xlabel("ゲーム数", fontsize=14)
+    plt.xlabel("対戦数", fontsize=14)
 
     plt.savefig(imgdata, format="jpg", bbox_inches="tight")
     return imgdata
@@ -158,7 +158,7 @@ def graphing_mean_rank(df: pd.DataFrame, title: str, whole: bool = False) -> Byt
 
 def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> BytesIO:
     """
-    通算ポイント推移の折れ線グラフを生成
+    通算ポイント推移の折れ線グラフを生成する。
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -225,7 +225,7 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
     plt.yticks(list(ylocs[1:-1]), new_ylabs[1:-1])
 
     # X軸設定
-    plt.xlabel("ゲーム数", fontsize=14)
+    plt.xlabel("対戦数", fontsize=14)
 
     plt.savefig(imgdata, format="jpg", bbox_inches="tight")
     return imgdata
@@ -233,7 +233,7 @@ def graphing_total_points(df: pd.DataFrame, title: str, whole: bool = False) -> 
 
 def graphing_rank_distribution(df: pd.DataFrame, title: str) -> BytesIO:
     """
-    順位分布の棒グラフを生成
+    順位分布の棒グラフを生成する。
 
     Args:
         df (pd.DataFrame): 描写データ
@@ -409,7 +409,7 @@ def entire_aggregate(style: dict[str, Any]) -> list[Any]:
 
     # --- テーブルデータ生成
     data: list[list[str]] = []
-    for val in tmp_data:  # ゲーム数を除外
+    for val in tmp_data:  # 対戦数を除外
         data.append(val[1:])
 
     cell_style = [

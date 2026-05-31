@@ -233,7 +233,7 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "playtime": "日時",
         "rate": "レート",
         "participation_rate": "ゲーム参加率",
-        "total_count": "集計ゲーム数",
+        "total_count": "総対戦数",
         "matter_count": "回数",
         "ex_total": "ポイント合計",
         "deposit": "供託",
@@ -378,7 +378,7 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
             case "seat":
                 rename_dict[x] = "席" if short else "座席"
             case "count" | "game" | "game_count":
-                rename_dict[x] = "ゲーム数"
+                rename_dict[x] = "対戦数"
             case "pt_total" | "total_point" | "point_sum" | "total_mix":
                 rename_dict[x] = "通算" if short else "通算ポイント"
             case "pt_avg" | "avg_point" | "point_avg" | "avg_mix":

@@ -171,7 +171,7 @@ class StatsDetailed:
 
     @property
     def count(self) -> int:
-        """ゲーム数"""
+        """対戦数"""
         return len(self.rank_list)
 
     @property
@@ -192,7 +192,7 @@ class StatsDetailed:
 
     @property
     def rank_distr2(self) -> str:
-        """順位分布(+ゲーム数)"""
+        """順位分布(+対戦数)"""
         match self.mode:
             case 3:
                 return f"{self.rank(1)}+{self.rank(2)}+{self.rank(3)}={self.count}"
@@ -425,7 +425,7 @@ class StatsInfo:
 
     @property
     def rank_distr_list2(self) -> list[str]:
-        """座席別順位分布(ゲーム数)"""
+        """座席別順位分布(対戦数)"""
         return [
             self.seat1.rank_distr2,
             self.seat2.rank_distr2,

@@ -56,7 +56,7 @@ def gen_xlabel(game_count: int) -> str:
     X軸ラベル生成
 
     Args:
-        game_count (int): ゲーム数
+        game_count (int): 対戦数
 
     Returns:
         str: X軸ラベル
@@ -74,10 +74,10 @@ def gen_xlabel(game_count: int) -> str:
             case "yearly":
                 xlabel = f"集計年（{game_count} ゲーム）"
             case "all":
-                xlabel = f"ゲーム数：{game_count} ゲーム"
+                xlabel = f"対戦数：{game_count} ゲーム"
             case _:
                 if g.params.search_word:
-                    xlabel = f"ゲーム数：{game_count} ゲーム"
+                    xlabel = f"対戦数：{game_count} ゲーム"
                 else:
                     xlabel = f"ゲーム終了日時（{game_count} ゲーム）"
 

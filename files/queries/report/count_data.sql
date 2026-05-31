@@ -2,7 +2,7 @@
 select
     min(game_count) as 開始,
     max(game_count) as 終了,
-    count() as ゲーム数,
+    count() as 対戦数,
     round(sum(point), 1) as 通算ポイント,
     round(avg(point), 1) as 平均ポイント,
     count(rank = 1 or NULL) as "1位",

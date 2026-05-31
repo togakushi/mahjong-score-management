@@ -9,10 +9,10 @@ import libs.global_value as g
 
 def degree(game_count: int = 0) -> str:
     """
-    プレイしたゲーム数に対して表示される称号を返す
+    対戦数に対して表示される称号を返す
 
     Args:
-        game_count (int, optional): ゲーム数. Defaults to 0.
+        game_count (int, optional): 対戦数. Defaults to 0.
 
     Returns:
         str: 表示する称号
@@ -39,7 +39,7 @@ def status(game_count: int = 0, win: int = 0) -> str:
     勝率に対して付く調子バッジを返す
 
     Args:
-        game_count (int, optional): ゲーム数. Defaults to 0.
+        game_count (int, optional): 対戦数. Defaults to 0.
         win (int, optional): 勝ち数. Defaults to 0.
 
     Returns:

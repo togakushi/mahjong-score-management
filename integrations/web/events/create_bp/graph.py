@@ -72,7 +72,7 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
                 if options.title == "順位/ポイント情報":
                     show_index = options.show_index
                     multi = [
-                        ("", "ゲーム数"),
+                        ("", "対戦数"),
                         ("1位", "獲得数"),
                         ("1位", "獲得率"),
                         ("1.5位", "獲得数"),

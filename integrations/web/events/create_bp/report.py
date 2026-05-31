@@ -66,7 +66,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
                     check_column = data.columns.to_list()
                     multi = [
                         ("", "プレイヤー名" if g.params.individual else "チーム名"),
-                        ("", "ゲーム数"),
+                        ("", "対戦数"),
                         ("ポイント", "通算") if {"通算ポイント", "平均ポイント"}.issubset(check_column) else None,
                         ("ポイント", "平均") if {"通算ポイント", "平均ポイント"}.issubset(check_column) else None,
                         ("1位", "獲得数") if {"1位数", "1位率"}.issubset(check_column) else None,

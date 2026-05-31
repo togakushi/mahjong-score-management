@@ -176,7 +176,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     total_index = "全区間"
 
     rpoint_stats = {
-        "ゲーム数": rpoint_df.count().astype("int"),
+        "対戦数": rpoint_df.count().astype("int"),
         "平均値(x)": rpoint_df.mean().round(1),
         "最小値": rpoint_df.min().astype("int"),
         "第一四分位数": rpoint_df.quantile(0.25).astype("int"),
@@ -188,7 +188,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     stats_df = pd.DataFrame(rpoint_stats)
     stats_df.loc[total_index] = pd.Series(
         {
-            "ゲーム数": int(player_df["rpoint"].count()),
+            "対戦数": int(player_df["rpoint"].count()),
             "平均値(x)": float(round(player_df["rpoint"].mean(), 1)),
             "最小値": int(player_df["rpoint"].min()),
             "第一四分位数": int(player_df["rpoint"].quantile(0.25)),
@@ -200,7 +200,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     stats_df = stats_df.apply(lambda col: col.map(lambda x: f"{int(x)}" if isinstance(x, int) else f"{x:.1f}"))
 
     count_stats = {
-        "ゲーム数": rank_df.count().astype("int"),
+        "対戦数": rank_df.count().astype("int"),
         "1位数": rank_df[rank_df == 1].count().astype("int"),
         "1位(%)": ((rank_df[rank_df == 1].count()) / rank_df.count()),
         "1.5位数": rank_df[rank_df == 1.5].count().astype("int"),
@@ -224,21 +224,21 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
     count_df.loc[total_index] = pd.Series(
         {
-            "ゲーム数": int(count_df["ゲーム数"].sum()),
+            "対戦数": int(count_df["対戦数"].sum()),
             "1位数": int(count_df["1位数"].sum()),
-            "1位(%)": float(count_df["1位数"].sum() / count_df["ゲーム数"].sum()),
+            "1位(%)": float(count_df["1位数"].sum() / count_df["対戦数"].sum()),
             "1.5位数": int(count_df["1.5位数"].sum()),
-            "1.5位(%)": float(count_df["1.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "1.5位(%)": float(count_df["1.5位数"].sum() / count_df["対戦数"].sum()),
             "2位数": int(count_df["2位数"].sum()),
-            "2位(%)": float(count_df["2位数"].sum() / count_df["ゲーム数"].sum()),
+            "2位(%)": float(count_df["2位数"].sum() / count_df["対戦数"].sum()),
             "2.5位数": int(count_df["2.5位数"].sum()),
-            "2.5位(%)": float(count_df["2.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "2.5位(%)": float(count_df["2.5位数"].sum() / count_df["対戦数"].sum()),
             "3位数": int(count_df["3位数"].sum()),
-            "3位(%)": float(count_df["3位数"].sum() / count_df["ゲーム数"].sum()),
+            "3位(%)": float(count_df["3位数"].sum() / count_df["対戦数"].sum()),
             "3.5位数": int(count_df["3.5位数"].sum()),
-            "3.5位(%)": float(count_df["3.5位数"].sum() / count_df["ゲーム数"].sum()),
+            "3.5位(%)": float(count_df["3.5位数"].sum() / count_df["対戦数"].sum()),
             "4位数": int(count_df["4位数"].sum()),
-            "4位(%)": float(count_df["4位数"].sum() / count_df["ゲーム数"].sum()),
+            "4位(%)": float(count_df["4位数"].sum() / count_df["対戦数"].sum()),
             "平均順位": float(round(player_df["rank"].mean(), 2)),
             "区間ポイント": float(round(player_df["point"].sum(), 1)),
             "区間平均": float(round(player_df["point"].mean(), 1)),
@@ -246,7 +246,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     )
     # テーブル用データ
     rank_table = pd.DataFrame()
-    rank_table["ゲーム数"] = count_df["ゲーム数"].astype("int")
+    rank_table["対戦数"] = count_df["対戦数"].astype("int")
     rank_table["1位"] = count_df.apply(lambda row: f"{row['1位(%)']:.2%} ({row['1位数']:.0f})", axis=1)
     if count_df["1.5位数"].drop(index=["全区間"]).sum():
         rank_table["1.5位"] = count_df.apply(lambda row: f"{row['1.5位(%)']:.2%} ({row['1.5位数']:.0f})", axis=1)
@@ -287,7 +287,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
             # ポイントデータ
             subplot_point(point_df, ax_point1)
-            subplot_table(count_df.filter(items=["ゲーム数", "区間ポイント", "区間平均", "通算ポイント"]), ax_point2)
+            subplot_table(count_df.filter(items=["対戦数", "区間ポイント", "区間平均", "通算ポイント"]), ax_point2)
 
             # 順位データ
             subplot_rank(count_df, ax_rank1, total_index)
@@ -373,7 +373,7 @@ def subplot_table(df: pd.DataFrame, ax: Axes) -> None:
     # 有効桁数の調整
     for col in df.columns:
         match col:
-            case "ゲーム数":
+            case "対戦数":
                 df[col] = df[col].apply(lambda x: int(float(x)))
             case "区間ポイント" | "区間平均" | "通算ポイント":
                 df[col] = df[col].apply(lambda x: f"{float(x):+.1f}")
@@ -505,7 +505,7 @@ def plotly_point(df: pd.DataFrame, title_range: str, total_game_count: int) -> "
     Args:
         df (pd.DataFrame): プロットするデータ
         title_range (str): 集計範囲(タイトル用)
-        total_game_count (int): ゲーム数
+        total_game_count (int): 対戦数
 
     Returns:
         Path: 保存先ファイルパス
@@ -571,7 +571,7 @@ def plotly_rank(df: pd.DataFrame, title_range: str, total_game_count: int) -> "P
     Args:
         df (pd.DataFrame): プロットするデータ
         title_range (str): 集計範囲(タイトル用)
-        total_game_count (int): ゲーム数
+        total_game_count (int): 対戦数
 
     Returns:
         Path: 保存先ファイルパス

@@ -33,7 +33,7 @@ def floatfmt(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append(".2%")
             case v if v.endswith("_count"):
                 fmt.append(".0f")
-            case "ゲーム数" | "win" | "lose" | "draw" | "top2" | "top3":
+            case "対戦数" | "win" | "lose" | "draw" | "top2" | "top3":
                 fmt.append(".0f")
             case "通算" | "通算ポイント" | "point_sum":
                 fmt.append("+.1f")
