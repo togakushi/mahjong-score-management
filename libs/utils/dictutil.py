@@ -233,7 +233,7 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "playtime": "日時",
         "rate": "レート",
         "participation_rate": "ゲーム参加率",
-        "total_count": "総対戦数",
+        "total_count": "集計対戦数",
         "matter_count": "回数",
         "ex_total": "ポイント合計",
         "deposit": "供託",
