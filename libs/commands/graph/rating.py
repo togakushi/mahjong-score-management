@@ -211,19 +211,19 @@ def _graph_title(game_info: GameInfo) -> tuple[str, str]:
     match g.params.collection:
         case "daily":
             kind = Format.YMD_O
-            xlabel_text = f"集計日（総ゲーム数：{game_info.count} ゲーム）"
+            xlabel_text = f"集計日（総対戦数：{game_info.count} ゲーム）"
         case "monthly":
             kind = Format.JYM_O
-            xlabel_text = f"集計月（総ゲーム数：{game_info.count} ゲーム）"
+            xlabel_text = f"集計月（総対戦数：{game_info.count} ゲーム）"
         case "yearly":
             kind = Format.JY_O
-            xlabel_text = f"集計年（総ゲーム数：{game_info.count} ゲーム）"
+            xlabel_text = f"集計年（総対戦数：{game_info.count} ゲーム）"
         case "all":
             kind = Format.YMDHM
-            xlabel_text = f"総ゲーム数：{game_info.count} ゲーム"
+            xlabel_text = f"総対戦数：{game_info.count} ゲーム"
         case _:
             kind = Format.YMDHM
-            xlabel_text = f"ゲーム終了日時（総ゲーム数：{game_info.count} ゲーム）"
+            xlabel_text = f"ゲーム終了日時（総対戦数：{game_info.count} ゲーム）"
 
     title_text = f"レーティング推移 ({text_item.date_range(kind)})"
 

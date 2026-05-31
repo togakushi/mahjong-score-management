@@ -63,7 +63,7 @@ class GameInfo:
     """ゲーム集計情報"""
 
     count: int = field(default=0)
-    """集計範囲のゲーム数"""
+    """集計範囲の対戦数"""
     first_game: Optional[ExtDt] = field(default=None)
     """集計範囲の最初のゲーム時間"""
     last_game: Optional[ExtDt] = field(default=None)
@@ -77,7 +77,7 @@ class GameInfo:
         self.get()
 
     def get(self) -> None:
-        """指定条件を満たすゲーム数のカウント、最初と最後の時刻とコメントを取得"""
+        """指定条件を満たす対戦数のカウント、最初と最後の時刻とコメントを取得"""
         # グローバルパラメータチェック
         if not g.params.rule_version:
             g.params.rule_version = g.cfg.setting.default_rule
@@ -273,7 +273,7 @@ class ParameterData:
 
     # 集約条件変更フラグ
     interval: int = field(default=80)
-    """移動平均算出ゲーム数指定"""
+    """移動平均を算出する対戦数の指定"""
 
     # コメント検索
     search_word: str = field(default="")
@@ -308,13 +308,13 @@ class CommandAttrs(ParameterData):
 
     def stipulated_calculation(self, game_count: int) -> int:
         """
-        規定打数をゲーム数から計算
+        規定打数を対戦数から計算
 
         Args:
-            game_count (int): 指定ゲーム数
+            game_count (int): 指定対戦数
 
         Returns:
-            int: 規定ゲーム数
+            int: 規定対戦数
 
         """
         return int(ceil(game_count * self.stipulated_rate) + 1)

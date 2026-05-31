@@ -472,7 +472,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         data_list.append([r["vs_name"], f"{r['game']} 戦", f"{r['win']} 勝", f"{r['lose']} 敗", f"({r['win%']:6.2f}%)"])
 
     output = table2ascii(
-        # header=["対戦相手", "ゲーム数", "勝", "負", "勝率"],
+        # header=["対戦相手", "対戦数", "勝", "負", "勝率"],
         body=data_list,
         alignments=[Alignment.LEFT, Alignment.RIGHT, Alignment.RIGHT, Alignment.RIGHT, Alignment.RIGHT],
         style=PresetStyle.ascii_borderless,

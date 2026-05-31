@@ -173,7 +173,7 @@
      -
      - ``0`` が指定されている場合は `stipulated_rate` を使う
    * - .. sub_commands_section:: stipulated_rate
-     - 規定打数を集計ゲーム数よって決める
+     - 規定打数を対戦数よって決める
      - 数値(float)
      - 0.05
      - |:/:|
@@ -181,7 +181,7 @@
      - |:/:|
      - |:/:|
      -
-     - 集計ゲーム数 × `stipulated_rate` （切り上げ）+ 1
+     - 対戦数 × `stipulated_rate` （切り上げ）+ 1
    * - .. sub_commands_section:: ranked
      - ランキングで出力される順位制限
      - 数値(int)

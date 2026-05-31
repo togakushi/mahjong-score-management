@@ -34,7 +34,7 @@ class MemberDataDict(TypedDict):
     elapsed_day: int
     """経過日数"""
     game_count: int
-    """プレイゲーム数"""
+    """対戦数"""
 
 
 class MemberSection(BaseSection):

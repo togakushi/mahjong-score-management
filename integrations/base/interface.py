@@ -61,7 +61,7 @@ class IntegrationsConfig(ABC):
     slash_command: str = field(default="")
     """スラッシュコマンド名"""
     badge_degree: bool = field(default=False)
-    """プレイしたゲーム数に対して表示される称号
+    """対戦数に対して表示される称号
 
     - *True*: 表示する
     - *False*: 表示しない

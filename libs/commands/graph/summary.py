@@ -423,11 +423,11 @@ def _graph_title(graph_params: GraphParams) -> None:
                 graph_params.update({"xlabel_text": f"集計年（{graph_params['total_game_count']} ゲーム）"})
             case "all":
                 kind = Format.YMDHM
-                graph_params.update({"xlabel_text": f"ゲーム数：{graph_params['total_game_count']} ゲーム"})
+                graph_params.update({"xlabel_text": f"対戦数：{graph_params['total_game_count']} ゲーム"})
             case _:
                 kind = Format.YMDHM
                 if g.params.search_word:
-                    graph_params.update({"xlabel_text": f"ゲーム数：{graph_params['total_game_count']} ゲーム"})
+                    graph_params.update({"xlabel_text": f"対戦数：{graph_params['total_game_count']} ゲーム"})
                 else:
                     graph_params.update({"xlabel_text": f"ゲーム終了日時（{graph_params['total_game_count']} ゲーム）"})
 
@@ -456,4 +456,4 @@ def _graph_title(graph_params: GraphParams) -> None:
             if graph_params["total_game_count"] == 1:
                 graph_params.update({"xlabel_text": "ポイント"})
             else:
-                graph_params.update({"xlabel_text": f"ポイント（ゲーム数：{graph_params['total_game_count']} ゲーム）"})
+                graph_params.update({"xlabel_text": f"ポイント（対戦数：{graph_params['total_game_count']} ゲーム）"})

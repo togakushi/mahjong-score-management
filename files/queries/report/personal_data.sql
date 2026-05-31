@@ -1,7 +1,7 @@
 -- report.personal_data
 select
     <<collection>>,
-    count() as ゲーム数,
+    count() as 対戦数,
     --[individual] round(sum(point), 1) as '通算ポイント',
     --[individual] round(avg(point), 1) as '平均ポイント',
     --[team] round(sum(team_point), 1) as '通算ポイント',

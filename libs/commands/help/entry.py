@@ -111,7 +111,7 @@ def help_message(m: "MessageParserProtocol") -> None:
         textwrap.dedent(f"""\
         呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.RANKING))}
         検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
-        規定打数デフォルト：全体ゲーム数 × {g.cfg.ranking.stipulated_rate} ＋ 1
+        規定打数デフォルト：総対戦数 × {g.cfg.ranking.stipulated_rate} ＋ 1
         出力制限デフォルト：上位 {g.cfg.ranking.ranked} 名
         """),
         StyleOptions(title="ランキング", indent=1, sub_title=True),

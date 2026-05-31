@@ -93,8 +93,8 @@ guest_skip = True
 ### ランキング専用オプション
 # 表示順位(未定義時：3)
 ranked = 3
-# ランキング規定ゲーム数(未定義時：0.05)
-## 集計対象ゲーム数 * stipulated_rate + 2
+# ランキング規定対戦数(未定義時：0.05)
+## 集計対象対戦数 * stipulated_rate + 2
 stipulated_rate = 0.05
 
 [report] # レポート出力
@@ -129,7 +129,7 @@ member_limit = 8
 
 
 ### 装飾オプション ###
-[degree] # プレイしたゲーム数に対して表示される称号
+[degree] # 対戦数に対して表示される称号
 # 表示文字と段階（カンマ区切りで badge と counter の数は合わせること）
 badge = ,:hatching_chick:,:penguin:,:monkey_face:,:skull:
 counter = 0,30,60,120,240

@@ -187,7 +187,7 @@ def graph_generation(game_info: GameInfo, df: "pd.DataFrame", title: str) -> "Me
 
     # 追加テキスト
     remark_text = "".join(text_item.remarks(True)) + text_item.search_word(True)
-    add_text = "[検索範囲：{}] [総ゲーム数：{}] {}".format(
+    add_text = "[検索範囲：{}] [総対戦数：{}] {}".format(
         text_item.search_range(time_pattern="time"),
         game_info.count,
         f"[{remark_text}]" if remark_text else "",

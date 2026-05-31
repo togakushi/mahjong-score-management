@@ -115,7 +115,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
         game_range1 += f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}\n"
     game_range2 = f"集計範囲：{text_item.aggregation_range(game_info)}\n"
 
-    # ゲーム数
+    # 対戦数
     if game_info.count == 0:
         msg += f"{random_reply(m, 'no_hits')}"
     else:

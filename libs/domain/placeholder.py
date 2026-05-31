@@ -120,7 +120,7 @@ class PlaceholderBuilder(ParameterData):
     - *None*: 未定義
     """
     target_count: int = field(default=0)
-    """直近ゲーム数指定"""
+    """直近対戦数指定"""
 
     starttime: Union[str, ExtDt, None] = field(default=None)
     """集計開始日時"""
@@ -389,7 +389,7 @@ class PlaceholderBuilder(ParameterData):
         プレースホルダ用辞書出力
 
         Args:
-            game_count (int, optional): 規定打数調整用ゲーム数. Defaults to None.
+            game_count (int, optional): 規定打数調整用対戦数. Defaults to None.
 
         Returns:
             dict[str, Any]: プレースホルダ
