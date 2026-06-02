@@ -1,7 +1,7 @@
 -- report.personal_data
 select
     <<collection>>,
-    count() as 対戦数,
+    count() as '対戦数',
     --[individual] round(sum(point), 1) as '通算ポイント',
     --[individual] round(avg(point), 1) as '平均ポイント',
     --[team] round(sum(team_point), 1) as '通算ポイント',
@@ -20,7 +20,7 @@ select
     round(cast(count(rank = 3.5 or NULL) AS real) / cast(count() as real) * 100, 2) as '3.5位率',
     count(rank = 4 or NULL) as '4位',
     round(cast(count(rank = 4 or NULL) AS real) / cast(count() as real) * 100, 2) as '4位率',
-    round(avg(rank), 2) AS 平均順位,
+    round(avg(rank), 2) AS '平均順位',
     count(rpoint < -1 or NULL) as 'トビ',
     round(cast(count(rpoint < -1 OR NULL) AS real) / cast(count() as real) * 100, 2) as 'トビ率'
 from
