@@ -79,7 +79,10 @@ def main(m: "MessageParserProtocol") -> None:
     if g.params.versus_matrix and g.params.competition_list:
         versus.aggregation(m)  # 直接対戦
     elif g.params.score_comparisons:
-        summary.difference(m)  # 成績サマリ(差分モード)
+        if g.params.statistics:
+            summary.statistics(m)
+        else:
+            summary.difference(m)  # 成績サマリ(差分モード)
     elif g.params.competition_list:
         detail.comparison(m)  # 成績詳細(比較)
     elif g.params.player_list:

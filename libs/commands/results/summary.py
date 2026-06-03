@@ -4,6 +4,9 @@ libs/commands/results/summary.py
 
 from typing import TYPE_CHECKING
 
+import numpy as np
+import pandas as pd
+
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
@@ -235,4 +238,95 @@ def difference(m: "MessageParserProtocol") -> None:
     else:
         options.title = headline_title
         data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
+    m.set_message(data, StyleOptions(**options.asdict))
+
+
+def statistics(m: "MessageParserProtocol") -> None:
+    """
+    各プレイヤーの素点情報の偏りを表示
+
+    Args:
+        m (MessageParserProtocol): メッセージデータ
+
+    """
+    # データ収集
+    data: "MessageType"
+    rank_data: dict[str, list] = {}
+
+    game_info = GameInfo()
+    total_df = g.params.read_data("SUMMARY_DETAILS")
+
+    rank1_avg = total_df.query("rank == 1")["rpoint"].mean(skipna=False)
+    rank2_avg = total_df.query("rank == 2")["rpoint"].mean(skipna=False)
+    rank3_avg = total_df.query("rank == 3")["rpoint"].mean(skipna=False)
+    rank4_avg = total_df.query("rank == 4")["rpoint"].mean(skipna=False)
+
+    for player_name in total_df["name"].unique():
+        work_df = total_df.query("name == @player_name")
+        player_count = len(work_df)
+        player_rank_avg = work_df["rpoint"].mean(skipna=False)
+        player_rank1_avg = np.nan
+        player_rank2_avg = np.nan
+        player_rank3_avg = np.nan
+        player_rank4_avg = np.nan
+
+        if not work_df.query("rank == 1").empty:
+            player_rank1_avg = work_df.query("rank == 1")["rpoint"].mean(skipna=False)
+        if not work_df.query("rank == 2").empty:
+            player_rank2_avg = work_df.query("rank == 2")["rpoint"].mean(skipna=False)
+        if not work_df.query("rank == 3").empty:
+            player_rank3_avg = work_df.query("rank == 3")["rpoint"].mean(skipna=False)
+        if not work_df.query("rank == 4").empty:
+            player_rank4_avg = work_df.query("rank == 4")["rpoint"].mean(skipna=False)
+
+        rank_data.update(
+            {
+                player_name: [
+                    player_count,
+                    work_df["rank"].mean(skipna=False).round(2),
+                    (player_rank_avg * 100).round(1),
+                    ((player_rank1_avg - rank1_avg) * 100).round(1),
+                    ((player_rank2_avg - rank2_avg) * 100).round(1),
+                    ((player_rank3_avg - rank3_avg) * 100).round(1),
+                    ((player_rank4_avg - rank4_avg) * 100).round(1),
+                ],
+            }
+        )
+
+    #
+    index_label = ["count", "rank_avg", "rpoint_avg", "rank1_avg_diff", "rank2_avg_diff", "rank3_avg_diff", "rank4_avg_diff"]
+    rank_df = pd.DataFrame.from_dict(rank_data, orient="index", columns=index_label).rename_axis("name")
+    rank_df.sort_values("rank_avg", ascending=True, inplace=True)
+
+    # 足切り
+    rank_df = rank_df.query("count >= @g.params.stipulated")
+
+    # 情報ヘッダ
+    if g.params.individual:  # 個人分析
+        headline_title = "素点分析"
+    else:  # チーム分析
+        headline_title = "チーム素点サマリ"
+
+    header_text = message.header(game_info, m, "", 1)
+    m.set_headline(header_text, StyleOptions(title=headline_title))
+
+    # 非表示項目
+    rank_df.drop(columns=dictutil.dropitems_list(rank_df.columns.to_list()), inplace=True)
+
+    options = StyleOptions(
+        title="素点分析",
+        show_index=True,
+        codeblock=False,
+        rename_type=StyleOptions.RenameType.SHORT,
+        data_kind=StyleOptions.DataKind.SCORE_ANALYSIS,
+    )
+
+    if options.format_type == "default":
+        options.codeblock = True
+        data = rank_df
+    else:
+        options.title = headline_title
+        options.base_name = "summary"
+        rank_df = rank_df.fillna("*****")
+        data = converter.save_output(rank_df, options, m.post.headline)
     m.set_message(data, StyleOptions(**options.asdict))

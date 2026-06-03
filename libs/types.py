@@ -127,6 +127,8 @@ class StyleOptions:
         """成績サマリ(通算ポイント)"""
         POINTS_DIFF = auto()
         """成績サマリ(ポイント差分)"""
+        SCORE_ANALYSIS = auto()
+        """成績サマリ(素点分析)"""
         DETAILED_COMPARISON = auto()
         """成績詳細比較"""
         SEAT_DATA = auto()
