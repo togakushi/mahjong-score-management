@@ -251,7 +251,7 @@ def statistics(m: "MessageParserProtocol") -> None:
     """
     # データ収集
     data: "MessageType"
-    rank_data: dict[str, list] = {}
+    rank_data: dict[str, list[float]] = {}
 
     game_info = GameInfo()
     total_df = g.params.read_data("SUMMARY_DETAILS")
@@ -283,12 +283,12 @@ def statistics(m: "MessageParserProtocol") -> None:
             {
                 player_name: [
                     player_count,
-                    work_df["rank"].mean(skipna=False).round(2),
-                    (player_rank_avg * 100).round(1),
-                    ((player_rank1_avg - rank1_avg) * 100).round(1),
-                    ((player_rank2_avg - rank2_avg) * 100).round(1),
-                    ((player_rank3_avg - rank3_avg) * 100).round(1),
-                    ((player_rank4_avg - rank4_avg) * 100).round(1),
+                    round(float(work_df["rank"].mean(skipna=False)), 2),
+                    round(float(player_rank_avg * 100), 1),
+                    round(float((player_rank1_avg - rank1_avg) * 100), 1),
+                    round(float((player_rank2_avg - rank2_avg) * 100), 1),
+                    round(float((player_rank3_avg - rank3_avg) * 100), 1),
+                    round(float((player_rank4_avg - rank4_avg) * 100), 1),
                 ],
             }
         )

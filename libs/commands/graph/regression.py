@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
 import numpy as np
-import statsmodels.api as sm
+import statsmodels.api as sm  # type: ignore[import-untyped]
 from matplotlib.lines import Line2D
 
 import libs.global_value as g
