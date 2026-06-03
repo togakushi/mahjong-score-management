@@ -3,6 +3,7 @@ slack-sdk
 matplotlib
 reportlab
 pandas>=3.0.0
+statsmodels
 tabulate[widechars] # type: ignore
 table2ascii
 tqdm
