@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>tests.events.test_message_dispatch module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.graph.regression module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tests.events.test_slash_dispatch module" href="tests.events.test_slash_dispatch.html" />
-    <link rel="prev" title="tests.events.test_integrations_web module" href="tests.events.test_integrations_web.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.graph.summary module" href="libs.commands.graph.summary.html" />
+    <link rel="prev" title="libs.commands.graph.rating module" href="libs.commands.graph.rating.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,9 +63,8 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">tests.events.test_message_dispatch module</a><ul>
-<li><a class="reference internal" href="#tests.events.test_message_dispatch._init"><code class="docutils literal notranslate"><span class="pre">_init()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_message_dispatch.test_keyword_event"><code class="docutils literal notranslate"><span class="pre">test_keyword_event()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.graph.regression module</a><ul>
+<li><a class="reference internal" href="#libs.commands.graph.regression.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -73,13 +72,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="tests.events.test_integrations_web.html"
-                          title="previous chapter">tests.events.test_integrations_web module</a></p>
+    <p class="topless"><a href="libs.commands.graph.rating.html"
+                          title="previous chapter">libs.commands.graph.rating module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="tests.events.test_slash_dispatch.html"
-                          title="next chapter">tests.events.test_slash_dispatch module</a></p>
+    <p class="topless"><a href="libs.commands.graph.summary.html"
+                          title="next chapter">libs.commands.graph.summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -103,10 +102,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tests.events.test_slash_dispatch.html" title="tests.events.test_slash_dispatch module"
+          <a href="libs.commands.graph.summary.html" title="libs.commands.graph.summary module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tests.events.test_integrations_web.html" title="tests.events.test_integrations_web module"
+          <a href="libs.commands.graph.rating.html" title="libs.commands.graph.rating module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -118,9 +117,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.events.html" accesskey="U">tests.events package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">tests.events.test_message_dispatch module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.graph.html" accesskey="U">libs.commands.graph package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.graph.regression module</a></li>
                 <li class="right">
                     
 
@@ -150,40 +150,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-tests.events.test_message_dispatch">
-<span id="tests-events-test-message-dispatch-module"></span><h1>tests.events.test_message_dispatch module<a class="headerlink" href="#module-tests.events.test_message_dispatch" title="Link to this heading">¶</a></h1>
-<p>メッセージイベントのキーワードディスパッチを検証するテスト。</p>
+  <section id="module-libs.commands.graph.regression">
+<span id="libs-commands-graph-regression-module"></span><h1>libs.commands.graph.regression module<a class="headerlink" href="#module-libs.commands.graph.regression" title="Link to this heading">¶</a></h1>
+<p>libs/commands/graph/regression.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_message_dispatch._init">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_message_dispatch.</span></span><span class="sig-name descname"><span class="pre">_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_message_dispatch._init" title="Link to this definition">¶</a></dt>
-<dd><p>メッセージディスパッチ用パーサを初期化する。</p>
-<p>標準入出力アダプタを生成し、コマンド判定フラグを事前設定する。</p>
+<dt class="sig sig-object py" id="libs.commands.graph.regression.plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.graph.regression.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.graph.regression.plot" title="Link to this definition">¶</a></dt>
+<dd><p>平均順位と平均素点の分散図を生成する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None.</strong></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>初期化済みのメッセージパーサ。</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol">MessageParserProtocol</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_message_dispatch.test_keyword_event">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_message_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_keyword_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_message_dispatch.test_keyword_event" title="Link to this definition">¶</a></dt>
-<dd><p>キーワード入力で対象サブコマンドが呼び出されることを検証する。</p>
-<p>設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>module</strong> (<em>str</em>) – モック対象とするサブコマンドモジュール名。</p></li>
-<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>) – 入力するコマンドキーワード。</p></li>
-<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
-</ul>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -203,9 +179,8 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">tests.events.test_message_dispatch module</a><ul>
-<li><a class="reference internal" href="#tests.events.test_message_dispatch._init"><code class="docutils literal notranslate"><span class="pre">_init()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_message_dispatch.test_keyword_event"><code class="docutils literal notranslate"><span class="pre">test_keyword_event()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.graph.regression module</a><ul>
+<li><a class="reference internal" href="#libs.commands.graph.regression.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -213,13 +188,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="tests.events.test_integrations_web.html"
-                          title="previous chapter">tests.events.test_integrations_web module</a></p>
+    <p class="topless"><a href="libs.commands.graph.rating.html"
+                          title="previous chapter">libs.commands.graph.rating module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="tests.events.test_slash_dispatch.html"
-                          title="next chapter">tests.events.test_slash_dispatch module</a></p>
+    <p class="topless"><a href="libs.commands.graph.summary.html"
+                          title="next chapter">libs.commands.graph.summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -243,10 +218,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tests.events.test_slash_dispatch.html" title="tests.events.test_slash_dispatch module"
+          <a href="libs.commands.graph.summary.html" title="libs.commands.graph.summary module"
              >next</a> |</li>
         <li class="right" >
-          <a href="tests.events.test_integrations_web.html" title="tests.events.test_integrations_web module"
+          <a href="libs.commands.graph.rating.html" title="libs.commands.graph.rating module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -258,9 +233,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.events.html" >tests.events package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">tests.events.test_message_dispatch module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.graph.html" >libs.commands.graph package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.graph.regression module</a></li>
                 <li class="right">
                     
 

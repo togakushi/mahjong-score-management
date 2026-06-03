@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=4365c8fe" />
     
-    <script src="_static/documentation_options.js?v=f7389933"></script>
+    <script src="_static/documentation_options.js?v=3f2861e3"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -204,35 +204,36 @@
 </dl>
 <p class="rubric">Notes</p>
 <dl class="simple">
-<dt>Routing Logic:</dt><dd><p>探索は以下の条件分岐の優先順位（上から順に判定）に従って実行される。</p>
+<dt>Routing Logic:</dt><dd><p>判定は以下の優先順位（上から順）で実行される。</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><strong>直接対戦（対戦マトリクス）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">versus_matrix</span></code> フラグと <code class="docutils literal notranslate"><span class="pre">competition_list</span></code> がどちらも存在する場合。
--&gt; <code class="docutils literal notranslate"><span class="pre">versus.aggregation</span></code> （直接対戦の集計）を実行。</p>
+<dt><strong>直接対戦（対戦マトリクス）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">versus_matrix</span></code> かつ <code class="docutils literal notranslate"><span class="pre">competition_list</span></code> が指定されている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">versus.aggregation</span></code> を実行。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>成績サマリ（差分モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> （スコア比較）フラグが立っている場合。
--&gt; <code class="docutils literal notranslate"><span class="pre">summary.difference</span></code> （成績サマリの差分表示）を実行。</p>
+<dt><strong>スコア比較モード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> が指定されている場合。
+- <code class="docutils literal notranslate"><span class="pre">statistics</span></code> が有効: <code class="docutils literal notranslate"><span class="pre">summary.statistics</span></code> を実行。
+- <code class="docutils literal notranslate"><span class="pre">statistics</span></code> が無効: <code class="docutils literal notranslate"><span class="pre">summary.difference</span></code> を実行。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>成績詳細（比較モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">competition_list</span></code> のみ指定されている場合。
--&gt; <code class="docutils literal notranslate"><span class="pre">detail.comparison</span></code> （詳細成績比較）を実行。</p>
+<dt><strong>成績詳細（比較モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">competition_list</span></code> が指定されている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">detail.comparison</span></code> を実行。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>成績詳細（単独モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">player_list</span></code> （対象プレイヤー）が指定されている場合。
--&gt; <code class="docutils literal notranslate"><span class="pre">detail.aggregation</span></code> （特定プレイヤーの単独詳細成績集計）を実行。</p>
+<dt><strong>成績詳細（単独モード）</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">player_list</span></code> が指定されている場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">detail.aggregation</span></code> を実行。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>成績サマリ（通常モード）</strong>:</dt><dd><p>上記のいずれの条件にも該当しない場合のデフォルト挙動。
--&gt; <code class="docutils literal notranslate"><span class="pre">summary.aggregation</span></code> （全体の成績サマリ集計）を実行。</p>
+<dt><strong>成績サマリ（通常モード）</strong>:</dt><dd><p>上記いずれにも該当しない場合。
+-&gt; <code class="docutils literal notranslate"><span class="pre">summary.aggregation</span></code> を実行。</p>
 </dd>
 </dl>
 </li>
@@ -339,8 +340,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.14.12.
-      Last updated on 2026-05-31.
+      Release Version: 0.15.0.
+      Last updated on 2026-06-03.
     </div>
 
   </body>
