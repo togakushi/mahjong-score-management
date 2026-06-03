@@ -5,7 +5,7 @@ libs/commands/graph/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.commands.graph import personal, rating, summary
+from libs.commands.graph import personal, rating, regression, summary
 from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil
@@ -54,8 +54,9 @@ def main(m: "MessageParserProtocol") -> None:
                 - フラグなし: 個人成績推移グラフ（ ``personal.plot`` ）
             - **プレイヤーが複数（2人以上）の場合**:
                 - ``rating`` フラグあり: レーティング推移グラフ（ ``rating.plot`` ）
-                - ``rating`` なし ＋ ``order`` フラグあり: 複数人順位推移グラフ（ ``summary.rank_plot`` ）
-                - ``rating`` なし ＋ ``order`` フラグなし: 複数人ポイント推移グラフ（ ``summary.point_plot`` ）
+                - ``rating`` なし ＋ ``statistics`` フラグあり: 回帰分析グラフ（ ``regression.plot`` ）
+                - ``rating`` なし ＋ ``statistics`` フラグなし ＋ ``order`` フラグあり: 複数人順位推移グラフ（ ``summary.rank_plot`` ）
+                - ``rating`` なし ＋ ``statistics`` フラグなし ＋ ``order`` フラグなし: 複数人ポイント推移グラフ（ ``summary.point_plot`` ）
 
     """
     m.status.command_type = CommandType.GRAPH
@@ -70,7 +71,10 @@ def main(m: "MessageParserProtocol") -> None:
         if g.params.rating:  # レーティング
             rating.plot(m)
         else:
-            if g.params.order:
-                summary.rank_plot(m)
+            if g.params.statistics:
+                regression.plot(m)
             else:
-                summary.point_plot(m)
+                if g.params.order:
+                    summary.rank_plot(m)
+                else:
+                    summary.point_plot(m)

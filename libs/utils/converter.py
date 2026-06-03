@@ -97,15 +97,20 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
         dict[str, str]: 生成テーブル
 
     """
-    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
-
     # ヘッダ/位置
     header: list[str] = []
     alignments: list[Alignment] = []
     if options.show_index:
+        if original_index_name := df.index.name:
+            df.insert(0, original_index_name, df.index)
+            options.show_index = False
+        else:
+            header.append("")
         df.reset_index(inplace=True, drop=True)
         df.index += 1
-        header.append("")
+
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
+
     for col in df.columns:
         header.append(col)
         match col:
@@ -122,9 +127,16 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
     for row in df.to_dict(orient="records"):
         data.clear()
         for k, v in row.items():
+            if options.show_index:
+                data.append("")
             match k:
                 case "通算" | "平均" | "平均素点":
                     data.append(f" {v:+.1f}".replace(" -", "▲"))
+                case k if str(k).endswith("位差分"):
+                    if pd.isna(v):
+                        data.append("*****")
+                    else:
+                        data.append(f" {v:+.1f}".replace(" -", "▲"))
                 case "平順" | "平均順位":
                     data.append(f"{v:.2f}")
                 case "レート":
@@ -133,8 +145,6 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
                     data.append(f"{v:.0f}")
                 case _:
                     data.append(str(v).replace("nan", "*****"))
-            if options.show_index:
-                data.insert(0, "")
         body.append(data.copy())
 
     # 表生成/分割

@@ -49,6 +49,8 @@ def floatfmt(df: pd.DataFrame, index: bool = False) -> list[str]:
                 fmt.append(".2f")
             case "順位差" | "トップ差" | "平均素点":
                 fmt.append(".1f")
+            case v if v.endswith("_avg_diff"):
+                fmt.append(".1f")
             case "rpoint_max" | "rpoint_min" | "rpoint_mean":
                 fmt.append(".0f")
             case _:
@@ -129,19 +131,22 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                 return nan_text if nan_text else "該当なし"
             if unit is not None and v.endswith(unit):
                 return v
-            else:
-                try:
-                    v = float(v)
-                except ValueError:
-                    return str(v)
         else:
-            v = float(v)  # type: ignore
+            try:
+                v = float(v)  # type: ignore
+            except ValueError:
+                return str(v)
+            except TypeError:
+                return str(v)
 
         match unit:
             case x if x is None:
-                ret = f"{v:.{digits}f}"
+                try:
+                    ret = f"{v:.{digits}f}"
+                except ValueError:
+                    ret = str(v)
             case "位":
-                ret = f"{v:.0f}位" if v.is_integer() else f"{v:.{digits}f}位"
+                ret = f"{v:.0f}位" if isinstance(v, float) and v.is_integer() else f"{v:.{digits}f}位"
             case _:
                 if signed:
                     ret = f"{v:+.{digits}f}{unit}".replace("-", "▲")
@@ -164,10 +169,10 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             case x if x.startswith("diff_from_"):
                 df[column_name] = [format_cell(v, "pt", False, 1, "-------") for v in df[column_name]]
             # 素点
-            case x if x == "rpoint" or x.endswith("_rpoint"):
-                df[column_name] = [format_cell(v, "点", True, 0) for v in df[column_name]]
-            case x if x == "rpoint_avg":
+            case x if x == "rpoint_avg" or x.endswith("_avg_diff"):
                 df[column_name] = [format_cell(v, "点", True, 1) for v in df[column_name]]
+            case x if x == "rpoint" or x.endswith(("_rpoint", "_diff")):
+                df[column_name] = [format_cell(v, "点", True, 0) for v in df[column_name]]
             # 個数/率
             case x if x.endswith("数"):
                 df[column_name] = [format_cell(v) for v in df[column_name]]
