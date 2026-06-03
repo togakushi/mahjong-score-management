@@ -54,23 +54,24 @@ def main(m: "MessageParserProtocol") -> None:
 
     Notes:
         Routing Logic:
-            探索は以下の条件分岐の優先順位（上から順に判定）に従って実行される。
+            判定は以下の優先順位（上から順）で実行される。
 
             - **直接対戦（対戦マトリクス）**:
-                ``versus_matrix`` フラグと ``competition_list`` がどちらも存在する場合。
-                -> ``versus.aggregation`` （直接対戦の集計）を実行。
-            - **成績サマリ（差分モード）**:
-                ``score_comparisons`` （スコア比較）フラグが立っている場合。
-                -> ``summary.difference`` （成績サマリの差分表示）を実行。
+                ``versus_matrix`` かつ ``competition_list`` が指定されている場合。
+                -> ``versus.aggregation`` を実行。
+            - **スコア比較モード**:
+                ``score_comparisons`` が指定されている場合。
+                - ``statistics`` が有効: ``summary.statistics`` を実行。
+                - ``statistics`` が無効: ``summary.difference`` を実行。
             - **成績詳細（比較モード）**:
-                ``competition_list`` のみ指定されている場合。
-                -> ``detail.comparison`` （詳細成績比較）を実行。
+                ``competition_list`` が指定されている場合。
+                -> ``detail.comparison`` を実行。
             - **成績詳細（単独モード）**:
-                ``player_list`` （対象プレイヤー）が指定されている場合。
-                -> ``detail.aggregation`` （特定プレイヤーの単独詳細成績集計）を実行。
+                ``player_list`` が指定されている場合。
+                -> ``detail.aggregation`` を実行。
             - **成績サマリ（通常モード）**:
-                上記のいずれの条件にも該当しない場合のデフォルト挙動。
-                -> ``summary.aggregation`` （全体の成績サマリ集計）を実行。
+                上記いずれにも該当しない場合。
+                -> ``summary.aggregation`` を実行。
 
     """
     m.status.command_type = CommandType.RESULTS
