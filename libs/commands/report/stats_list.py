@@ -42,10 +42,6 @@ def main(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    if g.params.anonymous:
-        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
-        df["name"] = df["name"].replace(mapping_dict)
-
     # 見出し設定
     if g.params.individual:
         title = "個人成績一覧"

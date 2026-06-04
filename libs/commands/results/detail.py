@@ -54,7 +54,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # --- データ収集
     game_info = GameInfo()
     msg_data: dict[str, str] = {}
-    mapping_dict: dict[str, str] = {}
 
     # タイトル
     if g.params.individual:
@@ -83,10 +82,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
         return
 
     player_name = textutil.name_replace(g.params.player_name, add_mark=True)
-    if g.params.anonymous:
-        mapping_dict = textutil.anonymous_mapping(stats.result_df["name"].unique().tolist())
-        stats.result_df["name"] = stats.result_df["name"].replace(mapping_dict)
-        player_name = mapping_dict[player_name]
 
     # --- 表示内容
     msg_data.update(get_headline(stats, game_info, player_name))
@@ -167,18 +162,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # 対戦結果
     if g.params.versus_matrix:
-        m.set_message(get_versus_matrix(mapping_dict), StyleOptions(title="対戦結果", indent=1))
+        m.set_message(get_versus_matrix(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
     if g.params.game_results:
         if g.params.verbose:
             m.set_message(
-                get_results_details(mapping_dict),
+                get_results_details(g.params.mapping_dict),
                 StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False),
             )
         else:
             m.set_message(
-                get_results_simple(mapping_dict),
+                get_results_simple(g.params.mapping_dict),
                 StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False),
             )
 
@@ -378,10 +373,7 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
     target_player = textutil.name_replace(g.params.target_player[0], add_mark=True)
 
     df = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
-    if g.params.anonymous:
-        mapping_dict.update(textutil.anonymous_mapping(df["name"].unique().tolist(), len(mapping_dict)))
-        df["name"] = df["name"].replace(mapping_dict)
-        target_player = mapping_dict.get(target_player, target_player)
+    target_player = g.params.mapping_dict.get(target_player, target_player)
 
     df_data = df.query("name == @target_player")
     df_data["seat"] = df_data.apply(lambda v: ["東家", "南家", "西家", "北家"][(v["seat"] - 1)], axis=1)

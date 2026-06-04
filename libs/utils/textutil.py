@@ -44,6 +44,9 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
         str: 表記ブレ修正後のプレイヤー名
 
     """
+    if g.params.anonymous and (ret_name := g.params.mapping_dict.get(target)):
+        return ret_name
+
     chk_pattern = [
         target,  # 無加工
         str_conv(target, ConversionType.HtoZ),  # 半角 -> 全角

@@ -177,11 +177,8 @@ def _data_collection() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # 順位付け
     target_data["position"] = target_data["last_point"].rank(ascending=False).astype(int)
-
     if g.params.anonymous:
-        mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
-        df["name"] = df["name"].replace(mapping_dict)
-        target_data["name"] = target_data["name"].replace(mapping_dict)
+        target_data["name"] = target_data["name"].replace(g.params.mapping_dict)
 
     # 凡例用文字列生成
     target_data["legend"] = target_data.apply(

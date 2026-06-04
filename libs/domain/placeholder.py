@@ -14,7 +14,7 @@ import pandas as pd
 from libs.domain.datamodels import ParameterData
 from libs.functions import lookup
 from libs.types import ServiceType
-from libs.utils import dbutil
+from libs.utils import dbutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -144,6 +144,8 @@ class PlaceholderBuilder(ParameterData):
     """レーティング推移グラフ表示"""
     anonymous: bool = field(default=False)
     """匿名化フラグ"""
+    mapping_dict: dict[str, str] = field(default_factory=dict)
+    """匿名化用マッピング辞書"""
     fourfold: bool = field(default=True)
     """縦持ち/横持ちデータ判定"""
 
@@ -425,12 +427,13 @@ class PlaceholderBuilder(ParameterData):
 
         return ret_dict
 
-    def read_data(self, keyword: str) -> pd.DataFrame:
+    def read_data(self, keyword: str, anonymization: bool = True) -> pd.DataFrame:
         """
         データベースからデータを取得する
 
         Args:
             keyword (str): SQL選択キーワード
+            anonymization (bool): 匿名化フラグを評価する
 
         Returns:
             pd.DataFrame: 集計結果
@@ -455,6 +458,12 @@ class PlaceholderBuilder(ParameterData):
             logging.error("SQL: %s, DATABASE: %s", keyword, self.database_file)
             logging.error("params=%s", self.placeholder())
             logging.error("query: %s", self.named_query(query))
+
+        # 匿名化
+        if anonymization and self.anonymous:
+            if "name" in df.columns:
+                self.mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
+                df["name"] = df["name"].replace(self.mapping_dict)
 
         if self.logging_verbose & 0x02:
             print("=" * 80)
