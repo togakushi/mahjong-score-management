@@ -289,11 +289,7 @@ def statistics(m: "MessageParserProtocol") -> None:
     rank_df = rank_df.query("count >= @g.params.stipulated")
 
     # 情報ヘッダ
-    if g.params.individual:  # 個人分析
-        headline_title = "素点分析"
-    else:  # チーム分析
-        headline_title = "チーム素点サマリ"
-
+    headline_title = "素点分析"
     header_text = message.header(game_info, m, "", 1)
     m.set_headline(header_text, StyleOptions(title=headline_title))
 
@@ -301,19 +297,25 @@ def statistics(m: "MessageParserProtocol") -> None:
     rank_df.drop(columns=dictutil.dropitems_list(rank_df.columns.to_list()), inplace=True)
 
     options = StyleOptions(
-        title="素点分析",
+        title=headline_title,
+        base_name="score_deviation",
         show_index=True,
         codeblock=False,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.SCORE_ANALYSIS,
     )
 
-    if options.format_type == "default":
-        options.codeblock = True
-        data = rank_df
-    else:
-        options.title = headline_title
-        options.base_name = "summary"
-        rank_df = rank_df.fillna("*****")
-        data = converter.save_output(rank_df, options, m.post.headline)
+    match g.params.format.lower():
+        case "csv":
+            options.format_type = "csv"
+            data = converter.save_output(rank_df.fillna("*****"), options, m.post.headline)
+        case "txt" | "text":
+            options.format_type = "txt"
+            rank_df = converter.adjusting.add_units(rank_df.fillna("*****"))
+            data = converter.save_output(rank_df, options, m.post.headline)
+        case _:
+            options.format_type = "default"
+            options.codeblock = True
+            data = rank_df
+
     m.set_message(data, StyleOptions(**options.asdict))
