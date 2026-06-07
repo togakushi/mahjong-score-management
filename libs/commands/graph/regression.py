@@ -10,8 +10,11 @@ import statsmodels.api as sm  # type: ignore[import-untyped]
 from matplotlib.lines import Line2D
 
 import libs.global_value as g
+from libs.domain.datamodels import GameInfo
+from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
+from libs.utils.timekit import Format
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -32,6 +35,16 @@ def plot(m: "MessageParserProtocol") -> None:
 
     # 足切り
     df = df.query("count >= @g.params.stipulated")
+    if df.empty:
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
+        m.status.result = False
+        return
+
+    # 情報ヘッダ
+    game_info = GameInfo()
+    title_text = "順位素点相関図"
+    starttime = g.params.starttime.format(fmt=Format.YMDHM)
+    endtime = g.params.endtime.format(fmt=Format.YMDHM)
 
     # --- グラフ生成
     graphutil.setup()
@@ -73,32 +86,34 @@ def plot(m: "MessageParserProtocol") -> None:
                 color="w",
                 markerfacecolor=color,
                 markersize=7,
-                label=f"{name} : {row['rank_avg']:.2f}位 / {row['rpoint_avg']:.1f}点 / {row['resid_ols']:.1f}",
+                label=f"{name} : {row['count']}G / {row['rank_avg']:.2f}位 / {row['rpoint_avg']:.1f}点 / {row['resid_ols']:.1f}",
             )
         )
 
     # 通常回帰線
-    (ols_line,) = plt.plot(x_line, y_ols, color="red", label="OLS regression")
+    (ols_line,) = plt.plot(x_line, y_ols, color="red", label="通常回帰線")
 
     # 重み付き回帰線
-    (wls_line,) = plt.plot(x_line, y_wls, color="blue", linestyle="--", label="Weighted regression")
+    (wls_line,) = plt.plot(x_line, y_wls, color="blue", linestyle="--", label="重み付き回帰線")
 
-    plt.xlabel("Average Rank")
-    plt.ylabel("Average Score")
+    plt.xlabel("平均順位")
+    plt.ylabel("平均素点")
     plt.xlim(0.9, 4.1)
     plt.xticks(np.arange(1.0, 4.1, 0.5))
-    plt.title("Player Performance: Rank vs Score")
+    plt.title(f"{title_text} ({starttime} - {endtime})")
+
+    # 凡例
     plt.legend(
-        handles=[ols_line, wls_line, *player_handles],
+        title="ゲーム数 / 平均順位 / 平均素点 / 残差",
+        handles=[*player_handles, ols_line, wls_line],
         loc="upper left",
         bbox_to_anchor=(1.02, 1.0),
         borderaxespad=0.0,
         ncol=int(len(df) / 25 + 1),
     )
-    plt.grid(True)
 
+    plt.grid(True)
     plt.savefig(save_file, bbox_inches="tight")
-    m.set_message(
-        save_file,
-        StyleOptions(title="Player Performance: Rank vs Score", use_comment=True, header_hidden=True, key_title=False),
-    )
+
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
+    m.set_message(save_file, StyleOptions(title=title_text, use_comment=True, key_title=False))
