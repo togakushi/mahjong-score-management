@@ -6,3 +6,4 @@
 
    common_options
    slash_command
+   quick_reference_table
