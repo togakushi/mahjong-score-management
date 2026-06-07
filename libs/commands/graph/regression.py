@@ -14,7 +14,7 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
-from libs.utils.timekit import Format
+from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -43,8 +43,8 @@ def plot(m: "MessageParserProtocol") -> None:
     # 情報ヘッダ
     game_info = GameInfo()
     title_text = "順位素点相関図"
-    starttime = g.params.starttime.format(fmt=Format.YMDHM)
-    endtime = g.params.endtime.format(fmt=Format.YMDHM)
+    starttime = ExtDt(g.params.starttime).format(fmt=ExtDt.FMT.YMDHM)
+    endtime = ExtDt(g.params.endtime).format(fmt=ExtDt.FMT.YMDHM)
 
     # --- グラフ生成
     graphutil.setup()
