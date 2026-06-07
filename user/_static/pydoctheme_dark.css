@@ -6,6 +6,7 @@
     --middle-border: var(--middle-color);
     --bad-color: rgb(244, 76, 78);
     --bad-border: var(--bad-color);
+    --sidebar-background-color: #333;
 }
 
 
@@ -28,7 +29,7 @@ div.related {
 
 /* SIDEBAR */
 div.sphinxsidebar, .menu-wrapper {
-    background-color: #333;
+    background-color: var(--sidebar-background-color);
     color: inherit;
 }
 

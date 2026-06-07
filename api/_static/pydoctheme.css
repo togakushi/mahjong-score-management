@@ -1,4 +1,4 @@
-/* Common colours */
+/* Common colours !!!*/
 :root {
     --good-color: rgb(41 100 51);
     --good-border: rgb(79 196 100);
@@ -6,6 +6,7 @@
     --middle-border: rgb(244, 227, 76);
     --bad-color: rgb(159 49 51);
     --bad-border: rgb(244, 76, 78);
+    --sidebar-background-color: #eee;
 }
 
 /* unset some styles from the classic stylesheet */
@@ -146,8 +147,8 @@ div.sphinxsidebar {
     position: sticky;
     top: 0;
     max-height: 100vh;
-    color: #444;
-    background-color: #eee;
+    color: currentColor;
+    background-color: var(--sidebar-background-color);
     border-radius: 5px;
     line-height: 130%;
     font-size: smaller;

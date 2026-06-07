@@ -28,3 +28,10 @@ div.body dl.mahjong dt.sig.sig-object.mahjong .n .pre {
 div.body dl.mahjong dt.sig.sig-object.mahjong .p .pre {
     font-weight: 400;
 }
+
+div.body h1 {
+    border-top: 0.1rem solid currentColor;
+    border-bottom: 0.1rem solid currentColor;
+    margin-bottom: 0.5rem;
+    background: var(--sidebar-background-color);
+}
