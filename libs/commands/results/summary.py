@@ -9,7 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions import message
+from libs.functions import adjusting, message
 from libs.types import StyleOptions
 from libs.utils import converter, dictutil
 
@@ -311,7 +311,7 @@ def statistics(m: "MessageParserProtocol") -> None:
             data = converter.save_output(rank_df.fillna("*****"), options, m.post.headline)
         case "txt" | "text":
             options.format_type = "txt"
-            rank_df = converter.adjusting.add_units(rank_df.fillna("*****"))
+            rank_df = adjusting.add_units(rank_df.fillna("*****"))
             data = converter.save_output(rank_df, options, m.post.headline)
         case _:
             options.format_type = "default"

@@ -45,7 +45,7 @@ def save_output(
     # カラムリネーム
     options.rename_type = StyleOptions.RenameType.NORMAL
     df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
-    if options.show_index and df.index.name:
+    if options.show_index and isinstance(df.index.name, str):
         if new_index := dictutil.rename_dicts([df.index.name], options).get(df.index.name):
             df.index.name = new_index
     if options.transpose:
