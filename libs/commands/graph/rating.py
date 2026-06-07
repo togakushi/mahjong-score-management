@@ -51,7 +51,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     # 足切り
     df_count = (
-        g.params.read_data("SUMMARY_GAMEDATA")
+        g.params.read_data("SUMMARY_GAMEDATA", False)
         .filter(
             items=["name", "count"],
         )

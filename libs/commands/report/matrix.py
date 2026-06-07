@@ -28,9 +28,6 @@ def plot(m: "MessageParserProtocol") -> None:
     title: str = "対局対戦マトリックス"
     game_info = GameInfo()
     df = matrix_table()
-    if g.params.anonymous:
-        mapping_dict = textutil.anonymous_mapping(df.index.tolist())
-        df = df.rename(columns=mapping_dict, index=mapping_dict)
 
     if df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
@@ -63,7 +60,7 @@ def matrix_table() -> pd.DataFrame:
 
     """
     # データ収集
-    df = g.params.read_data("REPORT_MATRIX_TABLE").set_index("playtime")
+    df = g.params.read_data("REPORT_MATRIX_TABLE", False).set_index("playtime")
 
     # 結果に含まれるプレイヤーのリスト
     plist = sorted(list(set(df["p1_name"].tolist() + df["p2_name"].tolist() + df["p3_name"].tolist() + df["p4_name"].tolist())))
@@ -149,5 +146,9 @@ def matrix_table() -> pd.DataFrame:
     sorting_df["count"] = pd.to_numeric(sorting_df["count"], errors="coerce")
     sorting_df = sorting_df.sort_values(by=["win_per", "count"], ascending=[False, False])
     mtx_df = mtx_df.reindex(index=list(sorting_df.index), columns=list(sorting_df.index) + ["total"])
+
+    if g.params.anonymous:
+        mapping_dict = textutil.anonymous_mapping(mtx_df.index.tolist())
+        mtx_df = mtx_df.rename(columns=mapping_dict, index=mapping_dict)
 
     return mtx_df

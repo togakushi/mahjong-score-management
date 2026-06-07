@@ -46,7 +46,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    df_results = g.params.read_data("RANKING_RESULTS").set_index("name")
+    df_results = g.params.read_data("RANKING_RESULTS", False).set_index("name")
     df_ratings = calculation_rating()
 
     # 最終的なレーティング
@@ -131,7 +131,7 @@ def calculation_rating() -> pd.DataFrame:
 
     """
     # データ収集
-    df_results = g.params.read_data("RANKING_RATINGS").set_index("playtime")
+    df_results = g.params.read_data("RANKING_RATINGS", False).set_index("playtime")
     df_ratings = pd.DataFrame(index=["initial_rating"] + df_results.index.to_list())  # 記録用
     last_ratings: dict[str, float] = {}  # 最終値格納用
 

@@ -45,9 +45,6 @@ def plot(m: "MessageParserProtocol") -> None:
         return
 
     player = textutil.name_replace(g.params.player_name, add_mark=True)
-    if g.params.anonymous:
-        mapping_dict = textutil.anonymous_mapping([g.params.player_name])
-        player = next(iter(mapping_dict.values()))
 
     # 最終値（凡例/ラベル追加用）
     point_sum = f"{float(df['point_sum'].iloc[-1]):+.1f}".replace("-", "▲")

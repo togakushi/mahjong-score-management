@@ -30,8 +30,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # --- データ収集
     data: "MessageType"
-    df_vs = g.params.read_data("SUMMARY_VERSUS_MATRIX")
-    df_game = g.params.read_data("SUMMARY_DETAILS").fillna(value="")
+    df_vs = g.params.read_data("SUMMARY_VERSUS_MATRIX", False)
+    df_game = g.params.read_data("SUMMARY_DETAILS", False).fillna(value="")
     df_data = pd.DataFrame(columns=df_game.columns)  # ファイル出力用
 
     my_name = textutil.name_replace(g.params.player_name, add_mark=True)
