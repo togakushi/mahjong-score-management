@@ -134,6 +134,8 @@ class AdapterAPI(APIInterface):
                         post_msg.extend(_table_data(converter.df_to_ranking(data, options.title, step=50)))
                     case StyleOptions.DataKind.RATING:
                         post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=20)))
+                    case StyleOptions.DataKind.SCORE_ANALYSIS:
+                        post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=50)))
                     case _:
                         pass
 

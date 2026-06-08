@@ -133,13 +133,13 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
             if options.show_index:
                 data.append("")
             match k:
-                case "通算" | "平均" | "平均素点":
+                case "通算" | "平均":
                     data.append(f" {v:+.1f}".replace(" -", "▲"))
-                case k if str(k).endswith("位差分"):
+                case k if str(k).endswith(("位偏差", "平均素点")):
                     if pd.isna(v):
                         data.append("*****")
                     else:
-                        data.append(f" {v:+.1f}".replace(" -", "▲"))
+                        data.append(f" {v:+.1f}点".replace(" -", "▲"))
                 case "平順" | "平均順位":
                     data.append(f"{v:.2f}")
                 case "レート":
