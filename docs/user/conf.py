@@ -34,6 +34,7 @@ rst_epilog = """
 .. |:o:| unicode:: U+2B55
 .. |:x:| unicode:: U+274C
 .. |:/:| unicode:: U+2714
+.. |:-:| unicode:: U+2504
 """
 manpages_url = "https://github.com/togakushi/mahjong-score-management/tree/main/files/{path}"
 default_role = "any"

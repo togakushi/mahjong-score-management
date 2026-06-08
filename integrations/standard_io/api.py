@@ -71,6 +71,9 @@ class AdapterAPI(APIInterface):
                 case x if isinstance(x, pd.DataFrame):
                     options.rename_type = StyleOptions.RenameType.NORMAL
                     x = adjusting.add_units(x)  # 単位付与/文字列変換
+                    if options.show_index and isinstance(x.index.name, str):
+                        if new_index := dictutil.rename_dicts([x.index.name], options).get(x.index.name):
+                            x.index.name = new_index
                     disp = x.rename(
                         columns=dictutil.rename_dicts(x.columns.to_list(), options),
                     ).to_markdown(

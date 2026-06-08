@@ -43,7 +43,7 @@ def remarks(headword: bool = False) -> str | list[str]:
                 remark_list.append("チーム同卓時の結果を含む")
 
     if g.params.stipulated >= 2:
-        remark_list.append(f"規定打数 {g.params.stipulated} G以上")
+        remark_list.append(f"規定打数 {g.params.stipulated}G以上")
     if g.params.command in ["ranking"]:
         remark_list.append(f"{g.params.ranked}位まで表示")
 
