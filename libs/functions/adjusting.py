@@ -148,7 +148,9 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             case "位":
                 ret = f"{v:.0f}位" if isinstance(v, float) and v.is_integer() else f"{v:.{digits}f}位"
             case _:
-                if signed:
+                if isinstance(v, str):
+                    ret = v
+                elif signed:
                     ret = f"{v:+.{digits}f}{unit}".replace("-", "▲")
                 else:
                     ret = f"{v:.{digits}f}{unit}"
