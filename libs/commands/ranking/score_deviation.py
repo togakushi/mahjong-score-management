@@ -26,6 +26,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ切り替え
+    g.params.command = "analysis"
+
     # データ収集
     data: "MessageType"
     rank_data: dict[str, list[float]] = {}
