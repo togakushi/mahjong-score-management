@@ -5,7 +5,7 @@ libs/commands/ranking/entry.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.commands.ranking import ranking, rating
+from libs.commands.ranking import ranking, rating, score_deviation
 from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil
@@ -55,10 +55,13 @@ def main(m: "MessageParserProtocol") -> None:
     Notes:
         Routing Logic:
             - **レーティングモード**:
-                ``rating`` フラグが立っている場合。
+                ``rating`` フラグが有効な場合。
                 コマンドタイプを ``CommandType.RATING`` に設定し、 ``rating.aggregation`` を実行する。
+            - **偏差値比較モード**:
+                ``score_comparisons`` フラグが有効な場合。
+                コマンドタイプを ``CommandType.RANKING`` に設定し、 ``score_deviation.aggregation`` を実行する。
             - **通常ランキングモード**:
-                ``rating`` フラグがない（デフォルト）場合。
+                ``rating`` と ``score_comparisons`` のいずれも無効な場合。
                 コマンドタイプを ``CommandType.RANKING`` に設定し、 ``ranking.aggregation`` を実行する。
 
     """
@@ -67,6 +70,9 @@ def main(m: "MessageParserProtocol") -> None:
     if g.params.rating:  # レーティング
         m.status.command_type = CommandType.RATING
         rating.aggregation(m)
+    elif g.params.score_comparisons:
+        m.status.command_type = CommandType.RANKING
+        score_deviation.aggregation(m)
     else:  # ランキング
         m.status.command_type = CommandType.RANKING
         ranking.aggregation(m)

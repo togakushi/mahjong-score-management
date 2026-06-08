@@ -59,13 +59,12 @@ def main(m: "MessageParserProtocol") -> None:
             - **直接対戦（対戦マトリクス）**:
                 ``versus_matrix`` かつ ``competition_list`` が指定されている場合。
                 -> ``versus.aggregation`` を実行。
-            - **スコア比較モード**:
-                ``score_comparisons`` が指定されている場合。
-                - ``statistics`` が有効: ``summary.statistics`` を実行。
-                - ``statistics`` が無効: ``summary.difference`` を実行。
             - **成績詳細（単独モード）**:
                 ``player_list`` の人数が1人の場合。
                 -> ``detail.aggregation`` を実行。
+            - **成績サマリ（差分モード）**:
+                ``score_comparisons`` が指定されている場合。
+                -> ``summary.difference`` を実行。
             - **成績詳細（比較モード）**:
                 ``statistics`` が有効 かつ ``player_list`` の人数が2人以上の場合。
                 -> ``detail.comparison`` を実行。
@@ -79,13 +78,10 @@ def main(m: "MessageParserProtocol") -> None:
 
     if g.params.versus_matrix and g.params.competition_list:
         versus.aggregation(m)  # 直接対戦
-    elif g.params.score_comparisons:
-        if g.params.statistics:
-            summary.statistics(m)
-        else:
-            summary.difference(m)  # 成績サマリ(差分モード)
     elif len(g.params.player_list) == 1:
         detail.aggregation(m)  # 成績詳細(単独)
+    elif g.params.score_comparisons:
+        summary.difference(m)  # 成績サマリ(差分モード)
     elif g.params.statistics and len(g.params.player_list) > 1:
         detail.comparison(m)  # 成績詳細(比較)
     else:
