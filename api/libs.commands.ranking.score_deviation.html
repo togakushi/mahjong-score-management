@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>app module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.ranking.score_deviation module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="dbtools module" href="dbtools.html" />
-    <link rel="prev" title="mahjong-score-management" href="index.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.registry package" href="libs.commands.registry.html" />
+    <link rel="prev" title="libs.commands.ranking.rating module" href="libs.commands.ranking.rating.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -61,14 +61,24 @@
     </select>
 </label>
   <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.ranking.score_deviation module</a><ul>
+<li><a class="reference internal" href="#libs.commands.ranking.score_deviation.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="index.html"
-                          title="previous chapter">mahjong-score-management</a></p>
+    <p class="topless"><a href="libs.commands.ranking.rating.html"
+                          title="previous chapter">libs.commands.ranking.rating module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="dbtools.html"
-                          title="next chapter">dbtools module</a></p>
+    <p class="topless"><a href="libs.commands.registry.html"
+                          title="next chapter">libs.commands.registry package</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -92,10 +102,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dbtools.html" title="dbtools module"
+          <a href="libs.commands.registry.html" title="libs.commands.registry package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="mahjong-score-management"
+          <a href="libs.commands.ranking.rating.html" title="libs.commands.ranking.rating module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -107,7 +117,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-        <li class="nav-item nav-item-this"><a href="">app module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.ranking.html" accesskey="U">libs.commands.ranking package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.ranking.score_deviation module</a></li>
                 <li class="right">
                     
 
@@ -137,57 +150,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-app">
-<span id="app-module"></span><h1>app module<a class="headerlink" href="#module-app" title="Link to this heading">¶</a></h1>
-<p>app.py - 麻雀のスコアを記録し、集計して表示するツール</p>
-<dl>
-<dt>help:</dt><dd><p>usage: app.py [-h] …</p>
-<dl>
-<dt>options:</dt><dd><dl class="option-list">
-<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
-<dd><p>show this help message and exit</p>
+  <section id="module-libs.commands.ranking.score_deviation">
+<span id="libs-commands-ranking-score-deviation-module"></span><h1>libs.commands.ranking.score_deviation module<a class="headerlink" href="#module-libs.commands.ranking.score_deviation" title="Link to this heading">¶</a></h1>
+<p>libs/commands/ranking/score_deviation.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.ranking.score_deviation.aggregation">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.ranking.score_deviation.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.ranking.score_deviation.aggregation" title="Link to this definition">¶</a></dt>
+<dd><p>各プレイヤーの素点情報の偏りを表示</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
 </dd>
-<dt><kbd><span class="option">-c <var>CONFIG</var></span>, <span class="option">--config=<var>CONFIG</var></span></kbd></dt>
-<dd><p>設定ファイル(default: config.ini)</p>
-</dd>
-<dt><kbd><span class="option">-s <var>SERVICE</var></span>, <span class="option">--service=<var>SERVICE</var></span></kbd></dt>
-<dd><p>連携先サービス(slack, discord, standard_io, std, web, flask)</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
-</dd>
-<dt>logging options:</dt><dd><dl class="option-list">
-<dt><kbd><span class="option">-d</span>, <span class="option">--debug</span></kbd></dt>
-<dd><p>デバッグレベル(-d, -dd)</p>
-</dd>
-<dt><kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></dt>
-<dd><p>動作ログ出力レベル(-v, -vv, -vvv)</p>
-</dd>
-<dt><kbd><span class="option">--moderate</span></kbd></dt>
-<dd><p>ログレベルがエラー以下のもを非表示</p>
-</dd>
-<dt><kbd><span class="option">--notime</span></kbd></dt>
-<dd><p>ログフォーマットから日時を削除</p>
-</dd>
-</dl>
-</dd>
-<dt>Only allowed when –service=standard_io:</dt><dd><dl class="option-list">
-<dt><kbd><span class="option">--text <var>TEXT</var></span></kbd></dt>
-<dd><p>input text strings</p>
-</dd>
-</dl>
-</dd>
-<dt>Only allowed when –service=web:</dt><dd><dl class="option-list">
-<dt><kbd><span class="option">--host <var>HOST</var></span></kbd></dt>
-<dd><p>listen  address(default: 127.0.0.1)</p>
-</dd>
-<dt><kbd><span class="option">--port <var>PORT</var></span></kbd></dt>
-<dd><p>bind port(default: 8000)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+</dd></dl>
+
 </section>
 
 
@@ -198,14 +177,24 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.commands.ranking.score_deviation module</a><ul>
+<li><a class="reference internal" href="#libs.commands.ranking.score_deviation.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="index.html"
-                          title="previous chapter">mahjong-score-management</a></p>
+    <p class="topless"><a href="libs.commands.ranking.rating.html"
+                          title="previous chapter">libs.commands.ranking.rating module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="dbtools.html"
-                          title="next chapter">dbtools module</a></p>
+    <p class="topless"><a href="libs.commands.registry.html"
+                          title="next chapter">libs.commands.registry package</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -229,10 +218,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dbtools.html" title="dbtools module"
+          <a href="libs.commands.registry.html" title="libs.commands.registry package"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="mahjong-score-management"
+          <a href="libs.commands.ranking.rating.html" title="libs.commands.ranking.rating module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -244,7 +233,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-        <li class="nav-item nav-item-this"><a href="">app module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.ranking.html" >libs.commands.ranking package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.ranking.score_deviation module</a></li>
                 <li class="right">
                     
 

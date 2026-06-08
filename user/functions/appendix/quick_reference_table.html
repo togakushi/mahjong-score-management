@@ -173,6 +173,9 @@
 <dt class="field-even">❌<span class="colon">:</span></dt>
 <dd class="field-even"><p>指定すると表示内容が変化するオプション</p>
 </dd>
+<dt class="field-odd">┄<span class="colon">:</span></dt>
+<dd class="field-odd"><p>指定しても無視されるオプション</p>
+</dd>
 </dl>
 </dd>
 <dt>プレイヤー名/チーム名指定</dt><dd><dl class="field-list simple">
@@ -209,15 +212,15 @@
 <div class="line">チーム名</div>
 </div>
 </th>
-<th class="head"><p><a class="reference internal" href="../output/results/index.html#results-統計" title="統計"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">統計</span></code></a></p></th>
 <th class="head"><div class="line-block">
 <div class="line"><a class="reference internal" href="../output/results/index.html#results-比較" title="比較"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">比較</span></code></a></div>
 <div class="line"><a class="reference internal" href="../output/results/index.html#results-比較" title="点差"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">点差</span></code></a></div>
 <div class="line"><a class="reference internal" href="../output/results/index.html#results-比較" title="差分"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">差分</span></code></a></div>
 </div>
 </th>
-<th class="head"><p><a class="reference internal" href="../output/results/index.html#results-戦績" title="戦績"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">戦績</span></code></a></p></th>
+<th class="head"><p><a class="reference internal" href="../output/results/index.html#results-統計" title="統計"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">統計</span></code></a></p></th>
 <th class="head"><p><a class="reference internal" href="../output/results/index.html#results-対戦" title="対戦"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">対戦</span></code></a></p></th>
+<th class="head"><p><a class="reference internal" href="../output/results/index.html#results-戦績" title="戦績"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">戦績</span></code></a></p></th>
 <th class="head"><p><a class="reference internal" href="../output/results/index.html#results-詳細" title="詳細"><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">詳細</span></code></a></p></th>
 <th class="head"><p>備考</p></th>
 </tr>
@@ -236,8 +239,8 @@
 <tr class="row-odd"><td><p>全体成績</p></td>
 <td><p>差分表示</p></td>
 <td><p>任意</p></td>
-<td></td>
 <td><p>✔</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -251,66 +254,66 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td><p>プレイヤー/チーム詳細成績</p></td>
 </tr>
 <tr class="row-odd"><td><p>成績詳細</p></td>
 <td><p>座席情報/レコード情報</p></td>
 <td><p>単独指定</p></td>
-<td><p>⭕</p></td>
 <td></td>
+<td><p>⭕</p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>成績詳細</p></td>
-<td><p>対戦結果(簡易版)</p></td>
+<td><p>戦績（簡易版）</p></td>
 <td><p>単独指定</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td><p>⭕</p></td>
 <td></td>
-<td></td>
-<td></td>
+<td><p>ゲーム結果</p></td>
 </tr>
 <tr class="row-odd"><td><p>成績詳細</p></td>
-<td><p>対戦結果(詳細版)</p></td>
+<td><p>戦績（詳細版）</p></td>
+<td><p>単独指定</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>⭕</p></td>
+<td><p>⭕</p></td>
+<td><p>ゲーム結果（同卓者全員分）</p></td>
+</tr>
+<tr class="row-even"><td><p>成績詳細</p></td>
+<td><p>対戦結果</p></td>
 <td><p>単独指定</p></td>
 <td></td>
 <td></td>
 <td><p>⭕</p></td>
 <td></td>
-<td><p>⭕</p></td>
+<td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>成績比較</p></td>
+<tr class="row-odd"><td><p>成績比較</p></td>
 <td></td>
 <td><p>複数指定</p></td>
 <td></td>
-<td></td>
+<td><p>✔</p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>直接対戦結果</p></td>
+<tr class="row-even"><td><p>直接対戦結果</p></td>
 <td></td>
 <td><p>複数指定</p></td>
 <td></td>
-<td></td>
-<td></td>
+<td><p>┄</p></td>
 <td><p>✔</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>素点分析</p></td>
-<td></td>
-<td><p>任意</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>┄</p></td>
+<td><p>┄</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -426,6 +429,12 @@
 </div>
 </th>
 <th class="head"><p><a class="reference internal" href="../output/ranking/index.html#ranking-レート" title="レート"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">レート</span></code></a></p></th>
+<th class="head"><div class="line-block">
+<div class="line"><a class="reference internal" href="../output/ranking/index.html#ranking-比較" title="比較"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">比較</span></code></a></div>
+<div class="line"><a class="reference internal" href="../output/ranking/index.html#ranking-比較" title="点差"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">点差</span></code></a></div>
+<div class="line"><a class="reference internal" href="../output/ranking/index.html#ranking-比較" title="差分"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">差分</span></code></a></div>
+</div>
+</th>
 <th class="head"><p><a class="reference internal" href="../output/ranking/index.html#ranking-トップ&lt;NNN&gt;" title="トップ&lt;NNN&gt;"><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">トップ&lt;NNN&gt;</span></code></a></p></th>
 <th class="head"><p>備考</p></th>
 </tr>
@@ -435,6 +444,7 @@
 <td></td>
 <td><p>任意</p></td>
 <td></td>
+<td></td>
 <td><p>⭕</p></td>
 <td></td>
 </tr>
@@ -442,7 +452,16 @@
 <td></td>
 <td><p>任意</p></td>
 <td><p>✔</p></td>
+<td><p>┄</p></td>
 <td><p>⭕</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>素点偏差表示</p></td>
+<td></td>
+<td><p>任意</p></td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>┄</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -478,17 +497,17 @@
 <tr class="row-odd"><td><p>成績レポート</p></td>
 <td></td>
 <td><p>単独指定</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>┄</p></td>
+<td><p>┄</p></td>
+<td><p>┄</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>成績上位者</p></td>
 <td></td>
 <td><p>任意</p></td>
 <td><p>✔</p></td>
-<td></td>
-<td></td>
+<td><p>┄</p></td>
+<td><p>┄</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>月別ゲーム統計</p></td>
@@ -496,7 +515,7 @@
 <td><p>❌</p></td>
 <td></td>
 <td><p>✔</p></td>
-<td></td>
+<td><p>┄</p></td>
 <td><p>プレイヤー名/チーム名の指定があると対局対戦マトリックスに切り替わる</p></td>
 </tr>
 <tr class="row-even"><td><p>対局対戦マトリックス</p></td>
@@ -511,7 +530,7 @@
 <td></td>
 <td><p>複数指定</p></td>
 <td></td>
-<td></td>
+<td><p>┄</p></td>
 <td></td>
 <td></td>
 </tr>
@@ -618,7 +637,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.15.0.
-      Last updated on 2026-06-07.
+      Last updated on 2026-06-08.
     </div>
 
   </body>

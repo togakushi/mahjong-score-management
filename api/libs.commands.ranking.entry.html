@@ -206,13 +206,19 @@
 <dl class="simple">
 <dt>Routing Logic:</dt><dd><ul class="simple">
 <li><dl class="simple">
-<dt><strong>レーティングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグが立っている場合。
+<dt><strong>レーティングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグが有効な場合。
 コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">rating.aggregation</span></code> を実行する。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>通常ランキングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> フラグがない（デフォルト）場合。
+<dt><strong>偏差値比較モード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> フラグが有効な場合。
+コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">score_deviation.aggregation</span></code> を実行する。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>通常ランキングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> と <code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> のいずれも無効な場合。
 コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">ranking.aggregation</span></code> を実行する。</p>
 </dd>
 </dl>
@@ -321,7 +327,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.15.0.
-      Last updated on 2026-06-07.
+      Last updated on 2026-06-08.
     </div>
 
   </body>
