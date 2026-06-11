@@ -60,10 +60,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    # 通算ポイント
+    # 共通オプション
     options = StyleOptions(
-        title="通算ポイント",
-        codeblock=False,
         key_title=True,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_TOTAL,
@@ -100,11 +98,13 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_summary.drop(columns=dictutil.dropitems_list(df_summary.columns.to_list()), inplace=True)
     df_remarks.drop(columns=dictutil.dropitems_list(df_remarks.columns.to_list()), inplace=True)
 
+    # 通算ポイント
     if options.format_type == "default":
+        options.title = "通算ポイント"
         options.codeblock = True
         data = df_summary.filter(items=header_list)
     else:
-        options.title = headline_title
+        options.title = f"{headline_title}：通算ポイント"
         options.base_name = "summary"
         df_summary = df_summary.filter(items=filter_list).fillna("*****")
         data = converter.save_output(df_summary, options, m.post.headline, "summary")
@@ -112,21 +112,21 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # メモ(役満和了)
     if "役満和了" not in dictutil.dropitems_list():
-        options.title = f"{headline_title}：役満和了"
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
 
         if options.format_type == "default":
+            options.title = "役満和了"
             options.codeblock = False
             data = df_yakuman
         else:
+            options.title = f"{headline_title}：役満和了"
             options.base_name = "yakuman"
             data = converter.save_output(df_yakuman, options, m.post.headline, "yakuman")
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(卓外清算)
     if "卓外清算" not in dictutil.dropitems_list():
-        options.title = f"{headline_title}：卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
         if g.params.individual:  # 個人集計
@@ -135,22 +135,26 @@ def aggregation(m: "MessageParserProtocol") -> None:
             df_regulations = df_remarks.query("type == 2 or type == 3").drop(columns=["type"])
 
         if options.format_type == "default":
+            options.title = "卓外清算"
             options.codeblock = False
             data = df_regulations
         else:
+            options.title = f"{headline_title}：卓外清算"
             options.base_name = "regulations"
             data = converter.save_output(df_regulations, options, m.post.headline, "regulations")
         m.set_message(data, StyleOptions(**options.asdict))
 
     # メモ(その他)
     if "その他" not in dictutil.dropitems_list():
-        options.title = f"{headline_title}：その他"
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
         df_others = df_remarks.query("type == 1").drop(columns=set(df_remarks.columns) & {"type", "ex_point"})
 
         if options.format_type == "default":
+            options.title = "その他"
+            options.codeblock = False
             data = df_others
         else:
+            options.title = f"{headline_title}：その他"
             options.base_name = "others"
             data = converter.save_output(df_others, options, m.post.headline, "others")
         m.set_message(data, StyleOptions(**options.asdict))
