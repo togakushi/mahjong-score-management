@@ -63,7 +63,7 @@ class AdapterAPI(APIInterface):
         # 本文
         for data, options in m.post.message:
             if options.key_title and options.title:
-                print(options.print_title)
+                print(options.print_title, end="")
 
             match data:
                 case x if isinstance(x, str):
@@ -84,7 +84,7 @@ class AdapterAPI(APIInterface):
                     )
                     print(disp)
                 case x if isinstance(x, Path):
-                    print(f"{options.title}: {x.absolute()}")
+                    print(f"{x.absolute()}", end="")
                 case _:
                     pass
 
