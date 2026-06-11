@@ -64,6 +64,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     options = StyleOptions(
         title="通算ポイント",
         codeblock=False,
+        key_title=True,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_TOTAL,
     )
@@ -111,7 +112,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # メモ(役満和了)
     if "役満和了" not in dictutil.dropitems_list():
-        options.title = "役満和了"
+        options.title = f"{headline_title}：役満和了"
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
 
@@ -125,7 +126,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # メモ(卓外清算)
     if "卓外清算" not in dictutil.dropitems_list():
-        options.title = "卓外清算"
+        options.title = f"{headline_title}：卓外清算"
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
 
         if g.params.individual:  # 個人集計
@@ -143,7 +144,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # メモ(その他)
     if "その他" not in dictutil.dropitems_list():
-        options.title = "その他"
+        options.title = f"{headline_title}：その他"
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
         df_others = df_remarks.query("type == 1").drop(columns=set(df_remarks.columns) & {"type", "ex_point"})
 
