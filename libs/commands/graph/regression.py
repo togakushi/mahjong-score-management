@@ -117,4 +117,4 @@ def plot(m: "MessageParserProtocol") -> None:
     plt.savefig(save_file, bbox_inches="tight")
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
-    m.set_message(save_file, StyleOptions(title=title_text, use_comment=True))
+    m.set_message(save_file, StyleOptions(title=title_text, use_comment=True, header_hidden=True))
