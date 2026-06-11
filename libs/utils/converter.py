@@ -75,6 +75,8 @@ def save_output(
         if headline:
             headline_data, headline_option = headline
             if options.key_title:
+                writefile.writelines(f"# 【{options.title}】\n")
+            else:
                 writefile.writelines(f"# 【{headline_option.title}】\n")
             if isinstance(headline_data, str):
                 for line in headline_data.splitlines():
