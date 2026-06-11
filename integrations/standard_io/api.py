@@ -84,7 +84,7 @@ class AdapterAPI(APIInterface):
                     )
                     print(disp)
                 case x if isinstance(x, Path):
-                    print(f"{options.title}: {x.absolute()}")
+                    print(f"\t{x.absolute()}")
                 case _:
                     pass
 

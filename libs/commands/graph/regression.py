@@ -78,6 +78,7 @@ def plot(m: "MessageParserProtocol") -> None:
     for i, (name, row) in enumerate(df.iterrows()):
         color = cmap(i)
         plt.scatter(row["rank_avg"], row["rpoint_avg"], s=row["count"] * 2, alpha=0.8, color=color)
+        resid_ols = f"{row['resid_ols']:.1f}点".replace("-", "▲")
         player_handles.append(
             Line2D(
                 [0],
@@ -86,7 +87,7 @@ def plot(m: "MessageParserProtocol") -> None:
                 color="w",
                 markerfacecolor=color,
                 markersize=7,
-                label=f"{name} : {row['count']}G / {row['rank_avg']:.2f}位 / {row['rpoint_avg']:.1f}点 / {row['resid_ols']:.1f}",
+                label=f"{name} : {row['count']}G / {row['rank_avg']:.2f} / {row['rpoint_avg']:.1f}点 / {resid_ols}",
             )
         )
 
@@ -116,4 +117,4 @@ def plot(m: "MessageParserProtocol") -> None:
     plt.savefig(save_file, bbox_inches="tight")
 
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
-    m.set_message(save_file, StyleOptions(title=title_text, use_comment=True, key_title=False))
+    m.set_message(save_file, StyleOptions(title=title_text, use_comment=True))
