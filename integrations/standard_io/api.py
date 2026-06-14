@@ -84,7 +84,7 @@ class AdapterAPI(APIInterface):
                     )
                     print(disp)
                 case x if isinstance(x, Path):
-                    print(f"\t{x.absolute()}")
+                    print(f"- {x.absolute()}")
                 case _:
                     pass
 

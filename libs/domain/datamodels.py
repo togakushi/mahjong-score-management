@@ -110,7 +110,7 @@ class GameInfo:
                     g.params.stipulated = g.cfg.results.stipulated_calculation(self.count)
                 case "graph":
                     g.params.stipulated = g.cfg.graph.stipulated_calculation(self.count)
-                case "ranking":
+                case "ranking" | "analysis":
                     g.params.stipulated = g.cfg.ranking.stipulated_calculation(self.count)
                 case "report":
                     g.params.stipulated = g.cfg.report.stipulated_calculation(self.count)
