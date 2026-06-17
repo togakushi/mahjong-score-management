@@ -101,6 +101,7 @@ def plot(m: "MessageParserProtocol") -> None:
     plt.ylabel("平均素点")
     plt.xlim(0.9, 4.1)
     plt.xticks(np.arange(1.0, 4.1, 0.5))
+    plt.gca().invert_xaxis()
     plt.title(f"{title_text} ({starttime} - {endtime})")
 
     # 凡例
