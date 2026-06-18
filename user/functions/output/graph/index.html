@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/user_doc.css?v=04f9b848" />
     
-    <script src="../../../_static/documentation_options.js?v=4befc426"></script>
+    <script src="../../../_static/documentation_options.js?v=7de89ed4"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -76,7 +76,8 @@
 </li>
 <li><a class="reference internal" href="#id9">出力サンプル</a><ul>
 <li><a class="reference internal" href="#id10">全体成績グラフ詳細</a></li>
-<li><a class="reference internal" href="#id11">個人成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id11">順位素点相関図詳細</a></li>
+<li><a class="reference internal" href="#id12">個人成績グラフ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -285,17 +286,34 @@
 <dl class="mahjong graph">
 <dt class="sig sig-object mahjong" id="graph-統計">
 <span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#graph-統計" title="Link to this definition">¶</a></dt>
-<dd><p>プレイヤー/チームの単独指定</p>
-<blockquote>
-<div><p>指定プレイヤーのゲーム統計情報を出力する。</p>
+<dd><p>指定プレイヤーのゲーム統計情報を出力する。</p>
 <ul class="simple">
 <li><p>指定した対戦数で区切って集計(デフォルト80)</p></li>
 </ul>
-</div></blockquote>
-<p>プレイヤー/チームの複数指定</p>
-<blockquote>
-<div><p>「平均順位×平均素点の散布図＋回帰線」を生成する。</p>
-</div></blockquote>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><a class="reference internal" href="#graph-統計" title="統計"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">統計</span></code></a> オプションと同時にプレイヤー/チームの単独指定が必要</p>
+</div>
+</dd></dl>
+
+<dl class="mahjong graph">
+<dt class="sig sig-object mahjong" id="graph-素点">
+<span class="n"><span class="pre">素点</span></span><a class="headerlink" href="#graph-素点" title="Link to this definition">¶</a></dt>
+<dd><p>「平均順位×平均素点の散布図＋回帰線」を生成する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">対戦数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲内で集計対象になったゲーム数</p>
+</dd>
+<dt class="field-even">平均順位<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計対象ゲームの平均順位</p>
+</dd>
+<dt class="field-odd">平均素点<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計対象ゲームの平均素点</p>
+</dd>
+<dt class="field-even">残差<span class="colon">:</span></dt>
+<dd class="field-even"><p>平均素点と回帰線との差分</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="mahjong graph">
@@ -325,18 +343,18 @@
 <div class="admonition- admonition">
 <p class="admonition-title">ポイント推移(折れ線グラフ)</p>
 <div class="compound">
-<a class="reference internal image-reference" href="../../../_images/point_line_ggplot.png"><img alt="出力サンプル(ggplot)" height="207" src="../../../_images/point_line_ggplot.png" width="395" />
+<a class="reference internal image-reference" href="../../../_images/point_line_ggplot.png"><img alt="出力サンプル(ggplot)" height="207" src="../../../_images/point_line_ggplot.png" width="403" />
 </a>
-<a class="reference internal image-reference" href="../../../_images/point_line_dark.png"><img alt="出力サンプル(dark_background)" height="206" src="../../../_images/point_line_dark.png" width="394" />
+<a class="reference internal image-reference" href="../../../_images/point_line_dark.png"><img alt="出力サンプル(dark_background)" height="206" src="../../../_images/point_line_dark.png" width="402" />
 </a>
 </div>
 </div>
 <div class="admonition- admonition">
 <p class="admonition-title">通算ポイント(棒グラフ)</p>
 <div class="compound">
-<a class="reference internal image-reference" href="../../../_images/point_bar_ggplot.png"><img alt="出力サンプル(ggplot)" height="231" src="../../../_images/point_bar_ggplot.png" width="274" />
+<a class="reference internal image-reference" href="../../../_images/point_bar_ggplot.png"><img alt="出力サンプル(ggplot)" height="189" src="../../../_images/point_bar_ggplot.png" width="273" />
 </a>
-<a class="reference internal image-reference" href="../../../_images/point_bar_dark.png"><img alt="出力サンプル(dark_background)" height="230" src="../../../_images/point_bar_dark.png" width="274" />
+<a class="reference internal image-reference" href="../../../_images/point_bar_dark.png"><img alt="出力サンプル(dark_background)" height="188" src="../../../_images/point_bar_dark.png" width="273" />
 </a>
 </div>
 </div>
@@ -352,7 +370,19 @@
 </div>
 </section>
 <section id="id11">
-<h3>個人成績グラフ詳細<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<h3>順位素点相関図詳細<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<div class="admonition- admonition">
+<p class="admonition-title">順位素点相関図</p>
+<div class="compound">
+<a class="reference internal image-reference" href="../../../_images/regression_ggplot.png"><img alt="出力サンプル(ggplot)" height="165" src="../../../_images/regression_ggplot.png" width="452" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/regression_dark.png"><img alt="出力サンプル(dark_background)" height="164" src="../../../_images/regression_dark.png" width="452" />
+</a>
+</div>
+</div>
+</section>
+<section id="id12">
+<h3>個人成績グラフ詳細<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <p>対象メンバーの以下の成績を出力する。</p>
 <ul class="simple">
 <li><p>ポイントグラフ</p>
@@ -412,7 +442,8 @@
 </li>
 <li><a class="reference internal" href="#id9">出力サンプル</a><ul>
 <li><a class="reference internal" href="#id10">全体成績グラフ詳細</a></li>
-<li><a class="reference internal" href="#id11">個人成績グラフ詳細</a></li>
+<li><a class="reference internal" href="#id11">順位素点相関図詳細</a></li>
+<li><a class="reference internal" href="#id12">個人成績グラフ詳細</a></li>
 </ul>
 </li>
 </ul>
@@ -497,8 +528,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.15.1.
-      Last updated on 2026-06-14.
+      Release Version: 0.16.0.
+      Last updated on 2026-06-18.
     </div>
 
   </body>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=5be7b1a7"></script>
+    <script src="_static/documentation_options.js?v=086225cd"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -189,9 +189,8 @@
 <dt class="sig sig-object py" id="libs.commands.ranking.entry.main">
 <span class="sig-prename descclassname"><span class="pre">libs.commands.ranking.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.ranking.entry.main" title="Link to this definition">¶</a></dt>
 <dd><p>ランキングおよびレーティング出力処理のエントリーポイント。</p>
-<p>受信したメッセージデータを解析し、レーティングオプションフラグの有無に応じて
-通常の成績ランキング（順位・ポイントなど）か、レーティングシステムの集計・出力かへ
-処理をルーティングする。</p>
+<p>受信したメッセージデータを解析し、オプションフラグ（レーティング・素点分析）の有無に応じて
+レーティング集計、偏差値比較、通常ランキングのいずれかの処理へルーティングする。</p>
 <p>内部では、グローバルパラメータ（ <code class="docutils literal notranslate"><span class="pre">g.params</span></code> ）にメッセージから抽出したプレースホルダーの
 解析結果を展開し、判定および出力内容の決定に使用する。</p>
 <dl class="field-list simple">
@@ -212,13 +211,13 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>偏差値比較モード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> フラグが有効な場合。
+<dt><strong>偏差値比較モード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">raw_score</span></code> フラグが有効な場合。
 コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">score_deviation.aggregation</span></code> を実行する。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>通常ランキングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> と <code class="docutils literal notranslate"><span class="pre">score_comparisons</span></code> のいずれも無効な場合。
+<dt><strong>通常ランキングモード</strong>:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">rating</span></code> と <code class="docutils literal notranslate"><span class="pre">raw_score</span></code> のいずれも無効な場合。
 コマンドタイプを <code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code> に設定し、 <code class="docutils literal notranslate"><span class="pre">ranking.aggregation</span></code> を実行する。</p>
 </dd>
 </dl>
@@ -326,8 +325,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.15.1.
-      Last updated on 2026-06-14.
+      Release Version: 0.16.0.
+      Last updated on 2026-06-18.
     </div>
 
   </body>
