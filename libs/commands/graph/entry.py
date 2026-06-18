@@ -54,9 +54,9 @@ def main(m: "MessageParserProtocol") -> None:
                 - フラグなし: 個人成績推移グラフ（ ``personal.plot`` ）
             - **プレイヤーが複数（2人以上）の場合**:
                 - ``rating`` フラグあり: レーティング推移グラフ（ ``rating.plot`` ）
-                - ``rating`` なし ＋ ``statistics`` フラグあり: 回帰分析グラフ（ ``regression.plot`` ）
-                - ``rating`` なし ＋ ``statistics`` フラグなし ＋ ``order`` フラグあり: 複数人順位推移グラフ（ ``summary.rank_plot`` ）
-                - ``rating`` なし ＋ ``statistics`` フラグなし ＋ ``order`` フラグなし: 複数人ポイント推移グラフ（ ``summary.point_plot`` ）
+                - ``rating`` なし ＋ ``raw_score`` フラグあり: 回帰分析グラフ（ ``regression.plot`` ）
+                - ``rating`` なし ＋ ``raw_score`` フラグなし ＋ ``order`` フラグあり: 複数人順位推移グラフ（ ``summary.rank_plot`` ）
+                - ``rating`` なし ＋ ``raw_score`` フラグなし ＋ ``order`` フラグなし: 複数人ポイント推移グラフ（ ``summary.point_plot`` ）
 
     """
     m.status.command_type = CommandType.GRAPH
@@ -68,13 +68,12 @@ def main(m: "MessageParserProtocol") -> None:
         else:
             personal.plot(m)
     else:  # 対象が複数
-        if g.params.rating:  # レーティング
+        if g.params.rating:  # レーティング推移
             rating.plot(m)
+        elif g.params.raw_score:  # 素点分析
+            regression.plot(m)
         else:
-            if g.params.statistics:
-                regression.plot(m)
+            if g.params.order:
+                summary.rank_plot(m)  # 順位推移
             else:
-                if g.params.order:
-                    summary.rank_plot(m)
-                else:
-                    summary.point_plot(m)
+                summary.point_plot(m)  # ポイント推移

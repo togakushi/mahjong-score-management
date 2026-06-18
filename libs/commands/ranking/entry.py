@@ -42,9 +42,8 @@ def main(m: "MessageParserProtocol") -> None:
     """
     ランキングおよびレーティング出力処理のエントリーポイント。
 
-    受信したメッセージデータを解析し、レーティングオプションフラグの有無に応じて
-    通常の成績ランキング（順位・ポイントなど）か、レーティングシステムの集計・出力かへ
-    処理をルーティングする。
+    受信したメッセージデータを解析し、オプションフラグ（レーティング・素点分析）の有無に応じて
+    レーティング集計、偏差値比較、通常ランキングのいずれかの処理へルーティングする。
 
     内部では、グローバルパラメータ（ ``g.params`` ）にメッセージから抽出したプレースホルダーの
     解析結果を展開し、判定および出力内容の決定に使用する。
@@ -58,10 +57,10 @@ def main(m: "MessageParserProtocol") -> None:
                 ``rating`` フラグが有効な場合。
                 コマンドタイプを ``CommandType.RATING`` に設定し、 ``rating.aggregation`` を実行する。
             - **偏差値比較モード**:
-                ``score_comparisons`` フラグが有効な場合。
+                ``raw_score`` フラグが有効な場合。
                 コマンドタイプを ``CommandType.RANKING`` に設定し、 ``score_deviation.aggregation`` を実行する。
             - **通常ランキングモード**:
-                ``rating`` と ``score_comparisons`` のいずれも無効な場合。
+                ``rating`` と ``raw_score`` のいずれも無効な場合。
                 コマンドタイプを ``CommandType.RANKING`` に設定し、 ``ranking.aggregation`` を実行する。
 
     """
@@ -70,7 +69,7 @@ def main(m: "MessageParserProtocol") -> None:
     if g.params.rating:  # レーティング
         m.status.command_type = CommandType.RATING
         rating.aggregation(m)
-    elif g.params.score_comparisons:
+    elif g.params.raw_score:
         m.status.command_type = CommandType.RANKING
         score_deviation.aggregation(m)
     else:  # ランキング

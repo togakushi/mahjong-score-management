@@ -96,6 +96,10 @@ COMMANDS: CommandsDict = {
         "match": [r"^詳細$", r"^verbose$"],
         "action": lambda _: {"verbose": True},
     },
+    "raw_score": {  # 素点分析
+        "match": [r"^素点"],
+        "action": lambda _: {"raw_score": True},
+    },
     # --- 集計条件
     "ranked": {
         "match": [r"^(トップ|上位|top)(\d*)$"],
