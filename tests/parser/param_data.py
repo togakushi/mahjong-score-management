@@ -8,8 +8,12 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 flag_test_case_01: dict[str, tuple[Any, ...]] = {
     # input_args, expected_flags
     "guest": ("ゲストなし", {"guest_skip": False, "guest_skip2": False, "unregistered_replace": True}),
+    # --- 動作変更フラグ
     "score comparisons": ("比較", {"score_comparisons": True}),
-    "ratings": ("ratings", {"rating": True}),
+    "ratings 1": ("ratings", {"rating": True}),
+    "ratings 2": ("レート", {"rating": True}),
+    "ratings 3": ("レーティング", {"rating": True}),
+    "raw score": ("素点", {"raw_score": True}),
     # --- 個人戦/チーム戦切替
     "individual": ("個人", {"individual": True}),
     "team": ("チーム", {"individual": False}),

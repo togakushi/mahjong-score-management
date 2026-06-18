@@ -94,6 +94,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         base_name="score_deviation",
         show_index=True,
         codeblock=False,
+        key_title=False,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.SCORE_ANALYSIS,
     )

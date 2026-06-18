@@ -142,6 +142,8 @@ class PlaceholderBuilder(ParameterData):
     """順位推移グラフ表示"""
     rating: bool = field(default=False)
     """レーティング推移グラフ表示"""
+    raw_score: bool = field(default=False)
+    """素点分析表示"""
     anonymous: bool = field(default=False)
     """匿名化フラグ"""
     mapping_dict: dict[str, str] = field(default_factory=dict)

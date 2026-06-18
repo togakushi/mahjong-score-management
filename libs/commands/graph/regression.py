@@ -101,11 +101,12 @@ def plot(m: "MessageParserProtocol") -> None:
     plt.ylabel("平均素点")
     plt.xlim(0.9, 4.1)
     plt.xticks(np.arange(1.0, 4.1, 0.5))
+    plt.gca().invert_xaxis()
     plt.title(f"{title_text} ({starttime} - {endtime})")
 
     # 凡例
     plt.legend(
-        title="ゲーム数 / 平均順位 / 平均素点 / 残差",
+        title="対戦数 / 平均順位 / 平均素点 / 残差",
         handles=[*player_handles, ols_line, wls_line],
         loc="upper left",
         bbox_to_anchor=(1.02, 1.0),

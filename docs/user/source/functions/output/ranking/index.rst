@@ -44,7 +44,7 @@
 
    レーティングを表示。
 
-.. ranking:: 比較, 点差, 差分
+.. ranking:: 素点
    :category: 個別オプション
 
    ゲーム終了時の素点情報の表示
@@ -110,6 +110,18 @@
       集計集団の中の平均素点(ゲーム終了時点の持ち点)の偏差。
 
 
+素点分析
+++++++++
+
+.. glossary::
+
+   平均素点 : 素点分析項目
+      ゲーム終了時点の素点平均値
+
+   x位偏差 : 素点分析項目
+      全体x位の素点平均値と集計対象のx位の差分
+
+
 出力サンプル
 ------------
 
@@ -127,3 +139,8 @@
    :collapsible: closed
 
    .. literalinclude:: sample_rating_team.txt
+
+.. admonition:: 素点分析
+   :collapsible: closed
+
+   .. literalinclude:: sample_score_deviation.txt
