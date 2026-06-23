@@ -67,6 +67,10 @@ class ChannelType(StrEnum):
 class CommandType(StrEnum):
     """実行(する/した)サブコマンド兼設定ファイルセクション名"""
 
+    SUMMARY = "summary"
+    """集計コマンド"""
+    ANALYSIS = "analysis"
+    """分析コマンド"""
     RESULTS = "results"
     """成績サマリ"""
     GRAPH = "graph"
