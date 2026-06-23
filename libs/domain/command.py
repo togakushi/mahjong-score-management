@@ -97,10 +97,13 @@ COMMANDS: CommandsDict = {
         "action": lambda _: {"verbose": True},
     },
     "raw_score": {  # 素点分析
-        "match": [r"^素点"],
+        "match": [r"^素点$"],
         "action": lambda _: {"raw_score": True},
     },
-    # --- 集計条件
+    "report": {  # レポート生成
+        "match": [r"^report$", r"^レポート$"],
+        "action": lambda _: {"report": True},
+    },  # --- 集計条件
     "ranked": {
         "match": [r"^(トップ|上位|top)(\d*)$"],
         "action": lambda w: {"ranked": w},
@@ -160,6 +163,10 @@ COMMANDS: CommandsDict = {
         "action": lambda _: {"mixed": True},
     },
     # --- 出力オプション
+    "graph": {
+        "match": [r"^グラフ$", r"^graph$"],
+        "action": lambda _: {"graph": True},
+    },
     "format": {
         "match": [r"^(csv|text|txt)$"],
         "action": lambda w: {"format": w if w != "text" else "txt"},

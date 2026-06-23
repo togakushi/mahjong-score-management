@@ -1,12 +1,14 @@
 """
-libs/commands/report/monthly.py
+libs/domain/deliverables/winner.py
 """
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 import libs.global_value as g
+from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import StyleOptions
@@ -18,31 +20,52 @@ if TYPE_CHECKING:
 
 def plot(m: "MessageParserProtocol") -> None:
     """
-    月別ゲーム統計表の生成
+    成績上位者を一覧化
 
     Args:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # --- データ収集
-    title: str = "月別ゲーム統計"
-    df = g.params.read_data("REPORT_MONTHLY")
-    results = df.transpose().to_dict()
-
-    if len(results) == 0:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title=title))
+    # --- データ取得
+    game_info = GameInfo()
+    results_df = g.params.read_data("REPORT_WINNER")
+    if len(results_df) == 0:
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績上位"))
         m.status.result = False
         return
 
+    # 匿名化
+    if g.params.anonymous:
+        name_list: list[Any] = []
+        for col in [f"name{x}" for x in range(1, 6)]:
+            name_list.extend(results_df[col].unique().tolist())
+        mapping_dict = textutil.anonymous_mapping(list(set(name_list)))
+        for col in [f"name{x}" for x in range(1, 6)]:
+            results_df[col] = results_df[col].replace(mapping_dict)
+
+    # --- 集計
+    results: dict[str, Any] = {}
+    for _, v in results_df.iterrows():
+        results[v["collection"]] = {}
+        results[v["collection"]]["集計月"] = v["collection"]
+        for x in range(1, 6):
+            if v.isna()[f"point{x}"]:
+                results[v["collection"]][f"{x}位"] = "該当者なし"
+            else:
+                results[v["collection"]][f"{x}位"] = "{} ({}pt)".format(
+                    v[f"name{x}"],
+                    str("{:+}".format(v[f"point{x}"])).replace("-", "▲"),
+                )
+
+    m.set_headline(message.header(game_info, m), StyleOptions(title="成績上位者"))
+
     # --- グラフ設定
-    report_file_path = textutil.save_file_path("report.png")
     match g.adapter.conf.plotting_backend:
         case "plotly":
-            pass
+            report_file_path = textutil.save_file_path("report.html")
         case _:
             graphutil.setup()
-
-            # グラフフォント設定
+            report_file_path = textutil.save_file_path("report.png")
             plt.rcParams["font.size"] = 6
 
             # 色彩設定
@@ -63,19 +86,20 @@ def plot(m: "MessageParserProtocol") -> None:
             cell_param = []
             cell_color = []
             line_count = 0
-            for x in results.keys():
+            for _, val in results.items():
                 line_count += 1
-                cell_param.append([results[x][y] for y in column_labels])
+                cell_param.append([val[y] for y in column_labels])
                 if int(line_count % 2):
                     cell_color.append([line_color1 for i in column_labels])
                 else:
                     cell_color.append([line_color2 for i in column_labels])
 
-            fig = plt.figure(figsize=(6, (len(results) * 0.2) + 0.8), dpi=200, tight_layout=True)
+            fig = plt.figure(figsize=(6.5, (len(results) * 0.2) + 0.8), dpi=200, tight_layout=True)
             ax_dummy = fig.add_subplot(111)
             ax_dummy.axis("off")
 
-            plt.title(title, fontsize=12)
+            plt.title("成績上位者", fontsize=12)
+
             tb = plt.table(
                 colLabels=column_labels,
                 colColours=column_color,
@@ -88,13 +112,20 @@ def plot(m: "MessageParserProtocol") -> None:
             for i in range(len(column_labels)):
                 tb[0, i].set_text_props(color="#FFFFFF", weight="bold")
             for i in range(len(results.keys()) + 1):
-                tb[i, 0].set_text_props(ha="center")
+                for j in range(len(column_labels)):
+                    tb[i, j].set_text_props(ha="center")
 
             # 追加テキスト
+            remark_text = "".join(text_item.remarks(True)) + text_item.search_word(True)
+            add_text = "{} {}".format(
+                f"[検索範囲：{text_item.search_range()}]",
+                f"[{remark_text}]" if remark_text else "",
+            )
+
             fig.text(
                 0.01,
                 0.02,  # 表示位置(左下0,0 右下0,1)
-                f"[検索範囲：{text_item.search_range()}] [特記：すべてのゲーム結果を含む]",
+                add_text,
                 transform=fig.transFigure,
                 fontsize=6,
             )
@@ -103,8 +134,8 @@ def plot(m: "MessageParserProtocol") -> None:
 
     match g.adapter.interface_type:
         case "slack" | "discord":
-            m.set_message(report_file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
+            m.set_message(report_file_path, StyleOptions(title="成績上位者", use_comment=True, header_hidden=True))
         case "web":
-            m.set_message(df, StyleOptions(title=title))
+            m.set_message(results_df, StyleOptions(title="成績上位者"))
         case _:
-            m.set_message(df, StyleOptions(title=title))
+            m.set_message(pd.DataFrame(results).T, StyleOptions(title="成績上位者"))

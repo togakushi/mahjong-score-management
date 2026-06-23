@@ -1,5 +1,5 @@
 """
-libs/commands/report/matrix.py
+libs/domain/deliverables/matrix.py
 """
 
 from typing import TYPE_CHECKING, Any

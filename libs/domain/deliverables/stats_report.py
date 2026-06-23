@@ -1,5 +1,5 @@
 """
-libs/commands/report/results_report.py
+libs/domain/deliverables/stats_report.py
 """
 
 import logging
@@ -43,7 +43,7 @@ def get_game_results() -> list[list[str]]:
 
     # 0回の同着を削除
     for col in ("1.5位", "2.5位", "3.5位"):
-        if not df[col].sum():
+        if not int(df[col].sum()):
             df.drop(columns=[f"{col}", f"{col}率"], inplace=True)
 
     results: list[list[str]] = [df.columns.to_list()]

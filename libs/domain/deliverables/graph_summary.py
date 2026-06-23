@@ -1,5 +1,5 @@
 """
-libs/commands/graph/summary.py
+libs/domain/deliverables/graph_summary.py
 """
 
 import logging

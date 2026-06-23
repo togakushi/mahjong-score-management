@@ -156,6 +156,10 @@ class PlaceholderBuilder(ParameterData):
     """ゲスト無効時に未登録メンバーに付与する印"""
     format: Literal["default", "csv", "txt"] = field(default="default")
     """出力フォーマット指定"""
+    graph: bool = field(default=False)
+    """グラフ出力"""
+    report: bool = field(default=False)
+    """レポート出力"""
     filename: str = field(default="")
     """出力ファイル名"""
 

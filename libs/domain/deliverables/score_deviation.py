@@ -1,5 +1,5 @@
 """
-libs/commands/ranking/score_deviation.py
+libs/domain/deliverables/score_deviation.py
 """
 
 from typing import TYPE_CHECKING

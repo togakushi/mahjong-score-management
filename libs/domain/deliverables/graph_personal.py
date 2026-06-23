@@ -1,5 +1,5 @@
 """
-libs/commands/graph/personal.py
+libs/domain/deliverables/graph_personal.py
 """
 
 from typing import TYPE_CHECKING, Any

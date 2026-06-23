@@ -1,5 +1,5 @@
 """
-libs/commands/results/detail.py
+libs/domain/deliverables/detail.py
 """
 
 import textwrap
