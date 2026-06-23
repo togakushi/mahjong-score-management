@@ -20,7 +20,7 @@
 results
 +++++++
 
-:概要: 成績サマリを表示（参照： `function-summary` ）
+:概要: 成績サマリを表示（参照： `function-results` ）
 :書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
 :引数: - 専用オプション
 

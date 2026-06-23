@@ -4,6 +4,9 @@
 .. toctree::
    :maxdepth: 2
 
+   summary/index
+   analysis/index
+
    results/index
    graph/index
    ranking/index

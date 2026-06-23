@@ -1,4 +1,4 @@
-.. _function-summary:
+.. _function-results:
 
 サマリ生成
 ==========
