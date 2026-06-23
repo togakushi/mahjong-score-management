@@ -11,17 +11,15 @@ from pathlib import Path
 from pprint import pprint
 from typing import TYPE_CHECKING, Any
 
+from libs.commands.graph import personal as graph_personal
+from libs.commands.graph import summary as graph_summary
+
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
 from libs.bootstrap.configuration import arg_parser
-from libs.commands.graph import personal as graph_personal
-from libs.commands.graph import rating as graph_rating
-from libs.commands.graph import summary as graph_summary
 from libs.commands.help.entry import help_message
-from libs.commands.ranking import ranking
-from libs.commands.report import stats_list, stats_report
-from libs.commands.results import summary as results_summary
+from libs.domain import deliverables
 from libs.domain.command import CommandParser
 from libs.types import ServiceType
 from libs.utils import dictutil
@@ -164,9 +162,9 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
                 )
 
             case "summary":
-                m.data.text = f"{g.cfg.results.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.results, m)
-                results_summary.aggregation(m)
+                m.data.text = f"{g.cfg.summary.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
+                deliverables.results.aggregation(m)
                 pprint(
                     [
                         "exec: results.summary.aggregate()",
@@ -176,8 +174,8 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
                 )
 
             case "graph":
-                m.data.text = f"{g.cfg.graph.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.graph, m)
+                m.data.text = f"{g.cfg.summary.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
                 if g.params.filename:
                     save_filename = g.params.filename
                     g.params.filename = f"{save_filename}_point"
@@ -198,64 +196,40 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
                         graph_statistics(m)
 
             case "graph_point":
-                m.data.text = f"{g.cfg.graph.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.graph, m)
+                m.data.text = f"{g.cfg.summary.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
                 graph_point(m)
 
             case "graph_rank":
-                m.data.text = f"{g.cfg.graph.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.graph, m)
+                m.data.text = f"{g.cfg.summary.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
                 graph_rank(m)
 
             case "graph_statistics":
-                m.data.text = f"{g.cfg.graph.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.graph, m)
+                m.data.text = f"{g.cfg.summary.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
                 graph_statistics(m)
 
             case "ranking":
-                m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.ranking, m)
-                ranking.aggregation(m)
+                m.data.text = f"{g.cfg.analysis.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.analysis, m)
+                deliverables.ranking_calc.aggregation(m)
 
                 pprint(
                     [
-                        "exec: ranking.ranking.aggregation()",
-                        f"{g.params=}" if flag.get("dump") else "g.params={...}",
-                    ],
-                    width=120,
-                )
-
-            case "report":
-                m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.report, m)
-                stats_list.main(m)
-                pprint(
-                    [
-                        "exec: report.results_list.main()",
-                        f"{g.params=}" if flag.get("dump") else "g.params={...}",
-                    ],
-                    width=120,
-                )
-
-            case "pdf":
-                m.data.text = f"{g.cfg.report.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.report, m)
-                stats_report.gen_pdf(m)
-                pprint(
-                    [
-                        "exec: report.slackpost.results_report.gen_pdf()",
+                        "exec: deliverables.ranking_calc.aggregation()",
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
                 )
 
             case "rating":
-                m.data.text = f"{g.cfg.ranking.commandword[0]} {' '.join(add_argument)}"
-                g.params = dictutil.placeholder(g.cfg.results, m)
-                graph_rating.plot(m)
+                m.data.text = f"{g.cfg.analysis.commandword[0]} {' '.join(add_argument)}"
+                g.params = dictutil.placeholder(g.cfg.summary, m)
+                deliverables.graph_rating.plot(m)
                 pprint(
                     [
-                        "exec: graph.rating.plot()",
+                        "exec: deliverables.graph_rating.plot()",
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,

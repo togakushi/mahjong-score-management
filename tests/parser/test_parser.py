@@ -193,7 +193,7 @@ def test_search_range(keyword: str, search_range: list[ExtDt], parser_instance: 
     """
     m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"dummy_command {keyword}"})
-    params = dictutil.placeholder(g.cfg.results, m)
+    params = dictutil.placeholder(g.cfg.summary, m)
     ret_range = [params.starttime, params.endtime]
 
     print(f"\n  --> in: {keyword.split()} out: {ret_range}")

@@ -72,7 +72,7 @@ def test_command_check(
 
     """
     m = cast(ServiceAdapter, parser_instance).parser()
-    param = dictutil.placeholder(g.cfg.results, m)
+    param = dictutil.placeholder(g.cfg.summary, m)
 
     print(f"\n  --> in: {input_args.split()} check: {player_name=}, {player_list=}, {competition_list=}")
     print(f"\n  --> out: {param}")
@@ -109,7 +109,7 @@ def test_player_check(
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
     m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"{keyword} {input_args}"})
-    param = dictutil.placeholder(g.cfg.results, m)
+    param = dictutil.placeholder(g.cfg.summary, m)
 
     print(f"\n  --> in: {input_args.split()} out: {param}")
     assert param.player_name == player_name
@@ -145,7 +145,7 @@ def test_team_check(
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
     m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"event": {"text": f"{keyword} {input_args}"}})
-    param = dictutil.placeholder(g.cfg.results, m)
+    param = dictutil.placeholder(g.cfg.summary, m)
 
     print(f"\n  --> in: {input_args.split()} out: {param}")
     assert param.player_name == player_name
@@ -174,7 +174,7 @@ def test_guest_check(input_args: str, player_name: str, replace_name: str, parse
     keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
     m = cast(ServiceAdapter, parser_instance).parser()
     m.parser({"text": f"{keyword} {input_args}"})
-    g.params = dictutil.placeholder(g.cfg.results, m)
+    g.params = dictutil.placeholder(g.cfg.summary, m)
 
     parsed_name = g.params.player_name
     check_name = textutil.name_replace(parsed_name)

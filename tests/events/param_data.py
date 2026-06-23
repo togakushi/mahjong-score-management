@@ -42,19 +42,12 @@ message_help: dict[str, tuple[Any, ...]] = {
 
 message_event: dict[str, tuple[Any, ...]] = {
     # module, config, keyword
-    "results: default": ("results", "empty.ini", "麻雀成績"),
-    "results: over ride 1": ("results", "commandword.ini", "麻雀成績の別名１"),
-    "results: over ride 2": ("results", "commandword.ini", "麻雀成績の別名２"),
-    "results: double word": ("results", "empty.ini", "麻雀成績 未定義ワード"),
-    "graph: default": ("graph", "empty.ini", "麻雀グラフ"),
-    "graph: over ride": ("graph", "commandword.ini", "麻雀グラフの別名"),
-    "graph: double word": ("graph", "empty.ini", "麻雀グラフ 未定義ワード"),
-    "ranking: default": ("ranking", "empty.ini", "麻雀ランキング"),
-    "ranking: over ride": ("ranking", "commandword.ini", "麻雀ランキングの別名"),
-    "ranking: double word": ("ranking", "empty.ini", "麻雀ランキング 未定義ワード"),
-    "report: default": ("report", "empty.ini", "麻雀レポート"),
-    "report: over ride": ("report", "commandword.ini", "麻雀レポートの別名"),
-    "report: double word": ("report", "empty.ini", "麻雀レポート 未定義ワード"),
+    "summary: default": ("summary", "empty.ini", "成績集計"),
+    "summary: over ride": ("summary", "commandword.ini", "集計コマンドの別名１"),
+    "summary: double word": ("summary", "empty.ini", "成績集計 未定義ワード"),
+    "analysis: default": ("analysis", "empty.ini", "成績分析"),
+    "analysis: over ride": ("analysis", "commandword.ini", "分析コマンドの別名１"),
+    "analysis: double word": ("analysis", "empty.ini", "成績分析 未定義ワード"),
 }
 
 slash_help: dict[str, tuple[Any, ...]] = {
@@ -62,34 +55,6 @@ slash_help: dict[str, tuple[Any, ...]] = {
     "default": ("empty.ini", "help"),
     "double word": ("empty.ini", "help xxx"),
     "unknown": ("empty.ini", "xxx"),
-}
-
-slash_results: dict[str, tuple[Any, ...]] = {
-    # config, keyword
-    "default": ("empty.ini", "results"),
-    "alias": ("commandword.ini", "麻雀成績のエイリアス"),
-    "double word": ("empty.ini", "results xxx"),
-}
-
-slash_graph: dict[str, tuple[Any, ...]] = {
-    # config, keyword
-    "default": ("empty.ini", "graph"),
-    "alias": ("commandword.ini", "麻雀グラフのエイリアス"),
-    "double word": ("empty.ini", "graph xxx"),
-}
-
-slash_ranking: dict[str, tuple[Any, ...]] = {
-    # config, keyword
-    "default": ("empty.ini", "ranking"),
-    "alias": ("commandword.ini", "麻雀ランキングのエイリアス"),
-    "double word": ("empty.ini", "ranking xxx"),
-}
-
-slash_report: dict[str, tuple[Any, ...]] = {
-    # config, keyword
-    "default": ("empty.ini", "report"),
-    "alias": ("commandword.ini", "麻雀レポートのエイリアス"),
-    "double word": ("empty.ini", "report xxx"),
 }
 
 slash_check: dict[str, tuple[Any, ...]] = {

@@ -7,15 +7,12 @@ from typing import Any
 # チャンネル内呼び出しキーワードデフォルト値
 keyword_test: dict[str, tuple[Any, ...]] = {
     # parameter, config, word
-    "results_default": ("results", "empty.ini", "麻雀成績"),
-    "results_override1": ("results", "commandword.ini", "麻雀成績の別名１"),
-    "results_override2": ("results", "commandword.ini", "麻雀成績の別名２"),
-    "graph_default": ("graph", "empty.ini", "麻雀グラフ"),
-    "graph_override": ("graph", "commandword.ini", "麻雀グラフの別名"),
-    "ranking_default": ("ranking", "empty.ini", "麻雀ランキング"),
-    "ranking_override": ("ranking", "commandword.ini", "麻雀ランキングの別名"),
-    "report_default": ("report", "empty.ini", "麻雀レポート"),
-    "report_override": ("report", "commandword.ini", "麻雀レポートの別名"),
+    "summary: default": ("summary", "empty.ini", "成績集計"),
+    "summary: override 1": ("summary", "commandword.ini", "集計コマンドの別名１"),
+    "summary: override 2": ("summary", "commandword.ini", "集計コマンドの別名２"),
+    "analysis: default": ("analysis", "empty.ini", "成績分析"),
+    "analysis: override 1": ("analysis", "commandword.ini", "分析コマンドの別名１"),
+    "analysis: override 2": ("analysis", "commandword.ini", "分析コマンドの別名２"),
 }
 
 # ヘルプキーワード

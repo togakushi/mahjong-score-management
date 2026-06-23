@@ -9,11 +9,9 @@ import pytest
 
 import libs.global_value as g
 from libs.bootstrap import configuration
-from libs.commands.graph.entry import GraphConfig
+from libs.commands.analysis.entry import AnalysisConfig
 from libs.commands.help.entry import HelpConfig
-from libs.commands.ranking.entry import RankingConfig
-from libs.commands.report.entry import ReportConfig
-from libs.commands.results.entry import ResultsConfig
+from libs.commands.summary.entry import SummaryConfig
 
 if TYPE_CHECKING:
     from libs.domain.section import SubCommands
@@ -43,7 +41,7 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     assert "del" in g.cfg.alias.delete
 
 
-@pytest.mark.parametrize("input_args", ["results", "graph", "ranking", "report", "help"])
+@pytest.mark.parametrize("input_args", ["summary", "analysis", "help"])
 def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
     サブコマンド設定のデフォルト値が期待どおりであることを検証する。
@@ -91,18 +89,12 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
 
     sub_command: SubCommands
     match input_args:
-        case "results":
-            sub_command = ResultsConfig()
-            default.update(default_commandword="麻雀成績")
-        case "graph":
-            sub_command = GraphConfig()
-            default.update(default_commandword="麻雀グラフ")
-        case "ranking":
-            sub_command = RankingConfig()
-            default.update(default_commandword="麻雀ランキング")
-        case "report":
-            sub_command = ReportConfig()
-            default.update(default_commandword="麻雀レポート")
+        case "summary":
+            sub_command = SummaryConfig()
+            default.update(default_commandword="成績集計")
+        case "analysis":
+            sub_command = AnalysisConfig()
+            default.update(default_commandword="成績分析")
         case "help":
             sub_command = HelpConfig()
             default.update(default_commandword="麻雀ヘルプ")
