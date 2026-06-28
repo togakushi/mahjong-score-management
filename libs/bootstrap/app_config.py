@@ -57,7 +57,6 @@ class AppConfig:
             "setting",
             "summary",
             "analysis",
-            "report",
             "help",
             "alias",
             "member",
