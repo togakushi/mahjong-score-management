@@ -43,7 +43,7 @@ def report_bp(adapter: "ServiceAdapter") -> Blueprint:
         m = adapter.parser()
         cookie_data = adapter.functions.get_cookie(request)
         text = " ".join(cookie_data.values())
-        m.data.text = f"{g.cfg.report.commandword[0]} {text}".strip()
+        m.data.text = f"{current_app.config['analysis']} {text}".strip()
         libs.dispatcher.by_keyword(m)
 
         headline_title, message = adapter.functions.header_message(m)

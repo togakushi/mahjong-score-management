@@ -10,7 +10,6 @@ import pandas as pd
 from flask import Blueprint, abort, current_app, request
 
 import libs.dispatcher
-import libs.global_value as g
 from libs.functions import adjusting
 from libs.types import StyleOptions
 from libs.utils import dictutil
@@ -44,7 +43,7 @@ def graph_bp(adapter: "ServiceAdapter") -> Blueprint:
         m = adapter.parser()
         cookie_data = adapter.functions.get_cookie(request)
         text = " ".join(cookie_data.values())
-        m.data.text = f"{g.cfg.graph.commandword[0]} {text}"
+        m.data.text = f"{current_app.config['summary']} graph {text}"
         libs.dispatcher.by_keyword(m)
 
         _, message = adapter.functions.header_message(m)
