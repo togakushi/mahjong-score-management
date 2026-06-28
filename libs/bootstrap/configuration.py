@@ -307,6 +307,8 @@ def setup(init_db: bool = True) -> None:
 
     drop_items = ["section", "default_commandword", "command_suffix", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
+    logging.debug("summary: %s", g.cfg.summary.to_dict(drop_items))
+    logging.debug("analysis: %s", g.cfg.analysis.to_dict(drop_items))
     logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
     logging.debug("team: %s", g.cfg.team.to_dict(drop_items))
     logging.debug("help: %s", g.cfg.help.to_dict(drop_items))
