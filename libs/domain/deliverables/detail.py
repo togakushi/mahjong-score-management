@@ -213,6 +213,9 @@ def comparison(m: "MessageParserProtocol") -> None:
     record_df = g.params.read_data("RECORD_INFO")
     rank_df = g.params.read_data("RANK_INFO")
 
+    if g.params.anonymous:
+        g.params.player_list = list(g.params.mapping_dict.values())
+
     for name in result_df.query("id==0").sort_values("total_point", ascending=False)["name"]:
         work_stats = StatsInfo()
         if str(name) not in g.params.player_list:

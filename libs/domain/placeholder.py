@@ -468,7 +468,8 @@ class PlaceholderBuilder(ParameterData):
         # 匿名化
         if anonymization and self.anonymous:
             if "name" in df.columns:
-                self.mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
+                if not self.mapping_dict:
+                    self.mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
                 df["name"] = df["name"].replace(self.mapping_dict)
 
         if self.logging_verbose & 0x02:
