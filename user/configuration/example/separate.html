@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=04f9b848" />
     
-    <script src="../../_static/documentation_options.js?v=7de89ed4"></script>
+    <script src="../../_static/documentation_options.js?v=0c3dd48d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -169,7 +169,7 @@
 <h1>セパレート機能設定例<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <section id="id2">
 <h2>機能概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>セパレート機能は <a class="reference internal" href="../../functions/output/results/index.html#function-summary"><span class="std std-ref">サマリ生成</span></a> などで集計するデータを <em>チャンネル識別子</em> で区別する設定となる。</p>
+<p>セパレート機能は <a class="reference internal" href="../../functions/output/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> などで集計するデータを <em>チャンネル識別子</em> で区別する設定となる。</p>
 <p>データに記録されるゲーム結果には「 <em>成績記録キーワード</em> 」が発行されたチャンネル固有の <em>チャンネル識別子</em> が保存され、「どこから入力されたデータか」を区別できるようになっている。</p>
 <section id="id3">
 <h3>チャンネル識別子のフォーマット<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
@@ -183,13 +183,13 @@
 <section id="id4">
 <h3>集計データ抽出ルール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <div class="line-block">
-<div class="line">基本となるデータ抽出条件は <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> 単位となり、「 <em>ルール識別子</em> 」が抽出条件として指定されている。</div>
-<div class="line">「 <em>成績記録キーワード</em> 」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどの <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使うかが定義されている。</div>
+<div class="line">基本となるデータ抽出条件は <a class="reference internal" href="../../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> 単位となり、「 <em>ルール識別子</em> 」が抽出条件として指定されている。</div>
+<div class="line">「 <em>成績記録キーワード</em> 」で保存される成績は <a class="reference internal" href="../main/mahjong.html#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> によってどの <a class="reference internal" href="../../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使うかが定義されている。</div>
 <div class="line">異なるサービスや異なるチャンネルでも同じマッピングの定義であれば、同じ「 <em>ルール識別子</em> 」が使用される。</div>
-<div class="line">同じ <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
+<div class="line">同じ <a class="reference internal" href="../../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を使用していれば、Discordで入力された成績データをSlackで参照できる。</div>
 </div>
 <p>セパレート機能を有効にした場合、データの抽出条件に <em>チャンネル識別子</em> が追加され、集計コマンドを発行したチャンネルの <em>チャンネル識別子</em> を持つデータだけが集計対象となる。</p>
-<p>付与される <em>チャンネル識別子</em> は「 <a class="reference internal" href="../../functions/output/help/index.html#function-help"><span class="std std-ref">ヘルプ出力</span></a> 」機能で内容を確認できる。</p>
+<p>付与される <em>チャンネル識別子</em> は「 <a class="reference internal" href="../../functions/output/help/index.html#function-help"><span class="std std-ref">ヘルプ</span></a> 」機能で内容を確認できる。</p>
 </section>
 <section id="id5">
 <h3>セパレート機能設定箇所<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
@@ -232,7 +232,7 @@
 </div>
 <div class="line-block">
 <div class="line">サービス設定のセパレート機能有効化は、 Slack / Discord のデータを分ける。</div>
-<div class="line">同じ <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録でもSlackで実行した集計コマンドの結果にDiscordから登録されたデータは含まれない。</div>
+<div class="line">同じ <a class="reference internal" href="../../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録でもSlackで実行した集計コマンドの結果にDiscordから登録されたデータは含まれない。</div>
 </div>
 <p>該当サービスのすべてチャンネルでセパレート機能が有効になる。</p>
 <div class="admonition note">
@@ -260,7 +260,7 @@
 </div>
 </div>
 <p>チャンネル個別設定で使用するセクション名は「<strong>&lt;サービス名&gt;_&lt;サービス内で使われるチャンネルID&gt;</strong> 」となる(変更不可)。</p>
-<p>チャンネルAで有効、チャンネルBは無効とし、同じ <a class="reference internal" href="../../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録を集計する場合は以下のように集計される。</p>
+<p>チャンネルAで有効、チャンネルBは無効とし、同じ <a class="reference internal" href="../../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> の記録を集計する場合は以下のように集計される。</p>
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">チャンネルA</span></span></dt>
@@ -291,7 +291,7 @@
 <section id="id6">
 <h3>チャンネル設定情報<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <div class="line-block">
-<div class="line">「 <a class="reference internal" href="../../functions/output/help/index.html#function-help"><span class="std std-ref">ヘルプ出力</span></a> 」コマンドにチャンネルの設定情報が表示される。</div>
+<div class="line">「 <a class="reference internal" href="../../functions/output/help/index.html#function-help"><span class="std std-ref">ヘルプ</span></a> 」コマンドにチャンネルの設定情報が表示される。</div>
 <div class="line">セパレート機能が有効になっているか、使用される <em>チャンネル識別子</em> の確認ができる。</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id13">
@@ -505,8 +505,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.16.0.
-      Last updated on 2026-06-18.
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
     </div>
 
   </body>

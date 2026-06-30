@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=04f9b848" />
     
-    <script src="../../_static/documentation_options.js?v=7de89ed4"></script>
+    <script src="../../_static/documentation_options.js?v=0c3dd48d"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,7 +66,7 @@
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
 <li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
-<li><a class="reference internal" href="#id9">パラメータの評価順序</a></li>
+<li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>
 </ul>
@@ -158,31 +158,27 @@
   <section id="index-0">
 <span id="id1"></span><h1>成績管理<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h1>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">results</span></code> <code class="docutils literal notranslate"><span class="pre">graph</span></code> <code class="docutils literal notranslate"><span class="pre">ranking</span></code> <code class="docutils literal notranslate"><span class="pre">report</span></code> <code class="docutils literal notranslate"><span class="pre">help</span></code> の各セクションで定義できる項目。</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">summary</span></code> / <code class="docutils literal notranslate"><span class="pre">analysis</span></code> / <code class="docutils literal notranslate"><span class="pre">help</span></code> の各セクションで定義できる項目。</div>
 <div class="line">すべてのセクションでパラメータの定義は可能だが、動作に影響があるのもは以下の表のとおりとなる。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 9.1%" />
-<col style="width: 18.2%" />
-<col style="width: 9.1%" />
-<col style="width: 9.1%" />
-<col style="width: 6.1%" />
-<col style="width: 6.1%" />
-<col style="width: 6.1%" />
-<col style="width: 6.1%" />
-<col style="width: 6.1%" />
-<col style="width: 24.2%" />
+<col style="width: 10.3%" />
+<col style="width: 20.7%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>キー</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>型</p></th>
 <th class="head"><p>未定義時</p></th>
-<th class="head"><p>results</p></th>
-<th class="head"><p>graph</p></th>
-<th class="head"><p>ranking</p></th>
-<th class="head"><p>report</p></th>
+<th class="head"><p>summary</p></th>
+<th class="head"><p>analysis</p></th>
 <th class="head"><p>help</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
@@ -204,8 +200,6 @@
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td><p>カンマ区切りで複数ワードの設定が可能</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong sub_commands_section">
@@ -224,8 +218,6 @@
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td><p>カンマ区切りで複数ワードの設定が可能</p></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong sub_commands_section">
@@ -237,8 +229,6 @@
 <td><p>検索範囲未指定時のデフォルト値</p></td>
 <td><p>文字列</p></td>
 <td><p>当日</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td></td>
@@ -258,8 +248,6 @@
 </td>
 <td><p>空欄</p></td>
 <td><p>✔</p></td>
-<td></td>
-<td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p><a class="reference internal" href="../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> の <a class="reference internal" href="../rule/ruleset.html#rule_set_section-dropitems" title="dropitems"><code class="xref mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">dropitems</span></code></a> も追加される</p></td>
@@ -275,8 +263,6 @@
 <td><p>True</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -291,8 +277,6 @@
 <td><p>True</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td></td>
 <td></td>
 <td><p>全体成績用</p></td>
 </tr>
@@ -307,8 +291,6 @@
 <td><p>True</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td></td>
 <td></td>
 <td><p>個人成績用</p></td>
 </tr>
@@ -321,8 +303,6 @@
 <td><p>比較モードで表示する</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -340,8 +320,6 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
 <td><p>内部フラグ（ <code class="docutils literal notranslate"><span class="pre">True</span></code> 指定時は強制表示 ）</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong sub_commands_section">
@@ -350,11 +328,9 @@
 <dd></dd></dl>
 
 </td>
-<td><p>対戦マトリックス表示</p></td>
+<td><p>対戦マトリクス表示</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -369,8 +345,6 @@
 <td><p>デフォルトの集計対象を切り替え</p></td>
 <td><p>真偽値</p></td>
 <td><p>True</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td></td>
@@ -393,10 +367,8 @@
 <td><p>「統計」オプションを常に指定</p></td>
 <td><p>真偽値</p></td>
 <td><p>False</p></td>
-<td><p>✔ <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
-<td><p>✔ <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
-<td></td>
-<td><p>✔ <a class="footnote-reference brackets" href="#id7" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
 <td></td>
 <td><dl class="field-list simple">
 <dt class="field-odd">True<span class="colon">:</span></dt>
@@ -419,8 +391,6 @@
 <td><p>空欄</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td></td>
 <td><p>キーで指定しているデフォルト値は上書きされる</p></td>
 </tr>
@@ -433,8 +403,6 @@
 <td><p>規定打数(指定値固定)</p></td>
 <td><p>数値(int)</p></td>
 <td><p>1</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td></td>
@@ -451,8 +419,6 @@
 <td><p>0.05</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
-<td><p>✔</p></td>
-<td><p>✔</p></td>
 <td></td>
 <td><p>対戦数 × <a class="reference internal" href="#sub_commands_section-stipulated_rate" title="stipulated_rate"><code class="xref any mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">stipulated_rate</span></code></a> （切り上げ）+ 1</p></td>
 </tr>
@@ -466,30 +432,14 @@
 <td><p>数値(int)</p></td>
 <td><p>3</p></td>
 <td></td>
-<td></td>
 <td><p>✔</p></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id5" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>座席データ、レコードデータ</p>
-</aside>
-<aside class="footnote brackets" id="id6" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
-<p>統計グラフ</p>
-</aside>
-<aside class="footnote brackets" id="id7" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
-<p>月別ゲーム統計</p>
-</aside>
-</aside>
 <section id="function-call-keyword">
-<span id="id8"></span><h2>機能呼び出しキーワード<a class="headerlink" href="#function-call-keyword" title="Link to this heading">¶</a></h2>
+<span id="id2"></span><h2>機能呼び出しキーワード<a class="headerlink" href="#function-call-keyword" title="Link to this heading">¶</a></h2>
 <p>各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a> 、 <a class="reference internal" href="#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の定義状況によって登録される呼び出しキーワードが変化する。</div>
@@ -575,8 +525,8 @@
 </tbody>
 </table>
 </section>
-<section id="id9">
-<h2>パラメータの評価順序<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h2>パラメータの評価順序<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <p>以下の順に評価され、値を上書きしていく。</p>
 <ol class="arabic simple">
 <li><p>メイン設定ファイルからデフォルト値読み込み</p>
@@ -587,7 +537,7 @@
 <li><p><a class="reference internal" href="#sub_commands_section-always_argument" title="always_argument"><code class="xref any mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">always_argument</span></code></a> の処理</p></li>
 <li><p>コマンドから与えられた引数の処理</p></li>
 </ol>
-<p>コマンドからの <a class="reference internal" href="../../functions/appendix/common_options.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> があれば指定されている範囲だけが対象になる。</p>
+<p>コマンドからの <a class="reference internal" href="../../functions/options/common.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> があれば指定されている範囲だけが対象になる。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <ul class="simple">
@@ -611,7 +561,7 @@
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
 <li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
-<li><a class="reference internal" href="#id9">パラメータの評価順序</a></li>
+<li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>
 </ul>
@@ -695,8 +645,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.16.0.
-      Last updated on 2026-06-18.
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
     </div>
 
   </body>

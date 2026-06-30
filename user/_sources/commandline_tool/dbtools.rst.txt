@@ -124,28 +124,31 @@ dbtools.py
    | エクスポートされたCSVファイルの1行目はヘッダ情報であり、インポートの際に必要となる。
    | ヘッダ情報は以下の通り。
 
-   .. code-block::
-      :caption: メンバーリスト (export_member.csv)
+   メンバーリスト
+      .. code-block::
+         :caption: export_member.csv
 
-      name,slack_id,flying,reward,abuse,team_id
+         name,slack_id,flying,reward,abuse,team_id
 
-   ゲストを除いたメンバーのリスト。
+      ゲストを除いたメンバーのリスト。
 
-   | ``team_id`` が空欄のメンバーはどのチームにも所属しない（未所属）。
-   | 存在しないチームIDが指定されている場合は未所属扱いとなる。
+      | ``team_id`` が空欄のメンバーはどのチームにも所属しない（未所属）。
+      | 存在しないチームIDが指定されている場合は未所属扱いとなる。
 
-   .. code-block::
-      :caption: 別名リスト (export_alias.csv)
+   別名リスト
+      .. code-block::
+         :caption: export_alias.csv
 
-      name,member
+         name,member
 
-   | ``name`` が別名、 ``member`` がメンバー名（表示される名前）となる。
-   | 1行に1組のペアを記述する。
+      | ``name`` が別名、 ``member`` がメンバー名（表示される名前）となる。
+      | 1行に1組のペアを記述する。
 
-   .. code-block::
-      :caption: 別名リスト (export_team.csv)
+   チームリスト
+      .. code-block::
+         :caption: export_team.csv
 
-      id,name
+         id,name
 
 .. option:: --import=PREFIX
 

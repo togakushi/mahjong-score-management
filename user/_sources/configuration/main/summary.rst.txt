@@ -1,30 +1,26 @@
 .. index::
    single: メイン設定; 成績管理
-   pair: メイン設定; results section
-   pair: メイン設定; graph section
-   pair: メイン設定; ranking section
-   pair: メイン設定; report section
+   pair: メイン設定; summary section
+   pair: メイン設定; analysis section
    pair: メイン設定; help section
 
 成績管理
 ========
 
-| ``results`` ``graph`` ``ranking`` ``report`` ``help`` の各セクションで定義できる項目。
+| ``summary`` / ``analysis`` / ``help`` の各セクションで定義できる項目。
 | すべてのセクションでパラメータの定義は可能だが、動作に影響があるのもは以下の表のとおりとなる。
 
 .. list-table::
    :width: 100%
-   :widths: 15 30 15 15 10 10 10 10 10 40
+   :widths: 15 30 15 15 10 10 10 40
    :header-rows: 1
 
    * - キー
      - 内容
      - 型
      - 未定義時
-     - results
-     - graph
-     - ranking
-     - report
+     - summary
+     - analysis
      - help
      - 備考
    * - .. sub_commands_section:: commandword
@@ -32,8 +28,6 @@
      - | 文字列
        | (カンマ区切り)
      - `function-call-keyword` 参照
-     - |:/:|
-     - |:/:|
      - |:/:|
      - |:/:|
      - |:/:|
@@ -46,15 +40,11 @@
      - |:/:|
      - |:/:|
      - |:/:|
-     - |:/:|
-     - |:/:|
      - カンマ区切りで複数ワードの設定が可能
    * - .. sub_commands_section:: aggregation_range
      - 検索範囲未指定時のデフォルト値
      - 文字列
      - 当日
-     - |:/:|
-     - |:/:|
      - |:/:|
      - |:/:|
      -
@@ -65,8 +55,6 @@
        | (カンマ区切り)
      - 空欄
      - |:/:|
-     -
-     - |:/:|
      - |:/:|
      - |:/:|
      - `rule-set` の :rule_set_section:`dropitems` も追加される
@@ -76,8 +64,6 @@
      - True
      - |:/:|
      - |:/:|
-     - |:/:|
-     -
      -
      -
    * - .. sub_commands_section:: guest_skip
@@ -86,8 +72,6 @@
      - True
      - |:/:|
      - |:/:|
-     - |:/:|
-     -
      -
      - 全体成績用
    * - .. sub_commands_section:: guest_skip2
@@ -96,16 +80,12 @@
      - True
      - |:/:|
      - |:/:|
-     - |:/:|
-     -
      -
      - 個人成績用
    * - .. sub_commands_section:: score_comparisons
      - 比較モードで表示する
      - 真偽値
      - False
-     -
-     -
      -
      -
      -
@@ -117,15 +97,11 @@
      -
      -
      -
-     -
-     -
      - 内部フラグ（ ``True`` 指定時は強制表示 ）
    * - .. sub_commands_section:: versus_matrix
-     - 対戦マトリックス表示
+     - 対戦マトリクス表示
      - 真偽値
      - False
-     -
-     -
      -
      -
      -
@@ -136,8 +112,6 @@
      - True
      - |:/:|
      - |:/:|
-     - |:/:|
-     - |:/:|
      -
      - :True: 個人成績
        :False: チーム成績
@@ -145,10 +119,8 @@
      - 「統計」オプションを常に指定
      - 真偽値
      - False
-     - |:/:| [#]_
-     - |:/:| [#]_
-     -
-     - |:/:| [#]_
+     - |:/:|
+     - |:/:|
      -
      - :True: 統計情報の強制表示
        :False: 統計オプションの指定状態に依存
@@ -156,8 +128,6 @@
      - コマンドに常に指定する文字列を追加
      - 文字列
      - 空欄
-     - |:/:|
-     - |:/:|
      - |:/:|
      - |:/:|
      -
@@ -168,16 +138,12 @@
      - 1
      - |:/:|
      - |:/:|
-     - |:/:|
-     - |:/:|
      -
      - ``0`` が指定されている場合は `stipulated_rate` を使う
    * - .. sub_commands_section:: stipulated_rate
      - 規定打数を対戦数よって決める
      - 数値(float)
      - 0.05
-     - |:/:|
-     - |:/:|
      - |:/:|
      - |:/:|
      -
@@ -187,17 +153,11 @@
      - 数値(int)
      - 3
      -
-     -
      - |:/:|
-     -
      -
      -
 
 ..
-
-.. [#] 座席データ、レコードデータ
-.. [#] 統計グラフ
-.. [#] 月別ゲーム統計
 
 
 .. _function-call-keyword:

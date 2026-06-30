@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>libs.domain.deliverables package &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
+    
+    <script src="_static/documentation_options.js?v=1aa419d7"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="libs.domain.deliverables.detail module" href="libs.domain.deliverables.detail.html" />
+    <link rel="prev" title="libs.domain package" href="libs.domain.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.deliverables package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.html"
+                          title="previous chapter">libs.domain package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.deliverables.detail.html"
+                          title="next chapter">libs.domain.deliverables.detail module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.deliverables.detail.html" title="libs.domain.deliverables.detail module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.html" title="libs.domain package"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" accesskey="U">libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-libs.domain.deliverables">
+<span id="libs-domain-deliverables-package"></span><h1>libs.domain.deliverables package<a class="headerlink" href="#module-libs.domain.deliverables" title="Link to this heading">¶</a></h1>
+<p>集計関数</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="libs.domain.deliverables.detail.html"><span class="doc">libs.domain.deliverables.detail module</span></a>: 個人/チーム成績詳細を集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.results.html"><span class="doc">libs.domain.deliverables.results module</span></a>: 成績サマリを集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.versus.html"><span class="doc">libs.domain.deliverables.versus module</span></a>: 直接対戦成績を集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.ranking_calc.html"><span class="doc">libs.domain.deliverables.ranking_calc module</span></a>: ランキングを集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.rating_calc.html"><span class="doc">libs.domain.deliverables.rating_calc module</span></a>: レーティングを集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.score_deviation.html"><span class="doc">libs.domain.deliverables.score_deviation module</span></a>: 素点分析表を生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.graph_personal.html"><span class="doc">libs.domain.deliverables.graph_personal module</span></a>: 個人/チーム/統計グラフを生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.graph_rating.html"><span class="doc">libs.domain.deliverables.graph_rating module</span></a>: レーティング推移グラフを生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.graph_regression.html"><span class="doc">libs.domain.deliverables.graph_regression module</span></a>: 平均順位/平均素点の分散図を生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.graph_summary.html"><span class="doc">libs.domain.deliverables.graph_summary module</span></a>: ポイント推移/順位推移グラフを生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.stats_report.html"><span class="doc">libs.domain.deliverables.stats_report module</span></a>: 成績報告書を作成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.winner.html"><span class="doc">libs.domain.deliverables.winner module</span></a>: 月間上位5名の表示</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.matrix.html"><span class="doc">libs.domain.deliverables.matrix module</span></a>: 直接対戦マトリクスを生成</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.monthly.html"><span class="doc">libs.domain.deliverables.monthly module</span></a>: 月間成績を集計</p></li>
+<li><p><a class="reference internal" href="libs.domain.deliverables.stats_list.html"><span class="doc">libs.domain.deliverables.stats_list module</span></a>: 個人/チーム成績一覧表を生成</p></li>
+</ul>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.detail.html">libs.domain.deliverables.detail module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.detail.html#libs.domain.deliverables.detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html">libs.domain.deliverables.graph_personal module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_personal.html#libs.domain.deliverables.graph_personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.graph_rating.html">libs.domain.deliverables.graph_rating module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_rating.html#libs.domain.deliverables.graph_rating.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_rating.html#libs.domain.deliverables.graph_rating._graph_generation"><code class="docutils literal notranslate"><span class="pre">_graph_generation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_rating.html#libs.domain.deliverables.graph_rating._graph_generation_plotly"><code class="docutils literal notranslate"><span class="pre">_graph_generation_plotly()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_rating.html#libs.domain.deliverables.graph_rating._graph_title"><code class="docutils literal notranslate"><span class="pre">_graph_title()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.graph_regression.html">libs.domain.deliverables.graph_regression module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_regression.html#libs.domain.deliverables.graph_regression.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html">libs.domain.deliverables.graph_summary module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams"><code class="docutils literal notranslate"><span class="pre">GraphParams</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.graph_type"><code class="docutils literal notranslate"><span class="pre">GraphParams.graph_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.title_text"><code class="docutils literal notranslate"><span class="pre">GraphParams.title_text</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.xlabel_text"><code class="docutils literal notranslate"><span class="pre">GraphParams.xlabel_text</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.ylabel_text"><code class="docutils literal notranslate"><span class="pre">GraphParams.ylabel_text</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.total_game_count"><code class="docutils literal notranslate"><span class="pre">GraphParams.total_game_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.target_data"><code class="docutils literal notranslate"><span class="pre">GraphParams.target_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.pivot"><code class="docutils literal notranslate"><span class="pre">GraphParams.pivot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.horizontal"><code class="docutils literal notranslate"><span class="pre">GraphParams.horizontal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.GraphParams.save_file"><code class="docutils literal notranslate"><span class="pre">GraphParams.save_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.point_plot"><code class="docutils literal notranslate"><span class="pre">point_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary.rank_plot"><code class="docutils literal notranslate"><span class="pre">rank_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary._data_collection"><code class="docutils literal notranslate"><span class="pre">_data_collection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary._graph_generation"><code class="docutils literal notranslate"><span class="pre">_graph_generation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary._graph_generation_plotly"><code class="docutils literal notranslate"><span class="pre">_graph_generation_plotly()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.graph_summary.html#libs.domain.deliverables.graph_summary._graph_title"><code class="docutils literal notranslate"><span class="pre">_graph_title()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.matrix.html">libs.domain.deliverables.matrix module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.matrix.html#libs.domain.deliverables.matrix.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.matrix.html#libs.domain.deliverables.matrix.matrix_table"><code class="docutils literal notranslate"><span class="pre">matrix_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.monthly.html">libs.domain.deliverables.monthly module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.monthly.html#libs.domain.deliverables.monthly.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.ranking_calc.html">libs.domain.deliverables.ranking_calc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.ranking_calc.html#libs.domain.deliverables.ranking_calc.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.rating_calc.html">libs.domain.deliverables.rating_calc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.rating_calc.html#libs.domain.deliverables.rating_calc.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.rating_calc.html#libs.domain.deliverables.rating_calc.calculation_rating"><code class="docutils literal notranslate"><span class="pre">calculation_rating()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.results.html">libs.domain.deliverables.results module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.results.html#libs.domain.deliverables.results.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.results.html#libs.domain.deliverables.results.difference"><code class="docutils literal notranslate"><span class="pre">difference()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.score_deviation.html">libs.domain.deliverables.score_deviation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.score_deviation.html#libs.domain.deliverables.score_deviation.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.stats_list.html">libs.domain.deliverables.stats_list module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_list.html#libs.domain.deliverables.stats_list.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_list.html#libs.domain.deliverables.stats_list.graph_generation"><code class="docutils literal notranslate"><span class="pre">graph_generation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_list.html#libs.domain.deliverables.stats_list.text_generation"><code class="docutils literal notranslate"><span class="pre">text_generation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_list.html#libs.domain.deliverables.stats_list.csv_generation"><code class="docutils literal notranslate"><span class="pre">csv_generation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_list.html#libs.domain.deliverables.stats_list.df_generation"><code class="docutils literal notranslate"><span class="pre">df_generation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.stats_report.html">libs.domain.deliverables.stats_report module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.get_game_results"><code class="docutils literal notranslate"><span class="pre">get_game_results()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.get_count_results"><code class="docutils literal notranslate"><span class="pre">get_count_results()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.get_count_moving"><code class="docutils literal notranslate"><span class="pre">get_count_moving()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.graphing_mean_rank"><code class="docutils literal notranslate"><span class="pre">graphing_mean_rank()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.graphing_total_points"><code class="docutils literal notranslate"><span class="pre">graphing_total_points()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.graphing_rank_distribution"><code class="docutils literal notranslate"><span class="pre">graphing_rank_distribution()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.gen_pdf"><code class="docutils literal notranslate"><span class="pre">gen_pdf()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.cover_page"><code class="docutils literal notranslate"><span class="pre">cover_page()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.entire_aggregate"><code class="docutils literal notranslate"><span class="pre">entire_aggregate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.periodic_aggregation"><code class="docutils literal notranslate"><span class="pre">periodic_aggregation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.stats_report.html#libs.domain.deliverables.stats_report.sectional_aggregate"><code class="docutils literal notranslate"><span class="pre">sectional_aggregate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.versus.html">libs.domain.deliverables.versus module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.versus.html#libs.domain.deliverables.versus.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.versus.html#libs.domain.deliverables.versus.tmpl_header"><code class="docutils literal notranslate"><span class="pre">tmpl_header()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.versus.html#libs.domain.deliverables.versus.tmpl_vs_table"><code class="docutils literal notranslate"><span class="pre">tmpl_vs_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.domain.deliverables.winner.html">libs.domain.deliverables.winner module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.deliverables.winner.html#libs.domain.deliverables.winner.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">libs.domain.deliverables package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="libs.domain.html"
+                          title="previous chapter">libs.domain package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="libs.domain.deliverables.detail.html"
+                          title="next chapter">libs.domain.deliverables.detail module</a></p>
+  </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.deliverables.detail.html" title="libs.domain.deliverables.detail module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="libs.domain.html" title="libs.domain package"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">API Reference</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables package</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
+    </div>
+
+  </body>
+</html>

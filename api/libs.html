@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=086225cd"></script>
+    <script src="_static/documentation_options.js?v=1aa419d7"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -183,17 +183,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.commands.html">libs.commands package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.commands.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="libs.commands.graph.html">libs.commands.graph package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.analysis.html">libs.commands.analysis package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.commands.help.html">libs.commands.help package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.commands.ranking.html">libs.commands.ranking package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.commands.registry.html">libs.commands.registry package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.commands.report.html">libs.commands.report package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.commands.results.html">libs.commands.results package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.summary.html">libs.commands.summary package</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.domain.html">libs.domain package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.domain.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.deliverables.html">libs.domain.deliverables package</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="libs.domain.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.command.html">libs.domain.command module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.domain.datamodels.html">libs.domain.datamodels module</a></li>
@@ -291,6 +293,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libs.types.html#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.SUMMARY"><code class="docutils literal notranslate"><span class="pre">CommandType.SUMMARY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.ANALYSIS"><code class="docutils literal notranslate"><span class="pre">CommandType.ANALYSIS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
@@ -326,8 +330,8 @@
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="libs.types.html#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
@@ -492,8 +496,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.16.0.
-      Last updated on 2026-06-18.
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
     </div>
 
   </body>

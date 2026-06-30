@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../_static/user_doc.css?v=04f9b848" />
     
-    <script src="../_static/documentation_options.js?v=7de89ed4"></script>
+    <script src="../_static/documentation_options.js?v=0c3dd48d"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -356,7 +356,7 @@
 </dd>
 </dl>
 <div class="line-block">
-<div class="line">DBからスコア情報を取り込み、引数で指定した <a class="reference internal" href="../configuration/rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a>  の <a class="reference internal" href="../glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で再計算する。</div>
+<div class="line">DBからスコア情報を取り込み、引数で指定した <a class="reference internal" href="../configuration/rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a>  の <a class="reference internal" href="../functions/appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で再計算する。</div>
 <div class="line">過去のデータを含め、すべてのレコードのポイントを再計算して更新する(変更点がなくても必ずupdateされる)。</div>
 </div>
 </dd></dl>
@@ -378,8 +378,9 @@
 <div class="line">エクスポートされたCSVファイルの1行目はヘッダ情報であり、インポートの際に必要となる。</div>
 <div class="line">ヘッダ情報は以下の通り。</div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">メンバーリスト (export_member.csv)</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<dl>
+<dt>メンバーリスト</dt><dd><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">export_member.csv</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span><span class="n">slack_id</span><span class="p">,</span><span class="n">flying</span><span class="p">,</span><span class="n">reward</span><span class="p">,</span><span class="n">abuse</span><span class="p">,</span><span class="n">team_id</span>
 </pre></div>
 </div>
@@ -389,8 +390,9 @@
 <div class="line"><code class="docutils literal notranslate"><span class="pre">team_id</span></code> が空欄のメンバーはどのチームにも所属しない（未所属）。</div>
 <div class="line">存在しないチームIDが指定されている場合は未所属扱いとなる。</div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">別名リスト (export_alias.csv)</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+</dd>
+<dt>別名リスト</dt><dd><div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">export_alias.csv</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span><span class="n">member</span>
 </pre></div>
 </div>
@@ -399,12 +401,15 @@
 <div class="line"><code class="docutils literal notranslate"><span class="pre">name</span></code> が別名、 <code class="docutils literal notranslate"><span class="pre">member</span></code> がメンバー名（表示される名前）となる。</div>
 <div class="line">1行に1組のペアを記述する。</div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">別名リスト (export_team.csv)</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+</dd>
+<dt>チームリスト</dt><dd><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">export_team.csv</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span><span class="n">name</span>
 </pre></div>
 </div>
 </div>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="std option">
@@ -568,8 +573,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.16.0.
-      Last updated on 2026-06-18.
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
     </div>
 
   </body>

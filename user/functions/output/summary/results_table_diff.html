@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>成績サマリ表（差分） &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/user_doc.css?v=04f9b848" />
+    
+    <script src="../../../_static/documentation_options.js?v=0c3dd48d"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="成績上位者" href="winner.html" />
+    <link rel="prev" title="成績サマリ表（全体）" href="results_table_all.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">成績サマリ表（差分）</a><ul>
+<li><a class="reference internal" href="#id2">オプション</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="results_table_all.html"
+                          title="previous chapter">成績サマリ表（全体）</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="winner.html"
+                          title="next chapter">成績上位者</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/summary/results_table_diff.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="winner.html" title="成績上位者"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="results_table_all.html" title="成績サマリ表（全体）"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >出力機能説明</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">集計コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績サマリ表（差分）</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="deliverables-results-table-diff">
+<span id="id1"></span><h1>成績サマリ表（差分）<a class="headerlink" href="#deliverables-results-table-diff" title="Link to this heading">¶</a></h1>
+<p>記録された成績データを集計し、表形式で表示する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">コマンドタイプ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p>
+</dd>
+<dt class="field-even">必須オプション<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="index.html#summary-比較" title="比較"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">比較</span></code></a> or <a class="reference internal" href="index.html#summary-比較" title="差分"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">差分</span></code></a> or <a class="reference internal" href="index.html#summary-比較" title="点差"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">点差</span></code></a></p>
+</dd>
+<dt class="field-odd">ターゲット指定<span class="colon">:</span></dt>
+<dd class="field-odd"><p>任意</p>
+</dd>
+<dt class="field-even">個別オプション<span class="colon">:</span></dt>
+<dd class="field-even"><p>なし</p>
+</dd>
+</dl>
+<section id="id2">
+<h2>オプション<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 20.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>分類</p></th>
+<th class="head"><p>項目</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p> 共通オプション</p></td>
+<td><div class="line-block">
+<div class="line">プレイヤー名</div>
+<div class="line">チーム名</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">ターゲットの指定。</div>
+<div class="line">指定プレイヤー/チームに絞り込んで表を生成する。</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>集計範囲指定</p></td>
+<td><p><a class="reference internal" href="../../options/common.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> を参照。</p></td>
+</tr>
+<tr class="row-even"><td><p>その他のオプション</p></td>
+<td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">共通オプション</span></a> を参照。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>通算</dt><dd><p>獲得ポイントの合計値。</p>
+</dd>
+<dt>平均</dt><dd><p>獲得ポイントの平均値。</p>
+</dd>
+<dt>順位分布</dt><dd><div class="line-block">
+<div class="line">獲得した順位の回数と平均順位。</div>
+<div class="line">以下の形式で表現される。</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">1位回数</span> <span class="pre">+</span> <span class="pre">2位回数</span> <span class="pre">+</span> <span class="pre">3位回数</span> <span class="pre">+</span> <span class="pre">4位回数</span> <span class="pre">=</span> <span class="pre">トータルゲーム数（平均順位）</span></code></p>
+</dd>
+<dt>飛</dt><dd><p>箱下の回数。</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">メンバー名の指定がない場合、集計期間内で記録されている全メンバーの通算ポイント順に結果を表示する。</div>
+<div class="line"><a class="reference internal" href="../../options/common.html#guest-option"><span class="std std-ref">ゲスト関連オプション</span></a> によって集計内容が変わるため、特記には集計条件が記載される。</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">成績サマリ表サンプル（差分表示）</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績サマリ】
+    検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    最初のゲーム：yyyy/mm/dd HH:MM:SS
+    最後のゲーム：yyyy/mm/dd HH:MM:SS
+    集計対象：8 ゲーム  / トバされた人（延べ）：2 人
+    特記事項：ゲスト置換なし(*：未登録プレイヤー)
+
+【通算ポイント(差分)】
+名前         通算 順位差 トップ差
+---------- ------ ------ --------
+Player_007  +57.1  *****    *****
+Player_011  +53.0    4.1      4.1
+Player_006  +43.6    9.4     13.5
+Player_002  +30.8   12.8     26.3
+Player_000  +14.5   16.3     42.6
+Player_004   +8.0    6.5     49.1
+Player_009  ▲22.2   30.2     79.3
+Player_005  ▲22.3    0.1     79.4
+Player_010  ▲26.5    4.2     83.6
+Player_003  ▲28.6    2.1     85.7
+Player_008  ▲42.4   13.8     99.5
+Player_001  ▲65.0   22.6    122.1
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">成績サマリ表（差分）</a><ul>
+<li><a class="reference internal" href="#id2">オプション</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="results_table_all.html"
+                          title="previous chapter">成績サマリ表（全体）</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="winner.html"
+                          title="next chapter">成績上位者</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/functions/output/summary/results_table_diff.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="winner.html" title="成績上位者"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="results_table_all.html" title="成績サマリ表（全体）"
+             >previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >出力機能説明</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >集計コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績サマリ表（差分）</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
+    </div>
+
+  </body>
+</html>

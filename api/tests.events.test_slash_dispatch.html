@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=086225cd"></script>
+    <script src="_static/documentation_options.js?v=1aa419d7"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,10 +66,6 @@
 <li><a class="reference internal" href="#">tests.events.test_slash_dispatch module</a><ul>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch._init"><code class="docutils literal notranslate"><span class="pre">_init()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_help"><code class="docutils literal notranslate"><span class="pre">test_help()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_results"><code class="docutils literal notranslate"><span class="pre">test_results()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_graph"><code class="docutils literal notranslate"><span class="pre">test_graph()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_ranking"><code class="docutils literal notranslate"><span class="pre">test_ranking()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_report"><code class="docutils literal notranslate"><span class="pre">test_report()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_check"><code class="docutils literal notranslate"><span class="pre">test_check()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_download"><code class="docutils literal notranslate"><span class="pre">test_download()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_member_list"><code class="docutils literal notranslate"><span class="pre">test_member_list()</span></code></a></li>
@@ -191,82 +187,6 @@
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_help" title="Link to this definition">¶</a></dt>
 <dd><p>help コマンド入力時のディスパッチ経路を検証する。</p>
 <p>イベント解析から dispatcher 到達までの振る舞いが成立することを確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
-<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_results">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_results" title="Link to this definition">¶</a></dt>
-<dd><p>results コマンドが results エントリへ委譲されることを検証する。</p>
-<p>疑似イベント本文を与えて dispatcher を実行し、対象モックの呼び出しを確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
-<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_graph">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_graph" title="Link to this definition">¶</a></dt>
-<dd><p>graph コマンドが graph エントリへ委譲されることを検証する。</p>
-<p>キーワード分岐の結果として graph 側ハンドラのみが呼ばれることを確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
-<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_ranking">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_ranking" title="Link to this definition">¶</a></dt>
-<dd><p>ranking コマンドが ranking エントリへ委譲されることを検証する。</p>
-<p>parser 後の dispatcher 実行で ranking 側モックが呼び出されることを確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
-<li><p><strong>keyword</strong> (<em>str</em>) – 入力するスラッシュコマンド文字列。</p></li>
-<li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.events.test_slash_dispatch.test_report">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_slash_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_slash_dispatch.test_report" title="Link to this definition">¶</a></dt>
-<dd><p>report コマンドが report エントリへ委譲されることを検証する。</p>
-<p>設定差分や別名入力を含むケースで同一経路に到達することを確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -505,10 +425,6 @@
 <li><a class="reference internal" href="#">tests.events.test_slash_dispatch module</a><ul>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch._init"><code class="docutils literal notranslate"><span class="pre">_init()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_help"><code class="docutils literal notranslate"><span class="pre">test_help()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_results"><code class="docutils literal notranslate"><span class="pre">test_results()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_graph"><code class="docutils literal notranslate"><span class="pre">test_graph()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_ranking"><code class="docutils literal notranslate"><span class="pre">test_ranking()</span></code></a></li>
-<li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_report"><code class="docutils literal notranslate"><span class="pre">test_report()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_check"><code class="docutils literal notranslate"><span class="pre">test_check()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_download"><code class="docutils literal notranslate"><span class="pre">test_download()</span></code></a></li>
 <li><a class="reference internal" href="#tests.events.test_slash_dispatch.test_member_list"><code class="docutils literal notranslate"><span class="pre">test_member_list()</span></code></a></li>
@@ -599,8 +515,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.16.0.
-      Last updated on 2026-06-18.
+      Release Version: 0.17.0.
+      Last updated on 2026-06-30.
     </div>
 
   </body>
