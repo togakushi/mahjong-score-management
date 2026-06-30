@@ -9,9 +9,7 @@ import libs.global_value as g
 from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
-from libs.commands.graph import summary as graph_summary
-from libs.commands.ranking import rating
-from libs.commands.results import summary as results_summary
+from libs.domain import deliverables
 from libs.types import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -124,7 +122,7 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
         m.parser(body)
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"  # 引数の位置を調整
-        g.params = dictutil.placeholder(g.cfg.results, m)
+        g.params = dictutil.placeholder(g.cfg.summary, m)
         g.params.update_from_dict(update_flag)
 
         adapter.api.appclient.views_update(
@@ -138,24 +136,24 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
         match adapter.conf.tab_var.get("operation"):
             case "point":
                 m.status.command_type = CommandType.GRAPH
-                graph_summary.point_plot(m)
+                deliverables.graph_summary.point_plot(m)
                 adapter.api.post(m)
             case "rank":
                 m.status.command_type = CommandType.GRAPH
-                graph_summary.rank_plot(m)
+                deliverables.graph_summary.rank_plot(m)
                 adapter.api.post(m)
             case "rating":
                 m.status.command_type = CommandType.RATING
                 g.params.command = "ranking"
-                rating.aggregation(m)
+                deliverables.rating_calc.aggregation(m)
                 adapter.api.post(m)
             case _:
                 if g.params.score_comparisons:
                     m.status.command_type = CommandType.COMPARISON
-                    results_summary.difference(m)
+                    deliverables.results.difference(m)
                 else:
                     m.status.command_type = CommandType.RESULTS
-                    results_summary.aggregation(m)
+                    deliverables.results.aggregation(m)
                 adapter.api.post(m)
 
         ui_parts.update_view(adapter, m, app_msg)

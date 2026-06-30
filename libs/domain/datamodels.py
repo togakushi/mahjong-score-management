@@ -72,6 +72,8 @@ class GameInfo:
     """集計範囲の最初のゲームコメント"""
     last_comment: Optional[str] = field(default=None)
     """集計範囲の最後のゲームコメント"""
+    rule_version: str = field(default="")
+    """集計対象ルール識別子"""
 
     def __post_init__(self) -> None:
         self.get()
@@ -80,13 +82,17 @@ class GameInfo:
         """指定条件を満たす対戦数のカウント、最初と最後の時刻とコメントを取得"""
         # グローバルパラメータチェック
         if not g.params.rule_version:
-            g.params.rule_version = g.cfg.setting.default_rule
+            if g.cfg.setting.default_rule:
+                g.params.rule_version = g.cfg.setting.default_rule
+            else:
+                g.params.rule_version = g.params.default_rule
         if not g.params.starttime:
             g.params.starttime = ExtDt().range("全部").start
         if not g.params.endtime:
             g.params.endtime = ExtDt().range("全部").end
 
         # データ収集
+        self.rule_version = g.params.rule_version
         df = g.params.read_data("GAME_INFO")
         if df.empty:
             self.count = 0
@@ -106,14 +112,10 @@ class GameInfo:
         # 規定打数更新
         if not g.params.stipulated:  # 規定打数0はレートから計算
             match g.params.command:
-                case "results":
-                    g.params.stipulated = g.cfg.results.stipulated_calculation(self.count)
-                case "graph":
-                    g.params.stipulated = g.cfg.graph.stipulated_calculation(self.count)
-                case "ranking" | "analysis":
-                    g.params.stipulated = g.cfg.ranking.stipulated_calculation(self.count)
-                case "report":
-                    g.params.stipulated = g.cfg.report.stipulated_calculation(self.count)
+                case "summary":
+                    g.params.stipulated = g.cfg.summary.stipulated_calculation(self.count)
+                case "analysis":
+                    g.params.stipulated = g.cfg.analysis.stipulated_calculation(self.count)
                 case _:
                     pass
 

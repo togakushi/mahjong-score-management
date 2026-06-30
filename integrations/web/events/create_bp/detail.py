@@ -44,7 +44,7 @@ def detail_bp(adapter: "ServiceAdapter") -> Blueprint:
         m = adapter.parser()
         cookie_data = cast(dict[str, Any], adapter.functions.get_cookie(request))
         text = " ".join(cookie_data.values())
-        m.data.text = f"{g.cfg.results.commandword[0]} {text}"
+        m.data.text = f"{current_app.config['summary']} {text}"
         libs.dispatcher.by_keyword(m)
 
         _, message = adapter.functions.header_message(m)

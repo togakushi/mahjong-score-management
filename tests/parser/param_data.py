@@ -7,7 +7,9 @@ from libs.utils.timekit import ExtendedDatetime as ExtDt
 # フラグ更新
 flag_test_case_01: dict[str, tuple[Any, ...]] = {
     # input_args, expected_flags
-    "guest": ("ゲストなし", {"guest_skip": False, "guest_skip2": False, "unregistered_replace": True}),
+    "guest off": ("ゲストなし", {"guest_skip": False, "guest_skip2": False, "unregistered_replace": True}),
+    "guest on": ("ゲストあり", {"guest_skip": True, "guest_skip2": True, "unregistered_replace": True}),
+    "guest invalid": ("ゲスト無効", {"unregistered_replace": False}),
     # --- 動作変更フラグ
     "score comparisons": ("比較", {"score_comparisons": True}),
     "ratings 1": ("ratings", {"rating": True}),
@@ -20,6 +22,12 @@ flag_test_case_01: dict[str, tuple[Any, ...]] = {
     # --- 上書きチェック
     "over ride (team > individual)": ("チーム 個人", {"individual": True}),
     "over ride (individual > team)": ("個人 チーム", {"individual": False}),
+    # --- 出力フラグ
+    "graph 1": ("graph", {"graph": True}),
+    "graph 2": ("グラフ", {"graph": True}),
+    "csv": ("csv", {"format": "csv"}),
+    "text 1": ("text", {"format": "txt"}),
+    "text 2": ("txt", {"format": "txt"}),
 }
 
 # 数値引数

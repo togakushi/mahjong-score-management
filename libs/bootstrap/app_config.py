@@ -8,13 +8,11 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from libs.commands.graph.entry import GraphConfig
+from libs.commands.analysis.entry import AnalysisConfig
 from libs.commands.help.entry import HelpConfig
-from libs.commands.ranking.entry import RankingConfig
 from libs.commands.registry.member import MemberSection
 from libs.commands.registry.team import TeamSection
-from libs.commands.report.entry import ReportConfig
-from libs.commands.results.entry import ResultsConfig
+from libs.commands.summary.entry import SummaryConfig
 from libs.domain.rule import RuleSet
 from libs.domain.section import AliasSection, BadgeDisplay, SettingSection, SubCommands
 from libs.functions.lookup import read_memberslist
@@ -57,10 +55,8 @@ class AppConfig:
         # セクションチェック
         option_sections = [
             "setting",
-            "results",
-            "graph",
-            "ranking",
-            "report",
+            "summary",
+            "analysis",
             "help",
             "alias",
             "member",
@@ -91,14 +87,10 @@ class AppConfig:
         """バッジ設定"""
 
         # サブコマンド
-        self.results: "SubCommands" = ResultsConfig()
-        """resultsセクション設定値"""
-        self.graph: "SubCommands" = GraphConfig()
-        """graphセクション設定値"""
-        self.ranking: "SubCommands" = RankingConfig()
-        """rankingセクション設定値"""
-        self.report: "SubCommands" = ReportConfig()
-        """reportセクション設定値"""
+        self.summary: "SubCommands" = SummaryConfig()
+        """summaryセクション設定値"""
+        self.analysis: "SubCommands" = AnalysisConfig()
+        """analysisセクション設定値"""
         self.help: "SubCommands" = HelpConfig()
         """helpセクション設定値"""
 
@@ -116,14 +108,11 @@ class AppConfig:
 
         """
         self.setting.initialization(self.main_parser["setting"])
+        self.summary.initialization(self.main_parser["summary"])
+        self.analysis.initialization(self.main_parser["analysis"])
         self.alias.initialization(self.main_parser["alias"])
         self.member.initialization(self.main_parser["member"])
         self.team.initialization(self.main_parser["team"])
-
-        self.results.initialization(self.main_parser["results"])
-        self.graph.initialization(self.main_parser["graph"])
-        self.ranking.initialization(self.main_parser["ranking"])
-        self.report.initialization(self.main_parser["report"])
         self.help.initialization(self.main_parser["help"])
 
         # フォントファイルチェック
@@ -188,7 +177,7 @@ class AppConfig:
         """
         追加の設定ファイルから指定されたセクションの設定を読み込み、上書きする。
 
-        サブコマンドセクション（results, graph など）を上書きする際、
+        サブコマンドセクション（summary, graph など）を上書きする際、
         既に設定されている ``commandword`` 属性は上書きされないよう保護される。
 
         Args:
@@ -210,22 +199,16 @@ class AppConfig:
         match section_name:
             case "setting":
                 self.setting.initialization(additional_config_parser[section_name])
-            case "results":
-                protected_values = self.results.commandword  # 上書き保護
-                self.results.initialization(additional_config_parser[section_name])
-                self.results.commandword = protected_values
-            case "graph":
-                protected_values = self.graph.commandword  # 上書き保護
-                self.graph.initialization(additional_config_parser[section_name])
-                self.graph.commandword = protected_values
-            case "ranking":
-                protected_values = self.ranking.commandword  # 上書き保護
-                self.ranking.initialization(additional_config_parser[section_name])
-                self.ranking.commandword = protected_values
-            case "report":
-                protected_values = self.report.commandword  # 上書き保護
-                self.report.initialization(additional_config_parser[section_name])
-                self.report.commandword = protected_values
+            case "summary":
+                if additional_config_parser.has_section(section_name):
+                    protected_values = self.summary.commandword  # 上書き保護
+                    self.summary.initialization(additional_config_parser[section_name])
+                    self.summary.commandword = protected_values
+            case "analysis":
+                if additional_config_parser.has_section(section_name):
+                    protected_values = self.analysis.commandword  # 上書き保護
+                    self.analysis.initialization(additional_config_parser[section_name])
+                    self.analysis.commandword = protected_values
             case "help":
                 protected_values = self.help.commandword  # 上書き保護
                 self.help.initialization(additional_config_parser[section_name])
@@ -260,10 +243,8 @@ class AppConfig:
                     logging.debug("Override: %s", config_path.absolute())
                     self.initialization()
                     self.overwrite(config_path, "setting")
-                    self.overwrite(config_path, "results")
-                    self.overwrite(config_path, "graph")
-                    self.overwrite(config_path, "ranking")
-                    self.overwrite(config_path, "report")
+                    self.overwrite(config_path, "summary")
+                    self.overwrite(config_path, "analysis")
                     self.overwrite(config_path, "help")
                 else:
                     config_path = None

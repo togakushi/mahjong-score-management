@@ -27,6 +27,7 @@ primary_domain = "mahjong"
 extensions = [
     "sphinx.ext.githubpages",
     "sphinxcontrib.mermaid",
+    "linuxdoc.rstFlatTable",
     "mahjong_domain",
 ]
 templates_path = ["../customization/templates"]

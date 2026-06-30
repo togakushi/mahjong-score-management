@@ -9,7 +9,7 @@ import libs.global_value as g
 from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
-from libs.commands.results import versus
+from libs.domain import deliverables
 from libs.types import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -124,7 +124,7 @@ def register_versus_handlers(app: "App", adapter: ServiceAdapter) -> None:
         m.parser(body)
         add_argument, app_msg, update_flag = ui_parts.set_command_option(adapter, body)
         m.data.text = f"dummy {' '.join(add_argument)}"
-        g.params = dictutil.placeholder(g.cfg.results, m)
+        g.params = dictutil.placeholder(g.cfg.summary, m)
         g.params.update_from_dict(update_flag)
 
         search_options = body["view"]["state"]["values"]
@@ -142,7 +142,7 @@ def register_versus_handlers(app: "App", adapter: ServiceAdapter) -> None:
         app_msg.append("集計完了")
 
         m.status.command_type = CommandType.RESULTS
-        versus.aggregation(m)
+        deliverables.versus.aggregation(m)
         adapter.api.post(m)
 
         ui_parts.update_view(adapter, m, app_msg)

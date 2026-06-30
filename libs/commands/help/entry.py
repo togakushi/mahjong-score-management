@@ -96,32 +96,18 @@ def help_message(m: "MessageParserProtocol") -> None:
     m.set_message(
         textwrap.dedent(f"""\
         呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.RESULTS))}
-        検索範囲デフォルト：{g.cfg.results.aggregation_range}
+        検索範囲デフォルト：{g.cfg.summary.aggregation_range}
         """),
         StyleOptions(title="成績サマリ", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.GRAPH))}
-        検索範囲デフォルト：{g.cfg.graph.aggregation_range}
-        """),
-        StyleOptions(title="成績グラフ", indent=1, sub_title=True),
-    )
-    m.set_message(
-        textwrap.dedent(f"""\
         呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.RANKING))}
-        検索範囲デフォルト：{g.cfg.ranking.aggregation_range}
-        規定打数デフォルト：総対戦数 × {g.cfg.ranking.stipulated_rate} ＋ 1
-        出力制限デフォルト：上位 {g.cfg.ranking.ranked} 名
+        検索範囲デフォルト：{g.cfg.analysis.aggregation_range}
+        規定打数デフォルト：総対戦数 × {g.cfg.analysis.stipulated_rate} ＋ 1
+        出力制限デフォルト：上位 {g.cfg.analysis.ranked} 名
         """),
         StyleOptions(title="ランキング", indent=1, sub_title=True),
-    )
-    m.set_message(
-        textwrap.dedent(f"""\
-        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.REPORT))}
-        検索範囲デフォルト：{g.cfg.report.aggregation_range}
-        """),
-        StyleOptions(title="レポート", indent=1, sub_title=True),
     )
     m.set_message(
         f"呼び出しワード：{'、'.join(lookup.resolve_commands(g.params.rule_version, CommandType.MEMBER_LIST))}",

@@ -137,7 +137,7 @@ class PlaceholderBuilder(ParameterData):
     game_results: bool = field(default=False)
     """ゲーム結果表示"""
     versus_matrix: bool = field(default=False)
-    """対戦マトリックス表示"""
+    """対戦マトリクス表示"""
     order: bool = field(default=False)
     """順位推移グラフ表示"""
     rating: bool = field(default=False)
@@ -156,6 +156,10 @@ class PlaceholderBuilder(ParameterData):
     """ゲスト無効時に未登録メンバーに付与する印"""
     format: Literal["default", "csv", "txt"] = field(default="default")
     """出力フォーマット指定"""
+    graph: bool = field(default=False)
+    """グラフ出力"""
+    report: bool = field(default=False)
+    """レポート出力"""
     filename: str = field(default="")
     """出力ファイル名"""
 
@@ -464,7 +468,8 @@ class PlaceholderBuilder(ParameterData):
         # 匿名化
         if anonymization and self.anonymous:
             if "name" in df.columns:
-                self.mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
+                if not self.mapping_dict:
+                    self.mapping_dict = textutil.anonymous_mapping(df["name"].unique().tolist())
                 df["name"] = df["name"].replace(self.mapping_dict)
 
         if self.logging_verbose & 0x02:

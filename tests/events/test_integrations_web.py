@@ -65,6 +65,8 @@ def client(request: pytest.FixtureRequest) -> Any:
 
     app.config["TESTING"] = True
     app.config["padding"] = "0.25em 1.5em"
+    app.config["summary"] = ""
+    app.config["analysis"] = ""
     app.config["players"] = []
     app.register_blueprint(create_bp.index_bp(adapter))
     app.register_blueprint(create_bp.summary_bp(adapter))

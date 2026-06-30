@@ -3,9 +3,9 @@
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
+   :includehidden:
 
-   results/index
-   graph/index
-   ranking/index
-   report/index
+   summary/index
+   analysis/index
    help/index

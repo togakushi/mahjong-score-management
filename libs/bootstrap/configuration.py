@@ -11,11 +11,9 @@ from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
-import libs.commands.graph.entry
+import libs.commands.analysis.entry
 import libs.commands.help.entry
-import libs.commands.ranking.entry
-import libs.commands.report.entry
-import libs.commands.results.entry
+import libs.commands.summary.entry
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import initialization
@@ -288,13 +286,7 @@ def setup(init_db: bool = True) -> None:
     # キーワード重複チェック
     g.cfg.rule.check(
         chk_commands=set(
-            g.cfg.results.commandword
-            + g.cfg.graph.commandword
-            + g.cfg.ranking.commandword
-            + g.cfg.report.commandword
-            + g.cfg.help.commandword
-            + g.cfg.rule.remarks_words
-            + list(g.keyword_dispatcher)
+            g.cfg.summary.commandword + g.cfg.analysis.commandword + g.cfg.help.commandword + g.cfg.rule.remarks_words + list(g.keyword_dispatcher)
         ),
         chk_members=set(lookup.enumeration_all_members()),
         default_rule=g.cfg.setting.default_rule,
@@ -317,12 +309,10 @@ def setup(init_db: bool = True) -> None:
 
     drop_items = ["section", "default_commandword", "command_suffix", "main_parser", "section_proxy", "info"]
     logging.debug("setting: %s", g.cfg.setting.to_dict(drop_items))
+    logging.debug("summary: %s", g.cfg.summary.to_dict(drop_items))
+    logging.debug("analysis: %s", g.cfg.analysis.to_dict(drop_items))
     logging.debug("member: %s", g.cfg.member.to_dict(drop_items))
     logging.debug("team: %s", g.cfg.team.to_dict(drop_items))
-    logging.debug("results: %s", g.cfg.results.to_dict(drop_items))
-    logging.debug("graph: %s", g.cfg.graph.to_dict(drop_items))
-    logging.debug("ranking: %s", g.cfg.ranking.to_dict(drop_items))
-    logging.debug("report: %s", g.cfg.report.to_dict(drop_items))
     logging.debug("help: %s", g.cfg.help.to_dict(drop_items))
     logging.debug("rule_set: %s", vars(g.cfg.rule))
 
@@ -365,10 +355,8 @@ def register() -> None:
         m.set_message(team.clear(), StyleOptions(title="全チーム削除", key_title=False))
 
     dispatch_table: dict[str, Any] = {
-        "results": libs.commands.results.entry.main,
-        "graph": libs.commands.graph.entry.main,
-        "ranking": libs.commands.ranking.entry.main,
-        "report": libs.commands.report.entry.main,
+        "summary": libs.commands.summary.entry.main,
+        "analysis": libs.commands.analysis.entry.main,
         "help": libs.commands.help.entry.main,
         "member": dispatch_members_list,
         "team": dispatch_team_list,

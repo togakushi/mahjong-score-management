@@ -252,7 +252,7 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
 
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"type": "number_input"})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"is_decimal_allowed": True})
-    adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"initial_value": str(g.cfg.ranking.ranked)})
+    adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"initial_value": str(g.cfg.analysis.ranked)})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"min_value": "1"})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["element"].update({"action_id": "aid-ranked"})
     adapter.conf.tab_var["view"]["blocks"][adapter.conf.tab_var["no"]]["label"].update({"type": "plain_text", "text": "出力順位上限"})
