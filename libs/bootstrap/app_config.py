@@ -79,6 +79,8 @@ class AppConfig:
         """settingセクション設定値"""
         self.alias: AliasSection = AliasSection()
         """aliasセクション設定値"""
+        self.shortcut: dict[str, str] = {}
+        """ショートカット格納辞書"""
         self.member: MemberSection = MemberSection(self)
         """memberセクション設定値"""
         self.team: TeamSection = TeamSection(self)
@@ -133,6 +135,10 @@ class AppConfig:
         # データベース関連
         if isinstance(self.setting.database_file, Path) and not self.setting.database_file.exists():
             self.setting.database_file = self.config_dir / str(self.setting.database_file)
+
+        # ショートカット設定取り込み
+        if self.main_parser.has_section("shortcut"):
+            self.shortcut = dict(self.main_parser.items("shortcut"))
 
     def word_list(self, add_words: Optional[list[str]] = None) -> list[str]:
         """
