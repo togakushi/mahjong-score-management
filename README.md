@@ -32,20 +32,16 @@
 
 ### 成績集計機能
 
-#### 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/results/index.html) ）
+* 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/results_table_all.html) ）
+  * 記録されているスコアを集計し、一覧で出力する。
 
-記録されているスコアを集計し、一覧で出力する。
+* グラフ生成（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/point_transition.html) ）
+  * 記録されているスコアを集計し、グラフで出力する。
 
-#### グラフ生成（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/graph/index.html) ）
-
-記録されているスコアを集計し、グラフで出力する。
+* 成績詳細（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/results_details.html)）
+  * トップ率など詳細生成を集計する。
 
 ### 成績分析機能
 
-#### ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/ranking/index.html) ）
-
-記録されているスコアを集計し、ランキング形式で出力する。
-
-### スラッシュコマンド（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/appendix/command.html) ）
-
-出力結果をボットから直接DMで受け取る。
+* ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/analysis/ranking.html) ）
+  * 記録されているスコアを集計し、ランキング形式で出力する。
