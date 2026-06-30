@@ -65,7 +65,7 @@ def help_message(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージを蓄積・設定するためのメッセージデータオブジェクト。
 
     構築されるヘルプ情報セクション:
-        - **機能呼び出し**: 基本的な使い方のフォーマットと適用中のルール識別子。
+        - **コマンド呼び出し**: 基本的な使い方のフォーマットと適用中のルール識別子。
         - **成績サマリ (RESULTS)**: 成績サマリの呼び出しワードと検索範囲の初期値。
         - **成績グラフ (GRAPH)**: グラフ描画の呼び出しワードと検索範囲の初期値。
         - **ランキング (RANKING)**: ランキングの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。
@@ -91,7 +91,7 @@ def help_message(m: "MessageParserProtocol") -> None:
         使い方：<呼び出しワード> [検索範囲] [対象メンバー] [オプション]
         集計対象ルール識別子：{g.params.rule_version}
         """),
-        StyleOptions(title="機能呼び出し"),
+        StyleOptions(title="コマンド呼び出し"),
     )
     m.set_message(
         textwrap.dedent(f"""\

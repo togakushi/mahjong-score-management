@@ -3,6 +3,7 @@
    pair: メイン設定; summary section
    pair: メイン設定; analysis section
    pair: メイン設定; help section
+   :name: results_management
 
 成績管理
 ========
@@ -162,15 +163,15 @@
 
 .. _function-call-keyword:
 
-機能呼び出しキーワード
-----------------------
+コマンド呼び出しキーワード
+--------------------------
 
-各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。
+各種コマンドを呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにそのコマンドが呼び出される。
 
 | :sub_commands_section:`commandword` 、 :sub_commands_section:`command_suffix` の定義状況によって登録される呼び出しキーワードが変化する。
 | :sub_commands_section:`commandword` の定義が優先的に登録され、 :sub_commands_section:`command_suffix` の定義があれば、 `rule-set` の `keywords` と :sub_commands_section:`command_suffix` の組み合わせが登録される。
 
-.. list-table::
+.. flat-table::
    :width: 100%
    :widths: 10 10 10 30
    :header-rows: 1
@@ -183,41 +184,36 @@
    * - |:x:|
      - |:x:|
      - |:x:|
-     - デフォルトキーワード
+     - :rspan:`2` デフォルトキーワード
 
        :summary: 成績集計
        :analysis: 成績分析
        :help: 麻雀ヘルプ
        :member: メンバー一覧
        :team: チーム一覧
-   * - |:o:|
-     - |:x:|
-     - |:x:|
-     - :sub_commands_section:`commandword`
-   * - |:o:|
-     - |:x:|
-     - |:o:|
-     - :sub_commands_section:`commandword`
-   * - |:o:|
-     - |:o:|
-     - |:x:|
-     - :sub_commands_section:`commandword`
-   * - |:o:|
-     - |:o:|
-     - |:o:|
-     - :sub_commands_section:`commandword`
    * - |:x:|
      - |:x:|
      - |:o:|
-     - デフォルトキーワード
    * - |:x:|
      - |:o:|
      - |:x:|
-     - デフォルトキーワード
    * - |:x:|
      - |:o:|
      - |:o:|
      - `keywords` + :sub_commands_section:`command_suffix` の組み合わせ
+   * - |:o:|
+     - |:x:|
+     - |:x:|
+     - :rspan:`3` :sub_commands_section:`commandword` で定義したワード
+   * - |:o:|
+     - |:x:|
+     - |:o:|
+   * - |:o:|
+     - |:o:|
+     - |:x:|
+   * - |:o:|
+     - |:o:|
+     - |:o:|
 
 
 

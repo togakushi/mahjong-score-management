@@ -16,18 +16,12 @@
    rule_config = rule.ini
    remarks_suffix = メモ
 
-   [results]
+   [summary]
    command_suffix = 成績, サマリ
 
-   [graph]
-   command_suffix = グラフ
-
-   [ranking]
-   command_suffix = ランキング
+   [analysis]
+   command_suffix = 分析
    ranked = 10
-
-   [report]
-   command_suffix = レポート
 
    [help]
    command_suffix = ヘルプ
@@ -71,3 +65,25 @@
 
    [practice_regulations_team]
    # 未定義とするため空セクション作成
+
+
+コマンド呼び出しキーワード
+--------------------------
+
+各ルールセットの `keywords` と `各セクション <results_management>` の :sub_commands_section:`command_suffix` の組み合わせで生成される。
+
+.. code-block:: text
+   :caption: 組み合わせ結果
+
+   大会ルール成績: <function main at 0x7edb56eeeac0>
+   大会ルールサマリ: <function main at 0x7edb56eeeac0>
+   練習ルール成績: <function main at 0x7edb56eeeac0>
+   練習ルールサマリ: <function main at 0x7edb56eeeac0>
+   大会ルール分析: <function main at 0x7edb732d0fe0>
+   練習ルール分析: <function main at 0x7edb732d0fe0>
+   大会ルールヘルプ: <function main at 0x7edb56d4efc0>
+   練習ルールヘルプ: <function main at 0x7edb56d4efc0>
+   メンバー一覧: <function register.<locals>.dispatch_members_list at 0x7edb710ac540>
+   チーム一覧: <function register.<locals>.dispatch_team_list at 0x7edb55b79b20>
+
+.. seealso:: `function-call-keyword`
