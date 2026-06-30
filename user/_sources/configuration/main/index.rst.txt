@@ -14,6 +14,7 @@
 .. toctree::
    :caption: 設定内容
    :maxdepth: 2
+   :titlesonly:
 
    mahjong
    application/index
