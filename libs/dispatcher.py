@@ -27,6 +27,10 @@ def by_keyword(m: "MessageParserProtocol") -> None:
         }
     )
 
+    # ショートカット置き換え
+    if shortcut := g.cfg.shortcut.get(m.keyword):
+        m.data.text = m.data.text.replace(m.keyword, shortcut)
+
     logging.debug("keyword=%s, argument=%s, source=%s", m.keyword, m.argument, m.status.source)
     logging.debug(
         "status=%s, event_ts=%s, thread_ts=%s, in_thread=%s, is_command=%s, user_id=%s,",

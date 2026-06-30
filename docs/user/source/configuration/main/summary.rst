@@ -185,11 +185,11 @@
      - |:x:|
      - デフォルトキーワード
 
-       :results: 麻雀成績
-       :graph: 麻雀グラフ
-       :ranking: 麻雀ランキング
-       :report: 麻雀レポート
+       :summary: 成績集計
+       :analysis: 成績分析
        :help: 麻雀ヘルプ
+       :member: メンバー一覧
+       :team: チーム一覧
    * - |:o:|
      - |:x:|
      - |:x:|

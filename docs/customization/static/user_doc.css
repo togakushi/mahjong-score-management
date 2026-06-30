@@ -33,5 +33,6 @@ div.body h1 {
     border-top: 0.1rem solid currentColor;
     border-bottom: 0.1rem solid currentColor;
     margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
     background: var(--sidebar-background-color);
 }
