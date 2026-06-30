@@ -318,7 +318,7 @@ def get_data(df: pd.Series, interval: int) -> pd.DataFrame:
     fraction = 0 if not len(df) % interval else interval - len(df) % interval  # 端数
     if fraction:
         padding = pd.Series([float("nan")] * fraction, dtype="float64")
-        df = pd.concat([padding, df.astype("float64", copy=False)], ignore_index=True)
+        df = pd.concat([padding, df.astype("float64")], ignore_index=True)
 
     for x in range(int(len(df) / interval)):
         s = len(df) % interval + interval * x
