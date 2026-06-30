@@ -216,8 +216,8 @@ del = 削除,退部届
 # versus_matrix        : 対局対戦マトリクス表示(未定義時：False)
 # ranked               : ランキングに出力する順位(未定義時：3)
 
-[results] # 成績出力
-commandword = 麻雀成績
+[summary]
+commandword = 成績集計
 aggregation_range = 今月
 unregistered_replace = True
 guest_skip = True
@@ -226,15 +226,8 @@ score_comparisons = False
 game_results = False
 versus_matrix = False
 
-[graph] # グラフ出力
-commandword = 麻雀グラフ
-aggregation_range = 当日
-unregistered_replace = True
-guest_skip = True
-guest_skip2 = False
-
-[ranking] # ランキング出力
-commandword = 麻雀ランキング
+[analysis]
+commandword = 成績分析
 aggregation_range = 全部
 unregistered_replace = True
 guest_skip = True
@@ -244,12 +237,6 @@ ranked = 3
 # ランキング規定対戦数(未定義時：0.05)
 ## 集計対象対戦数 * stipulated_rate + 2
 stipulated_rate = 0.05
-
-[report] # レポート出力
-commandword = 麻雀成績レポート
-aggregation_range = 全部
-unregistered_replace = True
-guest_skip = True
 
 
 ### メンバー管理 ###

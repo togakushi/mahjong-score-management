@@ -144,7 +144,37 @@
             
   <section id="id1">
 <h1>出力機能説明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">コマンドルーティング</span></span></dt>
+<dd><p>入力されたコマンドは以下の順序で評価され、出力される内容が決定される。</p>
+<ol class="arabic simple">
+<li><p>コマンド種別の判定</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p></li>
+<li><p><a class="reference internal" href="analysis/index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a></p></li>
+<li><p><a class="reference internal" href="help/index.html#function-help"><span class="std std-ref">ヘルプ</span></a></p></li>
+</ul>
+</li>
+<li><p>ターゲットの判定</p>
+<ul class="simple">
+<li><p>未指定（任意）</p></li>
+<li><p>単独指定</p></li>
+<li><p>複数指定</p></li>
+</ul>
+</li>
+<li><p>オプションの評価</p>
+<ol class="arabic simple">
+<li><p>必須オプションの有無</p></li>
+<li><p>追加オプションの有無</p></li>
+</ol>
+</li>
+</ol>
+</dd></dl>
+
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">内容説明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary/index.html">集計コマンド</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="summary/results_details.html">成績詳細</a></li>

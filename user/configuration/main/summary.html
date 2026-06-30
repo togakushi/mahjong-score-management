@@ -65,7 +65,7 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
-<li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
+<li><a class="reference internal" href="#function-call-keyword">コマンド呼び出しキーワード</a></li>
 <li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>
@@ -155,8 +155,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="index-0">
-<span id="id1"></span><h1>成績管理<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h1>
+  <section id="results-management">
+<span id="id1"></span><h1>成績管理<a class="headerlink" href="#results-management" title="Link to this heading">¶</a></h1>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">summary</span></code> / <code class="docutils literal notranslate"><span class="pre">analysis</span></code> / <code class="docutils literal notranslate"><span class="pre">help</span></code> の各セクションで定義できる項目。</div>
 <div class="line">すべてのセクションでパラメータの定義は可能だが、動作に影響があるのもは以下の表のとおりとなる。</div>
@@ -196,7 +196,7 @@
 <div class="line">(カンマ区切り)</div>
 </div>
 </td>
-<td><p><a class="reference internal" href="#function-call-keyword"><span class="std std-ref">機能呼び出しキーワード</span></a> 参照</p></td>
+<td><p><a class="reference internal" href="#function-call-keyword"><span class="std std-ref">コマンド呼び出しキーワード</span></a> 参照</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
 <td><p>✔</p></td>
@@ -439,8 +439,8 @@
 </tbody>
 </table>
 <section id="function-call-keyword">
-<span id="id2"></span><h2>機能呼び出しキーワード<a class="headerlink" href="#function-call-keyword" title="Link to this heading">¶</a></h2>
-<p>各種機能を呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにその機能が呼び出される。</p>
+<span id="id2"></span><h2>コマンド呼び出しキーワード<a class="headerlink" href="#function-call-keyword" title="Link to this heading">¶</a></h2>
+<p>各種コマンドを呼び出すキーワードはディスパッチテーブルに登録され、登録済みのキーワードと一致したときにそのコマンドが呼び出される。</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a> 、 <a class="reference internal" href="#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の定義状況によって登録される呼び出しキーワードが変化する。</div>
 <div class="line"><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a> の定義が優先的に登録され、 <a class="reference internal" href="#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の定義があれば、 <a class="reference internal" href="../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> の <a class="reference internal" href="../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> と <a class="reference internal" href="#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の組み合わせが登録される。</div>
@@ -467,7 +467,7 @@
 <tr class="row-even"><td><p>❌</p></td>
 <td><p>❌</p></td>
 <td><p>❌</p></td>
-<td><p>デフォルトキーワード</p>
+<td rowspan="3"><p> デフォルトキーワード</p>
 <dl class="field-list simple">
 <dt class="field-odd">summary<span class="colon">:</span></dt>
 <dd class="field-odd"><p>成績集計</p>
@@ -487,40 +487,35 @@
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p>⭕</p></td>
-<td><p>❌</p></td>
-<td><p>❌</p></td>
-<td><p><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p>⭕</p></td>
-<td><p>❌</p></td>
-<td><p>⭕</p></td>
-<td><p><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p>⭕</p></td>
-<td><p>⭕</p></td>
-<td><p>❌</p></td>
-<td><p><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p>⭕</p></td>
-<td><p>⭕</p></td>
-<td><p>⭕</p></td>
-<td><p><a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a></p></td>
-</tr>
 <tr class="row-odd"><td><p>❌</p></td>
 <td><p>❌</p></td>
 <td><p>⭕</p></td>
-<td><p>デフォルトキーワード</p></td>
 </tr>
 <tr class="row-even"><td><p>❌</p></td>
 <td><p>⭕</p></td>
 <td><p>❌</p></td>
-<td><p>デフォルトキーワード</p></td>
 </tr>
 <tr class="row-odd"><td><p>❌</p></td>
 <td><p>⭕</p></td>
 <td><p>⭕</p></td>
 <td><p><a class="reference internal" href="../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> + <a class="reference internal" href="#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の組み合わせ</p></td>
+</tr>
+<tr class="row-even"><td><p>⭕</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td rowspan="4"><p> <a class="reference internal" href="#sub_commands_section-commandword" title="commandword"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">commandword</span></code></a> で定義したワード</p></td>
+</tr>
+<tr class="row-odd"><td><p>⭕</p></td>
+<td><p>❌</p></td>
+<td><p>⭕</p></td>
+</tr>
+<tr class="row-even"><td><p>⭕</p></td>
+<td><p>⭕</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>⭕</p></td>
+<td><p>⭕</p></td>
+<td><p>⭕</p></td>
 </tr>
 </tbody>
 </table>
@@ -560,7 +555,7 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
-<li><a class="reference internal" href="#function-call-keyword">機能呼び出しキーワード</a></li>
+<li><a class="reference internal" href="#function-call-keyword">コマンド呼び出しキーワード</a></li>
 <li><a class="reference internal" href="#id3">パラメータの評価順序</a></li>
 </ul>
 </li>

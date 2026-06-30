@@ -17,24 +17,15 @@
    [setting]
    font_file = ipaexg.ttf
 
-   [results]
-   commandword = お好みの成績サマリ呼び出しワード
+   [summary]
+   commandword = お好みの成績集計コマンド呼び出しワード
    guest_skip = False
 
-   [graph]
-   commandword = お好みのグラフ呼び出しワード
-   guest_skip = False
-
-   [ranking]
-   commandword = お好みのランキング呼び出しワード
+   [analysis]
+   commandword = お好みの成績分析コマンド呼び出しワード
    aggregation_range = 今月
    guest_skip = False
    ranked = 10
-
-   [report]
-   commandword = お好みのレポート呼び出しワード
-   aggregation_range = 今年
-   guest_skip = False
 
    [help]
    commandword = お好みのヘルプ呼び出しワード
@@ -50,7 +41,7 @@
 ------------
 
 - *成績記録キーワード* を覚えやすいものに変える
-- 機能呼び出しキーワードを馴染みのある単語にする
+- コマンド呼び出しキーワードを馴染みのある単語にする
 - グラフで使用するフォントを指定する
 - 集計期間を省略したときのデフォルト期間を決める
 
@@ -62,6 +53,6 @@
   - `guest_skip` を ``False`` に設定
   - ゲーム結果はすべて集計されるが、メンバー登録されていないプレイヤーは結果表示から削除される
 
-- ランキングで表示される順位を拡張する
+- 分析コマンドで表示される順位を拡張する
 
   - `ranked` で設定

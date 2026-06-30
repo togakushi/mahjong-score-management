@@ -67,6 +67,7 @@
 <li><a class="reference internal" href="#">ベストプラクティス</a><ul>
 <li><a class="reference internal" href="#id2">メイン設定ファイル</a></li>
 <li><a class="reference internal" href="#id3">ルール設定ファイル</a></li>
+<li><a class="reference internal" href="#id4">コマンド呼び出しキーワード</a></li>
 </ul>
 </li>
 </ul>
@@ -164,24 +165,18 @@
 </ul>
 <section id="id2">
 <h2>メイン設定ファイル<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">メイン設定</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">メイン設定</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[setting]</span>
 <span class="na">rule_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">rule.ini</span>
 <span class="na">remarks_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">メモ</span>
 
-<span class="k">[results]</span>
+<span class="k">[summary]</span>
 <span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">成績, サマリ</span>
 
-<span class="k">[graph]</span>
-<span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">グラフ</span>
-
-<span class="k">[ranking]</span>
-<span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ランキング</span>
+<span class="k">[analysis]</span>
+<span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">分析</span>
 <span class="na">ranked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span>
-
-<span class="k">[report]</span>
-<span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">レポート</span>
 
 <span class="k">[help]</span>
 <span class="na">command_suffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ヘルプ</span>
@@ -191,8 +186,8 @@
 </section>
 <section id="id3">
 <h2>ルール設定ファイル<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">ルール設定</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">ルール設定</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[league]</span>
 <span class="na">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">大会ルール</span>
 <span class="na">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
@@ -229,6 +224,29 @@
 </div>
 </div>
 </section>
+<section id="id4">
+<h2>コマンド呼び出しキーワード<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>各ルールセットの <a class="reference internal" href="../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> と <a class="reference internal" href="../main/summary.html#results-management"><span class="std std-ref">各セクション</span></a> の <a class="reference internal" href="../main/summary.html#sub_commands_section-command_suffix" title="command_suffix"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">command_suffix</span></code></a> の組み合わせで生成される。</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">組み合わせ結果</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>大会ルール成績: &lt;function main at 0x7edb56eeeac0&gt;
+大会ルールサマリ: &lt;function main at 0x7edb56eeeac0&gt;
+練習ルール成績: &lt;function main at 0x7edb56eeeac0&gt;
+練習ルールサマリ: &lt;function main at 0x7edb56eeeac0&gt;
+大会ルール分析: &lt;function main at 0x7edb732d0fe0&gt;
+練習ルール分析: &lt;function main at 0x7edb732d0fe0&gt;
+大会ルールヘルプ: &lt;function main at 0x7edb56d4efc0&gt;
+練習ルールヘルプ: &lt;function main at 0x7edb56d4efc0&gt;
+メンバー一覧: &lt;function register.&lt;locals&gt;.dispatch_members_list at 0x7edb710ac540&gt;
+チーム一覧: &lt;function register.&lt;locals&gt;.dispatch_team_list at 0x7edb55b79b20&gt;
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../main/summary.html#function-call-keyword"><span class="std std-ref">コマンド呼び出しキーワード</span></a></p>
+</div>
+</section>
 </section>
 
 
@@ -244,6 +262,7 @@
 <li><a class="reference internal" href="#">ベストプラクティス</a><ul>
 <li><a class="reference internal" href="#id2">メイン設定ファイル</a></li>
 <li><a class="reference internal" href="#id3">ルール設定ファイル</a></li>
+<li><a class="reference internal" href="#id4">コマンド呼び出しキーワード</a></li>
 </ul>
 </li>
 </ul>
