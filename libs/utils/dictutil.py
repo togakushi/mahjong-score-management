@@ -163,7 +163,7 @@ def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderB
         else:
             params.stipulated = 0
     elif not params.stipulated:  # 通常集計&規定数制限なし
-        if subcom.section == "ranking":  # ランキングはレート計算
+        if subcom.section == "analysis":  # 分析はレート計算
             params.stipulated = 0
         else:
             params.stipulated = 1
