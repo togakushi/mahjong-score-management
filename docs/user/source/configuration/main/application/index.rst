@@ -8,7 +8,8 @@
 
 .. toctree::
    :caption: 設定内容
-   :maxdepth: 2
+   :maxdepth: 1
 
    setting
    alias
+   shortcut
