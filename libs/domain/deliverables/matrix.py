@@ -18,14 +18,14 @@ if TYPE_CHECKING:
 
 def plot(m: "MessageParserProtocol") -> None:
     """
-    対局対戦マトリックスの表示
+    対局対戦マトリクスの表示
 
     Args:
         m (MessageParserProtocol): メッセージデータ
 
     """
     # データ集計
-    title: str = "対局対戦マトリックス"
+    title: str = "対局対戦マトリクス"
     game_info = GameInfo()
     df = matrix_table()
 
@@ -53,7 +53,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
 def matrix_table() -> pd.DataFrame:
     """
-    対局対戦マトリックス表の作成
+    対局対戦マトリクス表の作成
 
     Returns:
         pd.DataFrame: 集計結果
@@ -109,7 +109,7 @@ def matrix_table() -> pd.DataFrame:
     if rank_df.empty:
         return rank_df
 
-    # 対局対戦マトリックス表の作成
+    # 対局対戦マトリクス表の作成
     mtx_df = pd.DataFrame(index=list(l_data.keys()), columns=list(l_data.keys()) + ["total"])
     sorting_df = pd.DataFrame(index=list(l_data.keys()), columns=["win_per", "count"])
 

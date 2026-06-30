@@ -137,7 +137,7 @@ class PlaceholderBuilder(ParameterData):
     game_results: bool = field(default=False)
     """ゲーム結果表示"""
     versus_matrix: bool = field(default=False)
-    """対戦マトリックス表示"""
+    """対戦マトリクス表示"""
     order: bool = field(default=False)
     """順位推移グラフ表示"""
     rating: bool = field(default=False)

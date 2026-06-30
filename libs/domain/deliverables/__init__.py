@@ -13,7 +13,7 @@
 - :doc:`libs.domain.deliverables.graph_summary`: ポイント推移/順位推移グラフを生成
 - :doc:`libs.domain.deliverables.stats_report`: 成績報告書を作成
 - :doc:`libs.domain.deliverables.winner`: 月間上位5名の表示
-- :doc:`libs.domain.deliverables.matrix`: 直接対戦マトリックスを生成
+- :doc:`libs.domain.deliverables.matrix`: 直接対戦マトリクスを生成
 - :doc:`libs.domain.deliverables.monthly`: 月間成績を集計
 - :doc:`libs.domain.deliverables.stats_list`: 個人/チーム成績一覧表を生成
 """

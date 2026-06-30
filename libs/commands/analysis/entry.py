@@ -71,7 +71,7 @@ def main(m: "MessageParserProtocol") -> None:
             m.status.command_type = CommandType.REPORT
             deliverables.monthly.plot(m)
         else:
-            if g.params.versus_matrix:  # 対局対戦マトリックス
+            if g.params.versus_matrix:  # 対局対戦マトリクス
                 deliverables.matrix.plot(m)
             elif g.params.statistics:
                 if not g.params.player_list:
