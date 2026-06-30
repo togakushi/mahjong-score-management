@@ -448,7 +448,7 @@ def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
         item_list = []
 
     hide_items = g.cfg.rule.dropitems(g.params.rule_version)
-    if g.params.command in ["results", "graph", "ranking", "report"]:
+    if g.params.command in ["summary", "analysis"]:
         hide_items = hide_items.union(set(cast(SubCommands, getattr(g.cfg, g.params.command)).dropitems))
 
     if g.params.ignore_flying:
