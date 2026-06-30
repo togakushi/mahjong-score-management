@@ -109,7 +109,7 @@ DATE_RANGE_MAP: dict[str, DateRangeSpec] = {
         ],
     },
     "yesterday": {
-        "keyword": ["昨日"],
+        "keyword": ["昨日", "前日"],
         "range": lambda x: [
             x + relativedelta(days=-1, hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(days=-1, hour=23, minute=59, second=59, microsecond=999999),
@@ -123,7 +123,7 @@ DATE_RANGE_MAP: dict[str, DateRangeSpec] = {
         ],
     },
     "last_week": {
-        "keyword": ["先週"],
+        "keyword": ["先週", "前週"],
         "range": lambda x: [
             x + relativedelta(weekday=MO(-2), hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(weekday=SU(-1), hour=23, minute=59, second=59, microsecond=999999),
@@ -137,14 +137,14 @@ DATE_RANGE_MAP: dict[str, DateRangeSpec] = {
         ],
     },
     "last_month": {
-        "keyword": ["先月", "昨月"],
+        "keyword": ["先月", "昨月", "前月"],
         "range": lambda x: [
             x + relativedelta(months=-1, day=1, hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(months=-1, day=31, hour=23, minute=59, second=59, microsecond=999999),
         ],
     },
     "two_months_ago": {
-        "keyword": ["先々月"],
+        "keyword": ["先々月", "前々月"],
         "range": lambda x: [
             x + relativedelta(months=-2, day=1, hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(months=-2, day=31, hour=23, minute=59, second=59, microsecond=999999),
@@ -158,14 +158,14 @@ DATE_RANGE_MAP: dict[str, DateRangeSpec] = {
         ],
     },
     "last_year": {
-        "keyword": ["去年", "昨年"],
+        "keyword": ["去年", "昨年", "前年"],
         "range": lambda x: [
             x + relativedelta(years=-1, month=1, day=1, hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(years=-1, month=12, day=31, hour=23, minute=59, second=59, microsecond=999999),
         ],
     },
     "year_before_last": {
-        "keyword": ["一昨年"],
+        "keyword": ["一昨年", "前々年"],
         "range": lambda x: [
             x + relativedelta(years=-2, month=1, day=1, hour=0, minute=0, second=0, microsecond=0),
             x + relativedelta(years=-2, month=12, day=31, hour=23, minute=59, second=59, microsecond=999999),
