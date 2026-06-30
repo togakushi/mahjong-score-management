@@ -103,7 +103,7 @@ def main(adapter: "ServiceAdapter") -> None:
 
         libs.dispatcher.by_keyword(m)
 
-    @bot.slash_command(name=adapter.conf.slash_command)  # type: ignore[no-untyped-call, untyped-decorator]
+    @bot.slash_command(name=adapter.conf.slash_command)
     async def slash_command(ctx: discord.ApplicationContext, command: str) -> None:
         adapter.api.response = ctx
 
