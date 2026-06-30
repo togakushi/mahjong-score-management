@@ -209,10 +209,6 @@ class AppConfig:
                     protected_values = self.analysis.commandword  # 上書き保護
                     self.analysis.initialization(additional_config_parser[section_name])
                     self.analysis.commandword = protected_values
-            case "report":
-                protected_values = self.report.commandword  # 上書き保護
-                self.report.initialization(additional_config_parser[section_name])
-                self.report.commandword = protected_values
             case "help":
                 protected_values = self.help.commandword  # 上書き保護
                 self.help.initialization(additional_config_parser[section_name])

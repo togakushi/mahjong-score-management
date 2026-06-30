@@ -11,7 +11,9 @@ from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
+import libs.commands.analysis.entry
 import libs.commands.help.entry
+import libs.commands.summary.entry
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import initialization

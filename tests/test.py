@@ -11,9 +11,6 @@ from pathlib import Path
 from pprint import pprint
 from typing import TYPE_CHECKING, Any
 
-from libs.commands.graph import personal as graph_personal
-from libs.commands.graph import summary as graph_summary
-
 import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
@@ -53,19 +50,19 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
 
         """
         if len(g.params.player_list) == 1:
-            graph_personal.plot(m)
+            deliverables.graph_personal.plot(m)
             pprint(
                 [
-                    "exec: graph.personal.plot()",
+                    "exec: deliverables.graph_personal.plot()",
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
             )
         else:
-            graph_summary.point_plot(m)
+            deliverables.graph_summary.point_plot(m)
             pprint(
                 [
-                    "exec: graph.summary.point_plot()",
+                    "exec: deliverables.graph_summary.point_plot()",
                     f"{g.params=}" if flag.get("dump") else "g.params={...}",
                 ],
                 width=120,
@@ -81,10 +78,10 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
 
         """
-        graph_summary.point_plot(m)
+        deliverables.graph_summary.point_plot(m)
         pprint(
             [
-                "exec: graph.summary.rank_plot()",
+                "exec: deliverables.graph_summary.point_plot()",
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -100,10 +97,10 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
 
         """
-        graph_personal.statistics_plot(m)
+        deliverables.graph_personal.statistics_plot(m)
         pprint(
             [
-                "exec: graph.personal.statistics_plot()",
+                "exec: deliverables.graph_personal.statistics_plot()",
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -167,7 +164,7 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
                 deliverables.results.aggregation(m)
                 pprint(
                     [
-                        "exec: results.summary.aggregate()",
+                        "exec: deliverables.results.aggregation()",
                         f"{g.params=}" if flag.get("dump") else "g.params={...}",
                     ],
                     width=120,
