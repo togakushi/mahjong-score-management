@@ -1,6 +1,6 @@
 [project]
 name = "mahjong-score-management"
-version = "0.16.0"
+version = "0.17.0"
 description = "Mahjong score management tool"
 readme = "README.md"
 license = "MIT"
@@ -25,7 +25,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "sphinx",
-    "sphobjinv",
+    "linuxdoc",
     "sphinxcontrib-mermaid",
     "python-docs-theme",
     "pytest",
