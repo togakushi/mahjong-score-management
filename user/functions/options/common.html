@@ -178,6 +178,7 @@
 <li><p>キーワードは複数指定可能</p></li>
 <li><p>実行時の時間を基準に算出</p></li>
 <li><p>リスト内の最小値と最大値の期間を取る</p></li>
+<li><p>開始日時、終了日時共に <a class="reference internal" href="../../configuration/main/application/setting.html#setting_section-time_adjust" title="time_adjust"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">time_adjust</span></code></a> が考慮された日付を取得する</p></li>
 </ul>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -193,35 +194,26 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><dl class="mahjong common">
-<dt class="sig sig-object mahjong" id="common-当日">
-<span class="n"><span class="pre">当日</span></span><a class="headerlink" href="#common-当日" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p><a class="reference internal" href="../../configuration/main/application/setting.html#setting_section-time_adjust" title="time_adjust"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">time_adjust</span></code></a> を考慮した時間の日付</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-今日">
-<span class="n"><span class="pre">今日</span></span><a class="headerlink" href="#common-今日" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">今日</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">本日</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">当日</span></span><a class="headerlink" href="#common-今日" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>今日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-昨日">
-<span class="n"><span class="pre">昨日</span></span><a class="headerlink" href="#common-昨日" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">昨日</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前日</span></span><a class="headerlink" href="#common-昨日" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>昨日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-先週">
-<span class="n"><span class="pre">先週</span></span><a class="headerlink" href="#common-先週" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">先週</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前週</span></span><a class="headerlink" href="#common-先週" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -232,7 +224,7 @@
 </td>
 <td><p>実行日から7日前の週の月曜日～日曜日</p></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-今週">
 <span class="n"><span class="pre">今週</span></span><a class="headerlink" href="#common-今週" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -249,7 +241,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-今月">
 <span class="n"><span class="pre">今月</span></span><a class="headerlink" href="#common-今月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -262,9 +254,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-先月">
-<span class="n"><span class="pre">先月</span></span><a class="headerlink" href="#common-先月" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">先月</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">昨月</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前月</span></span><a class="headerlink" href="#common-先月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -275,9 +267,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-先々月">
-<span class="n"><span class="pre">先々月</span></span><a class="headerlink" href="#common-先々月" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">先々月</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前々月</span></span><a class="headerlink" href="#common-先々月" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -288,7 +280,7 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-今年">
 <span class="n"><span class="pre">今年</span></span><a class="headerlink" href="#common-今年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -301,9 +293,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-去年">
-<span class="n"><span class="pre">去年</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">昨年</span></span><a class="headerlink" href="#common-去年" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">去年</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">昨年</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前年</span></span><a class="headerlink" href="#common-去年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -314,9 +306,9 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-一昨年">
-<span class="n"><span class="pre">一昨年</span></span><a class="headerlink" href="#common-一昨年" title="Link to this definition">¶</a></dt>
+<span class="n"><span class="pre">一昨年</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">前々年</span></span><a class="headerlink" href="#common-一昨年" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
@@ -327,7 +319,7 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-最初">
 <span class="n"><span class="pre">最初</span></span><a class="headerlink" href="#common-最初" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -336,7 +328,7 @@
 <td><p>記録されている最初のレコードの前日</p></td>
 <td><p>集計対象のルール識別子で異なる日付が返る</p></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-最後">
 <span class="n"><span class="pre">最後</span></span><a class="headerlink" href="#common-最後" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -345,7 +337,7 @@
 <td><p>翌日の日付</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-全部">
 <span class="n"><span class="pre">全部</span></span><a class="headerlink" href="#common-全部" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -358,7 +350,7 @@
 </td>
 <td><p>最初から最後まで</p></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong common">
+<tr class="row-odd"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-YYYYMMDD">
 <span class="n"><span class="pre">YYYYMMDD</span></span><a class="headerlink" href="#common-YYYYMMDD" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -367,7 +359,7 @@
 <td><p>指定日 （連続した数字8桁）</p></td>
 <td><p>MMとDDは常に2桁で指定する</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong common">
+<tr class="row-even"><td><dl class="mahjong common">
 <dt class="sig sig-object mahjong" id="common-YYYY-MM-DD">
 <span class="n"><span class="pre">YYYY-MM-DD</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">YYYY/MM/DD</span></span><a class="headerlink" href="#common-YYYY-MM-DD" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
