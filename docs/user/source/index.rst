@@ -10,8 +10,8 @@ Mahjong score management tool
 
    functions/input/index
    functions/output/index
+   functions/options/index
    functions/appendix/index
-   glossary
 
 
 管理者向けマニュアル

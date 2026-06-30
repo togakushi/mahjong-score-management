@@ -65,7 +65,7 @@ del = 削除,退部届
 # guest_skip2          : 2ゲスト戦除外/個人成績用(未定義時：True)
 # score_comparisons    : ポイント比較モード(未定義時：False)
 # game_results         : 戦績表示(未定義時：False)
-# versus_matrix        : 対局対戦マトリックス表示(未定義時：False)
+# versus_matrix        : 対局対戦マトリクス表示(未定義時：False)
 # ranked               : ランキングに出力する順位(未定義時：3)
 
 [results] # 成績出力

@@ -82,7 +82,19 @@ class SplitWordsDescription(ObjectDescription[Any]):
 class CommonDirective(SplitWordsDescription):
     """共通オプション"""
 
-    index_category = "common options"
+    index_category = "共通オプション"
+
+
+class SummaryDirective(SplitWordsDescription):
+    """集計コマンドオプション"""
+
+    index_category = "集計コマンドオプション"
+
+
+class AnalysisDirective(SplitWordsDescription):
+    """分析コマンドオプション"""
+
+    index_category = "分析コマンドオプション"
 
 
 class ResultsDirective(SplitWordsDescription):
@@ -192,6 +204,8 @@ class MahjongDomain(Domain):
     object_types: ClassVar[dict[str, ObjType]] = {
         # section
         "setting_section": ObjType("setting_section", "setting_section"),
+        "summary_section": ObjType("summary_section", "setting_section"),
+        "analysis_section": ObjType("analysis_section", "setting_section"),
         "integrations_section": ObjType("integrations_section", "integrations_section"),
         "rule_set_section": ObjType("rule_set_section", "rule_set_section"),
         "regulations_section": ObjType("regulations_section", "regulations_section"),
@@ -205,6 +219,8 @@ class MahjongDomain(Domain):
         "sub_commands_section": ObjType("sub_commands_section", "sub_commands_section"),
         # option
         "common": ObjType("common", "common"),
+        "summary": ObjType("summary", "summary"),
+        "analysis": ObjType("analysis", "analysis"),
         "results": ObjType("results", "results"),
         "graph": ObjType("graph", "graph"),
         "ranking": ObjType("ranking", "ranking"),
@@ -227,6 +243,8 @@ class MahjongDomain(Domain):
         "sub_commands_section": SubCommandsSectionDirective,
         # option
         "common": CommonDirective,
+        "summary": SummaryDirective,
+        "analysis": AnalysisDirective,
         "results": ResultsDirective,
         "graph": GraphDirective,
         "ranking": RankingDirective,
@@ -249,6 +267,8 @@ class MahjongDomain(Domain):
         "sub_commands_section": XRefRole(),
         # option
         "common": XRefRole(),
+        "summary": XRefRole(),
+        "analysis": XRefRole(),
         "results": XRefRole(),
         "graph": XRefRole(),
         "ranking": XRefRole(),

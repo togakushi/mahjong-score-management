@@ -20,7 +20,7 @@
 results
 +++++++
 
-:概要: 成績サマリを表示（参照： `function-results` ）
+:概要: 成績サマリを表示（参照： `function-summary` ）
 :書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
 :引数: - 専用オプション
 
@@ -46,7 +46,7 @@ results
 graph
 +++++
 
-:概要: ポイント推移グラフを表示（参照： `function-graph` ）
+:概要: ポイント推移グラフを表示（参照： `deliverables-point_transition` ）
 :書式: ``/commandname graph [対象メンバー] [検索範囲]``
 :引数: - 専用オプション
 
@@ -71,7 +71,7 @@ graph
 ranking
 +++++++
 
-:概要: 各成績をランキング形式で表示（参照： `function-ranking` ）
+:概要: 各成績をランキング形式で表示（参照： `deliverables-ranking` ）
 :書式: ``/commandname ranking [検索範囲] [トップNNN]``
 :引数: - 専用オプション
 
@@ -92,13 +92,13 @@ ranking
 report
 ++++++
 
-:概要: レポートを表示（参照： `function-report` ）
+:概要: レポートを表示（参照： `function-summary` ）
 :書式: ``/commandname report [専用オプション]``
 :引数: - 専用オプション
 
          - 指定なし：成績上位5名（月間）
          - :report:`統計` ：ゲーム統計（月間）
-         - :report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリックス表
+         - :report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリクス表
          - プレイヤー名：指定プレイヤーの成績レポート(PDF)
 
        - 共通オプション

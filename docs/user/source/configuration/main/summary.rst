@@ -99,7 +99,7 @@
      -
      - 内部フラグ（ ``True`` 指定時は強制表示 ）
    * - .. sub_commands_section:: versus_matrix
-     - 対戦マトリックス表示
+     - 対戦マトリクス表示
      - 真偽値
      - False
      -
