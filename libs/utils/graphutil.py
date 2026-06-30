@@ -35,9 +35,12 @@ def setup() -> None:
     plt.style.use(style)
 
     # フォント再設定
-    for x in ("family", "serif", "sans-serif", "cursive", "fantasy", "monospace"):
-        if f"font.{x}" in plt.rcParams:
-            plt.rcParams[f"font.{x}"] = ""
+    plt.rcParams["font.family"] = []
+    plt.rcParams["font.serif"] = []
+    plt.rcParams["font.sans-serif"] = []
+    plt.rcParams["font.cursive"] = []
+    plt.rcParams["font.fantasy"] = []
+    plt.rcParams["font.monospace"] = []
 
     fm.fontManager.addfont(g.cfg.setting.font_file)
     font_prop = fm.FontProperties(fname=g.cfg.setting.font_file)
