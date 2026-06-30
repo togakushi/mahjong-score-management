@@ -30,21 +30,21 @@
 
 成績管理をするプレイヤーを登録し、スコアを蓄積する。
 
-### 成績サマリ出力機能（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/results/index.html) ）
+### 成績集計機能
+
+#### 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/results/index.html) ）
 
 記録されているスコアを集計し、一覧で出力する。
 
-### グラフ生成機能（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/graph/index.html) ）
+#### グラフ生成（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/graph/index.html) ）
 
 記録されているスコアを集計し、グラフで出力する。
 
-### ランキング出力機能（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/ranking/index.html) ）
+### 成績分析機能
+
+#### ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/ranking/index.html) ）
 
 記録されているスコアを集計し、ランキング形式で出力する。
-
-### レポート出力機能（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/report/index.html) ）
-
-月間成績上位者、個人成績一覧、ゲーム統計情報を表形式で出力する。
 
 ### スラッシュコマンド（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/appendix/command.html) ）
 
