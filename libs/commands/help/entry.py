@@ -126,7 +126,7 @@ def help_message(m: "MessageParserProtocol") -> None:
     # 検索範囲
     m.set_message(
         ExtDt.print_range(),
-        StyleOptions(title="検索範囲に指定できるワード"),
+        StyleOptions(title="検索範囲に指定できるワード", keep_indent=True),
     )
 
     # メモ機能
