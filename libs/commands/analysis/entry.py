@@ -43,32 +43,24 @@ def main(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
 
     """
-    m.status.command_type = CommandType.ANALYSIS
     g.params = dictutil.placeholder(g.cfg.analysis, m)
 
     if len(g.params.player_list) == 1 and g.params.report:
-        m.status.command_type = CommandType.REPORT
-        deliverables.graph_personal.statistics_plot(m)
+        deliverables.stats_report.gen_pdf(m)
     elif len(g.params.player_list) == 1 and g.params.graph:
-        m.status.command_type = CommandType.GRAPH
         deliverables.graph_personal.statistics_plot(m)
     else:
         if g.params.rating:  # レーティング
             if g.params.graph:
-                m.status.command_type = CommandType.GRAPH
                 deliverables.graph_rating.plot(m)
             else:
-                m.status.command_type = CommandType.RATING
                 deliverables.rating_calc.aggregation(m)
         elif g.params.raw_score:  # 素点分析
             if g.params.graph:
-                m.status.command_type = CommandType.GRAPH
                 deliverables.graph_regression.plot(m)
             else:
-                m.status.command_type = CommandType.RANKING
                 deliverables.score_deviation.aggregation(m)
         elif g.params.report and g.params.statistics:
-            m.status.command_type = CommandType.REPORT
             deliverables.monthly.plot(m)
         else:
             if g.params.versus_matrix:  # 対局対戦マトリクス
@@ -80,11 +72,8 @@ def main(m: "MessageParserProtocol") -> None:
                     else:
                         g.params.player_list = g.cfg.team.lists
                 if g.params.graph:  # 成績詳細(比較)
-                    m.status.command_type = CommandType.REPORT
                     deliverables.stats_list.main(m)
                 else:
-                    m.status.command_type = CommandType.SUMMARY
                     deliverables.detail.comparison(m)
             else:  # ランキング
-                m.status.command_type = CommandType.RANKING
                 deliverables.ranking_calc.aggregation(m)
