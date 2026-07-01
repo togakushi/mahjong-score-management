@@ -10,7 +10,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import adjusting, message
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil, graphutil, textutil
 
 if TYPE_CHECKING:
@@ -30,13 +30,15 @@ def main(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # 検索動作を合わせる
+    # パラメータ更新
+    g.params.deliverables = CommandType.REPORT
     g.params.guest_skip = g.params.guest_skip2
 
-    # --- データ取得
+    # データ取得
     game_info = GameInfo()
     df = g.params.read_data("REPORT_RESULTS_LIST").reset_index(drop=True)
     df.index = df.index + 1
+
     if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績一覧"))
         m.status.result = False

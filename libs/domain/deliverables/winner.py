@@ -11,7 +11,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import graphutil, textutil
 
 if TYPE_CHECKING:
@@ -26,11 +26,16 @@ def plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # --- データ取得
+    # パラメータ更新
+    g.params.deliverables = CommandType.REPORT
+
+    # データ取得
+    title: str = "成績上位者"
     game_info = GameInfo()
     results_df = g.params.read_data("REPORT_WINNER")
+
     if len(results_df) == 0:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title="成績上位"))
+        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -43,7 +48,7 @@ def plot(m: "MessageParserProtocol") -> None:
         for col in [f"name{x}" for x in range(1, 6)]:
             results_df[col] = results_df[col].replace(mapping_dict)
 
-    # --- 集計
+    # 集計
     results: dict[str, Any] = {}
     for _, v in results_df.iterrows():
         results[v["collection"]] = {}
@@ -57,9 +62,9 @@ def plot(m: "MessageParserProtocol") -> None:
                     str("{:+}".format(v[f"point{x}"])).replace("-", "▲"),
                 )
 
-    m.set_headline(message.header(game_info, m), StyleOptions(title="成績上位者"))
+    m.set_headline(message.header(game_info, m), StyleOptions(title=title))
 
-    # --- グラフ設定
+    # グラフ設定
     match g.adapter.conf.plotting_backend:
         case "plotly":
             report_file_path = textutil.save_file_path("report.html")
@@ -134,8 +139,8 @@ def plot(m: "MessageParserProtocol") -> None:
 
     match g.adapter.interface_type:
         case "slack" | "discord":
-            m.set_message(report_file_path, StyleOptions(title="成績上位者", use_comment=True, header_hidden=True))
+            m.set_message(report_file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
         case "web":
-            m.set_message(results_df, StyleOptions(title="成績上位者"))
+            m.set_message(results_df, StyleOptions(title=title))
         case _:
-            m.set_message(pd.DataFrame(results).T, StyleOptions(title="成績上位者"))
+            m.set_message(pd.DataFrame(results).T, StyleOptions(title=title))

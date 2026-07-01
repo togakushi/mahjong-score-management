@@ -10,7 +10,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import adjusting, message
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import converter, dictutil
 
 if TYPE_CHECKING:
@@ -26,13 +26,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # パラメータ切り替え
-    g.params.command = "analysis"
+    # パラメータ更新
+    g.params.deliverables = CommandType.RANKING
 
     # データ収集
     data: "MessageType"
     rank_data: dict[str, list[float]] = {}
-
     game_info = GameInfo()
     total_df = g.params.read_data("SUMMARY_DETAILS")
 

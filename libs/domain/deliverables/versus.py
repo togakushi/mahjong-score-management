@@ -9,7 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
@@ -25,10 +25,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # 検索動作を合わせる
+    # パラメータ更新
+    g.params.deliverables = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2
 
-    # --- データ収集
+    # データ収集
     data: "MessageType"
     df_vs = g.params.read_data("SUMMARY_VERSUS_MATRIX", False)
     df_game = g.params.read_data("SUMMARY_DETAILS", False).fillna(value="")
@@ -37,7 +38,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     my_name = textutil.name_replace(g.params.player_name, add_mark=True)
     vs_list = [textutil.name_replace(x, add_mark=True) for x in g.params.competition_list]
 
-    # --- 匿名化
+    # 匿名化
     if g.params.anonymous:
         mapping_dict = textutil.anonymous_mapping([my_name] + vs_list)
         my_name = mapping_dict[my_name]
@@ -45,7 +46,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         df_vs["my_name"] = df_vs["my_name"].replace(mapping_dict)
         df_vs["vs_name"] = df_vs["vs_name"].replace(mapping_dict)
 
-    # --- 表示内容
+    # 表示内容
     if g.params.all_player:
         vs = "全員"
     else:
@@ -96,7 +97,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    # --- ファイル出力
+    # ファイル出力
     if len(df_data):
         df_data["座席"] = df_data["seat"].apply(lambda x: ["東家", "南家", "西家", "北家"][x - 1])
         df_data["rpoint"] = df_data["rpoint"] * 100

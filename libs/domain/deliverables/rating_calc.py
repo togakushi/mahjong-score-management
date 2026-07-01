@@ -27,7 +27,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    m.status.command_type = CommandType.RATING  # 更新
+    # パラメータ更新
+    g.params.deliverables = CommandType.RATING
 
     # 情報ヘッダ
     title: str = "レーティング"

@@ -13,7 +13,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
 
@@ -45,6 +45,9 @@ def point_plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.GRAPH
+
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
@@ -96,11 +99,14 @@ def rank_plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.GRAPH
+
     # データ収集
     game_info = GameInfo()
     target_data, df = _data_collection()
 
-    if target_data.empty:  # 描写対象が0人の場合は終了
+    if target_data.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
