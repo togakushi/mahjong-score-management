@@ -23,14 +23,18 @@
 コマンド構文
 ------------
 
-:チャンネル内呼び出し: <成績集計コマンド> [オプション]
-:スラッシュコマンド: /commandname summary [オプション]
+:チャンネル内呼び出し: <集計コマンド> [`ターゲット`] [`オプション`]
 
-.. note::
-   ``/commandname`` は以下で定義する
+   .. note:: ``集計コマンド`` は以下で定義される
 
-   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+      - `summary セクション <results_management>` の :sub_commands_section:`commandword`
+
+:スラッシュコマンド: /commandname summary [`ターゲット`] [`オプション`]
+
+   .. note:: ``/commandname`` は以下で定義される
+
+      - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+      - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
 
 
 オプション組み合わせ表

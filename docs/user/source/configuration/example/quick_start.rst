@@ -18,11 +18,11 @@
    font_file = ipaexg.ttf
 
    [summary]
-   commandword = お好みの成績集計コマンド呼び出しワード
+   commandword = お好みの集計コマンド呼び出しワード
    guest_skip = False
 
    [analysis]
-   commandword = お好みの成績分析コマンド呼び出しワード
+   commandword = お好みの分析コマンド呼び出しワード
    aggregation_range = 今月
    guest_skip = False
    ranked = 10

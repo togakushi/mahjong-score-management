@@ -120,7 +120,7 @@ def help_message(m: "MessageParserProtocol") -> None:
     if g.cfg.shortcut:
         m.set_message(
             "\n".join([f"{k}\t→ {v}" for k, v in g.cfg.shortcut.items()]),
-            StyleOptions(title="ショートカット", indent=1, sub_title=True),
+            StyleOptions(title="コマンドショートカット"),
         )
 
     # 検索範囲
