@@ -66,10 +66,8 @@ def help_message(m: "MessageParserProtocol") -> None:
 
     構築されるヘルプ情報セクション:
         - **コマンド呼び出し**: 基本的な使い方のフォーマットと適用中のルール識別子。
-        - **成績サマリ (RESULTS)**: 成績サマリの呼び出しワードと検索範囲の初期値。
-        - **成績グラフ (GRAPH)**: グラフ描画の呼び出しワードと検索範囲の初期値。
-        - **ランキング (RANKING)**: ランキングの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。
-        - **レポート (REPORT)**: レポート生成の呼び出しワードと検索範囲の初期値。
+        - **集計コマンド (SUMMARY)**: 集計コマンドの呼び出しワードと検索範囲の初期値。
+        - **分析コマンド (ANALYSIS)**: 分析コマンドの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。
         - **メンバー・チーム一覧**: 登録されているメンバーやチームのリストを出力する呼び出しワード。
         - **検索範囲**: 期間指定などで利用できる有効な検索ワードの一覧。
         - **メモ機能**: 個別カウントや役満カウントなどのレギュレーションに準じたメモ記録ワードと仕様。
@@ -86,28 +84,28 @@ def help_message(m: "MessageParserProtocol") -> None:
     g.cfg.rule.status_update(g.params.placeholder())
     g.params.update_setting(g.cfg.config_file, "default_rule", str)
 
+    # コマンド
     m.set_message(
-        textwrap.dedent(f"""\
-        使い方：<呼び出しワード> [検索範囲] [対象メンバー] [オプション]
-        集計対象ルール識別子：{g.params.rule_version}
+        textwrap.dedent("""\
+        使い方：<呼び出しワード> [検索範囲] [ターゲット] [オプション]
         """),
         StyleOptions(title="コマンド呼び出し"),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.RESULTS))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.SUMMARY))}
         検索範囲デフォルト：{g.cfg.summary.aggregation_range}
         """),
-        StyleOptions(title="成績サマリ", indent=1, sub_title=True),
+        StyleOptions(title="集計コマンド", indent=1, sub_title=True),
     )
     m.set_message(
         textwrap.dedent(f"""\
-        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.RANKING))}
+        呼び出しワード：{"、".join(lookup.resolve_commands(g.params.rule_version, CommandType.ANALYSIS))}
         検索範囲デフォルト：{g.cfg.analysis.aggregation_range}
         規定打数デフォルト：総対戦数 × {g.cfg.analysis.stipulated_rate} ＋ 1
         出力制限デフォルト：上位 {g.cfg.analysis.ranked} 名
         """),
-        StyleOptions(title="ランキング", indent=1, sub_title=True),
+        StyleOptions(title="分析コマンド", indent=1, sub_title=True),
     )
     m.set_message(
         f"呼び出しワード：{'、'.join(lookup.resolve_commands(g.params.rule_version, CommandType.MEMBER_LIST))}",
@@ -117,36 +115,55 @@ def help_message(m: "MessageParserProtocol") -> None:
         f"呼び出しワード：{'、'.join(lookup.resolve_commands(g.params.rule_version, CommandType.TEAM_LIST))}",
         StyleOptions(title="チーム一覧", indent=1, sub_title=True),
     )
-    m.set_message(  # 検索範囲
+
+    # ショートカット
+    if g.cfg.shortcut:
+        m.set_message(
+            "\n".join([f"{k}\t→ {v}" for k, v in g.cfg.shortcut.items()]),
+            StyleOptions(title="ショートカット", indent=1, sub_title=True),
+        )
+
+    # 検索範囲
+    m.set_message(
         ExtDt.print_range(),
         StyleOptions(title="検索範囲に指定できるワード"),
     )
 
     # メモ機能
-    remarks_type1: str = ""
-    if words := lookup.regulation_list(1, g.params.rule_version):
-        remarks_type1 += "個別カウントワード：" + "、".join(words)
-    else:
-        if g.cfg.rule.get_undefined_word(g.params.default_rule) == 1:
-            remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
+    if g.cfg.rule.remarks_words:
+        # メモ記録ワード探索
+        if not (remarks_words := g.cfg.rule.data[g.params.rule_version].remarks):
+            if g.cfg.setting.remarks_suffix:
+                remarks_words = [
+                    f"{keywords}{suffix}" for keywords in g.cfg.rule.data[g.params.rule_version].keywords for suffix in g.cfg.setting.remarks_suffix
+                ]
+            else:
+                remarks_words = g.cfg.rule.remarks_words
 
-    remarks_type0: str = ""
-    if words := lookup.regulation_list(0, g.params.rule_version):
-        remarks_type0 += "役満カウントワード：" + "、".join(words)
-    else:
-        if g.cfg.rule.get_undefined_word(g.params.default_rule) == 0:
-            remarks_type0 += "役満カウントワード：未登録ワードのすべてを役満としてカウント"
+        remarks_type1: str = ""
+        if words := lookup.regulation_list(1, g.params.rule_version):
+            remarks_type1 += "個別カウントワード：" + "、".join(words)
+        else:
+            if g.cfg.rule.get_undefined_word(g.params.default_rule) == 1:
+                remarks_type1 += "個別カウントワード：未登録ワードのすべてを個別にカウント"
 
-    m.set_message(
-        textwrap.dedent(f"""\
-        使い方：<メモ記録ワード> <対象メンバー> <内容>
-        メモ記録ワード：{"、".join(g.cfg.rule.data[g.params.rule_version].remarks)}
+        remarks_type0: str = ""
+        if words := lookup.regulation_list(0, g.params.rule_version):
+            remarks_type0 += "役満カウントワード：" + "、".join(words)
+        else:
+            if g.cfg.rule.get_undefined_word(g.params.default_rule) == 0:
+                remarks_type0 += "役満カウントワード：未登録ワードのすべてを役満としてカウント"
 
-        {remarks_type1}
-        {remarks_type0}
-        """),
-        StyleOptions(title="メモ機能", keep_blank=True),
-    )
+        m.set_message(
+            textwrap.dedent(f"""\
+            使い方：<メモ記録ワード> <対象メンバー> <内容>
+            メモ記録ワード：{"、".join(remarks_words)}
+
+            {remarks_type1}
+            {remarks_type0}
+            """),
+            StyleOptions(title="メモ機能", keep_blank=True),
+        )
 
     # ルールセット
     m.set_message(
@@ -155,27 +172,28 @@ def help_message(m: "MessageParserProtocol") -> None:
     )
 
     # レギュレーション
-    regulation: str = ""
-    if words := lookup.regulation_list(2, g.params.rule_version):
-        regulation += "卓外清算ワード(個人)：\n"
-        for word in words:
-            regulation += f"\t{word}\n"
-        regulation += "\n"
+    if g.cfg.rule.remarks_words:
+        regulation: str = ""
+        if words := lookup.regulation_list(2, g.params.rule_version):
+            regulation += "卓外清算ワード(個人)：\n"
+            for word in words:
+                regulation += f"\t{word}\n"
+            regulation += "\n"
 
-    if words := lookup.regulation_list(3, g.params.rule_version):
-        regulation += "卓外清算ワード(チーム)：\n"
-        for word in words:
-            regulation += f"\t{word}\n"
-        regulation += "\n"
-    if regulation:
-        m.set_message(regulation, StyleOptions(title="レギュレーション", keep_blank=True, keep_indent=True))
+        if words := lookup.regulation_list(3, g.params.rule_version):
+            regulation += "卓外清算ワード(チーム)：\n"
+            for word in words:
+                regulation += f"\t{word}\n"
+            regulation += "\n"
+        if regulation:
+            m.set_message(regulation, StyleOptions(title="レギュレーション", keep_blank=True, keep_indent=True))
 
     # その他
     channel_config = g.params.channel_config
     m.set_message(
         textwrap.dedent(f"""\
         チャンネル識別子：{g.params.source}
-        デフォルトルール識別子：{g.params.default_rule}
+        デフォルトルール識別子：{g.params.rule_version}
         チャンネル個別設定：{channel_config.name if channel_config else "---"}
         セパレート機能：{"有効" if g.params.separate else "無効"}
         """),
