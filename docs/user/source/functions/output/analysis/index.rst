@@ -23,14 +23,19 @@
 コマンド構文
 ------------
 
-:チャンネル内呼び出し: <成績分析コマンド> [オプション]
-:スラッシュコマンド: /commandname analysis [オプション]
+:チャンネル内呼び出し: <分析コマンド> [`ターゲット`] [`オプション`]
 
-.. note::
-   ``/commandname`` は以下で定義する
+   .. note:: ``分析コマンド`` は以下で定義される
 
-   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+      - `analysis セクション <results_management>` の :sub_commands_section:`commandword`
+
+:スラッシュコマンド: /commandname analysis [`ターゲット`] [`オプション`]
+
+   .. note:: ``/commandname`` は以下で定義される
+
+      - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
+      - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+
 
 オプション組み合わせ表
 ----------------------
