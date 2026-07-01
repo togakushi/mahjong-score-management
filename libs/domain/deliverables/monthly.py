@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import libs.global_value as g
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import graphutil, textutil
 
 if TYPE_CHECKING:
@@ -24,7 +24,10 @@ def plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # --- データ収集
+    # パラメータ更新
+    g.params.deliverables = CommandType.REPORT
+
+    # データ収集
     title: str = "月別ゲーム統計"
     df = g.params.read_data("REPORT_MONTHLY")
     results = df.transpose().to_dict()

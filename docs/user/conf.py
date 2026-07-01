@@ -58,7 +58,7 @@ html_theme_options = {
 }
 html_sidebars = {
     "**": [
-        "localtoc.html",
+        "smarttoc.html",
         "relations.html",
         "sourcelink.html",
         "links.html",

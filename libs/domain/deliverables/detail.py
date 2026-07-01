@@ -14,7 +14,7 @@ from libs.domain.datamodels import GameInfo
 from libs.domain.stats import StatsInfo
 from libs.functions import message
 from libs.functions.compose import badge, text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
@@ -30,7 +30,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # --- パラメータ更新
+    # パラメータ更新
+    g.params.deliverables = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2  # 検索動作を合わせる
 
     if rule_version := g.params.rule_version:
@@ -188,7 +189,8 @@ def comparison(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    # 検索動作を合わせる
+    # パラメータ更新
+    g.params.deliverables = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2
 
     if g.params.player_name in g.cfg.team.lists:

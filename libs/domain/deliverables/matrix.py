@@ -9,7 +9,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import textutil
 
 if TYPE_CHECKING:
@@ -24,6 +24,9 @@ def plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.ANALYSIS
+
     # データ集計
     title: str = "対局対戦マトリクス"
     game_info = GameInfo()

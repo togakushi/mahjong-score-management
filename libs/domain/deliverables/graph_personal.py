@@ -16,7 +16,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -34,9 +34,12 @@ def plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.GRAPH
+    g.params.guest_skip = g.params.guest_skip2
+
     # データ収集
     game_info = GameInfo()
-    g.params.guest_skip = g.params.guest_skip2
     df = g.params.read_data("SUMMARY_GAMEDATA")
 
     if df.empty:
@@ -133,9 +136,12 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.GRAPH
+    g.params.guest_skip = g.params.guest_skip2
+
     # データ収集
     game_info = GameInfo()
-    g.params.guest_skip = g.params.guest_skip2
     df = g.params.read_data("SUMMARY_DETAILS")
 
     if df.empty:

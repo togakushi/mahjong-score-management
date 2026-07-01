@@ -22,7 +22,7 @@ from reportlab.platypus import Image, LongTable, PageBreak, Paragraph, SimpleDoc
 
 import libs.global_value as g
 from libs.functions import adjusting, lookup, message
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import textutil
 
 if TYPE_CHECKING:
@@ -285,6 +285,9 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.REPORT
+
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()
         m.set_headline(message.random_reply(m, "not_implemented"), StyleOptions())

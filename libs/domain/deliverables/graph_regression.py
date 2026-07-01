@@ -12,7 +12,7 @@ from matplotlib.lines import Line2D
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -28,6 +28,10 @@ def plot(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.GRAPH
+
+    # データ収集
     df = g.params.read_data("RANKING_RESULTS").set_index("name")
     avg_rank = df["rank_avg"]
     avg_score = df["rpoint_avg"]

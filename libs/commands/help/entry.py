@@ -46,10 +46,10 @@ def main(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
 
     """
-    m.status.command_type = CommandType.HELP
     g.params = dictutil.placeholder(g.cfg.help, m)
 
     help_message(m)
+
     m.post.ts = m.data.event_ts
     m.post.thread_title = "ヘルプメッセージ"
 
@@ -75,6 +75,9 @@ def help_message(m: "MessageParserProtocol") -> None:
         - **チャンネル設定情報**: 現在のチャンネルID、デフォルトルール、個別設定ファイルの有無、セパレート機能の成否。
 
     """
+    # パラメータ更新
+    g.params.deliverables = CommandType.HELP
+
     g.params.update_from_dict(
         {
             "source": g.cfg.resolve_channel_id(m.status.source),
