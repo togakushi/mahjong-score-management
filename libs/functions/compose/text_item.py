@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Literal, Optional
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
+from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -44,7 +45,7 @@ def remarks(headword: bool = False) -> str | list[str]:
 
     if g.params.stipulated >= 2:
         remark_list.append(f"規定打数 {g.params.stipulated}G以上")
-    if g.params.command in ["ranking"]:
+    if g.params.deliverables in [CommandType.RANKING, CommandType.RATING]:
         remark_list.append(f"{g.params.ranked}位まで表示")
 
     # 集計ルール
