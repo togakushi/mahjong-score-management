@@ -151,7 +151,7 @@
 <div class="line">メンバーリストに登録されているかで <a class="reference internal" href="#term-5"><code class="xref any std std-term docutils literal notranslate"><span class="pre">レギュラー</span></code></a> / <a class="reference internal" href="#term-2"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲスト</span></code></a> に分かれる</div>
 </div>
 </dd>
-<dt id="term-1">プレイヤー<a class="headerlink" href="#term-1" title="Link to this term">¶</a></dt><dd><p>ゲームに参加した個人、その人を識別する名前</p>
+<dt id="term-1">プレイヤー<a class="headerlink" href="#term-1" title="Link to this term">¶</a></dt><dd><p>ゲームに参加した <a class="reference internal" href="#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">メンバー</span></code></a>、その人を識別する名前</p>
 </dd>
 <dt id="term-2">ゲスト<a class="headerlink" href="#term-2" title="Link to this term">¶</a></dt><dt id="term-3">ゲストメンバー<a class="headerlink" href="#term-3" title="Link to this term">¶</a></dt><dt id="term-4">ゲストプレイヤー<a class="headerlink" href="#term-4" title="Link to this term">¶</a></dt><dd><p>メンバー登録されていない <a class="reference internal" href="#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">プレイヤー</span></code></a> 、 <a class="reference internal" href="#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">メンバー</span></code></a></p>
 </dd>
@@ -165,14 +165,35 @@
 </dd>
 <dt id="term-11">ゲーム<a class="headerlink" href="#term-11" title="Link to this term">¶</a></dt><dd><p>半荘など精算の区切りの単位</p>
 </dd>
-<dt id="term-12">突合<a class="headerlink" href="#term-12" title="Link to this term">¶</a></dt><dt id="term-13">突合処理<a class="headerlink" href="#term-13" title="Link to this term">¶</a></dt><dd><p>Slack / Discord 上の入力情報を読み込み直し、DBの登録状況を最新化する</p>
+<dt id="term-12">集計<a class="headerlink" href="#term-12" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">蓄積したデータから特定の <a class="reference internal" href="#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の成績を集計/計算する処理を指す</div>
+<div class="line">対象の <a class="reference internal" href="#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> のデータのみを用いて計算される</div>
+</div>
 </dd>
-<dt id="term-14">ルールセット<a class="headerlink" href="#term-14" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<dt id="term-13">分析<a class="headerlink" href="#term-13" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">蓄積したデータから多角的に成績を集計/計算する処理を指す</div>
+<div class="line">全体平均との比較や、 <a class="reference internal" href="#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">メンバー</span></code></a> 同士の成績比較、傾向を分析する</div>
+</div>
+</dd>
+<dt id="term-14">突合<a class="headerlink" href="#term-14" title="Link to this term">¶</a></dt><dt id="term-15">突合処理<a class="headerlink" href="#term-15" title="Link to this term">¶</a></dt><dd><p>Slack / Discord 上の入力情報を読み込み直し、DBの登録状況を最新化する</p>
+</dd>
+<dt id="term-16">ルールセット<a class="headerlink" href="#term-16" title="Link to this term">¶</a></dt><dd><div class="line-block">
 <div class="line">集計に影響のあるルール(配給原点、返し点、順位点、など)をパラメータ化してまとめたもの</div>
 <div class="line">集計の基本単位となる</div>
 </div>
 </dd>
-<dt id="term-15">ルール識別子<a class="headerlink" href="#term-15" title="Link to this term">¶</a></dt><dd><p>ルールセットに付けた名称</p>
+<dt id="term-17">ルール識別子<a class="headerlink" href="#term-17" title="Link to this term">¶</a></dt><dd><p>ルールセットに付けた名称</p>
+</dd>
+<dt id="term-18">コマンド<a class="headerlink" href="#term-18" title="Link to this term">¶</a></dt><dd><p>蓄積したデータを基に集計、分析を行うために示すキーワード</p>
+</dd>
+<dt id="term-19">ターゲット<a class="headerlink" href="#term-19" title="Link to this term">¶</a></dt><dd><p>コマンドの集計対象として指定する <a class="reference internal" href="#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">プレイヤー</span></code></a> および チーム を指す用語</p>
+</dd>
+<dt id="term-20">オプション<a class="headerlink" href="#term-20" title="Link to this term">¶</a></dt><dd><p>コマンドの動作を変更するためにコマンドに渡すキーワード</p>
+</dd>
+<dt id="term-21">パラメータ<a class="headerlink" href="#term-21" title="Link to this term">¶</a></dt><dd><div class="line-block">
+<div class="line">コマンドに渡す <a class="reference internal" href="#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> 、 <a class="reference internal" href="#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a> をすべて含めた総称</div>
+<div class="line"><a class="reference internal" href="#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a> は特定のひとつを指し示すのに用いられるが、 <a class="reference internal" href="#term-21"><code class="xref any std std-term docutils literal notranslate"><span class="pre">パラメータ</span></code></a> は全体（複数をまとめて）指し示すときに用いられる</div>
+</div>
 </dd>
 </dl>
 </section>
