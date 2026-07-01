@@ -36,6 +36,7 @@ Examples:
 from datetime import datetime
 from enum import StrEnum
 from functools import total_ordering
+from math import ceil
 from typing import Any, Callable, Optional, TypeAlias, TypedDict, Union
 
 from dateutil.relativedelta import MO, SU, relativedelta
@@ -500,14 +501,15 @@ class ExtendedDatetime:
 
         """
         base_instance = cls()
-        ret: str = ""
+        scope_to_labels: dict[str, list[str]] = {}
 
         for _, val in DATE_RANGE_MAP.items():
             for label in val["keyword"]:
                 scope = " ～ ".join(base_instance.range(label).format(Format.YMD))
-                ret += f"{label}：{scope}\n"
+                scope_to_labels.setdefault(scope, []).append(label)
 
-        return ret.strip()
+        lines = [f"{' '.join(labels)}" + "\t" * ceil((12 - len(" ".join(labels))) / 8) + f"：{scope}" for scope, labels in scope_to_labels.items()]
+        return "\n".join(lines)
 
     @staticmethod
     def convert(value: AcceptedType) -> datetime:
