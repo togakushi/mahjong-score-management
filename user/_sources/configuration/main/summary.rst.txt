@@ -150,14 +150,21 @@
      -
      - 対戦数 × `stipulated_rate` （切り上げ）+ 1
    * - .. sub_commands_section:: ranked
-     - ランキングで出力される順位制限
+     - 出力される順位制限
      - 数値(int)
      - 3
      -
      - |:/:|
      -
+     - `deliverables-ranking` / `deliverables-rating_table` で使用する
+   * - .. sub_commands_section:: interval
+     - 集計範囲の区切り指定
+     - 数値(int)
+     - 80
      -
-
+     - |:/:|
+     -
+     - `deliverables-results_analysis` で使用する
 ..
 
 
