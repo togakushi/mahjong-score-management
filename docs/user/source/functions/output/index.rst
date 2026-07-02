@@ -1,6 +1,18 @@
 出力機能説明
 ============
 
+.. toctree::
+   :caption: 内容説明
+   :maxdepth: 2
+   :titlesonly:
+   :includehidden:
+
+   summary/index
+   analysis/index
+   help/index
+
+----
+
 .. describe:: コマンドルーティング
 
    入力されたコマンドは以下の順序で評価され、出力される内容が決定される。
@@ -21,15 +33,3 @@
 
       #. 必須オプションの有無
       #. 追加オプションの有無
-
-----
-
-.. toctree::
-   :caption: 内容説明
-   :maxdepth: 2
-   :titlesonly:
-   :includehidden:
-
-   summary/index
-   analysis/index
-   help/index
