@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
     
-    <script src="../../_static/documentation_options.js?v=9fbddafe"></script>
+    <script src="../../_static/documentation_options.js?v=3bc55ee7"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -68,10 +68,8 @@
     <ul>
 <li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
 <li><a class="reference internal" href="#id2">成績管理</a><ul>
-<li><a class="reference internal" href="#results">results</a></li>
-<li><a class="reference internal" href="#graph">graph</a></li>
-<li><a class="reference internal" href="#ranking">ranking</a></li>
-<li><a class="reference internal" href="#report">report</a></li>
+<li><a class="reference internal" href="#summary">summary</a></li>
+<li><a class="reference internal" href="#analysis">analysis</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id3">データベース関連</a><ul>
@@ -194,141 +192,32 @@
 </div>
 <section id="id2">
 <h2>成績管理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<section id="results">
-<span id="slash-commands-results"></span><h3>results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
-<dl class="field-list">
-<dt class="field-odd">概要<span class="colon">:</span></dt>
-<dd class="field-odd"><p>成績サマリを表示（参照： <a class="reference internal" href="../output/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> ）</p>
-</dd>
-<dt class="field-even">書式<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">results</span> <span class="pre">[対象メンバー]</span> <span class="pre">[検索範囲]</span> <span class="pre">[戦績]</span> <span class="pre">[詳細]</span> <span class="pre">[対戦]</span> <span class="pre">[チーム]</span></code></p>
-</dd>
-<dt class="field-odd">引数<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>専用オプション</p></li>
-<li><p><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">戦績</span></code> ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力</p></li>
-<li><p><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">詳細</span></code> ：戦績に追加で4人分の戦績を出力</p></li>
-<li><p><code class="xref mahjong mahjong-results docutils literal notranslate"><span class="pre">対戦</span></code> ：対戦結果の表示</p>
-<ul>
-<li><p>対象メンバーを2名以上指定した場合、直接対戦結果を表示</p></li>
-</ul>
-</li>
-<li><p>共通オプション</p>
-<ul>
-<li><p><a class="reference internal" href="../options/common.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
-</ul>
-</li>
-</ul>
-</dd>
-<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
-<dd class="field-even"><p>成績</p>
-</dd>
-<dt class="field-odd">補足説明<span class="colon">:</span></dt>
-<dd class="field-odd"><div class="line-block">
-<div class="line">登録名の指定を省略した場合は、検索範囲内の成績サマリの出力。</div>
-<div class="line">登録名を指定すると、対象メンバーの個人成績（ <a class="reference internal" href="glossary.html#term-10"><code class="xref any std std-term docutils literal notranslate"><span class="pre">2ゲスト戦</span></code></a> 含む）を出力。</div>
-</div>
-</dd>
-</dl>
-</section>
-<section id="graph">
-<span id="slash-commands-graph"></span><h3>graph<a class="headerlink" href="#graph" title="Link to this heading">¶</a></h3>
-<dl class="field-list">
-<dt class="field-odd">概要<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ポイント推移グラフを表示（参照： <a class="reference internal" href="../output/summary/point_transition.html#deliverables-point-transition"><span class="std std-ref">通算ポイント推移グラフ</span></a> ）</p>
-</dd>
-<dt class="field-even">書式<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">graph</span> <span class="pre">[対象メンバー]</span> <span class="pre">[検索範囲]</span></code></p>
-</dd>
-<dt class="field-odd">引数<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>専用オプション</p>
-<ul>
-<li><p><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">順位</span></code> ：順位変動グラフに切り替え</p></li>
-<li><p>集約： <a class="reference internal" href="../options/graph.html#graph-日次" title="日次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">日次</span></code></a> / <a class="reference internal" href="../options/graph.html#graph-月次" title="月次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">月次</span></code></a> / <a class="reference internal" href="../options/graph.html#graph-年次" title="年次"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">年次</span></code></a> / <a class="reference internal" href="../options/graph.html#graph-全体" title="全体"><code class="xref mahjong mahjong-graph docutils literal notranslate"><span class="pre">全体</span></code></a></p></li>
-<li><p>対象メンバー：省略時は検索範囲に含まれるメンバー全員</p></li>
-</ul>
-</li>
-<li><p>共通オプション</p>
-<ul>
-<li><p><a class="reference internal" href="../options/common.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
-</ul>
-</li>
-</ul>
-</dd>
-<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
-<dd class="field-even"><p>グラフ</p>
-</dd>
-<dt class="field-odd">補足説明<span class="colon">:</span></dt>
-<dd class="field-odd"><div class="line-block">
-<div class="line">対象メンバーの指定を省略した場合は、検索範囲内で見つかった全メンバーを対象にグラフを生成する。</div>
-<div class="line">複数のメンバーが指定された場合、指定されたメンバーのみを対象にグラフを生成する。</div>
-<div class="line">単独でメンバーが指定された場合、個人成績(獲得順位、平均順位推移)グラフを追加で生成する。</div>
-</div>
-</dd>
-</dl>
-</section>
-<section id="ranking">
-<span id="slash-commands-ranking"></span><h3>ranking<a class="headerlink" href="#ranking" title="Link to this heading">¶</a></h3>
+<section id="summary">
+<span id="slash-commands-results"></span><h3>summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
-<dd class="field-odd"><p>各成績をランキング形式で表示（参照： <a class="reference internal" href="../output/analysis/ranking.html#deliverables-ranking"><span class="std std-ref">ランキング</span></a> ）</p>
+<dd class="field-odd"><p>集計コマンドを実行（参照： <a class="reference internal" href="../output/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> ）</p>
 </dd>
 <dt class="field-even">書式<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">ranking</span> <span class="pre">[検索範囲]</span> <span class="pre">[トップNNN]</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">summary</span></code> [<a class="reference internal" href="glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a>] [<a class="reference internal" href="glossary.html#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a>]</p>
 </dd>
-<dt class="field-odd">引数<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>専用オプション</p>
-<ul>
-<li><p><code class="xref mahjong mahjong-ranking docutils literal notranslate"><span class="pre">トップ&lt;NNN&gt;</span></code> ：上位NNN位まで表示する（省略時は「3」）</p></li>
-</ul>
-</li>
-<li><p>共通オプション</p>
-<ul>
-<li><p><a class="reference internal" href="../options/common.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
-</ul>
-</li>
-</ul>
+<dt class="field-odd">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計</p>
 </dd>
-<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
-<dd class="field-even"><p>ランキング</p>
-</dd>
-<dt class="field-odd">補足説明<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
 </section>
-<section id="report">
-<span id="slash-commands-report"></span><h3>report<a class="headerlink" href="#report" title="Link to this heading">¶</a></h3>
+<section id="analysis">
+<h3>analysis<a class="headerlink" href="#analysis" title="Link to this heading">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">概要<span class="colon">:</span></dt>
-<dd class="field-odd"><p>レポートを表示（参照： <a class="reference internal" href="../output/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> ）</p>
+<dd class="field-odd"><p>分析コマンドを実行（参照： <a class="reference internal" href="../output/analysis/index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a> ）</p>
 </dd>
 <dt class="field-even">書式<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">report</span> <span class="pre">[専用オプション]</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">analysis</span></code> [<a class="reference internal" href="glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a>] [<a class="reference internal" href="glossary.html#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a>]</p>
 </dd>
-<dt class="field-odd">引数<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>専用オプション</p>
-<ul>
-<li><p>指定なし：成績上位5名（月間）</p></li>
-<li><p><code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">統計</span></code> ：ゲーム統計（月間）</p></li>
-<li><p><code class="xref mahjong mahjong-report docutils literal notranslate"><span class="pre">対戦</span></code> / 2名以上のプレイヤー名：対局対戦マトリクス表</p></li>
-<li><p>プレイヤー名：指定プレイヤーの成績レポート(PDF)</p></li>
-</ul>
-</li>
-<li><p>共通オプション</p>
-<ul>
-<li><p><a class="reference internal" href="../options/common.html#common-options"><span class="std std-ref">オプションに指定できる共通キーワード</span></a></p></li>
-</ul>
-</li>
-</ul>
+<dt class="field-odd">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析</p>
 </dd>
-<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
-<dd class="field-even"><p>レポート</p>
-</dd>
-<dt class="field-odd">補足説明<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
 </dl>
 </section>
 </section>
@@ -584,10 +473,8 @@
     <ul>
 <li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
 <li><a class="reference internal" href="#id2">成績管理</a><ul>
-<li><a class="reference internal" href="#results">results</a></li>
-<li><a class="reference internal" href="#graph">graph</a></li>
-<li><a class="reference internal" href="#ranking">ranking</a></li>
-<li><a class="reference internal" href="#report">report</a></li>
+<li><a class="reference internal" href="#summary">summary</a></li>
+<li><a class="reference internal" href="#analysis">analysis</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id3">データベース関連</a><ul>
@@ -692,7 +579,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.2.
+      Release Version: 0.17.3.
       Last updated on 2026-07-02.
     </div>
 

@@ -8,7 +8,7 @@
 
 - `main-config` の :sub_commands_section:`dropitems`
 
-  - ``results`` ``graph`` ``ranking`` ``report`` ``help`` の各セクション
+  - ``summary`` / ``analysis`` / ``help`` の各セクション
 
 - `rule-set` の :rule_set_section:`dropitems`
 
