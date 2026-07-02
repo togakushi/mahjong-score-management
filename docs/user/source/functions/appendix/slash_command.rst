@@ -17,96 +17,20 @@
    pair: slash commands; results
    :name: slash_commands-results
 
-results
+summary
 +++++++
 
-:概要: 成績サマリを表示（参照： `function-summary` ）
-:書式: ``/commandname results [対象メンバー] [検索範囲] [戦績] [詳細] [対戦] [チーム]``
-:引数: - 専用オプション
-
-         - :results:`戦績` ：個人成績出力時、検索範囲未指定時でも戦績の結果を出力
-         - :results:`詳細` ：戦績に追加で4人分の戦績を出力
-         - :results:`対戦` ：対戦結果の表示
-
-           - 対象メンバーを2名以上指定した場合、直接対戦結果を表示
-
-         - 共通オプション
-
-           - `common-options`
-
-:デフォルトエイリアス: 成績
-:補足説明: | 登録名の指定を省略した場合は、検索範囲内の成績サマリの出力。
-           | 登録名を指定すると、対象メンバーの個人成績（ `2ゲスト戦` 含む）を出力。
+:概要: 集計コマンドを実行（参照： `function-summary` ）
+:書式: ``/commandname summary`` [`ターゲット`] [`オプション`]
+:デフォルトエイリアス: 集計
 
 
-.. index::
-   pair: slash commands; graph
-   :name: slash_commands-graph
+analysis
+++++++++
 
-graph
-+++++
-
-:概要: ポイント推移グラフを表示（参照： `deliverables-point_transition` ）
-:書式: ``/commandname graph [対象メンバー] [検索範囲]``
-:引数: - 専用オプション
-
-         - :graph:`順位` ：順位変動グラフに切り替え
-         - 集約： :graph:`日次` / :graph:`月次` / :graph:`年次` / :graph:`全体`
-         - 対象メンバー：省略時は検索範囲に含まれるメンバー全員
-
-       - 共通オプション
-
-         - `common-options`
-
-:デフォルトエイリアス: グラフ
-:補足説明: | 対象メンバーの指定を省略した場合は、検索範囲内で見つかった全メンバーを対象にグラフを生成する。
-           | 複数のメンバーが指定された場合、指定されたメンバーのみを対象にグラフを生成する。
-           | 単独でメンバーが指定された場合、個人成績(獲得順位、平均順位推移)グラフを追加で生成する。
-
-
-.. index::
-   pair: slash commands; ranking
-   :name: slash_commands-ranking
-
-ranking
-+++++++
-
-:概要: 各成績をランキング形式で表示（参照： `deliverables-ranking` ）
-:書式: ``/commandname ranking [検索範囲] [トップNNN]``
-:引数: - 専用オプション
-
-         - :ranking:`トップ\<NNN>` ：上位NNN位まで表示する（省略時は「3」）
-
-       - 共通オプション
-
-         - `common-options`
-
-:デフォルトエイリアス: ランキング
-:補足説明:
-
-
-.. index::
-   pair: slash commands; report
-   :name: slash_commands-report
-
-report
-++++++
-
-:概要: レポートを表示（参照： `function-summary` ）
-:書式: ``/commandname report [専用オプション]``
-:引数: - 専用オプション
-
-         - 指定なし：成績上位5名（月間）
-         - :report:`統計` ：ゲーム統計（月間）
-         - :report:`対戦` / 2名以上のプレイヤー名：対局対戦マトリクス表
-         - プレイヤー名：指定プレイヤーの成績レポート(PDF)
-
-       - 共通オプション
-
-         - `common-options`
-
-:デフォルトエイリアス: レポート
-:補足説明:
+:概要: 分析コマンドを実行（参照： `function-analysis` ）
+:書式: ``/commandname analysis`` [`ターゲット`] [`オプション`]
+:デフォルトエイリアス: 分析
 
 
 データベース関連

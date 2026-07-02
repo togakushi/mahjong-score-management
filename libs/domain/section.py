@@ -329,14 +329,10 @@ class AliasSection(BaseSection):
 
     section: str = "alias"
     """セクション名"""
-    results: list[str] = field(default_factory=lambda: ["results", "成績"])
-    """成績サマリ出力コマンド"""
-    graph: list[str] = field(default_factory=lambda: ["graph", "グラフ"])
-    """成績グラフ出力コマンド"""
-    ranking: list[str] = field(default_factory=lambda: ["ranking", "ランキング"])
-    """ランキング出力コマンド"""
-    report: list[str] = field(default_factory=lambda: ["report", "レポート"])
-    """レポート出力コマンド"""
+    summary: list[str] = field(default_factory=lambda: ["summary", "集計"])
+    """集計コマンド"""
+    analysis: list[str] = field(default_factory=lambda: ["analysis", "分析"])
+    """分析コマンド"""
     download: list[str] = field(default_factory=lambda: ["download", "ダウンロード"])
     """DBダウンロードコマンド"""
     member: list[str] = field(default_factory=lambda: ["member", "userlist", "member_list"])

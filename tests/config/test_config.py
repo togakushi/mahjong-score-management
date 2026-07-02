@@ -31,10 +31,8 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     configuration.setup(init_db=False)
 
     # default alias
-    assert "results" in g.cfg.alias.results
-    assert "graph" in g.cfg.alias.graph
-    assert "ranking" in g.cfg.alias.ranking
-    assert "report" in g.cfg.alias.report
+    assert "summary" in g.cfg.alias.summary
+    assert "analysis" in g.cfg.alias.analysis
     assert "download" in g.cfg.alias.download
     assert "member" in g.cfg.alias.member
     assert "add" in g.cfg.alias.add

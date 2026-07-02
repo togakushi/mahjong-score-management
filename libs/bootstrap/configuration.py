@@ -315,6 +315,7 @@ def setup(init_db: bool = True) -> None:
     logging.debug("team: %s", g.cfg.team.to_dict(drop_items))
     logging.debug("help: %s", g.cfg.help.to_dict(drop_items))
     logging.debug("rule_set: %s", vars(g.cfg.rule))
+    logging.debug("alias: %s", vars(g.cfg.alias))
 
 
 def register() -> None:
