@@ -13,10 +13,8 @@
 | それぞれのファイルに記述されている同名のセクションは、まとめてひとつのセクションとして扱われる。
 
 - setting
-- results
-- graph
-- ranking
-- report
+- summary
+- analysis
 
 
 設定優先順序

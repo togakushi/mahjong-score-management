@@ -97,28 +97,10 @@ class AnalysisDirective(SplitWordsDescription):
     index_category = "分析コマンドオプション"
 
 
-class ResultsDirective(SplitWordsDescription):
-    """成績サマリオプション"""
-
-    index_category = "results options"
-
-
 class GraphDirective(SplitWordsDescription):
-    """成績グラフオプション"""
+    """グラフ関連オプション"""
 
     index_category = "graph options"
-
-
-class RankingDirective(SplitWordsDescription):
-    """成績ランキングオプション"""
-
-    index_category = "ranking options"
-
-
-class ReportDirective(SplitWordsDescription):
-    """成績レポートオプション"""
-
-    index_category = "report options"
 
 
 # ---
@@ -221,10 +203,7 @@ class MahjongDomain(Domain):
         "common": ObjType("common", "common"),
         "summary": ObjType("summary", "summary"),
         "analysis": ObjType("analysis", "analysis"),
-        "results": ObjType("results", "results"),
         "graph": ObjType("graph", "graph"),
-        "ranking": ObjType("ranking", "ranking"),
-        "report": ObjType("report", "report"),
     }
 
     directives: ClassVar[dict[str, type[Directive]]] = {
@@ -245,10 +224,7 @@ class MahjongDomain(Domain):
         "common": CommonDirective,
         "summary": SummaryDirective,
         "analysis": AnalysisDirective,
-        "results": ResultsDirective,
         "graph": GraphDirective,
-        "ranking": RankingDirective,
-        "report": ReportDirective,
     }
 
     roles: ClassVar[dict[str, Any]] = {
@@ -269,10 +245,7 @@ class MahjongDomain(Domain):
         "common": XRefRole(),
         "summary": XRefRole(),
         "analysis": XRefRole(),
-        "results": XRefRole(),
         "graph": XRefRole(),
-        "ranking": XRefRole(),
-        "report": XRefRole(),
     }
 
     initial_data: ClassVar[dict[str, Any]] = {
