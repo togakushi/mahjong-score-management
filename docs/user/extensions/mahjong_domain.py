@@ -97,12 +97,6 @@ class AnalysisDirective(SplitWordsDescription):
     index_category = "分析コマンドオプション"
 
 
-class GraphDirective(SplitWordsDescription):
-    """グラフ関連オプション"""
-
-    index_category = "graph options"
-
-
 # ---
 class SettingSectionDirective(SplitWordsDescription):
     """settingセクション"""
@@ -203,7 +197,6 @@ class MahjongDomain(Domain):
         "common": ObjType("common", "common"),
         "summary": ObjType("summary", "summary"),
         "analysis": ObjType("analysis", "analysis"),
-        "graph": ObjType("graph", "graph"),
     }
 
     directives: ClassVar[dict[str, type[Directive]]] = {
@@ -224,7 +217,6 @@ class MahjongDomain(Domain):
         "common": CommonDirective,
         "summary": SummaryDirective,
         "analysis": AnalysisDirective,
-        "graph": GraphDirective,
     }
 
     roles: ClassVar[dict[str, Any]] = {
@@ -245,7 +237,6 @@ class MahjongDomain(Domain):
         "common": XRefRole(),
         "summary": XRefRole(),
         "analysis": XRefRole(),
-        "graph": XRefRole(),
     }
 
     initial_data: ClassVar[dict[str, Any]] = {
