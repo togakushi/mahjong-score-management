@@ -31,7 +31,6 @@
      - `date-specification` を参照。
    * - その他のオプション
      - `共通オプション <common-options>` を参照。
-
    * .. _`あり`:
 
      - 個別オプション
@@ -43,6 +42,7 @@
        :デフォルト: 3
        :指定例: トップ10
 
+       デフォルト値の変更は `analysis セクション <results_management>` の :sub_commands_section:`ranked` で行う。
    * - その他
      - :summary:`グラフ`
      - `deliverables-rating_graph` に切り替える。
