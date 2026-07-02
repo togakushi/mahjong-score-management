@@ -315,6 +315,8 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "vs_rank_avg": "平均順位(相手)",
         "vs_rank_distr": "順位分布(相手)",
         #
+        "evaluation": "評価点",
+        #
         "p1_name": "東家 名前",
         "p2_name": "南家 名前",
         "p3_name": "西家 名前",

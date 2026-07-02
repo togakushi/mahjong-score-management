@@ -286,6 +286,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # 項目整理
     dropitems = dictutil.dropitems_list(df.columns.to_list()) + dictutil.dropitems_list()
+    overall_ranking: list[pd.DataFrame] = []
     for msg, df_data in data.items():
         if msg in dropitems:  # 非表示項目
             continue
@@ -301,5 +302,35 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 show_index=False,
             ),
         )
+        # 総合ランキング用
+        if msg not in ["役満和了率"]:
+            overall_ranking.append(df_data)
+
+    # 総合ランキング
+    work_df = pd.concat([df.set_index("name")["rank"] for df in overall_ranking], axis=1)
+    work_df = work_df.fillna(len(work_df) + 1)
+    work_df["evaluation"] = work_df.sum(axis=1).astype("int")
+
+    overall_df = (
+        pd.DataFrame(
+            {
+                "rank": work_df["evaluation"].rank(ascending=True, method="dense").astype("int"),
+                "evaluation": work_df["evaluation"],
+            }
+        )
+        .sort_values(["rank", "evaluation"])
+        .query("rank <= @g.params.ranked")
+        .reset_index()
+    )
+    m.set_message(
+        overall_df[["rank", "name", "evaluation"]],
+        StyleOptions(
+            title="総合ランキング",
+            data_kind=StyleOptions.DataKind.RANKING,
+            rename_type=StyleOptions.RenameType.SHORT,
+            codeblock=True,
+            show_index=False,
+        ),
+    )
 
     m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
