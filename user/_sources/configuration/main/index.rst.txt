@@ -16,9 +16,7 @@
    :maxdepth: 2
    :titlesonly:
 
-   mahjong
    application/index
-   summary
    management/index
    integrations/index
    appearance/index

@@ -175,79 +175,37 @@
 <p>カンマ区切りで複数ワードの設定が可能。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 13.0%" />
-<col style="width: 26.1%" />
-<col style="width: 13.0%" />
-<col style="width: 13.0%" />
-<col style="width: 34.8%" />
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>キー</p></th>
 <th class="head"><p>内容</p></th>
-<th class="head"><p>型</p></th>
-<th class="head"><p>未定義時</p></th>
+<th class="head"><p>デフォルトエイリアス</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><dl class="mahjong alias_section">
-<dt class="sig sig-object mahjong" id="alias_section-results">
-<span class="n"><span class="pre">results</span></span><a class="headerlink" href="#alias_section-results" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object mahjong" id="alias_section-summary">
+<span class="n"><span class="pre">summary</span></span><a class="headerlink" href="#alias_section-summary" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
-<td><p>成績表示</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
-<td></td>
+<td><p><a class="reference internal" href="../../../functions/output/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> の実行</p></td>
+<td><p>集計</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong alias_section">
-<dt class="sig sig-object mahjong" id="alias_section-graph">
-<span class="n"><span class="pre">graph</span></span><a class="headerlink" href="#alias_section-graph" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object mahjong" id="alias_section-analysis">
+<span class="n"><span class="pre">analysis</span></span><a class="headerlink" href="#alias_section-analysis" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
-<td><p>グラフ表示</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><dl class="mahjong alias_section">
-<dt class="sig sig-object mahjong" id="alias_section-ranking">
-<span class="n"><span class="pre">ranking</span></span><a class="headerlink" href="#alias_section-ranking" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p>ランキング表示</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><dl class="mahjong alias_section">
-<dt class="sig sig-object mahjong" id="alias_section-report">
-<span class="n"><span class="pre">report</span></span><a class="headerlink" href="#alias_section-report" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p>レポート表示</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
-<td></td>
+<td><p><a class="reference internal" href="../../../functions/output/analysis/index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a> の実行</p></td>
+<td><p>分析</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong alias_section">
@@ -256,13 +214,8 @@
 <dd></dd></dl>
 
 </td>
-<td><p>データベースダウンロード</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
-<td></td>
+<td><p>データベースのダウンロード</p></td>
+<td><p>ダウンロード</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong alias_section">
@@ -271,13 +224,12 @@
 <dd></dd></dl>
 
 </td>
-<td><p>メンバーリスト表示</p></td>
+<td><p>メンバーリストを表示</p></td>
 <td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
+<div class="line">userlist</div>
+<div class="line">member_list</div>
 </div>
 </td>
-<td></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong alias_section">
@@ -286,12 +238,7 @@
 <dd></dd></dl>
 
 </td>
-<td><p>メンバー追加</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
+<td><p>メンバーを追加</p></td>
 <td></td>
 <td><p>メンバー新規登録、別名登録</p></td>
 </tr>
@@ -301,12 +248,7 @@
 <dd></dd></dl>
 
 </td>
-<td><p>メンバー削除</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
+<td><p>メンバーを削除</p></td>
 <td></td>
 <td><p>メンバー削除、別名削除</p></td>
 </tr>
@@ -317,11 +259,6 @@
 
 </td>
 <td><p>新規チーム作成</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
 <td></td>
 <td></td>
 </tr>
@@ -331,12 +268,7 @@
 <dd></dd></dl>
 
 </td>
-<td><p>チーム削除</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
+<td><p>チームを削除</p></td>
 <td></td>
 <td><p>チームに所属していたメンバーは未所属になる</p></td>
 </tr>
@@ -347,15 +279,10 @@
 
 </td>
 <td><p>チームにメンバーを所属</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
 <td></td>
 <td><ul class="simple">
 <li><p>複数チームに所属できない</p></li>
-<li><p>未登録メンバー(ゲスト)はチーム所属できない</p></li>
+<li><p><a class="reference internal" href="../../../functions/appendix/glossary.html#term-3"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲストメンバー</span></code></a> はチームに所属できない</p></li>
 </ul>
 </td>
 </tr>
@@ -366,11 +293,6 @@
 
 </td>
 <td><p>チームからメンバーを削除</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
 <td></td>
 <td><p>チーム所属から外れたメンバーは未所属になる</p></td>
 </tr>
@@ -381,11 +303,6 @@
 
 </td>
 <td><p>チーム一覧と所属メンバーの表示</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
 <td></td>
 <td></td>
 </tr>
@@ -396,13 +313,8 @@
 
 </td>
 <td><p>すべてのチーム情報を削除</p></td>
-<td><div class="line-block">
-<div class="line">文字列</div>
-<div class="line">(カンマ区切り)</div>
-</div>
-</td>
 <td></td>
-<td><p>すべてのチーム情報を削除し、全員未所属にする</p></td>
+<td><p>すべてのチーム情報を削除し、全員未所属に戻す</p></td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +431,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.3.
-      Last updated on 2026-07-02.
+      Last updated on 2026-07-03.
     </div>
 
   </body>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>外観のカスタマイズ &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マッピング定義 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="装飾設定" href="decoration.html" />
-    <link rel="prev" title="チャンネル追加設定ファイル" href="../integrations/channel_addition.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="成績管理" href="commands.html" />
+    <link rel="prev" title="mahjongセクション" href="mahjong.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -62,43 +62,35 @@
     </select>
 </label>
 
-  <h3><a href="../../../index.html">Table of Contents</a></h3>
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/input/index.html">入力機能説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/output/index.html">出力機能説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/options/index.html">オプション説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/appendix/index.html">付録</a></li>
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">マッピング定義</a><ul>
+<li><a class="reference internal" href="#keyword-mapping">keyword_mappingセクション</a><ul>
+<li><a class="reference internal" href="#id2">（参考）設定例</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../setting/index.html">セットアップ</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">設定ファイル説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/others/index.html">その他</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting.html">トラブルシューティング &amp; FAQ</a></li>
+</li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">開発用メモ</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/app.html">app.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/dbtools.html">dbtools.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</li>
 </ul>
 
+  </div>
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../integrations/channel_addition.html"
-                          title="previous chapter">チャンネル追加設定ファイル</a></p>
+    <p class="topless"><a href="mahjong.html"
+                          title="previous chapter">mahjongセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="decoration.html"
-                          title="next chapter">装飾設定</a></p>
+    <p class="topless"><a href="commands.html"
+                          title="next chapter">成績管理</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/appearance/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/application/mapping.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -121,10 +113,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="decoration.html" title="装飾設定"
+          <a href="commands.html" title="成績管理"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../integrations/channel_addition.html" title="チャンネル追加設定ファイル"
+          <a href="mahjong.html" title="mahjongセクション"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -137,8 +129,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">外観のカスタマイズ</a></li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">アプリケーション設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">マッピング定義</a></li>
                 <li class="right">
                     
 
@@ -168,29 +161,73 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>外観のカスタマイズ<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>出力結果の見た目を変更する設定。</p>
-<hr class="docutils" />
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">設定内容</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="decoration.html">装飾設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#degree">degreeセクション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#status">statusセクション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#grade">gradeセクション</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="custom_message.html">メッセージカスタマイズ設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="custom_message.html#custom-message">custom_messageセクション</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="hidden_items.html">非表示項目設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hidden_items.html#id2">自動で追加される非表示項目</a></li>
-</ul>
-</li>
-</ul>
+  <section id="mapping-section">
+<span id="id1"></span><h1>マッピング定義<a class="headerlink" href="#mapping-section" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">ゲーム結果の登録時に用いられる <em>成績記録キーワード</em> と <em>ルール識別子</em> はマッピングテーブルによって紐付けられる。</div>
+<div class="line"><a class="reference internal" href="../../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> で定義した <a class="reference internal" href="../../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> と <a class="reference internal" href="../../rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> の組み合わせでマッピングが生成されるが、 <a class="reference internal" href="#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> で自由に組み合わせを追加できる。</div>
 </div>
+<p><a class="reference internal" href="../../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> の定義がない <a class="reference internal" href="../../../functions/appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> はマッピングテーブルに存在しないため、記録に用いることができない。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="../../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> は複数定義できるので、マッピングテーブルに追加するだけなら <a class="reference internal" href="../../rule/ruleset.html#rule_set_section-keywords" title="keywords"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">keywords</span></code></a> を増やせばよい。</div>
+<div class="line"><a class="reference internal" href="#keyword-mapping-section"><span class="std std-ref">keyword_mappingセクション</span></a> で追加した <em>成績記録キーワード</em> は <a class="reference internal" href="commands.html#function-call-keyword"><span class="std std-ref">コマンド呼び出しキーワード</span></a> に使用されない。</div>
+</div>
+</div>
+<section id="keyword-mapping">
+<span id="keyword-mapping-section"></span><h2>keyword_mappingセクション<a class="headerlink" href="#keyword-mapping" title="Link to this heading">¶</a></h2>
+<p><em>成績記録キーワード</em> と <em>ルール識別子</em> を紐付ける。</p>
+<p>keyword_mappingセクションはオプション扱いのセクションであり、省略可能となる。</p>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キー</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>型</p></th>
+<th class="head"><p>未定義時</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&lt;任意のキーワード&gt;</p></td>
+<td><p>成績記録キーワード</p></td>
+<td><p>文字列(ルール識別子)</p></td>
+<td></td>
+<td><p>未定義の <em>ルール識別子</em> は登録対象外となる</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h3>（参考）設定例<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">ルールセットの設定例</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[M-league]</span>
+<span class="na">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">origin_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">250</span>
+<span class="na">return_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">300</span>
+<span class="na">rank_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30, 10, -10, -30</span>
+<span class="na">draw_split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">ignore_flying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">リーグルール</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">マッピングの設定例</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[keyword_mapping]</span>
+<span class="na">新しい成績記録キーワード</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">M-league</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -201,43 +238,35 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 
-  <h3><a href="../../../index.html">Table of Contents</a></h3>
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/input/index.html">入力機能説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/output/index.html">出力機能説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/options/index.html">オプション説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/appendix/index.html">付録</a></li>
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">マッピング定義</a><ul>
+<li><a class="reference internal" href="#keyword-mapping">keyword_mappingセクション</a><ul>
+<li><a class="reference internal" href="#id2">（参考）設定例</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../setting/index.html">セットアップ</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">設定ファイル説明</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functions/others/index.html">その他</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting.html">トラブルシューティング &amp; FAQ</a></li>
+</li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">開発用メモ</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/app.html">app.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/dbtools.html">dbtools.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</li>
 </ul>
 
+  </div>
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../integrations/channel_addition.html"
-                          title="previous chapter">チャンネル追加設定ファイル</a></p>
+    <p class="topless"><a href="mahjong.html"
+                          title="previous chapter">mahjongセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="decoration.html"
-                          title="next chapter">装飾設定</a></p>
+    <p class="topless"><a href="commands.html"
+                          title="next chapter">成績管理</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/appearance/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/application/mapping.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -260,10 +289,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="decoration.html" title="装飾設定"
+          <a href="commands.html" title="成績管理"
              >next</a> |</li>
         <li class="right" >
-          <a href="../integrations/channel_addition.html" title="チャンネル追加設定ファイル"
+          <a href="mahjong.html" title="mahjongセクション"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -277,7 +306,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">外観のカスタマイズ</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" >アプリケーション設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">マッピング定義</a></li>
                 <li class="right">
                     
 

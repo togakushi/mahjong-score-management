@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>外観のカスタマイズ &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mahjongセクション &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="装飾設定" href="decoration.html" />
-    <link rel="prev" title="チャンネル追加設定ファイル" href="../integrations/channel_addition.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="マッピング定義" href="mapping.html" />
+    <link rel="prev" title="shortcutセクション" href="shortcut.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -87,18 +87,18 @@
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../integrations/channel_addition.html"
-                          title="previous chapter">チャンネル追加設定ファイル</a></p>
+    <p class="topless"><a href="shortcut.html"
+                          title="previous chapter">shortcutセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="decoration.html"
-                          title="next chapter">装飾設定</a></p>
+    <p class="topless"><a href="mapping.html"
+                          title="next chapter">マッピング定義</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/appearance/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/application/mahjong.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -121,10 +121,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="decoration.html" title="装飾設定"
+          <a href="mapping.html" title="マッピング定義"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../integrations/channel_addition.html" title="チャンネル追加設定ファイル"
+          <a href="shortcut.html" title="shortcutセクション"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -137,8 +137,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">外観のカスタマイズ</a></li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">アプリケーション設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mahjongセクション</a></li>
                 <li class="right">
                     
 
@@ -168,29 +169,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>外観のカスタマイズ<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>出力結果の見た目を変更する設定。</p>
-<hr class="docutils" />
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">設定内容</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="decoration.html">装飾設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#degree">degreeセクション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#status">statusセクション</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decoration.html#grade">gradeセクション</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="custom_message.html">メッセージカスタマイズ設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="custom_message.html#custom-message">custom_messageセクション</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="hidden_items.html">非表示項目設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hidden_items.html#id2">自動で追加される非表示項目</a></li>
-</ul>
-</li>
-</ul>
+  <section id="mahjong">
+<span id="mahjong-section"></span><h1>mahjongセクション<a class="headerlink" href="#mahjong" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="../../../functions/appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を定義するセクション。</div>
+<div class="line">設定可能なパラメータは <a class="reference internal" href="../../rule/ruleset.html#rule-set"><span class="std std-ref">ルールセット定義</span></a> を参照。</div>
 </div>
+<p>このセクションに <a class="reference internal" href="../../rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a> が含まれない場合は、 <a class="reference internal" href="../../../functions/appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> として扱われない。</p>
+<p><a class="reference internal" href="#mahjong-section"><span class="std std-ref">mahjongセクション</span></a> はオプション扱いのセクションであり、省略可能となる。</p>
 </section>
 
 
@@ -226,18 +212,18 @@
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../integrations/channel_addition.html"
-                          title="previous chapter">チャンネル追加設定ファイル</a></p>
+    <p class="topless"><a href="shortcut.html"
+                          title="previous chapter">shortcutセクション</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="decoration.html"
-                          title="next chapter">装飾設定</a></p>
+    <p class="topless"><a href="mapping.html"
+                          title="next chapter">マッピング定義</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/configuration/main/appearance/index.rst.txt"
+      <li><a href="../../../_sources/configuration/main/application/mahjong.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div><div class="custom-link" aria-label="custom link">
@@ -260,10 +246,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="decoration.html" title="装飾設定"
+          <a href="mapping.html" title="マッピング定義"
              >next</a> |</li>
         <li class="right" >
-          <a href="../integrations/channel_addition.html" title="チャンネル追加設定ファイル"
+          <a href="shortcut.html" title="shortcutセクション"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -277,7 +263,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >設定ファイル説明</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >メイン設定ファイル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">外観のカスタマイズ</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" >アプリケーション設定</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mahjongセクション</a></li>
                 <li class="right">
                     
 
