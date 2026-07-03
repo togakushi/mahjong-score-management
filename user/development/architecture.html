@@ -609,13 +609,11 @@ window.runMermaid = runMermaid;</script>
 
     subgraph f1[Sub command]
         direction TB
-        c([command]) --&gt; sc1 &amp; sc2 &amp; sc3 &amp; sc4 &amp; sc5;
-        sc1(results) --&gt; cp1[[CommandParser]] --&gt; p1(aggregation);
-        sc2(graph) --&gt; cp2[[CommandParser]] --&gt; p2(aggregation);
-        sc3(ranking) --&gt; cp3[[CommandParser]] --&gt; p3(aggregation);
-        sc4(report) --&gt; cp4[[CommandParser]] --&gt; p4(aggregation);
-        sc5(help) --&gt; cp5[[CommandParser]] --&gt; p5(text generation);
-        p1 &amp; p2 &amp; p3 &amp; p4 &amp; p5 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+        c([command]) --&gt; sc1 &amp; sc2 &amp; sc3;
+        sc1(summary) --&gt; cp1[[CommandParser]] --&gt; p1(aggregation);
+        sc2(analysis) --&gt; cp2[[CommandParser]] --&gt; p2(aggregation);
+        sc3(help) --&gt; cp3[[CommandParser]] --&gt; p3(text generation);
+        p1 &amp; p2 &amp; p3 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
     end
 
     subgraph f2[Results record]

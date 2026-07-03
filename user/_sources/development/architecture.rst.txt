@@ -11,13 +11,11 @@
 
        subgraph f1[Sub command]
            direction TB
-           c([command]) --> sc1 & sc2 & sc3 & sc4 & sc5;
-           sc1(results) --> cp1[[CommandParser]] --> p1(aggregation);
-           sc2(graph) --> cp2[[CommandParser]] --> p2(aggregation);
-           sc3(ranking) --> cp3[[CommandParser]] --> p3(aggregation);
-           sc4(report) --> cp4[[CommandParser]] --> p4(aggregation);
-           sc5(help) --> cp5[[CommandParser]] --> p5(text generation);
-           p1 & p2 & p3 & p4 & p5 --> mp1[["MessageParser(post)<br>MessageParser(status)"]];
+           c([command]) --> sc1 & sc2 & sc3;
+           sc1(summary) --> cp1[[CommandParser]] --> p1(aggregation);
+           sc2(analysis) --> cp2[[CommandParser]] --> p2(aggregation);
+           sc3(help) --> cp3[[CommandParser]] --> p3(text generation);
+           p1 & p2 & p3 --> mp1[["MessageParser(post)<br>MessageParser(status)"]];
        end
 
        subgraph f2[Results record]
