@@ -14,31 +14,37 @@
 --------
 
 .. index::
-   pair: slash commands; results
-   :name: slash_commands-results
+   pair: slash commands; summary
+   :name: slash_commands-summary
 
 summary
 +++++++
 
-:概要: 集計コマンドを実行（参照： `function-summary` ）
+:概要: `function-summary` を実行
 :書式: ``/commandname summary`` [`ターゲット`] [`オプション`]
 :デフォルトエイリアス: 集計
+:補足説明:
 
+
+.. index::
+   pair: slash commands; analysis
+   :name: slash_commands-analysis
 
 analysis
 ++++++++
 
-:概要: 分析コマンドを実行（参照： `function-analysis` ）
+:概要: `function-analysis` を実行
 :書式: ``/commandname analysis`` [`ターゲット`] [`オプション`]
 :デフォルトエイリアス: 分析
+:補足説明:
 
 
 データベース関連
 ----------------
 
-.. _slash_commands-check:
 .. index::
    pair: slash commands; check
+   :name: slash_commands-check
 
 check
 +++++
@@ -50,9 +56,9 @@ check
 :補足説明:
 
 
-.. _slash_commands-download:
 .. index::
    pair: slash commands; download
+   :name: slash_commands-download:
 
 download
 ++++++++
@@ -67,13 +73,14 @@ download
 メンバー管理
 ------------
 
-.. _slash_commands-member:
+.. seealso:: `member-management`
+
 .. index::
    pair: slash commands; member
-   pair: slash commands; userlist
+   :name: slash_commands-member
 
-member / userlist
-+++++++++++++++++
+member
+++++++
 
 :概要: 登録されているメンバーを表示
 :書式: ``/commandname member``
@@ -83,10 +90,10 @@ member / userlist
 :補足説明:
 
 
-.. _slash_commands-member-add-del:
 .. index::
    pair: slash commands; add
    pair: slash commands; del
+   :name: slash_commands-member-add-del
 
 add / del
 +++++++++
@@ -113,9 +120,11 @@ add / del
 チーム管理
 ----------
 
-.. _slash_commands-team_create:
+.. seealso:: `team-management`
+
 .. index::
    pair: slash commands; team_create
+   :name: slash_commands-team_create
 
 team_create
 +++++++++++
@@ -127,9 +136,9 @@ team_create
 :補足説明:
 
 
-.. _slash_commands-team_del:
 .. index::
    pair: slash commands; team_del
+   :name: slash_commands-team_del
 
 team_del
 ++++++++
@@ -141,9 +150,9 @@ team_del
 :補足説明: 所属していたメンバーは自動的に未所属に更新される
 
 
-.. _slash_commands-team_add:
 .. index::
    pair: slash commands; team_add
+   :name: slash_commands-team_add
 
 team_add
 ++++++++
@@ -158,9 +167,9 @@ team_add
            - 別チームに所属している場合、新しい情報で更新される
 
 
-.. _slash_commands-team_remove:
 .. index::
    pair: slash commands; team_remove
+   :name: lash_commands-team_remove
 
 team_remove
 +++++++++++
@@ -172,9 +181,9 @@ team_remove
 :補足説明:
 
 
-.. _slash_commands-team_list:
 .. index::
    pair: slash commands; team_list
+   :name: slash_commands-team_list
 
 team_list
 +++++++++
@@ -186,9 +195,9 @@ team_list
 :補足説明:
 
 
-.. _slash_commands-team_clear:
 .. index::
    pair: slash commands; team_clear
+   :name: slash_commands-team_clear
 
 team_clear
 ++++++++++

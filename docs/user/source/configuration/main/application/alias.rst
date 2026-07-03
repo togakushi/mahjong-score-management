@@ -11,98 +11,61 @@ aliasセクション
 
 .. list-table::
    :width: 100%
-   :widths: 15 30 15 15 40
+   :widths: 15 25 15 45
    :header-rows: 1
 
    * - キー
      - 内容
-     - 型
-     - 未定義時
+     - デフォルトエイリアス
      - 備考
-   * - .. alias_section:: results
-     - 成績表示
-     - | 文字列
-       | (カンマ区切り)
+   * - .. alias_section:: summary
+     - `function-summary` の実行
+     - 集計
      -
-     -
-   * - .. alias_section:: graph
-     - グラフ表示
-     - | 文字列
-       | (カンマ区切り)
-     -
-     -
-   * - .. alias_section:: ranking
-     - ランキング表示
-     - | 文字列
-       | (カンマ区切り)
-     -
-     -
-   * - .. alias_section:: report
-     - レポート表示
-     - | 文字列
-       | (カンマ区切り)
-     -
+   * - .. alias_section:: analysis
+     - `function-analysis` の実行
+     - 分析
      -
    * - .. alias_section:: download
-     - データベースダウンロード
-     - | 文字列
-       | (カンマ区切り)
-     -
+     - データベースのダウンロード
+     - ダウンロード
      -
    * - .. alias_section:: member
-     - メンバーリスト表示
-     - | 文字列
-       | (カンマ区切り)
-     -
+     - メンバーリストを表示
+     - | userlist
+       | member_list
      -
    * - .. alias_section:: add
-     - メンバー追加
-     - | 文字列
-       | (カンマ区切り)
+     - メンバーを追加
      -
      - メンバー新規登録、別名登録
    * - .. alias_section:: del
-     - メンバー削除
-     - | 文字列
-       | (カンマ区切り)
+     - メンバーを削除
      -
      - メンバー削除、別名削除
    * - .. alias_section:: team_create
      - 新規チーム作成
-     - | 文字列
-       | (カンマ区切り)
      -
      -
    * - .. alias_section:: team_del
-     - チーム削除
-     - | 文字列
-       | (カンマ区切り)
+     - チームを削除
      -
      - チームに所属していたメンバーは未所属になる
    * - .. alias_section:: team_add
      - チームにメンバーを所属
-     - | 文字列
-       | (カンマ区切り)
      -
      - - 複数チームに所属できない
-       - 未登録メンバー(ゲスト)はチーム所属できない
+       - `ゲストメンバー` はチームに所属できない
    * - .. alias_section:: team_remove
      - チームからメンバーを削除
-     - | 文字列
-       | (カンマ区切り)
      -
      - チーム所属から外れたメンバーは未所属になる
    * - .. alias_section:: team_list
      - チーム一覧と所属メンバーの表示
-     - | 文字列
-       | (カンマ区切り)
      -
      -
    * - .. alias_section:: team_clear
      - すべてのチーム情報を削除
-     - | 文字列
-       | (カンマ区切り)
      -
-     - すべてのチーム情報を削除し、全員未所属にする
-
+     - すべてのチーム情報を削除し、全員未所属に戻す
 ..

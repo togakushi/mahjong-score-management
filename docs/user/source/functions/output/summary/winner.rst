@@ -30,4 +30,4 @@
    * - 集計範囲指定
      - `date-specification` を参照。
    * - その他のオプション
-     - `共通オプション <common-options>` を参照。
+     - `common-options` を参照。
