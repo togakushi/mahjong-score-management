@@ -13,3 +13,6 @@
    setting
    alias
    shortcut
+   mahjong
+   mapping
+   commands
