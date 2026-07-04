@@ -61,7 +61,7 @@ def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pyte
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch(f"libs.bootstrap.configuration.libs.commands.{module}.entry.main") as mock_keyword_event,
+        patch(f"libs.bootstrap.configuration.commands.{module}.main") as mock_keyword_event,
     ):
         m = _init()
         m.data.text = keyword

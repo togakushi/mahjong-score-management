@@ -1,5 +1,5 @@
 """
-libs/commands/summary/entry.py
+libs/commands/summary.py
 """
 
 from typing import TYPE_CHECKING

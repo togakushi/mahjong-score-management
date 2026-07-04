@@ -11,8 +11,6 @@ from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
-import libs.commands.analysis.entry
-import libs.commands.summary.entry
 import libs.global_value as g
 from integrations import factory
 from libs import commands
@@ -356,8 +354,8 @@ def register() -> None:
         m.set_message(team.clear(), StyleOptions(title="全チーム削除", key_title=False))
 
     dispatch_table: dict[str, Any] = {
-        "summary": libs.commands.summary.entry.main,
-        "analysis": libs.commands.analysis.entry.main,
+        "summary": commands.summary.main,
+        "analysis": commands.analysis.main,
         "help": commands.help.main,
         "member": dispatch_members_list,
         "team": dispatch_team_list,
