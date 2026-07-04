@@ -5,7 +5,7 @@ libs/commands/summary.py
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.domain import deliverables
+from libs.commands import deliverables
 from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil

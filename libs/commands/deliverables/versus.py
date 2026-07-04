@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/versus.py
+libs/commands/deliverables/versus.py
 """
 
 import textwrap

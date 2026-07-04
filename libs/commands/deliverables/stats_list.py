@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/stats_list.py
+libs/commands/deliverables/stats_list.py
 """
 
 from typing import TYPE_CHECKING
