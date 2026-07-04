@@ -1,5 +1,5 @@
 """
-libs/commands/help/entry.py
+libs/commands/help.py
 """
 
 import textwrap

@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any, Optional, Union
 
 from libs.commands.analysis.entry import AnalysisConfig
-from libs.commands.help.entry import HelpConfig
+from libs.commands.help import HelpConfig
 from libs.commands.registry.member import MemberSection
 from libs.commands.registry.team import TeamSection
 from libs.commands.summary.entry import SummaryConfig

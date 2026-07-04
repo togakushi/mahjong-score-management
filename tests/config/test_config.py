@@ -10,7 +10,7 @@ import pytest
 import libs.global_value as g
 from libs.bootstrap import configuration
 from libs.commands.analysis.entry import AnalysisConfig
-from libs.commands.help.entry import HelpConfig
+from libs.commands.help import HelpConfig
 from libs.commands.summary.entry import SummaryConfig
 
 if TYPE_CHECKING:

@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
 import libs.commands.analysis.entry
-import libs.commands.help.entry
 import libs.commands.summary.entry
 import libs.global_value as g
 from integrations import factory
+from libs import commands
 from libs.bootstrap import initialization
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
@@ -358,7 +358,7 @@ def register() -> None:
     dispatch_table: dict[str, Any] = {
         "summary": libs.commands.summary.entry.main,
         "analysis": libs.commands.analysis.entry.main,
-        "help": libs.commands.help.entry.main,
+        "help": commands.help.main,
         "member": dispatch_members_list,
         "team": dispatch_team_list,
         "team_list": dispatch_team_list,
