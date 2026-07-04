@@ -5,10 +5,7 @@
 - :doc:`libs.commands.analysis`: 分析コマンド
 - :doc:`libs.commands.help`: ヘルプメッセージ
 - :doc:`libs.commands.registry`: メンバー/チーム操作
-
-集計ライブラリ
-
-- :doc:`libs.commands.deliverables`: 集計ライブラリ
+- :doc:`libs.commands.deliverables`: 集計関数
 """
 
 from . import analysis, help, summary

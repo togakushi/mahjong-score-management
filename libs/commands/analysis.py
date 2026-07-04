@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 class AnalysisConfig(SubCommands):
     """
-    分析サブコマンド（analysisセクション）の設定を管理するクラス。
+    分析コマンド（analysisセクション）の設定を管理するクラス。
 
     設定ファイルから分析コマンド固有のパラメータを読み込み、保持する役割を持つ。
 

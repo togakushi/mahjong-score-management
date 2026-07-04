@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 class SummaryConfig(SubCommands):
     """
-    集計サブコマンド（summaryセクション）の設定を管理するクラス。
+    集計コマンド（summaryセクション）の設定を管理するクラス。
 
     設定ファイルから集計コマンド固有のパラメータを読み込み、保持する役割を持つ。
 
