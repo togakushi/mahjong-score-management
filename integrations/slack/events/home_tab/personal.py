@@ -144,7 +144,7 @@ def register_personal_handlers(app: "App", adapter: ServiceAdapter) -> None:
         app_msg.append("集計完了")
 
         m.status.command_type = CommandType.RESULTS
-        deliverables.detail.aggregation(m)
+        deliverables.results_detail.aggregation(m)
         adapter.api.post(m)
 
         ui_parts.update_view(adapter, m, app_msg)

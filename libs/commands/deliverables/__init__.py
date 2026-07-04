@@ -1,8 +1,8 @@
 """
 集計関数
 
-- :doc:`libs.commands.deliverables.detail`: 個人/チーム成績詳細を集計
-- :doc:`libs.commands.deliverables.results`: 成績サマリを集計
+- :doc:`libs.commands.deliverables.results_detail`: 個人/チーム成績詳細を集計
+- :doc:`libs.commands.deliverables.results_summary`: 成績サマリを集計
 - :doc:`libs.commands.deliverables.versus`: 直接対戦成績を集計
 - :doc:`libs.commands.deliverables.ranking_calc`: ランキングを集計
 - :doc:`libs.commands.deliverables.rating_calc`: レーティングを集計
@@ -19,7 +19,6 @@
 """
 
 from . import (
-    detail,
     graph_personal,
     graph_rating,
     graph_regression,
@@ -28,7 +27,8 @@ from . import (
     monthly,
     ranking_calc,
     rating_calc,
-    results,
+    results_detail,
+    results_summary,
     score_deviation,
     stats_list,
     stats_report,
@@ -37,7 +37,6 @@ from . import (
 )
 
 __all__ = [
-    "detail",
     "graph_personal",
     "graph_rating",
     "graph_regression",
@@ -46,7 +45,8 @@ __all__ = [
     "monthly",
     "ranking_calc",
     "rating_calc",
-    "results",
+    "results_detail",
+    "results_summary",
     "score_deviation",
     "stats_list",
     "stats_report",
