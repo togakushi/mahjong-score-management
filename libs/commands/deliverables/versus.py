@@ -26,7 +26,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.SUMMARY
+    m.status.command_type = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2
 
     # データ収集

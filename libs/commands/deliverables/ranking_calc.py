@@ -25,7 +25,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.RANKING
+    m.status.command_type = CommandType.RANKING
 
     # 情報ヘッダ
     if g.params.individual:  # 個人集計

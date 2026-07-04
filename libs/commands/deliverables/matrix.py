@@ -25,7 +25,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.ANALYSIS
+    m.status.command_type = CommandType.ANALYSIS
 
     # データ集計
     title: str = "対局対戦マトリクス"

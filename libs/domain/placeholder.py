@@ -13,7 +13,7 @@ import pandas as pd
 
 from libs.domain.datamodels import ParameterData
 from libs.functions import lookup
-from libs.types import CommandType, ServiceType
+from libs.types import ServiceType
 from libs.utils import dbutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -29,8 +29,6 @@ class PlaceholderBuilder(ParameterData):
     """連携先サービス"""
     command: str = field(default="")
     """コマンド名"""
-    deliverables: CommandType = field(default=CommandType.UNKNOWN)
-    """出力内容"""
     channel_config: Optional["Path"] = field(default=None)
     """チャンネル個別設定状況
 

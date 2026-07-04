@@ -25,7 +25,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.REPORT
+    m.status.command_type = CommandType.REPORT
 
     # データ収集
     title: str = "月別ゲーム統計"

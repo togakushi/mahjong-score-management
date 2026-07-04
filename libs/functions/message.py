@@ -135,7 +135,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
                 msg += game_range2
                 msg += f"集計対象：{game_info.count} ゲーム\n"
 
-        if remarks_text := text_item.remarks(True):
+        if remarks_text := text_item.remarks(deliverables=m.status.command_type, headword=True):
             msg += f"{remarks_text}\n"
         if word_text := text_item.search_word(True):
             msg += f"{word_text}\n"
