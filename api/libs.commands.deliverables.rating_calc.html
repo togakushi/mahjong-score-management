@@ -5,21 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.domain.deliverables.score_deviation module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.rating_calc module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=b7f4691b"></script>
+    <script src="_static/documentation_options.js?v=52ea5e86"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.domain.deliverables.stats_list module" href="libs.domain.deliverables.stats_list.html" />
-    <link rel="prev" title="libs.domain.deliverables.results module" href="libs.domain.deliverables.results.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.deliverables.results module" href="libs.commands.deliverables.results.html" />
+    <link rel="prev" title="libs.commands.deliverables.ranking_calc module" href="libs.commands.deliverables.ranking_calc.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,8 +63,9 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.domain.deliverables.score_deviation module</a><ul>
-<li><a class="reference internal" href="#libs.domain.deliverables.score_deviation.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.rating_calc module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.rating_calc.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.rating_calc.calculation_rating"><code class="docutils literal notranslate"><span class="pre">calculation_rating()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -72,13 +73,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.results.html"
-                          title="previous chapter">libs.domain.deliverables.results module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.ranking_calc.html"
+                          title="previous chapter">libs.commands.deliverables.ranking_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.stats_list.html"
-                          title="next chapter">libs.domain.deliverables.stats_list module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results.html"
+                          title="next chapter">libs.commands.deliverables.results module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -102,10 +103,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.stats_list.html" title="libs.domain.deliverables.stats_list module"
+          <a href="libs.commands.deliverables.results.html" title="libs.commands.deliverables.results module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.results.html" title="libs.domain.deliverables.results module"
+          <a href="libs.commands.deliverables.ranking_calc.html" title="libs.commands.deliverables.ranking_calc module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -118,9 +119,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.domain.deliverables.html" accesskey="U">libs.domain.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables.score_deviation module</a></li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.rating_calc module</a></li>
                 <li class="right">
                     
 
@@ -150,19 +151,33 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-libs.domain.deliverables.score_deviation">
-<span id="libs-domain-deliverables-score-deviation-module"></span><h1>libs.domain.deliverables.score_deviation module<a class="headerlink" href="#module-libs.domain.deliverables.score_deviation" title="Link to this heading">¶</a></h1>
-<p>libs/domain/deliverables/score_deviation.py</p>
+  <section id="module-libs.commands.deliverables.rating_calc">
+<span id="libs-commands-deliverables-rating-calc-module"></span><h1>libs.commands.deliverables.rating_calc module<a class="headerlink" href="#module-libs.commands.deliverables.rating_calc" title="Link to this heading">¶</a></h1>
+<p>libs/commands/deliverables/rating_calc.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.score_deviation.aggregation">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.score_deviation.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.score_deviation.aggregation" title="Link to this definition">¶</a></dt>
-<dd><p>各プレイヤーの素点情報の偏りを表示</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.rating_calc.aggregation">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.rating_calc.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.rating_calc.aggregation" title="Link to this definition">¶</a></dt>
+<dd><p>レーティングを集計して返す</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.deliverables.rating_calc.calculation_rating">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.rating_calc.</span></span><span class="sig-name descname"><span class="pre">calculation_rating</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.rating_calc.calculation_rating" title="Link to this definition">¶</a></dt>
+<dd><p>レーティング集計</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計結果</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -179,8 +194,9 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.domain.deliverables.score_deviation module</a><ul>
-<li><a class="reference internal" href="#libs.domain.deliverables.score_deviation.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.rating_calc module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.rating_calc.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.rating_calc.calculation_rating"><code class="docutils literal notranslate"><span class="pre">calculation_rating()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -188,13 +204,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.results.html"
-                          title="previous chapter">libs.domain.deliverables.results module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.ranking_calc.html"
+                          title="previous chapter">libs.commands.deliverables.ranking_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.stats_list.html"
-                          title="next chapter">libs.domain.deliverables.stats_list module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results.html"
+                          title="next chapter">libs.commands.deliverables.results module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -218,10 +234,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.stats_list.html" title="libs.domain.deliverables.stats_list module"
+          <a href="libs.commands.deliverables.results.html" title="libs.commands.deliverables.results module"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.results.html" title="libs.domain.deliverables.results module"
+          <a href="libs.commands.deliverables.ranking_calc.html" title="libs.commands.deliverables.ranking_calc module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -234,9 +250,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.domain.deliverables.html" >libs.domain.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables.score_deviation module</a></li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.rating_calc module</a></li>
                 <li class="right">
                     
 
@@ -261,8 +277,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.3.
-      Last updated on 2026-07-03.
+      Release Version: 0.17.4.
+      Last updated on 2026-07-04.
     </div>
 
   </body>

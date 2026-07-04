@@ -5,21 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.domain.deliverables.graph_personal module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.graph_personal module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=b7f4691b"></script>
+    <script src="_static/documentation_options.js?v=52ea5e86"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.domain.deliverables.graph_rating module" href="libs.domain.deliverables.graph_rating.html" />
-    <link rel="prev" title="libs.domain.deliverables.detail module" href="libs.domain.deliverables.detail.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.deliverables.graph_rating module" href="libs.commands.deliverables.graph_rating.html" />
+    <link rel="prev" title="libs.commands.deliverables.detail module" href="libs.commands.deliverables.detail.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,19 +63,19 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.domain.deliverables.graph_personal module</a><ul>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.graph_personal module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -83,13 +83,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.detail.html"
-                          title="previous chapter">libs.domain.deliverables.detail module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.detail.html"
+                          title="previous chapter">libs.commands.deliverables.detail module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.graph_rating.html"
-                          title="next chapter">libs.domain.deliverables.graph_rating module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.graph_rating.html"
+                          title="next chapter">libs.commands.deliverables.graph_rating module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -113,10 +113,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.graph_rating.html" title="libs.domain.deliverables.graph_rating module"
+          <a href="libs.commands.deliverables.graph_rating.html" title="libs.commands.deliverables.graph_rating module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.detail.html" title="libs.domain.deliverables.detail module"
+          <a href="libs.commands.deliverables.detail.html" title="libs.commands.deliverables.detail module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -129,9 +129,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.domain.deliverables.html" accesskey="U">libs.domain.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables.graph_personal module</a></li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.graph_personal module</a></li>
                 <li class="right">
                     
 
@@ -161,12 +161,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-libs.domain.deliverables.graph_personal">
-<span id="libs-domain-deliverables-graph-personal-module"></span><h1>libs.domain.deliverables.graph_personal module<a class="headerlink" href="#module-libs.domain.deliverables.graph_personal" title="Link to this heading">¶</a></h1>
-<p>libs/domain/deliverables/graph_personal.py</p>
+  <section id="module-libs.commands.deliverables.graph_personal">
+<span id="libs-commands-deliverables-graph-personal-module"></span><h1>libs.commands.deliverables.graph_personal module<a class="headerlink" href="#module-libs.commands.deliverables.graph_personal" title="Link to this heading">¶</a></h1>
+<p>libs/commands/deliverables/graph_personal.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plot">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plot" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plot" title="Link to this definition">¶</a></dt>
 <dd><p>個人成績のグラフを生成する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -179,8 +179,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.statistics_plot">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">statistics_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.statistics_plot" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.statistics_plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">statistics_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.statistics_plot" title="Link to this definition">¶</a></dt>
 <dd><p>個人成績の統計グラフを生成する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -193,8 +193,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.get_data">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.get_data" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.get_data">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.get_data" title="Link to this definition">¶</a></dt>
 <dd><p>データフレームを指定範囲で分割する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -213,8 +213,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.subplot_box">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.subplot_box" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.subplot_box">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.subplot_box" title="Link to this definition">¶</a></dt>
 <dd><p>箱ひげ図を生成する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -230,8 +230,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.subplot_table">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.subplot_table" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.subplot_table">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.subplot_table" title="Link to this definition">¶</a></dt>
 <dd><p>テーブルを生成する</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -247,8 +247,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.subplot_point">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.subplot_point" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.subplot_point">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.subplot_point" title="Link to this definition">¶</a></dt>
 <dd><p>ポイントデータ</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -264,8 +264,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.subplot_rank">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.subplot_rank" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.subplot_rank">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">subplot_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.subplot_rank" title="Link to this definition">¶</a></dt>
 <dd><p>順位データ</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -282,8 +282,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plotly_point">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plotly_point" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plotly_point">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plotly_point" title="Link to this definition">¶</a></dt>
 <dd><p>獲得ポイントグラフ(plotly用)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -303,8 +303,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plotly_rank">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plotly_rank" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plotly_rank">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plotly_rank" title="Link to this definition">¶</a></dt>
 <dd><p>獲得順位グラフ(plotly用)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -324,8 +324,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plotly_line">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plotly_line" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plotly_line">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plotly_line" title="Link to this definition">¶</a></dt>
 <dd><p>通算ポイント推移グラフ生成(plotly用)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -344,8 +344,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plotly_box">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plotly_box" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plotly_box">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plotly_box" title="Link to this definition">¶</a></dt>
 <dd><p>素点分布グラフ生成(plotly用)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -364,8 +364,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.domain.deliverables.graph_personal.plotly_bar">
-<span class="sig-prename descclassname"><span class="pre">libs.domain.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.deliverables.graph_personal.plotly_bar" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.graph_personal.plotly_bar">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_personal.</span></span><span class="sig-name descname"><span class="pre">plotly_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_personal.plotly_bar" title="Link to this definition">¶</a></dt>
 <dd><p>順位分布グラフ生成(plotly用)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -395,19 +395,19 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.domain.deliverables.graph_personal module</a><ul>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.deliverables.graph_personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.graph_personal module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.get_data"><code class="docutils literal notranslate"><span class="pre">get_data()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_box"><code class="docutils literal notranslate"><span class="pre">subplot_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_table"><code class="docutils literal notranslate"><span class="pre">subplot_table()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_point"><code class="docutils literal notranslate"><span class="pre">subplot_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.subplot_rank"><code class="docutils literal notranslate"><span class="pre">subplot_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_point"><code class="docutils literal notranslate"><span class="pre">plotly_point()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_rank"><code class="docutils literal notranslate"><span class="pre">plotly_rank()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_line"><code class="docutils literal notranslate"><span class="pre">plotly_line()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_box"><code class="docutils literal notranslate"><span class="pre">plotly_box()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.graph_personal.plotly_bar"><code class="docutils literal notranslate"><span class="pre">plotly_bar()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -415,13 +415,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.detail.html"
-                          title="previous chapter">libs.domain.deliverables.detail module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.detail.html"
+                          title="previous chapter">libs.commands.deliverables.detail module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.domain.deliverables.graph_rating.html"
-                          title="next chapter">libs.domain.deliverables.graph_rating module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.graph_rating.html"
+                          title="next chapter">libs.commands.deliverables.graph_rating module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -445,10 +445,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.graph_rating.html" title="libs.domain.deliverables.graph_rating module"
+          <a href="libs.commands.deliverables.graph_rating.html" title="libs.commands.deliverables.graph_rating module"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.domain.deliverables.detail.html" title="libs.domain.deliverables.detail module"
+          <a href="libs.commands.deliverables.detail.html" title="libs.commands.deliverables.detail module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -461,9 +461,9 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.domain.html" >libs.domain package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.domain.deliverables.html" >libs.domain.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.domain.deliverables.graph_personal module</a></li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.graph_personal module</a></li>
                 <li class="right">
                     
 
@@ -488,8 +488,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.3.
-      Last updated on 2026-07-03.
+      Release Version: 0.17.4.
+      Last updated on 2026-07-04.
     </div>
 
   </body>

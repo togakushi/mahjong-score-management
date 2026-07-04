@@ -5,21 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.commands.help package &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.help module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=b7f4691b"></script>
+    <script src="_static/documentation_options.js?v=52ea5e86"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.commands.help.entry module" href="libs.commands.help.entry.html" />
-    <link rel="prev" title="libs.commands.analysis.entry module" href="libs.commands.analysis.entry.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.summary module" href="libs.commands.summary.html" />
+    <link rel="prev" title="libs.commands.analysis module" href="libs.commands.analysis.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,8 +63,13 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.help package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#">libs.commands.help module</a><ul>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig"><code class="docutils literal notranslate"><span class="pre">HelpConfig</span></code></a><ul>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig.__init__"><code class="docutils literal notranslate"><span class="pre">HelpConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.help.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -72,13 +77,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.analysis.entry.html"
-                          title="previous chapter">libs.commands.analysis.entry module</a></p>
+    <p class="topless"><a href="libs.commands.analysis.html"
+                          title="previous chapter">libs.commands.analysis module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.help.entry.html"
-                          title="next chapter">libs.commands.help.entry module</a></p>
+    <p class="topless"><a href="libs.commands.summary.html"
+                          title="next chapter">libs.commands.summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -102,10 +107,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.help.entry.html" title="libs.commands.help.entry module"
+          <a href="libs.commands.summary.html" title="libs.commands.summary module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.analysis.entry.html" title="libs.commands.analysis.entry module"
+          <a href="libs.commands.analysis.html" title="libs.commands.analysis module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -119,7 +124,7 @@
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" accesskey="U">libs.commands package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.help package</a></li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.help module</a></li>
                 <li class="right">
                     
 
@@ -150,27 +155,73 @@
           <div class="body" role="main">
             
   <section id="module-libs.commands.help">
-<span id="libs-commands-help-package"></span><h1>libs.commands.help package<a class="headerlink" href="#module-libs.commands.help" title="Link to this heading">¶</a></h1>
-<p>サブコマンド - ヘルプメッセージ</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="libs.commands.help.entry.html"><span class="doc">libs.commands.help.entry module</span></a>: エントリーポイント</p></li>
+<span id="libs-commands-help-module"></span><h1>libs.commands.help module<a class="headerlink" href="#module-libs.commands.help" title="Link to this heading">¶</a></h1>
+<p>libs/commands/help.py</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="libs.commands.help.HelpConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">HelpConfig</span></span><a class="headerlink" href="#libs.commands.help.HelpConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
+<p>ヘルプ表示コマンド（helpセクション）の設定を管理するクラス。</p>
+<p>設定ファイルからヘルプコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.commands.help.HelpConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.HelpConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>HelpConfig クラスの初期化。</p>
+<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.help.main">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.main" title="Link to this definition">¶</a></dt>
+<dd><p>ヘルプ処理のエントリーポイント。</p>
+<p>受信したメッセージデータに基づいてヘルプパラメータを解析し、ユーザー向けのヘルプ案内メッセージを構築する。
+メッセージの送信スレッドのタイトルやタイムスタンプなどの投稿メタデータもここで設定される。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.help.help_message">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">help_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.help_message" title="Link to this definition">¶</a></dt>
+<dd><p>ユーザーに提示する各機能の呼び出しキーワードや設定情報のヘルプメッセージを動的に構築する。</p>
+<p>内部では、チャンネルの個別設定やルール識別子の状態を最新に更新した上で、以下の各セクションに関する
+ヘルプ内容（呼び出しワードや規定打数などのデフォルト値）を、 <code class="docutils literal notranslate"><span class="pre">m.set_message</span></code> を用いて多層的に組み立てる。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージを蓄積・設定するためのメッセージデータオブジェクト。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>構築されるヘルプ情報セクション:</dt><dd><ul class="simple">
+<li><p><strong>コマンド呼び出し</strong>: 基本的な使い方のフォーマットと適用中のルール識別子。</p></li>
+<li><p><strong>集計コマンド (SUMMARY)</strong>: 集計コマンドの呼び出しワードと検索範囲の初期値。</p></li>
+<li><p><strong>分析コマンド (ANALYSIS)</strong>: 分析コマンドの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。</p></li>
+<li><p><strong>メンバー・チーム一覧</strong>: 登録されているメンバーやチームのリストを出力する呼び出しワード。</p></li>
+<li><p><strong>検索範囲</strong>: 期間指定などで利用できる有効な検索ワードの一覧。</p></li>
+<li><p><strong>メモ機能</strong>: 個別カウントや役満カウントなどのレギュレーションに準じたメモ記録ワードと仕様。</p></li>
+<li><p><strong>ルールセット・レギュレーション</strong>: 卓外清算ワード（個人/チーム）やルール情報の詳細。</p></li>
+<li><p><strong>チャンネル設定情報</strong>: 現在のチャンネルID、デフォルトルール、個別設定ファイルの有無、セパレート機能の成否。</p></li>
 </ul>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="libs.commands.help.entry.html">libs.commands.help.entry module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libs.commands.help.entry.html#libs.commands.help.entry.HelpConfig"><code class="docutils literal notranslate"><span class="pre">HelpConfig</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="libs.commands.help.entry.html#libs.commands.help.entry.HelpConfig.__init__"><code class="docutils literal notranslate"><span class="pre">HelpConfig.__init__()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="libs.commands.help.entry.html#libs.commands.help.entry.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="libs.commands.help.entry.html#libs.commands.help.entry.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -183,8 +234,13 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.help package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#">libs.commands.help module</a><ul>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig"><code class="docutils literal notranslate"><span class="pre">HelpConfig</span></code></a><ul>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig.__init__"><code class="docutils literal notranslate"><span class="pre">HelpConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.help.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -192,13 +248,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.analysis.entry.html"
-                          title="previous chapter">libs.commands.analysis.entry module</a></p>
+    <p class="topless"><a href="libs.commands.analysis.html"
+                          title="previous chapter">libs.commands.analysis module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.help.entry.html"
-                          title="next chapter">libs.commands.help.entry module</a></p>
+    <p class="topless"><a href="libs.commands.summary.html"
+                          title="next chapter">libs.commands.summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -222,10 +278,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.help.entry.html" title="libs.commands.help.entry module"
+          <a href="libs.commands.summary.html" title="libs.commands.summary module"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.analysis.entry.html" title="libs.commands.analysis.entry module"
+          <a href="libs.commands.analysis.html" title="libs.commands.analysis module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -239,7 +295,7 @@
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.help package</a></li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.help module</a></li>
                 <li class="right">
                     
 
@@ -264,8 +320,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.3.
-      Last updated on 2026-07-03.
+      Release Version: 0.17.4.
+      Last updated on 2026-07-04.
     </div>
 
   </body>

@@ -5,21 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.commands.analysis.entry module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.winner module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=b7f4691b"></script>
+    <script src="_static/documentation_options.js?v=52ea5e86"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.commands.help package" href="libs.commands.help.html" />
-    <link rel="prev" title="libs.commands.analysis package" href="libs.commands.analysis.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.registry package" href="libs.commands.registry.html" />
+    <link rel="prev" title="libs.commands.deliverables.versus module" href="libs.commands.deliverables.versus.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,12 +63,8 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.analysis.entry module</a><ul>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.AnalysisConfig"><code class="docutils literal notranslate"><span class="pre">AnalysisConfig</span></code></a><ul>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.AnalysisConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AnalysisConfig.__init__()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.winner module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.winner.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -76,13 +72,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.analysis.html"
-                          title="previous chapter">libs.commands.analysis package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.versus.html"
+                          title="previous chapter">libs.commands.deliverables.versus module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.help.html"
-                          title="next chapter">libs.commands.help package</a></p>
+    <p class="topless"><a href="libs.commands.registry.html"
+                          title="next chapter">libs.commands.registry package</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -106,10 +102,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.help.html" title="libs.commands.help package"
+          <a href="libs.commands.registry.html" title="libs.commands.registry package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.analysis.html" title="libs.commands.analysis package"
+          <a href="libs.commands.deliverables.versus.html" title="libs.commands.deliverables.versus module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -123,8 +119,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.commands.analysis.html" accesskey="U">libs.commands.analysis package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.analysis.entry module</a></li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.winner module</a></li>
                 <li class="right">
                     
 
@@ -154,37 +150,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-libs.commands.analysis.entry">
-<span id="libs-commands-analysis-entry-module"></span><h1>libs.commands.analysis.entry module<a class="headerlink" href="#module-libs.commands.analysis.entry" title="Link to this heading">¶</a></h1>
-<p>libs/commands/analysis/entry.py</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="libs.commands.analysis.entry.AnalysisConfig">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.analysis.entry.</span></span><span class="sig-name descname"><span class="pre">AnalysisConfig</span></span><a class="headerlink" href="#libs.commands.analysis.entry.AnalysisConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
-<p>分析サブコマンド（analysisセクション）の設定を管理するクラス。</p>
-<p>設定ファイルから分析コマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.commands.analysis.entry.AnalysisConfig.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.analysis.entry.AnalysisConfig.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>AnalysisConfig クラスの初期化。</p>
-<p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+  <section id="module-libs.commands.deliverables.winner">
+<span id="libs-commands-deliverables-winner-module"></span><h1>libs.commands.deliverables.winner module<a class="headerlink" href="#module-libs.commands.deliverables.winner" title="Link to this heading">¶</a></h1>
+<p>libs/commands/deliverables/winner.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.analysis.entry.main">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.analysis.entry.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.analysis.entry.main" title="Link to this definition">¶</a></dt>
-<dd><p>成績分析処理のエントリーポイント。</p>
-<p>受信したメッセージデータに基づいてパラメータを解析し、適切な成績分析関数へルーティングする。</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.winner.plot">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.winner.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.winner.plot" title="Link to this definition">¶</a></dt>
+<dd><p>成績上位者を一覧化</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – 解析済みのテキストやステータスを含むメッセージデータオブジェクト。</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -204,12 +179,8 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.analysis.entry module</a><ul>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.AnalysisConfig"><code class="docutils literal notranslate"><span class="pre">AnalysisConfig</span></code></a><ul>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.AnalysisConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AnalysisConfig.__init__()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#libs.commands.analysis.entry.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.winner module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.winner.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -217,13 +188,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.analysis.html"
-                          title="previous chapter">libs.commands.analysis package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.versus.html"
+                          title="previous chapter">libs.commands.deliverables.versus module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.help.html"
-                          title="next chapter">libs.commands.help package</a></p>
+    <p class="topless"><a href="libs.commands.registry.html"
+                          title="next chapter">libs.commands.registry package</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -247,10 +218,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.help.html" title="libs.commands.help package"
+          <a href="libs.commands.registry.html" title="libs.commands.registry package"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.analysis.html" title="libs.commands.analysis package"
+          <a href="libs.commands.deliverables.versus.html" title="libs.commands.deliverables.versus module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -264,8 +235,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="libs.commands.analysis.html" >libs.commands.analysis package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.analysis.entry module</a></li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.winner module</a></li>
                 <li class="right">
                     
 
@@ -290,8 +261,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.3.
-      Last updated on 2026-07-03.
+      Release Version: 0.17.4.
+      Last updated on 2026-07-04.
     </div>
 
   </body>
