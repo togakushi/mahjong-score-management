@@ -15,8 +15,8 @@ import libs.global_value as g
 from integrations import factory
 from libs.bootstrap import configuration
 from libs.bootstrap.configuration import arg_parser
-from libs.commands.help.entry import help_message
-from libs.domain import deliverables
+from libs.commands import deliverables
+from libs.commands.help import help_message
 from libs.domain.command import CommandParser
 from libs.types import ServiceType
 from libs.utils import dictutil

@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/rating_calc.py
+libs/commands/deliverables/rating_calc.py
 """
 
 from typing import TYPE_CHECKING

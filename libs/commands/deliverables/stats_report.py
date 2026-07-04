@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/stats_report.py
+libs/commands/deliverables/stats_report.py
 """
 
 import logging

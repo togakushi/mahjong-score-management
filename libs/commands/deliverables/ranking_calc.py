@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/ranking.py
+libs/commands/deliverables/ranking.py
 """
 
 from typing import TYPE_CHECKING, cast

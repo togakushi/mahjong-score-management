@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/winner.py
+libs/commands/deliverables/winner.py
 """
 
 from typing import TYPE_CHECKING, Any

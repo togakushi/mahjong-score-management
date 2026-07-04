@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/graph_rating.py
+libs/commands/deliverables/graph_rating.py
 """
 
 from typing import TYPE_CHECKING
@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px  # type: ignore
 
 import libs.global_value as g
+from libs.commands.deliverables.rating_calc import calculation_rating
 from libs.domain.datamodels import GameInfo
-from libs.domain.deliverables.rating_calc import calculation_rating
 from libs.functions import message
 from libs.functions.compose import text_item
 from libs.types import CommandType, StyleOptions

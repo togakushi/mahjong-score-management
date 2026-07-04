@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/graph_regression.py
+libs/commands/deliverables/graph_regression.py
 """
 
 from typing import TYPE_CHECKING

@@ -1,11 +1,11 @@
 """
-libs/commands/summary/entry.py
+libs/commands/summary.py
 """
 
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.domain import deliverables
+from libs.commands import deliverables
 from libs.domain.section import SubCommands
 from libs.types import CommandType
 from libs.utils import dictutil
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 class SummaryConfig(SubCommands):
     """
-    集計サブコマンド（summaryセクション）の設定を管理するクラス。
+    集計コマンド（summaryセクション）の設定を管理するクラス。
 
     設定ファイルから集計コマンド固有のパラメータを読み込み、保持する役割を持つ。
 

@@ -1,5 +1,5 @@
 """
-libs/domain/deliverables/results.py
+libs/commands/deliverables/results.py
 """
 
 from typing import TYPE_CHECKING

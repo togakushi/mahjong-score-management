@@ -8,11 +8,11 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from libs.commands.analysis.entry import AnalysisConfig
-from libs.commands.help.entry import HelpConfig
+from libs.commands.analysis import AnalysisConfig
+from libs.commands.help import HelpConfig
 from libs.commands.registry.member import MemberSection
 from libs.commands.registry.team import TeamSection
-from libs.commands.summary.entry import SummaryConfig
+from libs.commands.summary import SummaryConfig
 from libs.domain.rule import RuleSet
 from libs.domain.section import AliasSection, BadgeDisplay, SettingSection, SubCommands
 from libs.functions.lookup import read_memberslist
