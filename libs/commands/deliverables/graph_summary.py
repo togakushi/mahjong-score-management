@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/graph_summary.py
+ポイント推移/順位推移グラフ
 """
 
 import logging

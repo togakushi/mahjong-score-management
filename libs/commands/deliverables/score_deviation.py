@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/score_deviation.py
+素点分析
 """
 
 from typing import TYPE_CHECKING

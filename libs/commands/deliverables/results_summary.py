@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/results.py
+成績サマリ
 """
 
 from typing import TYPE_CHECKING

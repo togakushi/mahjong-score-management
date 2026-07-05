@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/detail.py
+個人/チーム成績詳細
 """
 
 import textwrap

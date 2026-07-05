@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/matrix.py
+直接対戦マトリクス
 """
 
 from typing import TYPE_CHECKING, Any

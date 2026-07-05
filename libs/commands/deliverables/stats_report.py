@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/stats_report.py
+成績報告書
 """
 
 import logging

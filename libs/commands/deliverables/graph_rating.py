@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/graph_rating.py
+レーティング推移グラフ
 """
 
 from typing import TYPE_CHECKING

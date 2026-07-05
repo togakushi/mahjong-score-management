@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/winner.py
+月間上位
 """
 
 from typing import TYPE_CHECKING, Any

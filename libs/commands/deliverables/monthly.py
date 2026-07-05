@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/monthly.py
+月間成績
 """
 
 from typing import TYPE_CHECKING

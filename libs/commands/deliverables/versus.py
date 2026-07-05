@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/versus.py
+直接対戦成績
 """
 
 import textwrap

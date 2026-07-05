@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/graph_personal.py
+個人/チーム/統計グラフ
 """
 
 from typing import TYPE_CHECKING, Any

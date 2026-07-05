@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/graph_regression.py
+平均順位/平均素点の分散図
 """
 
 from typing import TYPE_CHECKING
