@@ -21,7 +21,7 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     """
     空設定時に必須エイリアスが補完されることを検証する。
 
-    最小構成ファイル読込後、主要サブコマンドのエイリアスが欠落しないことを確認する。
+    最小構成ファイル読込後、主要スラッシュコマンドのエイリアスが欠落しないことを確認する。
 
     Args:
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
@@ -42,13 +42,13 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
 @pytest.mark.parametrize("input_args", ["summary", "analysis", "help"])
 def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
-    サブコマンド設定のデフォルト値が期待どおりであることを検証する。
+    コマンド設定のデフォルト値が期待どおりであることを検証する。
 
     コマンド種別ごとの初期 commandword を含む主要パラメータを
     比較して回帰を防ぐ。
 
     Args:
-        input_args (str): 検証対象のサブコマンド名。
+        input_args (str): 検証対象のコマンド名。
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
