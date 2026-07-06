@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=52ea5e86"></script>
+    <script src="_static/documentation_options.js?v=36258ec2"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,6 +66,7 @@
 <li><a class="reference internal" href="#">libs.commands.help module</a><ul>
 <li><a class="reference internal" href="#libs.commands.help.HelpConfig"><code class="docutils literal notranslate"><span class="pre">HelpConfig</span></code></a><ul>
 <li><a class="reference internal" href="#libs.commands.help.HelpConfig.__init__"><code class="docutils literal notranslate"><span class="pre">HelpConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig.register"><code class="docutils literal notranslate"><span class="pre">HelpConfig.register()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
@@ -160,7 +161,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="libs.commands.help.HelpConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">HelpConfig</span></span><a class="headerlink" href="#libs.commands.help.HelpConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.SubCommands" title="libs.domain.section.SubCommands"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubCommands</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs" title="libs.domain.datamodels.CommandAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a></p>
 <p>ヘルプ表示コマンド（helpセクション）の設定を管理するクラス。</p>
 <p>設定ファイルからヘルプコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
 <dl class="py method">
@@ -168,6 +169,17 @@
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.HelpConfig.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>HelpConfig クラスの初期化。</p>
 <p>デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libs.commands.help.HelpConfig.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.HelpConfig.register" title="Link to this definition">¶</a></dt>
+<dd><p>ディスパッチャー登録</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -237,6 +249,7 @@
 <li><a class="reference internal" href="#">libs.commands.help module</a><ul>
 <li><a class="reference internal" href="#libs.commands.help.HelpConfig"><code class="docutils literal notranslate"><span class="pre">HelpConfig</span></code></a><ul>
 <li><a class="reference internal" href="#libs.commands.help.HelpConfig.__init__"><code class="docutils literal notranslate"><span class="pre">HelpConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.help.HelpConfig.register"><code class="docutils literal notranslate"><span class="pre">HelpConfig.register()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
@@ -320,7 +333,7 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.4.
+      Release Version: 0.17.5.
       Last updated on 2026-07-06.
     </div>
 
