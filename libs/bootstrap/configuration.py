@@ -13,18 +13,15 @@ from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations import factory
-from libs import commands
 from libs.bootstrap import initialization
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.domain.datamodels import Args
 from libs.functions import lookup
-from libs.functions.compose import text_item
 from libs.types import ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.domain.section import SubCommands
 
 
 def set_loglevel() -> None:
@@ -278,7 +275,6 @@ def setup(init_db: bool = True) -> None:
     # 初期化
     initialization.main(init_db)
     lookup.read_memberslist()
-
     register()
 
     # キーワード重複チェック
@@ -323,14 +319,10 @@ def register() -> None:
         m.set_message(g.cfg.setting.database_file, StyleOptions(title="成績記録DB"))
 
     def dispatch_members_list(m: "MessageParserProtocol") -> None:
-        m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
-        m.post.ts = m.data.event_ts
-        m.post.thread_title = "登録済みメンバー"
+        member.members_list(m)
 
     def dispatch_team_list(m: "MessageParserProtocol") -> None:
-        m.set_message(text_item.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
-        m.post.ts = m.data.event_ts
-        m.post.thread_title = "登録済みチーム"
+        team.team_list(m)
 
     def dispatch_member_append(m: "MessageParserProtocol") -> None:
         m.set_message(member.append(m.argument), StyleOptions(title="メンバー追加", key_title=False))
@@ -354,9 +346,6 @@ def register() -> None:
         m.set_message(team.clear(), StyleOptions(title="全チーム削除", key_title=False))
 
     dispatch_table: dict[str, Any] = {
-        "summary": commands.summary.main,
-        "analysis": commands.analysis.main,
-        "help": commands.help.main,
         "member": dispatch_members_list,
         "team": dispatch_team_list,
         "team_list": dispatch_team_list,
@@ -370,32 +359,20 @@ def register() -> None:
         "team_clear": dispatch_team_clear,
     }
 
-    commandword_list: list[str]
+    # コマンド登録
+    g.cfg.summary.register()
+    g.cfg.analysis.register()
+    g.cfg.help.register()
+    g.cfg.member.register()
+    g.cfg.team.register()
+    g.command_dispatcher.update(g.adapter.conf.command_dispatcher)  # サービス別コマンド登録
+
+    # スラッシュコマンド登録
     for command, ep in dispatch_table.items():
-        # 呼び出しキーワード登録
-        if hasattr(g.cfg, command):
-            commandword_list = []
-            sub_command = cast("SubCommands", getattr(g.cfg, command))
-            if not any([sub_command.commandword, sub_command.command_suffix]):  # 何も設定されていない
-                commandword_list.append(sub_command.default_commandword)
-            elif sub_command.commandword:
-                commandword_list.extend(sub_command.commandword)
-            elif sub_command.command_suffix:  # コマンドサフィックス登録
-                for rule_version in g.cfg.rule.rule_list:
-                    commandword_list.extend(
-                        [f"{prefix}{suffix}" for prefix in g.cfg.rule.keywords(rule_version) for suffix in sub_command.command_suffix],
-                    )
-            sub_command.commandword = commandword_list
-            for commandword in commandword_list:
-                g.keyword_dispatcher.update({commandword: ep})
-        # スラッシュコマンド登録
         if hasattr(g.cfg.alias, command):
             for alias in cast(list[str], getattr(g.cfg.alias, command)):
                 g.command_dispatcher.update({alias: ep})
-
-    # サービス別コマンド登録
-    g.command_dispatcher.update(g.adapter.conf.command_dispatcher)
-    g.keyword_dispatcher.update(g.adapter.conf.keyword_dispatcher)
+    g.keyword_dispatcher.update(g.adapter.conf.keyword_dispatcher)  # サービス別コマンド登録
 
     logging.debug("keyword_dispatcher:\n%s", "\n".join([f"\t{k}: {v}" for k, v in g.keyword_dispatcher.items()]))
     logging.debug("command_dispatcher:\n%s", "\n".join([f"\t{k}: {v}" for k, v in g.command_dispatcher.items()]))

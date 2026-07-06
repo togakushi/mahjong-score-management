@@ -6,7 +6,8 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.commands import deliverables
-from libs.domain.section import SubCommands
+from libs.domain.datamodels import CommandAttrs
+from libs.domain.section import BaseSection
 from libs.types import CommandType
 from libs.utils import dictutil
 
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class SummaryConfig(SubCommands):
+class SummaryConfig(BaseSection, CommandAttrs):
     """
     集計コマンド（summaryセクション）の設定を管理するクラス。
 
@@ -31,6 +32,11 @@ class SummaryConfig(SubCommands):
         self.default_commandword: str = "成績集計"
         self.section: str = str(CommandType.SUMMARY)
         self.default_reset()
+
+    def register(self) -> None:
+        """ディスパッチャー登録"""
+        for word in self.commandwords_list():
+            g.keyword_dispatcher.update({word: main})
 
 
 def main(m: "MessageParserProtocol") -> None:

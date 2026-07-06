@@ -7,7 +7,6 @@ from dataclasses import MISSING, dataclass, field, fields
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Optional, TypeAlias, Union
 
-from libs.domain.datamodels import CommandAttrs
 from libs.types import GradeTableDict
 
 if TYPE_CHECKING:
@@ -18,8 +17,11 @@ if TYPE_CHECKING:
     from integrations.standard_io.config import SvcConfig as StdConfig
     from integrations.web.config import SvcConfig as WebConfig
     from libs.bootstrap.app_config import AppConfig
+    from libs.commands.analysis import AnalysisConfig
+    from libs.commands.help import HelpConfig
     from libs.commands.registry.member import MemberSection
     from libs.commands.registry.team import TeamSection
+    from libs.commands.summary import SummaryConfig
 
 ServiceClassType: TypeAlias = Union[
     "SlackConfig",
@@ -38,9 +40,16 @@ SettingClassType: TypeAlias = Union[
 ]
 """設定関連クラス"""
 
+CommandClassType: TypeAlias = Union[
+    "AnalysisConfig",
+    "SummaryConfig",
+    "HelpConfig",
+]
+"""コマンド関連クラス"""
+
 SubClassType: TypeAlias = Union[
     "SettingClassType",
-    "SubCommands",
+    "CommandClassType",
     "ServiceClassType",
 ]
 
@@ -401,16 +410,3 @@ class BadgeDisplay(BaseSection):
         if self.main_parser.has_section(self.section):
             self.section_proxy = self.main_parser[self.section]
             self.grade.table_name = self.get("table_name", fallback="")
-
-
-class SubCommands(BaseSection, CommandAttrs):
-    """
-    コマンドセクションの設定値を管理するクラス
-
-    コマンドに関する設定値を保持する。
-    CommandAttrs と BaseSection の機能を組み合わせて動作する。
-
-    """
-
-    default_commandword: str
-    """コマンドワードデフォルト値"""

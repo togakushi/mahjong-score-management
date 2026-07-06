@@ -14,7 +14,7 @@ from libs.commands.registry.member import MemberSection
 from libs.commands.registry.team import TeamSection
 from libs.commands.summary import SummaryConfig
 from libs.domain.rule import RuleSet
-from libs.domain.section import AliasSection, BadgeDisplay, SettingSection, SubCommands
+from libs.domain.section import AliasSection, BadgeDisplay, CommandClassType, SettingSection
 from libs.functions.lookup import read_memberslist
 from libs.types import CommandType, ServiceType
 
@@ -89,11 +89,11 @@ class AppConfig:
         """バッジ設定"""
 
         # コマンド
-        self.summary: "SubCommands" = SummaryConfig()
+        self.summary: "CommandClassType" = SummaryConfig()
         """summaryセクション設定値"""
-        self.analysis: "SubCommands" = AnalysisConfig()
+        self.analysis: "CommandClassType" = AnalysisConfig()
         """analysisセクション設定値"""
-        self.help: "SubCommands" = HelpConfig()
+        self.help: "CommandClassType" = HelpConfig()
         """helpセクション設定値"""
 
         self.initialization()
@@ -165,7 +165,7 @@ class AppConfig:
 
         for command_name in CommandType:
             if hasattr(self, str(command_name)):
-                if (command := getattr(self, str(command_name))) and isinstance(command, SubCommands):
+                if (command := getattr(self, str(command_name))) and hasattr(command, "default_commandword"):
                     words.append(command.default_commandword)
                     words.extend(command.commandword)
                     words.extend(command.command_suffix)

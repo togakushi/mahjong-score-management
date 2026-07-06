@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any, Optional, cast
 import libs.global_value as g
 from libs.domain.command import CommandParser
 from libs.domain.placeholder import PlaceholderBuilder
-from libs.domain.section import SubCommands
+from libs.domain.section import CommandClassType
 from libs.functions import lookup
 from libs.types import ChannelType, StyleOptions
 from libs.utils import textutil
@@ -18,12 +18,12 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderBuilder:
+def placeholder(subcom: CommandClassType, m: "MessageParserProtocol") -> PlaceholderBuilder:
     """
     プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommands): コマンド設定
+        subcom (CommandClassType): コマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
@@ -451,7 +451,7 @@ def dropitems_list(item_list: Optional[list[str]] = None) -> list[str]:
 
     hide_items = g.cfg.rule.dropitems(g.params.rule_version)
     if g.params.command in ["summary", "analysis"]:
-        hide_items = hide_items.union(set(cast(SubCommands, getattr(g.cfg, g.params.command)).dropitems))
+        hide_items = hide_items.union(set(cast(CommandClassType, getattr(g.cfg, g.params.command)).dropitems))
 
     if g.params.ignore_flying:
         hide_items.add("トビ")
