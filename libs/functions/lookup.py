@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol
-    from libs.domain.section import SubCommands
+    from libs.domain.section import CommandClassType
     from libs.types import RemarkDict
 
 
@@ -296,7 +296,7 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
     commandwords: list[str] = []
 
     if hasattr(g.cfg, command_type):
-        sub_com = cast("SubCommands", getattr(g.cfg, command_type))
+        sub_com = cast("CommandClassType", getattr(g.cfg, command_type))
         commandwords.append(sub_com.default_commandword)
         commandwords.extend(sub_com.commandword)
         commandwords.extend([f"{command}{suffix}" for suffix in sub_com.command_suffix for command in keywords])

@@ -14,7 +14,7 @@ from libs.commands.help import HelpConfig
 from libs.commands.summary import SummaryConfig
 
 if TYPE_CHECKING:
-    from libs.domain.section import SubCommands
+    from libs.domain.section import CommandClassType
 
 
 def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -85,7 +85,7 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
         "interval": 80,
     }
 
-    sub_command: SubCommands
+    sub_command: CommandClassType
     match input_args:
         case "summary":
             sub_command = SummaryConfig()
