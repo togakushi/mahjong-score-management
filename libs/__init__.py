@@ -5,7 +5,7 @@
 
 - :doc:`libs.bootstrap`: アプリケーション起動処理
 - :doc:`libs.domain`: アプリケーションロジック
-- :doc:`libs.commands`: サブコマンド
+- :doc:`libs.commands`: コマンド処理
 
 アプリケーションモジュール:
 

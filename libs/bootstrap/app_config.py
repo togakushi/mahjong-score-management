@@ -33,7 +33,7 @@ class AppConfig:
         AppConfig クラスの初期化。
 
         設定ファイルを読み込み、必須セクションの存在チェックと自動生成、
-        および各設定セクション・サブコマンドオブジェクトの構築を行う。
+        および各設定セクション・コマンドオブジェクトの構築を行う。
 
         Args:
             config_file (Path): 読み込むメイン設定ファイルのパス。
@@ -88,7 +88,7 @@ class AppConfig:
         self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
 
-        # サブコマンド
+        # コマンド
         self.summary: "SubCommands" = SummaryConfig()
         """summaryセクション設定値"""
         self.analysis: "SubCommands" = AnalysisConfig()

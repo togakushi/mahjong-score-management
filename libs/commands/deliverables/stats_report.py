@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/stats_report.py
+成績報告書
 """
 
 import logging
@@ -286,7 +286,7 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.REPORT
+    m.status.command_type = CommandType.REPORT
 
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()

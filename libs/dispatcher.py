@@ -78,7 +78,6 @@ def by_keyword(m: "MessageParserProtocol") -> None:
             other_words(word, m)
 
     m.delete_items(dictutil.dropitems_list())
-    m.status.command_type = g.params.deliverables
     g.adapter.api.post(m)
 
 

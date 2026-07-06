@@ -405,9 +405,9 @@ class BadgeDisplay(BaseSection):
 
 class SubCommands(BaseSection, CommandAttrs):
     """
-    サブコマンドセクションの設定値を管理するクラス
+    コマンドセクションの設定値を管理するクラス
 
-    コマンド体系の中で、サブコマンドに関する設定値を保持する。
+    コマンドに関する設定値を保持する。
     CommandAttrs と BaseSection の機能を組み合わせて動作する。
 
     """

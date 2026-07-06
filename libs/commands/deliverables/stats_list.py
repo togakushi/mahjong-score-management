@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/stats_list.py
+個人/チーム成績一覧表
 """
 
 from typing import TYPE_CHECKING
@@ -31,7 +31,7 @@ def main(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.REPORT
+    m.status.command_type = CommandType.REPORT
     g.params.guest_skip = g.params.guest_skip2
 
     # データ取得

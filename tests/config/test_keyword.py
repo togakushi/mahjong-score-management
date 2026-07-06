@@ -24,10 +24,10 @@ def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.Mon
     """
     呼び出しキーワードが設定から反映されることを検証する。
 
-    対象サブコマンドの commandword に期待語が含まれるかを確認する。
+    対象コマンドの commandword に期待語が含まれるかを確認する。
 
     Args:
-        parameter (str): 確認対象のサブコマンド属性名。
+        parameter (str): 確認対象のコマンド属性名。
         config (str): 読み込むテスト設定ファイル名。
         word (str): commandword に含まれるべき期待キーワード。
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。

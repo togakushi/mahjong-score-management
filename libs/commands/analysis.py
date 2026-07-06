@@ -74,6 +74,6 @@ def main(m: "MessageParserProtocol") -> None:
                 if g.params.graph:  # 成績詳細(比較)
                     deliverables.stats_list.main(m)
                 else:
-                    deliverables.detail.comparison(m)
+                    deliverables.results_detail.comparison(m)
             else:  # ランキング
                 deliverables.ranking_calc.aggregation(m)

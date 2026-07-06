@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/detail.py
+個人/チーム成績詳細
 """
 
 import textwrap
@@ -31,7 +31,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.SUMMARY
+    m.status.command_type = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2  # 検索動作を合わせる
 
     if rule_version := g.params.rule_version:
@@ -190,7 +190,7 @@ def comparison(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.SUMMARY
+    m.status.command_type = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2
 
     if g.params.player_name in g.cfg.team.lists:

@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/winner.py
+月間上位
 """
 
 from typing import TYPE_CHECKING, Any
@@ -27,7 +27,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.REPORT
+    m.status.command_type = CommandType.REPORT
 
     # データ取得
     title: str = "成績上位者"

@@ -76,7 +76,7 @@ def help_message(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.HELP
+    m.status.command_type = CommandType.HELP
 
     g.params.update_from_dict(
         {

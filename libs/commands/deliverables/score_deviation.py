@@ -1,5 +1,5 @@
 """
-libs/commands/deliverables/score_deviation.py
+素点分析
 """
 
 from typing import TYPE_CHECKING
@@ -27,7 +27,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    g.params.deliverables = CommandType.RANKING
+    m.status.command_type = CommandType.RANKING
 
     # データ収集
     data: "MessageType"

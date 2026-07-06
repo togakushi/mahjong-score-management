@@ -294,7 +294,7 @@ class ParameterData:
 
 @dataclass
 class CommandAttrs(ParameterData):
-    """サブコマンド設定パラメータ"""
+    """コマンド設定パラメータ"""
 
     commandword: list[str] = field(default_factory=list)
     """呼び出しキーワード"""

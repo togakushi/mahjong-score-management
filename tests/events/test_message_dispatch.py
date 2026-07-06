@@ -47,12 +47,12 @@ def _init() -> "MessageParserProtocol":
 )
 def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
-    キーワード入力で対象サブコマンドが呼び出されることを検証する。
+    キーワード入力で対象コマンドが呼び出されることを検証する。
 
     設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。
 
     Args:
-        module (str): モック対象とするサブコマンドモジュール名。
+        module (str): モック対象とするコマンドモジュール名。
         config (str): 読み込むテスト設定ファイル名。
         keyword (str): 入力するコマンドキーワード。
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。

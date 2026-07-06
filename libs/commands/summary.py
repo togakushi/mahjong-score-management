@@ -49,7 +49,7 @@ def main(m: "MessageParserProtocol") -> None:
         if g.params.graph:
             deliverables.graph_personal.plot(m)
         else:
-            deliverables.detail.aggregation(m)  # 成績詳細
+            deliverables.results_detail.aggregation(m)  # 成績詳細
     else:  # 対象が複数
         if g.params.order:
             if g.params.graph:
@@ -59,9 +59,9 @@ def main(m: "MessageParserProtocol") -> None:
         elif g.params.versus_matrix and g.params.competition_list:
             deliverables.versus.aggregation(m)  # 直接対戦
         elif g.params.score_comparisons:
-            deliverables.results.difference(m)  # 成績サマリ(差分モード)
+            deliverables.results_summary.difference(m)  # 成績サマリ(差分モード)
         else:
             if g.params.graph:
                 deliverables.graph_summary.point_plot(m)  # ポイント推移
             else:
-                deliverables.results.aggregation(m)  # 成績サマリ(通常モード)
+                deliverables.results_summary.aggregation(m)  # 成績サマリ(通常モード)

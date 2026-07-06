@@ -81,7 +81,7 @@ class StatusData(DataMixin):
     """処理した結果"""
 
     command_type: CommandType = field(default=CommandType.UNKNOWN)
-    """実行(する/した)サブコマンド"""
+    """実行(する/した)コマンド"""
     command_flg: bool = field(default=False)
     """コマンドとして実行されたかチェック
 

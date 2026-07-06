@@ -15,12 +15,13 @@ if TYPE_CHECKING:
     from libs.utils.timekit import Format
 
 
-def remarks(headword: bool = False) -> str | list[str]:
+def remarks(headword: bool = False, deliverables: Optional[CommandType] = None) -> str | list[str]:
     """
     引数で指定された集計方法を注記にまとめる
 
     Args:
         headword (bool, optional): 見出しを付ける. Defaults to False.
+        deliverables (CommandType, optional): コマンドタイプ
 
     Returns:
         Union[list, str]:
@@ -45,7 +46,7 @@ def remarks(headword: bool = False) -> str | list[str]:
 
     if g.params.stipulated >= 2:
         remark_list.append(f"規定打数 {g.params.stipulated}G以上")
-    if g.params.deliverables in [CommandType.RANKING, CommandType.RATING]:
+    if deliverables in [CommandType.RANKING, CommandType.RATING]:
         remark_list.append(f"{g.params.ranked}位まで表示")
 
     # 集計ルール

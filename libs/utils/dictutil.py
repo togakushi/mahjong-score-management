@@ -23,7 +23,7 @@ def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderB
     プレースホルダに使用する辞書を生成
 
     Args:
-        subcom (SubCommands): サブコマンド設定
+        subcom (SubCommands): コマンド設定
         m (MessageParserProtocol): メッセージデータ
 
     Returns:
@@ -42,7 +42,7 @@ def placeholder(subcom: SubCommands, m: "MessageParserProtocol") -> PlaceholderB
             "guest_name": g.cfg.member.guest_name,
             "logging_verbose": g.args.verbose,
             **g.cfg.setting.to_dict(),
-            **subcom.to_dict(),  #  サブコマンドデフォルト値
+            **subcom.to_dict(),  #  コマンドデフォルト値
         }
     )
 
