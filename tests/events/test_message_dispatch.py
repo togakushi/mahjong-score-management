@@ -47,7 +47,7 @@ def _init() -> "MessageParserProtocol":
 )
 def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
-    キーワード入力で対象コマンドが呼び出されることを検証する。
+    キーワード入力で対象コマンドがディスパッチテーブルから呼び出されることを検証する。
 
     設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。
 
@@ -61,7 +61,7 @@ def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pyte
     monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
 
     with (
-        patch(f"libs.commands.{module}.main") as mock_keyword_event,
+        patch(f"libs.commands.{module}") as mock_keyword_event,
     ):
         m = _init()
         m.data.text = keyword

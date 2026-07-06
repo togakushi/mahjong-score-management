@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 )
 def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
-    呼び出しキーワードが設定から反映されることを検証する。
+    呼び出しキーワードが設定からディスパッチテーブルに反映されることを検証する。
 
     対象コマンドの commandword に期待語が含まれるかを確認する。
 

@@ -42,12 +42,16 @@ message_help: dict[str, tuple[Any, ...]] = {
 
 message_event: dict[str, tuple[Any, ...]] = {
     # module, config, keyword
-    "summary: default": ("summary", "empty.ini", "成績集計"),
-    "summary: over ride": ("summary", "commandword.ini", "集計コマンドの別名１"),
-    "summary: double word": ("summary", "empty.ini", "成績集計 未定義ワード"),
-    "analysis: default": ("analysis", "empty.ini", "成績分析"),
-    "analysis: over ride": ("analysis", "commandword.ini", "分析コマンドの別名１"),
-    "analysis: double word": ("analysis", "empty.ini", "成績分析 未定義ワード"),
+    "summary: default": ("summary.main", "empty.ini", "成績集計"),
+    "summary: override": ("summary.main", "commandword.ini", "集計コマンドの別名１"),
+    "analysis: default": ("analysis.main", "empty.ini", "成績分析"),
+    "analysis: override": ("analysis.main", "commandword.ini", "分析コマンドの別名１"),
+    "help: default": ("help.main", "empty.ini", "麻雀ヘルプ"),
+    "help: override": ("help.main", "commandword.ini", "ヘルプの別名"),
+    "member: default": ("registry.member.members_list", "empty.ini", "メンバー一覧"),
+    "member: override": ("registry.member.members_list", "commandword.ini", "メンバー一覧の別名"),
+    "team: default": ("registry.team.team_list", "empty.ini", "チーム一覧"),
+    "team: override": ("registry.team.team_list", "commandword.ini", "チーム一覧の別名"),
 }
 
 slash_help: dict[str, tuple[Any, ...]] = {
