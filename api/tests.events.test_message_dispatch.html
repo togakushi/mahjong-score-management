@@ -174,12 +174,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_message_dispatch.test_keyword_event">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_message_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_keyword_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_message_dispatch.test_keyword_event" title="Link to this definition">¶</a></dt>
-<dd><p>キーワード入力で対象サブコマンドが呼び出されることを検証する。</p>
+<dd><p>キーワード入力で対象コマンドが呼び出されることを検証する。</p>
 <p>設定とイベント状態を与えて dispatcher を実行し、対応エントリ関数の呼び出し回数を確認する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>module</strong> (<em>str</em>) – モック対象とするサブコマンドモジュール名。</p></li>
+<li><p><strong>module</strong> (<em>str</em>) – モック対象とするコマンドモジュール名。</p></li>
 <li><p><strong>config</strong> (<em>str</em>) – 読み込むテスト設定ファイル名。</p></li>
 <li><p><strong>keyword</strong> (<em>str</em>) – 入力するコマンドキーワード。</p></li>
 <li><p><strong>monkeypatch</strong> (<em>pytest.MonkeyPatch</em>) – 実行時引数を差し替えるためのpytestフィクスチャ。</p></li>
@@ -286,7 +286,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.4.
-      Last updated on 2026-07-04.
+      Last updated on 2026-07-06.
     </div>
 
   </body>

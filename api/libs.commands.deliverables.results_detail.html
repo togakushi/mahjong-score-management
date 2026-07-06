@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.commands.deliverables.detail module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.results_detail module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.commands.deliverables.graph_personal module" href="libs.commands.deliverables.graph_personal.html" />
-    <link rel="prev" title="libs.commands.deliverables package" href="libs.commands.deliverables.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.deliverables.results_summary module" href="libs.commands.deliverables.results_summary.html" />
+    <link rel="prev" title="libs.commands.deliverables.rating_calc module" href="libs.commands.deliverables.rating_calc.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,15 +63,15 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.deliverables.detail module</a><ul>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -79,13 +79,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.html"
-                          title="previous chapter">libs.commands.deliverables package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.rating_calc.html"
+                          title="previous chapter">libs.commands.deliverables.rating_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.graph_personal.html"
-                          title="next chapter">libs.commands.deliverables.graph_personal module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results_summary.html"
+                          title="next chapter">libs.commands.deliverables.results_summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -109,10 +109,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.graph_personal.html" title="libs.commands.deliverables.graph_personal module"
+          <a href="libs.commands.deliverables.results_summary.html" title="libs.commands.deliverables.results_summary module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.html" title="libs.commands.deliverables package"
+          <a href="libs.commands.deliverables.rating_calc.html" title="libs.commands.deliverables.rating_calc module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -127,7 +127,7 @@
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.detail module</a></li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.results_detail module</a></li>
                 <li class="right">
                     
 
@@ -157,12 +157,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-libs.commands.deliverables.detail">
-<span id="libs-commands-deliverables-detail-module"></span><h1>libs.commands.deliverables.detail module<a class="headerlink" href="#module-libs.commands.deliverables.detail" title="Link to this heading">¶</a></h1>
-<p>libs/commands/deliverables/detail.py</p>
+  <section id="module-libs.commands.deliverables.results_detail">
+<span id="libs-commands-deliverables-results-detail-module"></span><h1>libs.commands.deliverables.results_detail module<a class="headerlink" href="#module-libs.commands.deliverables.results_detail" title="Link to this heading">¶</a></h1>
+<p>個人/チーム成績詳細</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.aggregation">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.aggregation" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.aggregation">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.aggregation" title="Link to this definition">¶</a></dt>
 <dd><p>成績詳細を集計</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -175,8 +175,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.comparison">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.comparison" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.comparison">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.comparison" title="Link to this definition">¶</a></dt>
 <dd><p>成績詳細を比較</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -189,8 +189,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.get_headline">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">get_headline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.get_headline" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_headline">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_headline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_headline" title="Link to this definition">¶</a></dt>
 <dd><p>ヘッダメッセージ生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -210,8 +210,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.get_totalization">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">get_totalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.get_totalization" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_totalization">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_totalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_totalization" title="Link to this definition">¶</a></dt>
 <dd><p>集計トータルメッセージ生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -227,8 +227,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.get_results_simple">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">get_results_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.get_results_simple" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_results_simple">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_results_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_results_simple" title="Link to this definition">¶</a></dt>
 <dd><p>戦績(簡易)データ取得</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -244,8 +244,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.get_results_details">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">get_results_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.get_results_details" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_results_details">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_results_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_results_details" title="Link to this definition">¶</a></dt>
 <dd><p>戦績(詳細)データ取得</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -261,8 +261,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.get_versus_matrix">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">get_versus_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.get_versus_matrix" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_versus_matrix">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_versus_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_versus_matrix" title="Link to this definition">¶</a></dt>
 <dd><p>対戦結果データ出力用メッセージ生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -278,8 +278,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.detail.message_build">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.detail.</span></span><span class="sig-name descname"><span class="pre">message_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.detail.message_build" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.message_build">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">message_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.message_build" title="Link to this definition">¶</a></dt>
 <dd><p>表示する内容をテキストに起こす</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -306,15 +306,15 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.commands.deliverables.detail module</a><ul>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -322,13 +322,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.html"
-                          title="previous chapter">libs.commands.deliverables package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.rating_calc.html"
+                          title="previous chapter">libs.commands.deliverables.rating_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.graph_personal.html"
-                          title="next chapter">libs.commands.deliverables.graph_personal module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results_summary.html"
+                          title="next chapter">libs.commands.deliverables.results_summary module</a></p>
   </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
@@ -352,10 +352,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.graph_personal.html" title="libs.commands.deliverables.graph_personal module"
+          <a href="libs.commands.deliverables.results_summary.html" title="libs.commands.deliverables.results_summary module"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.html" title="libs.commands.deliverables package"
+          <a href="libs.commands.deliverables.rating_calc.html" title="libs.commands.deliverables.rating_calc module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -370,7 +370,7 @@
           <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.detail module</a></li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.results_detail module</a></li>
                 <li class="right">
                     
 
@@ -396,7 +396,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.4.
-      Last updated on 2026-07-04.
+      Last updated on 2026-07-06.
     </div>
 
   </body>
