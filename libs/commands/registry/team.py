@@ -8,14 +8,15 @@ from typing import TYPE_CHECKING, TypedDict, cast
 import libs.global_value as g
 from libs.bootstrap import initialization
 from libs.domain import modify
+from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
-from libs.types import CommandType
+from libs.functions.compose import text_item
+from libs.types import CommandType, StyleOptions
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser
-
+    from integrations.protocols import MessageParserProtocol
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -30,18 +31,8 @@ class TeamDataDict(TypedDict):
     """所属メンバーリスト"""
 
 
-class TeamSection(BaseSection):
+class TeamSection(BaseSection, SettingAttrs):
     """teamセクション処理"""
-
-    default_commandword: str
-    """コマンドワードデフォルト値"""
-    commandword: list[str]
-    """呼び出しキーワード"""
-    command_suffix: list[str]
-    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-
-    section: str
-    main_parser: "ConfigParser"
 
     info: list[TeamDataDict]
     """チーム情報(キャッシュデータ)"""
@@ -67,6 +58,11 @@ class TeamSection(BaseSection):
         self.main_parser = outer.main_parser
         self.default_reset()
 
+    def register(self) -> None:
+        """ディスパッチャー登録"""
+        for commandword in self.commandwords_list():
+            g.keyword_dispatcher.update({commandword: team_list})
+
     def default_reset(self) -> None:
         """デフォルト値にリセット"""
         self.info = []
@@ -76,12 +72,6 @@ class TeamSection(BaseSection):
         self.character_limit = int(16)
         self.member_limit = int(16)
         self.friendly_fire = bool(True)
-
-    def after_loading(self) -> None:
-        """呼び出しキーワード取り込み"""
-        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
-
-        logging.trace("%s: %s", self.section, self)  # type: ignore
 
     def member(self, team: str) -> list[str]:
         """
@@ -143,6 +133,18 @@ class TeamSection(BaseSection):
             row.update(members=str(row["members"]).split(","))
 
         return cast(list[TeamDataDict], ret)
+
+
+def team_list(m: "MessageParserProtocol") -> None:
+    """
+    チームの登録一覧を返す
+
+    Args:
+        m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
+    """
+    m.set_message(text_item.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
+    m.post.ts = m.data.event_ts
+    m.post.thread_title = "登録済みチーム"
 
 
 def create(argument: list[str]) -> str:

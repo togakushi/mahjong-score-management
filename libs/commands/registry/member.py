@@ -7,14 +7,15 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.domain import modify
+from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
-from libs.types import CommandType
+from libs.functions.compose import text_item
+from libs.types import CommandType, StyleOptions
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
-    from configparser import ConfigParser
-
+    from integrations.protocols import MessageParserProtocol
     from libs.bootstrap.app_config import AppConfig
 
 
@@ -37,18 +38,8 @@ class MemberDataDict(TypedDict):
     """対戦数"""
 
 
-class MemberSection(BaseSection):
+class MemberSection(BaseSection, SettingAttrs):
     """memberセクション処理"""
-
-    default_commandword: str
-    """コマンドワードデフォルト値"""
-    commandword: list[str]
-    """呼び出しキーワード"""
-    command_suffix: list[str]
-    """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-
-    section: str
-    main_parser: "ConfigParser"
 
     info: list[MemberDataDict]
     """メンバー情報(キャッシュデータ)"""
@@ -74,6 +65,11 @@ class MemberSection(BaseSection):
         self.main_parser = outer.main_parser
         self.default_reset()
 
+    def register(self) -> None:
+        """ディスパッチャー登録"""
+        for commandword in self.commandwords_list():
+            g.keyword_dispatcher.update({commandword: members_list})
+
     def default_reset(self) -> None:
         """デフォルト値にリセット"""
         self.info = []
@@ -83,12 +79,6 @@ class MemberSection(BaseSection):
         self.character_limit = int(8)
         self.alias_limit = int(16)
         self.guest_name = str("ゲスト")
-
-    def after_loading(self) -> None:
-        """呼び出しキーワード取り込み"""
-        self.commandword = self.getlist("commandword", fallback=self.default_commandword)
-
-        logging.trace("%s: %s", self.section, self)  # type: ignore
 
     def resolve_name(self, name: str) -> str:
         """
@@ -158,6 +148,19 @@ class MemberSection(BaseSection):
             row.update(alias=str(row["alias"]).split(","))
 
         return cast(list[MemberDataDict], ret)
+
+
+def members_list(m: "MessageParserProtocol") -> None:
+    """
+    メンバーの登録一覧を返す
+
+    Args:
+        m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
+
+    """
+    m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
+    m.post.ts = m.data.event_ts
+    m.post.thread_title = "登録済みメンバー"
 
 
 def append(argument: list[str]) -> str:

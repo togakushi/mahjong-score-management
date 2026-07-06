@@ -6,7 +6,8 @@ import textwrap
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from libs.domain.section import SubCommands
+from libs.domain.datamodels import CommandAttrs
+from libs.domain.section import BaseSection
 from libs.functions import lookup
 from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class HelpConfig(SubCommands):
+class HelpConfig(BaseSection, CommandAttrs):
     """
     ヘルプ表示コマンド（helpセクション）の設定を管理するクラス。
 
@@ -33,6 +34,11 @@ class HelpConfig(SubCommands):
         self.default_commandword: str = "麻雀ヘルプ"
         self.section: str = str(CommandType.HELP)
         self.default_reset()
+
+    def register(self) -> None:
+        """ディスパッチャー登録"""
+        for commandword in self.commandwords_list():
+            g.keyword_dispatcher.update({commandword: main})
 
 
 def main(m: "MessageParserProtocol") -> None:

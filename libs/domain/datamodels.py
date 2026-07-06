@@ -235,7 +235,7 @@ class ComparisonResults:
 
 @dataclass
 class ParameterData:
-    """動作パラメータ"""
+    """コマンド動作パラメータ"""
 
     # 検索条件変更フラグ
     individual: bool = field(default=True)
@@ -293,13 +293,41 @@ class ParameterData:
 
 
 @dataclass
-class CommandAttrs(ParameterData):
-    """コマンド設定パラメータ"""
+class SettingAttrs:
+    """コマンド設定基本パラメータ"""
 
+    default_commandword: str
+    """コマンドワードデフォルト値"""
     commandword: list[str] = field(default_factory=list)
     """呼び出しキーワード"""
     command_suffix: list[str] = field(default_factory=list)
     """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+
+    def commandwords_list(self) -> list[str]:
+        """
+        コマンドリストを返す
+
+        Returns:
+            list: コマンドリスト
+
+        """
+        word_list: list[str] = []
+        if not any([self.commandword, self.command_suffix]):  # 何も設定されていない
+            word_list.append(self.default_commandword)
+        elif self.commandword:
+            word_list.extend(self.commandword)
+        elif self.command_suffix:  # コマンドサフィックス登録
+            for rule_version in g.cfg.rule.rule_list:
+                word_list.extend(
+                    [f"{prefix}{suffix}" for prefix in g.cfg.rule.keywords(rule_version) for suffix in self.command_suffix],
+                )
+
+        return word_list
+
+
+@dataclass
+class CommandAttrs(ParameterData, SettingAttrs):
+    """コマンド設定追加パラメータ"""
 
     aggregation_range: str = field(default="当日")
     """検索範囲未指定時に使用される範囲"""

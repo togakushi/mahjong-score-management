@@ -6,7 +6,8 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.commands import deliverables
-from libs.domain.section import SubCommands
+from libs.domain.datamodels import CommandAttrs
+from libs.domain.section import BaseSection
 from libs.types import CommandType
 from libs.utils import dictutil
 
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class AnalysisConfig(SubCommands):
+class AnalysisConfig(BaseSection, CommandAttrs):
     """
     分析コマンド（analysisセクション）の設定を管理するクラス。
 
@@ -31,6 +32,11 @@ class AnalysisConfig(SubCommands):
         self.default_commandword: str = "成績分析"
         self.section: str = str(CommandType.ANALYSIS)
         self.default_reset()
+
+    def register(self) -> None:
+        """ディスパッチャー登録"""
+        for commandword in self.commandwords_list():
+            g.keyword_dispatcher.update({commandword: main})
 
 
 def main(m: "MessageParserProtocol") -> None:
