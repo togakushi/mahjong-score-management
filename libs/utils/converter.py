@@ -495,6 +495,17 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                         f"{x.top3_max:>2d}連続 / {x.count}G",
                     ]
                 )
+        case "総合ランキング":
+            alignments = [Alignment.RIGHT, Alignment.LEFT, Alignment.LEFT]
+            for x in df.itertuples():
+                body.append(
+                    [
+                        f"{x.rank}:",
+                        x.name,
+                        f"（{x.evaluation:>3d} 評価点）",
+                    ]
+                )
+
         case _:
             return {}
 

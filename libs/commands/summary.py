@@ -35,8 +35,11 @@ class SummaryConfig(BaseSection, CommandAttrs):
 
     def register(self) -> None:
         """ディスパッチャー登録"""
-        for word in self.commandwords_list():
-            g.keyword_dispatcher.update({word: main})
+        for command in self.commandwords_list():
+            g.keyword_dispatcher.update({command: main})
+        if hasattr(g.cfg.alias, "summary"):
+            for command in g.cfg.alias.summary:
+                g.command_dispatcher.update({command: main})
 
 
 def main(m: "MessageParserProtocol") -> None:

@@ -37,8 +37,8 @@ class HelpConfig(BaseSection, CommandAttrs):
 
     def register(self) -> None:
         """ディスパッチャー登録"""
-        for commandword in self.commandwords_list():
-            g.keyword_dispatcher.update({commandword: main})
+        for command in self.commandwords_list():
+            g.keyword_dispatcher.update({command: main})
 
 
 def main(m: "MessageParserProtocol") -> None:
