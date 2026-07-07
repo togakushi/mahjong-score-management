@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="検索範囲指定オプション" href="search_scope.html" />
-    <link rel="prev" title="ヘルプ" href="../functions/help/index.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="prev" title="ヘルプ" href="../others/help.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../_static/menu.js"></script>
@@ -61,10 +61,33 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">オプション説明</a><ul>
+<li><a class="reference internal" href="#id2">内容説明</a></li>
+<li><a class="reference internal" href="#id3">オプション処理ロジック</a></li>
+</ul>
+</li>
+</ul>
 
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a></li>
+  </div>
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../record/index.html">成績記録機能説明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index.html">成績管理機能説明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../others/index.html">その他機能説明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">オプション説明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search_scope.html">検索範囲指定オプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="target.html">ターゲットオプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html">その他の共通オプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html">オプション組み合わせ早見表</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/index.html">付録</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
@@ -73,15 +96,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発用メモ</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
-
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../functions/help/index.html"
+    <p class="topless"><a href="../others/help.html"
                           title="previous chapter">ヘルプ</a></p>
   </div>
   <div>
@@ -118,7 +138,7 @@
           <a href="search_scope.html" title="検索範囲指定オプション"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../functions/help/index.html" title="ヘルプ"
+          <a href="../others/help.html" title="ヘルプ"
              accesskey="P">previous</a> |</li>
           <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -163,6 +183,8 @@
             
   <section id="id1">
 <h1>オプション説明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>内容説明<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="search_scope.html">検索範囲指定オプション</a><ul>
@@ -189,11 +211,10 @@
 </li>
 </ul>
 </div>
-<hr class="docutils" />
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">オプション処理ロジック</span></span></dt>
-<dd><p>入力されたコマンド文字列はコマンド部分とオプション部分に分割され、オプション部分を以下のロジックで評価する。</p>
+</section>
+<section id="id3">
+<h2>オプション処理ロジック<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>入力されたコマンド文字列はコマンド部分とオプション部分に分割され、オプション部分を以下のロジックで評価する。</p>
 <ol class="arabic">
 <li><p>オプションの分類と抽出</p>
 <ul class="simple">
@@ -237,8 +258,7 @@
 </ul>
 </li>
 </ol>
-</dd></dl>
-
+</section>
 </section>
 
 
@@ -248,10 +268,33 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">オプション説明</a><ul>
+<li><a class="reference internal" href="#id2">内容説明</a></li>
+<li><a class="reference internal" href="#id3">オプション処理ロジック</a></li>
+</ul>
+</li>
+</ul>
 
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a></li>
+  </div>
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../record/index.html">成績記録機能説明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index.html">成績管理機能説明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../others/index.html">その他機能説明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">オプション説明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search_scope.html">検索範囲指定オプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="target.html">ターゲットオプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common.html">その他の共通オプション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html">オプション組み合わせ早見表</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/index.html">付録</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
@@ -260,15 +303,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発用メモ</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
-
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../functions/help/index.html"
+    <p class="topless"><a href="../others/help.html"
                           title="previous chapter">ヘルプ</a></p>
   </div>
   <div>
@@ -305,7 +345,7 @@
           <a href="search_scope.html" title="検索範囲指定オプション"
              >next</a> |</li>
         <li class="right" >
-          <a href="../functions/help/index.html" title="ヘルプ"
+          <a href="../others/help.html" title="ヘルプ"
              >previous</a> |</li>
           <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">

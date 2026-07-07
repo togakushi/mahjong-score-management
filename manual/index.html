@@ -60,10 +60,8 @@
         <option value="dark">Dark</option>
     </select>
 </label>
-
-  
   <div>
-    <h3><a href="#">Table of Contents</a></h3>
+    <h3><a href="#">Page of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Mahjong score management tool</a><ul>
 <li><a class="reference internal" href="#id1">利用者向けマニュアル</a></li>
@@ -75,6 +73,19 @@
 </ul>
 
   </div>
+<h3><a href="#">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/index.html">コマンドラインツール</a></li>
+</ul>
 
   <div>
     <h4>Next topic</h4>
@@ -164,7 +175,12 @@
 <li class="toctree-l2"><a class="reference internal" href="users/functions/index.html">成績管理機能説明</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="users/functions/summary/index.html">集計コマンド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="users/functions/analysis/index.html">分析コマンド</a></li>
-<li class="toctree-l3"><a class="reference internal" href="users/functions/help/index.html">ヘルプ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="users/others/index.html">その他機能説明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="users/others/members_list.html">メンバー一覧表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="users/others/team_list.html">チーム一覧表示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="users/others/help.html">ヘルプ</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="users/options/index.html">オプション説明</a><ul>
@@ -190,8 +206,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="admins/index.html">管理者向けマニュアル</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="admins/setting/index.html">セットアップ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="admins/setting/index.html#id2">実行環境構築</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admins/setting/index.html#id3">連携先サービス設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admins/setting/install/using_uv.html">uvを使った実行環境構築</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admins/setting/install/using_venv.html">venvを使った実行環境構築</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admins/setting/for_slack/index.html">Slack連携</a></li>
+<li class="toctree-l3"><a class="reference internal" href="admins/setting/for_discord/index.html">Discord連携</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="admins/configuration/index.html">設定ファイル説明</a><ul>
@@ -206,12 +224,7 @@
 <li class="toctree-l3"><a class="reference internal" href="admins/others/gradetable.html">段位システム</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="admins/troubleshooting.html">トラブルシューティング &amp; FAQ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="admins/troubleshooting.html#id1">バックアップ / リストア</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admins/troubleshooting.html#id2">データ修正</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admins/troubleshooting.html#id3">動作トラブル</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="admins/troubleshooting.html">トラブルシューティング &amp; FAQ</a></li>
 </ul>
 </li>
 </ul>
@@ -219,7 +232,7 @@
 </section>
 <section id="id3">
 <h2>開発者向けガイド<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="toctree-wrapper compound" id="for-development">
+<div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="development/index.html">開発用メモ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development/index.html#id2">データベース関連資料</a></li>
@@ -234,9 +247,12 @@
 <h2>コマンドラインツール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="commandline_tool/app.html">app.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="commandline_tool/dbtools.html">dbtools.py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="commandline_tool/score_simulator.html">score_simulator.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/index.html">コマンドラインツール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -249,10 +265,8 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-
-  
   <div>
-    <h3><a href="#">Table of Contents</a></h3>
+    <h3><a href="#">Page of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Mahjong score management tool</a><ul>
 <li><a class="reference internal" href="#id1">利用者向けマニュアル</a></li>
@@ -264,6 +278,19 @@
 </ul>
 
   </div>
+<h3><a href="#">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/index.html">コマンドラインツール</a></li>
+</ul>
 
   <div>
     <h4>Next topic</h4>
