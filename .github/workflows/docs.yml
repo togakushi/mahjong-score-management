@@ -32,7 +32,7 @@ jobs:
           uv run sphinx-build -M html ./temp_docs/source/ ./temp_docs/api/build --conf-dir ./docs/api/
           cp -r ./temp_docs/api/build/html ./temp_docs/html/api
 
-          uv run sphinx-build -M html ./docs/manual/source/ ./temp_docs/user/build --conf-dir ./docs/manual/
+          uv run sphinx-build -M html ./docs/manual/source/ ./temp_docs/manual/build --conf-dir ./docs/manual/
           cp -r ./temp_docs/manual/build/html ./temp_docs/html/manual
 
       - name: Deploy to GitHub Pages
