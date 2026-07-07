@@ -7,9 +7,9 @@
 コマンド構文
 ------------
 
-:チャンネル内呼び出し: <チーム一覧コマンド>
+:チャンネル内呼び出し: <チーム一覧表示コマンド>
 
-   .. note:: ``チーム一覧コマンド`` は以下で定義される
+   .. note:: ``チーム一覧表示コマンド`` は以下で定義される
 
       - `team-section` の :team_section:`commandword`
 
@@ -17,10 +17,7 @@
 
    .. seealso:: `slash_commands-team_list` コマンド
 
-   .. note:: ``/commandname`` は以下で定義される
-
-      - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-      - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+   .. include:: /material/commandname.inc
 
 
 項目説明

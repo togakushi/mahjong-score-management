@@ -59,6 +59,9 @@
      - |:/:|
      - |:/:|
      - `rule-set` の :rule_set_section:`dropitems` も追加される
+
+       .. seealso:: `function-dropitems`
+
    * - .. sub_commands_section:: unregistered_replace
      - 未登録プレイヤーを `guest_name` に置き換えて表示
      - 真偽値

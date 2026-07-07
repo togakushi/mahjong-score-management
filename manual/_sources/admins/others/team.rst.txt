@@ -5,11 +5,7 @@
 
 チームの管理はスラッシュコマンドで行う。
 
-.. note::
-   ``/commandname`` は以下で定義する
-
-   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+.. include:: /material/commandname.inc
 
 
 チーム作成

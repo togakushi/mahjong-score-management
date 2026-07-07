@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>設定ファイル説明 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設定ファイル &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
@@ -61,14 +61,25 @@
         <option value="dark">Dark</option>
     </select>
 </label>
-<h3><a href="../../index.html">Table of Contents</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">設定ファイル</a><ul>
+<li><a class="reference internal" href="#id2">設定内容</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">管理者向けマニュアル</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../setting/index.html">セットアップ</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">設定ファイル説明</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">設定ファイル</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main/index.html">メイン設定ファイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rule/index.html">ルール設定ファイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="example/index.html">設定事例集</a></li>
@@ -86,23 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
 
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="../setting/for_discord/daemon.html"
-                          title="previous chapter">systemdを使ったデーモン化</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="main/index.html"
-                          title="next chapter">メイン設定ファイル</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/admins/configuration/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div><div class="custom-link" aria-label="custom link">
+  </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
             <li><a href="../../genindex.html">Index</a></li>
@@ -138,7 +133,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">管理者向けマニュアル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">設定ファイル説明</a></li>
+        <li class="nav-item nav-item-this"><a href="">設定ファイル</a></li>
                 <li class="right">
                     
 
@@ -169,27 +164,22 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>設定ファイル説明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1>設定ファイル<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>アプリケーションの設定はツールの動作を定義する「 <a class="reference internal" href="main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> (必須)」と <a class="reference internal" href="../../users/appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> を定義する「 <a class="reference internal" href="rule/index.html#rule-config"><span class="std std-ref">ルール設定ファイル</span></a> (オプション)」から構成される。</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="main/index.html#main-config"><span class="std std-ref">メイン設定ファイル</span></a> 内にサービス個別の設定(slackやdiscordなど)が含まれる。</div>
 <div class="line">サービス個別設定でチャンネル個別設定が定義されている場合は追加の設定ファイルが読み込まれる。</div>
 </div>
-<hr class="docutils" />
+<section id="id2">
+<h2>設定内容<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">設定内容</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="main/index.html">メイン設定ファイル</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="main/application/index.html">アプリケーション設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main/management/index.html">メンバーとチームの管理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main/integrations/index.html">サービス別設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main/appearance/index.html">外観のカスタマイズ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main/index.html#id2">設定内容</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rule/index.html">ルール設定ファイル</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rule/ruleset.html">ルールセット定義</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rule/regulations.html">レギュレーション設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rule/regulations.html#id5">ルールセット個別レギュレーション設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule/index.html#id2">設定内容</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="example/index.html">設定事例集</a><ul>
@@ -205,6 +195,7 @@
 </ul>
 </div>
 </section>
+</section>
 
 
             <div class="clearer"></div>
@@ -213,14 +204,25 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Table of Contents</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">設定ファイル</a><ul>
+<li><a class="reference internal" href="#id2">設定内容</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">管理者向けマニュアル</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../setting/index.html">セットアップ</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">設定ファイル説明</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">設定ファイル</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main/index.html">メイン設定ファイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rule/index.html">ルール設定ファイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="example/index.html">設定事例集</a></li>
@@ -238,23 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
 
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="../setting/for_discord/daemon.html"
-                          title="previous chapter">systemdを使ったデーモン化</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="main/index.html"
-                          title="next chapter">メイン設定ファイル</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/admins/configuration/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div><div class="custom-link" aria-label="custom link">
+  </div><div class="custom-link" aria-label="custom link">
     <h3>Links</h3>
         <ul>
             <li><a href="../../genindex.html">Index</a></li>
@@ -290,7 +276,7 @@
               
           </li>
           <li class="nav-item nav-item-1"><a href="../index.html" >管理者向けマニュアル</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">設定ファイル説明</a></li>
+        <li class="nav-item nav-item-this"><a href="">設定ファイル</a></li>
                 <li class="right">
                     
 

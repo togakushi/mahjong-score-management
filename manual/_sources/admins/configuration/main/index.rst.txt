@@ -9,10 +9,10 @@
 
 空のINIファイルを使用したときの動作は `example-minimal` を参照。
 
-----
+設定内容
+--------
 
 .. toctree::
-   :caption: 設定内容
    :maxdepth: 2
    :titlesonly:
 

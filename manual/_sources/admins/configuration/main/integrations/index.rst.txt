@@ -9,10 +9,11 @@
 
 すべてのセクションは `integrations-common` を持ち、それぞれのサービス固有の設定を追加で持つ。
 
-----
+
+設定内容
+--------
 
 .. toctree::
-   :caption: 設定内容
    :maxdepth: 2
 
    common
