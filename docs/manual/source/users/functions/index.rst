@@ -6,6 +6,7 @@
 
 .. toctree::
    :maxdepth: 2
+   :includehidden:
    :titlesonly:
 
    summary/index
