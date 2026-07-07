@@ -32,8 +32,8 @@ jobs:
           uv run sphinx-build -M html ./temp_docs/source/ ./temp_docs/api/build --conf-dir ./docs/api/
           cp -r ./temp_docs/api/build/html ./temp_docs/html/api
 
-          uv run sphinx-build -M html ./docs/user/source/ ./temp_docs/user/build --conf-dir ./docs/user/
-          cp -r ./temp_docs/user/build/html ./temp_docs/html/user
+          uv run sphinx-build -M html ./docs/manual/source/ ./temp_docs/user/build --conf-dir ./docs/manual/
+          cp -r ./temp_docs/manual/build/html ./temp_docs/html/manual
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
