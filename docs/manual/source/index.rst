@@ -5,26 +5,18 @@ Mahjong score management tool
 --------------------
 
 .. toctree::
-   :name: for_users
-   :maxdepth: 2
+   :maxdepth: 3
 
-   functions/input/index
-   functions/output/index
-   functions/options/index
-   functions/appendix/index
+   users/index
 
 
 管理者向けマニュアル
 --------------------
 
 .. toctree::
-   :name: for_administrators
-   :maxdepth: 2
+   :maxdepth: 3
 
-   setting/index
-   configuration/index
-   functions/others/index
-   troubleshooting
+   admins/index
 
 
 開発者向けガイド

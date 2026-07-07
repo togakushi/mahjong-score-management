@@ -34,7 +34,7 @@
      - |:/:|
      - カンマ区切りで複数ワードの設定が可能
    * - .. sub_commands_section:: command_suffix
-     - *成績記録キーワード* と :sub_commands_section:`command_suffix` の組み合わせを機能を呼び出すキーワードとする
+     - `成績記録キーワード <keywords>` と :sub_commands_section:`command_suffix` の組み合わせを機能を呼び出すキーワードとする
      - | 文字列
        | (カンマ区切り)
      - 空欄
@@ -184,9 +184,9 @@
    :header-rows: 1
 
    * - commandword
-     - command_suffix
      - | keywords
        | (成績記録キーワード)
+     - command_suffix
      - 登録されるキーワード
    * - |:x:|
      - |:x:|

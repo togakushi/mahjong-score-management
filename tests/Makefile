@@ -16,8 +16,8 @@ docs-api:
 	uv run sphinx-build -M html docs/api/source/ docs/api/build --silent --conf-dir docs/api/
 
 docs-user:
-	uv run sphinx-build -M clean docs/user/source/ docs/user/build --conf-dir docs/user/
-	uv run sphinx-build -M html docs/user/source/ docs/user/build --conf-dir docs/user/
+	uv run sphinx-build -M clean docs/manual/source/ docs/manual/build --conf-dir docs/manual/
+	uv run sphinx-build -M html docs/manual/source/ docs/manual/build --conf-dir docs/manual/
 
 # --
 prospector:
