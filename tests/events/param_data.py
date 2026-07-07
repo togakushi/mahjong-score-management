@@ -52,6 +52,8 @@ message_event: dict[str, tuple[Any, ...]] = {
     "member: override": ("registry.member.members_list", "commandword.ini", "メンバー一覧の別名"),
     "team: default": ("registry.team.team_list", "empty.ini", "チーム一覧"),
     "team: override": ("registry.team.team_list", "commandword.ini", "チーム一覧の別名"),
+    "shortcut: summary": ("summary.main", "commandword.ini", "集計のショートカット"),
+    "shortcut: analysis": ("analysis.main", "commandword.ini", "分析のショートカット"),
 }
 
 slash_help: dict[str, tuple[Any, ...]] = {
