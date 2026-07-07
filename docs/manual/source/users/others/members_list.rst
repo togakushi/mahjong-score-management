@@ -6,9 +6,9 @@
 コマンド構文
 ------------
 
-:チャンネル内呼び出し: <メンバー一覧コマンド>
+:チャンネル内呼び出し: <メンバー一覧表示コマンド>
 
-   .. note:: ``メンバー一覧コマンド`` は以下で定義される
+   .. note:: ``メンバー一覧表示コマンド`` は以下で定義される
 
       - `member-section` の :member_section:`commandword`
 
@@ -16,11 +16,7 @@
 
    .. seealso:: `slash_commands-member` コマンド
 
-   .. note:: ``/commandname`` は以下で定義される
-
-      - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-      - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
-
+   .. include:: /material/commandname.inc
 
 
 項目説明

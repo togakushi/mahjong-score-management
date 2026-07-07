@@ -61,8 +61,8 @@ html_sidebars = {
     "**": [
         "localtoc.html",
         "globaltoc.html",
-        "relations.html",
-        "sourcelink.html",
+        # "relations.html",
+        # "sourcelink.html",
         "links.html",
     ],
 }

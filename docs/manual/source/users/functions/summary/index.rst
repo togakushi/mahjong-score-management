@@ -31,17 +31,14 @@
 
 :スラッシュコマンド: /commandname summary [`ターゲット`] [`オプション`]
 
-   .. note:: ``/commandname`` は以下で定義される
-
-      - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-      - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+   .. include:: /material/commandname.inc
 
 
 オプション組み合わせ表
 ----------------------
 
-.. include:: ../../reference_table_legend.inc
-.. include:: ../../reference_table_summary.inc
+.. include:: /material/reference_table_legend.inc
+.. include:: /material/reference_table_summary.inc
 
 
 オプション概要
