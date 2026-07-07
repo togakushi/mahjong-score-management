@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>dbtools.py &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="score_simulator.py" href="score_simulator.html" />
+    <link rel="prev" title="app.py" href="app.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script>
+            <script type="text/javascript" src="../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">dbtools.py</a><ul>
+<li><a class="reference internal" href="#id2">概要</a></li>
+<li><a class="reference internal" href="#id3">コマンドライン引数</a><ul>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">ロギングオプション</a></li>
+<li><a class="reference internal" href="#id6">固有オプション</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.html"
+                          title="previous chapter">app.py</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="score_simulator.html"
+                          title="next chapter">score_simulator.py</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/commandline_tool/dbtools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="score_simulator.html" title="score_simulator.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="app.html" title="app.py"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../index.html">User's Manual</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">dbtools.py</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="dbtools-py">
+<span id="id1"></span><h1>dbtools.py<a class="headerlink" href="#dbtools-py" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>概要<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>データベースファイルをメンテナンスする外部ツール</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">使い方</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>./dbtools.py<span class="w"> </span>オプション
+</pre></div>
+</div>
+</div>
+<p>動作させる固有オプションを1つ指定する。</p>
+<p><code class="docutils literal notranslate"><span class="pre">config.ini</span></code> で定義されているデータベースファイルが対象となる。</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>チャンネル個別設定で指定しているデータベースファイルは参照されない。</p>
+</div>
+</section>
+<section id="id3">
+<h2>コマンドライン引数<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>共通オプション<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-h">
+<span id="cmdoption-dbtools.py-help"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-h" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ヘルプ表示</p>
+</dd>
+<dt class="field-even">備考<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-c">
+<span id="cmdoption-dbtools.py-config"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">CONFIG</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"><span class="pre">=CONFIG</span></span><a class="headerlink" href="#cmdoption-dbtools.py-c" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>設定ファイル</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>config.ini</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p>相対パス指定時は <code class="docutils literal notranslate"><span class="pre">dbtools.py</span></code> が起点になる</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-service">
+<span class="sig-name descname"><span class="pre">--service</span></span><span class="sig-prename descclassname"><span class="pre">=SERVICE_NAME</span></span><a class="headerlink" href="#cmdoption-dbtools.py-service" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>連携先サービス</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>slack</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>slack</p></li>
+<li><p>discord</p></li>
+<li><p>standard_io, std</p></li>
+<li><p>web, flask</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id5">
+<h3>ロギングオプション<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-d">
+<span id="cmdoption-dbtools.py-debug"></span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-d" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="line-block">
+<div class="line">デバッグレベル</div>
+<div class="line">1: debug</div>
+<div class="line">2: trace</div>
+</div>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>0</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-v">
+<span id="cmdoption-dbtools.py-verbose"></span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--verbose</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-v" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="line-block">
+<div class="line">動作ログ出力切替</div>
+<div class="line">1 (0x01): パラメータ&amp;クエリ</div>
+<div class="line">2 (0x02): クエリ実行結果</div>
+<div class="line">3 (0x03): 両方出力</div>
+</div>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>0</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-moderate">
+<span class="sig-name descname"><span class="pre">--moderate</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-moderate" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ログレベルがエラー以下のもを非表示</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>False</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-notime">
+<span class="sig-name descname"><span class="pre">--notime</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-notime" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ログフォーマットから日時を削除</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>False</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id6">
+<h3>固有オプション<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-compar">
+<span class="sig-name descname"><span class="pre">--compar</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-compar" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>データ突合</p>
+</dd>
+<dt class="field-even">備考<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">--service</span></code> で指定されている連携先と接続する</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-unification">
+<span class="sig-name descname"><span class="pre">--unification</span></span><span class="sig-prename descclassname"><span class="pre">=UNIFICATION</span></span><a class="headerlink" href="#cmdoption-dbtools.py-unification" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ファイルの内容に従って記録済みのメンバー名を修正する</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>rename.ini</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p>書き換える内容はINIファイルに記述する</p>
+</dd>
+</dl>
+<p>メンバー登録済みの名前や利用不可能文字、登録禁止ワードなどが用いられている名前は書き換えから除外される。</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">INIファイル書式</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[rename]</span>
+<span class="na">置き換え後の名前</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">置き換え前の名前, 置き換え前の名前, ...</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-recalculation">
+<span class="sig-name descname"><span class="pre">--recalculation</span></span><span class="sig-prename descclassname"><span class="pre">=[RULE_VERSION</span> <span class="pre">...]</span></span><a class="headerlink" href="#cmdoption-dbtools.py-recalculation" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ポイント再計算</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>全ルールバージョン</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p>記録済みデータの素点からポイントを再計算する</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">DBからスコア情報を取り込み、引数で指定した <a class="reference internal" href="../admins/configuration/rule/ruleset.html#rule_set_section-rule_version" title="rule_version"><code class="xref any mahjong mahjong-rule_set_section docutils literal notranslate"><span class="pre">rule_version</span></code></a>  の <a class="reference internal" href="../users/appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ルールセット</span></code></a> で再計算する。</div>
+<div class="line">過去のデータを含め、すべてのレコードのポイントを再計算して更新する(変更点がなくても必ずupdateされる)。</div>
+</div>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-export">
+<span class="sig-name descname"><span class="pre">--export</span></span><span class="sig-prename descclassname"><span class="pre">=PREFIX</span></span><a class="headerlink" href="#cmdoption-dbtools.py-export" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>メンバー設定情報をエクスポート</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>export</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="line-block">
+<div class="line">エクスポートされたCSVファイルの1行目はヘッダ情報であり、インポートの際に必要となる。</div>
+<div class="line">ヘッダ情報は以下の通り。</div>
+</div>
+<dl>
+<dt>メンバーリスト</dt><dd><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">export_member.csv</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span><span class="n">slack_id</span><span class="p">,</span><span class="n">flying</span><span class="p">,</span><span class="n">reward</span><span class="p">,</span><span class="n">abuse</span><span class="p">,</span><span class="n">team_id</span>
+</pre></div>
+</div>
+</div>
+<p>ゲストを除いたメンバーのリスト。</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">team_id</span></code> が空欄のメンバーはどのチームにも所属しない（未所属）。</div>
+<div class="line">存在しないチームIDが指定されている場合は未所属扱いとなる。</div>
+</div>
+</dd>
+<dt>別名リスト</dt><dd><div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">export_alias.csv</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span><span class="n">member</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">name</span></code> が別名、 <code class="docutils literal notranslate"><span class="pre">member</span></code> がメンバー名（表示される名前）となる。</div>
+<div class="line">1行に1組のペアを記述する。</div>
+</div>
+</dd>
+<dt>チームリスト</dt><dd><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">export_team.csv</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-import">
+<span class="sig-name descname"><span class="pre">--import</span></span><span class="sig-prename descclassname"><span class="pre">=PREFIX</span></span><a class="headerlink" href="#cmdoption-dbtools.py-import" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>メンバー設定情報をインポート</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>export</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="line-block">
+<div class="line">PREFIXから始まるファイル名のCSVファイルからメンバー情報をインポートする。</div>
+<div class="line">メンバーリストのみ必須となる。</div>
+</div>
+<p>メンバー情報はデータベースの情報を消去してからインポートされるため、ユーザーIDの欠番はなくなる。</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-vacuum">
+<span class="sig-name descname"><span class="pre">--vacuum</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-dbtools.py-vacuum" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>データベースを最適化する</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-dbtools.py-gen-test-data">
+<span class="sig-name descname"><span class="pre">--gen-test-data</span></span><span class="sig-prename descclassname"><span class="pre">=count</span></span><a class="headerlink" href="#cmdoption-dbtools.py-gen-test-data" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">内容<span class="colon">:</span></dt>
+<dd class="field-odd"><p>テスト用サンプルデータ生成</p>
+</dd>
+<dt class="field-even">省略時<span class="colon">:</span></dt>
+<dd class="field-even"><p>1</p>
+</dd>
+<dt class="field-odd">備考<span class="colon">:</span></dt>
+<dd class="field-odd"><p>count=生成回数</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">動作確認用のテストデータを生成する。</div>
+<div class="line">5人編成16チーム前提。総当たり戦。1countあたり455戦。</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../development/test.html"><span class="doc">テストデータ生成</span></a></p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">dbtools.py</a><ul>
+<li><a class="reference internal" href="#id2">概要</a></li>
+<li><a class="reference internal" href="#id3">コマンドライン引数</a><ul>
+<li><a class="reference internal" href="#id4">共通オプション</a></li>
+<li><a class="reference internal" href="#id5">ロギングオプション</a></li>
+<li><a class="reference internal" href="#id6">固有オプション</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.html"
+                          title="previous chapter">app.py</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="score_simulator.html"
+                          title="next chapter">score_simulator.py</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/commandline_tool/dbtools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="score_simulator.html" title="score_simulator.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="app.html" title="app.py"
+             >previous</a> |</li>
+          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../index.html">User's Manual</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">dbtools.py</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

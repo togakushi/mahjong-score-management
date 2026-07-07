@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>サンプルSQL &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="インターフェース" href="../architecture.html" />
+    <link rel="prev" title="regulations" href="schema/view/regulations.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="schema/view/regulations.html"
+                          title="previous chapter">regulations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../architecture.html"
+                          title="next chapter">インターフェース</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/development/database/sample_sql.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../architecture.html" title="インターフェース"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="schema/view/regulations.html" title="regulations"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">開発用メモ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">サンプルSQL</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sql">
+<h1>サンプルSQL<a class="headerlink" href="#sql" title="Link to this heading">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">ゲーム結果(月間)</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="n">playtime</span><span class="p">)</span> <span class="n">AS</span> <span class="n">日時</span><span class="p">,</span>
+    <span class="n">p1_name</span> <span class="n">AS</span> <span class="n">東家</span><span class="p">,</span> <span class="n">p1_rpoint</span> <span class="o">*</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">素点</span><span class="p">,</span> <span class="n">p1_rank</span> <span class="n">AS</span> <span class="n">順位</span><span class="p">,</span> <span class="n">p1_point</span> <span class="n">AS</span> <span class="n">ポイント</span><span class="p">,</span>
+    <span class="n">p2_name</span> <span class="n">AS</span> <span class="n">南家</span><span class="p">,</span> <span class="n">p2_rpoint</span> <span class="o">*</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">素点</span><span class="p">,</span> <span class="n">p2_rank</span> <span class="n">AS</span> <span class="n">順位</span><span class="p">,</span> <span class="n">p2_point</span> <span class="n">AS</span> <span class="n">ポイント</span><span class="p">,</span>
+    <span class="n">p3_name</span> <span class="n">AS</span> <span class="n">西家</span><span class="p">,</span> <span class="n">p3_rpoint</span> <span class="o">*</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">素点</span><span class="p">,</span> <span class="n">p3_rank</span> <span class="n">AS</span> <span class="n">順位</span><span class="p">,</span> <span class="n">p3_point</span> <span class="n">AS</span> <span class="n">ポイント</span><span class="p">,</span>
+    <span class="n">p4_name</span> <span class="n">AS</span> <span class="n">北家</span><span class="p">,</span> <span class="n">p4_rpoint</span> <span class="o">*</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">素点</span><span class="p">,</span> <span class="n">p4_rank</span> <span class="n">AS</span> <span class="n">順位</span><span class="p">,</span> <span class="n">p4_point</span> <span class="n">AS</span> <span class="n">ポイント</span><span class="p">,</span>
+    <span class="n">deposit</span> <span class="n">AS</span> <span class="n">供託</span>
+<span class="n">FROM</span>
+    <span class="n">game_results</span>
+<span class="n">WHERE</span>
+    <span class="n">playtime</span> <span class="n">BETWEEN</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-01 12:00:00&#39;</span><span class="p">))</span> <span class="n">AND</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-01 12:00:00&#39;</span><span class="p">),</span> <span class="s1">&#39;1 month&#39;</span><span class="p">,</span> <span class="s1">&#39;-1 second&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">全体成績サマリ(年間)</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">name</span> <span class="n">AS</span> <span class="n">プレイヤー名</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">通算ポイント</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均ポイント</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;2位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;3位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;4位&quot;</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">rank</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">平均順位</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">トップ率</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">連対率</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">ラス回避率</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">ラス率</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トビ</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">AS</span> <span class="n">トビ率</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最大素点</span><span class="p">,</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最小素点</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">rpoint</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均素点</span>
+<span class="n">FROM</span>
+    <span class="n">individual_results</span>
+<span class="n">WHERE</span>
+    <span class="n">playtime</span> <span class="n">BETWEEN</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-01-01 12:00:00&#39;</span><span class="p">))</span> <span class="n">AND</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-12-01 12:00:00&#39;</span><span class="p">),</span> <span class="s1">&#39;1 month&#39;</span><span class="p">,</span> <span class="s1">&#39;-1 second&#39;</span><span class="p">)</span> <span class="o">--</span> <span class="n">集計期間</span>
+<span class="n">GROUP</span> <span class="n">BY</span>
+    <span class="n">name</span>
+<span class="n">HAVING</span>
+    <span class="n">対戦数</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">count</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.01</span> <span class="n">FROM</span> <span class="n">result</span> <span class="n">WHERE</span> <span class="n">playtime</span> <span class="n">BETWEEN</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-01-01 12:00:00&#39;</span><span class="p">))</span> <span class="n">AND</span> <span class="n">datetime</span><span class="p">(</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-12-01 12:00:00&#39;</span><span class="p">),</span> <span class="s1">&#39;1 month&#39;</span><span class="p">,</span> <span class="s1">&#39;-1 second&#39;</span><span class="p">))</span> <span class="o">--</span> <span class="n">規定打数</span>
+<span class="n">ORDER</span> <span class="n">BY</span>
+    <span class="n">通算ポイント</span> <span class="n">DESC</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">月間ランキング</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">collection</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;2位&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;3位&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;4位&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">name</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;5位&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">total</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;ポイント&quot;</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">rank</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">THEN</span> <span class="n">game_count</span> <span class="n">END</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;対戦数&quot;</span>
+<span class="n">FROM</span> <span class="p">(</span>
+    <span class="n">SELECT</span>
+        <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">collection</span><span class="p">,</span>
+        <span class="n">rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">rank</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">total</span><span class="p">,</span>
+        <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">game_count</span>
+    <span class="n">FROM</span>
+        <span class="n">individual_results</span>
+    <span class="n">GROUP</span> <span class="n">BY</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">collection_daily</span>
+<span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span>
+    <span class="n">collection</span>
+<span class="n">HAVING</span>
+    <span class="n">collection</span> <span class="n">LIKE</span> <span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">ゲーム傾向</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">供託</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;飛んだ人数(延べ)&quot;</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トビ終了率</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最大素点</span><span class="p">,</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最小素点</span>
+<span class="n">FROM</span>
+    <span class="n">individual_results</span>
+<span class="n">GROUP</span> <span class="n">BY</span>
+    <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">HAVING</span>
+    <span class="n">collection_daily</span> <span class="n">LIKE</span> <span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">個人成績</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">集計月</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">対戦数</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">通算ポイント</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">point</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均ポイント</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;1位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;2位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;3位&quot;</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="s2">&quot;4位&quot;</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">rank</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均順位</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トップ率</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">連対率</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">ラス回避率</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rank</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">ラス率</span><span class="p">,</span>
+    <span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トビ</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">rpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">トビ率</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最大素点</span><span class="p">,</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">rpoint</span><span class="p">)</span> <span class="n">AS</span> <span class="n">最小素点</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">rpoint</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">平均素点</span>
+<span class="n">FROM</span>
+    <span class="n">individual_results</span>
+<span class="n">WHERE</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&lt;Player Name&gt;&quot;</span>
+<span class="n">GROUP</span> <span class="n">BY</span>
+    <span class="n">substr</span><span class="p">(</span><span class="n">collection_daily</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">HAVING</span>
+    <span class="n">collection_daily</span> <span class="n">LIKE</span> <span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>全体成績サマリのHAVING句で絞るでも。</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">直近のN回</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span>
+    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span>
+        <span class="n">game_results</span>
+    <span class="n">WHERE</span>
+        <span class="s2">&quot;&lt;Player Name&gt;&quot;</span> <span class="n">IN</span> <span class="p">(</span><span class="n">p1_name</span><span class="p">,</span> <span class="n">p2_name</span><span class="p">,</span> <span class="n">p3_name</span><span class="p">,</span> <span class="n">p4_name</span><span class="p">)</span>
+    <span class="n">ORDER</span> <span class="n">BY</span>
+        <span class="n">playtime</span> <span class="n">DESC</span>
+    <span class="n">LIMIT</span> <span class="mi">30</span> <span class="o">--</span> <span class="n">直近の対戦数</span>
+<span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span>
+    <span class="n">playtime</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">対戦結果（対個人）</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">my</span><span class="o">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">プレイヤー</span><span class="p">,</span>
+    <span class="n">vs</span><span class="o">.</span><span class="n">name</span> <span class="n">AS</span> <span class="n">対戦相手</span><span class="p">,</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2">戦 </span><span class="si">%3d</span><span class="s2">勝 </span><span class="si">%3d</span><span class="s2">敗&quot;</span><span class="p">,</span>
+        <span class="n">count</span><span class="p">(),</span>
+        <span class="n">count</span><span class="p">(</span><span class="n">my</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="n">vs</span><span class="o">.</span><span class="n">rank</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">),</span>
+        <span class="n">count</span><span class="p">(</span><span class="n">my</span><span class="o">.</span><span class="n">rank</span> <span class="o">&gt;</span> <span class="n">vs</span><span class="o">.</span><span class="n">rank</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span>
+    <span class="p">)</span> <span class="n">AS</span> <span class="n">対戦結果</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">my</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="n">vs</span><span class="o">.</span><span class="n">rank</span> <span class="n">OR</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">/</span> <span class="n">CAST</span><span class="p">(</span><span class="n">count</span><span class="p">()</span> <span class="n">AS</span> <span class="n">REAL</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">勝率</span>
+<span class="n">FROM</span>
+    <span class="n">individual_results</span> <span class="n">my</span>
+<span class="n">INNER</span> <span class="n">JOIN</span>
+    <span class="n">individual_results</span> <span class="n">vs</span>
+        <span class="n">ON</span> <span class="p">(</span><span class="n">my</span><span class="o">.</span><span class="n">playtime</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">playtime</span> <span class="n">AND</span> <span class="n">my</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">vs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span>
+    <span class="n">my</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vs</span><span class="o">.</span><span class="n">name</span>
+<span class="n">HAVING</span>
+    <span class="n">my</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&lt;Player Name&gt;&quot;</span>
+<span class="n">ORDER</span> <span class="n">BY</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">DESC</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">ゲーム毎の通算ポイント(移動合計)、平均ポイント（移動平均）</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+    <span class="n">count</span><span class="p">()</span> <span class="n">OVER</span> <span class="n">moving</span> <span class="n">AS</span> <span class="n">count</span><span class="p">,</span>
+    <span class="n">playtime</span><span class="p">,</span>
+    <span class="n">rank</span><span class="p">,</span>
+    <span class="n">point</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="n">OVER</span> <span class="n">moving</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point_sum</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="n">OVER</span> <span class="n">moving</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">point_avg</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">(</span><span class="n">rank</span><span class="p">)</span> <span class="n">OVER</span> <span class="n">moving</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">rank_avg</span>
+<span class="n">FROM</span>
+    <span class="n">individual_results</span>
+<span class="n">WHERE</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&lt;Player Name&gt;&quot;</span>
+<span class="n">WINDOW</span>
+    <span class="n">moving</span> <span class="n">AS</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">name</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">playtime</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="schema/view/regulations.html"
+                          title="previous chapter">regulations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../architecture.html"
+                          title="next chapter">インターフェース</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/development/database/sample_sql.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../architecture.html" title="インターフェース"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="schema/view/regulations.html" title="regulations"
+             >previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >開発用メモ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">サンプルSQL</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

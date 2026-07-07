@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>段位システム &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="トラブルシューティング &amp; FAQ" href="../troubleshooting.html" />
+    <link rel="prev" title="チーム管理" href="team.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">段位システム</a><ul>
+<li><a class="reference internal" href="#id2">昇段テーブル</a><ul>
+<li><a class="reference internal" href="#id3">計算方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="team.html"
+                          title="previous chapter">チーム管理</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../troubleshooting.html"
+                          title="next chapter">トラブルシューティング &amp; FAQ</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/admins/others/gradetable.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../troubleshooting.html" title="トラブルシューティング &amp; FAQ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="team.html" title="チーム管理"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">その他</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">段位システム</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="gradetable">
+<span id="id1"></span><h1>段位システム<a class="headerlink" href="#gradetable" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">定義ファイルはJSON形式で記述する。</div>
+<div class="line">フォーマットチェックを通過しないJSONは読み込まれず、段位の表示が無効になる。</div>
+</div>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>名前</p></th>
+<th class="head"><p>型</p></th>
+<th class="head"><p>省略</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>文字列</p></td>
+<td><p>不可</p></td>
+<td><p>昇段システムの名称</p></td>
+<td><p>識別用</p></td>
+</tr>
+<tr class="row-odd"><td><p>addition_expression</p></td>
+<td><p>文字列</p></td>
+<td><p>0</p></td>
+<td><p>指定された式を評価し、昇段ポイントに加える(小数点以下は切り上げ)</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">rpoint</span></code> : 素点</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">origin_point</span></code> : 配給原点</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>table</p></td>
+<td><p>配列</p></td>
+<td><p>不可</p></td>
+<td><p>要素に昇段テーブルオブジェクトを持つ</p></td>
+<td><p>下記参照</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h2>昇段テーブル<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>段位の数だけ配列に含める。</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">point</span></code> に初期値と昇段に必要な昇段ポイントを指定する。</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">demote</span></code> フラグが <code class="docutils literal notranslate"><span class="pre">false</span></code> となっている段位は降段しない。</div>
+</div>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>名前</p></th>
+<th class="head"><p>型</p></th>
+<th class="head"><p>省略</p></th>
+<th class="head"><p>内容</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>grade</p></td>
+<td><p>文字列</p></td>
+<td><p>不可</p></td>
+<td><p>段位名称</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>point</p></td>
+<td><p>配列</p></td>
+<td><p>不可</p></td>
+<td><p>昇段ポイント初期値、昇段条件</p></td>
+<td><p>昇段条件で指定された値を上回れば昇段</p></td>
+</tr>
+<tr class="row-even"><td><p>acquisition</p></td>
+<td><p>配列</p></td>
+<td><p>不可</p></td>
+<td><p>着順毎(1～4位)の昇段ポイント増減値</p></td>
+<td><p>4つ指定</p></td>
+</tr>
+<tr class="row-odd"><td><p>demote</p></td>
+<td><p>bool</p></td>
+<td><p>true</p></td>
+<td><p>降段フラグ</p></td>
+<td><p>マイナス分はリセット(下限: 0)</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id3">
+<h3>計算方法<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>昇段ポイントの初期値を 0 とする</p>
+<ul class="simple">
+<li><p>計算後の昇段ポイントは次回に持ち越す</p></li>
+</ul>
+</li>
+<li><p>ゲーム終了時点の順位と素点から獲得ポイントを求める</p>
+<ul class="simple">
+<li><p>素点を <code class="docutils literal notranslate"><span class="pre">addition_expression</span></code> で評価する</p></li>
+<li><p>順位に応じた獲得ポイントを <code class="docutils literal notranslate"><span class="pre">acquisition</span></code> から取得する</p></li>
+</ul>
+</li>
+<li><p>昇段ポイントに獲得ポイントを加算する</p>
+<ul class="simple">
+<li><p>昇段条件に指定されたポイントを越えれば昇段</p>
+<ul>
+<li><p>段位を1つ上げ、昇段ポイントを指定された初期値にセット</p></li>
+</ul>
+</li>
+<li><p>昇段ポイントがマイナスになれば降段</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">demote</span></code> フラグが <code class="docutils literal notranslate"><span class="pre">true</span></code> なら段位を1つ下げ、昇段ポイントを指定された初期値にセット</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demote</span></code> フラグが <code class="docutils literal notranslate"><span class="pre">false</span></code> なら昇段ポイントを 0 にセット</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="id4">
+<h2>サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">段位テーブルサンプル</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀魂&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;addition_expression&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;({rpoint}-{origin_point})/10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;table&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;初心★☆☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w">    </span><span class="mi">20</span><span class="w">  </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">35</span><span class="p">,</span><span class="w">  </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-15</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;demote&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;初心★★☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w">    </span><span class="mi">80</span><span class="w">  </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">35</span><span class="p">,</span><span class="w">  </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-15</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;demote&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;初心★★★&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w">    </span><span class="mi">200</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">35</span><span class="p">,</span><span class="w">  </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-15</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;demote&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀士★☆☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="w">  </span><span class="mi">600</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">55</span><span class="p">,</span><span class="w">  </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-35</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;demote&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀士★★☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="w">  </span><span class="mi">800</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">55</span><span class="p">,</span><span class="w">  </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-55</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀士★★★&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="w">  </span><span class="mi">1000</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">55</span><span class="p">,</span><span class="w">  </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-75</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀傑★☆☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">600</span><span class="p">,</span><span class="w">  </span><span class="mi">1200</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">95</span><span class="p">,</span><span class="w">  </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-95</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀傑★★☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">700</span><span class="p">,</span><span class="w">  </span><span class="mi">1400</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">95</span><span class="p">,</span><span class="w">  </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-115</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀傑★★★&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">95</span><span class="p">,</span><span class="w">  </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-135</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀豪★☆☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1400</span><span class="p">,</span><span class="w"> </span><span class="mi">2800</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-180</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀豪★★☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1600</span><span class="p">,</span><span class="w"> </span><span class="mi">3200</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-195</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀豪★★★&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1800</span><span class="p">,</span><span class="w"> </span><span class="mi">3600</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-210</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀聖★☆☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">4000</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">135</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-225</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀聖★★☆&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3000</span><span class="p">,</span><span class="w"> </span><span class="mi">6000</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">135</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-240</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雀聖★★★&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4500</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">135</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-255</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;魂天&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;acquisition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;demote&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">段位システム</a><ul>
+<li><a class="reference internal" href="#id2">昇段テーブル</a><ul>
+<li><a class="reference internal" href="#id3">計算方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="team.html"
+                          title="previous chapter">チーム管理</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../troubleshooting.html"
+                          title="next chapter">トラブルシューティング &amp; FAQ</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/admins/others/gradetable.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../troubleshooting.html" title="トラブルシューティング &amp; FAQ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="team.html" title="チーム管理"
+             >previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >その他</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">段位システム</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

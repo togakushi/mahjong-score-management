@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slackセットアップ手順 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="利用APIと要求権限" href="permission.html" />
+    <link rel="prev" title="Slack連携" href="index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Slackセットアップ手順</a><ul>
+<li><a class="reference internal" href="#id1">アプリの作成</a></li>
+<li><a class="reference internal" href="#id2">実行環境構築</a></li>
+<li><a class="reference internal" href="#id3">初期設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Slack連携</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="permission.html"
+                          title="next chapter">利用APIと要求権限</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/admins/setting/for_slack/setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="permission.html" title="利用APIと要求権限"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Slack連携"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">Slack連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Slackセットアップ手順</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="slack">
+<h1>Slackセットアップ手順<a class="headerlink" href="#slack" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>アプリの作成<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>アプリ作成</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://api.slack.com/apps">https://api.slack.com/apps</a> にアクセス</p></li>
+<li><p><strong>[Create New App]</strong> -&gt; <strong>From scratch</strong> を選択</p>
+<ul class="simple">
+<li><p><strong>App Name</strong> (任意)</p></li>
+<li><p><strong>Pick a workspace to develop your app in:</strong> (ワークスペース選択)</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>ソケットモード有効化</p>
+<p><strong>Settings</strong> -&gt; <strong>Socket Mode</strong></p>
+<ul class="simple">
+<li><p><strong>Enable Socket Mode</strong> (有効)</p></li>
+<li><p><strong>Token Name</strong> (任意)</p></li>
+<li><p><strong>[Generate]</strong></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">App-Level</span> <span class="pre">Tokens</span></code> が発行される。</p>
+</li>
+<li><p>スラッシュコマンド有効化</p>
+<p><strong>Features</strong> -&gt; <strong>Slash Commands</strong></p>
+<ul class="simple">
+<li><p><strong>[Create New Command]</strong></p>
+<ul>
+<li><p><strong>Command</strong> (任意)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">config.ini</span></code> と合わせる</p></li>
+<li><p>既存のコマンドと被らないように</p></li>
+</ul>
+</li>
+<li><p><strong>Short Description</strong> (任意)</p></li>
+</ul>
+</li>
+<li><p><strong>[Save]</strong></p></li>
+</ul>
+</li>
+<li><p>イベント設定</p>
+<p><strong>Features</strong> -&gt; <strong>Event Subscriptions</strong></p>
+<ul class="simple">
+<li><p><strong>Enable Events</strong> (On)</p></li>
+<li><p><strong>Subscribe to bot events</strong></p>
+<ul>
+<li><p><strong>[Add Bot User Event]</strong></p>
+<ul>
+<li><p>app_home_opened ※Home Appを利用する場合のみ</p></li>
+<li><p>message.channels</p></li>
+<li><p>message.groups ※プライベートチャンネルで利用する場合のみ</p></li>
+<li><p>message.im ※DMからコマンド呼び出しキーワードを利用する場合のみ</p></li>
+</ul>
+</li>
+<li><p><strong>[Save Changes]</strong></p></li>
+</ul>
+</li>
+</ul>
+<p>必要な権限を追加する。</p>
+</li>
+<li><p>権限設定</p>
+<p><strong>Features</strong> -&gt; <strong>OAuth &amp; Permissions</strong></p>
+<ul class="simple">
+<li><p><strong>Bot Token Scopes</strong></p>
+<ul>
+<li><p>chat:write</p></li>
+<li><p>files:write</p></li>
+<li><p>im:write</p></li>
+<li><p>reactions:read</p></li>
+<li><p>reactions:write</p></li>
+</ul>
+</li>
+</ul>
+<p>足りないものは追加する。</p>
+<ul class="simple">
+<li><p><strong>User Token Scopes</strong></p>
+<ul>
+<li><p><em>search:read</em></p></li>
+</ul>
+</li>
+</ul>
+<p>追加する。</p>
+<p>詳細は <a class="reference internal" href="permission.html"><span class="doc">利用APIと要求権限</span></a> を参照。</p>
+</li>
+<li><p>アプリ設定</p>
+<p><strong>Features</strong> -&gt; <strong>App Home</strong></p>
+<ul class="simple">
+<li><p><strong>App Display Name</strong> [Edit]</p>
+<ul>
+<li><p><strong>Display Name (Bot Name)</strong></p></li>
+<li><p><strong>Default username</strong> (任意)</p></li>
+<li><p><strong>[add]</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Show Tabs</strong></p>
+<ul>
+<li><p><strong>Home Tab</strong> (有効) ※Home Appを使うときのみ</p></li>
+<li><p><strong>Messages Tab</strong> (有効)</p>
+<ul>
+<li><p><strong>Allow users to send Slash commands and messages from the messages tab</strong> (チェック)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>インストール</p>
+<p><strong>Settings</strong> -&gt; <strong>Install App</strong></p>
+<ul class="simple">
+<li><p><strong>[Install to Workspace]</strong></p></li>
+<li><p><strong>[Allow]</strong></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">OAuth</span> <span class="pre">Token</span></code> と <code class="docutils literal notranslate"><span class="pre">Bot</span> <span class="pre">User</span> <span class="pre">OAuth</span> <span class="pre">Token</span></code> が発行される。</p>
+</li>
+</ol>
+</section>
+<section id="id2">
+<h2>実行環境構築<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Python3.12以上の実行環境が必要</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../install/using_uv.html"><span class="doc">uvを使った実行環境構築</span></a></p></li>
+<li><p><a class="reference internal" href="../install/using_venv.html"><span class="doc">venvを使った実行環境構築</span></a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>初期設定<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>チャンネルにアプリを登録</p>
+<p><strong>Integrations</strong> -&gt; <strong>Add apps</strong></p>
+<p>忘れがち。</p>
+</li>
+<li><p>メンバーの登録</p>
+<p>スラッシュコマンドで追加。</p>
+</li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Slackセットアップ手順</a><ul>
+<li><a class="reference internal" href="#id1">アプリの作成</a></li>
+<li><a class="reference internal" href="#id2">実行環境構築</a></li>
+<li><a class="reference internal" href="#id3">初期設定</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Slack連携</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="permission.html"
+                          title="next chapter">利用APIと要求権限</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/admins/setting/for_slack/setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="permission.html" title="利用APIと要求権限"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Slack連携"
+             >previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >セットアップ</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >Slack連携</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Slackセットアップ手順</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

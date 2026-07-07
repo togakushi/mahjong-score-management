@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="_static/documentation_options.js?v=54344a33"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/ma-jan_pai.png">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+<div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="#">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="#" title="General Index"
+             accesskey="I">index</a></li>
+          <li><img src="_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">User's Manual</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">Index</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="# alias section"><strong> alias section</strong></a>
+ | <a href="# custom_message section"><strong> custom_message section</strong></a>
+ | <a href="# degree section"><strong> degree section</strong></a>
+ | <a href="# integrations section"><strong> integrations section</strong></a>
+ | <a href="# member section"><strong> member section</strong></a>
+ | <a href="# regulations section"><strong> regulations section</strong></a>
+ | <a href="# rule_set section"><strong> rule_set section</strong></a>
+ | <a href="# setting section"><strong> setting section</strong></a>
+ | <a href="# status section"><strong> status section</strong></a>
+ | <a href="# sub_commands section"><strong> sub_commands section</strong></a>
+ | <a href="# team section"><strong> team section</strong></a>
+ | <a href="# 共通オプション"><strong> 共通オプション</strong></a>
+ | <a href="# 分析コマンドオプション"><strong> 分析コマンドオプション</strong></a>
+ | <a href="# 集計コマンドオプション"><strong> 集計コマンドオプション</strong></a>
+ | <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#メ"><strong>メ</strong></a>
+ | <a href="#ル"><strong>ル</strong></a>
+ | <a href="#用語"><strong>用語</strong></a>
+ | <a href="#用語(コマンド)"><strong>用語(コマンド)</strong></a>
+ | <a href="#用語(プレイヤー)"><strong>用語(プレイヤー)</strong></a>
+ | <a href="#用語(ランキング項目)"><strong>用語(ランキング項目)</strong></a>
+ | <a href="#用語(ルール)"><strong>用語(ルール)</strong></a>
+ | <a href="#用語(レーティング項目)"><strong>用語(レーティング項目)</strong></a>
+ | <a href="#用語(処理)"><strong>用語(処理)</strong></a>
+ 
+</div>
+<h2 id=" alias section"> alias section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-add">add⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-analysis">analysis⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-del">del⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-download">download⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-member">member⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-summary">summary⁠‍‌⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_add">team_add⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_clear">team_clear⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_create">team_create⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_del">team_del⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_list">team_list⁠‍‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/alias.html#alias_section-team_remove">team_remove⁠‍‌⁠</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" custom_message section"> custom_message section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-access_denied">access_denied⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-inside_thread">inside_thread⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-invalid_argument">invalid_argument⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-invalid_score">invalid_score⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-no_hits">no_hits⁠‍⁠⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-no_target">no_target⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-not_implemented">not_implemented⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-restricted_channel">restricted_channel⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-rule_mismatch">rule_mismatch⁠‍⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/custom_message.html#custom_message_section-same_player">same_player⁠‍⁠⁠</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" degree section"> degree section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/decoration.html#degree_section-badge">badge‍​​‍</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/decoration.html#degree_section-counter">counter‍​​‍</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" integrations section"> integrations section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    common‌⁠‍⁠
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-badge_degree">badge_degree‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-badge_grade">badge_grade‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-badge_status">badge_status‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-channel_config">channel_config‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-channel_id">channel_id‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-plotting_backend">plotting_backend‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/common.html#integrations_section-separate">separate‌⁠‍⁠</a>
+</li>
+      </ul></li>
+      <li>
+    discord section‌⁠‍⁠
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/discord.html#integrations_section-channel_limitations">channel_limitations‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/discord.html#integrations_section-comparison_alias">comparison_alias‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/discord.html#integrations_section-comparison_word">comparison_word‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/discord.html#integrations_section-search_after">search_after‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/discord.html#integrations_section-slash_command">slash_command‌⁠‍⁠</a>
+</li>
+      </ul></li>
+      <li>
+    slack section‌⁠‍⁠
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-channel_limitations">channel_limitations‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-comparison_alias">comparison_alias‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-comparison_word">comparison_word‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-ignore_userid">ignore_userid‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-reaction_ng">reaction_ng‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-reaction_ok">reaction_ok‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-search_after">search_after‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-search_channel">search_channel‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-search_wait">search_wait‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-slash_command">slash_command‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-thread_report">thread_report‌⁠‍⁠</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    slack_channel section‌⁠‍⁠
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-default_rule">default_rule‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-reaction_ng">reaction_ng‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-reaction_ok">reaction_ok‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-search_after">search_after‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#integrations_section-search_channel">search_channel‌⁠‍⁠</a>
+</li>
+      </ul></li>
+      <li>
+    web section‌⁠‍⁠
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-certificate">certificate‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-custom_css">custom_css‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-host">host‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-management_member">management_member‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-management_score">management_score‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-password">password‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-plotting_backend">plotting_backend‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-port">port‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-private_key">private_key‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-require_auth">require_auth‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-theme">theme‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-use_ssl">use_ssl‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-username">username‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-view_graph">view_graph‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-view_ranking">view_ranking‌⁠‍⁠</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#integrations_section-view_summary">view_summary‌⁠‍⁠</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" member section"> member section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/management/member.html#member_section-alias_limit">alias_limit‌⁠⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/management/member.html#member_section-character_limit">character_limit‌⁠⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/management/member.html#member_section-command_suffix">command_suffix‌⁠⁠⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/management/member.html#member_section-commandword">commandword‌⁠⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/management/member.html#member_section-guest_name">guest_name‌⁠⁠⁠</a>
+</li>
+      <li><a href="admins/configuration/main/management/member.html#member_section-registration_limit">registration_limit‌⁠⁠⁠</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" regulations section"> regulations section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/rule/regulations.html#regulations_section-word_list">word_list‍‌‌⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/rule/regulations.html#regulations_section-yakuman_list">yakuman_list‍‌‌⁠</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" rule_set section"> rule_set section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-draw_split">draw_split⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-dropitems">dropitems⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-ignore_flying">ignore_flying⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-keywords">keywords⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-mode">mode⁠⁠⁠‌</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-point">point⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-rank_point">rank_point⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-remarks">remarks⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-return">return⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-rule_version">rule_version⁠⁠⁠‌</a>
+</li>
+      <li><a href="admins/configuration/rule/ruleset.html#rule_set_section-undefined_word">undefined_word⁠⁠⁠‌</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" setting section"> setting section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-backup_dir">backup_dir‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-channel_id">channel_id‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-database_file">database_file‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-default_rule">default_rule‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-font_file">font_file‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-graph_style">graph_style‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-group_length">group_length‌⁠‌⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-guest_mark">guest_mark‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-remarks_suffix">remarks_suffix‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-rule_config">rule_config‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-search_word">search_word‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-separate">separate‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-time_adjust">time_adjust‌⁠‌⁠</a>
+</li>
+      <li><a href="admins/configuration/main/application/setting.html#setting_section-work_dir">work_dir‌⁠‌⁠</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" status section"> status section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/decoration.html#status_section-badge">badge‌​‍⁠</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/appearance/decoration.html#status_section-step">step‌​‍⁠</a>
+</li>
+      <li><a href="admins/configuration/main/appearance/decoration.html#grade_section-table_name">table_name‍‍‌​</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" sub_commands section"> sub_commands section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-aggregation_range">aggregation_range​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-always_argument">always_argument​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-command_suffix">command_suffix​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-commandword">commandword​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-dropitems">dropitems​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-game_results">game_results​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-guest_skip2">guest_skip2​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-guest_skip">guest_skip​‌‌​</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-individual">individual​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-interval">interval​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-ranked">ranked​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-score_comparisons">score_comparisons​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-statistics">statistics​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-stipulated_rate">stipulated_rate​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-stipulated">stipulated​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-unregistered_replace">unregistered_replace​‌‌​</a>
+</li>
+      <li><a href="admins/configuration/main/application/commands.html#sub_commands_section-versus_matrix">versus_matrix​‌‌​</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" team section"> team section</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/management/team.html#team_section-character_limit">character_limit‍​‍‌</a>
+</li>
+      <li><a href="admins/configuration/main/management/team.html#team_section-command_suffix">command_suffix‍​‍‌</a>
+</li>
+      <li><a href="admins/configuration/main/management/team.html#team_section-commandword">commandword‍​‍‌</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="admins/configuration/main/management/team.html#team_section-friendly_fire">friendly_fire‍​‍‌</a>
+</li>
+      <li><a href="admins/configuration/main/management/team.html#team_section-member_limit">member_limit‍​‍‌</a>
+</li>
+      <li><a href="admins/configuration/main/management/team.html#team_section-registration_limit">registration_limit‍​‍‌</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" 共通オプション"> 共通オプション</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    その他のオプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/target.html#common-チーム">team‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-チーム">チーム‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-チーム">チーム成績‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-個人">個人‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-個人">個人成績‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-全員">全員‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-匿名">匿名‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    ゲスト関連オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/target.html#common-ゲストあり">ゲストあり‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-ゲストなし">ゲストなし‌‌​‍</a>
+</li>
+        <li><a href="users/options/target.html#common-ゲスト無効">ゲスト無効‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    コメント検索オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/search_scope.html#common-コメント<XXX>">コメント&lt;XXX&gt;‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-集約<NNN>">集約&lt;NNN&gt;‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    フォーマット変更オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/common.html#common-csv">csv‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-text">text‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-text">txt‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    ルール指定オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/search_scope.html#common-横断">mixed‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-横断">mix‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-サンマ">サンマ‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-ヨンマ">ヨンマ‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-サンマ">三人打‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-サンマ">三人打ち‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-サンマ">三麻‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-ヨンマ">四人打‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-ヨンマ">四人打ち‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-ヨンマ">四麻‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-横断">横断‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    回数指定オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/common.html#common-直近<NNN>">直近&lt;NNN&gt;‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-規定打数<NNN>">規定打数&lt;NNN&gt;‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-規定打数<NNN>">規定数&lt;NNN&gt;‌‌​‍</a>
+</li>
+      </ul></li>
+      <li>
+    日付指定オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/search_scope.html#common-YYYY-MM-DD">YYYY-MM-DD‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-YYYY-MM-DD">YYYY/MM/DD‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-YYYYMMDD">YYYYMMDD‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-一昨年">一昨年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今年">今年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今日">今日‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今月">今月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今週">今週‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先々月">先々月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先月">先月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先週">先週‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-全部">全部‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-一昨年">前々年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先々月">前々月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-去年">前年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-昨日">前日‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先月">前月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先週">前週‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-去年">去年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今日">当日‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-去年">昨年‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-昨日">昨日‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-先月">昨月‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-最初">最初‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-最後">最後‌‌​‍</a>
+</li>
+        <li><a href="users/options/search_scope.html#common-今日">本日‌‌​‍</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    集約オプション‌‌​‍
+
+      <ul>
+        <li><a href="users/options/common.html#common-日次">daily‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-月次">monthly‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-週次">weekly‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-年次">yearly‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-年次">イヤーリー‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-週次">ウイークリー‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-日次">デイリー‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-月次">マンスリー‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-全体">全体‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-年次">年次‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-日次">日次‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-月次">月次‌‌​‍</a>
+</li>
+        <li><a href="users/options/common.html#common-週次">週次‌‌​‍</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" 分析コマンドオプション"> 分析コマンドオプション</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/index.html#analysis-グラフ">グラフ​‍⁠‌</a>
+</li>
+      <li>
+    ランキング個別オプション​‍⁠‌
+
+      <ul>
+        <li><a href="users/functions/analysis/ranking.html#analysis-トップ">top​‍⁠‌</a>
+</li>
+        <li><a href="users/functions/analysis/ranking.html#analysis-トップ">トップ​‍⁠‌</a>
+</li>
+      </ul></li>
+      <li><a href="users/functions/analysis/index.html#analysis-レポート">レポート​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/index.html#analysis-レート">レーティング​‍⁠‌</a>
+</li>
+      <li>
+    レーティング個別オプション​‍⁠‌
+
+      <ul>
+        <li><a href="users/functions/analysis/rating_table.html#analysis-トップ">top​‍⁠‌</a>
+</li>
+        <li><a href="users/functions/analysis/rating_table.html#analysis-トップ">トップ​‍⁠‌</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/index.html#analysis-レート">レート​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/results_analysis.html#analysis-区切り">区切​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/results_analysis.html#analysis-区切り">区切り​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/results_analysis.html#analysis-区切り">区間​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/index.html#analysis-対戦">対戦​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/index.html#analysis-対戦">対戦結果​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/results_analysis.html#analysis-区切り">期間​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/index.html#analysis-素点">素点​‍⁠‌</a>
+</li>
+      <li><a href="users/functions/analysis/index.html#analysis-統計">統計​‍⁠‌</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id=" 集計コマンドオプション"> 集計コマンドオプション</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/summary/index.html#summary-グラフ">グラフ⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/index.html#summary-対戦">対戦⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/index.html#summary-対戦">対戦結果⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/index.html#summary-比較">差分⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/results_details.html#summary-戦績">戦績⁠⁠‍​</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/summary/index.html#summary-比較">比較⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/index.html#summary-比較">点差⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/results_details.html#summary-統計">統計⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/results_details.html#summary-詳細">詳細⁠⁠‍​</a>
+</li>
+      <li><a href="users/functions/summary/index.html#summary-順位">順位⁠⁠‍​</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    --compar
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-compar">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --config
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-c">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-c">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --debug
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-d">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-d">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --export
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-export">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --gen-test-data
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-gen-test-data">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --help
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-h">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-h">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --host
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-host">app.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --import
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-import">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --moderate
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-moderate">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-moderate">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --notime
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-notime">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-notime">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --port
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-port">app.py command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    --recalculation
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-recalculation">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --service
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-service">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-service">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --text
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-text">app.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --unification
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-unification">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --vacuum
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-vacuum">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --verbose
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-v">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-v">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -c
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-c">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-c">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -d
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-d">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-d">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -h
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-h">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-h">dbtools.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -v
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-v">app.py command line option</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-v">dbtools.py command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    add
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member-add-del">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    alias
+
+      <ul>
+        <li><a href="development/database/schema/table/alias.html#table-alias">table</a>
+</li>
+      </ul></li>
+      <li>
+    alias section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/alias.html#alias-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    analysis
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-analysis">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    analysis section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    app.py command line option
+
+      <ul>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-c">--config</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-d">--debug</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-h">--help</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-host">--host</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-moderate">--moderate</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-notime">--notime</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-port">--port</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-service">--service</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-text">--text</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-v">--verbose</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-c">-c</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-d">-d</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-h">-h</a>
+</li>
+        <li><a href="commandline_tool/app.html#cmdoption-app.py-v">-v</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    check
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-check">slash commands</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    dbtools.py command line option
+
+      <ul>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-compar">--compar</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-c">--config</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-d">--debug</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-export">--export</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-gen-test-data">--gen-test-data</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-h">--help</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-import">--import</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-moderate">--moderate</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-notime">--notime</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-recalculation">--recalculation</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-service">--service</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-unification">--unification</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-vacuum">--vacuum</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-v">--verbose</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-c">-c</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-d">-d</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-h">-h</a>
+</li>
+        <li><a href="commandline_tool/dbtools.html#cmdoption-dbtools.py-v">-v</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    del
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member-add-del">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    discord section
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/discord.html#discord-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    download
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-download">slash commands</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    game_results
+
+      <ul>
+        <li><a href="development/database/schema/view/game_results.html#view-game-results">view</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    help section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    individual_results
+
+      <ul>
+        <li><a href="development/database/schema/view/individual_results.html#view-individual-results">view</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    keyword_mapping section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/mapping.html#keyword-mapping-section">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    mahjong section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/mahjong.html#mahjong-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    member
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member">slash commands</a>
+</li>
+        <li><a href="development/database/schema/table/member.html#table-member">table</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    member section
+
+      <ul>
+        <li><a href="admins/configuration/main/management/member.html#member-section">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    regulations
+
+      <ul>
+        <li><a href="development/database/schema/view/regulations.html#view-regulations">view</a>
+</li>
+      </ul></li>
+      <li>
+    remarks
+
+      <ul>
+        <li><a href="development/database/schema/table/remarks.html#table-remarks">table</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    result
+
+      <ul>
+        <li><a href="development/database/schema/table/result.html#table-result">table</a>
+</li>
+      </ul></li>
+      <li>
+    rule
+
+      <ul>
+        <li><a href="development/database/schema/table/rule.html#table-rule">table</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    setting section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/setting.html#setting-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    shortcut section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/shortcut.html#shortcut-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    slack section
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/slack.html#slack-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    slash commands
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member-add-del">add</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-analysis">analysis</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-check">check</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member-add-del">del</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-download">download</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-member">member</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-summary">summary</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-add">team_add</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-clear">team_clear</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-create">team_create</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-del">team_del</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-list">team_list</a>
+</li>
+        <li><a href="users/appendix/slash_command.html#lash-commands-team-remove">team_remove</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    standard_io section
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/standard_io.html#standard-io-section">メイン設定</a>
+</li>
+      </ul></li>
+      <li>
+    summary
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-summary">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    summary section
+
+      <ul>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    table
+
+      <ul>
+        <li><a href="development/database/schema/table/alias.html#table-alias">alias</a>
+</li>
+        <li><a href="development/database/schema/table/member.html#table-member">member</a>
+</li>
+        <li><a href="development/database/schema/table/remarks.html#table-remarks">remarks</a>
+</li>
+        <li><a href="development/database/schema/table/result.html#table-result">result</a>
+</li>
+        <li><a href="development/database/schema/table/rule.html#table-rule">rule</a>
+</li>
+        <li><a href="development/database/schema/table/team.html#table-team">team</a>
+</li>
+        <li><a href="development/database/schema/table/words.html#table-words">words</a>
+</li>
+      </ul></li>
+      <li>
+    team
+
+      <ul>
+        <li><a href="development/database/schema/table/team.html#table-team">table</a>
+</li>
+        <li><a href="development/database/schema/view/game_info.html#view-game-info">view</a>
+</li>
+      </ul></li>
+      <li>
+    team section
+
+      <ul>
+        <li><a href="admins/configuration/main/management/team.html#team-section">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    team_add
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-add">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    team_clear
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-clear">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    team_create
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-create">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    team_del
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-del">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    team_list
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#slash-commands-team-list">slash commands</a>
+</li>
+      </ul></li>
+      <li>
+    team_remove
+
+      <ul>
+        <li><a href="users/appendix/slash_command.html#lash-commands-team-remove">slash commands</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    view
+
+      <ul>
+        <li><a href="development/database/schema/view/game_results.html#view-game-results">game_results</a>
+</li>
+        <li><a href="development/database/schema/view/individual_results.html#view-individual-results">individual_results</a>
+</li>
+        <li><a href="development/database/schema/view/regulations.html#view-regulations">regulations</a>
+</li>
+        <li><a href="development/database/schema/view/game_info.html#view-game-info">team</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    web section
+
+      <ul>
+        <li><a href="admins/configuration/main/integrations/web.html#web-section">メイン設定</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    words
+
+      <ul>
+        <li><a href="development/database/schema/table/words.html#table-words">table</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="メ">メ</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    メイン設定
+
+      <ul>
+        <li><a href="admins/configuration/main/application/alias.html#alias-section">alias section</a>
+</li>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">analysis section</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/discord.html#discord-section">discord section</a>
+</li>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">help section</a>
+</li>
+        <li><a href="admins/configuration/main/application/mapping.html#keyword-mapping-section">keyword_mapping section</a>
+</li>
+        <li><a href="admins/configuration/main/application/mahjong.html#mahjong-section">mahjong section</a>
+</li>
+        <li><a href="admins/configuration/main/management/member.html#member-section">member section</a>
+</li>
+        <li><a href="admins/configuration/main/application/setting.html#setting-section">setting section</a>
+</li>
+        <li><a href="admins/configuration/main/application/shortcut.html#shortcut-section">shortcut section</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/slack.html#slack-section">slack section</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/standard_io.html#standard-io-section">standard_io section</a>
+</li>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">summary section</a>
+</li>
+        <li><a href="admins/configuration/main/management/team.html#team-section">team section</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/web.html#web-section">web section</a>
+</li>
+        <li><a href="admins/configuration/main/application/index.html#index-0">アプリケーション設定</a>
+</li>
+        <li><a href="admins/configuration/main/integrations/index.html#integrations-config">サービス別設定</a>
+</li>
+        <li><a href="admins/configuration/main/management/index.html#index-0">チーム管理</a>
+</li>
+        <li><a href="admins/configuration/main/application/mapping.html#mapping-section">マッピング定義</a>
+</li>
+        <li><a href="admins/configuration/main/index.html#main-config">メイン設定ファイル</a>
+</li>
+        <li><a href="admins/configuration/main/appearance/custom_message.html#index-0">メッセージカスタマイズオプション</a>
+</li>
+        <li><a href="admins/configuration/main/management/index.html#index-0">メンバー管理</a>
+</li>
+        <li><a href="admins/configuration/main/application/commands.html#results-management">成績管理</a>
+</li>
+        <li><a href="admins/configuration/main/appearance/decoration.html#index-0">装飾オプション</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="ル">ル</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-16"><strong>ルールセット</strong></a>
+
+      <ul>
+        <li><a href="admins/configuration/rule/regulations.html#index-2">チーム清算レギュレーション</a>
+</li>
+        <li><a href="admins/configuration/main/application/mapping.html#mapping-section">マッピング定義</a>
+</li>
+        <li><a href="admins/configuration/rule/index.html#rule-config">ルール設定ファイル</a>
+</li>
+        <li><a href="admins/configuration/rule/regulations.html#index-0">レギュレーション設定</a>
+</li>
+        <li><a href="admins/configuration/rule/regulations.html#index-1">個人清算レギュレーション</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語">用語</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-10"><strong>2ゲスト戦</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-11"><strong>ゲーム</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(コマンド)">用語(コマンド)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-20"><strong>オプション</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-18"><strong>コマンド</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-19"><strong>ターゲット</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-21"><strong>パラメータ</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(プレイヤー)">用語(プレイヤー)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-2"><strong>ゲスト</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-4"><strong>ゲストプレイヤー</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-3"><strong>ゲストメンバー</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-1"><strong>プレイヤー</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-0"><strong>メンバー</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-5"><strong>レギュラー</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-7"><strong>レギュラープレイヤー</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-6"><strong>レギュラーメンバー</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(ランキング項目)">用語(ランキング項目)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/ranking.html#term-3"><strong>トップ率</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-6"><strong>トビ率</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-5"><strong>ラス回避率</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-1"><strong>平均ポイント</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/ranking.html#term-2"><strong>平均収支</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-7"><strong>平均順位</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-8"><strong>総合ランキング</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-0"><strong>通算ポイント</strong></a>
+</li>
+      <li><a href="users/functions/analysis/ranking.html#term-4"><strong>連対率</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(ルール)">用語(ルール)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-9"><strong>ポイント</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-17"><strong>ルール識別子</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-8"><strong>素点</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(レーティング項目)">用語(レーティング項目)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/rating_table.html#term-0"><strong>レート</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/functions/analysis/rating_table.html#term-2"><strong>得点偏差</strong></a>
+</li>
+      <li><a href="users/functions/analysis/rating_table.html#term-1"><strong>順位偏差</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="用語(処理)">用語(処理)</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-13"><strong>分析</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-14"><strong>突合</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="users/appendix/glossary.html#term-15"><strong>突合処理</strong></a>
+</li>
+      <li><a href="users/appendix/glossary.html#term-12"><strong>集計</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+<div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="#">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="#" title="General Index"
+             >index</a></li>
+          <li><img src="_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">User's Manual</a> &#187;
+              
+          </li>
+        <li class="nav-item nav-item-this"><a href="">Index</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>成績管理機能説明 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="集計コマンド" href="summary/index.html" />
+    <link rel="prev" title="メモ記録" href="../record/remark.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../record/remark.html"
+                          title="previous chapter">メモ記録</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="summary/index.html"
+                          title="next chapter">集計コマンド</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/users/functions/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="summary/index.html" title="集計コマンド"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../record/remark.html" title="メモ記録"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">利用者向けマニュアル</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績管理機能説明</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>成績管理機能説明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">内容説明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="summary/index.html">集計コマンド</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="summary/results_details.html">成績詳細</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/results_graph.html">成績グラフ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/results_table_all.html">成績サマリ表（全体）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/results_table_diff.html">成績サマリ表（差分）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/winner.html">成績上位者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/point_transition.html">通算ポイント推移グラフ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/ranking_change.html">順位変動グラフ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summary/direct_match.html">直接対戦結果</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/index.html">分析コマンド</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis/ranking.html">ランキング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/rating_table.html">レーティング表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/rating_graph.html">レーティング推移グラフ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/matchup_matrix.html">対局対戦マトリクス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/score_analysis.html">素点分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/score_chart.html">順位素点相関図</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/results_comparison.html">成績詳細比較</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/results_report.html">成績レポート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/results_analysis.html">成績分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis/results_list.html">成績比較表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help/index.html">ヘルプ</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">コマンドルーティング</span></span></dt>
+<dd><p>入力されたコマンドは以下の順序で評価され、出力される内容が決定される。</p>
+<ol class="arabic simple">
+<li><p>コマンド種別の判定</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p></li>
+<li><p><a class="reference internal" href="analysis/index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a></p></li>
+<li><p><a class="reference internal" href="help/index.html#function-help"><span class="std std-ref">ヘルプ</span></a></p></li>
+</ul>
+</li>
+<li><p>ターゲットの判定</p>
+<ul class="simple">
+<li><p>未指定（任意）</p></li>
+<li><p>単独指定</p></li>
+<li><p>複数指定</p></li>
+</ul>
+</li>
+<li><p>オプションの評価</p>
+<ol class="arabic simple">
+<li><p>必須オプションの有無</p></li>
+<li><p>追加オプションの有無</p></li>
+</ol>
+</li>
+</ol>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発用メモ</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/app.html">app.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/dbtools.html">dbtools.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/score_simulator.html">score_simulator.py</a></li>
+</ul>
+
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../record/remark.html"
+                          title="previous chapter">メモ記録</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="summary/index.html"
+                          title="next chapter">集計コマンド</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/users/functions/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="summary/index.html" title="集計コマンド"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../record/remark.html" title="メモ記録"
+             >previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >利用者向けマニュアル</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">成績管理機能説明</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

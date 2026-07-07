@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>スラッシュコマンドの使い方 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="用語集" href="glossary.html" />
+    <link rel="prev" title="付録" href="index.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
+<li><a class="reference internal" href="#id2">成績管理</a><ul>
+<li><a class="reference internal" href="#summary">summary</a></li>
+<li><a class="reference internal" href="#analysis">analysis</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">データベース関連</a><ul>
+<li><a class="reference internal" href="#check">check</a></li>
+<li><a class="reference internal" href="#download">download</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">メンバー管理</a><ul>
+<li><a class="reference internal" href="#member">member</a></li>
+<li><a class="reference internal" href="#add-del">add / del</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">チーム管理</a><ul>
+<li><a class="reference internal" href="#team-create">team_create</a></li>
+<li><a class="reference internal" href="#team-del">team_del</a></li>
+<li><a class="reference internal" href="#team-add">team_add</a></li>
+<li><a class="reference internal" href="#team-remove">team_remove</a></li>
+<li><a class="reference internal" href="#team-list">team_list</a></li>
+<li><a class="reference internal" href="#team-clear">team_clear</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">付録</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="glossary.html"
+                          title="next chapter">用語集</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/users/appendix/slash_command.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="用語集"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="付録"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >利用者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">付録</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">スラッシュコマンドの使い方</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>スラッシュコマンドの使い方<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>結果はアプリからDMで通知される。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">/commandname</span></code> は以下で定義する</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../admins/configuration/main/integrations/slack.html#slack-section"><span class="std std-ref">slackセクション</span></a> の <a class="reference internal" href="../../admins/configuration/main/integrations/slack.html#integrations_section-slash_command" title="slash_command"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">slash_command</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../admins/configuration/main/integrations/discord.html#discord-section"><span class="std std-ref">discordセクション</span></a> の <a class="reference internal" href="../../admins/configuration/main/integrations/discord.html#integrations_section-slash_command" title="slash_command"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">slash_command</span></code></a></p></li>
+</ul>
+</div>
+<section id="id2">
+<h2>成績管理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="summary">
+<span id="slash-commands-summary"></span><h3>summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a> を実行</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">summary</span></code> [<a class="reference internal" href="glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a>] [<a class="reference internal" href="glossary.html#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a>]</p>
+</dd>
+<dt class="field-odd">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計</p>
+</dd>
+<dt class="field-even">補足説明<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="analysis">
+<span id="slash-commands-analysis"></span><h3>analysis<a class="headerlink" href="#analysis" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/analysis/index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a> を実行</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">analysis</span></code> [<a class="reference internal" href="glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a>] [<a class="reference internal" href="glossary.html#term-20"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a>]</p>
+</dd>
+<dt class="field-odd">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析</p>
+</dd>
+<dt class="field-even">補足説明<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+</section>
+<section id="id3">
+<h2>データベース関連<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="check">
+<span id="slash-commands-check"></span><h3>check<a class="headerlink" href="#check" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>データベースの突合</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">check</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>なし</p>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+<section id="download">
+<span id="slash-commands-download"></span><h3>download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>データベースのダウンロード</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">download</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>なし</p>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p>ダウンロード</p>
+</dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+</section>
+<section id="id4">
+<h2>メンバー管理<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../admins/others/member.html#member-management"><span class="std std-ref">メンバー管理</span></a></p>
+</div>
+<section id="member">
+<span id="slash-commands-member"></span><h3>member<a class="headerlink" href="#member" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>登録されているメンバーを表示</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">member</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>なし</p>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p>userlist</p></li>
+<li><p>member_list</p></li>
+</ul>
+</dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+<section id="add-del">
+<span id="slash-commands-member-add-del"></span><h3>add / del<a class="headerlink" href="#add-del" title="Link to this heading">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>成績管理対象のメンバーを追加、削除</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">add</span> <span class="pre">&lt;登録名&gt;</span> <span class="pre">[別名]</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">del</span> <span class="pre">&lt;登録名&gt;</span> <span class="pre">[別名]</span></code></div>
+</div>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>登録名：サマリや成績管理で表示される名前</p></li>
+<li><p>別名：登録名に紐付いている別名</p></li>
+</ul>
+</dd>
+<dt class="field-even">補足説明<span class="colon">:</span></dt>
+<dd class="field-even"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">add</span> <span class="pre">&lt;登録名&gt;</span></code> でメンバーの新規追加</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">add</span> <span class="pre">&lt;登録名&gt;</span> <span class="pre">&lt;別名&gt;</span></code> で別名のニックネームを追加</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">del</span> <span class="pre">&lt;登録名&gt;</span></code> でメンバーを削除(ゲスト扱い)</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">del</span> <span class="pre">&lt;登録名&gt;</span> <span class="pre">&lt;別名&gt;</span></code> でニックネームを削除</div>
+</div>
+</dd>
+</dl>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>メンバー登録時の注意事項</p>
+<ul class="simple">
+<li><p>最大登録人数は255人</p></li>
+<li><p>登録できる名前は8文字以内</p></li>
+<li><p>ニックネームは16個まで</p></li>
+<li><p>半角数字は登録時に全角へ置換される</p></li>
+<li><p>一部の記号は使用できない</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>チーム管理<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../admins/others/team.html#team-management"><span class="std std-ref">チーム管理</span></a></p>
+</div>
+<section id="team-create">
+<span id="slash-commands-team-create"></span><h3>team_create<a class="headerlink" href="#team-create" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>チームの新規登録</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_create</span> <span class="pre">&lt;登録チーム名&gt;</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>登録チーム名：登録されるチーム名</p></li>
+</ul>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+<section id="team-del">
+<span id="slash-commands-team-del"></span><h3>team_del<a class="headerlink" href="#team-del" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>チームの削除</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_del</span> <span class="pre">&lt;チーム名&gt;</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>チーム名：削除されるチーム名</p></li>
+</ul>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p>所属していたメンバーは自動的に未所属に更新される</p>
+</dd>
+</dl>
+</section>
+<section id="team-add">
+<span id="slash-commands-team-add"></span><h3>team_add<a class="headerlink" href="#team-add" title="Link to this heading">¶</a></h3>
+<dl class="field-list">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>チームにメンバーを所属させる</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_add</span> <span class="pre">&lt;チーム名&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_add</span> <span class="pre">&lt;チーム名&gt;</span> <span class="pre">&lt;メンバー名&gt;</span></code></div>
+</div>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>チーム名：所属させるチーム名</p></li>
+<li><p>メンバー名：所属するメンバー名</p></li>
+</ul>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>メンバーの指定がない場合、 <code class="docutils literal notranslate"><span class="pre">team_create</span></code> と同じ動作をする</p></li>
+<li><p>別チームに所属している場合、新しい情報で更新される</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="team-remove">
+<span id="lash-commands-team-remove"></span><h3>team_remove<a class="headerlink" href="#team-remove" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>メンバーを未所属にする</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_remove</span> <span class="pre">&lt;メンバー名&gt;</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>メンバー名：未所属にするメンバー名</p></li>
+</ul>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+<section id="team-list">
+<span id="slash-commands-team-list"></span><h3>team_list<a class="headerlink" href="#team-list" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>チーム名と所属メンバーを表示する</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_list</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>なし</p>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+<section id="team-clear">
+<span id="slash-commands-team-clear"></span><h3>team_clear<a class="headerlink" href="#team-clear" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">概要<span class="colon">:</span></dt>
+<dd class="field-odd"><p>チーム情報をすべて削除する</p>
+</dd>
+<dt class="field-even">書式<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">/commandname</span> <span class="pre">team_clear</span></code></p>
+</dd>
+<dt class="field-odd">引数<span class="colon">:</span></dt>
+<dd class="field-odd"><p>なし</p>
+</dd>
+<dt class="field-even">デフォルトエイリアス<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">補足説明<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>すべてのチームは削除される</p></li>
+<li><p>すべてのメンバーは未所属になる</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">スラッシュコマンドの使い方</a><ul>
+<li><a class="reference internal" href="#id2">成績管理</a><ul>
+<li><a class="reference internal" href="#summary">summary</a></li>
+<li><a class="reference internal" href="#analysis">analysis</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">データベース関連</a><ul>
+<li><a class="reference internal" href="#check">check</a></li>
+<li><a class="reference internal" href="#download">download</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">メンバー管理</a><ul>
+<li><a class="reference internal" href="#member">member</a></li>
+<li><a class="reference internal" href="#add-del">add / del</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">チーム管理</a><ul>
+<li><a class="reference internal" href="#team-create">team_create</a></li>
+<li><a class="reference internal" href="#team-del">team_del</a></li>
+<li><a class="reference internal" href="#team-add">team_add</a></li>
+<li><a class="reference internal" href="#team-remove">team_remove</a></li>
+<li><a class="reference internal" href="#team-list">team_list</a></li>
+<li><a class="reference internal" href="#team-clear">team_clear</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">付録</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="glossary.html"
+                          title="next chapter">用語集</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/users/appendix/slash_command.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="用語集"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="付録"
+             >previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >利用者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >付録</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">スラッシュコマンドの使い方</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

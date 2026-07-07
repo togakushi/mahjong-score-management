@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>uvを使った実行環境構築 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="venvを使った実行環境構築" href="using_venv.html" />
+    <link rel="prev" title="セットアップ" href="../index.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">uvを使った実行環境構築</a><ul>
+<li><a class="reference internal" href="#id1">uvインストール</a></li>
+<li><a class="reference internal" href="#id2">ツールのインストール</a></li>
+<li><a class="reference internal" href="#id3">グラフ描写用の日本語フォント</a></li>
+<li><a class="reference internal" href="#id4">環境変数</a></li>
+<li><a class="reference internal" href="#id5">起動</a></li>
+<li><a class="reference internal" href="#id6">停止</a></li>
+<li><a class="reference internal" href="#id7">備考</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">セットアップ</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="using_venv.html"
+                          title="next chapter">venvを使った実行環境構築</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/admins/setting/install/using_uv.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="using_venv.html" title="venvを使った実行環境構築"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="セットアップ"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">セットアップ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">uvを使った実行環境構築</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uv">
+<h1>uvを使った実行環境構築<a class="headerlink" href="#uv" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>uvインストール<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>公式ドキュメントを参照</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation/">https://docs.astral.sh/uv/getting-started/installation/</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>ツールのインストール<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">git clone</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/togakushi/mahjong-score-management.git
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>グラフ描写用の日本語フォント<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>IPAexフォント（ <code class="docutils literal notranslate"><span class="pre">ipaexg.ttf</span></code> ）を <a class="reference internal" href="../../../commandline_tool/app.html#app-py"><span class="std std-ref">app.py</span></a> と同じディレクトリに配置</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://moji.or.jp/ipafont/ipafontdownload/">https://moji.or.jp/ipafont/ipafontdownload/</a></p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">ipaexg.ttf</span></code> 以外のフォントを使用する場合は <a class="reference internal" href="../../configuration/main/application/setting.html#setting-section"><span class="std std-ref">settingセクション</span></a> の <a class="reference internal" href="../../configuration/main/application/setting.html#setting_section-font_file" title="font_file"><code class="xref any mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">font_file</span></code></a> を設定する。</p>
+</div>
+</section>
+<section id="id4">
+<h2>環境変数<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>発行されたトークンを環境変数にセット</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Slack利用時</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-x-xxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SLACK_WEB_TOKEN</span><span class="o">=</span>xoxp-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Discord利用時</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DISCORD_TOKEN</span><span class="o">=</span>XXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>起動<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">通常起動</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>app.py
+</pre></div>
+</div>
+</div>
+<dl class="simple">
+<dt>環境変数をファイルに記述する場合</dt><dd><p><code class="docutils literal notranslate"><span class="pre">app.env</span></code> などの任意のファイル名で環境変数を記述したファイルを準備する</p>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">app.env 記述例</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>app.env
+<span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-x-xxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<span class="nv">SLACK_WEB_TOKEN</span><span class="o">=</span>xoxp-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">フォアグラウンド起動</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>--env-file<span class="o">=</span>app.env<span class="w"> </span>app.py
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">バックグラウンド起動</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nohup<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>app.py<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>systemdを使ったデーモン化</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../for_slack/daemon.html"><span class="doc">slack</span></a></p></li>
+<li><p><a class="reference internal" href="../for_discord/daemon.html"><span class="doc">discord</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="id6">
+<h2>停止<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>PIDを調べてプロセスをkill。</p>
+</section>
+<section id="id7">
+<h2>備考<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>uv実行時に自動で以下が行われる</p>
+<ul class="simple">
+<li><p>Python3.12のインストール(利用していなければ)</p></li>
+<li><p>仮想環境の作成</p></li>
+<li><p>依存パッケージのインストール</p></li>
+<li><p>スクリプトの起動</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">uvを使った実行環境構築</a><ul>
+<li><a class="reference internal" href="#id1">uvインストール</a></li>
+<li><a class="reference internal" href="#id2">ツールのインストール</a></li>
+<li><a class="reference internal" href="#id3">グラフ描写用の日本語フォント</a></li>
+<li><a class="reference internal" href="#id4">環境変数</a></li>
+<li><a class="reference internal" href="#id5">起動</a></li>
+<li><a class="reference internal" href="#id6">停止</a></li>
+<li><a class="reference internal" href="#id7">備考</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">セットアップ</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="using_venv.html"
+                          title="next chapter">venvを使った実行環境構築</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/admins/setting/install/using_uv.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="using_venv.html" title="venvを使った実行環境構築"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="セットアップ"
+             >previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >管理者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >セットアップ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">uvを使った実行環境構築</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>素点分析 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../../_static/documentation_options.js?v=54344a33"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="順位素点相関図" href="score_chart.html" />
+    <link rel="prev" title="対局対戦マトリクス" href="matchup_matrix.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">素点分析</a><ul>
+<li><a class="reference internal" href="#id2">オプション</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="matchup_matrix.html"
+                          title="previous chapter">対局対戦マトリクス</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="score_chart.html"
+                          title="next chapter">順位素点相関図</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/users/functions/analysis/score_analysis.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="score_chart.html" title="順位素点相関図"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="matchup_matrix.html" title="対局対戦マトリクス"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能説明</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">分析コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">素点分析</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="deliverables-score-analysis">
+<span id="id1"></span><h1>素点分析<a class="headerlink" href="#deliverables-score-analysis" title="Link to this heading">¶</a></h1>
+<p>各着順獲得時の素点状況を分析する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">コマンドタイプ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a></p>
+</dd>
+<dt class="field-even">必須オプション<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="index.html#analysis-素点" title="素点"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">素点</span></code></a></p>
+</dd>
+<dt class="field-odd">ターゲット指定<span class="colon">:</span></dt>
+<dd class="field-odd"><p>任意</p>
+</dd>
+<dt class="field-even">個別オプション<span class="colon">:</span></dt>
+<dd class="field-even"><p>なし</p>
+</dd>
+</dl>
+<section id="id2">
+<h2>オプション<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 100%">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 20.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>分類</p></th>
+<th class="head"><p>項目</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p> 共通オプション</p></td>
+<td><div class="line-block">
+<div class="line">プレイヤー名</div>
+<div class="line">チーム名</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">ターゲットの指定。</div>
+<div class="line">指定プレイヤー/チームだけで表を生成する。</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>集計範囲指定</p></td>
+<td><p><a class="reference internal" href="../../options/search_scope.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> を参照。</p></td>
+</tr>
+<tr class="row-even"><td><p>その他のオプション</p></td>
+<td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>平均素点</dt><dd><p>ゲーム終了時点の素点平均</p>
+</dd>
+<dt>x位偏差</dt><dd><div class="line-block">
+<div class="line">x位の全体平均素点と集計対象の平均素点の差分</div>
+<div class="line">x位偏差 = 集計対象のx位平均素点 - 全体のx位平均素点</div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">素点分析</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【素点分析】
+    集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    集計対象：235 ゲーム
+
+名前       対戦数 平順    平均素点     1位偏差    2位偏差    3位偏差    4位偏差
+---------- ------ ---- ----------- ----------- ---------- ---------- ----------
+Player_011     16 1.81  +33762.5点   ▲2193.3点  +4650.8点  ▲1320.0点  +2773.6点
+Player_001      2 2.00  +52850.0点  +43828.9点      *****  ▲2520.0点      *****
+Player_019     95 2.19  +29796.8点    +958.3点  +1331.7点  +1501.4点   ▲268.5点
+Player_022     29 2.21  +28372.4点   ▲1125.6点  ▲3482.6点  +1794.3点  +1133.6点
+Player_000     24 2.21  +28970.8点    +917.8点  +5017.4点  ▲2453.3点  ▲4126.4点
+Player_006     25 2.24  +28584.0点   ▲2596.1点  +1060.3点    +63.3点  +4573.6点
+Player_002      4 2.25  +24750.0点   ▲7871.1点  +3367.4点      ***** ▲10526.4点
+Player_004     97 2.30  +28016.5点   ▲1657.3点   +821.4点  +1580.0点  +1020.3点
+Player_007      8 2.38  +22262.5点   ▲2737.7点  +7117.4点  ▲3820.0点 ▲13726.4点
+Player_018     31 2.39  +26116.1点    ▲858.6点  ▲3132.6点  +1330.0点   +893.6点
+Player_023    104 2.40  +28621.2点   +5540.9点  +1332.2点  +3375.7点   ▲144.6点
+Player_005     91 2.49  +22813.2点   ▲3223.7点  ▲2495.9点  ▲1235.0点  ▲1490.0点
+Player_008     13 2.54  +21746.2点   ▲2421.1点  ▲2842.6点  ▲3253.3点  ▲1526.4点
+Player_024     17 2.59  +23147.1点   +5228.9点  ▲7142.6点  ▲3260.0点  +6098.6点
+Player_013     81 2.60  +24676.5点   +1168.1点    +90.2点   +639.1点  +1229.6点
+Player_015      8 2.62  +22325.0点   ▲2521.1点  ▲2282.6点  ▲4120.0点  +4473.6点
+Player_010     22 2.64  +24513.6点   ▲4604.4点  +3079.9点  +2360.0点  +1607.0点
+Player_021     74 2.65  +22970.3点   ▲2326.6点   +584.1点    +48.2点   +732.7点
+Player_009     24 2.67  +20087.5点   +4428.9点  ▲2055.3点  ▲5170.0点  ▲3212.1点
+Player_017     21 2.76  +22576.2点  +11778.9点  +3667.4点  ▲3640.0点  ▲1346.4点
+Player_020    106 2.85  +19281.1点   ▲2957.7点   ▲359.8点  ▲2123.0点   ▲312.5点
+Player_014     15 2.87  +19380.0点   ▲5071.1点    ▲82.6点   +500.0点  ▲1326.4点
+Player_016     14 3.00  +17235.7点   ▲2421.1点   +992.4点      *****  ▲1313.9点
+Player_003      4 3.00  +18725.0点       *****  ▲6782.6点  +2130.0点  +2373.6点
+Player_012     15 3.33  +15613.3点   ▲5821.1点  +3217.4点  +7480.0点  +1623.6点
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+  
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">素点分析</a><ul>
+<li><a class="reference internal" href="#id2">オプション</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="matchup_matrix.html"
+                          title="previous chapter">対局対戦マトリクス</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="score_chart.html"
+                          title="next chapter">順位素点相関図</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/users/functions/analysis/score_analysis.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><div class="custom-link" aria-label="custom link">
+    <h3>Links</h3>
+        <ul>
+            <li><a href="../../../genindex.html">Index</a></li>
+            <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/user/">User's Manual</a></li>
+            <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+        </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="score_chart.html" title="順位素点相関図"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="matchup_matrix.html" title="対局対戦マトリクス"
+             >previous</a> |</li>
+          <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能説明</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >分析コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">素点分析</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.17.5.
+      Last updated on 2026-07-07.
+    </div>
+
+  </body>
+</html>
