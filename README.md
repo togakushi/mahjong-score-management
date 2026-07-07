@@ -6,12 +6,12 @@
 
 ### セットアップ方法
 
-* [Slack](https://togakushi.github.io/mahjong-score-management/user/setting/for_slack/index.html)
-* [Discord](https://togakushi.github.io/mahjong-score-management/user/setting/for_discord/index.html)
+* [Slack](https://togakushi.github.io/mahjong-score-management/manual/admins/setting/for_slack/index.html)
+* [Discord](https://togakushi.github.io/mahjong-score-management/manual/admins/setting/for_discord/index.html)
 
 ## 主な機能
 
-### スコア記録（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/input/score_record.html) ）
+### スコア記録（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/record/score.html) ）
 
 以下のフォーマットに一致した投稿をデータベースに取り込む。
 
@@ -32,16 +32,16 @@
 
 ### 成績集計機能
 
-* 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/results_table_all.html) ）
+* 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/summary/results_table_all.html) ）
   * 記録されているスコアを集計し、一覧で出力する。
 
-* グラフ生成（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/point_transition.html) ）
+* グラフ生成（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/summary/point_transition.html) ）
   * 記録されているスコアを集計し、グラフで出力する。
 
-* 成績詳細（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/summary/results_details.html)）
+* 成績詳細（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/summary/results_details.html)）
   * トップ率など詳細生成を集計する。
 
 ### 成績分析機能
 
-* ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/user/functions/output/analysis/ranking.html) ）
+* ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/analysis/ranking.html) ）
   * 記録されているスコアを集計し、ランキング形式で出力する。
