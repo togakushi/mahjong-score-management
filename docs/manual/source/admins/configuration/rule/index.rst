@@ -12,10 +12,11 @@
 .. tip::
    `ルールセット` 定義がすべて省略された場合はプリセット（ :manpage:`default_rule.ini` ）が使用される。
 
-----
+
+設定内容
+--------
 
 .. toctree::
-   :caption: 設定内容
    :maxdepth: 2
 
    ruleset

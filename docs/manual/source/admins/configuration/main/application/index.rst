@@ -6,8 +6,10 @@
 
 ツールの動作を定義する。
 
+設定内容
+--------
+
 .. toctree::
-   :caption: 設定内容
    :maxdepth: 1
 
    setting

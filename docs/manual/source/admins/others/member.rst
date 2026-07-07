@@ -8,11 +8,7 @@
 
 メンバーの登録/削除はスラッシュコマンドで行う。
 
-.. note::
-   ``/commandname`` は以下で定義する
-
-   - `slack-section` の :integrations_section:`slash_command <slack section; slash_command>`
-   - `discord-section` の :integrations_section:`slash_command <discord section; slash_command>`
+.. include:: /material/commandname.inc
 
 登録
    :スラッシュコマンド構文: | /commandname add <登録するプレイヤー名>
