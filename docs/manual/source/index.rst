@@ -6,6 +6,7 @@ Mahjong score management tool
 
 .. toctree::
    :maxdepth: 3
+   :titlesonly:
 
    users/index
 
@@ -15,6 +16,7 @@ Mahjong score management tool
 
 .. toctree::
    :maxdepth: 3
+   :titlesonly:
 
    admins/index
 
@@ -23,7 +25,6 @@ Mahjong score management tool
 ----------------
 
 .. toctree::
-   :name: for_development
    :maxdepth: 2
 
    development/index
@@ -33,7 +34,6 @@ Mahjong score management tool
 --------------------
 
 .. toctree::
-   :glob:
-   :maxdepth: 1
+   :maxdepth: 2
 
-   commandline_tool/*
+   commandline_tool/index

@@ -1,9 +1,12 @@
 管理者向けマニュアル
 ====================
 
+内容説明
+--------
+
 .. toctree::
-   :name: for_administrators
    :maxdepth: 2
+   :titlesonly:
 
    setting/index
    configuration/index
