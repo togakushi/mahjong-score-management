@@ -55,10 +55,12 @@ html_theme_options = {
     "root_icon": "ma-jan_pai.png",
     "root_url": "",
     "root_name": "",
+    "globaltoc_collapse": True,
 }
 html_sidebars = {
     "**": [
-        "smarttoc.html",
+        "localtoc.html",
+        "globaltoc.html",
         "relations.html",
         "sourcelink.html",
         "links.html",
