@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     list(param_data.keyword_test.values()),
     ids=list(param_data.keyword_test.keys()),
 )
-def test_keyword(parameter: str, config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_dispatch_register(parameter: str, config: str, word: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
     呼び出しキーワードが設定からディスパッチテーブルに反映されることを検証する。
 
