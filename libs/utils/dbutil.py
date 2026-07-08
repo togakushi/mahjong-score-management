@@ -129,7 +129,7 @@ def query(keyword: str) -> str:
         "RANKING_RATINGS": "ranking/ratings.sql",
         "REPORT_PERSONAL_DATA": "report/personal_data.sql",
         "REPORT_COUNT_DATA": "report/count_data.sql",
-        "REPORT_MONTHLY": "report/monthly.sql",
+        "REPORT_GAME_STATISTICS": "report/game_statistics.sql",
         "REPORT_RESULTS_LIST": "report/results_list.sql",
         "REPORT_WINNER": "report/winner.sql",
         "REPORT_MATRIX_TABLE": "report/matrix_table.sql",

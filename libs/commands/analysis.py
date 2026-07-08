@@ -70,7 +70,7 @@ def main(m: "MessageParserProtocol") -> None:
             else:
                 deliverables.score_deviation.aggregation(m)
         elif g.params.report and g.params.statistics:
-            deliverables.monthly.plot(m)
+            deliverables.game_statistics.plot(m)
         else:
             if g.params.versus_matrix:  # 対局対戦マトリクス
                 deliverables.matrix.plot(m)

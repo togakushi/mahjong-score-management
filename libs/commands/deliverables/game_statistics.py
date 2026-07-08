@@ -26,10 +26,15 @@ def plot(m: "MessageParserProtocol") -> None:
     """
     # パラメータ更新
     m.status.command_type = CommandType.REPORT
+    print(g.params.collection)
 
     # データ収集
-    title: str = "月間ゲーム統計"
-    df = g.params.read_data("REPORT_MONTHLY")
+    if g.params.collection == "yearly":
+        title: str = "年間ゲーム統計"
+    else:
+        title: str = "月間ゲーム統計"
+
+    df = g.params.read_data("REPORT_GAME_STATISTICS")
     results = df.transpose().to_dict()
 
     if len(results) == 0:

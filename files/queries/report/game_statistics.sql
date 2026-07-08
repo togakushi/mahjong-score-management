@@ -1,6 +1,7 @@
--- report.monthly
+-- report.game_statistics
 select
-    strftime('%Y-%m', collection_daily) as 集計月,
+    --[monthly] strftime('%Y-%m', collection_daily) as 集計月,
+    --[yearly] strftime('%Y', collection_daily) as 集計年,
     count() / 4 as 対戦数,
     replace(printf('%.1fpt', round(sum(point), 1)), '-', '▲') as 供託,
     count(rpoint < -1 or null) as '飛んだ人数(延べ)',
@@ -16,7 +17,9 @@ where
     --[separate] and source = :source
     --[search_word] and comment like :search_word
 group by
-    strftime('%Y-%m', collection_daily)
+    --[monthly] strftime('%Y-%m', collection_daily)
+    --[yearly] strftime('%Y', collection_daily)
 order by
-    strftime('%Y-%m', collection_daily) desc
+    --[monthly] strftime('%Y-%m', collection_daily) desc
+    --[yearly] strftime('%Y', collection_daily) desc
 ;
