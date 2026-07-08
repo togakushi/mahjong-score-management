@@ -29,7 +29,10 @@ def plot(m: "MessageParserProtocol") -> None:
 
     # データ収集
     title: str = "月間ゲーム統計"
-    df = g.params.read_data("REPORT_MONTHLY")
+    if g.params.collection == "yearly":
+        title = "年間ゲーム統計"
+
+    df = g.params.read_data("REPORT_GAME_STATISTICS")
     results = df.transpose().to_dict()
 
     if len(results) == 0:

@@ -13,18 +13,18 @@
 - :doc:`libs.commands.deliverables.graph_summary`: ポイント推移/順位推移グラフを生成
 - :doc:`libs.commands.deliverables.winner`: 月間上位5名の表示
 - :doc:`libs.commands.deliverables.matrix`: 直接対戦マトリクスを生成
-- :doc:`libs.commands.deliverables.monthly`: 月間成績を集計
+- :doc:`libs.commands.deliverables.game_statistics`: ゲーム統計情報を集計
 - :doc:`libs.commands.deliverables.stats_list`: 個人/チーム成績一覧表を生成
 - :doc:`libs.commands.deliverables.stats_report`: 成績報告書を作成
 """
 
 from . import (
+    game_statistics,
     graph_personal,
     graph_rating,
     graph_regression,
     graph_summary,
     matrix,
-    monthly,
     ranking_calc,
     rating_calc,
     results_detail,
@@ -37,12 +37,12 @@ from . import (
 )
 
 __all__ = [
+    "game_statistics",
     "graph_personal",
     "graph_rating",
     "graph_regression",
     "graph_summary",
     "matrix",
-    "monthly",
     "ranking_calc",
     "rating_calc",
     "results_detail",

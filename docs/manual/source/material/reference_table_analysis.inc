@@ -53,6 +53,16 @@
      - .. 統計
      - .. 素点
      - 対戦マトリクス表の表示
+   * - ゲーム統計
+     - `deliverables-game_statistics`
+     - 任意
+     - .. グラフ
+     - |:/:|
+     - .. レーティング
+     - .. 対戦
+     - |:/:|
+     - .. 素点
+     - ゲーム傾向の集計表を表示
    * - :rspan:`1` 素点分析
      - `deliverables-score_analysis`
      - :rspan:`1` 任意
