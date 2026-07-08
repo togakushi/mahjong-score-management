@@ -118,3 +118,4 @@
      - .. 素点
      - 区間区切り集計グラフを表示
 ..
+.. seealso:: `option-analysis`

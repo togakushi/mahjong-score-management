@@ -39,26 +39,3 @@
 
 .. include:: /material/reference_table_legend.inc
 .. include:: /material/reference_table_summary.inc
-
-
-オプション概要
---------------
-
-.. summary:: グラフ
-
-   ポイント集計、順位集計の表を折れ線グラフの表示に切り替える。
-
-.. summary:: 順位
-
-   順位変動、月間生成上位の表示に切り替える。
-
-.. summary:: 比較, 差分, 点差
-
-   通算ポイント集計表を差分形式に切り替える。
-
-.. summary:: 対戦, 対戦結果
-
-   対戦相手とのゲーム結果を表示する。
-
-   - `deliverables-results_details` にゲーム同卓者との結果を追加表示する。
-   - ターゲットの複数指定と同時指定で `deliverables-direct_match` を表示する。
