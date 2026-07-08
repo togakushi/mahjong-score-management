@@ -132,3 +132,5 @@
 .. tip::
 
    `deliverables-results_details` の :summary:`統計` オプション、 :summary:`対戦` オプション、 :summary:`戦績` オプションの効果は重複する。
+
+.. seealso:: `option-summary`

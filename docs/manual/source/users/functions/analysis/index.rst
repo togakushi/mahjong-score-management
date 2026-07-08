@@ -28,43 +28,17 @@
 
    .. note:: ``分析コマンド`` は以下で定義される
 
-      - `analysis セクション <results_management>` の :sub_commands_section:`commandword`
+      - `analysisセクション <results_management>` の :sub_commands_section:`commandword`
 
 :スラッシュコマンド: /commandname analysis [`ターゲット`] [`オプション`]
 
    .. include:: /material/commandname.inc
 
 
+.. _analysis_option_combination:
+
 オプション組み合わせ表
 ----------------------
 
 .. include:: /material/reference_table_legend.inc
 .. include:: /material/reference_table_analysis.inc
-
-
-オプション概要
---------------
-
-.. analysis:: グラフ
-
-   グラフ表記に切り替える。
-
-.. analysis:: レポート
-
-   成績詳細レポートを生成する。
-
-.. analysis:: レート, レーティング
-
-   レーティングを集計。
-
-.. analysis:: 対戦, 対戦結果
-
-   `deliverables-matchup_matrix` の表示。
-
-.. analysis:: 統計
-
-   各プレイヤー/チームの成績比較。
-
-.. analysis:: 素点
-
-   ゲーム終了時点の素点情報を基にした成績の分析を行う。

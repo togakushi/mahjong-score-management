@@ -42,7 +42,7 @@
        :デフォルト: 80
        :指定例: 区切200
 
-       デフォルト値の変更は `analysis セクション <results_management>` の :sub_commands_section:`interval` で行う。
+       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`interval` で行う。
 
 
 項目説明
