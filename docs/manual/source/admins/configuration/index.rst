@@ -12,6 +12,7 @@
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
 
    main/index
    rule/index
