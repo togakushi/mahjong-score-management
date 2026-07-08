@@ -34,6 +34,8 @@
    .. include:: /material/commandname.inc
 
 
+.. _summary_option_combination:
+
 オプション組み合わせ表
 ----------------------
 
