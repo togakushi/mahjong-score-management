@@ -5,7 +5,7 @@
    * - :rspan:`1` 分類
      - :rspan:`1` 内容
      - :rspan:`1` ターゲット指定
-     - :cspan:`5` 指定オプション
+     - :cspan:`5` `option-analysis`
      - :rspan:`1` 備考
    * - :analysis:`グラフ`
      - :analysis:`レポート`
@@ -118,4 +118,3 @@
      - .. 素点
      - 区間区切り集計グラフを表示
 ..
-.. seealso:: `option-analysis`
