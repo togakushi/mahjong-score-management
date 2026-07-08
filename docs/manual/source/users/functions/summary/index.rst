@@ -18,6 +18,7 @@
    point_transition
    ranking_change
    direct_match
+   monthly
 
 
 コマンド構文

@@ -28,7 +28,7 @@ def plot(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.REPORT
 
     # データ収集
-    title: str = "月別ゲーム統計"
+    title: str = "月間ゲーム統計"
     df = g.params.read_data("REPORT_MONTHLY")
     results = df.transpose().to_dict()
 

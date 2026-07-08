@@ -69,6 +69,8 @@ def main(m: "MessageParserProtocol") -> None:
             deliverables.versus.aggregation(m)  # 直接対戦
         elif g.params.score_comparisons:
             deliverables.results_summary.difference(m)  # 成績サマリ(差分モード)
+        elif g.params.statistics:
+            deliverables.monthly.plot(m)  # 月間統計
         else:
             if g.params.graph:
                 deliverables.graph_summary.point_plot(m)  # ポイント推移
