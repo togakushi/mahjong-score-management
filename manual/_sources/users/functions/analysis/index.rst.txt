@@ -12,6 +12,7 @@
    rating_table
    rating_graph
    matchup_matrix
+   game_statistics
    score_analysis
    score_chart
    results_comparison

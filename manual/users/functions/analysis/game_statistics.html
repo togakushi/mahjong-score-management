@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>月間統計情報 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲーム統計情報 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="分析コマンド" href="../analysis/index.html" />
-    <link rel="prev" title="直接対戦結果" href="direct_match.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="素点分析" href="score_analysis.html" />
+    <link rel="prev" title="対局対戦マトリクス" href="matchup_matrix.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -64,7 +64,7 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">月間統計情報</a><ul>
+<li><a class="reference internal" href="#">ゲーム統計情報</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
 <li><a class="reference internal" href="#id3">項目説明</a></li>
 </ul>
@@ -78,8 +78,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">利用者向けマニュアル</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../record/index.html">成績記録機能</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">成績管理機能</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">集計コマンド</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../analysis/index.html">分析コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../summary/index.html">集計コマンド</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">分析コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../others/index.html">その他機能</a></li>
@@ -118,10 +118,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../analysis/index.html" title="分析コマンド"
+          <a href="score_analysis.html" title="素点分析"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="direct_match.html" title="直接対戦結果"
+          <a href="matchup_matrix.html" title="対局対戦マトリクス"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -135,8 +135,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">集計コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">月間統計情報</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">分析コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ゲーム統計情報</a></li>
                 <li class="right">
                     
 
@@ -166,15 +166,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="deliverables-monthly">
-<span id="id1"></span><h1>月間統計情報<a class="headerlink" href="#deliverables-monthly" title="Link to this heading">¶</a></h1>
+  <section id="deliverables-game-statistics">
+<span id="id1"></span><h1>ゲーム統計情報<a class="headerlink" href="#deliverables-game-statistics" title="Link to this heading">¶</a></h1>
 <p>ゲーム全体の傾向を月単位でまとめる。</p>
 <dl class="field-list simple">
 <dt class="field-odd">コマンドタイプ<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a></p>
 </dd>
 <dt class="field-even">必須オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="results_details.html#summary-統計" title="統計"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">統計</span></code></a></p>
+<dd class="field-even"><p><a class="reference internal" href="index.html#analysis-レポート" title="レポート"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">レポート</span></code></a> + <a class="reference internal" href="index.html#analysis-統計" title="統計"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">統計</span></code></a></p>
 </dd>
 <dt class="field-odd">ターゲット指定<span class="colon">:</span></dt>
 <dd class="field-odd"><p>任意</p>
@@ -198,7 +198,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td rowspan="3"><p> 共通オプション</p></td>
+<tr class="row-even"><td rowspan="4"><p> 共通オプション</p></td>
 <td><div class="line-block">
 <div class="line">プレイヤー名</div>
 <div class="line">チーム名</div>
@@ -210,14 +210,21 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>単独指定時は <a class="reference internal" href="results_details.html#deliverables-results-details"><span class="std std-ref">成績詳細</span></a> に切り替わる。</p>
+<p>単独指定時は <a class="reference internal" href="../summary/results_details.html#deliverables-results-details"><span class="std std-ref">成績詳細</span></a> に切り替わる。</p>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><p>集計範囲指定</p></td>
 <td><p><a class="reference internal" href="../../options/search_scope.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> を参照。</p></td>
 </tr>
-<tr class="row-even"><td><p>その他のオプション</p></td>
+<tr class="row-even"><td><p>グラフ集約オプション</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="../../options/common.html#common-年次" title="年次"><code class="xref any mahjong mahjong-common docutils literal notranslate"><span class="pre">年次</span></code></a> のみ有効。その他はすべて <a class="reference internal" href="../../options/common.html#common-月次" title="月次"><code class="xref any mahjong mahjong-common docutils literal notranslate"><span class="pre">月次</span></code></a> となる。</div>
+<div class="line"><a class="reference internal" href="../../options/common.html#grouping-options"><span class="std std-ref">集約オプション</span></a> を参照。</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>その他のオプション</p></td>
 <td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
 </tr>
 </tbody>
@@ -226,7 +233,7 @@
 <section id="id3">
 <h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <dl>
-<dt>集計月</dt><dd><p>集計単位となる月</p>
+<dt>集計月 / 集計年</dt><dd><p>集計単位となる月、年</p>
 </dd>
 <dt>対戦数</dt><dd><p>集計単位期間の対戦数</p>
 </dd>
@@ -244,9 +251,9 @@
 <p>1ゲームで複数人がマイナスになりえるので 100% を超える可能性がある</p>
 </div>
 </dd>
-<dt>最大素点</dt><dd><p>集計月のゲーム内の最大の素点</p>
+<dt>最大素点</dt><dd><p>集計単位期間のゲーム内の最大の素点</p>
 </dd>
-<dt>最小素点</dt><dd><p>集計月のゲーム内の最小の素点</p>
+<dt>最小素点</dt><dd><p>集計単位期間のゲーム内の最小の素点</p>
 </dd>
 </dl>
 </section>
@@ -262,7 +269,7 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">月間統計情報</a><ul>
+<li><a class="reference internal" href="#">ゲーム統計情報</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
 <li><a class="reference internal" href="#id3">項目説明</a></li>
 </ul>
@@ -276,8 +283,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">利用者向けマニュアル</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../record/index.html">成績記録機能</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">成績管理機能</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">集計コマンド</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../analysis/index.html">分析コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../summary/index.html">集計コマンド</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">分析コマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../others/index.html">その他機能</a></li>
@@ -316,10 +323,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../analysis/index.html" title="分析コマンド"
+          <a href="score_analysis.html" title="素点分析"
              >next</a> |</li>
         <li class="right" >
-          <a href="direct_match.html" title="直接対戦結果"
+          <a href="matchup_matrix.html" title="対局対戦マトリクス"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -333,8 +340,8 @@
           </li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" >集計コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">月間統計情報</a></li>
+          <li class="nav-item nav-item-3"><a href="index.html" >分析コマンド</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ゲーム統計情報</a></li>
                 <li class="right">
                     
 

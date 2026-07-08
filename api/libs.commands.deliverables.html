@@ -18,7 +18,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.commands.deliverables.graph_personal module" href="libs.commands.deliverables.graph_personal.html" />
+    <link rel="next" title="libs.commands.deliverables.game_statistics module" href="libs.commands.deliverables.game_statistics.html" />
     <link rel="prev" title="libs.commands package" href="libs.commands.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -77,8 +77,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.graph_personal.html"
-                          title="next chapter">libs.commands.deliverables.graph_personal module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.game_statistics.html"
+                          title="next chapter">libs.commands.deliverables.game_statistics module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -102,7 +102,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.graph_personal.html" title="libs.commands.deliverables.graph_personal module"
+          <a href="libs.commands.deliverables.game_statistics.html" title="libs.commands.deliverables.game_statistics module"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="libs.commands.html" title="libs.commands package"
@@ -165,7 +165,7 @@
 <li><p><a class="reference internal" href="libs.commands.deliverables.graph_summary.html"><span class="doc">libs.commands.deliverables.graph_summary module</span></a>: ポイント推移/順位推移グラフを生成</p></li>
 <li><p><a class="reference internal" href="libs.commands.deliverables.winner.html"><span class="doc">libs.commands.deliverables.winner module</span></a>: 月間上位5名の表示</p></li>
 <li><p><a class="reference internal" href="libs.commands.deliverables.matrix.html"><span class="doc">libs.commands.deliverables.matrix module</span></a>: 直接対戦マトリクスを生成</p></li>
-<li><p><a class="reference internal" href="libs.commands.deliverables.monthly.html"><span class="doc">libs.commands.deliverables.monthly module</span></a>: 月間成績を集計</p></li>
+<li><p><a class="reference internal" href="libs.commands.deliverables.game_statistics.html"><span class="doc">libs.commands.deliverables.game_statistics module</span></a>: ゲーム統計情報を集計</p></li>
 <li><p><a class="reference internal" href="libs.commands.deliverables.stats_list.html"><span class="doc">libs.commands.deliverables.stats_list module</span></a>: 個人/チーム成績一覧表を生成</p></li>
 <li><p><a class="reference internal" href="libs.commands.deliverables.stats_report.html"><span class="doc">libs.commands.deliverables.stats_report module</span></a>: 成績報告書を作成</p></li>
 </ul>
@@ -173,6 +173,10 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="libs.commands.deliverables.game_statistics.html">libs.commands.deliverables.game_statistics module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.game_statistics.html#libs.commands.deliverables.game_statistics.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="libs.commands.deliverables.graph_personal.html">libs.commands.deliverables.graph_personal module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.graph_personal.html#libs.commands.deliverables.graph_personal.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.graph_personal.html#libs.commands.deliverables.graph_personal.statistics_plot"><code class="docutils literal notranslate"><span class="pre">statistics_plot()</span></code></a></li>
@@ -223,10 +227,6 @@
 <li class="toctree-l1"><a class="reference internal" href="libs.commands.deliverables.matrix.html">libs.commands.deliverables.matrix module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.matrix.html#libs.commands.deliverables.matrix.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.matrix.html#libs.commands.deliverables.matrix.matrix_table"><code class="docutils literal notranslate"><span class="pre">matrix_table()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="libs.commands.deliverables.monthly.html">libs.commands.deliverables.monthly module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libs.commands.deliverables.monthly.html#libs.commands.deliverables.monthly.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.commands.deliverables.ranking_calc.html">libs.commands.deliverables.ranking_calc module</a><ul>
@@ -319,8 +319,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.commands.deliverables.graph_personal.html"
-                          title="next chapter">libs.commands.deliverables.graph_personal module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.game_statistics.html"
+                          title="next chapter">libs.commands.deliverables.game_statistics module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -344,7 +344,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.commands.deliverables.graph_personal.html" title="libs.commands.deliverables.graph_personal module"
+          <a href="libs.commands.deliverables.game_statistics.html" title="libs.commands.deliverables.game_statistics module"
              >next</a> |</li>
         <li class="right" >
           <a href="libs.commands.html" title="libs.commands package"
