@@ -29,10 +29,9 @@ def plot(m: "MessageParserProtocol") -> None:
     print(g.params.collection)
 
     # データ収集
+    title: str = "月間ゲーム統計"
     if g.params.collection == "yearly":
-        title: str = "年間ゲーム統計"
-    else:
-        title: str = "月間ゲーム統計"
+        title = "年間ゲーム統計"
 
     df = g.params.read_data("REPORT_GAME_STATISTICS")
     results = df.transpose().to_dict()
