@@ -5,7 +5,7 @@
    * - :rspan:`1` 分類
      - :rspan:`1` 内容
      - :rspan:`1` ターゲット指定
-     - :cspan:`6` 指定オプション
+     - :cspan:`6` `option-summary`
      - :rspan:`1` 備考
    * - :summary:`グラフ`
      - :summary:`順位`
@@ -132,5 +132,3 @@
 .. tip::
 
    `deliverables-results_details` の :summary:`統計` オプション、 :summary:`対戦` オプション、 :summary:`戦績` オプションの効果は重複する。
-
-.. seealso:: `option-summary`
