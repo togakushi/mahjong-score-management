@@ -7,10 +7,10 @@
 .. toctree::
    :maxdepth: 2
 
+   dedicated
    search_scope
    target
    common
-   quick_reference
 
 
 オプション処理ロジック

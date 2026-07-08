@@ -43,7 +43,7 @@
        :デフォルト: 3
        :指定例: トップ10
 
-       デフォルト値の変更は `analysis セクション <results_management>` の :sub_commands_section:`ranked` で行う。
+       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う。
 
 
 項目説明

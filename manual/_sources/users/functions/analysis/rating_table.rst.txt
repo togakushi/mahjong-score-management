@@ -42,7 +42,7 @@
        :デフォルト: 3
        :指定例: トップ10
 
-       デフォルト値の変更は `analysis セクション <results_management>` の :sub_commands_section:`ranked` で行う。
+       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う。
    * - その他
      - :summary:`グラフ`
      - `deliverables-rating_graph` に切り替える。

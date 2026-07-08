@@ -22,7 +22,7 @@
 
    - `function-summary`
    - `function-analysis`
-   - `function-help`
+   - `その他のコマンド <function-others>`
 
 #. ターゲットの判定
 
