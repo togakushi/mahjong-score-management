@@ -28,7 +28,7 @@
 
    .. note:: ``分析コマンド`` は以下で定義される
 
-      - `analysis セクション <results_management>` の :sub_commands_section:`commandword`
+      - `analysisセクション <results_management>` の :sub_commands_section:`commandword`
 
 :スラッシュコマンド: /commandname analysis [`ターゲット`] [`オプション`]
 

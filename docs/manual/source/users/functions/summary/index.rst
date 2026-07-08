@@ -27,7 +27,7 @@
 
    .. note:: ``集計コマンド`` は以下で定義される
 
-      - `summary セクション <results_management>` の :sub_commands_section:`commandword`
+      - `summaryセクション <results_management>` の :sub_commands_section:`commandword`
 
 :スラッシュコマンド: /commandname summary [`ターゲット`] [`オプション`]
 
