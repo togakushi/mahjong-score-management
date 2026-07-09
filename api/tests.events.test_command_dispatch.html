@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>libs.utils.graphutil module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tests.events.test_command_dispatch module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.utils.textutil module" href="libs.utils.textutil.html" />
-    <link rel="prev" title="libs.utils.dictutil module" href="libs.utils.dictutil.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="tests.events.test_integrations_web module" href="tests.events.test_integrations_web.html" />
+    <link rel="prev" title="tests.events.param_data module" href="tests.events.param_data.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,10 +63,10 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.utils.graphutil module</a><ul>
-<li><a class="reference internal" href="#libs.utils.graphutil.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.graphutil.gen_xlabel"><code class="docutils literal notranslate"><span class="pre">gen_xlabel()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.graphutil.xticks_parameter"><code class="docutils literal notranslate"><span class="pre">xticks_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#">tests.events.test_command_dispatch module</a><ul>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.test_analysis_command"><code class="docutils literal notranslate"><span class="pre">test_analysis_command()</span></code></a></li>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.test_summary_command"><code class="docutils literal notranslate"><span class="pre">test_summary_command()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -74,13 +74,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.utils.dictutil.html"
-                          title="previous chapter">libs.utils.dictutil module</a></p>
+    <p class="topless"><a href="tests.events.param_data.html"
+                          title="previous chapter">tests.events.param_data module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.utils.textutil.html"
-                          title="next chapter">libs.utils.textutil module</a></p>
+    <p class="topless"><a href="tests.events.test_integrations_web.html"
+                          title="next chapter">tests.events.test_integrations_web module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -104,10 +104,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.utils.textutil.html" title="libs.utils.textutil module"
+          <a href="tests.events.test_integrations_web.html" title="tests.events.test_integrations_web module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="libs.utils.dictutil.html" title="libs.utils.dictutil module"
+          <a href="tests.events.param_data.html" title="tests.events.param_data module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -119,9 +119,9 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.utils.html" accesskey="U">libs.utils package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.utils.graphutil module</a></li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.events.html" accesskey="U">tests.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tests.events.test_command_dispatch module</a></li>
                 <li class="right">
                     
 
@@ -151,50 +151,64 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-libs.utils.graphutil">
-<span id="libs-utils-graphutil-module"></span><h1>libs.utils.graphutil module<a class="headerlink" href="#module-libs.utils.graphutil" title="Link to this heading">¶</a></h1>
-<p>libs/utils/graphutil.py</p>
+  <section id="module-tests.events.test_command_dispatch">
+<span id="tests-events-test-command-dispatch-module"></span><h1>tests.events.test_command_dispatch module<a class="headerlink" href="#module-tests.events.test_command_dispatch" title="Link to this heading">¶</a></h1>
+<p>動作フラグからキーワードディスパッチを検証するテスト。</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.graphutil.setup">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.graphutil.</span></span><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.graphutil.setup" title="Link to this definition">¶</a></dt>
-<dd><p>グラフ設定初期化</p>
+<dt class="sig sig-object py" id="tests.events.test_command_dispatch.initialize">
+<span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.initialize" title="Link to this definition">¶</a></dt>
+<dd><p>メッセージディスパッチ用パーサを初期化する。</p>
+<p>標準入出力アダプタを生成し、コマンド判定フラグを事前設定する。</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None.</strong></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.graphutil.gen_xlabel">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.graphutil.</span></span><span class="sig-name descname"><span class="pre">gen_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.graphutil.gen_xlabel" title="Link to this definition">¶</a></dt>
-<dd><p>X軸ラベル生成</p>
+<dt class="sig sig-object py" id="tests.events.test_command_dispatch.test_analysis_command">
+<span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_analysis_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_versus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_statistics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.test_analysis_command" title="Link to this definition">¶</a></dt>
+<dd><p>分析コマンドのルーティングを検証する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>game_count</strong> (<em>int</em>) – 対戦数</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flg_graph</strong> (<em>bool</em>) – グラフオプション</p></li>
+<li><p><strong>flg_report</strong> (<em>bool</em>) – レポートオプション</p></li>
+<li><p><strong>flg_rating</strong> (<em>bool</em>) – レーティングオプション</p></li>
+<li><p><strong>flg_versus</strong> (<em>bool</em>) – 対戦オプション</p></li>
+<li><p><strong>flg_statistics</strong> (<em>bool</em>) – 統計オプション</p></li>
+<li><p><strong>flg_score</strong> (<em>bool</em>) – 素点オプション</p></li>
+<li><p><strong>player_count</strong> (<em>int</em>) – ターゲットに指定される人数</p></li>
+<li><p><strong>initialize</strong> (<em>fixture</em>) – 初期化fixture</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>X軸ラベル</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.graphutil.xticks_parameter">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.graphutil.</span></span><span class="sig-name descname"><span class="pre">xticks_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.graphutil.xticks_parameter" title="Link to this definition">¶</a></dt>
-<dd><p>X軸(xticks)に渡すパラメータを生成</p>
+<dt class="sig sig-object py" id="tests.events.test_command_dispatch.test_summary_command">
+<span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_summary_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_comparisons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_versus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.test_summary_command" title="Link to this definition">¶</a></dt>
+<dd><p>集計コマンドのルーティングを検証する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>days_list</strong> (<em>list</em><em>[</em><em>Any</em><em>]</em>) – 日付リスト</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flg_graph</strong> (<em>bool</em>) – グラフオプション</p></li>
+<li><p><strong>flg_order</strong> (<em>bool</em>) – 順位オプション</p></li>
+<li><p><strong>flg_comparisons</strong> (<em>bool</em>) – 比較オプション</p></li>
+<li><p><strong>flg_versus</strong> (<em>bool</em>) – 対戦オプション</p></li>
+<li><p><strong>player_count</strong> (<em>int</em>) – ターゲットに指定される人数</p></li>
+<li><p><strong>initialize</strong> (<em>fixture</em>) – 初期化fixture</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>パラメータ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict[str, Any]</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -211,10 +225,10 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">libs.utils.graphutil module</a><ul>
-<li><a class="reference internal" href="#libs.utils.graphutil.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.graphutil.gen_xlabel"><code class="docutils literal notranslate"><span class="pre">gen_xlabel()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.graphutil.xticks_parameter"><code class="docutils literal notranslate"><span class="pre">xticks_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#">tests.events.test_command_dispatch module</a><ul>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.test_analysis_command"><code class="docutils literal notranslate"><span class="pre">test_analysis_command()</span></code></a></li>
+<li><a class="reference internal" href="#tests.events.test_command_dispatch.test_summary_command"><code class="docutils literal notranslate"><span class="pre">test_summary_command()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -222,13 +236,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="libs.utils.dictutil.html"
-                          title="previous chapter">libs.utils.dictutil module</a></p>
+    <p class="topless"><a href="tests.events.param_data.html"
+                          title="previous chapter">tests.events.param_data module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.utils.textutil.html"
-                          title="next chapter">libs.utils.textutil module</a></p>
+    <p class="topless"><a href="tests.events.test_integrations_web.html"
+                          title="next chapter">tests.events.test_integrations_web module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -252,10 +266,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.utils.textutil.html" title="libs.utils.textutil module"
+          <a href="tests.events.test_integrations_web.html" title="tests.events.test_integrations_web module"
              >next</a> |</li>
         <li class="right" >
-          <a href="libs.utils.dictutil.html" title="libs.utils.dictutil module"
+          <a href="tests.events.param_data.html" title="tests.events.param_data module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -267,9 +281,9 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="libs.utils.html" >libs.utils package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">libs.utils.graphutil module</a></li>
+          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="tests.events.html" >tests.events package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">tests.events.test_command_dispatch module</a></li>
                 <li class="right">
                     
 
