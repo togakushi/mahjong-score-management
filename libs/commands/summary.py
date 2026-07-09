@@ -8,11 +8,54 @@ import libs.global_value as g
 from libs.commands import deliverables
 from libs.domain.datamodels import CommandAttrs
 from libs.domain.section import BaseSection
-from libs.types import CommandType
+from libs.types import CommandType, DispatchRule
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+COMMAND_DISPATCHER = [
+    DispatchRule(
+        "成績グラフ",
+        lambda: len(g.params.player_list) == 1 and g.params.graph,
+        deliverables.graph_personal.plot,
+    ),
+    DispatchRule(
+        "成績詳細",
+        lambda: len(g.params.player_list) == 1,
+        deliverables.results_detail.aggregation,
+    ),
+    DispatchRule(
+        "直接対戦結果",
+        lambda: bool(g.params.competition_list) and g.params.versus_matrix,
+        deliverables.versus.aggregation,
+    ),
+    DispatchRule(
+        "順位変動グラフ",
+        lambda: g.params.order and g.params.graph,
+        deliverables.graph_summary.rank_plot,
+    ),
+    DispatchRule(
+        "通算ポイント推移グラフ",
+        lambda: g.params.graph,
+        deliverables.graph_summary.point_plot,
+    ),
+    DispatchRule(
+        "成績上位者",
+        lambda: g.params.order,
+        deliverables.winner.plot,
+    ),
+    DispatchRule(
+        "成績サマリ表（差分）",
+        lambda: g.params.score_comparisons,
+        deliverables.results_summary.difference,
+    ),
+    DispatchRule(
+        "成績サマリ表（全体）",
+        lambda: True,
+        deliverables.results_summary.aggregation,
+    ),
+]
 
 
 class SummaryConfig(BaseSection, CommandAttrs):
@@ -53,24 +96,7 @@ def main(m: "MessageParserProtocol") -> None:
 
     """
     g.params = dictutil.placeholder(g.cfg.summary, m)
-
-    if len(g.params.player_list) == 1:  # 対象が単独
-        if g.params.graph:
-            deliverables.graph_personal.plot(m)
-        else:
-            deliverables.results_detail.aggregation(m)  # 成績詳細
-    else:  # 対象が複数
-        if g.params.order:
-            if g.params.graph:
-                deliverables.graph_summary.rank_plot(m)  # 順位変動
-            else:
-                deliverables.winner.plot(m)  # 成績上位
-        elif g.params.versus_matrix and g.params.competition_list:
-            deliverables.versus.aggregation(m)  # 直接対戦
-        elif g.params.score_comparisons:
-            deliverables.results_summary.difference(m)  # 成績サマリ(差分モード)
-        else:
-            if g.params.graph:
-                deliverables.graph_summary.point_plot(m)  # ポイント推移
-            else:
-                deliverables.results_summary.aggregation(m)  # 成績サマリ(通常モード)
+    for command in COMMAND_DISPATCHER:
+        if command.condition():
+            command.handler(m)
+            break
