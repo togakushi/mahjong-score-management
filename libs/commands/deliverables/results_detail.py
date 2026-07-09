@@ -193,6 +193,11 @@ def comparison(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.SUMMARY
     g.params.guest_skip = g.params.guest_skip2
 
+    if not g.params.player_list:
+        if g.params.individual:
+            g.params.player_list = g.cfg.member.lists
+        else:
+            g.params.player_list = g.cfg.team.lists
     if g.params.player_name in g.cfg.team.lists:
         g.params.update_from_dict({"individual": False})
     elif g.params.player_name in g.cfg.member.lists:

@@ -34,6 +34,16 @@ def main(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.REPORT
     g.params.guest_skip = g.params.guest_skip2
 
+    if not g.params.player_list:
+        if g.params.individual:
+            g.params.player_list = g.cfg.member.lists
+        else:
+            g.params.player_list = g.cfg.team.lists
+    if g.params.player_name in g.cfg.team.lists:
+        g.params.update_from_dict({"individual": False})
+    elif g.params.player_name in g.cfg.member.lists:
+        g.params.update_from_dict({"individual": True})
+
     # データ取得
     game_info = GameInfo()
     df = g.params.read_data("REPORT_RESULTS_LIST").reset_index(drop=True)
