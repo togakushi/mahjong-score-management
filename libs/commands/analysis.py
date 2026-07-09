@@ -8,11 +8,69 @@ import libs.global_value as g
 from libs.commands import deliverables
 from libs.domain.datamodels import CommandAttrs
 from libs.domain.section import BaseSection
-from libs.types import CommandType
+from libs.types import CommandType, DispatchRule
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+COMMAND_DISPATCHER = [
+    DispatchRule(
+        "成績レポート",
+        lambda: len(g.params.player_list) == 1 and g.params.report,
+        deliverables.stats_report.gen_pdf,
+    ),
+    DispatchRule(
+        "成績分析",
+        lambda: len(g.params.player_list) == 1 and g.params.graph,
+        deliverables.graph_personal.statistics_plot,
+    ),
+    DispatchRule(
+        "レーティング推移グラフ",
+        lambda: g.params.rating and g.params.graph,
+        deliverables.graph_rating.plot,
+    ),
+    DispatchRule(
+        "レーティング表",
+        lambda: g.params.rating,
+        deliverables.rating_calc.aggregation,
+    ),
+    DispatchRule(
+        "順位素点相関図",
+        lambda: g.params.raw_score and g.params.graph,
+        deliverables.graph_regression.plot,
+    ),
+    DispatchRule(
+        "素点分析",
+        lambda: g.params.raw_score,
+        deliverables.score_deviation.aggregation,
+    ),
+    DispatchRule(
+        "ゲーム統計情報",
+        lambda: g.params.report and g.params.statistics,
+        deliverables.game_statistics.plot,
+    ),
+    DispatchRule(
+        "対局対戦マトリクス",
+        lambda: g.params.versus_matrix,
+        deliverables.matrix.plot,
+    ),
+    DispatchRule(
+        "成績比較表",
+        lambda: g.params.statistics and g.params.graph,
+        deliverables.stats_list.main,
+    ),
+    DispatchRule(
+        "成績詳細一覧",
+        lambda: g.params.statistics,
+        deliverables.stats_list.main,
+    ),
+    DispatchRule(
+        "ランキング",
+        lambda: True,
+        deliverables.ranking_calc.aggregation,
+    ),
+]
 
 
 class AnalysisConfig(BaseSection, CommandAttrs):
@@ -53,36 +111,7 @@ def main(m: "MessageParserProtocol") -> None:
 
     """
     g.params = dictutil.placeholder(g.cfg.analysis, m)
-
-    if len(g.params.player_list) == 1 and g.params.report:
-        deliverables.stats_report.gen_pdf(m)
-    elif len(g.params.player_list) == 1 and g.params.graph:
-        deliverables.graph_personal.statistics_plot(m)
-    else:
-        if g.params.rating:  # レーティング
-            if g.params.graph:
-                deliverables.graph_rating.plot(m)
-            else:
-                deliverables.rating_calc.aggregation(m)
-        elif g.params.raw_score:  # 素点分析
-            if g.params.graph:
-                deliverables.graph_regression.plot(m)
-            else:
-                deliverables.score_deviation.aggregation(m)
-        elif g.params.report and g.params.statistics:
-            deliverables.game_statistics.plot(m)
-        else:
-            if g.params.versus_matrix:  # 対局対戦マトリクス
-                deliverables.matrix.plot(m)
-            elif g.params.statistics:
-                if not g.params.player_list:
-                    if g.params.individual:
-                        g.params.player_list = g.cfg.member.lists
-                    else:
-                        g.params.player_list = g.cfg.team.lists
-                if g.params.graph:  # 成績詳細(比較)
-                    deliverables.stats_list.main(m)
-                else:
-                    deliverables.results_detail.comparison(m)
-            else:  # ランキング
-                deliverables.ranking_calc.aggregation(m)
+    for command in COMMAND_DISPATCHER:
+        if command.condition():
+            command.handler(m)
+            break

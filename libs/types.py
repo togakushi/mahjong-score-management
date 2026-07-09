@@ -2,6 +2,7 @@
 libs/types.py
 """
 
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 from enum import Enum, StrEnum, auto
 from typing import TYPE_CHECKING, Any, Literal, Optional, TypeAlias, TypedDict, Union
@@ -10,6 +11,8 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     import pandas as pd
+
+    from integrations.protocols import MessageParserProtocol
 
 
 MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
@@ -244,6 +247,18 @@ class StyleOptions:
     def asdict(self) -> dict[str, Any]:
         """辞書変換"""
         return asdict(self)
+
+
+@dataclass(frozen=True)
+class DispatchRule:
+    """コマンドディスパッチルールテーブル"""
+
+    name: str
+    """コマンド名"""
+    condition: Callable[[], bool]
+    """オプション状態"""
+    handler: Callable[["MessageParserProtocol"], None]
+    """実行関数"""
 
 
 class MessageTypeDict(TypedDict):
