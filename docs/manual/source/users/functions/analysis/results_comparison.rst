@@ -1,7 +1,7 @@
 .. _deliverables-results_comparison:
 
-成績詳細比較
-============
+成績詳細一覧表
+==============
 
 `deliverables-results_details` の内容を比較できるように並べて表示する。
 
