@@ -10,12 +10,18 @@ select
     replace(printf('%s', min(rpoint)), '-', '▲') as 最小素点
 from
     individual_results as results
+
+join game_info on
+    game_info.ts = results.ts
+
 where
-    mode = :mode
-    and rule_version in (<<rule_list>>)
-    and playtime between :starttime and :endtime
-    --[separate] and source = :source
-    --[search_word] and comment like :search_word
+    game_info.mode = :mode
+    and game_info.rule_version in (<<rule_list>>)
+    and game_info.playtime between :starttime and :endtime
+    --[separate] and game_info.source = :source
+    --[search_word] and game_info.comment like :search_word
+    --[individual] --[guest_not_skip] and game_info.guest_count <= 1 -- ゲストアリ(2ゲスト戦除外)
+    --[individual] --[guest_skip] and results.guest = 0 -- ゲストナシ
 group by
     --[monthly] strftime('%Y-%m', collection_daily)
     --[yearly] strftime('%Y', collection_daily)

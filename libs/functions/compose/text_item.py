@@ -32,22 +32,26 @@ def remarks(headword: bool = False, deliverables: Optional[CommandType] = None) 
     """
     remark_list: list[str] = []
 
-    if g.params.individual:  # 個人集計時のみ表示
-        if not g.params.unregistered_replace:
-            remark_list.append("ゲスト置換なし(" + g.cfg.setting.guest_mark + "：未登録プレイヤー)")
-        if not g.params.guest_skip:
+    if deliverables == CommandType.GAME_STATISTICS:
+        if not g.params.unregistered_replace or not g.params.guest_skip:
             remark_list.append("2ゲスト戦の結果を含む")
-    else:  # チーム集計時
-        if g.params.friendly_fire:
-            if g.params.game_results and g.params.verbose:
-                remark_list.append("チーム同卓時の結果を含む(" + g.cfg.setting.guest_mark + ")")
-            else:
-                remark_list.append("チーム同卓時の結果を含む")
+    else:
+        if g.params.individual:  # 個人集計時のみ表示
+            if not g.params.unregistered_replace:
+                remark_list.append("ゲスト置換なし(" + g.cfg.setting.guest_mark + "：未登録プレイヤー)")
+            if not g.params.guest_skip:
+                remark_list.append("2ゲスト戦の結果を含む")
+        else:  # チーム集計時
+            if g.params.friendly_fire:
+                if g.params.game_results and g.params.verbose:
+                    remark_list.append("チーム同卓時の結果を含む(" + g.cfg.setting.guest_mark + ")")
+                else:
+                    remark_list.append("チーム同卓時の結果を含む")
 
-    if g.params.stipulated >= 2:
-        remark_list.append(f"規定打数 {g.params.stipulated}G以上")
-    if deliverables in [CommandType.RANKING, CommandType.RATING]:
-        remark_list.append(f"{g.params.ranked}位まで表示")
+        if g.params.stipulated >= 2:
+            remark_list.append(f"規定打数 {g.params.stipulated}G以上")
+        if deliverables in [CommandType.RANKING, CommandType.RATING]:
+            remark_list.append(f"{g.params.ranked}位まで表示")
 
     # 集計ルール
     if g.params.mixed:

@@ -84,6 +84,8 @@ class CommandType(StrEnum):
     """レーティング"""
     REPORT = "report"
     """レポート"""
+    GAME_STATISTICS = "game_statistics"
+    """ゲーム統計情報"""
     MEMBER_LIST = "member"
     """メンバー一覧"""
     TEAM_LIST = "team"

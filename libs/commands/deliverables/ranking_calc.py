@@ -2,7 +2,7 @@
 ランキング
 """
 
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING
 
 import pandas as pd
 
@@ -81,7 +81,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["participation_rate"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "participation_rate": [f"{x.participation_rate:.2%}" for x in df.itertuples()],
+                "participation_rate": df["participation_rate"] * 100,
                 "count": df["count"],
                 "total_count": game_info.count,
             }
@@ -94,7 +94,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["total_point"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "total_point": [f"{x.total_point:+.1f}pt".replace("-", "▲") for x in df.itertuples()],
+                "total_point": df["total_point"],
                 "count": df["count"],
             }
         )
@@ -106,8 +106,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["avg_point"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "avg_point": [f"{x.avg_point:+.1f}pt".replace("-", "▲") for x in df.itertuples()],
-                "total_point": [f"{x.total_point:+.1f}pt".replace("-", "▲") for x in df.itertuples()],
+                "avg_point": df["avg_point"],
+                "total_point": df["total_point"],
                 "count": df["count"],
             }
         )
@@ -119,8 +119,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["avg_balance"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "avg_balance": [f"{x.avg_balance:+.1f}点".replace("-", "▲") for x in df.itertuples()],
-                "rpoint_avg": [f"{cast(float, x.rpoint_avg) * 100:+.1f}点".replace("-", "▲") for x in df.itertuples()],
+                "avg_balance": df["avg_balance"],
+                "rpoint_avg": df["rpoint_avg"] * 100,
                 "count": df["count"],
             }
         )
@@ -132,7 +132,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["rank1_rate"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "rank1_rate": [f"{x.rank1_rate:.2%}" for x in df.itertuples()],
+                "rank1_rate": df["rank1_rate"] * 100,
                 "rank1": df["rank1"],
                 "count": df["count"],
             }
@@ -146,7 +146,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 {
                     "rank": df["top2_rate"].rank(ascending=False, method="dense").astype("int"),
                     "name": df["name"],
-                    "top2_rate": [f"{x.top2_rate:.2%}" for x in df.itertuples()],
+                    "top2_rate": df["top2_rate"] * 100,
                     "top2": df["rank1"] + df["rank2"],
                     "count": df["count"],
                 }
@@ -160,7 +160,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 {
                     "rank": df["top2_rate"].rank(ascending=False, method="dense").astype("int"),
                     "name": df["name"],
-                    "top2_rate": [f"{x.top2_rate:.2%}" for x in df.itertuples()],
+                    "top2_rate": df["top2_rate"] * 100,
                     "top2": df["rank1"] + df["rank2"],
                     "count": df["count"],
                 }
@@ -173,7 +173,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
                 {
                     "rank": df["top3_rate"].rank(ascending=False, method="dense").astype("int"),
                     "name": df["name"],
-                    "top3_rate": [f"{x.top3_rate:.2%}" for x in df.itertuples()],
+                    "top3_rate": df["top3_rate"] * 100,
                     "top3": df["rank1"] + df["rank2"] + df["rank3"],
                     "count": df["count"],
                 }
@@ -186,7 +186,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["flying_rate"].rank(ascending=True, method="dense").astype("int"),
                 "name": df["name"],
-                "flying_rate": [f"{x.flying_rate:.2%}" for x in df.itertuples()],
+                "flying_rate": df["flying_rate"] * 100,
                 "flying": df["flying"],
                 "count": df["count"],
             }
@@ -212,7 +212,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["yakuman_rate"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "yakuman_rate": [f"{x.yakuman_rate:.2%}" for x in df.itertuples()],
+                "yakuman_rate": df["yakuman_rate"] * 100,
                 "yakuman": df["yakuman"],
                 "count": df["count"],
             }
@@ -225,8 +225,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
             {
                 "rank": df["rpoint_max"].rank(ascending=False, method="dense").astype("int"),
                 "name": df["name"],
-                "rpoint_max": [f"{cast(float, x.rpoint_max) * 100}点".replace("-", "▲") for x in df.itertuples()],
-                "point_max": [f"{x.point_max:+.1f}pt".replace("-", "▲") for x in df.itertuples()],
+                "rpoint_max": df["rpoint_max"] * 100,
+                "point_max": df["point_max"],
                 "count": df["count"],
             }
         )

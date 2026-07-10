@@ -54,7 +54,7 @@ def test_analysis_command(
     flg_statistics: bool,
     flg_score: bool,
     player_count: int,
-    initialize,
+    initialize: None,
 ) -> None:
     """
     分析コマンドのルーティングを検証する。
@@ -95,7 +95,7 @@ def test_summary_command(
     flg_comparisons: bool,
     flg_versus: bool,
     player_count: int,
-    initialize,
+    initialize: None,
 ) -> None:
     """
     集計コマンドのルーティングを検証する。
