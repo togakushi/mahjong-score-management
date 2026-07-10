@@ -160,7 +160,7 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
     for column_name in df.columns:
         match column_name:
             # ポイント
-            case x if x in {"point", "区間平均"} or x.endswith(("ポイント", "(ポイント)", "_point", "_total")):
+            case x if x in {"point", "point_max", "区間平均"} or x.endswith(("ポイント", "(ポイント)", "_point", "_total")):
                 df[column_name] = [format_cell(v, "pt", True, 1) for v in df[column_name]]
                 if compact and x.endswith("ポイント"):
                     new_name = "\n".join([x if x else "ポイント" for x in column_name.split("ポイント")])
@@ -171,14 +171,16 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             case x if x.startswith("diff_from_"):
                 df[column_name] = [format_cell(v, "pt", False, 1, "-------") for v in df[column_name]]
             # 素点
-            case x if x == "rpoint_avg" or x.endswith("_avg_diff"):
+            case x if x in ["rpoint_avg", "avg_balance"] or x.endswith("_avg_diff"):
                 df[column_name] = [format_cell(v, "点", True, 1) for v in df[column_name]]
             case x if x == "rpoint" or x.endswith(("_rpoint", "_diff")):
                 df[column_name] = [format_cell(v, "点", True, 0) for v in df[column_name]]
+            case x if x == "rpoint_max":
+                df[column_name] = [format_cell(v, "点", False, 0) for v in df[column_name]]
             # 個数/率
             case x if x.endswith("数"):
                 df[column_name] = [format_cell(v) for v in df[column_name]]
-            case x if x.endswith("率"):
+            case x if x.endswith(("率", "_rate")):
                 df[column_name] = [format_cell(v, "%", False, 2) for v in df[column_name]]
             case x if x.endswith("(%)"):
                 df[column_name] = df[column_name].map(lambda v: f"{float(v):.2%}")
