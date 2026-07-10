@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=9b75fe0e"></script>
+    <script src="_static/documentation_options.js?v=ffba2e4a"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -102,6 +102,7 @@
 <li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GAME_STATISTICS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_STATISTICS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
@@ -153,8 +154,8 @@
 <li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_indent</span></code></a></li>
@@ -510,6 +511,12 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.GAME_STATISTICS">
+<span class="sig-name descname"><span class="pre">GAME_STATISTICS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'game_statistics'</span></span><a class="headerlink" href="#libs.types.CommandType.GAME_STATISTICS" title="Link to this definition">¶</a></dt>
+<dd><p>ゲーム統計情報</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.MEMBER_LIST">
 <span class="sig-name descname"><span class="pre">MEMBER_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'member'</span></span><a class="headerlink" href="#libs.types.CommandType.MEMBER_LIST" title="Link to this definition">¶</a></dt>
 <dd><p>メンバー一覧</p>
@@ -779,14 +786,6 @@
 - <em>False</em>: 非表示</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.StyleOptions.summarize">
-<span class="sig-name descname"><span class="pre">summarize</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.summarize" title="Link to this definition">¶</a></dt>
-<dd><p>MessageTypeがstr型のとき後続の要素を集約する
-- <em>True</em>: 可能な限り複数の要素をひとつにまとめる
-- <em>False</em>: 要素単位でデータを処理する</p>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codeblock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summarize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_blank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rename_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RenameType.NORMAL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DataKind.GENERAL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.StyleOptions.__init__" title="Link to this definition">¶</a></dt>
@@ -815,6 +814,14 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.summarize">
+<span class="sig-name descname"><span class="pre">summarize</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.summarize" title="Link to this definition">¶</a></dt>
+<dd><p>MessageTypeがstr型のとき後続の要素を集約する
+- <em>True</em>: 可能な限り複数の要素をひとつにまとめる
+- <em>False</em>: 要素単位でデータを処理する</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1255,6 +1262,7 @@
 <li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GAME_STATISTICS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_STATISTICS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
@@ -1306,8 +1314,8 @@
 <li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_indent</span></code></a></li>
@@ -1459,8 +1467,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.6.
-      Last updated on 2026-07-09.
+      Release Version: 0.17.7.
+      Last updated on 2026-07-10.
     </div>
 
   </body>
