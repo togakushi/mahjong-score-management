@@ -1,16 +1,13 @@
 """
-月間成績
+ゲーム統計情報
 """
 
 from typing import TYPE_CHECKING
 
-import matplotlib.pyplot as plt
-
 import libs.global_value as g
+from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.functions.compose import text_item
 from libs.types import CommandType, StyleOptions
-from libs.utils import graphutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -18,99 +15,36 @@ if TYPE_CHECKING:
 
 def plot(m: "MessageParserProtocol") -> None:
     """
-    月別ゲーム統計表の生成
+    ゲーム統計表の生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.REPORT
+    m.status.command_type = CommandType.GAME_STATISTICS
 
     # データ収集
     title: str = "月間ゲーム統計"
     if g.params.collection == "yearly":
         title = "年間ゲーム統計"
 
+    game_info = GameInfo()
     df = g.params.read_data("REPORT_GAME_STATISTICS")
-    results = df.transpose().to_dict()
 
-    if len(results) == 0:
+    if df.empty:
         m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title=title))
         m.status.result = False
         return
 
-    # --- グラフ設定
-    report_file_path = textutil.save_file_path("report.png")
-    match g.adapter.conf.plotting_backend:
-        case "plotly":
-            pass
-        case _:
-            graphutil.setup()
-
-            # グラフフォント設定
-            plt.rcParams["font.size"] = 6
-
-            # 色彩設定
-            match (plt.rcParams["text.color"], plt.rcParams["figure.facecolor"]):
-                case text_color, bg_color if text_color == "black" and bg_color == "white":
-                    line_color1 = "#ffffff"
-                    line_color2 = "#dddddd"
-                case text_color, bg_color if text_color == "white" and bg_color == "black":
-                    line_color1 = "#000000"
-                    line_color2 = "#111111"
-                case _:
-                    line_color1 = plt.rcParams["figure.facecolor"]
-                    line_color2 = plt.rcParams["figure.facecolor"]
-
-            column_labels = list(results[list(results.keys())[0]].keys())
-            column_color = ["#000080" for i in column_labels]
-
-            cell_param = []
-            cell_color = []
-            line_count = 0
-            for x in results.keys():
-                line_count += 1
-                cell_param.append([results[x][y] for y in column_labels])
-                if int(line_count % 2):
-                    cell_color.append([line_color1 for i in column_labels])
-                else:
-                    cell_color.append([line_color2 for i in column_labels])
-
-            fig = plt.figure(figsize=(6, (len(results) * 0.2) + 0.8), dpi=200, tight_layout=True)
-            ax_dummy = fig.add_subplot(111)
-            ax_dummy.axis("off")
-
-            plt.title(title, fontsize=12)
-            tb = plt.table(
-                colLabels=column_labels,
-                colColours=column_color,
-                cellText=cell_param,
-                cellColours=cell_color,
-                loc="center",
-            )
-
-            tb.auto_set_font_size(False)
-            for i in range(len(column_labels)):
-                tb[0, i].set_text_props(color="#FFFFFF", weight="bold")
-            for i in range(len(results.keys()) + 1):
-                tb[i, 0].set_text_props(ha="center")
-
-            # 追加テキスト
-            fig.text(
-                0.01,
-                0.02,  # 表示位置(左下0,0 右下0,1)
-                f"[検索範囲：{text_item.search_range()}] [特記：すべてのゲーム結果を含む]",
-                transform=fig.transFigure,
-                fontsize=6,
-            )
-
-            fig.savefig(report_file_path)
-
-    match g.adapter.interface_type:
-        case "slack" | "discord":
-            m.set_message(report_file_path, StyleOptions(title=title, use_comment=True, header_hidden=True))
-        case "web":
-            m.set_message(df, StyleOptions(title=title))
-        case _:
-            m.set_message(df, StyleOptions(title=title))
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
+    m.set_message(
+        df,
+        StyleOptions(
+            title=title,
+            key_title=False,
+            data_kind=StyleOptions.DataKind.POINTS_TOTAL,
+            rename_type=StyleOptions.RenameType.SHORT,
+            codeblock=True,
+        ),
+    )
