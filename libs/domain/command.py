@@ -68,9 +68,9 @@ COMMANDS: CommandsDict = {
         "action": lambda _: {"anonymous": True},
     },
     # --- 動作変更フラグ
-    "score_comparisons": {  # 比較
+    "comparisons": {  # 比較
         "match": [r"^比較$", r"^点差$", r"^差分$"],
-        "action": lambda _: {"score_comparisons": True},
+        "action": lambda _: {"comparisons": True},
     },
     "order": {  # 順位出力
         "match": [r"^順位$"],
@@ -82,7 +82,7 @@ COMMANDS: CommandsDict = {
     },
     "versus": {  # 対戦結果
         "match": [r"^対戦結果$", r"^対戦$"],
-        "action": lambda _: {"versus_matrix": True},
+        "action": lambda _: {"versus": True},
     },
     "statistics": {  # 統計
         "match": [r"^統計$"],

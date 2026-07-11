@@ -71,7 +71,7 @@ def build_personal_menu(adapter: ServiceAdapter) -> "View":
         id_suffix="display_option",
         title="表示オプション",
         flag={
-            "versus_matrix": "対戦結果",
+            "versus": "対戦結果",
             "game_results": "戦績（簡易）",
             "verbose": "戦績（詳細）",
         },

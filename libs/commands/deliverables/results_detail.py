@@ -162,8 +162,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
     # 対戦結果
-    if g.params.versus_matrix:
-        m.set_message(get_versus_matrix(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
+    if g.params.versus:
+        m.set_message(get_versus(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
     if g.params.game_results:
@@ -181,9 +181,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
 
-def comparison(m: "MessageParserProtocol") -> None:
+def stats_list(m: "MessageParserProtocol") -> None:
     """
-    成績詳細を比較
+    成績詳細一覧表の生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ
@@ -250,6 +250,33 @@ def comparison(m: "MessageParserProtocol") -> None:
         mapping_dict = textutil.anonymous_mapping(stats_df.index.to_list())
         stats_df.index = list(mapping_dict.values())
 
+    # 詳細オプション指定時項目
+    if not g.params.verbose:
+        stats_df.drop(
+            columns=[
+                "avg_balance",
+                "lose2_balance",
+                "lose2_max",
+                "lose3_max",
+                "lose4_max",
+                "point_max",
+                "point_min",
+                "rank1_balance",
+                "rank2_balance",
+                "rank3_balance",
+                "rank4_balance",
+                "rpoint_max",
+                "rpoint_min",
+                "top1_max",
+                "top2_balance",
+                "top2_max",
+                "top2_rate-count",
+                "top3_max",
+                "top3_rate-count",
+            ],
+            inplace=True,
+        )
+
     # 非表示項目
     if g.cfg.rule.get_draw_split(g.params.rule_version):
         stats_df.drop(
@@ -272,8 +299,8 @@ def comparison(m: "MessageParserProtocol") -> None:
     # 出力
     options: StyleOptions = StyleOptions(
         title=title,
-        data_kind=StyleOptions.DataKind.DETAILED_COMPARISON,
-        base_name=title,
+        data_kind=StyleOptions.DataKind.STATS_LIST,
+        base_name="stats_list",
         show_index=True,
         codeblock=True,
         transpose=True,
@@ -448,7 +475,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
     return df_data
 
 
-def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
+def get_versus(mapping_dict: dict[str, str]) -> str:
     """
     対戦結果データ出力用メッセージ生成
 
@@ -459,7 +486,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         str: 出力メッセージ
 
     """
-    df = g.params.read_data("SUMMARY_VERSUS_MATRIX")
+    df = g.params.read_data("SUMMARY_versus")
 
     if df.empty:
         return ""

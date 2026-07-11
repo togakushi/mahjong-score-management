@@ -72,7 +72,7 @@ def test_analysis_command(
     g.params.graph = flg_graph
     g.params.report = flg_report
     g.params.rating = flg_rating
-    g.params.versus_matrix = flg_versus
+    g.params.versus = flg_versus
     g.params.statistics = flg_statistics
     g.params.raw_score = flg_score
     if player_count:
@@ -80,11 +80,11 @@ def test_analysis_command(
 
     for command in ANALYSIS_DISPATCHER:
         if command.condition():
-            print(f"{flg_graph=}, {flg_rating=}, {flg_report=}, {flg_score}, {flg_statistics}, {flg_versus}, {player_count=}", command.name)
+            print(f"{flg_graph=}, {flg_rating=}, {flg_report=}, {flg_score=}, {flg_statistics=}, {flg_versus=}, {player_count=}", command.name)
 
 
 @pytest.mark.parametrize(
-    "flg_graph, flg_order, flg_comparisons, flg_versus",
+    "flg_graph, flg_order, flg_compar, flg_versus",
     SUMMARY_CASES,
     ids=SUMMARY_IDS,
 )
@@ -92,7 +92,7 @@ def test_analysis_command(
 def test_summary_command(
     flg_graph: bool,
     flg_order: bool,
-    flg_comparisons: bool,
+    flg_compar: bool,
     flg_versus: bool,
     player_count: int,
     initialize: None,
@@ -103,18 +103,18 @@ def test_summary_command(
     Args:
         flg_graph (bool): グラフオプション
         flg_order (bool): 順位オプション
-        flg_comparisons (bool): 比較オプション
+        flg_compar (bool): 比較オプション
         flg_versus (bool): 対戦オプション
         player_count (int): ターゲットに指定される人数
         initialize (fixture): 初期化fixture
     """
     g.params.graph = flg_graph
     g.params.order = flg_order
-    g.params.score_comparisons = flg_comparisons
-    g.params.versus_matrix = flg_versus
+    g.params.comparisons = flg_compar
+    g.params.versus = flg_versus
     if player_count:
         g.params.player_list = random.choices(g.cfg.member.lists, k=player_count)
 
     for command in SUMMARY_DISPATCHER:
         if command.condition():
-            print(f"{flg_graph=}, {flg_order=}, {flg_comparisons=}, {flg_versus}, {player_count=}", command.name)
+            print(f"{flg_graph=}, {flg_order=}, {flg_compar=}, {flg_versus=}, {player_count=}", command.name)

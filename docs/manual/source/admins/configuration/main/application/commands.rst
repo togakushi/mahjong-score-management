@@ -86,7 +86,7 @@
      - |:/:|
      -
      - 個人成績用
-   * - .. sub_commands_section:: score_comparisons
+   * - .. sub_commands_section:: comparisons
      - 比較モードで表示する
      - 真偽値
      - False
@@ -102,7 +102,7 @@
      -
      -
      - 内部フラグ（ ``True`` 指定時は強制表示 ）
-   * - .. sub_commands_section:: versus_matrix
+   * - .. sub_commands_section:: versus
      - 対戦マトリクス表示
      - 真偽値
      - False

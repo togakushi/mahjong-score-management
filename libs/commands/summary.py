@@ -27,7 +27,7 @@ COMMAND_DISPATCHER = [
     ),
     DispatchRule(
         "直接対戦結果",
-        lambda: bool(g.params.competition_list) and g.params.versus_matrix,
+        lambda: bool(g.params.competition_list) and g.params.versus,
         deliverables.versus.aggregation,
     ),
     DispatchRule(
@@ -47,7 +47,7 @@ COMMAND_DISPATCHER = [
     ),
     DispatchRule(
         "成績サマリ表（差分）",
-        lambda: g.params.score_comparisons,
+        lambda: g.params.comparisons,
         deliverables.results_summary.difference,
     ),
     DispatchRule(

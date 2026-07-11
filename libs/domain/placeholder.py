@@ -130,18 +130,18 @@ class PlaceholderBuilder(ParameterData):
     """time_adjust修正を含まない日時"""
 
     # 動作/表示変更フラグ
-    score_comparisons: bool = field(default=False)
-    """スコア比較表示"""
+    comparisons: bool = field(default=False)
+    """比較表示"""
     verbose: bool = field(default=False)
-    """詳細情報表示"""
+    """詳細情報表示切替"""
     game_results: bool = field(default=False)
     """ゲーム結果表示"""
-    versus_matrix: bool = field(default=False)
-    """対戦マトリクス表示"""
+    versus: bool = field(default=False)
+    """対戦フラグ"""
     order: bool = field(default=False)
-    """順位推移グラフ表示"""
+    """順位フラグ"""
     rating: bool = field(default=False)
-    """レーティング推移グラフ表示"""
+    """レーティング表示フラグ"""
     raw_score: bool = field(default=False)
     """素点分析表示"""
     anonymous: bool = field(default=False)

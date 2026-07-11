@@ -8,7 +8,7 @@
 :コマンドタイプ: `function-analysis`
 :必須オプション: :analysis:`レート` or :analysis:`レーティング`
 :ターゲット指定: 任意
-:個別オプション: `あり`_
+:個別オプション: `あり <option-analysis>`
 
 
 オプション
@@ -25,27 +25,20 @@
    * - :rspan:`2` 共通オプション
      - | プレイヤー名
        | チーム名
-     - | ターゲットの指定。
+     - | `ターゲット` の指定。
        | 指定プレイヤー/チームだけでレーティング表を生成する。
    * - 集計範囲指定
      - `date-specification` を参照。
    * - その他のオプション
      - `common-options` を参照。
-   * .. _`あり`:
-
-     - 個別オプション
-     - .. analysis:: トップ, top
-          :category: レーティング個別オプション
-
-     - 指定した順位まで出力。
-
-       :デフォルト: 3
-       :指定例: トップ10
-
-       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う。
+   * - 個別オプション
+     - | :analysis:`トップ`
+       | :analysis:`top`
+     - 指定した順位までの出力に制限する。
    * - その他
-     - :summary:`グラフ`
+     - :analysis:`グラフ`
      - `deliverables-rating_graph` に切り替える。
+..
 
 
 項目説明

@@ -47,23 +47,18 @@ COMMAND_DISPATCHER = [
     ),
     DispatchRule(
         "ゲーム統計情報",
-        lambda: g.params.report and g.params.statistics,
+        lambda: g.params.statistics,
         deliverables.game_statistics.plot,
     ),
     DispatchRule(
         "対局対戦マトリクス",
-        lambda: g.params.versus_matrix,
+        lambda: g.params.versus,
         deliverables.matrix.plot,
     ),
     DispatchRule(
-        "成績比較表",
-        lambda: g.params.statistics and g.params.graph,
-        deliverables.stats_list.main,
-    ),
-    DispatchRule(
         "成績詳細一覧",
-        lambda: g.params.statistics,
-        deliverables.stats_list.main,
+        lambda: g.params.comparisons,
+        deliverables.results_detail.stats_list,
     ),
     DispatchRule(
         "ランキング",

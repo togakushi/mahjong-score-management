@@ -63,7 +63,7 @@ def build_summary_menu(adapter: ServiceAdapter) -> "View":
         title="出力オプション",
         flag={
             "normal": "通算ポイント",
-            "score_comparisons": "通算ポイント比較",
+            "comparisons": "通算ポイント比較",
             "point": "ポイント推移グラフ",
             "rank": "順位変動グラフ",
             "rating": "レーティング",
@@ -148,7 +148,7 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
                 deliverables.rating_calc.aggregation(m)
                 adapter.api.post(m)
             case _:
-                if g.params.score_comparisons:
+                if g.params.comparisons:
                     m.status.command_type = CommandType.COMPARISON
                     deliverables.results_summary.difference(m)
                 else:

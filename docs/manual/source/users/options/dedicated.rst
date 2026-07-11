@@ -9,29 +9,51 @@
 集計コマンドオプション
 ----------------------
 
-.. list-table::
+.. flat-table::
    :width: 100%
-   :widths: 20 30 40
+   :widths: 10 15 35 40
    :header-rows: 1
 
-   * - キーワード
+   * - 分類
+     - キーワード
      - 内容
      - 備考
-   * - .. summary:: グラフ
+   * - :rspan:`2` 出力切替
+     - .. summary:: グラフ
      - ポイント集計、順位集計の表を折れ線グラフの表示に切り替える
-     - .. 備考
+     - `ターゲット` の指定状況で動作が変化する
+
+       :単独: `deliverables-results_graph`
+       :任意: `deliverables-point_transition`
+       :任意 + 順位: `deliverables-ranking_change`
    * - .. summary:: 順位
-     - 順位変動、月間生成上位の表示に切り替える
-     - .. 備考
+     - 順位に関する情報の表示
+     - :summary:`グラフ` オプションの有無で出力内容が切り替わる
+
+       :あり: `deliverables-ranking_change`
+       :なし: `deliverables-winner`
+
    * - .. summary:: 比較, 差分, 点差
-     - 通算ポイント集計表を差分形式に切り替える
-     - .. 備考
-   * - .. summary:: 対戦, 対戦結果
+     - `deliverables-results_table_diff` を表示する
+     - `deliverables-results_table_all` から切り替わる
+   * - | 出力切替
+       | 個別
+     - .. summary:: 対戦, 対戦結果
      - 対戦相手とのゲーム結果を表示する
      - `ターゲット` の指定状況で動作が変化する
 
        :任意: `deliverables-direct_match` の表示
        :単独: `deliverables-results_details` にゲーム同卓者との対戦結果を追加表示
+   * - :rspan:`2` 個別
+     - .. summary:: 統計
+     - `deliverables-results_details` に統計情報を追加表示する
+     - 座席データ、 `ベストレコード` 、 `ワーストレコード` 、収支情報の追加表示
+   * - .. summary:: 戦績
+     - `deliverables-results_details` に戦績データを追加表示する
+     - ゲーム単位の素点、順位、獲得ポイントの追加表示
+   * - .. summary:: 詳細
+     - 戦績データを4人分表示する
+     - :summary:`戦績` 同時指定した場合のみ有効
 ..
 .. seealso:: `オプション組み合わせ表 - 集計コマンド <summary_option_combination>`
 
@@ -41,35 +63,58 @@
 分析コマンドオプション
 ----------------------
 
-.. list-table::
+.. flat-table::
    :width: 100%
-   :widths: 20 30 40
+   :widths: 10 15 35 40
    :header-rows: 1
 
-   * - キーワード
+   * - 分類
+     - キーワード
      - 内容
      - 備考
-   * - .. analysis:: グラフ
+   * - :rspan:`6` 出力切替
+     - .. analysis:: グラフ
      - グラフ表記に切り替える
      - .. 備考
    * - .. analysis:: レポート
-     - レポートを生成する
-     - `ターゲット` の指定状況で動作が変化する
-
-       :任意: `deliverables-game_statistics` の表示
-       :単独: `deliverables-results_report` の生成
-
+     - `deliverables-results_report` を生成する
+     - `ターゲット` が ``単独`` 指定以外の場合は `deliverables-ranking` が表示される
    * - .. analysis:: レート, レーティング
-     - レーティングを集計
-     - .. 備考
+     - レーティングを集計する
+     - :analysis:`グラフ` オプションの有無で出力内容が切り替わる
+
+       :あり: `deliverables-rating_graph`
+       :なし: `deliverables-rating_table`
    * - .. analysis:: 対戦, 対戦結果
-     - `deliverables-matchup_matrix` の表示
+     - `deliverables-matchup_matrix` を表示する
      - .. 備考
    * - .. analysis:: 統計
-     - 統計情報の表示（比較用）
-     - 他のオプションの指定状態に依存する
+     - `deliverables-game_statistics` を表示する
+     - .. 備考
    * - .. analysis:: 素点
      - ゲーム終了時点の素点情報を基にした成績の分析を行う
-     - .. 備考
+     - :analysis:`グラフ` オプションの有無で出力内容が切り替わる
+
+       :あり: `deliverables-score_chart`
+       :なし: `deliverables-score_analysis`
+   * - .. analysis:: 比較
+     - `deliverables-results_list` を表示する
+     - .. tip::
+          `option-analysis` と共用のため、:summary:`差分` / :summary:`点差` の指定時も `deliverables-results_list` が表示される
+   * - :rspan:`1`  個別
+     - .. analysis:: トップ, top
+     - 指定した順位までの出力に制限する
+
+       - `deliverables-ranking`
+       - `deliverables-rating_table`
+
+     -
+       :指定例: トップ10
+       :デフォルト: 3
+
+       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う。
+   * - .. analysis:: 詳細
+     - `deliverables-results_list` に詳細情報を追加表示する
+     - 収支情報、 `ベストレコード` 、 `ワーストレコード` の追加表示
 ..
 .. seealso:: `オプション組み合わせ表 - 分析コマンド <analysis_option_combination>`

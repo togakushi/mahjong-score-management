@@ -359,15 +359,15 @@ def set_command_option(
                 match val["value"]:
                     case "unregistered_replace":
                         update_flag.update(unregistered_replace=False)
-                    case "versus_matrix":
-                        update_flag.update(versus_matrix=True)
+                    case "versus":
+                        update_flag.update(versus=True)
                     case "game_results":
                         update_flag.update(game_results=True)
                     case "verbose":
                         update_flag.update(game_results=True)
                         update_flag.update(verbose=True)
-                    case "score_comparisons":
-                        update_flag.update(score_comparisons=True)
+                    case "comparisons":
+                        update_flag.update(comparisons=True)
                         adapter.conf.tab_var.update(operation=None)
                     case _ as option:
                         adapter.conf.tab_var.update(operation=option)

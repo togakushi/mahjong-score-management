@@ -138,8 +138,8 @@ class StyleOptions:
         """成績サマリ(ポイント差分)"""
         SCORE_ANALYSIS = auto()
         """成績サマリ(素点分析)"""
-        DETAILED_COMPARISON = auto()
-        """成績詳細比較"""
+        STATS_LIST = auto()
+        """成績詳細一覧"""
         SEAT_DATA = auto()
         """座席データ"""
         RECORD_DATA = auto()
