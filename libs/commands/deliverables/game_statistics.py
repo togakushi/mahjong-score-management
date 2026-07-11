@@ -8,6 +8,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import CommandType, StyleOptions
+from libs.utils import converter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -37,14 +38,26 @@ def plot(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
-    m.set_message(
-        df,
-        StyleOptions(
-            title=title,
-            key_title=False,
-            data_kind=StyleOptions.DataKind.POINTS_TOTAL,
-            rename_type=StyleOptions.RenameType.SHORT,
-            codeblock=True,
-        ),
+    options = StyleOptions(
+        title=title,
+        key_title=False,
+        data_kind=StyleOptions.DataKind.POINTS_TOTAL,
+        rename_type=StyleOptions.RenameType.SHORT,
+        codeblock=True,
+        base_name=str(m.status.command_type),
     )
+
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
+
+    match g.params.format.lower():
+        case "csv":
+            options.format_type = "csv"
+            data = converter.save_output(df, options, m.post.headline)
+        case "txt" | "text":
+            options.format_type = "txt"
+            data = converter.save_output(df, options, m.post.headline)
+        case _:
+            options.format_type = "default"
+            data = df
+
+    m.set_message(data, options)
