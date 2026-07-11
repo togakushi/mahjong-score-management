@@ -11,7 +11,7 @@ flag_test_case_01: dict[str, tuple[Any, ...]] = {
     "guest on": ("ゲストあり", {"guest_skip": True, "guest_skip2": True, "unregistered_replace": True}),
     "guest invalid": ("ゲスト無効", {"unregistered_replace": False}),
     # --- 動作変更フラグ
-    "score comparisons": ("比較", {"score_comparisons": True}),
+    "score comparisons": ("比較", {"comparisons": True}),
     "ratings 1": ("ratings", {"rating": True}),
     "ratings 2": ("レート", {"rating": True}),
     "ratings 3": ("レーティング", {"rating": True}),

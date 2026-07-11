@@ -162,8 +162,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
     # 対戦結果
-    if g.params.versus_matrix:
-        m.set_message(get_versus_matrix(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
+    if g.params.versus:
+        m.set_message(get_versus(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
     if g.params.game_results:
@@ -448,7 +448,7 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
     return df_data
 
 
-def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
+def get_versus(mapping_dict: dict[str, str]) -> str:
     """
     対戦結果データ出力用メッセージ生成
 
@@ -459,7 +459,7 @@ def get_versus_matrix(mapping_dict: dict[str, str]) -> str:
         str: 出力メッセージ
 
     """
-    df = g.params.read_data("SUMMARY_VERSUS_MATRIX")
+    df = g.params.read_data("SUMMARY_versus")
 
     if df.empty:
         return ""

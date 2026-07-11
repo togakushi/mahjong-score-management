@@ -52,7 +52,7 @@ COMMAND_DISPATCHER = [
     ),
     DispatchRule(
         "対局対戦マトリクス",
-        lambda: g.params.versus_matrix,
+        lambda: g.params.versus,
         deliverables.matrix.plot,
     ),
     DispatchRule(
