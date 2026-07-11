@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.types import CommandType, StyleOptions
+from libs.types import CommandType, MessageType, StyleOptions
 from libs.utils import converter
 
 if TYPE_CHECKING:
@@ -38,6 +38,8 @@ def plot(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
+    # 出力内容
+    data: MessageType
     options = StyleOptions(
         title=title,
         key_title=False,
