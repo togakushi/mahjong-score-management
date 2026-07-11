@@ -122,6 +122,7 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
         signed: bool = False,
         digits: int = 0,
         nan_text: Optional[str] = None,
+        negative_symbol: bool = True,
     ) -> str:
         ret: str = ""
         if isinstance(v, float) and pd.isna(v):
@@ -152,6 +153,8 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                     ret = v
                 elif signed:
                     ret = f"{v:+.{digits}f}{unit}".replace("-", "▲")
+                elif negative_symbol:
+                    ret = f"{v:.{digits}f}{unit}".replace("-", "▲")
                 else:
                     ret = f"{v:.{digits}f}{unit}"
 
@@ -170,13 +173,15 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                 df[column_name] = [format_cell(v, "pt", True, 1) for v in df[column_name]]
             case x if x.startswith("diff_from_"):
                 df[column_name] = [format_cell(v, "pt", False, 1, "-------") for v in df[column_name]]
+            case x if x == "deposit":
+                df[column_name] = [format_cell(v, "pt", False, 1, negative_symbol=True) for v in df[column_name]]
             # 素点
             case x if x in ["rpoint_avg", "avg_balance"] or x.endswith("_avg_diff"):
                 df[column_name] = [format_cell(v, "点", True, 1) for v in df[column_name]]
             case x if x == "rpoint" or x.endswith(("_rpoint", "_diff")):
                 df[column_name] = [format_cell(v, "点", True, 0) for v in df[column_name]]
-            case x if x == "rpoint_max":
-                df[column_name] = [format_cell(v, "点", False, 0) for v in df[column_name]]
+            case x if x in ["rpoint_max", "rpoint_min"]:
+                df[column_name] = [format_cell(v, "点", False, negative_symbol=True) for v in df[column_name]]
             # 個数/率
             case x if x.endswith("数"):
                 df[column_name] = [format_cell(v) for v in df[column_name]]

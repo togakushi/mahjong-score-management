@@ -57,13 +57,17 @@ def save_output(
         case "csv":
             data = df.to_csv(index=options.show_index)
         case "txt":
-            data = df.to_markdown(
-                index=options.show_index,
-                tablefmt="outline",
-                floatfmt=adjusting.floatfmt(df, index=options.show_index),
-                colalign=adjusting.column_alignment(df, index=options.show_index),
-                headersalign=adjusting.column_alignment(df, True),
-            ).replace(" ▲", "▲")
+            data = (
+                adjusting.add_units(df)
+                .to_markdown(
+                    index=options.show_index,
+                    tablefmt="outline",
+                    floatfmt=adjusting.floatfmt(df, index=options.show_index),
+                    colalign=adjusting.column_alignment(df, index=options.show_index),
+                    headersalign=adjusting.column_alignment(df, True),
+                )
+                .replace(" ▲", "▲")
+            )
 
     # 保存
     save_file = textutil.save_file_path(options.filename, True)
