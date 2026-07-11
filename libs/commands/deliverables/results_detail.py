@@ -250,6 +250,33 @@ def stats_list(m: "MessageParserProtocol") -> None:
         mapping_dict = textutil.anonymous_mapping(stats_df.index.to_list())
         stats_df.index = list(mapping_dict.values())
 
+    # 詳細オプション指定時項目
+    if not g.params.verbose:
+        stats_df.drop(
+            columns=[
+                "avg_balance",
+                "lose2_balance",
+                "lose2_max",
+                "lose3_max",
+                "lose4_max",
+                "point_max",
+                "point_min",
+                "rank1_balance",
+                "rank2_balance",
+                "rank3_balance",
+                "rank4_balance",
+                "rpoint_max",
+                "rpoint_min",
+                "top1_max",
+                "top2_balance",
+                "top2_max",
+                "top2_rate-count",
+                "top3_max",
+                "top3_rate-count",
+            ],
+            inplace=True,
+        )
+
     # 非表示項目
     if g.cfg.rule.get_draw_split(g.params.rule_version):
         stats_df.drop(
@@ -272,8 +299,8 @@ def stats_list(m: "MessageParserProtocol") -> None:
     # 出力
     options: StyleOptions = StyleOptions(
         title=title,
-        data_kind=StyleOptions.DataKind.DETAILED_COMPARISON,
-        base_name=title,
+        data_kind=StyleOptions.DataKind.STATS_LIST,
+        base_name="stats_list",
         show_index=True,
         codeblock=True,
         transpose=True,
