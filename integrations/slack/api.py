@@ -120,8 +120,8 @@ class AdapterAPI(APIInterface):
                     case StyleOptions.DataKind.REMARKS_YAKUMAN | StyleOptions.DataKind.REMARKS_REGULATION | StyleOptions.DataKind.REMARKS_OTHER:
                         options.indent = 1
                         post_msg.extend(_table_data(converter.df_to_remarks(data, options)))
-                    case StyleOptions.DataKind.DETAILED_COMPARISON:
-                        post_msg.extend(_table_data(converter.df_to_text_table2(data, options, limit=3800)))
+                    case StyleOptions.DataKind.STATS_LIST:
+                        post_msg.extend(_table_data(converter.df_to_text_table2(data, options, limit=2800)))
                     case StyleOptions.DataKind.SEAT_DATA:
                         options.indent = 1
                         post_msg.extend(_table_data(converter.df_to_seat_data(data, options)))
