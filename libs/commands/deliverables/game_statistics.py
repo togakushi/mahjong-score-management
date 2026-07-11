@@ -60,6 +60,6 @@ def plot(m: "MessageParserProtocol") -> None:
             data = converter.save_output(df, options, m.post.headline)
         case _:
             options.format_type = "default"
-            data = df
+            data = converter.adjusting.add_units(df)
 
     m.set_message(data, options)
