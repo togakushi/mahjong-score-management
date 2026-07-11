@@ -274,8 +274,8 @@ class StatsDetailed:
             連続ラス：{self._work(self.lose4_cur, self.lose4_max)}
             連続逆連対：{self._work(self.lose3_cur, self.lose3_max)}
             連続トップなし：{self._work(self.lose2_cur, self.lose2_max)}
-            最大素点：{rpoint_min}
-            最大獲得ポイント：{point_min}
+            最小素点：{rpoint_min}
+            最小獲得ポイント：{point_min}
             """)
         return ret.strip()
 
