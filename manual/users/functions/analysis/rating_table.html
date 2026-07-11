@@ -66,8 +66,8 @@
     <ul>
 <li><a class="reference internal" href="#">レーティング表</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id4">項目説明</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +181,7 @@
 <dd class="field-odd"><p>任意</p>
 </dd>
 <dt class="field-even">個別オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#id3">あり</a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#option-analysis"><span class="std std-ref">あり</span></a></p>
 </dd>
 </dl>
 <section id="id2">
@@ -206,7 +206,7 @@
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">ターゲットの指定。</div>
+<div class="line"><a class="reference internal" href="../../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定。</div>
 <div class="line">指定プレイヤー/チームだけでレーティング表を生成する。</div>
 </div>
 </td>
@@ -217,35 +217,23 @@
 <tr class="row-even"><td><p>その他のオプション</p></td>
 <td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
 </tr>
-<tr class="row-odd"><td><p>個別オプション</p>
+<tr class="row-odd"><td><p>個別オプション</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="../../options/dedicated.html#analysis-トップ" title="トップ"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">トップ</span></code></a></div>
+<div class="line"><a class="reference internal" href="../../options/dedicated.html#analysis-トップ" title="top"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">top</span></code></a></div>
+</div>
 </td>
-<td><dl class="mahjong analysis">
-<dt class="sig sig-object mahjong" id="analysis-トップ">
-<span class="n"><span class="pre">トップ</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">top</span></span><a class="headerlink" href="#analysis-トップ" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p id="id3">指定した順位まで出力。</p>
-<dl class="field-list simple">
-<dt class="field-odd">デフォルト<span class="colon">:</span></dt>
-<dd class="field-odd"><p>3</p>
-</dd>
-<dt class="field-even">指定例<span class="colon">:</span></dt>
-<dd class="field-even"><p>トップ10</p>
-</dd>
-</dl>
-<p>デフォルト値の変更は <a class="reference internal" href="../../../admins/configuration/main/application/commands.html#results-management"><span class="std std-ref">analysisセクション</span></a> の <a class="reference internal" href="../../../admins/configuration/main/application/commands.html#sub_commands_section-ranked" title="ranked"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">ranked</span></code></a> で行う。</p>
-</td>
+<td><p>指定した順位までの出力に制限する。</p></td>
 </tr>
 <tr class="row-even"><td><p>その他</p></td>
-<td><p><a class="reference internal" href="../../options/dedicated.html#summary-グラフ" title="グラフ"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">グラフ</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../options/dedicated.html#analysis-グラフ" title="グラフ"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">グラフ</span></code></a></p></td>
 <td><p><a class="reference internal" href="rating_graph.html#deliverables-rating-graph"><span class="std std-ref">レーティング推移グラフ</span></a> に切り替える。</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="id4">
-<h2>項目説明<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <dl class="simple glossary">
 <dt id="term-0">レート<a class="headerlink" href="#term-0" title="Link to this term">¶</a></dt><dd><p>獲得順位から計算したレーティング。初期値は1500。</p>
 </dd>
@@ -255,10 +243,10 @@
 </dd>
 </dl>
 </section>
-<section id="id5">
-<h2>出力サンプル<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">チームレーティング</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<section id="id4">
+<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">チームレーティング</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【レーティング】
     集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
     集計対象：9100 ゲーム
@@ -300,8 +288,8 @@
     <ul>
 <li><a class="reference internal" href="#">レーティング表</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id4">項目説明</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>

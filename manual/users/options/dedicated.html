@@ -174,25 +174,40 @@
 <span id="id2"></span><h2>集計コマンドオプション<a class="headerlink" href="#option-summary" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 22.2%" />
-<col style="width: 33.3%" />
-<col style="width: 44.4%" />
+<col style="width: 10.0%" />
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>キーワード</p></th>
+<tr class="row-odd"><th class="head"><p>分類</p></th>
+<th class="head"><p>キーワード</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="mahjong summary">
+<tr class="row-even"><td rowspan="3"><p> 出力切替</p></td>
+<td><dl class="mahjong summary">
 <dt class="sig sig-object mahjong" id="summary-グラフ">
 <span class="n"><span class="pre">グラフ</span></span><a class="headerlink" href="#summary-グラフ" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </td>
 <td><p>ポイント集計、順位集計の表を折れ線グラフの表示に切り替える</p></td>
-<td></td>
+<td><p><a class="reference internal" href="../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定状況で動作が変化する</p>
+<dl class="field-list simple">
+<dt class="field-odd">単独<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/summary/results_graph.html#deliverables-results-graph"><span class="std std-ref">成績グラフ</span></a></p>
+</dd>
+<dt class="field-even">任意<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../functions/summary/point_transition.html#deliverables-point-transition"><span class="std std-ref">通算ポイント推移グラフ</span></a></p>
+</dd>
+<dt class="field-odd">任意 + 順位<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/summary/ranking_change.html#deliverables-ranking-change"><span class="std std-ref">順位変動グラフ</span></a></p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong summary">
 <dt class="sig sig-object mahjong" id="summary-順位">
@@ -200,8 +215,17 @@
 <dd></dd></dl>
 
 </td>
-<td><p>順位変動、月間生成上位の表示に切り替える</p></td>
-<td></td>
+<td><p>順位に関する情報の表示</p></td>
+<td><p><a class="reference internal" href="#summary-グラフ" title="グラフ"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">グラフ</span></code></a> オプションの有無で出力内容が切り替わる</p>
+<dl class="field-list simple">
+<dt class="field-odd">あり<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/summary/ranking_change.html#deliverables-ranking-change"><span class="std std-ref">順位変動グラフ</span></a></p>
+</dd>
+<dt class="field-even">なし<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../functions/summary/winner.html#deliverables-winner"><span class="std std-ref">成績上位者</span></a></p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong summary">
 <dt class="sig sig-object mahjong" id="summary-比較">
@@ -209,10 +233,15 @@
 <dd></dd></dl>
 
 </td>
-<td><p>通算ポイント集計表を差分形式に切り替える</p></td>
-<td></td>
+<td><p><a class="reference internal" href="../functions/summary/results_table_diff.html#deliverables-results-table-diff"><span class="std std-ref">成績サマリ表（差分）</span></a> を表示する</p></td>
+<td><p><a class="reference internal" href="../functions/summary/results_table_all.html#deliverables-results-table-all"><span class="std std-ref">成績サマリ表（全体）</span></a> から切り替わる</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong summary">
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">出力切替</div>
+<div class="line">個別</div>
+</div>
+</td>
+<td><dl class="mahjong summary">
 <dt class="sig sig-object mahjong" id="summary-対戦">
 <span class="n"><span class="pre">対戦</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">対戦結果</span></span><a class="headerlink" href="#summary-対戦" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -230,6 +259,34 @@
 </dl>
 </td>
 </tr>
+<tr class="row-even"><td rowspan="3"><p> 個別</p></td>
+<td><dl class="mahjong summary">
+<dt class="sig sig-object mahjong" id="summary-統計">
+<span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#summary-統計" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p><a class="reference internal" href="../functions/summary/results_details.html#deliverables-results-details"><span class="std std-ref">成績詳細</span></a> に統計情報を追加表示する</p></td>
+<td><p>座席データ、 <a class="reference internal" href="../functions/summary/results_details.html#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ベストレコード</span></code></a> 、 <a class="reference internal" href="../functions/summary/results_details.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ワーストレコード</span></code></a> 、収支情報の追加表示</p></td>
+</tr>
+<tr class="row-odd"><td><dl class="mahjong summary">
+<dt class="sig sig-object mahjong" id="summary-戦績">
+<span class="n"><span class="pre">戦績</span></span><a class="headerlink" href="#summary-戦績" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p><a class="reference internal" href="../functions/summary/results_details.html#deliverables-results-details"><span class="std std-ref">成績詳細</span></a> に戦績データを追加表示する</p></td>
+<td><p>ゲーム単位の素点、順位、獲得ポイントの追加表示</p></td>
+</tr>
+<tr class="row-even"><td><dl class="mahjong summary">
+<dt class="sig sig-object mahjong" id="summary-詳細">
+<span class="n"><span class="pre">詳細</span></span><a class="headerlink" href="#summary-詳細" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>戦績データを4人分表示する</p></td>
+<td><p><a class="reference internal" href="#summary-戦績" title="戦績"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">戦績</span></code></a> 同時指定した場合のみ有効</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition seealso">
@@ -241,18 +298,21 @@
 <span id="id3"></span><h2>分析コマンドオプション<a class="headerlink" href="#option-analysis" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 22.2%" />
-<col style="width: 33.3%" />
-<col style="width: 44.4%" />
+<col style="width: 10.0%" />
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>キーワード</p></th>
+<tr class="row-odd"><th class="head"><p>分類</p></th>
+<th class="head"><p>キーワード</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><dl class="mahjong analysis">
+<tr class="row-even"><td rowspan="7"><p> 出力切替</p></td>
+<td><dl class="mahjong analysis">
 <dt class="sig sig-object mahjong" id="analysis-グラフ">
 <span class="n"><span class="pre">グラフ</span></span><a class="headerlink" href="#analysis-グラフ" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -267,17 +327,8 @@
 <dd></dd></dl>
 
 </td>
-<td><p>レポートを生成する</p></td>
-<td><p><a class="reference internal" href="../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定状況で動作が変化する</p>
-<dl class="field-list simple">
-<dt class="field-odd">任意<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../functions/analysis/game_statistics.html#deliverables-game-statistics"><span class="std std-ref">ゲーム統計情報</span></a> の表示</p>
-</dd>
-<dt class="field-even">単独<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../functions/analysis/results_report.html#deliverables-results-report"><span class="std std-ref">成績レポート</span></a> の生成</p>
-</dd>
-</dl>
-</td>
+<td><p><a class="reference internal" href="../functions/analysis/results_report.html#deliverables-results-report"><span class="std std-ref">成績レポート</span></a> を生成する</p></td>
+<td><p><a class="reference internal" href="../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> が <code class="docutils literal notranslate"><span class="pre">単独</span></code> 指定以外の場合は <a class="reference internal" href="../functions/analysis/ranking.html#deliverables-ranking"><span class="std std-ref">ランキング</span></a> が表示される</p></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong analysis">
 <dt class="sig sig-object mahjong" id="analysis-レート">
@@ -285,8 +336,17 @@
 <dd></dd></dl>
 
 </td>
-<td><p>レーティングを集計</p></td>
-<td></td>
+<td><p>レーティングを集計する</p></td>
+<td><p><a class="reference internal" href="#analysis-グラフ" title="グラフ"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">グラフ</span></code></a> オプションの有無で出力内容が切り替わる</p>
+<dl class="field-list simple">
+<dt class="field-odd">あり<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/analysis/rating_graph.html#deliverables-rating-graph"><span class="std std-ref">レーティング推移グラフ</span></a></p>
+</dd>
+<dt class="field-even">なし<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../functions/analysis/rating_table.html#deliverables-rating-table"><span class="std std-ref">レーティング表</span></a></p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong analysis">
 <dt class="sig sig-object mahjong" id="analysis-対戦">
@@ -294,7 +354,7 @@
 <dd></dd></dl>
 
 </td>
-<td><p><a class="reference internal" href="../functions/analysis/matchup_matrix.html#deliverables-matchup-matrix"><span class="std std-ref">対局対戦マトリクス</span></a> の表示</p></td>
+<td><p><a class="reference internal" href="../functions/analysis/matchup_matrix.html#deliverables-matchup-matrix"><span class="std std-ref">対局対戦マトリクス</span></a> を表示する</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><dl class="mahjong analysis">
@@ -303,8 +363,8 @@
 <dd></dd></dl>
 
 </td>
-<td><p>統計情報の表示（比較用）</p></td>
-<td><p>他のオプションの指定状態に依存する</p></td>
+<td><p><a class="reference internal" href="../functions/analysis/game_statistics.html#deliverables-game-statistics"><span class="std std-ref">ゲーム統計情報</span></a> を表示する</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong analysis">
 <dt class="sig sig-object mahjong" id="analysis-素点">
@@ -313,7 +373,62 @@
 
 </td>
 <td><p>ゲーム終了時点の素点情報を基にした成績の分析を行う</p></td>
-<td></td>
+<td><p><a class="reference internal" href="#analysis-グラフ" title="グラフ"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">グラフ</span></code></a> オプションの有無で出力内容が切り替わる</p>
+<dl class="field-list simple">
+<dt class="field-odd">あり<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../functions/analysis/score_chart.html#deliverables-score-chart"><span class="std std-ref">順位素点相関図</span></a></p>
+</dd>
+<dt class="field-even">なし<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../functions/analysis/score_analysis.html#deliverables-score-analysis"><span class="std std-ref">素点分析</span></a></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><dl class="mahjong analysis">
+<dt class="sig sig-object mahjong" id="analysis-比較">
+<span class="n"><span class="pre">比較</span></span><a class="headerlink" href="#analysis-比較" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p><a class="reference internal" href="../functions/analysis/results_list.html#deliverables-results-list"><span class="std std-ref">成績詳細一覧表</span></a> を表示する</p></td>
+<td><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference internal" href="#option-analysis"><span class="std std-ref">分析コマンドオプション</span></a> と共用のため、<a class="reference internal" href="#summary-比較" title="差分"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">差分</span></code></a> / <a class="reference internal" href="#summary-比較" title="点差"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">点差</span></code></a> の指定時も <a class="reference internal" href="../functions/analysis/results_list.html#deliverables-results-list"><span class="std std-ref">成績詳細一覧表</span></a> が表示される</p>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>  個別</p></td>
+<td><dl class="mahjong analysis">
+<dt class="sig sig-object mahjong" id="analysis-トップ">
+<span class="n"><span class="pre">トップ</span></span><span class="p"><span class="pre">,</span> </span><span class="n"><span class="pre">top</span></span><a class="headerlink" href="#analysis-トップ" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p>指定した順位までの出力に制限する</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../functions/analysis/ranking.html#deliverables-ranking"><span class="std std-ref">ランキング</span></a></p></li>
+<li><p><a class="reference internal" href="../functions/analysis/rating_table.html#deliverables-rating-table"><span class="std std-ref">レーティング表</span></a></p></li>
+</ul>
+</td>
+<td><dl class="field-list simple">
+<dt class="field-odd">指定例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>トップ10</p>
+</dd>
+<dt class="field-even">デフォルト<span class="colon">:</span></dt>
+<dd class="field-even"><p>3</p>
+</dd>
+</dl>
+<p>デフォルト値の変更は <a class="reference internal" href="../../admins/configuration/main/application/commands.html#results-management"><span class="std std-ref">analysisセクション</span></a> の <a class="reference internal" href="../../admins/configuration/main/application/commands.html#sub_commands_section-ranked" title="ranked"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">ranked</span></code></a> で行う。</p>
+</td>
+</tr>
+<tr class="row-even"><td><dl class="mahjong analysis">
+<dt class="sig sig-object mahjong" id="analysis-詳細">
+<span class="n"><span class="pre">詳細</span></span><a class="headerlink" href="#analysis-詳細" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p><a class="reference internal" href="../functions/analysis/results_list.html#deliverables-results-list"><span class="std std-ref">成績詳細一覧表</span></a> に詳細情報を追加表示する</p></td>
+<td><p>収支情報、 <a class="reference internal" href="../functions/summary/results_details.html#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ベストレコード</span></code></a> 、 <a class="reference internal" href="../functions/summary/results_details.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ワーストレコード</span></code></a> の追加表示</p></td>
 </tr>
 </tbody>
 </table>

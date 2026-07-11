@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>成績比較表 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成績詳細一覧表 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=5349f25f" />
@@ -64,9 +64,10 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">成績比較表</a><ul>
+<li><a class="reference internal" href="#">成績詳細一覧表</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id3">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +137,7 @@
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">分析コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">成績比較表</a></li>
+        <li class="nav-item nav-item-this"><a href="">成績詳細一覧表</a></li>
                 <li class="right">
                     
 
@@ -167,20 +168,20 @@
           <div class="body" role="main">
             
   <section id="deliverables-results-list">
-<span id="id1"></span><h1>成績比較表<a class="headerlink" href="#deliverables-results-list" title="Link to this heading">¶</a></h1>
-<p>比較用の成績一覧表を生成する。</p>
+<span id="id1"></span><h1>成績詳細一覧表<a class="headerlink" href="#deliverables-results-list" title="Link to this heading">¶</a></h1>
+<p><a class="reference internal" href="../summary/results_details.html#deliverables-results-details"><span class="std std-ref">成績詳細</span></a> の内容を比較できるように並べて表示する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">コマンドタイプ<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="index.html#function-analysis"><span class="std std-ref">分析コマンド</span></a></p>
 </dd>
 <dt class="field-even">必須オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#analysis-統計" title="統計"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">統計</span></code></a> + <a class="reference internal" href="../../options/dedicated.html#analysis-グラフ" title="グラフ"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">グラフ</span></code></a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#analysis-比較" title="比較"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">比較</span></code></a></p>
 </dd>
 <dt class="field-odd">ターゲット指定<span class="colon">:</span></dt>
 <dd class="field-odd"><p>任意</p>
 </dd>
 <dt class="field-even">個別オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p>なし</p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#option-analysis"><span class="std std-ref">あり</span></a></p>
 </dd>
 </dl>
 <section id="id2">
@@ -205,8 +206,9 @@
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">ターゲットの指定。</div>
-<div class="line">指定プレイヤー/チームだけで比較表を生成する。</div>
+<div class="line"><a class="reference internal" href="../../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定。</div>
+<div class="line">指定プレイヤー/チームの成績を表示する。</div>
+<div class="line">未指定時は全員分が表示される。</div>
 </div>
 </td>
 </tr>
@@ -216,16 +218,89 @@
 <tr class="row-even"><td><p>その他のオプション</p></td>
 <td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
 </tr>
+<tr class="row-odd"><td><p>個別オプション</p></td>
+<td><p><a class="reference internal" href="../../options/dedicated.html#analysis-詳細" title="詳細"><code class="xref mahjong mahjong-analysis docutils literal notranslate"><span class="pre">詳細</span></code></a></p></td>
+<td><p>収支情報、 <a class="reference internal" href="../summary/results_details.html#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ベストレコード</span></code></a> 、 <a class="reference internal" href="../summary/results_details.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ワーストレコード</span></code></a> の追加表示</p></td>
+</tr>
 </tbody>
 </table>
 </section>
 <section id="id3">
-<h2>出力サンプル<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="admonition- admonition">
-<p class="admonition-title">順位素点相関図</p>
-<div class="compound">
-<a class="reference internal image-reference" href="../../../_images/stats_list_team.png"><img alt="出力サンプル(ggplot)" height="240" src="../../../_images/stats_list_team.png" width="480" />
-</a>
+<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>戦績(勝-敗-分)</dt><dd><p>対戦の内訳</p>
+<dl class="field-list simple">
+<dt class="field-odd">勝<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ポイントがプラスのゲーム数</p>
+</dd>
+<dt class="field-even">敗<span class="colon">:</span></dt>
+<dd class="field-even"><p>ポイントがマイナスのゲーム数</p>
+</dd>
+<dt class="field-odd">分<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ポイントが±0のゲーム数</p>
+</dd>
+</dl>
+</dd>
+<dt>xxxx率(回)</dt><dd><div class="line-block">
+<div class="line">xxxxの発生回数を対戦数で割った割合</div>
+<div class="line">括弧内はxxxxの発生回数</div>
+</div>
+</dd>
+<dt>平均収支</dt><dd><p>ゲーム終了時点の素点平均から配給原点を引いた点数</p>
+</dd>
+<dt>連対収支</dt><dd><p>1位、2位獲得時の最終素点平均から配給原点を引いた点数</p>
+</dd>
+<dt>逆連対収支</dt><dd><p>3位、4位獲得時の最終素点平均から配給原点を引いた点数</p>
+</dd>
+<dt>x位収支</dt><dd><p>x位獲得時の最終素点平均から配給原点を引いた点数</p>
+</dd>
+<dt>連続トップ / 連続連対 / 連続ラス回避 / 最大素点 / 最大獲得ポイント</dt><dd><p><a class="reference internal" href="../summary/results_details.html#term-0"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ベストレコード</span></code></a> を参照</p>
+</dd>
+<dt>連続トップなし / 連続逆連対 / 連続ラス / 最小素点 / 最小獲得ポイント</dt><dd><p><a class="reference internal" href="../summary/results_details.html#term-1"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ワーストレコード</span></code></a> を参照</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">成績詳細比較（詳細版）</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【成績詳細比較】
+    集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
+    集計対象：1157 ゲーム
+
+                ：  Player_000  Player_001  Player_002  Player_003
+---------------- ----------- ----------- ----------- -----------
+          対戦数：         495         385         470         494
+  戦績(勝-敗-分)：   280-215-0   221-164-0   230-240-0   196-298-0
+        平均順位：        2.35        2.29         2.5        2.76
+    通算ポイント：   +2852.5pt   +2571.5pt    +239.6pt   ▲4528.6pt
+    平均ポイント：      +5.8pt      +6.7pt      +0.5pt      ▲9.2pt
+      連対率(回)： 57.78%(286) 57.92%(223) 50.85%(239) 39.88%(197)
+  ラス回避率(回)： 78.38%(388) 83.12%(320) 75.11%(353) 65.79%(325)
+       1位率(回)： 29.29%(145) 30.13%(116) 24.04%(113)  18.02%(89)
+       2位率(回)： 28.48%(141) 27.79%(107) 26.81%(126) 21.86%(108)
+       3位率(回)： 20.61%(102)  25.19%(97) 24.26%(114) 25.91%(128)
+       4位率(回)： 21.62%(107)  16.88%(65) 24.89%(117) 34.21%(169)
+      トビ率(回)：   6.87%(34)   4.42%(17)   7.66%(36)  13.97%(69)
+  役満和了率(回)：    0.81%(4)    0.78%(3)    0.64%(3)    0.61%(3)
+        平均収支：   +2580.8点   +2744.2点    +616.2点   ▲4126.7点
+        連対収支：  +13834.6点  +12074.4点  +13251.0点  +11991.4点
+      逆連対収支：  ▲12819.1点  ▲10099.4点  ▲12456.3点  ▲14817.8点
+         1位収支：  +21490.3点  +18316.4点  +22138.1点  +20466.3点
+         2位収支：   +5961.7点   +5307.5点   +5281.0点   +5007.4点
+         3位収支：   ▲5821.6点   ▲5269.1点   ▲5382.5点   ▲6275.0点
+         4位収支：  ▲19489.7点  ▲17307.7点  ▲19348.7点  ▲21288.2点
+      連続トップ：       4連続       4連続       5連続       3連続
+        連続連対：       9連続       7連続       8連続       7連続
+    連続ラス回避：      19連続      22連続      19連続      11連続
+  連続トップなし：      10連続      11連続      15連続      21連続
+      連続逆連対：       7連続       6連続       6連続      10連続
+        連続ラス：       4連続       3連続       4連続       4連続
+        最大素点：    105300点     69800点     85000点     71100点
+最大獲得ポイント：    +115.3pt     +79.8pt     +95.0pt     +81.1pt
+        最小素点：    ▲11300点    ▲18500点    ▲28100点    ▲35300点
+最小獲得ポイント：     ▲61.3pt     ▲68.5pt     ▲78.1pt     ▲85.3pt
+</pre></div>
 </div>
 </div>
 </section>
@@ -241,9 +316,10 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">成績比較表</a><ul>
+<li><a class="reference internal" href="#">成績詳細一覧表</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id3">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -313,7 +389,7 @@
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理機能</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="index.html" >分析コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">成績比較表</a></li>
+        <li class="nav-item nav-item-this"><a href="">成績詳細一覧表</a></li>
                 <li class="right">
                     
 

@@ -65,12 +65,12 @@
     <ul>
 <li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.stats_list"><code class="docutils literal notranslate"><span class="pre">stats_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus"><code class="docutils literal notranslate"><span class="pre">get_versus()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
 </ul>
 </li>
@@ -175,9 +175,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.comparison">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.comparison" title="Link to this definition">¶</a></dt>
-<dd><p>成績詳細を比較</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.stats_list">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">stats_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.stats_list" title="Link to this definition">¶</a></dt>
+<dd><p>成績詳細一覧表の生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
@@ -261,8 +261,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_versus_matrix">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_versus_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_versus_matrix" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_versus">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_versus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_versus" title="Link to this definition">¶</a></dt>
 <dd><p>対戦結果データ出力用メッセージ生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -308,12 +308,12 @@
     <ul>
 <li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.comparison"><code class="docutils literal notranslate"><span class="pre">comparison()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.stats_list"><code class="docutils literal notranslate"><span class="pre">stats_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus_matrix"><code class="docutils literal notranslate"><span class="pre">get_versus_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus"><code class="docutils literal notranslate"><span class="pre">get_versus()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
 </ul>
 </li>

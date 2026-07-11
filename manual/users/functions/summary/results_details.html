@@ -66,8 +66,8 @@
     <ul>
 <li><a class="reference internal" href="#">成績詳細</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id4">項目説明</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +181,7 @@
 <dd class="field-odd"><p>単独</p>
 </dd>
 <dt class="field-even">個別オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#id3">あり</a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#option-summary"><span class="std std-ref">あり</span></a></p>
 </dd>
 </dl>
 <section id="id2">
@@ -206,7 +206,7 @@
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">ターゲットの指定（単独）。</div>
+<div class="line"><a class="reference internal" href="../../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定（単独）。</div>
 <div class="line">指定プレイヤー/チームの成績を集計する。</div>
 </div>
 </td>
@@ -217,35 +217,18 @@
 <tr class="row-even"><td><p>その他のオプション</p></td>
 <td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
 </tr>
-<tr class="row-odd"><td rowspan="4"><p> 個別オプション</p>
-</td>
-<td><dl class="mahjong summary">
-<dt class="sig sig-object mahjong" id="summary-統計">
-<span class="n"><span class="pre">統計</span></span><a class="headerlink" href="#summary-統計" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-<td><p id="id3">座席データ、ベストレコード、ワーストレコード、平均収支を追加表示する。</p>
-</td>
+<tr class="row-odd"><td rowspan="4"><p> 個別オプション</p></td>
+<td><p><a class="reference internal" href="../../options/dedicated.html#summary-統計" title="統計"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">統計</span></code></a></p></td>
+<td><p>座席データ、ベストレコード、ワーストレコード、平均収支を追加表示する。</p></td>
 </tr>
-<tr class="row-even"><td><dl class="mahjong summary">
-<dt class="sig sig-object mahjong" id="summary-戦績">
-<span class="n"><span class="pre">戦績</span></span><a class="headerlink" href="#summary-戦績" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../options/dedicated.html#summary-戦績" title="戦績"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">戦績</span></code></a></p></td>
 <td><p>戦績データ（ゲーム単位の素点、順位、獲得ポイント）を表示する。</p></td>
 </tr>
-<tr class="row-odd"><td><dl class="mahjong summary">
-<dt class="sig sig-object mahjong" id="summary-詳細">
-<span class="n"><span class="pre">詳細</span></span><a class="headerlink" href="#summary-詳細" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../options/dedicated.html#summary-詳細" title="詳細"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">詳細</span></code></a></p></td>
 <td><p>戦績データを4人分表示する。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference internal" href="#summary-戦績" title="戦績"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">戦績</span></code></a> と同時指定した場合のみ有効</p>
+<p><a class="reference internal" href="../../options/dedicated.html#summary-戦績" title="戦績"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">戦績</span></code></a> と同時指定した場合のみ有効</p>
 </div>
 </td>
 </tr>
@@ -263,10 +246,12 @@
 </tbody>
 </table>
 </section>
-<section id="id4">
-<h2>項目説明<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<dl class="simple">
-<dt>対戦数</dt><dd><p>集計期間の対戦数</p>
+<section id="id3">
+<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">対戦数</span></span></dt>
+<dd><p>集計範囲の対戦数</p>
 <dl class="field-list simple">
 <dt class="field-odd">勝<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ポイントがプラスのゲーム数</p>
@@ -278,15 +263,57 @@
 <dd class="field-odd"><p>ポイントが±0のゲーム数</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">平均収支</span></span></dt>
+<dd><p>ゲーム終了時の平均素点から配給原点を差し引いた点数</p>
+</dd></dl>
+
+<dl class="simple glossary">
+<dt id="term-0">ベストレコード<a class="headerlink" href="#term-0" title="Link to this term">¶</a></dt><dd><dl class="field-list simple">
+<dt class="field-odd">連続トップ<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で連続で1位を獲得した最大数</p>
 </dd>
-<dt>平均収支</dt><dd><p>ゲーム終了時の平均素点から配給原点を差し引いた点数</p>
+<dt class="field-even">連続連対<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計範囲で連続で1位または2位を獲得した最大数</p>
+</dd>
+<dt class="field-odd">連続ラス回避<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で連続で1位～3位を獲得した最大数</p>
+</dd>
+<dt class="field-even">最大素点<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計範囲で獲得した素点の最大値</p>
+</dd>
+<dt class="field-odd">最大獲得ポイント<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で獲得したポイントの最大値（順位点加算後のポイント）</p>
+</dd>
+</dl>
+</dd>
+<dt id="term-1">ワーストレコード<a class="headerlink" href="#term-1" title="Link to this term">¶</a></dt><dd><dl class="field-list simple">
+<dt class="field-odd">連続ラス<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で連続で4位を獲得した最大数</p>
+</dd>
+<dt class="field-even">連続逆連対<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計範囲で連続で3位または4位を獲得した最大数</p>
+</dd>
+<dt class="field-odd">連続トップなし<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で連続で2位～4位を獲得した最大数</p>
+</dd>
+<dt class="field-even">最小素点<span class="colon">:</span></dt>
+<dd class="field-even"><p>集計範囲で獲得した素点の最小値</p>
+</dd>
+<dt class="field-odd">最小獲得ポイント<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計範囲で獲得したポイントの最小値（順位点加算後のポイント）</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
-<section id="id5">
-<h2>出力サンプル<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">成績詳細出力サンプル（個人）</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<section id="id4">
+<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">成績詳細出力サンプル（個人）</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【個人成績詳細】
     プレイヤー名：Player_007
     検索範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
@@ -323,8 +350,8 @@
     連続ラス：0 回 (最大 2 連続)
     連続逆連対：0 回 (最大 3 連続)
     連続トップなし：0 回 (最大 4 連続)
-    最大素点：▲6000点
-    最大獲得ポイント：▲57.8pt
+    最小素点：▲6000点
+    最小獲得ポイント：▲57.8pt
 
 【平均収支】
     全体：+3924.4点
@@ -358,8 +385,8 @@
     <ul>
 <li><a class="reference internal" href="#">成績詳細</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id4">項目説明</a></li>
-<li><a class="reference internal" href="#id5">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">項目説明</a></li>
+<li><a class="reference internal" href="#id4">出力サンプル</a></li>
 </ul>
 </li>
 </ul>

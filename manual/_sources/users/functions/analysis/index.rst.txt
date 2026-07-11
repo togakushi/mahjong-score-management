@@ -15,7 +15,6 @@
    game_statistics
    score_analysis
    score_chart
-   results_comparison
    results_report
    results_analysis
    results_list
