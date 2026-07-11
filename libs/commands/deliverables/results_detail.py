@@ -181,9 +181,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
 
-def comparison(m: "MessageParserProtocol") -> None:
+def stats_list(m: "MessageParserProtocol") -> None:
     """
-    成績詳細を比較
+    成績詳細一覧表の生成
 
     Args:
         m (MessageParserProtocol): メッセージデータ
