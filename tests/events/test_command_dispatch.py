@@ -85,8 +85,109 @@ def test_analysis_command(
 
     for command in ANALYSIS_DISPATCHER:
         if command.condition():
-            print(f"{flg_graph=}, {flg_rating=}, {flg_report=}, {flg_score=}, {flg_statistics=}, {flg_versus=}, {flg_compar=}, {player_count=}", command.name)
+            print(f"{flg_graph=}, {flg_report=}, {flg_rating=}, {flg_versus=}, {flg_statistics=}, {flg_score=}, {flg_compar=}, {player_count=}", command.name)
             break
+
+    if all(
+        [
+            flg_rating is False,
+            flg_rating is False,
+            flg_versus is False,
+            flg_statistics is False,
+            flg_score is False,
+            flg_compar is False,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "ランキング"
+
+    if all(
+        [
+            flg_graph is False,
+            flg_rating is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "レーティング表"
+
+    if all(
+        [
+            flg_graph is True,
+            flg_rating is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "レーティング推移グラフ"
+
+    if all(
+        [
+            flg_rating is False,
+            flg_versus is True,
+            flg_statistics is False,
+            flg_score is False,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "対局対戦マトリクス"
+
+    if all(
+        [
+            flg_rating is False,
+            flg_statistics is True,
+            flg_score is False,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "ゲーム統計情報"
+
+    if all(
+        [
+            flg_graph is False,
+            flg_rating is False,
+            flg_score is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "素点分析"
+
+    if all(
+        [
+            flg_graph is True,
+            flg_rating is False,
+            flg_score is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "順位素点相関図"
+
+    if all(
+        [
+            flg_report is True,
+            player_count == 1,
+        ]
+    ):
+        assert command.name == "成績レポート"
+
+    if all(
+        [
+            flg_graph is True,
+            flg_report is False,
+            player_count == 1,
+        ]
+    ):
+        assert command.name == "成績分析"
+
+    if all(
+        [
+            flg_rating is False,
+            flg_versus is False,
+            flg_statistics is False,
+            flg_score is False,
+            flg_compar is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "成績詳細一覧表"
 
 
 @pytest.mark.parametrize(
