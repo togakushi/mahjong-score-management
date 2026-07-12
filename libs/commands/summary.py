@@ -26,11 +26,6 @@ COMMAND_DISPATCHER = [
         deliverables.results_detail.aggregation,
     ),
     DispatchRule(
-        "直接対戦結果",
-        lambda: bool(g.params.competition_list) and g.params.versus,
-        deliverables.versus.aggregation,
-    ),
-    DispatchRule(
         "順位変動グラフ",
         lambda: g.params.order and g.params.graph,
         deliverables.graph_summary.rank_plot,
@@ -44,6 +39,11 @@ COMMAND_DISPATCHER = [
         "成績上位者",
         lambda: g.params.order,
         deliverables.winner.plot,
+    ),
+    DispatchRule(
+        "直接対戦結果",
+        lambda: bool(g.params.competition_list) and bool(g.params.player_list) and g.params.versus,
+        deliverables.versus.aggregation,
     ),
     DispatchRule(
         "成績サマリ表（差分）",
