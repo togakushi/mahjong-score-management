@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions import message
+from libs.functions import adjusting, message
 from libs.types import CommandType, MessageType, StyleOptions
 from libs.utils import converter
 
@@ -60,6 +60,6 @@ def plot(m: "MessageParserProtocol") -> None:
             data = converter.save_output(df, options, m.post.headline)
         case _:
             options.format_type = "default"
-            data = converter.adjusting.add_units(df)
+            data = adjusting.add_units(df)
 
     m.set_message(data, options)
