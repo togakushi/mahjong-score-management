@@ -171,8 +171,8 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_command_dispatch.test_analysis_command">
-<span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_analysis_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_versus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_statistics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.test_analysis_command" title="Link to this definition">¶</a></dt>
-<dd><p>分析コマンドのルーティングを検証する。</p>
+<span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_analysis_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_versus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_statistics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_compar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.test_analysis_command" title="Link to this definition">¶</a></dt>
+<dd><p>分析コマンドの呼び出しを検証する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -182,6 +182,7 @@
 <li><p><strong>flg_versus</strong> (<em>bool</em>) – 対戦オプション</p></li>
 <li><p><strong>flg_statistics</strong> (<em>bool</em>) – 統計オプション</p></li>
 <li><p><strong>flg_score</strong> (<em>bool</em>) – 素点オプション</p></li>
+<li><p><strong>flg_compar</strong> (<em>bool</em>) – 比較オプション</p></li>
 <li><p><strong>player_count</strong> (<em>int</em>) – ターゲットに指定される人数</p></li>
 <li><p><strong>initialize</strong> (<em>fixture</em>) – 初期化fixture</p></li>
 </ul>
@@ -195,7 +196,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="tests.events.test_command_dispatch.test_summary_command">
 <span class="sig-prename descclassname"><span class="pre">tests.events.test_command_dispatch.</span></span><span class="sig-name descname"><span class="pre">test_summary_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_compar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flg_versus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.events.test_command_dispatch.test_summary_command" title="Link to this definition">¶</a></dt>
-<dd><p>集計コマンドのルーティングを検証する。</p>
+<dd><p>集計コマンドの呼び出しを検証する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -309,7 +310,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.7.
-      Last updated on 2026-07-11.
+      Last updated on 2026-07-12.
     </div>
 
   </body>
