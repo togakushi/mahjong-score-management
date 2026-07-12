@@ -19,7 +19,7 @@ ANALYSIS_IDS = [
 ]
 
 SUMMARY_CASES = list(product([False, True], repeat=4))
-SUMMARY_IDS = [(f"gr{int(f01)}_or{int(f02)}_di{int(f03)}_vs{int(f04)}") for f01, f02, f03, f04 in SUMMARY_CASES]
+SUMMARY_IDS = [(f"gr{int(f01)}_or{int(f02)}_co{int(f03)}_vs{int(f04)}") for f01, f02, f03, f04 in SUMMARY_CASES]
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -60,7 +60,7 @@ def test_analysis_command(
     initialize: None,
 ) -> None:
     """
-    分析コマンドのルーティングを検証する。
+    分析コマンドの呼び出しを検証する。
 
     Args:
         flg_graph (bool): グラフオプション
@@ -73,6 +73,9 @@ def test_analysis_command(
         player_count (int): ターゲットに指定される人数
         initialize (fixture): 初期化fixture
     """
+    # 初期化
+    g.params.player_list.clear()
+    g.params.competition_list.clear()
     g.params.graph = flg_graph
     g.params.report = flg_report
     g.params.rating = flg_rating
@@ -82,33 +85,33 @@ def test_analysis_command(
     g.params.comparisons = flg_compar
     if player_count:
         g.params.player_list = random.choices(g.cfg.member.lists, k=player_count)
+        g.params.competition_list = g.params.player_list[1:]
 
+    # ディスパッチ
     for command in ANALYSIS_DISPATCHER:
         if command.condition():
             print(f"{flg_graph=}, {flg_report=}, {flg_rating=}, {flg_versus=}, {flg_statistics=}, {flg_score=}, {flg_compar=}, {player_count=}", command.name)
             break
 
+    # 判定
     if all(
         [
-            flg_rating is False,
-            flg_rating is False,
-            flg_versus is False,
-            flg_statistics is False,
-            flg_score is False,
-            flg_compar is False,
-            player_count in [0, 2],
+            flg_report is True,
+            player_count == 1,
         ]
     ):
-        assert command.name == "ランキング"
+        assert command.name == "成績レポート"
+        return
 
     if all(
         [
-            flg_graph is False,
-            flg_rating is True,
-            player_count in [0, 2],
+            flg_graph is True,
+            flg_report is False,
+            player_count == 1,
         ]
     ):
-        assert command.name == "レーティング表"
+        assert command.name == "成績分析"
+        return
 
     if all(
         [
@@ -118,37 +121,17 @@ def test_analysis_command(
         ]
     ):
         assert command.name == "レーティング推移グラフ"
-
-    if all(
-        [
-            flg_rating is False,
-            flg_versus is True,
-            flg_statistics is False,
-            flg_score is False,
-            player_count in [0, 2],
-        ]
-    ):
-        assert command.name == "対局対戦マトリクス"
-
-    if all(
-        [
-            flg_rating is False,
-            flg_statistics is True,
-            flg_score is False,
-            player_count in [0, 2],
-        ]
-    ):
-        assert command.name == "ゲーム統計情報"
+        return
 
     if all(
         [
             flg_graph is False,
-            flg_rating is False,
-            flg_score is True,
-            player_count in [0, 2],
+            flg_rating is True,
+            player_count in [0, 1, 2],
         ]
     ):
-        assert command.name == "素点分析"
+        assert command.name == "レーティング表"
+        return
 
     if all(
         [
@@ -159,23 +142,41 @@ def test_analysis_command(
         ]
     ):
         assert command.name == "順位素点相関図"
+        return
 
     if all(
         [
-            flg_report is True,
-            player_count == 1,
+            flg_graph is False,
+            flg_rating is False,
+            flg_score is True,
+            player_count in [0, 1, 2],
         ]
     ):
-        assert command.name == "成績レポート"
+        assert command.name == "素点分析"
+        return
 
     if all(
         [
-            flg_graph is True,
-            flg_report is False,
-            player_count == 1,
+            flg_rating is False,
+            flg_statistics is True,
+            flg_score is False,
+            player_count in [0, 1, 2],
         ]
     ):
-        assert command.name == "成績分析"
+        assert command.name == "ゲーム統計情報"
+        return
+
+    if all(
+        [
+            flg_rating is False,
+            flg_versus is True,
+            flg_statistics is False,
+            flg_score is False,
+            player_count in [0, 1, 2],
+        ]
+    ):
+        assert command.name == "対局対戦マトリクス"
+        return
 
     if all(
         [
@@ -184,10 +185,27 @@ def test_analysis_command(
             flg_statistics is False,
             flg_score is False,
             flg_compar is True,
-            player_count in [0, 2],
+            player_count in [0, 1, 2],
         ]
     ):
         assert command.name == "成績詳細一覧表"
+        return
+
+    if all(
+        [
+            flg_rating is False,
+            flg_rating is False,
+            flg_versus is False,
+            flg_statistics is False,
+            flg_score is False,
+            flg_compar is False,
+            player_count in [0, 1, 2],
+        ]
+    ):
+        assert command.name == "ランキング"
+        return
+
+    raise AssertionError(f"{command.name} is Unknown command")
 
 
 @pytest.mark.parametrize(
@@ -205,7 +223,7 @@ def test_summary_command(
     initialize: None,
 ) -> None:
     """
-    集計コマンドのルーティングを検証する。
+    集計コマンドの呼び出しを検証する。
 
     Args:
         flg_graph (bool): グラフオプション
@@ -215,14 +233,102 @@ def test_summary_command(
         player_count (int): ターゲットに指定される人数
         initialize (fixture): 初期化fixture
     """
+    # 初期化
+    g.params.player_list.clear()
+    g.params.competition_list.clear()
     g.params.graph = flg_graph
     g.params.order = flg_order
     g.params.comparisons = flg_compar
     g.params.versus = flg_versus
     if player_count:
         g.params.player_list = random.choices(g.cfg.member.lists, k=player_count)
+        g.params.competition_list = g.params.player_list[1:]
 
+    # ディスパッチ
     for command in SUMMARY_DISPATCHER:
         if command.condition():
             print(f"{flg_graph=}, {flg_order=}, {flg_compar=}, {flg_versus=}, {player_count=}", command.name)
             break
+
+    # 判定
+    if all(
+        [
+            flg_graph is True,
+            player_count == 1,
+        ]
+    ):
+        assert command.name == "成績グラフ"
+        return
+
+    if all(
+        [
+            flg_graph is False,
+            player_count == 1,
+        ]
+    ):
+        assert command.name == "成績詳細"
+        return
+
+    if all(
+        [
+            flg_graph is True,
+            flg_order is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "順位変動グラフ"
+        return
+
+    if all(
+        [
+            flg_graph is True,
+            flg_order is False,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "通算ポイント推移グラフ"
+        return
+
+    if all(
+        [
+            flg_graph is False,
+            flg_order is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "成績上位者"
+        return
+
+    if all(
+        [
+            flg_order is False,
+            flg_versus is True,
+            player_count == 2,
+        ]
+    ):
+        assert command.name == "直接対戦結果"
+        return
+
+    if all(
+        [
+            flg_graph is False,
+            flg_order is False,
+            flg_compar is True,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "成績サマリ表（差分）"
+        return
+
+    if all(
+        [
+            flg_graph is False,
+            flg_order is False,
+            flg_compar is False,
+            player_count in [0, 2],
+        ]
+    ):
+        assert command.name == "成績サマリ表（全体）"
+        return
+
+    raise AssertionError(f"{command.name} is Unknown command")
