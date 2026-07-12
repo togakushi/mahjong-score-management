@@ -56,7 +56,7 @@ COMMAND_DISPATCHER = [
         deliverables.matrix.plot,
     ),
     DispatchRule(
-        "成績詳細一覧",
+        "成績詳細一覧表",
         lambda: g.params.comparisons,
         deliverables.results_detail.stats_list,
     ),
