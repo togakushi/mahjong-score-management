@@ -38,9 +38,11 @@ def help_message(m: "MessageParserProtocol") -> None:
     """
     # パラメータ更新
     m.status.command_type = CommandType.HELP
+    rule_version = lookup.get_current_rule_version(m, g.cfg.help.command_suffix)
 
     g.params.update_from_dict(
         {
+            **g.cfg.rule.to_dict(rule_version),
             "source": g.cfg.resolve_channel_id(m.status.source),
             "separate": lookup.resolve_separate_flag(m),
         }
