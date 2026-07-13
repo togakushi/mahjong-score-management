@@ -234,8 +234,40 @@ class ComparisonResults:
         return ret
 
 
+class ParameterMethodMixin:
+    """パラメータに関する共通的な取得メソッドを提供するMixin"""
+
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
+        for f in fields(self):
+            if f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
+
+    def get_default(self, key: str) -> Any:
+        """
+        フィールドのデフォルト値を取得
+
+        Args:
+            key (str): フィールド名
+
+        Returns:
+            Any: デフォルト値、またはNone
+        """
+        field_map = {f.name: f for f in fields(self)}
+        f = field_map.get(key)
+        if f is None:
+            return None
+        if f.default is not MISSING:
+            return f.default
+        if f.default_factory is not MISSING:
+            return f.default_factory()
+        return None
+
+
 @dataclass
-class ParameterData:
+class ParameterData(ParameterMethodMixin):
     """コマンド動作パラメータ"""
 
     # 検索条件変更フラグ
@@ -284,17 +316,9 @@ class ParameterData:
     group_length: int = field(default=0)
     """コメント検索時に指定文字数でグループ化する"""
 
-    def default_reset(self) -> None:
-        """デフォルト値にリセット"""
-        for f in fields(self):
-            if f.default is not MISSING:
-                setattr(self, f.name, f.default)
-            elif f.default_factory is not MISSING:
-                setattr(self, f.name, f.default_factory())
-
 
 @dataclass
-class SettingAttrs:
+class SettingAttrs(ParameterMethodMixin):
     """コマンド設定基本パラメータ"""
 
     command_name: str
@@ -305,26 +329,8 @@ class SettingAttrs:
     """呼び出しキーワード"""
     command_suffix: list[str] = field(default_factory=list)
     """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
-
-    def get_default(self, key: str) -> Any:
-        """
-        フィールドのデフォルト値を取得
-
-        Args:
-            key (str): フィールド名
-
-        Returns:
-            Any: デフォルト値、またはNone
-        """
-        field_map = {f.name: f for f in fields(self)}
-        f = field_map.get(key)
-        if f is None:
-            return None
-        if f.default is not MISSING:
-            return f.default
-        if f.default_factory is not MISSING:
-            return f.default_factory()
-        return None
+    dropitems: list[str] = field(default_factory=list)
+    """非表示にする項目"""
 
     def commandwords_list(self) -> list[str]:
         """
@@ -379,8 +385,6 @@ class CommandAttrs(ParameterData, SettingAttrs):
     """検索範囲未指定時に使用される範囲"""
     always_argument: list[str] = field(default_factory=list)
     """オプションとして常に付与される文字列"""
-    dropitems: list[str] = field(default_factory=list)
-    """非表示にする項目"""
 
     def stipulated_calculation(self, game_count: int) -> int:
         """
