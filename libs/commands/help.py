@@ -6,16 +6,15 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.commands.deliverables import text_assembly
-from libs.domain.datamodels import CommandAttrs
+from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.types import CommandType
-from libs.utils import dictutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-class HelpConfig(BaseSection, CommandAttrs):
+class HelpConfig(BaseSection, SettingAttrs):
     """
     ヘルプ表示コマンド（helpセクション）の設定を管理するクラス。
 
@@ -56,9 +55,6 @@ def main(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
 
     """
-    g.params = dictutil.placeholder(g.cfg.help, m)
-
     text_assembly.help_message(m)
-
     m.post.ts = m.data.event_ts
     m.post.thread_title = "ヘルプメッセージ"

@@ -37,13 +37,13 @@ SettingClassType: TypeAlias = Union[
     "TeamSection",
     "AliasSection",
     "BadgeDisplay",
+    "HelpConfig",
 ]
 """設定関連クラス"""
 
 CommandClassType: TypeAlias = Union[
     "AnalysisConfig",
     "SummaryConfig",
-    "HelpConfig",
 ]
 """コマンド関連クラス"""
 
