@@ -234,6 +234,7 @@ class ComparisonResults:
         return ret
 
 
+@dataclass
 class ParameterMethodMixin:
     """パラメータに関する共通的な取得メソッドを提供するMixin"""
 
