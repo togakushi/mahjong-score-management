@@ -199,6 +199,10 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
             # その他
             case "playtime":
                 df[column_name] = df[column_name].map(lambda v: str(v).replace("-", "/"))
+            case "elapsed_day":
+                df[column_name] = [format_cell(v, "日", False, 0, "---") for v in df[column_name]]
+            case "game_count":
+                df[column_name] = [format_cell(v, "", False, 0, "---") for v in df[column_name]]
             case x if x == "rate" or x.endswith("_dev"):
                 df[column_name] = [format_cell(v, digits=1) for v in df[column_name]]
 
