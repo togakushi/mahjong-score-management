@@ -70,7 +70,6 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.help.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +160,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="libs.commands.help.HelpConfig">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">HelpConfig</span></span><a class="headerlink" href="#libs.commands.help.HelpConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.CommandAttrs" title="libs.domain.datamodels.CommandAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandAttrs</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="libs.domain.section.html#libs.domain.section.BaseSection" title="libs.domain.section.BaseSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSection</span></code></a>, <a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.SettingAttrs" title="libs.domain.datamodels.SettingAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">SettingAttrs</span></code></a></p>
 <p>ヘルプ表示コマンド（helpセクション）の設定を管理するクラス。</p>
 <p>設定ファイルからヘルプコマンド固有のパラメータを読み込み、保持する役割を持つ。</p>
 <dl class="py method">
@@ -179,7 +178,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.help.HelpConfig.register">
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.HelpConfig.register" title="Link to this definition">¶</a></dt>
-<dd><p>ディスパッチャー登録</p>
+<dd><p>ディスパッチャー登録。</p>
+<p>ヘルプコマンドの呼び出しワードをディスパッチャーテーブルに登録する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -205,35 +205,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.help.help_message">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.help.</span></span><span class="sig-name descname"><span class="pre">help_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.help.help_message" title="Link to this definition">¶</a></dt>
-<dd><p>ユーザーに提示する各機能の呼び出しキーワードや設定情報のヘルプメッセージを動的に構築する。</p>
-<p>内部では、チャンネルの個別設定やルール識別子の状態を最新に更新した上で、以下の各セクションに関する
-ヘルプ内容（呼び出しワードや規定打数などのデフォルト値）を、 <code class="docutils literal notranslate"><span class="pre">m.set_message</span></code> を用いて多層的に組み立てる。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージを蓄積・設定するためのメッセージデータオブジェクト。</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-<dl class="simple">
-<dt>構築されるヘルプ情報セクション:</dt><dd><ul class="simple">
-<li><p><strong>コマンド呼び出し</strong>: 基本的な使い方のフォーマットと適用中のルール識別子。</p></li>
-<li><p><strong>集計コマンド (SUMMARY)</strong>: 集計コマンドの呼び出しワードと検索範囲の初期値。</p></li>
-<li><p><strong>分析コマンド (ANALYSIS)</strong>: 分析コマンドの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。</p></li>
-<li><p><strong>メンバー・チーム一覧</strong>: 登録されているメンバーやチームのリストを出力する呼び出しワード。</p></li>
-<li><p><strong>検索範囲</strong>: 期間指定などで利用できる有効な検索ワードの一覧。</p></li>
-<li><p><strong>メモ機能</strong>: 個別カウントや役満カウントなどのレギュレーションに準じたメモ記録ワードと仕様。</p></li>
-<li><p><strong>ルールセット・レギュレーション</strong>: 卓外清算ワード（個人/チーム）やルール情報の詳細。</p></li>
-<li><p><strong>チャンネル設定情報</strong>: 現在のチャンネルID、デフォルトルール、個別設定ファイルの有無、セパレート機能の成否。</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -253,7 +224,6 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.commands.help.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.help.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -334,7 +304,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.7.
-      Last updated on 2026-07-12.
+      Last updated on 2026-07-13.
     </div>
 
   </body>

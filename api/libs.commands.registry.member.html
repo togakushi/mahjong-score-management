@@ -81,6 +81,7 @@
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.guest_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.guest_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.__init__"><code class="docutils literal notranslate"><span class="pre">MemberSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.command_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.command_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.register"><code class="docutils literal notranslate"><span class="pre">MemberSection.register()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_reset"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_reset()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.resolve_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.resolve_name()</span></code></a></li>
@@ -279,10 +280,17 @@
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.command_name">
+<span class="sig-name descname"><span class="pre">command_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.command_name" title="Link to this definition">¶</a></dt>
+<dd><p>コマンド名</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.commands.registry.member.MemberSection.register">
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.registry.member.MemberSection.register" title="Link to this definition">¶</a></dt>
-<dd><p>ディスパッチャー登録</p>
+<dd><p>ディスパッチャー登録。</p>
+<p>メンバー一覧の呼び出しワードをディスパッチャーテーブルに登録する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -459,6 +467,7 @@
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.alias_limit"><code class="docutils literal notranslate"><span class="pre">MemberSection.alias_limit</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.guest_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.guest_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.__init__"><code class="docutils literal notranslate"><span class="pre">MemberSection.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.command_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.command_name</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.register"><code class="docutils literal notranslate"><span class="pre">MemberSection.register()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.default_reset"><code class="docutils literal notranslate"><span class="pre">MemberSection.default_reset()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.registry.member.MemberSection.resolve_name"><code class="docutils literal notranslate"><span class="pre">MemberSection.resolve_name()</span></code></a></li>
@@ -552,7 +561,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.7.
-      Last updated on 2026-07-12.
+      Last updated on 2026-07-13.
     </div>
 
   </body>

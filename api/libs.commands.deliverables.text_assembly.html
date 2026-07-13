@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>tests.name_check.test_name module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.text_assembly module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="tests.parser package" href="tests.parser.html" />
-    <link rel="prev" title="tests.name_check.param_data module" href="tests.name_check.param_data.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.deliverables.versus module" href="libs.commands.deliverables.versus.html" />
+    <link rel="prev" title="libs.commands.deliverables.stats_report module" href="libs.commands.deliverables.stats_report.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,10 +63,8 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">tests.name_check.test_name module</a><ul>
-<li><a class="reference internal" href="#tests.name_check.test_name.parser_instance"><code class="docutils literal notranslate"><span class="pre">parser_instance()</span></code></a></li>
-<li><a class="reference internal" href="#tests.name_check.test_name.test_name_permit"><code class="docutils literal notranslate"><span class="pre">test_name_permit()</span></code></a></li>
-<li><a class="reference internal" href="#tests.name_check.test_name.test_name_refusal"><code class="docutils literal notranslate"><span class="pre">test_name_refusal()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.text_assembly module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.text_assembly.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -74,13 +72,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="tests.name_check.param_data.html"
-                          title="previous chapter">tests.name_check.param_data module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.stats_report.html"
+                          title="previous chapter">libs.commands.deliverables.stats_report module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="tests.parser.html"
-                          title="next chapter">tests.parser package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.versus.html"
+                          title="next chapter">libs.commands.deliverables.versus module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -104,10 +102,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tests.parser.html" title="tests.parser package"
+          <a href="libs.commands.deliverables.versus.html" title="libs.commands.deliverables.versus module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tests.name_check.param_data.html" title="tests.name_check.param_data module"
+          <a href="libs.commands.deliverables.stats_report.html" title="libs.commands.deliverables.stats_report module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -119,9 +117,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.name_check.html" accesskey="U">tests.name_check package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">tests.name_check.test_name module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.text_assembly module</a></li>
                 <li class="right">
                     
 
@@ -151,61 +150,34 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-tests.name_check.test_name">
-<span id="tests-name-check-test-name-module"></span><h1>tests.name_check.test_name module<a class="headerlink" href="#module-tests.name_check.test_name" title="Link to this heading">¶</a></h1>
-<p>メンバー名の許可/拒否パターン判定を検証するテスト。</p>
+  <section id="module-libs.commands.deliverables.text_assembly">
+<span id="libs-commands-deliverables-text-assembly-module"></span><h1>libs.commands.deliverables.text_assembly module<a class="headerlink" href="#module-libs.commands.deliverables.text_assembly" title="Link to this heading">¶</a></h1>
+<p>メッセージテキストの組み立て</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="tests.name_check.test_name.parser_instance">
-<span class="sig-prename descclassname"><span class="pre">tests.name_check.test_name.</span></span><span class="sig-name descname"><span class="pre">parser_instance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.name_check.test_name.parser_instance" title="Link to this definition">¶</a></dt>
-<dd><p>名前検証テストの共通初期化を行う。</p>
-<p>設定読込とメンバー一覧準備を実行し、検証関数の前提を整える。</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.text_assembly.help_message">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.text_assembly.</span></span><span class="sig-name descname"><span class="pre">help_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.text_assembly.help_message" title="Link to this definition">¶</a></dt>
+<dd><p>ユーザーに提示する各機能の呼び出しキーワードや設定情報のヘルプメッセージを動的に構築する。</p>
+<p>内部では、チャンネルの個別設定やルール識別子の状態を最新に更新した上で、以下の各セクションに関する
+ヘルプ内容（呼び出しワードや規定打数などのデフォルト値）を、 <code class="docutils literal notranslate"><span class="pre">m.set_message</span></code> を用いて多層的に組み立てる。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None.</strong></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>テスト前処理を実行し制御を返すジェネレータ。</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Generator[None, Any, None]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.name_check.test_name.test_name_permit">
-<span class="sig-prename descclassname"><span class="pre">tests.name_check.test_name.</span></span><span class="sig-name descname"><span class="pre">test_name_permit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser_instance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.name_check.test_name.test_name_permit" title="Link to this definition">¶</a></dt>
-<dd><p>登録許可パターンの名前判定結果を検証する。</p>
-<p>check_namepattern が True を返すべきケースで期待値と一致するか確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input_args</strong> (<em>str</em>) – 検証対象の名前文字列。</p></li>
-<li><p><strong>expected_flags</strong> (<em>bool</em>) – 期待する判定結果。</p></li>
-<li><p><strong>parser_instance</strong> (<em>Any</em>) – 初期化済み環境を準備するフィクスチャ。</p></li>
-</ul>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージを蓄積・設定するためのメッセージデータオブジェクト。</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="tests.name_check.test_name.test_name_refusal">
-<span class="sig-prename descclassname"><span class="pre">tests.name_check.test_name.</span></span><span class="sig-name descname"><span class="pre">test_name_refusal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser_instance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.name_check.test_name.test_name_refusal" title="Link to this definition">¶</a></dt>
-<dd><p>登録拒否パターンの名前判定結果を検証する。</p>
-<p>check_namepattern が False を返すべきケースで期待値と一致するか確認する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input_args</strong> (<em>str</em>) – 検証対象の名前文字列。</p></li>
-<li><p><strong>expected_flags</strong> (<em>bool</em>) – 期待する判定結果。</p></li>
-<li><p><strong>parser_instance</strong> (<em>Any</em>) – 初期化済み環境を準備するフィクスチャ。</p></li>
+<dl class="simple">
+<dt>構築されるヘルプ情報セクション:</dt><dd><ul class="simple">
+<li><p><strong>コマンド呼び出し</strong>: 基本的な使い方のフォーマットと適用中のルール識別子。</p></li>
+<li><p><strong>集計コマンド (SUMMARY)</strong>: 集計コマンドの呼び出しワードと検索範囲の初期値。</p></li>
+<li><p><strong>分析コマンド (ANALYSIS)</strong>: 分析コマンドの呼び出しワード、検索範囲、規定打数の計算規則、出力制限人数。</p></li>
+<li><p><strong>メンバー・チーム一覧</strong>: 登録されているメンバーやチームのリストを出力する呼び出しワード。</p></li>
+<li><p><strong>検索範囲</strong>: 期間指定などで利用できる有効な検索ワードの一覧。</p></li>
+<li><p><strong>メモ機能</strong>: 個別カウントや役満カウントなどのレギュレーションに準じたメモ記録ワードと仕様。</p></li>
+<li><p><strong>ルールセット・レギュレーション</strong>: 卓外清算ワード（個人/チーム）やルール情報の詳細。</p></li>
+<li><p><strong>チャンネル設定情報</strong>: 現在のチャンネルID、デフォルトルール、個別設定ファイルの有無、セパレート機能の成否。</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -222,10 +194,8 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">tests.name_check.test_name module</a><ul>
-<li><a class="reference internal" href="#tests.name_check.test_name.parser_instance"><code class="docutils literal notranslate"><span class="pre">parser_instance()</span></code></a></li>
-<li><a class="reference internal" href="#tests.name_check.test_name.test_name_permit"><code class="docutils literal notranslate"><span class="pre">test_name_permit()</span></code></a></li>
-<li><a class="reference internal" href="#tests.name_check.test_name.test_name_refusal"><code class="docutils literal notranslate"><span class="pre">test_name_refusal()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.text_assembly module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.text_assembly.help_message"><code class="docutils literal notranslate"><span class="pre">help_message()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -233,13 +203,13 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="tests.name_check.param_data.html"
-                          title="previous chapter">tests.name_check.param_data module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.stats_report.html"
+                          title="previous chapter">libs.commands.deliverables.stats_report module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="tests.parser.html"
-                          title="next chapter">tests.parser package</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.versus.html"
+                          title="next chapter">libs.commands.deliverables.versus module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -263,10 +233,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tests.parser.html" title="tests.parser package"
+          <a href="libs.commands.deliverables.versus.html" title="libs.commands.deliverables.versus module"
              >next</a> |</li>
         <li class="right" >
-          <a href="tests.name_check.param_data.html" title="tests.name_check.param_data module"
+          <a href="libs.commands.deliverables.stats_report.html" title="libs.commands.deliverables.stats_report module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -278,9 +248,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="tests.html" >tests package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="tests.name_check.html" >tests.name_check package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">tests.name_check.test_name module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.text_assembly module</a></li>
                 <li class="right">
                     
 
