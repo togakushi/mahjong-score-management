@@ -29,12 +29,18 @@ class HelpConfig(BaseSection, CommandAttrs):
 
         デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
         """
+        self.command_name: str = "ヘルプ"
         self.default_commandword: str = "麻雀ヘルプ"
         self.section: str = str(CommandType.HELP)
         self.default_reset()
 
     def register(self) -> None:
-        """ディスパッチャー登録"""
+        """
+        ディスパッチャー登録。
+
+        ヘルプコマンドの呼び出しワードをディスパッチャーテーブルに登録する。
+
+        """
         for command in self.commandwords_list():
             g.keyword_dispatcher.update({command: main})
 

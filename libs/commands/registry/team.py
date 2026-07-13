@@ -53,13 +53,19 @@ class TeamSection(BaseSection, SettingAttrs):
             outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
 
         """
+        self.command_name: str = "チーム一覧"
         self.default_commandword = "チーム一覧"
         self.section = str(CommandType.TEAM_LIST)
         self.main_parser = outer.main_parser
         self.default_reset()
 
     def register(self) -> None:
-        """ディスパッチャー登録"""
+        """
+        ディスパッチャー登録。
+
+        チーム一覧の呼び出しワードをディスパッチャーテーブルに登録する。
+
+        """
         for commandword in self.commandwords_list():
             g.keyword_dispatcher.update({commandword: team_list})
 

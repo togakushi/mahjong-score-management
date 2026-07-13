@@ -60,13 +60,19 @@ class MemberSection(BaseSection, SettingAttrs):
             outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
 
         """
+        self.command_name: str = "メンバー一覧"
         self.default_commandword = "メンバー一覧"
         self.section = str(CommandType.MEMBER_LIST)
         self.main_parser = outer.main_parser
         self.default_reset()
 
     def register(self) -> None:
-        """ディスパッチャー登録"""
+        """
+        ディスパッチャー登録。
+
+        メンバー一覧の呼び出しワードをディスパッチャーテーブルに登録する。
+
+        """
         for commandword in self.commandwords_list():
             g.keyword_dispatcher.update({commandword: members_list})
 
