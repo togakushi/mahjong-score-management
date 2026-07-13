@@ -15,6 +15,7 @@
 - :doc:`libs.commands.deliverables.matrix`: 直接対戦マトリクスを生成
 - :doc:`libs.commands.deliverables.game_statistics`: ゲーム統計情報を集計
 - :doc:`libs.commands.deliverables.stats_report`: 成績報告書を作成
+- :doc:`libs.commands.deliverables.text_assembly`: メッセージテキストの組み立て
 """
 
 from . import (
@@ -30,6 +31,7 @@ from . import (
     results_summary,
     score_deviation,
     stats_report,
+    text_assembly,
     versus,
     winner,
 )
@@ -47,6 +49,7 @@ __all__ = [
     "results_summary",
     "score_deviation",
     "stats_report",
+    "text_assembly",
     "versus",
     "winner",
 ]

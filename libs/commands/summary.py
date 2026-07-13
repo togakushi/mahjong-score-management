@@ -72,12 +72,18 @@ class SummaryConfig(BaseSection, CommandAttrs):
 
         デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
         """
+        self.command_name: str = "集計コマンド"
         self.default_commandword: str = "成績集計"
         self.section: str = str(CommandType.SUMMARY)
         self.default_reset()
 
     def register(self) -> None:
-        """ディスパッチャー登録"""
+        """
+        ディスパッチャー登録。
+
+        集計コマンドの呼び出しワードをディスパッチャーテーブルに登録する。
+
+        """
         for command in self.commandwords_list():
             g.keyword_dispatcher.update({command: main})
         if hasattr(g.cfg.alias, "summary"):

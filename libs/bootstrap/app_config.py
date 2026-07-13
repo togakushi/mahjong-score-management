@@ -87,14 +87,14 @@ class AppConfig:
         """teamセクション設定値"""
         self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
+        self.help: HelpConfig = HelpConfig()
+        """helpセクション設定値"""
 
         # コマンド
         self.summary: "CommandClassType" = SummaryConfig()
         """summaryセクション設定値"""
         self.analysis: "CommandClassType" = AnalysisConfig()
         """analysisセクション設定値"""
-        self.help: "CommandClassType" = HelpConfig()
-        """helpセクション設定値"""
 
         self.initialization()
 
@@ -251,7 +251,6 @@ class AppConfig:
                     self.overwrite(config_path, "setting")
                     self.overwrite(config_path, "summary")
                     self.overwrite(config_path, "analysis")
-                    self.overwrite(config_path, "help")
                 else:
                     config_path = None
 

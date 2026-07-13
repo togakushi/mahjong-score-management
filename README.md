@@ -30,7 +30,7 @@
 
 成績管理をするプレイヤーを登録し、スコアを蓄積する。
 
-### 成績集計機能
+### 成績集計
 
 * 成績サマリ出力（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/summary/results_table_all.html) ）
   * 記録されているスコアを集計し、一覧で出力する。
@@ -41,7 +41,7 @@
 * 成績詳細（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/summary/results_details.html)）
   * トップ率など詳細生成を集計する。
 
-### 成績分析機能
+### 成績分析
 
 * ランキング出力（ [詳細](https://togakushi.github.io/mahjong-score-management/manual/users/functions/analysis/ranking.html) ）
   * 記録されているスコアを集計し、ランキング形式で出力する。

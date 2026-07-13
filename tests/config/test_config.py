@@ -10,7 +10,6 @@ import pytest
 import libs.global_value as g
 from libs.bootstrap import configuration
 from libs.commands.analysis import AnalysisConfig
-from libs.commands.help import HelpConfig
 from libs.commands.summary import SummaryConfig
 
 if TYPE_CHECKING:
@@ -39,7 +38,7 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
     assert "del" in g.cfg.alias.delete
 
 
-@pytest.mark.parametrize("input_args", ["summary", "analysis", "help"])
+@pytest.mark.parametrize("input_args", ["summary", "analysis"])
 def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) -> None:
     """
     コマンド設定のデフォルト値が期待どおりであることを検証する。
@@ -93,9 +92,6 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
         case "analysis":
             sub_command = AnalysisConfig()
             default.update(default_commandword="成績分析")
-        case "help":
-            sub_command = HelpConfig()
-            default.update(default_commandword="麻雀ヘルプ")
 
     for k in sub_command.to_dict():
         if not default.get(k):

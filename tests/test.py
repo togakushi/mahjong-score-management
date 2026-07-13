@@ -16,7 +16,7 @@ from integrations import factory
 from libs.bootstrap import configuration
 from libs.bootstrap.configuration import arg_parser
 from libs.commands import deliverables
-from libs.commands.help import help_message
+from libs.commands.deliverables.text_assembly import help_message
 from libs.domain.command import CommandParser
 from libs.types import ServiceType
 from libs.utils import dictutil

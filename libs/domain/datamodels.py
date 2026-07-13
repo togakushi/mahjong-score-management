@@ -5,11 +5,12 @@ libs/domain/datamodels.py
 import logging
 from dataclasses import MISSING, dataclass, field, fields
 from math import ceil
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Any, Literal, Optional
 
 import pandas as pd
 
 import libs.global_value as g
+from libs.functions import lookup
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
 
     from integrations.protocols import MessageParserProtocol
     from libs.domain.score import GameResult
-    from libs.types import RemarkDict
+    from libs.types import CommandType, RemarkDict
 
 
 @dataclass
@@ -234,7 +235,40 @@ class ComparisonResults:
 
 
 @dataclass
-class ParameterData:
+class ParameterMethodMixin:
+    """パラメータに関する共通的な取得メソッドを提供するMixin"""
+
+    def default_reset(self) -> None:
+        """デフォルト値にリセット"""
+        for f in fields(self):
+            if f.default is not MISSING:
+                setattr(self, f.name, f.default)
+            elif f.default_factory is not MISSING:
+                setattr(self, f.name, f.default_factory())
+
+    def get_default(self, key: str) -> Any:
+        """
+        フィールドのデフォルト値を取得
+
+        Args:
+            key (str): フィールド名
+
+        Returns:
+            Any: デフォルト値、またはNone
+        """
+        field_map = {f.name: f for f in fields(self)}
+        f = field_map.get(key)
+        if f is None:
+            return None
+        if f.default is not MISSING:
+            return f.default
+        if f.default_factory is not MISSING:
+            return f.default_factory()
+        return None
+
+
+@dataclass
+class ParameterData(ParameterMethodMixin):
     """コマンド動作パラメータ"""
 
     # 検索条件変更フラグ
@@ -283,25 +317,21 @@ class ParameterData:
     group_length: int = field(default=0)
     """コメント検索時に指定文字数でグループ化する"""
 
-    def default_reset(self) -> None:
-        """デフォルト値にリセット"""
-        for f in fields(self):
-            if f.default is not MISSING:
-                setattr(self, f.name, f.default)
-            elif f.default_factory is not MISSING:
-                setattr(self, f.name, f.default_factory())
-
 
 @dataclass
-class SettingAttrs:
+class SettingAttrs(ParameterMethodMixin):
     """コマンド設定基本パラメータ"""
 
+    command_name: str
+    """コマンド名"""
     default_commandword: str
     """コマンドワードデフォルト値"""
     commandword: list[str] = field(default_factory=list)
     """呼び出しキーワード"""
     command_suffix: list[str] = field(default_factory=list)
     """コマンド接尾辞(登録キーワード+接尾辞を呼び出しキーワードとして扱う)"""
+    dropitems: list[str] = field(default_factory=list)
+    """非表示にする項目"""
 
     def commandwords_list(self) -> list[str]:
         """
@@ -324,6 +354,29 @@ class SettingAttrs:
 
         return word_list
 
+    def help_string(self, command_type: "CommandType") -> str:
+        """
+        コマンドヘルプメッセージを生成する
+
+        Args:
+            command_type (CommandType): コマンドタイプ
+
+        Returns:
+            str: ヘルプメッセージ
+        """
+        text_list: list[str] = []
+        word_list: list[str] = lookup.resolve_commands(g.params.rule_version, command_type)
+
+        text_list.append(f"呼び出しワード：{'、'.join(word_list)}")
+        if hasattr(self, "aggregation_range"):
+            text_list.append(f"検索範囲デフォルト：{self.aggregation_range}")
+        if hasattr(self, "stipulated") and hasattr(self, "stipulated_rate") and not self.stipulated:
+            text_list.append(f"規定打数デフォルト：総対戦数 × {self.stipulated_rate} ＋ 1")
+        if hasattr(self, "ranked") and (self.ranked != self.get_default("ranked")):
+            text_list.append(f"出力制限デフォルト：上位 {self.ranked} 名")
+
+        return "\n".join(text_list)
+
 
 @dataclass
 class CommandAttrs(ParameterData, SettingAttrs):
@@ -333,8 +386,6 @@ class CommandAttrs(ParameterData, SettingAttrs):
     """検索範囲未指定時に使用される範囲"""
     always_argument: list[str] = field(default_factory=list)
     """オプションとして常に付与される文字列"""
-    dropitems: list[str] = field(default_factory=list)
-    """非表示にする項目"""
 
     def stipulated_calculation(self, game_count: int) -> int:
         """

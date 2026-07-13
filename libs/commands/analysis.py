@@ -82,12 +82,18 @@ class AnalysisConfig(BaseSection, CommandAttrs):
 
         デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
         """
+        self.command_name: str = "分析コマンド"
         self.default_commandword: str = "成績分析"
         self.section: str = str(CommandType.ANALYSIS)
         self.default_reset()
 
     def register(self) -> None:
-        """ディスパッチャー登録"""
+        """
+        ディスパッチャー登録。
+
+        分析コマンドの呼び出しワードをディスパッチャーテーブルに登録する。
+
+        """
         for command in self.commandwords_list():
             g.keyword_dispatcher.update({command: main})
         if hasattr(g.cfg.alias, "analysis"):
