@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
     from integrations.protocols import MessageParserProtocol
     from libs.domain.score import GameResult
-    from libs.types import CommandType, RemarkDict
+    from libs.types import RemarkDict
 
 
 @dataclass
@@ -354,18 +354,18 @@ class SettingAttrs(ParameterMethodMixin):
 
         return word_list
 
-    def help_string(self, command_type: "CommandType") -> str:
+    def help_string(self, section: str) -> str:
         """
         コマンドヘルプメッセージを生成する
 
         Args:
-            command_type (CommandType): コマンドタイプ
+            section (str): コマンド種別（セクション名）
 
         Returns:
             str: ヘルプメッセージ
         """
         text_list: list[str] = []
-        word_list: list[str] = lookup.resolve_commands(g.params.rule_version, command_type)
+        word_list: list[str] = lookup.resolve_commands(g.params.rule_version, section)
 
         text_list.append(f"呼び出しワード：{'、'.join(word_list)}")
         if hasattr(self, "aggregation_range"):
