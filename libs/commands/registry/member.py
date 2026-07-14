@@ -11,12 +11,11 @@ from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.app_config import AppConfig
 
 
 class MemberDataDict(TypedDict):
@@ -38,7 +37,7 @@ class MemberDataDict(TypedDict):
     """対戦数"""
 
 
-class MemberSection(BaseSection, SettingAttrs):
+class MemberConfig(BaseSection, SettingAttrs):
     """memberセクション処理"""
 
     info: list[MemberDataDict]
@@ -52,18 +51,15 @@ class MemberSection(BaseSection, SettingAttrs):
     guest_name: str
     """未登録メンバー名称"""
 
-    def __init__(self, outer: "AppConfig") -> None:
+    def __init__(self) -> None:
         """
-        memberセクション設定の初期値を準備する。
+        MemberConfig クラスの初期化。
 
-        Args:
-            outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
-
+        デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
         """
         self.command_name: str = "メンバー一覧"
-        self.default_commandword = "メンバー一覧"
-        self.section = str(CommandType.MEMBER_LIST)
-        self.main_parser = outer.main_parser
+        self.default_commandword: str = "メンバー一覧"
+        self.section: str = "member"
         self.default_reset()
 
     def register(self) -> None:

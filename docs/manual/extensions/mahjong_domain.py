@@ -128,13 +128,13 @@ class AliasSectionDirective(SplitWordsDescription):
     index_category = "alias section"
 
 
-class MemberSectionDirective(SplitWordsDescription):
+class MemberConfigDirective(SplitWordsDescription):
     """memberセクション"""
 
     index_category = "member section"
 
 
-class TeamSectionDirective(SplitWordsDescription):
+class TeamConfigDirective(SplitWordsDescription):
     """teamセクション"""
 
     index_category = "team section"
@@ -206,8 +206,8 @@ class MahjongDomain(Domain):
         "rule_set_section": RuleSetSectionDirective,
         "regulations_section": RegulationsSectionDirective,
         "alias_section": AliasSectionDirective,
-        "member_section": MemberSectionDirective,
-        "team_section": TeamSectionDirective,
+        "member_section": MemberConfigDirective,
+        "team_section": TeamConfigDirective,
         "degree_section": DegreeSectionDirective,
         "status_section": StatusSectionDirective,
         "grade_section": StatusSectionDirective,

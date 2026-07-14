@@ -12,12 +12,11 @@ from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-    from libs.bootstrap.app_config import AppConfig
 
 
 class TeamDataDict(TypedDict):
@@ -31,7 +30,7 @@ class TeamDataDict(TypedDict):
     """所属メンバーリスト"""
 
 
-class TeamSection(BaseSection, SettingAttrs):
+class TeamConfig(BaseSection, SettingAttrs):
     """teamセクション処理"""
 
     info: list[TeamDataDict]
@@ -45,18 +44,15 @@ class TeamSection(BaseSection, SettingAttrs):
     friendly_fire: bool
     """チームメイトが同卓しているゲームを集計対象に含めるか"""
 
-    def __init__(self, outer: "AppConfig") -> None:
+    def __init__(self) -> None:
         """
-        teamセクション設定の初期値を準備する。
+        TeamConfig クラスの初期化。
 
-        Args:
-            outer (AppConfig): 共通設定を保持するアプリケーション設定オブジェクト。
-
+        デフォルトのコマンドワードおよびセクション名を設定し、設定値を初期状態にリセットする。
         """
         self.command_name: str = "チーム一覧"
-        self.default_commandword = "チーム一覧"
-        self.section = str(CommandType.TEAM_LIST)
-        self.main_parser = outer.main_parser
+        self.default_commandword: str = "チーム一覧"
+        self.section: str = "team"
         self.default_reset()
 
     def register(self) -> None:

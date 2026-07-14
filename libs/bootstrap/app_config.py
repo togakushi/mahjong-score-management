@@ -10,8 +10,8 @@ from typing import Any, Optional, Union
 
 from libs.commands.analysis import AnalysisConfig
 from libs.commands.help import HelpConfig
-from libs.commands.registry.member import MemberSection
-from libs.commands.registry.team import TeamSection
+from libs.commands.registry.member import MemberConfig
+from libs.commands.registry.team import TeamConfig
 from libs.commands.summary import SummaryConfig
 from libs.domain.rule import RuleSet
 from libs.domain.section import AliasSection, BadgeDisplay, CommandClassType, SettingSection
@@ -81,12 +81,13 @@ class AppConfig:
         """aliasセクション設定値"""
         self.shortcut: dict[str, str] = {}
         """ショートカット格納辞書"""
-        self.member: MemberSection = MemberSection(self)
-        """memberセクション設定値"""
-        self.team: TeamSection = TeamSection(self)
-        """teamセクション設定値"""
         self.badge: BadgeDisplay = BadgeDisplay(self)
         """バッジ設定"""
+
+        self.member: MemberConfig = MemberConfig()
+        """memberセクション設定値"""
+        self.team: TeamConfig = TeamConfig()
+        """teamセクション設定値"""
         self.help: HelpConfig = HelpConfig()
         """helpセクション設定値"""
 

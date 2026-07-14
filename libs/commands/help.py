@@ -8,7 +8,6 @@ import libs.global_value as g
 from libs.commands.deliverables import text_assembly
 from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
-from libs.types import CommandType
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -30,7 +29,7 @@ class HelpConfig(BaseSection, SettingAttrs):
         """
         self.command_name: str = "ヘルプ"
         self.default_commandword: str = "麻雀ヘルプ"
-        self.section: str = str(CommandType.HELP)
+        self.section: str = "help"
         self.default_reset()
 
     def register(self) -> None:

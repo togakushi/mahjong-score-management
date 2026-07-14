@@ -8,7 +8,7 @@ import libs.global_value as g
 from libs.commands import deliverables
 from libs.domain.datamodels import CommandAttrs
 from libs.domain.section import BaseSection
-from libs.types import CommandType, DispatchRule
+from libs.types import DispatchRule
 from libs.utils import dictutil
 
 if TYPE_CHECKING:
@@ -84,7 +84,7 @@ class AnalysisConfig(BaseSection, CommandAttrs):
         """
         self.command_name: str = "分析コマンド"
         self.default_commandword: str = "成績分析"
-        self.section: str = str(CommandType.ANALYSIS)
+        self.section: str = "analysis"
         self.default_reset()
 
     def register(self) -> None:
