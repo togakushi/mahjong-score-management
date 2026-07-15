@@ -11,7 +11,7 @@ from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
 from libs.functions.compose import text_item
-from libs.types import StyleOptions
+from libs.types import CommandType, StyleOptions
 from libs.utils import dbutil, textutil
 
 if TYPE_CHECKING:
@@ -160,6 +160,7 @@ def members_list(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
 
     """
+    m.status.command_type = CommandType.MEMBERS_LIST
     m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
     m.post.ts = m.data.event_ts
     m.post.thread_title = "登録済みメンバー"
