@@ -123,9 +123,9 @@ class PlaceholderBuilder(ParameterData):
     """直近対戦数指定"""
 
     starttime: Union[str, ExtDt, None] = field(default=None)
-    """集計開始日時"""
+    """検索開始日時"""
     endtime: Union[str, ExtDt, None] = field(default=None)
-    """集計終了日時"""
+    """検索終了日時"""
     onday: Union[str, ExtDt, None] = field(default=None)
     """time_adjust修正を含まない日時"""
 
