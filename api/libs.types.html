@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=ffba2e4a"></script>
+    <script src="_static/documentation_options.js?v=8a389775"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -95,17 +95,19 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
-<li><a class="reference internal" href="#libs.types.CommandType.SUMMARY"><code class="docutils literal notranslate"><span class="pre">CommandType.SUMMARY</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.ANALYSIS"><code class="docutils literal notranslate"><span class="pre">CommandType.ANALYSIS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_DATA"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_DATA</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_SUMMARY"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_SUMMARY</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GAME_RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_RESULTS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MATRIX"><code class="docutils literal notranslate"><span class="pre">CommandType.MATRIX</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.GAME_STATISTICS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_STATISTICS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.ANALYSIS_SCORES"><code class="docutils literal notranslate"><span class="pre">CommandType.ANALYSIS_SCORES</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.DETAILED_RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.DETAILED_RESULTS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MEMBERS_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBERS_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
@@ -153,8 +155,8 @@
 <li><a class="reference internal" href="#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
@@ -467,82 +469,159 @@
 <dt class="sig sig-object py" id="libs.types.CommandType">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">CommandType</span></span><a class="headerlink" href="#libs.types.CommandType" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
-<p>実行(する/した)コマンド兼設定ファイルセクション名</p>
+<p>実行(する/した)コマンド名</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.SUMMARY">
-<span class="sig-name descname"><span class="pre">SUMMARY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'summary'</span></span><a class="headerlink" href="#libs.types.CommandType.SUMMARY" title="Link to this definition">¶</a></dt>
-<dd><p>集計コマンド</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.RECORD_DATA">
+<span class="sig-name descname"><span class="pre">RECORD_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'成績データ'</span></span><a class="headerlink" href="#libs.types.CommandType.RECORD_DATA" title="Link to this definition">¶</a></dt>
+<dd><p>成績詳細 / 成績グラフ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.ANALYSIS">
-<span class="sig-name descname"><span class="pre">ANALYSIS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'analysis'</span></span><a class="headerlink" href="#libs.types.CommandType.ANALYSIS" title="Link to this definition">¶</a></dt>
-<dd><p>分析コマンド</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.RECORD_SUMMARY">
+<span class="sig-name descname"><span class="pre">RECORD_SUMMARY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'成績サマリ'</span></span><a class="headerlink" href="#libs.types.CommandType.RECORD_SUMMARY" title="Link to this definition">¶</a></dt>
+<dd><p>成績サマリ表(全体/差分) / 成績上位者</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.RESULTS">
-<span class="sig-name descname"><span class="pre">RESULTS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'results'</span></span><a class="headerlink" href="#libs.types.CommandType.RESULTS" title="Link to this definition">¶</a></dt>
-<dd><p>成績サマリ</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.RECORD_GRAPH">
+<span class="sig-name descname"><span class="pre">RECORD_GRAPH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'成績グラフ'</span></span><a class="headerlink" href="#libs.types.CommandType.RECORD_GRAPH" title="Link to this definition">¶</a></dt>
+<dd><p>通算ポイント推移グラフ / 順位変動グラフ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.GRAPH">
-<span class="sig-name descname"><span class="pre">GRAPH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'graph'</span></span><a class="headerlink" href="#libs.types.CommandType.GRAPH" title="Link to this definition">¶</a></dt>
-<dd><p>グラフ生成</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.GAME_RESULTS">
+<span class="sig-name descname"><span class="pre">GAME_RESULTS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'対戦結果'</span></span><a class="headerlink" href="#libs.types.CommandType.GAME_RESULTS" title="Link to this definition">¶</a></dt>
+<dd><p>直接対戦結果</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>集計コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.RANKING">
-<span class="sig-name descname"><span class="pre">RANKING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ranking'</span></span><a class="headerlink" href="#libs.types.CommandType.RANKING" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">RANKING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ランキング'</span></span><a class="headerlink" href="#libs.types.CommandType.RANKING" title="Link to this definition">¶</a></dt>
 <dd><p>ランキング</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.RATING">
-<span class="sig-name descname"><span class="pre">RATING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rating'</span></span><a class="headerlink" href="#libs.types.CommandType.RATING" title="Link to this definition">¶</a></dt>
-<dd><p>レーティング</p>
+<span class="sig-name descname"><span class="pre">RATING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'レーティング'</span></span><a class="headerlink" href="#libs.types.CommandType.RATING" title="Link to this definition">¶</a></dt>
+<dd><p>レーティング表 / レーティング推移グラフ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.REPORT">
-<span class="sig-name descname"><span class="pre">REPORT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'report'</span></span><a class="headerlink" href="#libs.types.CommandType.REPORT" title="Link to this definition">¶</a></dt>
-<dd><p>レポート</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.MATRIX">
+<span class="sig-name descname"><span class="pre">MATRIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'マトリクス'</span></span><a class="headerlink" href="#libs.types.CommandType.MATRIX" title="Link to this definition">¶</a></dt>
+<dd><p>対局対戦マトリクス</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.GAME_STATISTICS">
-<span class="sig-name descname"><span class="pre">GAME_STATISTICS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'game_statistics'</span></span><a class="headerlink" href="#libs.types.CommandType.GAME_STATISTICS" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">GAME_STATISTICS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ゲーム統計'</span></span><a class="headerlink" href="#libs.types.CommandType.GAME_STATISTICS" title="Link to this definition">¶</a></dt>
 <dd><p>ゲーム統計情報</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.MEMBER_LIST">
-<span class="sig-name descname"><span class="pre">MEMBER_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'member'</span></span><a class="headerlink" href="#libs.types.CommandType.MEMBER_LIST" title="Link to this definition">¶</a></dt>
-<dd><p>メンバー一覧</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.ANALYSIS_SCORES">
+<span class="sig-name descname"><span class="pre">ANALYSIS_SCORES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'素点分析'</span></span><a class="headerlink" href="#libs.types.CommandType.ANALYSIS_SCORES" title="Link to this definition">¶</a></dt>
+<dd><p>素点分析 / 順位素点相関図</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.CommandType.TEAM_LIST">
-<span class="sig-name descname"><span class="pre">TEAM_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'team'</span></span><a class="headerlink" href="#libs.types.CommandType.TEAM_LIST" title="Link to this definition">¶</a></dt>
-<dd><p>チーム一覧</p>
+<dt class="sig sig-object py" id="libs.types.CommandType.DETAILED_RESULTS">
+<span class="sig-name descname"><span class="pre">DETAILED_RESULTS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'成績詳細'</span></span><a class="headerlink" href="#libs.types.CommandType.DETAILED_RESULTS" title="Link to this definition">¶</a></dt>
+<dd><p>成績レポート / 成績分析 / 成績詳細一覧表</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>分析コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.HELP">
 <span class="sig-name descname"><span class="pre">HELP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'help'</span></span><a class="headerlink" href="#libs.types.CommandType.HELP" title="Link to this definition">¶</a></dt>
 <dd><p>ヘルプ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>その他コマンド</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.MEMBERS_LIST">
+<span class="sig-name descname"><span class="pre">MEMBERS_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'メンバー一覧'</span></span><a class="headerlink" href="#libs.types.CommandType.MEMBERS_LIST" title="Link to this definition">¶</a></dt>
+<dd><p>メンバー一覧</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>その他コマンド</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.CommandType.TEAM_LIST">
+<span class="sig-name descname"><span class="pre">TEAM_LIST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'チーム一覧'</span></span><a class="headerlink" href="#libs.types.CommandType.TEAM_LIST" title="Link to this definition">¶</a></dt>
+<dd><p>チーム一覧</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>その他コマンド</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.COMPARISON">
-<span class="sig-name descname"><span class="pre">COMPARISON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comparison'</span></span><a class="headerlink" href="#libs.types.CommandType.COMPARISON" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">COMPARISON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'突合'</span></span><a class="headerlink" href="#libs.types.CommandType.COMPARISON" title="Link to this definition">¶</a></dt>
 <dd><p>突合処理</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.CommandType.UNKNOWN">
-<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.types.CommandType.UNKNOWN" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'未定義'</span></span><a class="headerlink" href="#libs.types.CommandType.UNKNOWN" title="Link to this definition">¶</a></dt>
 <dd><p>未定義</p>
 </dd></dl>
 
@@ -778,14 +857,6 @@
 - <em>False</em>: 表示</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.types.StyleOptions.key_title">
-<span class="sig-name descname"><span class="pre">key_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.key_title" title="Link to this definition">¶</a></dt>
-<dd><p>小見出しに辞書のキーを使う
-- <em>True</em>: 表示
-- <em>False</em>: 非表示</p>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codeblock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summarize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_blank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rename_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RenameType.NORMAL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DataKind.GENERAL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.StyleOptions.__init__" title="Link to this definition">¶</a></dt>
@@ -814,6 +885,14 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.types.StyleOptions.key_title">
+<span class="sig-name descname"><span class="pre">key_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.key_title" title="Link to this definition">¶</a></dt>
+<dd><p>小見出しに辞書のキーを使う
+- <em>True</em>: 表示
+- <em>False</em>: 非表示</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1255,17 +1334,19 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.types.CommandType"><code class="docutils literal notranslate"><span class="pre">CommandType</span></code></a><ul>
-<li><a class="reference internal" href="#libs.types.CommandType.SUMMARY"><code class="docutils literal notranslate"><span class="pre">CommandType.SUMMARY</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.ANALYSIS"><code class="docutils literal notranslate"><span class="pre">CommandType.ANALYSIS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.RESULTS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_DATA"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_DATA</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_SUMMARY"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_SUMMARY</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.RECORD_GRAPH"><code class="docutils literal notranslate"><span class="pre">CommandType.RECORD_GRAPH</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.GAME_RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_RESULTS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RANKING"><code class="docutils literal notranslate"><span class="pre">CommandType.RANKING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.RATING"><code class="docutils literal notranslate"><span class="pre">CommandType.RATING</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.REPORT"><code class="docutils literal notranslate"><span class="pre">CommandType.REPORT</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MATRIX"><code class="docutils literal notranslate"><span class="pre">CommandType.MATRIX</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.GAME_STATISTICS"><code class="docutils literal notranslate"><span class="pre">CommandType.GAME_STATISTICS</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.MEMBER_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBER_LIST</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.ANALYSIS_SCORES"><code class="docutils literal notranslate"><span class="pre">CommandType.ANALYSIS_SCORES</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.DETAILED_RESULTS"><code class="docutils literal notranslate"><span class="pre">CommandType.DETAILED_RESULTS</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.HELP"><code class="docutils literal notranslate"><span class="pre">CommandType.HELP</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.MEMBERS_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.MEMBERS_LIST</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
@@ -1313,8 +1394,8 @@
 <li><a class="reference internal" href="#libs.types.StyleOptions.show_index"><code class="docutils literal notranslate"><span class="pre">StyleOptions.show_index</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.use_comment"><code class="docutils literal notranslate"><span class="pre">StyleOptions.use_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.header_hidden"><code class="docutils literal notranslate"><span class="pre">StyleOptions.header_hidden</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.__init__"><code class="docutils literal notranslate"><span class="pre">StyleOptions.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.types.StyleOptions.key_title"><code class="docutils literal notranslate"><span class="pre">StyleOptions.key_title</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.summarize"><code class="docutils literal notranslate"><span class="pre">StyleOptions.summarize</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.indent"><code class="docutils literal notranslate"><span class="pre">StyleOptions.indent</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.StyleOptions.keep_blank"><code class="docutils literal notranslate"><span class="pre">StyleOptions.keep_blank</span></code></a></li>
@@ -1467,8 +1548,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.7.
-      Last updated on 2026-07-13.
+      Release Version: 0.17.8.
+      Last updated on 2026-07-15.
     </div>
 
   </body>

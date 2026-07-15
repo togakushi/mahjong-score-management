@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=ffba2e4a"></script>
+    <script src="_static/documentation_options.js?v=8a389775"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -207,9 +207,9 @@
 </li>
         <li><a href="libs.commands.help.html#libs.commands.help.HelpConfig.__init__">(libs.commands.help.HelpConfig method)</a>
 </li>
-        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.__init__">(libs.commands.registry.member.MemberSection method)</a>
+        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.__init__">(libs.commands.registry.member.MemberConfig method)</a>
 </li>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.__init__">(libs.commands.registry.team.TeamSection method)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.__init__">(libs.commands.registry.team.TeamConfig method)</a>
 </li>
         <li><a href="libs.commands.summary.html#libs.commands.summary.SummaryConfig.__init__">(libs.commands.summary.SummaryConfig method)</a>
 </li>
@@ -426,15 +426,15 @@
         <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberDataDict.alias">(libs.commands.registry.member.MemberDataDict attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.alias">alias() (libs.commands.registry.member.MemberSection method)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.alias">alias() (libs.commands.registry.member.MemberConfig method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.alias_limit">alias_limit (libs.commands.registry.member.MemberSection attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.alias_limit">alias_limit (libs.commands.registry.member.MemberConfig attribute)</a>
 </li>
       <li><a href="libs.domain.section.html#libs.domain.section.AliasSection">AliasSection (class in libs.domain.section)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.all_lists">all_lists (libs.commands.registry.member.MemberSection property)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.all_lists">all_lists (libs.commands.registry.member.MemberConfig property)</a>
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.all_player">all_player (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 </li>
@@ -446,9 +446,9 @@
         <li><a href="libs.domain.section.html#libs.domain.section.AliasSection.analysis">(libs.domain.section.AliasSection attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.types.html#libs.types.CommandType.ANALYSIS">ANALYSIS (libs.types.CommandType attribute)</a>
-</li>
       <li><a href="libs.domain.command.html#libs.domain.command.CommandParser.analysis_argument">analysis_argument() (libs.domain.command.CommandParser method)</a>
+</li>
+      <li><a href="libs.types.html#libs.types.CommandType.ANALYSIS_SCORES">ANALYSIS_SCORES (libs.types.CommandType attribute)</a>
 </li>
       <li><a href="libs.commands.analysis.html#libs.commands.analysis.AnalysisConfig">AnalysisConfig (class in libs.commands.analysis)</a>
 </li>
@@ -599,10 +599,10 @@
 </li>
       <li><a href="libs.types.html#libs.types.ChannelType">ChannelType (class in libs.types)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.character_limit">character_limit (libs.commands.registry.member.MemberSection attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.character_limit">character_limit (libs.commands.registry.member.MemberConfig attribute)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.character_limit">(libs.commands.registry.team.TeamSection attribute)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.character_limit">(libs.commands.registry.team.TeamConfig attribute)</a>
 </li>
       </ul></li>
       <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.check">check() (libs.domain.rule.RuleSet method)</a>
@@ -684,9 +684,9 @@
       <li><a href="integrations.protocols.html#integrations.protocols.StatusData.command_name">command_name (integrations.protocols.StatusData attribute)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.command_name">(libs.commands.registry.member.MemberSection attribute)</a>
+        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.command_name">(libs.commands.registry.member.MemberConfig attribute)</a>
 </li>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.command_name">(libs.commands.registry.team.TeamSection attribute)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.command_name">(libs.commands.registry.team.TeamConfig attribute)</a>
 </li>
         <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.SettingAttrs.command_name">(libs.domain.datamodels.SettingAttrs attribute)</a>
 </li>
@@ -846,12 +846,18 @@
       </ul></li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.Args.debug">debug (libs.domain.datamodels.Args attribute)</a>
 </li>
-      <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.SettingAttrs.default_commandword">default_commandword (libs.domain.datamodels.SettingAttrs attribute)</a>
-</li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.default_reset">default_reset() (libs.commands.registry.member.MemberSection method)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.default_commandword">default_commandword (libs.commands.registry.member.MemberConfig attribute)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.default_reset">(libs.commands.registry.team.TeamSection method)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.default_commandword">(libs.commands.registry.team.TeamConfig attribute)</a>
+</li>
+        <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.SettingAttrs.default_commandword">(libs.domain.datamodels.SettingAttrs attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.default_reset">default_reset() (libs.commands.registry.member.MemberConfig method)</a>
+
+      <ul>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.default_reset">(libs.commands.registry.team.TeamConfig method)</a>
 </li>
         <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ParameterMethodMixin.default_reset">(libs.domain.datamodels.ParameterMethodMixin method)</a>
 </li>
@@ -876,14 +882,14 @@
 </li>
       <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.delete">delete() (in module libs.commands.registry.team)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="integrations.base.interface.html#integrations.base.interface.MessageParserDataMixin.delete_items">delete_items() (integrations.base.interface.MessageParserDataMixin method)</a>
 
       <ul>
         <li><a href="integrations.protocols.html#integrations.protocols.MessageParserProtocol.delete_items">(integrations.protocols.MessageParserProtocol method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="integrations.discord.functions.html#integrations.discord.functions.SvcFunctions.delete_reaction">delete_reaction() (integrations.discord.functions.SvcFunctions method)</a>
 </li>
       <li><a href="libs.types.html#libs.types.MessageStatus.DELETED">DELETED (libs.types.MessageStatus attribute)</a>
@@ -906,6 +912,8 @@
         <li><a href="integrations.web.events.create_bp.detail.html#integrations.web.events.create_bp.detail.detail_bp">(in module integrations.web.events.create_bp.detail)</a>
 </li>
       </ul></li>
+      <li><a href="libs.types.html#libs.types.CommandType.DETAILED_RESULTS">DETAILED_RESULTS (libs.types.CommandType attribute)</a>
+</li>
       <li><a href="libs.functions.tools.score_simulator.html#libs.functions.tools.score_simulator.determine_point">determine_point() (in module libs.functions.tools.score_simulator)</a>
 </li>
       <li><a href="libs.functions.tools.score_simulator.html#libs.functions.tools.score_simulator.determine_winner">determine_winner() (in module libs.functions.tools.score_simulator)</a>
@@ -1072,7 +1080,7 @@
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.fourfold">fourfold (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.friendly_fire">friendly_fire (libs.commands.registry.team.TeamSection attribute)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.friendly_fire">friendly_fire (libs.commands.registry.team.TeamConfig attribute)</a>
 
       <ul>
         <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ParameterData.friendly_fire">(libs.domain.datamodels.ParameterData attribute)</a>
@@ -1091,6 +1099,8 @@
       <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberDataDict.game_count">game_count (libs.commands.registry.member.MemberDataDict attribute)</a>
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.game_results">game_results (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
+</li>
+      <li><a href="libs.types.html#libs.types.CommandType.GAME_RESULTS">GAME_RESULTS (libs.types.CommandType attribute)</a>
 </li>
       <li><a href="libs.types.html#libs.types.CommandType.GAME_STATISTICS">GAME_STATISTICS (libs.types.CommandType attribute)</a>
 </li>
@@ -1152,10 +1162,10 @@
 </li>
       <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.get_ignore_flying">get_ignore_flying() (libs.domain.rule.RuleSet method)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.get_info">get_info (libs.commands.registry.member.MemberSection property)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.get_info">get_info (libs.commands.registry.member.MemberConfig property)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.get_info">(libs.commands.registry.team.TeamSection property)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.get_info">(libs.commands.registry.team.TeamConfig property)</a>
 </li>
       </ul></li>
       <li><a href="libs.functions.compose.text_item.html#libs.functions.compose.text_item.get_members_list">get_members_list() (in module libs.functions.compose.text_item)</a>
@@ -1164,10 +1174,10 @@
 </li>
       <li><a href="integrations.slack.functions.html#integrations.slack.functions.SvcFunctions.get_messages">get_messages() (integrations.slack.functions.SvcFunctions method)</a>
 </li>
-      <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.get_mode">get_mode() (libs.domain.rule.RuleSet method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.get_mode">get_mode() (libs.domain.rule.RuleSet method)</a>
+</li>
       <li><a href="integrations.slack.functions.html#integrations.slack.functions.SvcFunctions.get_reactions_list">get_reactions_list() (integrations.slack.functions.SvcFunctions method)</a>
 </li>
       <li><a href="libs.commands.deliverables.results_detail.html#libs.commands.deliverables.results_detail.get_results_details">get_results_details() (in module libs.commands.deliverables.results_detail)</a>
@@ -1206,8 +1216,6 @@
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.graph">graph (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.CommandType.GRAPH">GRAPH (libs.types.CommandType attribute)</a>
-</li>
       <li><a href="integrations.web.events.create_bp.html#integrations.web.events.create_bp.graph_bp">graph_bp() (in module integrations.web.events.create_bp)</a>
 
       <ul>
@@ -1240,7 +1248,7 @@
         <li><a href="libs.domain.section.html#libs.domain.section.SettingSection.guest_mark">(libs.domain.section.SettingSection attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.guest_name">guest_name (libs.commands.registry.member.MemberSection attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.guest_name">guest_name (libs.commands.registry.member.MemberConfig attribute)</a>
 
       <ul>
         <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.guest_name">(libs.domain.placeholder.PlaceholderBuilder attribute)</a>
@@ -1380,10 +1388,10 @@
       </ul></li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ParameterData.individual">individual (libs.domain.datamodels.ParameterData attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.info">info (libs.commands.registry.member.MemberSection attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.info">info (libs.commands.registry.member.MemberConfig attribute)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.info">(libs.commands.registry.team.TeamSection attribute)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.info">(libs.commands.registry.team.TeamConfig attribute)</a>
 </li>
       </ul></li>
       <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.info">info() (libs.domain.rule.RuleSet method)</a>
@@ -2388,10 +2396,10 @@
         <li><a href="libs.utils.timekit.html#module-libs.utils.timekit">module</a>
 </li>
       </ul></li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.lists">lists (libs.commands.registry.member.MemberSection property)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.lists">lists (libs.commands.registry.member.MemberConfig property)</a>
 
       <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.lists">(libs.commands.registry.team.TeamSection property)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.lists">(libs.commands.registry.team.TeamConfig property)</a>
 </li>
       </ul></li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.logging_verbose">logging_verbose (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
@@ -2462,6 +2470,8 @@
 </li>
       <li><a href="libs.domain.command.html#libs.domain.command.CommandSpec.match">match (libs.domain.command.CommandSpec attribute)</a>
 </li>
+      <li><a href="libs.types.html#libs.types.CommandType.MATRIX">MATRIX (libs.types.CommandType attribute)</a>
+</li>
       <li><a href="libs.commands.deliverables.matrix.html#libs.commands.deliverables.matrix.matrix_table">matrix_table() (in module libs.commands.deliverables.matrix)</a>
 </li>
       <li><a href="libs.types.html#libs.types.RemarkDict.matter">matter (libs.types.RemarkDict attribute)</a>
@@ -2474,7 +2484,7 @@
         <li><a href="libs.domain.section.html#libs.domain.section.AliasSection.member">(libs.domain.section.AliasSection attribute)</a>
 </li>
       </ul></li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.member">member() (libs.commands.registry.team.TeamSection method)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.member">member() (libs.commands.registry.team.TeamConfig method)</a>
 </li>
       <li><a href="integrations.web.events.create_bp.html#integrations.web.events.create_bp.member_bp">member_bp() (in module integrations.web.events.create_bp)</a>
 
@@ -2484,17 +2494,17 @@
       </ul></li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.member_info">member_info() (in module libs.functions.lookup)</a>
 </li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.member_limit">member_limit (libs.commands.registry.team.TeamSection attribute)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.member_limit">member_limit (libs.commands.registry.team.TeamConfig attribute)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.CommandType.MEMBER_LIST">MEMBER_LIST (libs.types.CommandType attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig">MemberConfig (class in libs.commands.registry.member)</a>
 </li>
       <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberDataDict">MemberDataDict (class in libs.commands.registry.member)</a>
 </li>
       <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamDataDict.members">members (libs.commands.registry.team.TeamDataDict attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.members_list">members_list() (in module libs.commands.registry.member)</a>
+      <li><a href="libs.types.html#libs.types.CommandType.MEMBERS_LIST">MEMBERS_LIST (libs.types.CommandType attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection">MemberSection (class in libs.commands.registry.member)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.members_list">members_list() (in module libs.commands.registry.member)</a>
 </li>
       <li><a href="libs.utils.dictutil.html#libs.utils.dictutil.merge_dicts">merge_dicts() (in module libs.utils.dictutil)</a>
 </li>
@@ -3275,11 +3285,19 @@
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.Args.recalculation">recalculation (libs.domain.datamodels.Args attribute)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.StyleOptions.DataKind.RECORD_DATA">RECORD_DATA (libs.types.StyleOptions.DataKind attribute)</a>
+      <li><a href="libs.types.html#libs.types.CommandType.RECORD_DATA">RECORD_DATA (libs.types.CommandType attribute)</a>
+
+      <ul>
+        <li><a href="libs.types.html#libs.types.StyleOptions.DataKind.RECORD_DATA">(libs.types.StyleOptions.DataKind attribute)</a>
 </li>
+      </ul></li>
       <li><a href="libs.types.html#libs.types.StyleOptions.DataKind.RECORD_DATA_ALL">RECORD_DATA_ALL (libs.types.StyleOptions.DataKind attribute)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.record_df">record_df (libs.domain.stats.StatsInfo attribute)</a>
+</li>
+      <li><a href="libs.types.html#libs.types.CommandType.RECORD_GRAPH">RECORD_GRAPH (libs.types.CommandType attribute)</a>
+</li>
+      <li><a href="libs.types.html#libs.types.CommandType.RECORD_SUMMARY">RECORD_SUMMARY (libs.types.CommandType attribute)</a>
 </li>
       <li><a href="integrations.slack.events.handler_registry.html#integrations.slack.events.handler_registry.register">register() (in module integrations.slack.events.handler_registry)</a>
 
@@ -3290,9 +3308,9 @@
 </li>
         <li><a href="libs.commands.help.html#libs.commands.help.HelpConfig.register">(libs.commands.help.HelpConfig method)</a>
 </li>
-        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.register">(libs.commands.registry.member.MemberSection method)</a>
+        <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.register">(libs.commands.registry.member.MemberConfig method)</a>
 </li>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.register">(libs.commands.registry.team.TeamSection method)</a>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.register">(libs.commands.registry.team.TeamConfig method)</a>
 </li>
         <li><a href="libs.commands.summary.html#libs.commands.summary.SummaryConfig.register">(libs.commands.summary.SummaryConfig method)</a>
 </li>
@@ -3301,14 +3319,14 @@
 </li>
       <li><a href="libs.domain.rule.html#libs.domain.rule.RuleSet.register_to_database">register_to_database() (libs.domain.rule.RuleSet method)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.registration_limit">registration_limit (libs.commands.registry.member.MemberSection attribute)</a>
-
-      <ul>
-        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.registration_limit">(libs.commands.registry.team.TeamSection attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.registration_limit">registration_limit (libs.commands.registry.member.MemberConfig attribute)</a>
+
+      <ul>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.registration_limit">(libs.commands.registry.team.TeamConfig attribute)</a>
+</li>
+      </ul></li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.regulation_list">regulation_list() (in module libs.functions.lookup)</a>
 </li>
       <li><a href="libs.domain.datamodels.html#libs.domain.datamodels.ComparisonResults.remark_del">remark_del (libs.domain.datamodels.ComparisonResults attribute)</a>
@@ -3361,8 +3379,6 @@
       </ul></li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.report">report (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 </li>
-      <li><a href="libs.types.html#libs.types.CommandType.REPORT">REPORT (libs.types.CommandType attribute)</a>
-</li>
       <li><a href="integrations.web.events.create_bp.html#integrations.web.events.create_bp.report_bp">report_bp() (in module integrations.web.events.create_bp)</a>
 
       <ul>
@@ -3385,15 +3401,13 @@
 </li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.resolve_commands">resolve_commands() (in module libs.functions.lookup)</a>
 </li>
-      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberSection.resolve_name">resolve_name() (libs.commands.registry.member.MemberSection method)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.resolve_name">resolve_name() (libs.commands.registry.member.MemberConfig method)</a>
 </li>
       <li><a href="libs.functions.lookup.html#libs.functions.lookup.resolve_separate_flag">resolve_separate_flag() (in module libs.functions.lookup)</a>
 </li>
       <li><a href="integrations.protocols.html#integrations.protocols.StatusData.result">result (integrations.protocols.StatusData attribute)</a>
 </li>
       <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.result_df">result_df (libs.domain.stats.StatsInfo attribute)</a>
-</li>
-      <li><a href="libs.types.html#libs.types.CommandType.RESULTS">RESULTS (libs.types.CommandType attribute)</a>
 </li>
       <li><a href="libs.domain.placeholder.html#libs.domain.placeholder.PlaceholderBuilder.return_point">return_point (libs.domain.placeholder.PlaceholderBuilder attribute)</a>
 
@@ -3529,9 +3543,13 @@
 </li>
       <li><a href="libs.types.html#libs.types.StyleOptions.DataKind.SEAT_DATA">SEAT_DATA (libs.types.StyleOptions.DataKind attribute)</a>
 </li>
-      <li><a href="libs.domain.section.html#libs.domain.section.AliasSection.section">section (libs.domain.section.AliasSection attribute)</a>
+      <li><a href="libs.commands.registry.member.html#libs.commands.registry.member.MemberConfig.section">section (libs.commands.registry.member.MemberConfig attribute)</a>
 
       <ul>
+        <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.section">(libs.commands.registry.team.TeamConfig attribute)</a>
+</li>
+        <li><a href="libs.domain.section.html#libs.domain.section.AliasSection.section">(libs.domain.section.AliasSection attribute)</a>
+</li>
         <li><a href="libs.domain.section.html#libs.domain.section.BaseSection.section">(libs.domain.section.BaseSection attribute)</a>
 </li>
         <li><a href="libs.domain.section.html#libs.domain.section.SettingSection.section">(libs.domain.section.SettingSection attribute)</a>
@@ -3611,6 +3629,8 @@
 </li>
       <li><a href="libs.domain.section.html#libs.domain.section.SettingClassType">SettingClassType (in module libs.domain.section)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.domain.section.html#libs.domain.section.SettingSection">SettingSection (class in libs.domain.section)</a>
 </li>
       <li><a href="libs.bootstrap.configuration.html#libs.bootstrap.configuration.setup">setup() (in module libs.bootstrap.configuration)</a>
@@ -3619,8 +3639,6 @@
         <li><a href="libs.utils.graphutil.html#libs.utils.graphutil.setup">(in module libs.utils.graphutil)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="libs.bootstrap.initialization.html#libs.bootstrap.initialization.setup_grade_table">setup_grade_table() (in module libs.bootstrap.initialization)</a>
 </li>
       <li><a href="libs.bootstrap.initialization.html#libs.bootstrap.initialization.setup_regulations">setup_regulations() (in module libs.bootstrap.initialization)</a>
@@ -3751,8 +3769,6 @@
         <li><a href="libs.domain.stats.html#libs.domain.stats.StatsInfo.summary">(libs.domain.stats.StatsInfo property)</a>
 </li>
       </ul></li>
-      <li><a href="libs.types.html#libs.types.CommandType.SUMMARY">SUMMARY (libs.types.CommandType attribute)</a>
-</li>
       <li><a href="integrations.web.events.create_bp.html#integrations.web.events.create_bp.summary_bp">summary_bp() (in module integrations.web.events.create_bp)</a>
 
       <ul>
@@ -3833,9 +3849,9 @@
 </li>
       <li><a href="libs.domain.section.html#libs.domain.section.AliasSection.team_remove">team_remove (libs.domain.section.AliasSection attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamDataDict">TeamDataDict (class in libs.commands.registry.team)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig">TeamConfig (class in libs.commands.registry.team)</a>
 </li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection">TeamSection (class in libs.commands.registry.team)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamDataDict">TeamDataDict (class in libs.commands.registry.team)</a>
 </li>
       <li><a href="tests.events.test_command_dispatch.html#tests.events.test_command_dispatch.test_analysis_command">test_analysis_command() (in module tests.events.test_command_dispatch)</a>
 </li>
@@ -4290,7 +4306,7 @@
 </li>
       <li><a href="integrations.slack.api.html#integrations.slack.api.AdapterAPI.webclient">webclient (integrations.slack.api.AdapterAPI attribute)</a>
 </li>
-      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamSection.which">which() (libs.commands.registry.team.TeamSection method)</a>
+      <li><a href="libs.commands.registry.team.html#libs.commands.registry.team.TeamConfig.which">which() (libs.commands.registry.team.TeamConfig method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -4421,8 +4437,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.7.
-      Last updated on 2026-07-13.
+      Release Version: 0.17.8.
+      Last updated on 2026-07-15.
     </div>
 
   </body>
