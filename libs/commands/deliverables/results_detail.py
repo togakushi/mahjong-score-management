@@ -31,7 +31,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.SUMMARY
+    m.status.command_type = CommandType.RECORD_DATA
     g.params.guest_skip = g.params.guest_skip2  # 検索動作を合わせる
 
     if rule_version := g.params.rule_version:
@@ -190,7 +190,7 @@ def stats_list(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.SUMMARY
+    m.status.command_type = CommandType.DETAILED_RESULTS
     g.params.guest_skip = g.params.guest_skip2
 
     if not g.params.player_list:

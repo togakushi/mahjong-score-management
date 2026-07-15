@@ -29,7 +29,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.ANALYSIS_SCORES
 
     # データ収集
     df = g.params.read_data("RANKING_RESULTS").set_index("name")

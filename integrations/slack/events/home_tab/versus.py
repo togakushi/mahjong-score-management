@@ -10,7 +10,6 @@ from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
 from libs.commands import deliverables
-from libs.types import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -141,7 +140,6 @@ def register_versus_handlers(app: "App", adapter: ServiceAdapter) -> None:
         app_msg.pop()
         app_msg.append("集計完了")
 
-        m.status.command_type = CommandType.RESULTS
         deliverables.versus.aggregation(m)
         adapter.api.post(m)
 

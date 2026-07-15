@@ -46,7 +46,7 @@ def point_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.RECORD_GRAPH
 
     # データ収集
     game_info = GameInfo()
@@ -100,7 +100,7 @@ def rank_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.RECORD_GRAPH
 
     # データ収集
     game_info = GameInfo()

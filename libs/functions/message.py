@@ -11,7 +11,6 @@ from typing import TYPE_CHECKING
 
 import libs.global_value as g
 from libs.functions.compose import text_item
-from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -102,42 +101,50 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
         str: 生成した見出し
 
     """
-    msg = ""
+    print("-->", m.status.command_type)
+    text: list[str] = []
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
 
-    # 集計範囲
-    if g.params.search_word:  # コメント検索の場合はコメントで表示
-        game_range1 = f"最初のゲーム：{game_info.first_comment}\n"
-        game_range1 += f"最後のゲーム：{game_info.last_comment}\n"
-    else:
-        game_range1 = f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}\n"
-        game_range1 += f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}\n"
-    game_range2 = f"集計範囲：{text_item.aggregation_range(game_info)}\n"
-
     # 対戦数
     if game_info.count == 0:
-        msg += f"{random_reply(m, 'no_hits')}"
+        text.extend(
+            [
+                f"検索範囲：{str(text_item.search_range(time_pattern='time'))}",
+                f"{random_reply(m, 'no_hits')}",
+            ]
+        )
+        return textwrap.indent("\n".join(text), "\t" * indent)
+
+    # 検索範囲 / 集計範囲
+    if g.params.command == "summary":
+        text.append(f"検索範囲：{str(text_item.search_range(time_pattern='time'))}")
+        if g.params.search_word:  # コメント検索の場合はコメントで表示
+            text.extend(
+                [
+                    f"最初のゲーム：{game_info.first_comment}",
+                    f"最後のゲーム：{game_info.last_comment}",
+                ]
+            )
+        else:
+            text.extend(
+                [
+                    f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
+                    f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}",
+                ]
+            )
+        text.append(f"集計対象：{game_info.count} ゲーム{add_text}")
     else:
-        match m.status.command_type:
-            case CommandType.RESULTS:
-                if g.params.target_count:  # 直近指定がない場合は検索範囲を付ける
-                    msg += game_range1
-                    msg += f"集計対象：{game_info.count} ゲーム {add_text}\n"
-                else:
-                    msg += f"検索範囲：{str(text_item.search_range(time_pattern='time'))}\n"
-                    msg += game_range1
-                    msg += f"集計対象：{game_info.count} ゲーム {add_text}\n"
-            case CommandType.RANKING | CommandType.REPORT:
-                msg += game_range2
-                msg += f"集計対象：{game_info.count} ゲーム\n"
-            case _:
-                msg += game_range2
-                msg += f"集計対象：{game_info.count} ゲーム\n"
+        text.extend(
+            [
+                f"集計範囲：{text_item.aggregation_range(game_info)}",
+                f"集計対象：{game_info.count} ゲーム",
+            ]
+        )
 
-        if remarks_text := text_item.remarks(deliverables=m.status.command_type, headword=True):
-            msg += f"{remarks_text}\n"
-        if word_text := text_item.search_word(True):
-            msg += f"{word_text}\n"
+    if remarks_text := text_item.remarks(deliverables=m.status.command_type, headword=True):
+        text.append(f"{remarks_text}")
+    if word_text := text_item.search_word(True):
+        text.append(f"{word_text}")
 
-    return textwrap.indent(msg, "\t" * indent)
+    return textwrap.indent("\n".join(text), "\t" * indent)

@@ -19,8 +19,8 @@ if TYPE_CHECKING:
     from libs.bootstrap.app_config import AppConfig
     from libs.commands.analysis import AnalysisConfig
     from libs.commands.help import HelpConfig
-    from libs.commands.registry.member import MemberSection
-    from libs.commands.registry.team import TeamSection
+    from libs.commands.registry.member import MemberConfig
+    from libs.commands.registry.team import TeamConfig
     from libs.commands.summary import SummaryConfig
 
 ServiceClassType: TypeAlias = Union[
@@ -33,8 +33,8 @@ ServiceClassType: TypeAlias = Union[
 
 SettingClassType: TypeAlias = Union[
     "SettingSection",
-    "MemberSection",
-    "TeamSection",
+    "MemberConfig",
+    "TeamConfig",
     "AliasSection",
     "BadgeDisplay",
     "HelpConfig",

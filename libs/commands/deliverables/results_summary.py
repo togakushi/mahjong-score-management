@@ -24,7 +24,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.SUMMARY
+    m.status.command_type = CommandType.RECORD_SUMMARY
 
     # データ収集
     data: "MessageType"
@@ -172,7 +172,7 @@ def difference(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.SUMMARY
+    m.status.command_type = CommandType.RECORD_SUMMARY
 
     # データ収集
     data: "MessageType"

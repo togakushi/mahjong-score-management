@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Any, Optional, Union, cast
 
 import libs.global_value as g
 from libs.domain.score import GameResult
-from libs.types import ChannelType, CommandType
+from libs.types import ChannelType
 from libs.utils import dbutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -280,13 +280,13 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
     return ret
 
 
-def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
+def resolve_commands(rule_version: str, section: str) -> list[str]:
     """
     ルール識別子で割り当てられているコマンドワードを返す
 
     Args:
         rule_version (str): ルール識別子
-        command_type (CommandType): コマンド種別
+        section (str): コマンド種別（セクション名）
 
     Returns:
         list[str]: コマンドワード
@@ -295,8 +295,8 @@ def resolve_commands(rule_version: str, command_type: CommandType) -> list[str]:
     keywords: list[str] = [word for word, rule in g.cfg.rule.keyword_mapping.items() if rule == rule_version]
     commandwords: list[str] = []
 
-    if hasattr(g.cfg, command_type):
-        sub_com = cast("CommandClassType", getattr(g.cfg, command_type))
+    if hasattr(g.cfg, section):
+        sub_com = cast("CommandClassType", getattr(g.cfg, section))
         commandwords.append(sub_com.default_commandword)
         commandwords.extend(sub_com.commandword)
         commandwords.extend([f"{command}{suffix}" for suffix in sub_com.command_suffix for command in keywords])

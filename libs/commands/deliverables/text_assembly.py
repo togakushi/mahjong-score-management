@@ -58,19 +58,19 @@ def help_message(m: "MessageParserProtocol") -> None:
         StyleOptions(title="コマンド呼び出し"),
     )
     m.set_message(
-        g.cfg.summary.help_string(CommandType.SUMMARY),
+        g.cfg.summary.help_string(g.cfg.summary.section),
         StyleOptions(title=g.cfg.summary.command_name, indent=1, sub_title=True),
     )
     m.set_message(
-        g.cfg.analysis.help_string(CommandType.ANALYSIS),
+        g.cfg.analysis.help_string(g.cfg.analysis.section),
         StyleOptions(title=g.cfg.analysis.command_name, indent=1, sub_title=True),
     )
     m.set_message(
-        g.cfg.member.help_string(CommandType.MEMBER_LIST),
+        g.cfg.member.help_string(g.cfg.member.section),
         StyleOptions(title=g.cfg.member.command_name, indent=1, sub_title=True),
     )
     m.set_message(
-        g.cfg.team.help_string(CommandType.TEAM_LIST),
+        g.cfg.team.help_string(g.cfg.team.section),
         StyleOptions(title=g.cfg.team.command_name, indent=1, sub_title=True),
     )
 

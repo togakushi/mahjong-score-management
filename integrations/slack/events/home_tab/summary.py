@@ -10,7 +10,6 @@ from integrations.slack.adapter import ServiceAdapter
 from integrations.slack.events.handler_registry import register
 from integrations.slack.events.home_tab import ui_parts
 from libs.commands import deliverables
-from libs.types import CommandType
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -135,24 +134,19 @@ def register_summary_handlers(app: "App", adapter: ServiceAdapter) -> None:
 
         match adapter.conf.tab_var.get("operation"):
             case "point":
-                m.status.command_type = CommandType.GRAPH
                 deliverables.graph_summary.point_plot(m)
                 adapter.api.post(m)
             case "rank":
-                m.status.command_type = CommandType.GRAPH
                 deliverables.graph_summary.rank_plot(m)
                 adapter.api.post(m)
             case "rating":
-                m.status.command_type = CommandType.RATING
                 g.params.command = "ranking"
                 deliverables.rating_calc.aggregation(m)
                 adapter.api.post(m)
             case _:
                 if g.params.comparisons:
-                    m.status.command_type = CommandType.COMPARISON
                     deliverables.results_summary.difference(m)
                 else:
-                    m.status.command_type = CommandType.RESULTS
                     deliverables.results_summary.aggregation(m)
                 adapter.api.post(m)
 
