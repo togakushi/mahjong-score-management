@@ -101,7 +101,6 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
         str: 生成した見出し
 
     """
-    print("-->", m.status.command_type)
     text: list[str] = []
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
