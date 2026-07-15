@@ -35,7 +35,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.RECORD_DATA
     g.params.guest_skip = g.params.guest_skip2
 
     # データ収集
@@ -137,7 +137,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.DETAILED_RESULTS
     g.params.guest_skip = g.params.guest_skip2
 
     # データ収集

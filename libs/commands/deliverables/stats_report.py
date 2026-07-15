@@ -286,7 +286,7 @@ def gen_pdf(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.REPORT
+    m.status.command_type = CommandType.DETAILED_RESULTS
 
     if g.adapter.conf.plotting_backend == "plotly":
         m.post.reset()

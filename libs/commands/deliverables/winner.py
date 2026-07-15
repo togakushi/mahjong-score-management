@@ -27,7 +27,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.REPORT
+    m.status.command_type = CommandType.RECORD_SUMMARY
 
     # データ取得
     title: str = "成績上位者"

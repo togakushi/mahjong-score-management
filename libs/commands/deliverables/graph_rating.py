@@ -33,7 +33,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GRAPH
+    m.status.command_type = CommandType.RATING
 
     # 情報ヘッダ
     title: str = "レーティング推移グラフ"
