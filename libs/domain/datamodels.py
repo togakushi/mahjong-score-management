@@ -139,10 +139,10 @@ class GameInfo:
     @property
     def aggregation_range(self) -> str:
         """
-        集計範囲を返す（ヘッダ出力用）
+        集計範囲を返す
 
         Returns:
-            str: 集計範囲
+            str: YYYY/MM/DD HH:MM:SS ～ YYYY/MM/DD HH:MM:SS
 
         """
         if g.params.search_word:  # コメント検索の場合はコメントで表示
@@ -155,23 +155,35 @@ class GameInfo:
     @property
     def search_range(self) -> str:
         """
-        検索範囲を返す（ヘッダ出力用）
+        検索範囲を返す
 
         Returns:
-            str: 検索範囲
+            str: YYYY/MM/DD HH:MM:SS ～ YYYY/MM/DD HH:MM:SS
 
         """
         return f"{self.search_start} ～ {self.search_end}"
 
     @property
     def search_start(self) -> str:
-        """検索開始日時を文字列で返す"""
+        """
+        検索開始日時を文字列で返す
+
+        Returns:
+            str: YYYY/MM/DD HH:MM:SS
+
+        """
         assert isinstance(self.starttime, ExtDt)
         return self.starttime.format(fmt=ExtDt.FMT.YMDHMS)
 
     @property
     def search_end(self) -> str:
-        """検索終了日時を文字列で返す"""
+        """
+        検索終了日時を文字列で返す
+
+        Returns:
+            str: YYYY/MM/DD HH:MM:SS
+
+        """
         assert isinstance(self.endtime, ExtDt)
         return self.endtime.format(fmt=ExtDt.FMT.YMDHMS)
 
