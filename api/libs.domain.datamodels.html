@@ -87,6 +87,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo"><code class="docutils literal notranslate"><span class="pre">GameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.starttime"><code class="docutils literal notranslate"><span class="pre">GameInfo.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.endtime"><code class="docutils literal notranslate"><span class="pre">GameInfo.endtime</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.count"><code class="docutils literal notranslate"><span class="pre">GameInfo.count</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_game</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_game</span></code></a></li>
@@ -95,6 +97,10 @@
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">GameInfo.rule_version</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.aggregation_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_start"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_start</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_end"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_end</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.__init__"><code class="docutils literal notranslate"><span class="pre">GameInfo.__init__()</span></code></a></li>
 </ul>
 </li>
@@ -121,8 +127,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
@@ -382,6 +388,18 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>ゲーム集計情報</p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.starttime">
+<span class="sig-name descname"><span class="pre">starttime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.starttime" title="Link to this definition">¶</a></dt>
+<dd><p>検索開始日時</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.endtime">
+<span class="sig-name descname"><span class="pre">endtime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><span class="pre">ExtendedDatetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.endtime" title="Link to this definition">¶</a></dt>
+<dd><p>検索終了日時</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.count">
 <span class="sig-name descname"><span class="pre">count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.count" title="Link to this definition">¶</a></dt>
 <dd><p>集計範囲の対戦数</p>
@@ -439,12 +457,70 @@
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.aggregation_range">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">aggregation_range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.aggregation_range" title="Link to this definition">¶</a></dt>
+<dd><p>集計範囲を返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YYYY/MM/DD HH:MM:SS ～ YYYY/MM/DD HH:MM:SS</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.search_range">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">search_range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.search_range" title="Link to this definition">¶</a></dt>
+<dd><p>検索範囲を返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YYYY/MM/DD HH:MM:SS ～ YYYY/MM/DD HH:MM:SS</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.search_start">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">search_start</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.search_start" title="Link to this definition">¶</a></dt>
+<dd><p>検索開始日時を文字列で返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YYYY/MM/DD HH:MM:SS</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.search_end">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">search_end</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.search_end" title="Link to this definition">¶</a></dt>
+<dd><p>検索終了日時を文字列で返す</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YYYY/MM/DD HH:MM:SS</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.__init__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.__init__" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>starttime</strong> (<em>str</em><em> | </em><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>endtime</strong> (<em>str</em><em> | </em><a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>count</strong> (<em>int</em>)</p></li>
 <li><p><strong>first_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>last_game</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.ExtendedDatetime" title="libs.utils.timekit.ExtendedDatetime"><em>ExtendedDatetime</em></a><em> | </em><em>None</em>)</p></li>
@@ -624,16 +700,6 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">ParameterData</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.datamodels.ParameterMethodMixin" title="libs.domain.datamodels.ParameterMethodMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterMethodMixin</span></code></a></p>
 <p>コマンド動作パラメータ</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.individual">
-<span class="sig-name descname"><span class="pre">individual</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.individual" title="Link to this definition">¶</a></dt>
-<dd><p>個人/チーム集計切替フラグ</p>
-<ul class="simple">
-<li><p><em>True</em>: 個人集計</p></li>
-<li><p><em>False</em>: チーム集計</p></li>
-</ul>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.__init__" title="Link to this definition">¶</a></dt>
@@ -658,6 +724,16 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.individual">
+<span class="sig-name descname"><span class="pre">individual</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.individual" title="Link to this definition">¶</a></dt>
+<dd><p>個人/チーム集計切替フラグ</p>
+<ul class="simple">
+<li><p><em>True</em>: 個人集計</p></li>
+<li><p><em>False</em>: チーム集計</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -928,6 +1004,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo"><code class="docutils literal notranslate"><span class="pre">GameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.starttime"><code class="docutils literal notranslate"><span class="pre">GameInfo.starttime</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.endtime"><code class="docutils literal notranslate"><span class="pre">GameInfo.endtime</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.count"><code class="docutils literal notranslate"><span class="pre">GameInfo.count</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_game</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_game"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_game</span></code></a></li>
@@ -936,6 +1014,10 @@
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">GameInfo.rule_version</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.aggregation_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.aggregation_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_range</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_start"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_start</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.search_end"><code class="docutils literal notranslate"><span class="pre">GameInfo.search_end</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.__init__"><code class="docutils literal notranslate"><span class="pre">GameInfo.__init__()</span></code></a></li>
 </ul>
 </li>
@@ -962,8 +1044,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
@@ -1075,7 +1157,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.8.
-      Last updated on 2026-07-15.
+      Last updated on 2026-07-16.
     </div>
 
   </body>
