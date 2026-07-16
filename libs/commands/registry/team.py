@@ -7,11 +7,11 @@ from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
 from libs.bootstrap import initialization
+from libs.commands.deliverables.text_assembly import get_team_list
 from libs.domain import modify
 from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
-from libs.functions.compose import text_item
 from libs.types import CommandType, StyleOptions
 from libs.utils import dbutil, textutil
 
@@ -145,7 +145,7 @@ def team_list(m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): 解析済みのテキストやステータスを含むメッセージデータオブジェクト。
     """
     m.status.command_type = CommandType.TEAM_LIST
-    m.set_message(text_item.get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
+    m.set_message(get_team_list(), StyleOptions(title="登録済みチーム", codeblock=True))
     m.post.ts = m.data.event_ts
     m.post.thread_title = "登録済みチーム"
 

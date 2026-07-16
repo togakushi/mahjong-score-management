@@ -5,14 +5,90 @@
 import textwrap
 from typing import TYPE_CHECKING
 
+from table2ascii import Alignment, PresetStyle, table2ascii
+
 import libs.global_value as g
-from libs.functions import lookup
+from libs.functions import adjusting, lookup
 from libs.types import CommandType, StyleOptions
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+
+
+def get_members_list(m: "MessageParserProtocol") -> str:
+    """
+    登録済みのメンバー一覧を取得する
+
+    Args:
+        m (MessageParserProtocol): メッセージを蓄積・設定するためのメッセージデータオブジェクト。
+
+    Returns:
+        str: メンバーリスト
+
+    """
+    g.params = dictutil.placeholder(g.cfg.summary, m)
+    g.params.rule_version = g.cfg.setting.default_rule
+    member_df = g.params.read_data("MEMBER_INFO")
+
+    if member_df.empty:
+        output = "メンバーは登録されていません。"
+    else:
+        member_df = adjusting.add_units(member_df.rename(columns={"last_update": "playtime"}).fillna("記録なし"))
+        if g.params.verbose:
+            alignments_data = [Alignment.LEFT, Alignment.LEFT, Alignment.RIGHT, Alignment.RIGHT]
+            header_data = ["メンバー名", "最終更新日", "経過日数", "対戦数"]
+            body_data = member_df.filter(
+                items=[
+                    "name",
+                    "playtime",
+                    "elapsed_day",
+                    "game_count",
+                ]
+            ).to_dict(orient="split")["data"]
+        else:
+            alignments_data = [Alignment.LEFT, Alignment.LEFT]
+            header_data = ["表示名", "登録されている名前"]
+            body_data = member_df.filter(items=["name", "alias"]).to_dict(orient="split")["data"]
+
+        output = table2ascii(
+            header=header_data,
+            body=body_data,
+            alignments=alignments_data,
+            cell_padding=0,
+            style=PresetStyle.ascii_borderless,
+        )
+
+    return output
+
+
+def get_team_list() -> str:
+    """
+    チームの登録状況を取得する
+
+    Returns:
+        str: チームリスト
+
+    """
+    team_list: list[list[str]] = []
+    for team_name in g.cfg.team.lists:
+        if member := ", ".join(g.cfg.team.member(team_name)):
+            team_list.append([team_name, member])
+        else:
+            team_list.append([team_name, "未エントリー"])
+
+    if team_list:
+        output = table2ascii(
+            header=["チーム名", "所属メンバー"],
+            body=team_list,
+            alignments=[Alignment.LEFT, Alignment.LEFT],
+            style=PresetStyle.ascii_borderless,
+        )
+    else:
+        output = "チームは登録されていません。"
+
+    return output
 
 
 def help_message(m: "MessageParserProtocol") -> None:
