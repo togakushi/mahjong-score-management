@@ -38,7 +38,7 @@ def get_members_list(m: "MessageParserProtocol") -> str:
         member_df = adjusting.add_units(member_df.rename(columns={"last_update": "playtime"}).fillna("記録なし"))
         if g.params.verbose:
             alignments_data = [Alignment.LEFT, Alignment.LEFT, Alignment.RIGHT, Alignment.RIGHT]
-            header_data = ["メンバー名", "最終更新日", "経過日数", "対戦数"]
+            header_data = ["メンバー名", "最終更新日", "経過日数", "総対戦数"]
             body_data = member_df.filter(
                 items=[
                     "name",
