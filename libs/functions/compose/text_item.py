@@ -2,7 +2,7 @@
 libs/functions/compose/text_item.py
 """
 
-from typing import TYPE_CHECKING, Literal, Optional
+from typing import TYPE_CHECKING, Optional
 
 from table2ascii import Alignment, PresetStyle, table2ascii
 
@@ -11,7 +11,6 @@ from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
-    from libs.domain.datamodels import GameInfo
     from libs.utils.timekit import Format
 
 
@@ -98,83 +97,6 @@ def search_word(headword: bool = False) -> str:
             return f"検索ワード：{ret}"
 
     return ret
-
-
-def search_range(kind: Literal["str", "list"] = "str", time_pattern: Optional[str] = None) -> list[str] | str:
-    """
-    検索範囲を返す（ヘッダ出力用）
-
-    Args:
-        kind (str): 返値のタイプ. Defaults to str.
-        time_pattern (str, optional): 表示させるフォーマットを選択. Defaults to None.
-
-    Returns:
-        Union[list, str]:
-
-        - ``kind`` にlistが指定されている場合はリスト
-        - ``kind`` にstrが指定されている場合は文字列
-
-    """
-    starttime: str
-    endtime: str
-
-    match time_pattern:
-        case "day":
-            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.TS)
-            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.TS)
-        case "time":
-            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHM)
-            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHM)
-        case _:
-            starttime = ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHMS)
-            endtime = ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHMS)
-
-    if g.params.anonymous:
-        starttime = "yyyy/mm/dd HH:MM"
-        endtime = "yyyy/mm/dd HH:MM"
-
-    match kind:
-        case "list":
-            return [starttime, endtime]
-        case "str":
-            return f"{starttime} ～ {endtime}"
-
-
-def aggregation_range(
-    game_info: "GameInfo",
-    kind: Literal["list", "str"] = "str",
-) -> list[Optional[str]] | str:
-    """
-    集計範囲を返す（ヘッダ出力用）
-
-    Args:
-        game_info (GameInfo): 集計範囲のゲーム情報
-        kind (str): 表示させるフォーマットを選択. Defaults to str.
-
-            - list: リストで受け取る
-            - str: 文字列で受け取る
-
-    Returns:
-        Union[list, str]:
-        - `kind` にlistが指定されている場合はリストで返す
-        - `kind` にstrが指定されている場合は文字列で返す
-
-    """
-    assert isinstance(game_info.first_game, ExtDt)
-    assert isinstance(game_info.last_game, ExtDt)
-
-    if g.params.search_word:  # コメント検索の場合はコメントで表示
-        first = game_info.first_comment
-        last = game_info.last_comment
-    else:
-        first = game_info.first_game.format(ExtDt.FMT.YMDHM)
-        last = game_info.last_game.format(ExtDt.FMT.YMDHM)
-
-    match kind:
-        case "list":
-            return [first, last]
-        case "str":
-            return f"{first} ～ {last}"
 
 
 def date_range(

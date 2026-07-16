@@ -5,7 +5,7 @@ libs/domain/datamodels.py
 import logging
 from dataclasses import MISSING, dataclass, field, fields
 from math import ceil
-from typing import TYPE_CHECKING, Any, Literal, Optional
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 import pandas as pd
 
@@ -63,6 +63,10 @@ class Args:
 class GameInfo:
     """ゲーム集計情報"""
 
+    starttime: Union[str, ExtDt, None] = field(default=None)
+    """検索開始日時"""
+    endtime: Union[str, ExtDt, None] = field(default=None)
+    """検索終了日時"""
     count: int = field(default=0)
     """集計範囲の対戦数"""
     first_game: Optional[ExtDt] = field(default=None)
@@ -94,6 +98,8 @@ class GameInfo:
 
         # データ収集
         self.rule_version = g.params.rule_version
+        self.starttime = g.params.starttime
+        self.endtime = g.params.endtime
         df = g.params.read_data("GAME_INFO")
         if df.empty:
             self.count = 0
@@ -129,6 +135,45 @@ class GameInfo:
         self.first_comment = None
         self.last_game = None
         self.last_comment = None
+
+    @property
+    def aggregation_range(self) -> str:
+        """
+        集計範囲を返す（ヘッダ出力用）
+
+        Returns:
+            str: 集計範囲
+
+        """
+        if g.params.search_word:  # コメント検索の場合はコメントで表示
+            return f"{self.first_comment} ～ {self.last_comment}"
+        else:
+            assert isinstance(self.first_game, ExtDt)
+            assert isinstance(self.last_game, ExtDt)
+            return f"{self.first_game.format(ExtDt.FMT.YMDHMS)} ～ {self.last_game.format(ExtDt.FMT.YMDHMS)}"
+
+    @property
+    def search_range(self) -> str:
+        """
+        検索範囲を返す（ヘッダ出力用）
+
+        Returns:
+            str: 検索範囲
+
+        """
+        return f"{self.search_start} ～ {self.search_end}"
+
+    @property
+    def search_start(self) -> str:
+        """検索開始日時を文字列で返す"""
+        assert isinstance(self.starttime, ExtDt)
+        return self.starttime.format(fmt=ExtDt.FMT.YMDHMS)
+
+    @property
+    def search_end(self) -> str:
+        """検索終了日時を文字列で返す"""
+        assert isinstance(self.endtime, ExtDt)
+        return self.endtime.format(fmt=ExtDt.FMT.YMDHMS)
 
 
 @dataclass
