@@ -14,7 +14,6 @@ from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import CommandType, StyleOptions
 from libs.utils import graphutil, textutil
-from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
@@ -31,6 +30,10 @@ def plot(m: "MessageParserProtocol") -> None:
     # パラメータ更新
     m.status.command_type = CommandType.ANALYSIS_SCORES
 
+    # ヘッダ情報
+    game_info = GameInfo()
+    title_text = "順位素点相関図"
+
     # データ収集
     df = g.params.read_data("RANKING_RESULTS").set_index("name")
     avg_rank = df["rank_avg"]
@@ -40,17 +43,11 @@ def plot(m: "MessageParserProtocol") -> None:
     # 足切り
     df = df.query("count >= @g.params.stipulated")
     if df.empty:
-        m.set_headline(message.random_reply(m, "no_target"), StyleOptions())
+        m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title_text))
         m.status.result = False
         return
 
-    # 情報ヘッダ
-    game_info = GameInfo()
-    title_text = "順位素点相関図"
-    starttime = ExtDt(g.params.starttime).format(fmt=ExtDt.FMT.YMDHM)
-    endtime = ExtDt(g.params.endtime).format(fmt=ExtDt.FMT.YMDHM)
-
-    # --- グラフ生成
+    # グラフ生成
     graphutil.setup()
     save_file = textutil.save_file_path("graph.png")
 
@@ -73,7 +70,7 @@ def plot(m: "MessageParserProtocol") -> None:
     y_ols = a_ols + b_ols * x_line
     y_wls = a_wls + b_wls * x_line
 
-    # --- プロット
+    # プロット
     plt.figure(figsize=(8, 6))
 
     # 散布図（プレイヤー単位で色分け）
@@ -106,7 +103,7 @@ def plot(m: "MessageParserProtocol") -> None:
     plt.xlim(0.9, 4.1)
     plt.xticks(np.arange(1.0, 4.1, 0.5))
     plt.gca().invert_xaxis()
-    plt.title(f"{title_text} ({starttime} - {endtime})")
+    plt.title(f"{title_text} ({game_info.search_start} - {game_info.search_end})")
 
     # 凡例
     plt.legend(

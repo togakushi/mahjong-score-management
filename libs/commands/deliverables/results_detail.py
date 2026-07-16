@@ -64,7 +64,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     if game_info.count == 0:
         if g.params.individual:
-            msg_data["検索範囲"] = f"{text_item.search_range(time_pattern='time')}"
+            msg_data["検索範囲"] = f"{game_info.search_range}"
             msg_data["特記事項"] = "、".join(text_item.remarks())
             msg_data["検索ワード"] = text_item.search_word()
             msg_data["対戦数"] = f"0 戦 (0 勝 0 敗 0 分) {badge.status(0, 0)}"
@@ -345,8 +345,8 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
         ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params.player_name))
 
     badge_status = badge.status(data.seat0.count, data.seat0.win)
-    ret["検索範囲"] = str(text_item.search_range(time_pattern="time"))
-    ret["集計範囲"] = str(text_item.aggregation_range(game_info))
+    ret["検索範囲"] = game_info.search_range
+    ret["集計範囲"] = game_info.aggregation_range
     ret["特記事項"] = "、".join(text_item.remarks())
     ret["検索ワード"] = text_item.search_word()
     ret["対戦数"] = f"{data.seat0.war_record()} {badge_status}"

@@ -43,23 +43,20 @@ def aggregation(m: "MessageParserProtocol") -> None:
     df_summary.reset_index(inplace=True, drop=True)
     df_summary.index += 1
 
+    # 情報ヘッダ
     current_rule: str = ""
     for rule in g.params.rule_list:
         current_rule = rule
 
-    # 情報ヘッダ
     if g.params.individual:  # 個人集計
         headline_title = "成績サマリ"
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    # ルール別
-    add_text = "" if g.cfg.rule.get_ignore_flying(current_rule) else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
-    header_text = message.header(game_info, m, add_text, 1)
-    m.set_headline(header_text, StyleOptions(title=headline_title))
+    add_text = "" if g.cfg.rule.get_ignore_flying(current_rule) else f"/ トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=headline_title))
 
     if df_summary.empty:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -191,17 +188,19 @@ def difference(m: "MessageParserProtocol") -> None:
     df_summary.index += 1
 
     # 情報ヘッダ
+    current_rule: str = ""
+    for rule in g.params.rule_list:
+        current_rule = rule
+
     if g.params.individual:  # 個人集計
         headline_title = "成績サマリ"
     else:  # チーム集計
         headline_title = "チーム成績サマリ"
 
-    add_text = "" if g.params.ignore_flying else f" / トバされた人（延べ）：{df_summary['flying'].sum()} 人"
-    header_text = message.header(game_info, m, add_text, 1)
-    m.set_headline(header_text, StyleOptions(title=headline_title))
+    add_text = "" if g.cfg.rule.get_ignore_flying(current_rule) else f"/ トバされた人（延べ）：{df_summary['flying'].sum()} 人"
+    m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=headline_title))
 
     if df_summary.empty:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -233,4 +232,5 @@ def difference(m: "MessageParserProtocol") -> None:
     else:
         options.title = headline_title
         data = converter.save_output(df_summary.filter(items=filter_list).fillna("*****"), options, m.post.headline)
+
     m.set_message(data, StyleOptions(**options.asdict))

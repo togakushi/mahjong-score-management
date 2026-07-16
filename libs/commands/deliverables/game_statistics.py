@@ -25,16 +25,17 @@ def plot(m: "MessageParserProtocol") -> None:
     # パラメータ更新
     m.status.command_type = CommandType.GAME_STATISTICS
 
-    # データ収集
+    # ヘッダ情報
     title: str = "月間ゲーム統計"
     if g.params.collection == "yearly":
         title = "年間ゲーム統計"
 
+    # データ収集
     game_info = GameInfo()
     df = g.params.read_data("REPORT_GAME_STATISTICS")
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
 
     if df.empty:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions(title=title))
         m.status.result = False
         return
 
@@ -48,8 +49,6 @@ def plot(m: "MessageParserProtocol") -> None:
         codeblock=True,
         base_name=str(m.status.command_type),
     )
-
-    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
 
     match g.params.format.lower():
         case "csv":
