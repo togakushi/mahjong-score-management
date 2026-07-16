@@ -109,34 +109,26 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
     if game_info.count == 0:
         text.extend(
             [
-                f"検索範囲：{str(text_item.search_range(time_pattern='time'))}",
-                f"{random_reply(m, 'no_hits')}",
+                f"検索範囲：{game_info.search_range}",
+                f"\n{random_reply(m, 'no_hits')}",
             ]
         )
         return textwrap.indent("\n".join(text), "\t" * indent)
 
     # 検索範囲 / 集計範囲
     if g.params.command == "summary":
-        text.append(f"検索範囲：{str(text_item.search_range(time_pattern='time'))}")
-        if g.params.search_word:  # コメント検索の場合はコメントで表示
-            text.extend(
-                [
-                    f"最初のゲーム：{game_info.first_comment}",
-                    f"最後のゲーム：{game_info.last_comment}",
-                ]
-            )
-        else:
-            text.extend(
-                [
-                    f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
-                    f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}",
-                ]
-            )
-        text.append(f"集計対象：{game_info.count} ゲーム{add_text}")
+        text.extend(
+            [
+                f"検索範囲：{game_info.search_range}",
+                f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
+                f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}",
+                f"集計対象：{game_info.count} ゲーム {add_text}".strip(),
+            ]
+        )
     else:
         text.extend(
             [
-                f"集計範囲：{text_item.aggregation_range(game_info)}",
+                f"検索範囲：{game_info.search_range}",
                 f"集計対象：{game_info.count} ゲーム",
             ]
         )
