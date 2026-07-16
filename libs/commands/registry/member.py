@@ -6,11 +6,11 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
+from libs.commands.deliverables.text_assembly import get_members_list
 from libs.domain import modify
 from libs.domain.datamodels import SettingAttrs
 from libs.domain.section import BaseSection
 from libs.functions import validator
-from libs.functions.compose import text_item
 from libs.types import CommandType, StyleOptions
 from libs.utils import dbutil, textutil
 
@@ -161,7 +161,7 @@ def members_list(m: "MessageParserProtocol") -> None:
 
     """
     m.status.command_type = CommandType.MEMBERS_LIST
-    m.set_message(text_item.get_members_list(), StyleOptions(title="登録済みメンバー", codeblock=True))
+    m.set_message(get_members_list(m), StyleOptions(title="登録済みメンバー", codeblock=True))
     m.post.ts = m.data.event_ts
     m.post.thread_title = "登録済みメンバー"
 
