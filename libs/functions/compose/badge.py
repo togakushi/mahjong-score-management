@@ -113,11 +113,11 @@ def grade(name: str, detail: bool = True) -> str:
 
         return (new_point, grade_level)
 
-    if name not in g.cfg.member.lists:  # レギュラーメンバー以外
-        return ""
-
     if not g.cfg.badge.grade.table_name or not g.cfg.badge.grade.table:  # テーブル未定義
         return ""
+
+    if name not in g.cfg.member.lists:  # レギュラーメンバー以外
+        return "***"
 
     if not g.adapter.conf.badge_grade:  # 非表示
         return ""
