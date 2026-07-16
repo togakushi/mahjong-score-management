@@ -30,7 +30,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # パラメータ更新
     m.status.command_type = CommandType.RATING
 
-    # 情報ヘッダ
+    # ヘッダ情報
     title: str = "レーティング"
     add_text: str = ""
 
@@ -41,9 +41,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # データ収集
     game_info = GameInfo()
+    m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
 
     if not game_info.count:  # 検索結果が0件のとき
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -97,7 +97,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # 非表示項目
     df.drop(columns=dictutil.dropitems_list(df.columns.to_list()), inplace=True)
 
-    m.set_headline(message.header(game_info, m, add_text, 1), StyleOptions(title=title))
     options: StyleOptions = StyleOptions(
         title=title,
         data_kind=StyleOptions.DataKind.RATING,

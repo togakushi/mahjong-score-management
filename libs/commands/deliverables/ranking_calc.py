@@ -27,7 +27,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # パラメータ更新
     m.status.command_type = CommandType.RANKING
 
-    # 情報ヘッダ
+    # ヘッダ情報
     if g.params.individual:  # 個人集計
         title = "ランキング"
     else:  # チーム集計
@@ -35,8 +35,9 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # データ取得
     game_info = GameInfo()
+    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))
+
     if not game_info.count:  # 検索結果が0件のとき
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
         m.status.result = False
         return
 
@@ -332,5 +333,3 @@ def aggregation(m: "MessageParserProtocol") -> None:
             show_index=False,
         ),
     )
-
-    m.set_headline(message.header(game_info, m, "", 1), StyleOptions(title=title))

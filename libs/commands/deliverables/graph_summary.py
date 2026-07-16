@@ -53,7 +53,7 @@ def point_plot(m: "MessageParserProtocol") -> None:
     target_data, df = _data_collection()
 
     if target_data.empty:  # 描写対象が0人の場合は終了
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
+        m.set_headline(message.header(game_info, m), StyleOptions(title="ポイント推移グラフ"))
         m.status.result = False
         return
 
@@ -107,7 +107,7 @@ def rank_plot(m: "MessageParserProtocol") -> None:
     target_data, df = _data_collection()
 
     if target_data.empty:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
+        m.set_headline(message.header(game_info, m), StyleOptions(title="順位変動グラフ"))
         m.status.result = False
         return
 

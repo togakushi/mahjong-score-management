@@ -38,16 +38,18 @@ def plot(m: "MessageParserProtocol") -> None:
     m.status.command_type = CommandType.RECORD_DATA
     g.params.guest_skip = g.params.guest_skip2
 
+    # ヘッダ情報
+    player = textutil.name_replace(g.params.player_name, add_mark=True)
+    title_text = f"『{player}』の成績"
+
     # データ収集
     game_info = GameInfo()
     df = g.params.read_data("SUMMARY_GAMEDATA")
 
     if df.empty:
-        m.set_headline(message.random_reply(m, "no_hits"), StyleOptions())
+        m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
         m.status.result = False
         return
-
-    player = textutil.name_replace(g.params.player_name, add_mark=True)
 
     # 最終値（凡例/ラベル追加用）
     point_sum = f"{float(df['point_sum'].iloc[-1]):+.1f}".replace("-", "▲")
@@ -55,7 +57,6 @@ def plot(m: "MessageParserProtocol") -> None:
     rank_avg = f"{float(df['rank_avg'].iloc[-1]):.2f}"
     total_game_count = int(df["count"].iloc[-1])
 
-    title_text = f"『{player}』の成績"
     if g.params.target_count:
         title_range = f"(直近 {len(df)} ゲーム)"
     else:

@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 import libs.global_value as g
+from libs.domain.datamodels import GameInfo
 from libs.functions.compose import text_item
 from libs.types import CommandType, StyleOptions
 from libs.utils import converter, dictutil, textutil
@@ -31,6 +32,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # データ収集
     data: "MessageType"
+    game_info = GameInfo()
     df_vs = g.params.read_data("SUMMARY_VERSUS_MATRIX", False)
     df_game = g.params.read_data("SUMMARY_DETAILS", False).fillna(value="")
     df_data = pd.DataFrame(columns=df_game.columns)  # ファイル出力用
@@ -60,7 +62,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    m.set_headline(tmpl_header(my_name, vs), StyleOptions(title="直接対戦"))
+    m.set_headline(tmpl_header(game_info, my_name, vs), StyleOptions(title="直接対戦"))
     for vs_name in vs_list:
         title = f"{my_name} vs {vs_name}"
         if vs_name in vs_list:
@@ -141,11 +143,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
             pass
 
 
-def tmpl_header(my_name: str, vs_name: str) -> str:
+def tmpl_header(game_info: GameInfo, my_name: str, vs_name: str) -> str:
     """
     ヘッダテンプレート
 
     Args:
+        game_info (GameInfo): ゲーム統計情報
         my_name (str): 自分の名前
         vs_name (str): 相手の名前
 
@@ -157,7 +160,7 @@ def tmpl_header(my_name: str, vs_name: str) -> str:
         f"""\
         \tプレイヤー名：{my_name}
         \t対戦相手：{vs_name}
-        \t集計範囲：{text_item.search_range()}
+        \t集計範囲：{game_info.search_range}
         \t{text_item.remarks(True)}
         """
     ).rstrip()
