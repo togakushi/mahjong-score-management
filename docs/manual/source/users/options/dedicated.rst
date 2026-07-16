@@ -112,7 +112,7 @@
        :指定例: トップ10
        :デフォルト: 3
 
-       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う。
+       デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う
    * - .. analysis:: 詳細
      - `deliverables-results_list` に詳細情報を追加表示する
      - 収支情報、 `ベストレコード` 、 `ワーストレコード` の追加表示
