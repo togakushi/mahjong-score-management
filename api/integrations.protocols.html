@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=8a389775"></script>
+    <script src="_static/documentation_options.js?v=eef74731"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -98,8 +98,8 @@
 <li><a class="reference internal" href="#integrations.protocols.StatusData.command_name"><code class="docutils literal notranslate"><span class="pre">StatusData.command_name</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.reaction"><code class="docutils literal notranslate"><span class="pre">StatusData.reaction</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.action"><code class="docutils literal notranslate"><span class="pre">StatusData.action</span></code></a></li>
-<li><a class="reference internal" href="#integrations.protocols.StatusData.__init__"><code class="docutils literal notranslate"><span class="pre">StatusData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.target_ts"><code class="docutils literal notranslate"><span class="pre">StatusData.target_ts</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.StatusData.__init__"><code class="docutils literal notranslate"><span class="pre">StatusData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">StatusData.rpoint_sum</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.result"><code class="docutils literal notranslate"><span class="pre">StatusData.result</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.message"><code class="docutils literal notranslate"><span class="pre">StatusData.message</span></code></a></li>
@@ -111,6 +111,7 @@
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.data"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.data</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.post"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.post</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.status"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.status</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.COMMAND_TYPE"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.COMMAND_TYPE</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.in_thread</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_command"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_command</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_bot</span></code></a></li>
@@ -431,6 +432,12 @@
 <dd><p>DBに対する操作</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.protocols.StatusData.target_ts">
+<span class="sig-name descname"><span class="pre">target_ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.protocols.StatusData.target_ts" title="Link to this definition">¶</a></dt>
+<dd><p>同じ処理をしたタイムスタンプリスト(1件だけの処理でもセットされる)</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="integrations.protocols.StatusData.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">CommandType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_flg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ActionStatus.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpoint_sum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.protocols.StatusData.__init__" title="Link to this definition">¶</a></dt>
@@ -453,12 +460,6 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="integrations.protocols.StatusData.target_ts">
-<span class="sig-name descname"><span class="pre">target_ts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.protocols.StatusData.target_ts" title="Link to this definition">¶</a></dt>
-<dd><p>同じ処理をしたタイムスタンプリスト(1件だけの処理でもセットされる)</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -517,6 +518,12 @@
 <dt class="sig sig-object py" id="integrations.protocols.MessageParserProtocol.status">
 <span class="sig-name descname"><span class="pre">status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#integrations.protocols.StatusData" title="integrations.protocols.StatusData"><span class="pre">StatusData</span></a></span><a class="headerlink" href="#integrations.protocols.MessageParserProtocol.status" title="Link to this definition">¶</a></dt>
 <dd><p>処理した結果</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="integrations.protocols.MessageParserProtocol.COMMAND_TYPE">
+<span class="sig-name descname"><span class="pre">COMMAND_TYPE</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.command.html#libs.domain.command.CommandSpec.type" title="libs.domain.command.CommandSpec.type"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="libs.types.html#libs.types.CommandType" title="libs.types.CommandType"><span class="pre">CommandType</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#integrations.protocols.MessageParserProtocol.COMMAND_TYPE" title="Link to this definition">¶</a></dt>
+<dd><p>コマンドタイプ</p>
 </dd></dl>
 
 <dl class="py property">
@@ -763,8 +770,8 @@
 <li><a class="reference internal" href="#integrations.protocols.StatusData.command_name"><code class="docutils literal notranslate"><span class="pre">StatusData.command_name</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.reaction"><code class="docutils literal notranslate"><span class="pre">StatusData.reaction</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.action"><code class="docutils literal notranslate"><span class="pre">StatusData.action</span></code></a></li>
-<li><a class="reference internal" href="#integrations.protocols.StatusData.__init__"><code class="docutils literal notranslate"><span class="pre">StatusData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.target_ts"><code class="docutils literal notranslate"><span class="pre">StatusData.target_ts</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.StatusData.__init__"><code class="docutils literal notranslate"><span class="pre">StatusData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">StatusData.rpoint_sum</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.result"><code class="docutils literal notranslate"><span class="pre">StatusData.result</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.StatusData.message"><code class="docutils literal notranslate"><span class="pre">StatusData.message</span></code></a></li>
@@ -776,6 +783,7 @@
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.data"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.data</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.post"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.post</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.status"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.status</span></code></a></li>
+<li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.COMMAND_TYPE"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.COMMAND_TYPE</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.in_thread</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_command"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_command</span></code></a></li>
 <li><a class="reference internal" href="#integrations.protocols.MessageParserProtocol.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParserProtocol.is_bot</span></code></a></li>
@@ -869,8 +877,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.8.
-      Last updated on 2026-07-16.
+      Release Version: 0.17.9.
+      Last updated on 2026-07-17.
     </div>
 
   </body>

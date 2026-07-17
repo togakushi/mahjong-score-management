@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/pydoctheme.css?v=eb97cc3c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/user_doc.css?v=bc29bd85" />
     
-    <script src="../../../../_static/documentation_options.js?v=2faee782"></script>
+    <script src="../../../../_static/documentation_options.js?v=8bd6639b"></script>
     <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -172,25 +172,26 @@
 <span id="id1"></span><h1>装飾設定<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h1>
 <div class="line-block">
 <div class="line">使用しない(常に非表示)とする場合はセクションごと省略してよい。</div>
-<div class="line">デフォルト値は持たないため、設定時はすべてのキーの設定が必要になる。</div>
+<div class="line">使用する場合は省略不可のキーはすべて定義すること。</div>
 </div>
+<p>表示/非表示の設定は <a class="reference internal" href="../integrations/common.html#integrations-common"><span class="std std-ref">サービス別設定 - 共通設定</span></a> で行う。</p>
 <section id="degree">
 <span id="degree-section"></span><h2>degreeセクション<a class="headerlink" href="#degree" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">対戦数に対して表示される称号。</div>
-<div class="line">表示/非表示の設定は <a class="reference internal" href="../integrations/common.html#integrations-common"><span class="std std-ref">共通設定</span></a> で行う。</div>
-</div>
+<p>対戦数に対して表示される称号。
+<a class="reference internal" href="../integrations/common.html#integrations_section-badge_degree" title="badge_degree"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">badge_degree</span></code></a> が <code class="docutils literal notranslate"><span class="pre">True</span></code> のときに表示される。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 12.5%" />
-<col style="width: 25.0%" />
-<col style="width: 12.5%" />
-<col style="width: 50.0%" />
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>キー</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>値</p></th>
+<th class="head"><p>未定義時</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
@@ -207,6 +208,7 @@
 <div class="line">(カンマ区切り)</div>
 </div>
 </td>
+<td><p>省略不可(必須)</p></td>
 <td><p><a class="reference internal" href="#degree_section-counter" title="counter"><code class="xref mahjong mahjong-degree_section docutils literal notranslate"><span class="pre">counter</span></code></a> の数と合わせる</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong degree_section">
@@ -221,28 +223,37 @@
 <div class="line">(カンマ区切り)</div>
 </div>
 </td>
+<td><p>省略不可(必須)</p></td>
 <td><p><a class="reference internal" href="#degree_section-badge" title="badge"><code class="xref mahjong mahjong-degree_section docutils literal notranslate"><span class="pre">badge</span></code></a> の数と合わせる</p></td>
 </tr>
 </tbody>
 </table>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">設定例</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[degree]</span>
+<span class="na">badge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">,:hatching_chick:,:penguin:,:monkey_face:,:skull:,:crown:</span>
+<span class="na">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0,30,60,120,240,480</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="status">
 <span id="status-section"></span><h2>statusセクション<a class="headerlink" href="#status" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">勝率に対して付く調子バッジ。</div>
-<div class="line">表示/非表示の設定は <a class="reference internal" href="../integrations/common.html#integrations-common"><span class="std std-ref">共通設定</span></a> で行う。</div>
-</div>
+<p>勝率に対して付く調子バッジ。
+<a class="reference internal" href="../integrations/common.html#integrations_section-badge_status" title="badge_status"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">badge_status</span></code></a> が <code class="docutils literal notranslate"><span class="pre">True</span></code> のときに表示される。</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 12.5%" />
-<col style="width: 25.0%" />
-<col style="width: 12.5%" />
-<col style="width: 50.0%" />
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>キー</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>値</p></th>
+<th class="head"><p>未定義時</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
@@ -259,6 +270,7 @@
 <div class="line">(カンマ区切り)</div>
 </div>
 </td>
+<td><p>省略不可(必須)</p></td>
 <td><p>休み、絶不調、不調、普通、好調、絶好調の順に6段階すべて指定</p></td>
 </tr>
 <tr class="row-odd"><td><dl class="mahjong status_section">
@@ -269,28 +281,39 @@
 </td>
 <td><p>称号が変化する対戦数</p></td>
 <td><p>数値(float)</p></td>
+<td><p>省略不可(必須)</p></td>
 <td><p>普通を基準(勝率50%)として、上下する刻み幅</p></td>
 </tr>
 </tbody>
 </table>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">設定例</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[status]</span>
+<span class="na">badge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">:status_oyasumi:,:status_zeffutyou:,:status_futyou:,:status_futuu:,:status_koutyou:,:status_zekkoutyou:</span>
+<span class="na">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5.0</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="grade">
 <span id="grade-section"></span><h2>gradeセクション<a class="headerlink" href="#grade" title="Link to this heading">¶</a></h2>
 <div class="line-block">
-<div class="line">段位設定。</div>
-<div class="line">表示/非表示の設定は <a class="reference internal" href="../integrations/common.html#integrations-common"><span class="std std-ref">共通設定</span></a> で行う。</div>
+<div class="line"><a class="reference internal" href="../../../../users/appendix/glossary.html#term-6"><code class="xref any std std-term docutils literal notranslate"><span class="pre">レギュラーメンバー</span></code></a> に対する段位設定（ <a class="reference internal" href="../../../../users/appendix/glossary.html#term-3"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲストメンバー</span></code></a> には段位を設定できない）。</div>
+<div class="line"><a class="reference internal" href="../integrations/common.html#integrations_section-badge_grade" title="badge_grade"><code class="xref mahjong mahjong-integrations_section docutils literal notranslate"><span class="pre">badge_grade</span></code></a> が <code class="docutils literal notranslate"><span class="pre">True</span></code> のときに表示される。</div>
 </div>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
-<col style="width: 12.5%" />
-<col style="width: 25.0%" />
-<col style="width: 12.5%" />
-<col style="width: 50.0%" />
+<col style="width: 13.0%" />
+<col style="width: 26.1%" />
+<col style="width: 13.0%" />
+<col style="width: 13.0%" />
+<col style="width: 34.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>キー</p></th>
 <th class="head"><p>内容</p></th>
 <th class="head"><p>値</p></th>
+<th class="head"><p>未定義時</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
 </thead>
@@ -302,8 +325,29 @@
 
 </td>
 <td><p>使用する昇段計算テーブルの名前</p></td>
-<td><p>文字列(備考参照)</p></td>
-<td><dl class="field-list simple">
+<td><div class="line-block">
+<div class="line">文字列</div>
+<div class="line">(下記参照)</div>
+</div>
+</td>
+<td><p>省略不可(必須)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><dl class="mahjong grade_section">
+<dt class="sig sig-object mahjong" id="grade_section-guest_title">
+<span class="n"><span class="pre">guest_title</span></span><a class="headerlink" href="#grade_section-guest_title" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</td>
+<td><p><a class="reference internal" href="../../../../users/appendix/glossary.html#term-3"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲストメンバー</span></code></a> の段位としてする文字列</p></td>
+<td><p>文字列</p></td>
+<td><p>空欄</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><a class="reference internal" href="#grade_section-table_name" title="table_name"><code class="xref mahjong mahjong-grade_section docutils literal notranslate"><span class="pre">table_name</span></code></a> に設定する値</dt><dd><dl class="field-list simple">
 <dt class="field-odd">mahjongsoul / 雀魂<span class="colon">:</span></dt>
 <dd class="field-odd"><p>雀魂風表記</p>
 </dd>
@@ -314,10 +358,16 @@
 <dd class="field-odd"><p>オリジナル定義ファイルを使用( <a class="reference internal" href="../../../others/gradetable.html#gradetable"><span class="std std-ref">段位システム</span></a> 参照)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">設定例</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[grade]</span>
+<span class="na">table_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">天鳳</span>
+<span class="na">guest_title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">***</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -430,8 +480,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.8.
-      Last updated on 2026-07-16.
+      Release Version: 0.17.9.
+      Last updated on 2026-07-17.
     </div>
 
   </body>
