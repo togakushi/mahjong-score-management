@@ -12,7 +12,7 @@ from libs.commands.deliverables.rating_calc import calculation_rating
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
 
@@ -33,7 +33,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RATING
+    m.status.command_type = m.COMMAND_TYPE.RATING
 
     # ヘッダ情報
     title: str = "レーティング推移グラフ"

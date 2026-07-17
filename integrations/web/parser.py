@@ -6,7 +6,7 @@ from typing import Any
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
-from libs.types import MessageStatus
+from libs.types import CommandType, MessageStatus
 
 
 class MessageParser(MessageParserDataMixin, MessageParserInterface):
@@ -22,6 +22,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data = MsgData()
         self.post = PostData()
         self.status = StatusData()
+        self.COMMAND_TYPE = CommandType
         self.data.status = MessageStatus.APPEND
         self.status.command_flg = False
 

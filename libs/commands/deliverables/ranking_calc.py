@@ -9,7 +9,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import dictutil, textutil
 
 if TYPE_CHECKING:
@@ -25,7 +25,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RANKING
+    m.status.command_type = m.COMMAND_TYPE.RANKING
 
     # ヘッダ情報
     if g.params.individual:  # 個人集計

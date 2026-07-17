@@ -126,6 +126,9 @@ class MessageParserProtocol(Protocol):
     status: StatusData
     """処理した結果"""
 
+    COMMAND_TYPE: type[CommandType]
+    """コマンドタイプ"""
+
     @property
     def in_thread(self) -> bool:
         """

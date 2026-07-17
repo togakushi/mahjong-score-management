@@ -10,7 +10,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import converter, dictutil, textutil
 
 if TYPE_CHECKING:
@@ -27,7 +27,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GAME_RESULTS
+    m.status.command_type = m.COMMAND_TYPE.GAME_RESULTS
     g.params.guest_skip = g.params.guest_skip2
 
     # データ収集

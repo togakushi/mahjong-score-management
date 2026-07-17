@@ -9,7 +9,7 @@ from table2ascii import Alignment, PresetStyle, table2ascii
 
 import libs.global_value as g
 from libs.functions import adjusting, lookup
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import dictutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -113,7 +113,7 @@ def help_message(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.HELP
+    m.status.command_type = m.COMMAND_TYPE.HELP
     rule_version = lookup.get_current_rule_version(m, g.cfg.help.command_suffix)
 
     g.params.update_from_dict(

@@ -25,6 +25,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
+        self.COMMAND_TYPE = CommandType
         self.discord_msg: Message
 
     def parser(self, body: Message) -> None:

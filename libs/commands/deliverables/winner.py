@@ -11,7 +11,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
 
 if TYPE_CHECKING:
@@ -27,7 +27,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_SUMMARY
+    m.status.command_type = m.COMMAND_TYPE.RECORD_SUMMARY
 
     # データ取得
     title: str = "成績上位者"

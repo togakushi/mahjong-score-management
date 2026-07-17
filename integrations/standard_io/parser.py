@@ -7,7 +7,7 @@ from typing import Any, cast
 
 from integrations.base.interface import MessageParserDataMixin, MessageParserInterface
 from integrations.protocols import MsgData, PostData, StatusData
-from libs.types import ChannelType, MessageStatus
+from libs.types import ChannelType, CommandType, MessageStatus
 
 
 class MessageParser(MessageParserDataMixin, MessageParserInterface):
@@ -19,6 +19,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
+        self.COMMAND_TYPE = CommandType
 
     def parser(self, body: dict[str, Any]) -> None:
         self.data.status = MessageStatus.APPEND
