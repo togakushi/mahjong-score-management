@@ -118,7 +118,7 @@ def grade(name: str, detail: bool = True) -> str:
 
     if name not in g.cfg.member.lists:  # ゲスト
         if guest_title := g.cfg.badge.get("guest_title"):
-            return guest_title
+            return str(guest_title)
         else:
             return ""
 
