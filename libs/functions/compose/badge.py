@@ -116,8 +116,11 @@ def grade(name: str, detail: bool = True) -> str:
     if not g.cfg.badge.grade.table_name or not g.cfg.badge.grade.table:  # テーブル未定義
         return ""
 
-    if name not in g.cfg.member.lists:  # レギュラーメンバー以外
-        return "***"
+    if name not in g.cfg.member.lists:  # ゲスト
+        if guest_title := g.cfg.badge.get("guest_title"):
+            return guest_title
+        else:
+            return ""
 
     if not g.adapter.conf.badge_grade:  # 非表示
         return ""
