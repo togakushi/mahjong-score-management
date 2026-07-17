@@ -10,7 +10,7 @@ import pandas as pd
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import adjusting, message
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import converter, dictutil
 
 if TYPE_CHECKING:
@@ -27,7 +27,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.ANALYSIS_SCORES
+    m.status.command_type = m.COMMAND_TYPE.ANALYSIS_SCORES
 
     # データ収集
     data: "MessageType"

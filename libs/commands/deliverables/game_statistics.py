@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import adjusting, message
-from libs.types import CommandType, MessageType, StyleOptions
+from libs.types import MessageType, StyleOptions
 from libs.utils import converter
 
 if TYPE_CHECKING:
@@ -23,7 +23,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.GAME_STATISTICS
+    m.status.command_type = m.COMMAND_TYPE.GAME_STATISTICS
 
     # ヘッダ情報
     title: str = "月間ゲーム統計"

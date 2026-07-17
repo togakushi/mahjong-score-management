@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from integrations.protocols import MessageParserProtocol, MsgData, PostData, StatusData
-    from libs.types import MessageType, StyleOptions
+    from libs.types import CommandType, MessageType, StyleOptions
 
 ConfigT = TypeVar("ConfigT", bound="IntegrationsConfig")
 ApiT = TypeVar("ApiT", bound="APIInterface")
@@ -217,6 +217,8 @@ class MessageParserInterface(ABC):
     data: "MsgData"
     post: "PostData"
     status: "StatusData"
+
+    COMMAND_TYPE: type["CommandType"]
 
     @abstractmethod
     def parser(self, body: Any) -> None:

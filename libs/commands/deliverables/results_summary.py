@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import converter, dictutil
 
 if TYPE_CHECKING:
@@ -24,7 +24,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_SUMMARY
+    m.status.command_type = m.COMMAND_TYPE.RECORD_SUMMARY
 
     # データ収集
     data: "MessageType"
@@ -169,7 +169,7 @@ def difference(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_SUMMARY
+    m.status.command_type = m.COMMAND_TYPE.RECORD_SUMMARY
 
     # データ収集
     data: "MessageType"

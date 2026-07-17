@@ -23,6 +23,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         self.data: MsgData = MsgData()
         self.post: PostData = PostData()
         self.status: StatusData = StatusData()
+        self.COMMAND_TYPE = CommandType
 
     def parser(self, _body: dict[str, Any]) -> None:
         g.adapter = cast("ServiceAdapter", g.adapter)

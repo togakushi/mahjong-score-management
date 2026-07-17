@@ -16,7 +16,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import dictutil, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -35,7 +35,7 @@ def plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_DATA
+    m.status.command_type = m.COMMAND_TYPE.RECORD_DATA
     g.params.guest_skip = g.params.guest_skip2
 
     # ヘッダ情報
@@ -138,7 +138,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.DETAILED_RESULTS
+    m.status.command_type = m.COMMAND_TYPE.DETAILED_RESULTS
     g.params.guest_skip = g.params.guest_skip2
 
     # データ収集

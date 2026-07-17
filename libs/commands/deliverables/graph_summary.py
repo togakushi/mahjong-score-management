@@ -13,7 +13,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.functions.compose import text_item
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
 
@@ -46,7 +46,7 @@ def point_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_GRAPH
+    m.status.command_type = m.COMMAND_TYPE.RECORD_GRAPH
 
     # データ収集
     game_info = GameInfo()
@@ -100,7 +100,7 @@ def rank_plot(m: "MessageParserProtocol") -> None:
 
     """
     # パラメータ更新
-    m.status.command_type = CommandType.RECORD_GRAPH
+    m.status.command_type = m.COMMAND_TYPE.RECORD_GRAPH
 
     # データ収集
     game_info = GameInfo()
