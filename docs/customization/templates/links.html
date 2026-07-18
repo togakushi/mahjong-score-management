@@ -5,5 +5,9 @@
       <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+      {%- if show_source and has_source and sourcename %}
+      <br>
+      <li></li><a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow">{{ _('Show Source') }}</a></li>
+      {%- endif %}
     </ul>
 </div>

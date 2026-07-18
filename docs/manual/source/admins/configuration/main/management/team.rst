@@ -16,17 +16,17 @@ teamセクション
      - 未定義時
      - 備考
    * - .. team_section:: commandword
-     - チーム一覧を表示するコマンドを呼び出すキーワード
+     - `function-team_list` を呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
      - チーム一覧
      - カンマ区切りで複数ワードの設定が可能
    * - .. team_section:: command_suffix
-     - `成績記録キーワード <keywords>` と :team_section:`command_suffix` の組み合わせを機能呼び出しキーワードとする
+     - `成績記録キーワード <keywords>` と :team_section:`command_suffix` の組み合わせを `function-team_list` の呼び出しキーワードにする
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     -
+     - .. seealso:: `function-call-keyword`
    * - .. team_section:: registration_limit
      - 登録チーム数上限
      - 数値(int)
