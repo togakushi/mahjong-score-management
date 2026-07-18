@@ -16,17 +16,17 @@ memberセクション
      - 未定義時
      - 備考
    * - .. member_section:: commandword
-     - メンバー一覧を表示するコマンドの呼び出すキーワード
+     - `function-members_list` を呼び出すキーワード
      - | 文字列
        | (カンマ区切り)
      - メンバー一覧
      - カンマ区切りで複数ワードの設定が可能
    * - .. member_section:: command_suffix
-     - `成績記録キーワード <keywords>` と :member_section:`command_suffix` の組み合わせを機能呼び出しキーワードとする
+     - `成績記録キーワード <keywords>` と :member_section:`command_suffix` の組み合わせを `function-members_list` の呼び出しキーワードにする
      - | 文字列
        | (カンマ区切り)
      - 空欄
-     -
+     - .. seealso:: `function-call-keyword`
    * - .. member_section:: registration_limit
      - 登録メンバー数上限
      - 数値(int)
