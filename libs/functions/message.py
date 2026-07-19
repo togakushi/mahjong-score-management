@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
 import libs.global_value as g
-from libs.functions.compose import text_item
 from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -88,6 +87,31 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
     return msg
 
 
+def search_word(headword: bool = False) -> str:
+    """
+    キーワード検索条件を返す
+
+    Args:
+        headword (bool, optional): 見出しを付ける. Defaults to False.
+
+    Returns:
+        str: 条件をまとめた文字列
+
+    """
+    if ret := g.params.search_word.replace("%", ""):
+        # 集約条件
+        if g.params.group_length:
+            ret += f"（{g.params.group_length}文字集約）"
+    else:
+        ret = ""
+
+    if headword:
+        if ret:
+            return f"検索ワード：{ret}"
+
+    return ret
+
+
 def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = "", indent: int = 1) -> str:
     """
     見出し生成
@@ -136,7 +160,7 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
 
     if remarks_text := remarks(deliverables=m.status.command_type, headword=True):
         text.append(f"{remarks_text}")
-    if word_text := text_item.search_word(True):
+    if word_text := search_word(True):
         text.append(f"{word_text}")
 
     return textwrap.indent("\n".join(text), "\t" * indent)
