@@ -33,19 +33,10 @@ def aggregation(m: "MessageParserProtocol") -> None:
     m.status.command_type = m.COMMAND_TYPE.RECORD_DATA
     g.params.guest_skip = g.params.guest_skip2  # 検索動作を合わせる
 
-    if rule_version := g.params.rule_version:
-        g.params.update_from_dict(
-            {
-                "mode": int(g.cfg.rule.to_dict(rule_version).get("mode", 4)),
-                "rule_version": str(g.cfg.rule.to_dict(rule_version).get("rule_version", "")),
-                "origin_point": int(g.cfg.rule.to_dict(rule_version).get("origin_point", 250)),
-                "return_point": int(g.cfg.rule.to_dict(rule_version).get("return_point", 300)),
-            }
-        )
-        if (target_mode := g.params.target_mode) and target_mode != g.cfg.rule.get_mode(rule_version):
-            m.set_headline(message.random_reply(m, "rule_mismatch"), StyleOptions(title="集計矛盾検出"))
-            m.status.result = False
-            return
+    if (target_mode := g.params.target_mode) and target_mode != g.cfg.rule.get_mode(g.params.rule_version):
+        m.set_headline(message.random_reply(m, "rule_mismatch"), StyleOptions(title="集計矛盾検出"))
+        m.status.result = False
+        return
 
     if g.params.player_name in g.cfg.team.lists:
         g.params.individual = False
