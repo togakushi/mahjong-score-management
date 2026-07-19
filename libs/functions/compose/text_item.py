@@ -5,71 +5,10 @@ libs/functions/compose/text_item.py
 from typing import TYPE_CHECKING, Optional
 
 import libs.global_value as g
-from libs.types import CommandType
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
     from libs.utils.timekit import Format
-
-
-def remarks(headword: bool = False, deliverables: Optional[CommandType] = None) -> str | list[str]:
-    """
-    引数で指定された集計方法を注記にまとめる
-
-    Args:
-        headword (bool, optional): 見出しを付ける. Defaults to False.
-        deliverables (CommandType, optional): コマンドタイプ
-
-    Returns:
-        Union[list, str]:
-
-        - ``headword`` がない場合はリストで返す
-        - ``headword`` がある場合は文字列で返す
-
-    """
-    remark_list: list[str] = []
-
-    if deliverables == CommandType.GAME_STATISTICS:
-        if not g.params.unregistered_replace or not g.params.guest_skip:
-            remark_list.append("2ゲスト戦の結果を含む")
-    else:
-        if g.params.individual:  # 個人集計時のみ表示
-            if not g.params.unregistered_replace:
-                remark_list.append("ゲスト置換なし(" + g.cfg.setting.guest_mark + "：未登録プレイヤー)")
-            if not g.params.guest_skip:
-                remark_list.append("2ゲスト戦の結果を含む")
-        else:  # チーム集計時
-            if g.params.friendly_fire:
-                if g.params.game_results and g.params.verbose:
-                    remark_list.append("チーム同卓時の結果を含む(" + g.cfg.setting.guest_mark + ")")
-                else:
-                    remark_list.append("チーム同卓時の結果を含む")
-
-        if g.params.stipulated >= 2:
-            remark_list.append(f"規定打数 {g.params.stipulated}G以上")
-        if deliverables in [CommandType.RANKING, CommandType.RATING]:
-            remark_list.append(f"{g.params.ranked}位まで表示")
-
-    # 集計ルール
-    if g.params.mixed:
-        match g.params.target_mode:
-            case 3:
-                remark_list.append("集計対象ルール すべて(三人打)")
-            case 4:
-                remark_list.append("集計対象ルール すべて(四人打)")
-            case _:
-                remark_list.append("集計対象ルール すべて")
-    elif len(g.params.rule_list) > 1:
-        remark_list.append(f"集計対象ルール {'、'.join(g.params.rule_list)}")
-    elif g.params.rule_version != g.params.default_rule:
-        remark_list.append(f"集計対象ルール {'、'.join(g.params.rule_list)}")
-
-    if headword:
-        if remark_list:
-            return f"特記事項：{'、'.join(remark_list)}"
-        return "特記事項：なし"
-
-    return remark_list
 
 
 def search_word(headword: bool = False) -> str:

@@ -119,7 +119,7 @@ def plot(m: "MessageParserProtocol") -> None:
                     tb[i, j].set_text_props(ha="center")
 
             # 追加テキスト
-            remark_text = "".join(text_item.remarks(True)) + text_item.search_word(True)
+            remark_text = "".join(message.remarks(True)) + text_item.search_word(True)
             add_text = "{} {}".format(
                 f"[検索範囲：{game_info.search_range}]",
                 f"[{remark_text}]" if remark_text else "",
