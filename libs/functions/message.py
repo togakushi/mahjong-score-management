@@ -167,11 +167,21 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
     # 検索条件
     if m.status.command_type == CommandType.RECORD_DATA:  # 成績詳細ヘッダ
         if g.params.individual:
-            text.append(f"プレイヤー名：{textutil.name_replace(g.params.player_name, add_mark=True)}")
+            text.append(
+                "プレイヤー名：{player_name} {badge_degree}".format(
+                    player_name=textutil.name_replace(g.params.player_name, add_mark=True),
+                    badge_degree=badge.degree(game_info.stats.seat0.count),
+                ).strip()
+            )
             if team_name := g.cfg.team.which(g.params.player_name):
                 text.append(f"所属チーム：{team_name}")
         else:
-            text.append(f"チーム名：{g.params.player_name}")
+            text.append(
+                "チーム名：{team_name} {badge_degree}".format(
+                    team_name=g.params.player_name,
+                    badge_degree=badge.degree(game_info.stats.seat0.count),
+                ).strip()
+            )
             if member_list := g.cfg.team.member(g.params.player_name):
                 text.append(f"所属メンバー：{'、'.join(member_list)}")
 
@@ -185,7 +195,9 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
 
     # 集計範囲
     if g.params.command == "summary":
-        if m.status.command_type != CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+        if m.status.command_type == CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+            text.append(f"集計範囲：{game_info.aggregation_range}")
+        else:
             text.extend(
                 [
                     f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",

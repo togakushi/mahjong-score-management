@@ -81,7 +81,7 @@ class AdapterAPI(APIInterface):
             header_data, header_option = m.post.headline
             header_title = f"{header_option.print_title}\n"
             if isinstance(header_data, str):
-                header_text = header_data
+                header_text = textwrap.indent(header_data, "\t" * header_option.indent)
         if not m.post.message:  # メッセージなし
             _post_header()
         elif not all(options.header_hidden for _, options in m.post.message):
