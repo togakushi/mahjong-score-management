@@ -11,7 +11,6 @@ import libs.global_value as g
 from libs.commands.deliverables.rating_calc import calculation_rating
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import graphutil, textutil
 from libs.utils.timekit import Format
@@ -227,6 +226,6 @@ def _graph_title(game_info: GameInfo) -> tuple[str, str]:
             kind = Format.YMDHM
             xlabel_text = f"ゲーム終了日時（総対戦数：{game_info.count} ゲーム）"
 
-    title_text = f"レーティング推移 ({text_item.date_range(kind)})"
+    title_text = f"レーティング推移 ({graphutil.date_range(kind)})"
 
     return title_text, xlabel_text

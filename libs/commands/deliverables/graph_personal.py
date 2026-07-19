@@ -15,7 +15,6 @@ from plotly.subplots import make_subplots  # type: ignore
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
-from libs.functions.compose import text_item
 from libs.types import StyleOptions
 from libs.utils import dictutil, graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
@@ -171,7 +170,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
         mapping_dict = textutil.anonymous_mapping([g.params.player_name])
         player = next(iter(mapping_dict.values()))
 
-    title_text = f"『{player}』の成績 (検索範囲：{text_item.date_range(ExtDt.FMT.YMD_O)})"
+    title_text = f"『{player}』の成績 (検索範囲：{graphutil.date_range(ExtDt.FMT.YMD_O)})"
 
     rpoint_df = get_data(player_df["rpoint"], g.params.interval)
     point_sum_df = get_data(player_df["point"], g.params.interval)

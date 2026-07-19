@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 import pandas as pd
 
 import libs.global_value as g
+from libs.domain.stats import StatsInfo
 from libs.functions import lookup
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -79,6 +80,8 @@ class GameInfo:
     """集計範囲の最後のゲームコメント"""
     rule_version: str = field(default="")
     """集計対象ルール識別子"""
+    stats: StatsInfo = field(default_factory=StatsInfo)
+    """個人/チーム集計時の成績情報"""
 
     def __post_init__(self) -> None:
         self.get()

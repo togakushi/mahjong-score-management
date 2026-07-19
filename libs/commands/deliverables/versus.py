@@ -9,7 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions.compose import text_item
+from libs.functions import message
 from libs.types import StyleOptions
 from libs.utils import converter, dictutil, textutil
 
@@ -161,7 +161,7 @@ def tmpl_header(game_info: GameInfo, my_name: str, vs_name: str) -> str:
         \tプレイヤー名：{my_name}
         \t対戦相手：{vs_name}
         \t集計範囲：{game_info.search_range}
-        \t{text_item.remarks(True)}
+        \t{message.remarks(True)}
         """
     ).rstrip()
 
