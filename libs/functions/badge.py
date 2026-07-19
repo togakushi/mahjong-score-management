@@ -1,5 +1,5 @@
 """
-libs/functions/compose/badge.py
+libs/functions/badge.py
 """
 
 import math

@@ -9,8 +9,7 @@ import pandas as pd
 
 import libs.global_value as g
 from libs.domain.datamodels import GameInfo
-from libs.functions import message
-from libs.functions.compose import badge
+from libs.functions import badge, message
 from libs.types import StyleOptions
 from libs.utils import converter, dictutil, textutil
 
