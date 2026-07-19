@@ -185,7 +185,9 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
 
     # 集計範囲
     if g.params.command == "summary":
-        if m.status.command_type != CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+        if m.status.command_type == CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+            text.append(f"集計範囲：{game_info.aggregation_range}")
+        else:
             text.extend(
                 [
                     f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
