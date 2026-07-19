@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=eef74731"></script>
+    <script src="_static/documentation_options.js?v=e2467e30"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -95,6 +95,7 @@
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">GameInfo.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.stats"><code class="docutils literal notranslate"><span class="pre">GameInfo.stats</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.aggregation_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.aggregation_range</span></code></a></li>
@@ -435,6 +436,12 @@
 <dd><p>集計対象ルール識別子</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsInfo" title="libs.domain.stats.StatsInfo"><span class="pre">StatsInfo</span></a></span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.stats" title="Link to this definition">¶</a></dt>
+<dd><p>個人/チーム集計時の成績情報</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.get" title="Link to this definition">¶</a></dt>
@@ -515,7 +522,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.GameInfo.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.__init__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_game</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.GameInfo.__init__" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -527,6 +534,7 @@
 <li><p><strong>first_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
 <li><p><strong>last_comment</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
 <li><p><strong>rule_version</strong> (<em>str</em>)</p></li>
+<li><p><strong>stats</strong> (<a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsInfo" title="libs.domain.stats.StatsInfo"><em>StatsInfo</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1012,6 +1020,7 @@
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.first_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.first_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.last_comment"><code class="docutils literal notranslate"><span class="pre">GameInfo.last_comment</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.rule_version"><code class="docutils literal notranslate"><span class="pre">GameInfo.rule_version</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.stats"><code class="docutils literal notranslate"><span class="pre">GameInfo.stats</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.get"><code class="docutils literal notranslate"><span class="pre">GameInfo.get()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.clear"><code class="docutils literal notranslate"><span class="pre">GameInfo.clear()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.GameInfo.aggregation_range"><code class="docutils literal notranslate"><span class="pre">GameInfo.aggregation_range</span></code></a></li>
@@ -1156,8 +1165,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.9.
-      Last updated on 2026-07-18.
+      Release Version: 0.17.10.
+      Last updated on 2026-07-19.
     </div>
 
   </body>

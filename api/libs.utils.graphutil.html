@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=eef74731"></script>
+    <script src="_static/documentation_options.js?v=e2467e30"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -67,6 +67,7 @@
 <li><a class="reference internal" href="#libs.utils.graphutil.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.graphutil.gen_xlabel"><code class="docutils literal notranslate"><span class="pre">gen_xlabel()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.graphutil.xticks_parameter"><code class="docutils literal notranslate"><span class="pre">xticks_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.graphutil.date_range"><code class="docutils literal notranslate"><span class="pre">date_range()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -199,6 +200,27 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.utils.graphutil.date_range">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.graphutil.</span></span><span class="sig-name descname"><span class="pre">date_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.graphutil.date_range" title="Link to this definition">¶</a></dt>
+<dd><p>日付範囲文字列</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kind</strong> (<a class="reference internal" href="libs.utils.timekit.html#libs.utils.timekit.Format" title="libs.utils.timekit.Format"><em>Format</em></a>) – ExtendedDatetimeのformatメソッドに渡す引数</p></li>
+<li><p><strong>prefix_a</strong> (<em>str</em><em>, </em><em>optional</em>) – 単独で返った時の接頭辞. Defaults to None.</p></li>
+<li><p><strong>prefix_b</strong> (<em>str</em><em>, </em><em>optional</em>) – 範囲で返った時の接頭辞. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>生成文字列</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -215,6 +237,7 @@
 <li><a class="reference internal" href="#libs.utils.graphutil.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.graphutil.gen_xlabel"><code class="docutils literal notranslate"><span class="pre">gen_xlabel()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.graphutil.xticks_parameter"><code class="docutils literal notranslate"><span class="pre">xticks_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.graphutil.date_range"><code class="docutils literal notranslate"><span class="pre">date_range()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -294,8 +317,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.9.
-      Last updated on 2026-07-18.
+      Release Version: 0.17.10.
+      Last updated on 2026-07-19.
     </div>
 
   </body>

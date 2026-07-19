@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=eef74731"></script>
+    <script src="_static/documentation_options.js?v=e2467e30"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -66,12 +66,11 @@
 <li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.stats_list"><code class="docutils literal notranslate"><span class="pre">stats_list()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus"><code class="docutils literal notranslate"><span class="pre">get_versus()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.rank_information"><code class="docutils literal notranslate"><span class="pre">rank_information()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.totalization"><code class="docutils literal notranslate"><span class="pre">totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.results_simple"><code class="docutils literal notranslate"><span class="pre">results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.results_details"><code class="docutils literal notranslate"><span class="pre">results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.versus_data"><code class="docutils literal notranslate"><span class="pre">versus_data()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -189,107 +188,77 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_headline">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_headline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_headline" title="Link to this definition">¶</a></dt>
-<dd><p>ヘッダメッセージ生成</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.rank_information">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">rank_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.rank_information" title="Link to this definition">¶</a></dt>
+<dd><p>順位情報（ヘッダ）メッセージを生成</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>dict</em>) – 生成内容が格納された辞書</p></li>
-<li><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – ゲーム集計情報</p></li>
-<li><p><strong>player_name</strong> (<em>str</em>) – プレイヤー名</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>集計データ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict[str, Any]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_totalization">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_totalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_totalization" title="Link to this definition">¶</a></dt>
-<dd><p>集計トータルメッセージ生成</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="libs.domain.stats.html#libs.domain.stats.StatsInfo" title="libs.domain.stats.StatsInfo"><em>StatsInfo</em></a>) – 成績情報</p>
+<dd class="field-odd"><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – _description_</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>生成メッセージ</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict[str, Any]</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_results_simple">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_results_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_results_simple" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.totalization">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">totalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.totalization" title="Link to this definition">¶</a></dt>
+<dd><p>集計トータル（ヘッダ）メッセージ生成</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – 成績情報</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>生成メッセージ</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.results_simple">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">results_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.results_simple" title="Link to this definition">¶</a></dt>
 <dd><p>戦績(簡易)データ取得</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化オプション用マップ</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>戦績データ</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>戦績データ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_results_details">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_results_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_results_details" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.results_details">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">results_details</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.results_details" title="Link to this definition">¶</a></dt>
 <dd><p>戦績(詳細)データ取得</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化オプション用マップ</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>戦績データ</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>戦績データ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.get_versus">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">get_versus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.get_versus" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.versus_data">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">versus_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.versus_data" title="Link to this definition">¶</a></dt>
 <dd><p>対戦結果データ出力用メッセージ生成</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mapping_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 匿名化用マッピングデータ</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>出力メッセージ</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>出力メッセージ</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.results_detail.message_build">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_detail.</span></span><span class="sig-name descname"><span class="pre">message_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_detail.message_build" title="Link to this definition">¶</a></dt>
-<dd><p>表示する内容をテキストに起こす</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – 内容</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>表示するテキスト</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -309,12 +278,11 @@
 <li><a class="reference internal" href="#">libs.commands.deliverables.results_detail module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
 <li><a class="reference internal" href="#libs.commands.deliverables.results_detail.stats_list"><code class="docutils literal notranslate"><span class="pre">stats_list()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_headline"><code class="docutils literal notranslate"><span class="pre">get_headline()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_totalization"><code class="docutils literal notranslate"><span class="pre">get_totalization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_simple"><code class="docutils literal notranslate"><span class="pre">get_results_simple()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_results_details"><code class="docutils literal notranslate"><span class="pre">get_results_details()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.get_versus"><code class="docutils literal notranslate"><span class="pre">get_versus()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.message_build"><code class="docutils literal notranslate"><span class="pre">message_build()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.rank_information"><code class="docutils literal notranslate"><span class="pre">rank_information()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.totalization"><code class="docutils literal notranslate"><span class="pre">totalization()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.results_simple"><code class="docutils literal notranslate"><span class="pre">results_simple()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.results_details"><code class="docutils literal notranslate"><span class="pre">results_details()</span></code></a></li>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_detail.versus_data"><code class="docutils literal notranslate"><span class="pre">versus_data()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -395,8 +363,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.9.
-      Last updated on 2026-07-18.
+      Release Version: 0.17.10.
+      Last updated on 2026-07-19.
     </div>
 
   </body>

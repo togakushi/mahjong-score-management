@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=eef74731"></script>
+    <script src="_static/documentation_options.js?v=e2467e30"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.functions.compose package" href="libs.functions.compose.html" />
+    <link rel="next" title="libs.functions.tools package" href="libs.functions.tools.html" />
     <link rel="prev" title="libs.domain.stats module" href="libs.domain.stats.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -78,8 +78,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.functions.compose.html"
-                          title="next chapter">libs.functions.compose package</a></p>
+    <p class="topless"><a href="libs.functions.tools.html"
+                          title="next chapter">libs.functions.tools package</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -103,7 +103,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.functions.compose.html" title="libs.functions.compose package"
+          <a href="libs.functions.tools.html" title="libs.functions.tools package"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="libs.domain.stats.html" title="libs.domain.stats module"
@@ -155,23 +155,15 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="libs.functions.lookup.html"><span class="doc">libs.functions.lookup module</span></a>: 情報取得</p></li>
 <li><p><a class="reference internal" href="libs.functions.message.html"><span class="doc">libs.functions.message module</span></a>: メッセージ</p></li>
+<li><p><a class="reference internal" href="libs.functions.badge.html"><span class="doc">libs.functions.badge module</span></a>: バッジ表示</p></li>
 <li><p><a class="reference internal" href="libs.functions.adjusting.html"><span class="doc">libs.functions.adjusting module</span></a>: 表・桁数・調整</p></li>
 <li><p><a class="reference internal" href="libs.functions.validator.html"><span class="doc">libs.functions.validator module</span></a>: バリデータ</p></li>
-<li><p><a class="reference internal" href="libs.functions.compose.html"><span class="doc">libs.functions.compose package</span></a>: メッセージ生成</p></li>
 <li><p><a class="reference internal" href="libs.functions.tools.html"><span class="doc">libs.functions.tools package</span></a>: 外部ツール用モジュール</p></li>
 </ul>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="libs.functions.compose.html">libs.functions.compose package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libs.functions.compose.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="libs.functions.compose.badge.html">libs.functions.compose.badge module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="libs.functions.compose.text_item.html">libs.functions.compose.text_item module</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.tools.html">libs.functions.tools package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.tools.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="libs.functions.tools.comparison.html">libs.functions.tools.comparison module</a></li>
@@ -198,6 +190,12 @@
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.adjusting.html#libs.functions.adjusting.add_units"><code class="docutils literal notranslate"><span class="pre">add_units()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="libs.functions.badge.html">libs.functions.badge module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.badge.html#libs.functions.badge.degree"><code class="docutils literal notranslate"><span class="pre">degree()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.badge.html#libs.functions.badge.status"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.badge.html#libs.functions.badge.grade"><code class="docutils literal notranslate"><span class="pre">grade()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.lookup.html">libs.functions.lookup module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.search_db_score"><code class="docutils literal notranslate"><span class="pre">search_db_score()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.lookup.html#libs.functions.lookup.search_db_remarks"><code class="docutils literal notranslate"><span class="pre">search_db_remarks()</span></code></a></li>
@@ -216,7 +214,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.message.html">libs.functions.message module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.random_reply"><code class="docutils literal notranslate"><span class="pre">random_reply()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.search_word"><code class="docutils literal notranslate"><span class="pre">search_word()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.header"><code class="docutils literal notranslate"><span class="pre">header()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.functions.message.html#libs.functions.message.remarks"><code class="docutils literal notranslate"><span class="pre">remarks()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libs.functions.validator.html">libs.functions.validator module</a><ul>
@@ -254,8 +254,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.functions.compose.html"
-                          title="next chapter">libs.functions.compose package</a></p>
+    <p class="topless"><a href="libs.functions.tools.html"
+                          title="next chapter">libs.functions.tools package</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -279,7 +279,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.functions.compose.html" title="libs.functions.compose package"
+          <a href="libs.functions.tools.html" title="libs.functions.tools package"
              >next</a> |</li>
         <li class="right" >
           <a href="libs.domain.stats.html" title="libs.domain.stats module"
@@ -320,8 +320,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.9.
-      Last updated on 2026-07-18.
+      Release Version: 0.17.10.
+      Last updated on 2026-07-19.
     </div>
 
   </body>
