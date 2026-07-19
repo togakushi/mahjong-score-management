@@ -87,7 +87,7 @@ class AdapterAPI(APIInterface):
             header_data, header_option = m.post.headline
             header_title = f"{header_option.print_title}"
             if isinstance(header_data, str):
-                header_text = header_data
+                header_text = textwrap.indent(header_data, "\t" * header_option.indent)
             m.post.thread_title = header_title
         if not m.post.message:
             thread_msg = await self.response.reply(f"{header_title}\n{header_text.rstrip()}")

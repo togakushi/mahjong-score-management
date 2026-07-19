@@ -66,7 +66,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
             rank_info=rank_information(game_info),
             total=totalization(game_info),
         ),
-        StyleOptions(title=title),
+        StyleOptions(title=title, indent=1),
     )
 
     # 統計
