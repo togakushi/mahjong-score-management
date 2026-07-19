@@ -10,7 +10,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Optional
 
 import libs.global_value as g
+from libs.functions import badge
 from libs.types import CommandType
+from libs.utils import textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -126,37 +128,73 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
         str: 生成した見出し
 
     """
-    text: list[str] = []
     assert isinstance(game_info.first_game, ExtDt)
     assert isinstance(game_info.last_game, ExtDt)
 
-    # 対戦数
-    if game_info.count == 0:
-        text.extend(
-            [
-                f"検索範囲：{game_info.search_range}",
-                f"\n{random_reply(m, 'no_hits')}",
-            ]
-        )
+    def _check_game_count() -> bool:
+        """
+        対戦数チェック
+
+        Returns:
+            bool: 集計対象がない場合は ``False`` を返す
+
+        """
+
+        if game_info.count:
+            return True
+        else:
+            # 集計対象データが0件の場合
+            if g.params.individual:  # 個人集計
+                pass
+            else:  # チーム集計
+                if g.params.player_name not in g.cfg.team.lists:
+                    text.append("\n登録されていないチームです。")
+                    return False
+
+            if m.status.command_type == CommandType.RECORD_DATA:
+                text.append(f"対戦数：0 戦 (0 勝 0 敗 0 分) {badge.status(0, 0)}")
+                if g.params.individual:
+                    text.append(f"\n{random_reply(m, 'no_target')}")
+                else:
+                    text.append(f"\n{random_reply(m, 'no_target')}")
+            else:
+                text.append(f"\n{random_reply(m, 'no_hits')}")
+
+        return False
+
+    text: list[str] = []
+
+    # 検索条件
+    if m.status.command_type == CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+        if g.params.individual:
+            text.append(f"プレイヤー名：{textutil.name_replace(g.params.player_name, add_mark=True)}")
+            if team_name := g.cfg.team.which(g.params.player_name):
+                text.append(f"所属チーム：{team_name}")
+        else:
+            text.append(f"チーム名：{g.params.player_name}")
+            if member_list := g.cfg.team.member(g.params.player_name):
+                text.append(f"所属メンバー：{'、'.join(member_list)}")
+
+    text.append(f"検索範囲：{game_info.search_range}")
+    if word_text := search_word(True):
+        text.append(f"{word_text}")
+
+    # 対戦数チェック
+    if not _check_game_count():
         return textwrap.indent("\n".join(text), "\t" * indent)
 
-    # 検索範囲 / 集計範囲
+    # 集計範囲
     if g.params.command == "summary":
-        text.extend(
-            [
-                f"検索範囲：{game_info.search_range}",
-                f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
-                f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}",
-                f"集計対象：{game_info.count} ゲーム {add_text}".strip(),
-            ]
-        )
+        if m.status.command_type != CommandType.RECORD_DATA:  # 成績詳細ヘッダ
+            text.extend(
+                [
+                    f"最初のゲーム：{game_info.first_game.format(ExtDt.FMT.YMDHMS)}",
+                    f"最後のゲーム：{game_info.last_game.format(ExtDt.FMT.YMDHMS)}",
+                    f"集計対象：{game_info.count} ゲーム {add_text}".strip(),
+                ]
+            )
     else:
-        text.extend(
-            [
-                f"検索範囲：{game_info.search_range}",
-                f"集計対象：{game_info.count} ゲーム",
-            ]
-        )
+        text.append(f"集計対象：{game_info.count} ゲーム")
 
     if remarks_text := remarks(deliverables=m.status.command_type, headword=True):
         text.append(f"{remarks_text}")

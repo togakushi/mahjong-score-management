@@ -46,14 +46,11 @@ def aggregation(m: "MessageParserProtocol") -> None:
             m.set_headline(message.random_reply(m, "rule_mismatch"), StyleOptions(title="集計矛盾検出"))
             m.status.result = False
             return
+
     if g.params.player_name in g.cfg.team.lists:
         g.params.individual = False
     elif g.params.player_name in g.cfg.member.lists:
         g.params.individual = True
-
-    # --- データ収集
-    game_info = GameInfo()
-    msg_data: dict[str, str] = {}
 
     # タイトル
     if g.params.individual:
@@ -61,30 +58,25 @@ def aggregation(m: "MessageParserProtocol") -> None:
     else:
         title = "チーム成績詳細"
 
-    if game_info.count == 0:
-        if g.params.individual:
-            msg_data["検索範囲"] = f"{game_info.search_range}"
-            msg_data["特記事項"] = "、".join(message.remarks())
-            msg_data["検索ワード"] = message.search_word()
-            msg_data["対戦数"] = f"0 戦 (0 勝 0 敗 0 分) {badge.status(0, 0)}"
-            m.set_headline(message_build(msg_data), StyleOptions(title=title))
-        else:
-            m.set_headline("登録されていないチームです。", StyleOptions(title=title))
-        m.status.result = False
-        return
-
+    # データ収集
+    game_info = GameInfo()
     game_info.stats.read(g.params)
+    header_text = message.header(game_info, m, indent=0)
 
-    if game_info.stats.result_df.empty or game_info.stats.record_df.empty:
-        m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
+    if not game_info.count or game_info.stats.result_df.empty or game_info.stats.record_df.empty:
+        m.set_headline(header_text, StyleOptions(title=title))
         m.status.result = False
         return
-
-    player_name = textutil.name_replace(g.params.player_name, add_mark=True)
 
     # 表示内容
-    msg_data.update(get_headline(game_info, player_name))
-    msg_data.update(get_totalization(game_info.stats))
+    m.set_headline(
+        "{header}\n\n{rank_info}\n\n{total}\n".format(
+            header=header_text,
+            rank_info=rank_information(game_info),
+            total=totalization(game_info),
+        ),
+        StyleOptions(title=title),
+    )
 
     # 統計
     seat_data = pd.DataFrame(
@@ -129,9 +121,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
             ).replace("-", "▲")
 
     # 非表示項目
-    seat_data.drop(columns=dictutil.dropitems_list(seat_data.columns.to_list()), inplace=True)
-    game_info.stats.result_df.drop(columns=dictutil.dropitems_list(game_info.stats.result_df.columns.to_list()), inplace=True)
-    game_info.stats.record_df.drop(columns=dictutil.dropitems_list(game_info.stats.record_df.columns.to_list()), inplace=True)
+    seat_data.drop(
+        columns=dictutil.dropitems_list(seat_data.columns.to_list()),
+        inplace=True,
+    )
+    game_info.stats.result_df.drop(
+        columns=dictutil.dropitems_list(game_info.stats.result_df.columns.to_list()),
+        inplace=True,
+    )
+    game_info.stats.record_df.drop(
+        columns=dictutil.dropitems_list(game_info.stats.record_df.columns.to_list()),
+        inplace=True,
+    )
 
     if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
@@ -161,22 +162,20 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # 対戦結果
     if g.params.versus:
-        m.set_message(get_versus(g.params.mapping_dict), StyleOptions(title="対戦結果", indent=1))
+        m.set_message(versus_data(), StyleOptions(title="対戦結果", indent=1))
 
     # 戦績
     if g.params.game_results:
         if g.params.verbose:
             m.set_message(
-                get_results_details(g.params.mapping_dict),
+                results_details(),
                 StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False),
             )
         else:
             m.set_message(
-                get_results_simple(g.params.mapping_dict),
+                results_simple(),
                 StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False),
             )
-
-    m.set_headline(message_build(msg_data), StyleOptions(title=title))
 
 
 def stats_list(m: "MessageParserProtocol") -> None:
@@ -319,86 +318,70 @@ def stats_list(m: "MessageParserProtocol") -> None:
     m.post.thread = True
 
 
-def get_headline(game_info: GameInfo, player_name: str) -> dict[str, Any]:
+def rank_information(game_info: GameInfo) -> str:
     """
-    ヘッダメッセージ生成
+    順位情報（ヘッダ）メッセージを生成
 
     Args:
-        game_info (GameInfo): ゲーム集計情報
-        player_name (str): プレイヤー名
+        game_info (GameInfo): _description_
 
     Returns:
-        dict[str, Any]: 集計データ
-
+        str: 生成メッセージ
     """
     ret: dict[str, Any] = {}
 
-    if g.params.individual:
-        ret["プレイヤー名"] = f"{player_name} {badge.degree(game_info.stats.seat0.count)}"
-        if team_name := g.cfg.team.which(g.params.player_name):
-            ret["所属チーム"] = team_name
-    else:
-        ret["チーム名"] = f"{g.params.player_name} {badge.degree(game_info.stats.seat0.count)}"
-        ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params.player_name))
-
-    badge_status = badge.status(game_info.stats.seat0.count, game_info.stats.seat0.win)
-    ret["検索範囲"] = game_info.search_range
-    ret["集計範囲"] = game_info.aggregation_range
-    ret["特記事項"] = "、".join(message.remarks())
-    ret["検索ワード"] = message.search_word()
-    ret["対戦数"] = f"{game_info.stats.seat0.war_record()} {badge_status}"
-    ret["_blank1"] = True
-
-    return ret
-
-
-def get_totalization(data: StatsInfo) -> dict[str, Any]:
-    """
-    集計トータルメッセージ生成
-
-    Args:
-        data (StatsInfo): 成績情報
-
-    Returns:
-        dict[str, Any]: 生成メッセージ
-
-    """
-    ret: dict[str, Any] = {}
-
-    ret["通算ポイント"] = f"{data.seat0.total_point:+.1f}pt".replace("-", "▲")
-    ret["平均ポイント"] = f"{data.seat0.avg_point:+.1f}pt".replace("-", "▲")
-    ret["平均順位"] = f"{data.seat0.rank_avg:1.2f}"
+    ret["対戦数"] = "{war_record} {badge_status}".format(
+        war_record=game_info.stats.seat0.war_record(),
+        badge_status=badge.status(game_info.stats.seat0.count, game_info.stats.seat0.win),
+    ).strip()
+    ret["通算ポイント"] = f"{game_info.stats.seat0.total_point:+.1f}pt".replace("-", "▲")
+    ret["平均ポイント"] = f"{game_info.stats.seat0.avg_point:+.1f}pt".replace("-", "▲")
+    ret["平均順位"] = f"{game_info.stats.seat0.rank_avg:1.2f}"
     if all([g.params.individual, g.adapter.conf.badge_grade, not g.cfg.rule.get_draw_split(g.params.rule_version)]):
         ret["段位"] = badge.grade(g.params.player_name)
-    ret["_blank2"] = True
-    ret["1位"] = f"{data.seat0.rank(1):2} 回 ({data.seat0.rank_rate(1):7.2%})"
-    if data.seat0.rank(1.5):
-        ret["1.5位"] = f"{data.seat0.rank(1.5):2} 回 ({data.seat0.rank_rate(1.5):7.2%})"
-    ret["2位"] = f"{data.seat0.rank(2):2} 回 ({data.seat0.rank_rate(2):7.2%})"
-    if data.seat0.rank(2.5):
-        ret["2.5位"] = f"{data.seat0.rank(2.5):2} 回 ({data.seat0.rank_rate(2.5):7.2%})"
-    ret["3位"] = f"{data.seat0.rank(3):2} 回 ({data.seat0.rank_rate(3):7.2%})"
-    if data.seat0.rank(3.5):
-        ret["3.5位"] = f"{data.seat0.rank(3.5):2} 回 ({data.seat0.rank_rate(3.5):7.2%})"
-    if g.params.mode == 4:
-        ret["4位"] = f"{data.seat0.rank(4):2} 回 ({data.seat0.rank_rate(4):7.2%})"
-    ret["トビ"] = f"{data.seat0.flying:2} 回 ({data.seat0.flying_rate:7.2%})"
-    ret["役満"] = f"{data.seat0.yakuman:2} 回 ({data.seat0.yakuman_rate:7.2%})"
 
     # 非表示項目
-    for drop_item in dictutil.dropitems_list():
-        if drop_item in ret:
-            ret.pop(drop_item)
+    msg: list[str] = [f"{k}：{v}" for k, v in ret.items() if k not in dictutil.dropitems_list()]
 
-    return ret
+    return "\n".join(msg).strip()
 
 
-def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
+def totalization(game_info: GameInfo) -> str:
     """
-    戦績(簡易)データ取得
+    集計トータル（ヘッダ）メッセージ生成
 
     Args:
-        mapping_dict (dict[str, str]): 匿名化オプション用マップ
+        game_info (GameInfo): 成績情報
+
+    Returns:
+        str: 生成メッセージ
+
+    """
+    ret: dict[str, Any] = {}
+
+    ret["1位"] = f"{game_info.stats.seat0.rank(1):2} 回 ({game_info.stats.seat0.rank_rate(1):7.2%})"
+    if game_info.stats.seat0.rank(1.5):
+        ret["1.5位"] = f"{game_info.stats.seat0.rank(1.5):2} 回 ({game_info.stats.seat0.rank_rate(1.5):7.2%})"
+    ret["2位"] = f"{game_info.stats.seat0.rank(2):2} 回 ({game_info.stats.seat0.rank_rate(2):7.2%})"
+    if game_info.stats.seat0.rank(2.5):
+        ret["2.5位"] = f"{game_info.stats.seat0.rank(2.5):2} 回 ({game_info.stats.seat0.rank_rate(2.5):7.2%})"
+    ret["3位"] = f"{game_info.stats.seat0.rank(3):2} 回 ({game_info.stats.seat0.rank_rate(3):7.2%})"
+    if game_info.stats.seat0.rank(3.5):
+        ret["3.5位"] = f"{game_info.stats.seat0.rank(3.5):2} 回 ({game_info.stats.seat0.rank_rate(3.5):7.2%})"
+    if g.params.mode == 4:
+        ret["4位"] = f"{game_info.stats.seat0.rank(4):2} 回 ({game_info.stats.seat0.rank_rate(4):7.2%})"
+    ret["トビ"] = f"{game_info.stats.seat0.flying:2} 回 ({game_info.stats.seat0.flying_rate:7.2%})"
+    ret["役満"] = f"{game_info.stats.seat0.yakuman:2} 回 ({game_info.stats.seat0.yakuman_rate:7.2%})"
+
+    # 非表示項目
+    msg: list[str] = [f"{k}：{v}" for k, v in ret.items() if k not in dictutil.dropitems_list()]
+
+    return "\n".join(msg).strip()
+
+
+def results_simple() -> pd.DataFrame:
+    """
+    戦績(簡易)データ取得
 
     Returns:
         pd.DataFrame: 戦績データ
@@ -422,18 +405,16 @@ def get_results_simple(mapping_dict: dict[str, str]) -> pd.DataFrame:
     return df_data
 
 
-def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
+def results_details() -> pd.DataFrame:
     """
     戦績(詳細)データ取得
-
-    Args:
-        mapping_dict (dict[str, str]): 匿名化オプション用マップ
 
     Returns:
         pd.DataFrame: 戦績データ
 
     """
-    target_player = textutil.name_replace(g.params.target_player[0], add_mark=True)  # noqa: F841
+    target_player = textutil.name_replace(g.params.target_player[0], add_mark=True)
+    mapping_dict = g.params.mapping_dict
 
     df = g.params.read_data("SUMMARY_DETAILS2").fillna(value="")
     if g.params.anonymous:
@@ -472,18 +453,16 @@ def get_results_details(mapping_dict: dict[str, str]) -> pd.DataFrame:
     return df_data
 
 
-def get_versus(mapping_dict: dict[str, str]) -> str:
+def versus_data() -> str:
     """
     対戦結果データ出力用メッセージ生成
-
-    Args:
-        mapping_dict (dict[str, str]): 匿名化用マッピングデータ
 
     Returns:
         str: 出力メッセージ
 
     """
     df = g.params.read_data("SUMMARY_versus")
+    mapping_dict = g.params.mapping_dict
 
     if df.empty:
         return ""
@@ -506,31 +485,3 @@ def get_versus(mapping_dict: dict[str, str]) -> str:
     )
 
     return output
-
-
-def message_build(data: dict[str, str]) -> str:
-    """
-    表示する内容をテキストに起こす
-
-    Args:
-        data (dict[str, str]): 内容
-
-    Returns:
-        str: 表示するテキスト
-
-    """
-    msg = ""
-    for k, v in data.items():
-        if not v:  # 値がない項目は削除
-            continue
-        match k:
-            case k if k in g.cfg.rule.dropitems(g.params.rule_version):  # 非表示
-                pass
-            case k if str(k).startswith("_blank"):
-                msg += "\n"
-            case "title":
-                msg += f"{v}\n"
-            case _:
-                msg += f"{k}：{v}\n"
-
-    return textwrap.indent(msg.strip(), "\t")
