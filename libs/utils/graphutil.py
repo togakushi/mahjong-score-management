@@ -3,7 +3,7 @@ libs/utils/graphutil.py
 """
 
 import logging
-from typing import Any
+from typing import TYPE_CHECKING, Any, Optional
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -11,6 +11,10 @@ import pandas as pd
 from matplotlib import use
 
 import libs.global_value as g
+from libs.utils.timekit import ExtendedDatetime as ExtDt
+
+if TYPE_CHECKING:
+    from libs.utils.timekit import Format
 
 
 def setup() -> None:
@@ -119,3 +123,48 @@ def xticks_parameter(days_list: list[Any]) -> dict[str, Any]:
         "rotation": rotation,
         "ha": position,
     }
+
+
+def date_range(
+    kind: "Format",
+    prefix_a: Optional[str] = None,
+    prefix_b: Optional[str] = None,
+) -> str:
+    """
+    日付範囲文字列
+
+    Args:
+        kind (Format): ExtendedDatetimeのformatメソッドに渡す引数
+        prefix_a (str, optional): 単独で返った時の接頭辞. Defaults to None.
+        prefix_b (str, optional): 範囲で返った時の接頭辞. Defaults to None.
+
+    Returns:
+        str: 生成文字列
+
+    """
+    ret: str
+    str_st: str
+    str_et: str
+    st = ExtDt(g.params.starttime)
+    et = ExtDt(g.params.endtime)
+    ot = ExtDt(g.params.onday)
+
+    if kind.name.endswith("_O"):
+        str_st = st.format(kind)
+        str_et = ot.format(kind)
+    else:
+        str_st = st.format(kind)
+        str_et = et.format(kind)
+
+    if st.format(kind, ExtDt.DEM.NUMBER) == ot.format(kind, ExtDt.DEM.NUMBER):
+        if prefix_a and prefix_b:
+            ret = f"{prefix_a} ({str_st})"
+        else:
+            ret = f"{str_st}"
+    else:
+        if prefix_a and prefix_b:
+            ret = f"{prefix_b} ({str_st} - {str_et})"
+        else:
+            ret = f"{str_st} - {str_et}"
+
+    return ret
