@@ -73,28 +73,27 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.status.result = False
         return
 
-    stats = StatsInfo()
-    stats.read(g.params)
+    game_info.stats.read(g.params)
 
-    if stats.result_df.empty or stats.record_df.empty:
+    if game_info.stats.result_df.empty or game_info.stats.record_df.empty:
         m.set_headline(message.random_reply(m, "no_target"), StyleOptions(title=title))
         m.status.result = False
         return
 
     player_name = textutil.name_replace(g.params.player_name, add_mark=True)
 
-    # --- 表示内容
-    msg_data.update(get_headline(stats, game_info, player_name))
-    msg_data.update(get_totalization(stats))
+    # 表示内容
+    msg_data.update(get_headline(game_info, player_name))
+    msg_data.update(get_totalization(game_info.stats))
 
     # 統計
     seat_data = pd.DataFrame(
         {  # 座席データ
             "席": ["東家", "南家", "西家", "北家"][: g.params.mode],
-            "順位分布": stats.rank_distr_list2,
-            "平均順位": [f"{x:.2f}".replace("0.00", "-.--") for x in stats.rank_avg_list],
-            "トビ": stats.flying_list,
-            "役満和了": stats.yakuman_list,
+            "順位分布": game_info.stats.rank_distr_list2,
+            "平均順位": [f"{x:.2f}".replace("0.00", "-.--") for x in game_info.stats.rank_avg_list],
+            "トビ": game_info.stats.flying_list,
+            "役満和了": game_info.stats.yakuman_list,
         }
     )
     if g.cfg.rule.get_draw_split(g.params.rule_version):
@@ -103,41 +102,41 @@ def aggregation(m: "MessageParserProtocol") -> None:
     if g.cfg.rule.get_draw_split(g.params.rule_version):
         balance_data = textwrap.dedent(
             f"""\
-            全体：{stats.seat0.avg_balance("all"):+.1f}点
+            全体：{game_info.stats.seat0.avg_balance("all"):+.1f}点
             """.replace("+0.0点", "記録なし")
         ).replace("-", "▲")
     else:
         if g.params.mode == 3:
             balance_data = textwrap.dedent(
                 f"""\
-                全体：{stats.seat0.avg_balance("all"):+.1f}点
-                1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
-                2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
-                3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
+                全体：{game_info.stats.seat0.avg_balance("all"):+.1f}点
+                1着終了時：{game_info.stats.seat0.avg_balance("rank1"):+.1f}点
+                2着終了時：{game_info.stats.seat0.avg_balance("rank2"):+.1f}点
+                3着終了時：{game_info.stats.seat0.avg_balance("rank3"):+.1f}点
                 """.replace("+0.0点", "記録なし")
             ).replace("-", "▲")
         else:
             balance_data = textwrap.dedent(
                 f"""\
-                全体：{stats.seat0.avg_balance("all"):+.1f}点
-                連対時：{stats.seat0.avg_balance("top2"):+.1f}点
-                逆連対時：{stats.seat0.avg_balance("lose2"):+.1f}点
-                1着終了時：{stats.seat0.avg_balance("rank1"):+.1f}点
-                2着終了時：{stats.seat0.avg_balance("rank2"):+.1f}点
-                3着終了時：{stats.seat0.avg_balance("rank3"):+.1f}点
-                4着終了時：{stats.seat0.avg_balance("rank4"):+.1f}点
+                全体：{game_info.stats.seat0.avg_balance("all"):+.1f}点
+                連対時：{game_info.stats.seat0.avg_balance("top2"):+.1f}点
+                逆連対時：{game_info.stats.seat0.avg_balance("lose2"):+.1f}点
+                1着終了時：{game_info.stats.seat0.avg_balance("rank1"):+.1f}点
+                2着終了時：{game_info.stats.seat0.avg_balance("rank2"):+.1f}点
+                3着終了時：{game_info.stats.seat0.avg_balance("rank3"):+.1f}点
+                4着終了時：{game_info.stats.seat0.avg_balance("rank4"):+.1f}点
                 """.replace("+0.0点", "記録なし")
             ).replace("-", "▲")
 
     # 非表示項目
     seat_data.drop(columns=dictutil.dropitems_list(seat_data.columns.to_list()), inplace=True)
-    stats.result_df.drop(columns=dictutil.dropitems_list(stats.result_df.columns.to_list()), inplace=True)
-    stats.record_df.drop(columns=dictutil.dropitems_list(stats.record_df.columns.to_list()), inplace=True)
+    game_info.stats.result_df.drop(columns=dictutil.dropitems_list(game_info.stats.result_df.columns.to_list()), inplace=True)
+    game_info.stats.record_df.drop(columns=dictutil.dropitems_list(game_info.stats.record_df.columns.to_list()), inplace=True)
 
     if g.params.statistics:
         m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
-        m.set_message(textwrap.indent(stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
-        m.set_message(textwrap.indent(stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
+        m.set_message(textwrap.indent(game_info.stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
+        m.set_message(textwrap.indent(game_info.stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
         m.set_message(textwrap.indent(balance_data.strip(), "\t"), StyleOptions(title="平均収支"))
 
     # レギュレーション
@@ -320,12 +319,11 @@ def stats_list(m: "MessageParserProtocol") -> None:
     m.post.thread = True
 
 
-def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict[str, Any]:
+def get_headline(game_info: GameInfo, player_name: str) -> dict[str, Any]:
     """
     ヘッダメッセージ生成
 
     Args:
-        data (dict): 生成内容が格納された辞書
         game_info (GameInfo): ゲーム集計情報
         player_name (str): プレイヤー名
 
@@ -336,19 +334,19 @@ def get_headline(data: StatsInfo, game_info: GameInfo, player_name: str) -> dict
     ret: dict[str, Any] = {}
 
     if g.params.individual:
-        ret["プレイヤー名"] = f"{player_name} {badge.degree(data.seat0.count)}"
+        ret["プレイヤー名"] = f"{player_name} {badge.degree(game_info.stats.seat0.count)}"
         if team_name := g.cfg.team.which(g.params.player_name):
             ret["所属チーム"] = team_name
     else:
-        ret["チーム名"] = f"{g.params.player_name} {badge.degree(data.seat0.count)}"
+        ret["チーム名"] = f"{g.params.player_name} {badge.degree(game_info.stats.seat0.count)}"
         ret["登録メンバー"] = "、".join(g.cfg.team.member(g.params.player_name))
 
-    badge_status = badge.status(data.seat0.count, data.seat0.win)
+    badge_status = badge.status(game_info.stats.seat0.count, game_info.stats.seat0.win)
     ret["検索範囲"] = game_info.search_range
     ret["集計範囲"] = game_info.aggregation_range
     ret["特記事項"] = "、".join(message.remarks())
     ret["検索ワード"] = message.search_word()
-    ret["対戦数"] = f"{data.seat0.war_record()} {badge_status}"
+    ret["対戦数"] = f"{game_info.stats.seat0.war_record()} {badge_status}"
     ret["_blank1"] = True
 
     return ret
