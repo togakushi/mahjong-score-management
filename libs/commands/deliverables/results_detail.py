@@ -61,7 +61,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     # 表示内容
     m.set_headline(
-        "{header}\n\n{rank_info}\n\n{total}\n".format(
+        "{header}\n\n{total}\n\n{rank_info}\n".format(
             header=header_text,
             rank_info=rank_information(game_info),
             total=totalization(game_info),
@@ -321,15 +321,19 @@ def rank_information(game_info: GameInfo) -> str:
     """
     ret: dict[str, Any] = {}
 
-    ret["対戦数"] = "{war_record} {badge_status}".format(
-        war_record=game_info.stats.seat0.war_record(),
-        badge_status=badge.status(game_info.stats.seat0.count, game_info.stats.seat0.win),
-    ).strip()
-    ret["通算ポイント"] = f"{game_info.stats.seat0.total_point:+.1f}pt".replace("-", "▲")
-    ret["平均ポイント"] = f"{game_info.stats.seat0.avg_point:+.1f}pt".replace("-", "▲")
-    ret["平均順位"] = f"{game_info.stats.seat0.rank_avg:1.2f}"
-    if all([g.params.individual, g.adapter.conf.badge_grade, not g.cfg.rule.get_draw_split(g.params.rule_version)]):
-        ret["段位"] = badge.grade(g.params.player_name)
+    ret["1位"] = f"{game_info.stats.seat0.rank(1):2} 回 ({game_info.stats.seat0.rank_rate(1):7.2%})"
+    if game_info.stats.seat0.rank(1.5):
+        ret["1.5位"] = f"{game_info.stats.seat0.rank(1.5):2} 回 ({game_info.stats.seat0.rank_rate(1.5):7.2%})"
+    ret["2位"] = f"{game_info.stats.seat0.rank(2):2} 回 ({game_info.stats.seat0.rank_rate(2):7.2%})"
+    if game_info.stats.seat0.rank(2.5):
+        ret["2.5位"] = f"{game_info.stats.seat0.rank(2.5):2} 回 ({game_info.stats.seat0.rank_rate(2.5):7.2%})"
+    ret["3位"] = f"{game_info.stats.seat0.rank(3):2} 回 ({game_info.stats.seat0.rank_rate(3):7.2%})"
+    if game_info.stats.seat0.rank(3.5):
+        ret["3.5位"] = f"{game_info.stats.seat0.rank(3.5):2} 回 ({game_info.stats.seat0.rank_rate(3.5):7.2%})"
+    if g.params.mode == 4:
+        ret["4位"] = f"{game_info.stats.seat0.rank(4):2} 回 ({game_info.stats.seat0.rank_rate(4):7.2%})"
+    ret["トビ"] = f"{game_info.stats.seat0.flying:2} 回 ({game_info.stats.seat0.flying_rate:7.2%})"
+    ret["役満"] = f"{game_info.stats.seat0.yakuman:2} 回 ({game_info.stats.seat0.yakuman_rate:7.2%})"
 
     # 非表示項目
     msg: list[str] = [f"{k}：{v}" for k, v in ret.items() if k not in dictutil.dropitems_list()]
@@ -350,19 +354,15 @@ def totalization(game_info: GameInfo) -> str:
     """
     ret: dict[str, Any] = {}
 
-    ret["1位"] = f"{game_info.stats.seat0.rank(1):2} 回 ({game_info.stats.seat0.rank_rate(1):7.2%})"
-    if game_info.stats.seat0.rank(1.5):
-        ret["1.5位"] = f"{game_info.stats.seat0.rank(1.5):2} 回 ({game_info.stats.seat0.rank_rate(1.5):7.2%})"
-    ret["2位"] = f"{game_info.stats.seat0.rank(2):2} 回 ({game_info.stats.seat0.rank_rate(2):7.2%})"
-    if game_info.stats.seat0.rank(2.5):
-        ret["2.5位"] = f"{game_info.stats.seat0.rank(2.5):2} 回 ({game_info.stats.seat0.rank_rate(2.5):7.2%})"
-    ret["3位"] = f"{game_info.stats.seat0.rank(3):2} 回 ({game_info.stats.seat0.rank_rate(3):7.2%})"
-    if game_info.stats.seat0.rank(3.5):
-        ret["3.5位"] = f"{game_info.stats.seat0.rank(3.5):2} 回 ({game_info.stats.seat0.rank_rate(3.5):7.2%})"
-    if g.params.mode == 4:
-        ret["4位"] = f"{game_info.stats.seat0.rank(4):2} 回 ({game_info.stats.seat0.rank_rate(4):7.2%})"
-    ret["トビ"] = f"{game_info.stats.seat0.flying:2} 回 ({game_info.stats.seat0.flying_rate:7.2%})"
-    ret["役満"] = f"{game_info.stats.seat0.yakuman:2} 回 ({game_info.stats.seat0.yakuman_rate:7.2%})"
+    ret["対戦数"] = "{war_record} {badge_status}".format(
+        war_record=game_info.stats.seat0.war_record(),
+        badge_status=badge.status(game_info.stats.seat0.count, game_info.stats.seat0.win),
+    ).strip()
+    ret["通算ポイント"] = f"{game_info.stats.seat0.total_point:+.1f}pt".replace("-", "▲")
+    ret["平均ポイント"] = f"{game_info.stats.seat0.avg_point:+.1f}pt".replace("-", "▲")
+    ret["平均順位"] = f"{game_info.stats.seat0.rank_avg:1.2f}"
+    if all([g.params.individual, g.adapter.conf.badge_grade, not g.cfg.rule.get_draw_split(g.params.rule_version)]):
+        ret["段位"] = badge.grade(g.params.player_name)
 
     # 非表示項目
     msg: list[str] = [f"{k}：{v}" for k, v in ret.items() if k not in dictutil.dropitems_list()]
