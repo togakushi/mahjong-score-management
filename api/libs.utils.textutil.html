@@ -200,19 +200,14 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="libs.utils.textutil.name_replace">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">name_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_mark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">not_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.name_replace" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">name_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_mark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.name_replace" title="Link to this definition">¶</a></dt>
 <dd><p>表記ブレ修正(正規化)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>target</strong> (<em>str</em>) – 対象プレイヤー名</p></li>
-<li><p><strong>add_mark</strong> (<em>bool</em><em>, </em><em>optional</em>) – ゲストマークを付与する. Defaults to False.</p></li>
-<li><p><strong>not_replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>ゲスト置換なし(強制/個人戦) Defaults to False.</p>
-<ul>
-<li><p><em>True</em>: ゲストを置換しない</p></li>
-<li><p><em>False</em>: ゲストを置換する</p></li>
-</ul>
-</p></li>
+<li><p><strong>add_mark</strong> (<em>bool</em><em>, </em><em>optional</em>) – ゲストマークを付与する。 Defaults to False.</p></li>
+<li><p><strong>guest_replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – 未登録メンバーをゲストに置換する。 Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
