@@ -281,11 +281,11 @@ def setup(init_db: bool = True) -> None:
     g.cfg.rule.check(
         chk_commands=set(
             g.cfg.rule.remarks_words
-            + g.cfg.summary.commandwords_list()
-            + g.cfg.analysis.commandwords_list()
-            + g.cfg.help.commandwords_list()
-            + g.cfg.member.commandwords_list()
-            + g.cfg.team.commandwords_list()
+            + g.cfg.summary.commandwords_list
+            + g.cfg.analysis.commandwords_list
+            + g.cfg.help.commandwords_list
+            + g.cfg.member.commandwords_list
+            + g.cfg.team.commandwords_list
             + list(g.cfg.shortcut)
         ),
         chk_members=set(lookup.enumeration_all_members()),

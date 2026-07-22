@@ -393,6 +393,7 @@ class SettingAttrs(ParameterMethodMixin):
     dropitems: list[str] = field(default_factory=list)
     """非表示にする項目"""
 
+    @property
     def commandwords_list(self) -> list[str]:
         """
         コマンドリストを返す

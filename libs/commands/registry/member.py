@@ -69,7 +69,7 @@ class MemberConfig(BaseSection, SettingAttrs):
         メンバー一覧の呼び出しワードをディスパッチャーテーブルに登録する。
 
         """
-        for commandword in self.commandwords_list():
+        for commandword in self.commandwords_list:
             g.keyword_dispatcher.update({commandword: members_list})
 
     def default_reset(self) -> None:

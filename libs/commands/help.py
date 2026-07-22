@@ -39,7 +39,7 @@ class HelpConfig(BaseSection, SettingAttrs):
         ヘルプコマンドの呼び出しワードをディスパッチャーテーブルに登録する。
 
         """
-        for command in self.commandwords_list():
+        for command in self.commandwords_list:
             g.keyword_dispatcher.update({command: main})
 
 

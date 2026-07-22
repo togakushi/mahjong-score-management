@@ -94,7 +94,7 @@ class AnalysisConfig(BaseSection, CommandAttrs):
         分析コマンドの呼び出しワードをディスパッチャーテーブルに登録する。
 
         """
-        for command in self.commandwords_list():
+        for command in self.commandwords_list:
             g.keyword_dispatcher.update({command: main})
         if hasattr(g.cfg.alias, "analysis"):
             for command in g.cfg.alias.analysis:
