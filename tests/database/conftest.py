@@ -31,7 +31,7 @@ def database_connection() -> Generator["Connection", Any, None]:
 
     """
     configuration.setup(init_db=False)
-    g.cfg = AppConfig(Path("tests/testdata/empty.ini"))
+    g.cfg = AppConfig(Path("tests/test_data/empty.ini"))
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"
     conn = dbutil.connection(g.cfg.setting.database_file)
     yield conn

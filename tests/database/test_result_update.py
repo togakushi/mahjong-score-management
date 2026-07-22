@@ -44,7 +44,7 @@ def test_score_insert(
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
