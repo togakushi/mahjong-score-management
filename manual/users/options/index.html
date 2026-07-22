@@ -66,7 +66,7 @@
     <ul>
 <li><a class="reference internal" href="#">オプション</a><ul>
 <li><a class="reference internal" href="#id2">内容説明</a></li>
-<li><a class="reference internal" href="#id3">オプション処理ロジック</a></li>
+<li><a class="reference internal" href="#option-logic">オプション処理ロジック</a></li>
 </ul>
 </li>
 </ul>
@@ -200,15 +200,19 @@
 </ul>
 </div>
 </section>
-<section id="id3">
-<h2>オプション処理ロジック<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>入力されたコマンド文字列はコマンド部分とオプション部分に分割され、オプション部分を以下のロジックで評価する。</p>
-<ol class="arabic">
+<section id="option-logic">
+<span id="id3"></span><h2>オプション処理ロジック<a class="headerlink" href="#option-logic" title="Link to this heading">¶</a></h2>
+<p>入力された文字列は <a class="reference internal" href="../appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">コマンド</span></code></a> 部分と <a class="reference internal" href="../appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a> 部分に分割され、オプション部分を以下のロジックで評価する。</p>
+<ol class="arabic simple">
 <li><p>オプションの分類と抽出</p>
 <ul class="simple">
+<li><p>オプションを3パターンに分類する</p>
+<ul>
 <li><p><a class="reference internal" href="search_scope.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> の抽出</p></li>
 <li><p>その他の定義済みオプションの抽出</p></li>
 <li><p>オプションとして認識できないワードの抽出</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>検索範囲の確定</p>
@@ -224,22 +228,20 @@
 </ul>
 </li>
 <li><p>オプションとして認識されなかったワードの処理</p>
-<ul>
+<ul class="simple">
 <li><p>チーム名と一致するかチェック</p>
-<blockquote>
-<div><ul class="simple">
+<ul>
 <li><p>チーム名と一致し、かつ、 <a class="reference internal" href="target.html#common-チーム" title="チーム"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">チーム</span></code></a> オプションが指定されていない（個人集計が対象）場合、チームメンバーに展開し処理を続ける</p></li>
-<li><p><a class="reference internal" href="target.html#common-チーム" title="チーム"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">チーム</span></code></a> オプションが指定され低場合は <a class="reference internal" href="../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の対象に登録</p></li>
+<li><p><a class="reference internal" href="target.html#common-チーム" title="チーム"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">チーム</span></code></a> オプションが指定され低場合は <a class="reference internal" href="../appendix/glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の対象に登録</p></li>
 </ul>
-</div></blockquote>
 </li>
 <li><p>個人集計を対象としている場合、 <a class="reference internal" href="../appendix/glossary.html#term-6"><code class="xref any std std-term docutils literal notranslate"><span class="pre">レギュラーメンバー</span></code></a> と一致するかチェック</p>
-<ul class="simple">
+<ul>
 <li><p>別名で指定されている場合、表示名に変換する</p></li>
 </ul>
 </li>
-<li><p>結果を <a class="reference internal" href="../appendix/glossary.html#term-19"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の対象として登録</p>
-<ul class="simple">
+<li><p>結果を <a class="reference internal" href="../appendix/glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の対象として登録</p>
+<ul>
 <li><p><a class="reference internal" href="target.html#common-ゲスト無効" title="ゲスト無効"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">ゲスト無効</span></code></a> が指定されている場合、出力される <a class="reference internal" href="../appendix/glossary.html#term-3"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ゲストメンバー</span></code></a> の名前に <a class="reference internal" href="../../admins/configuration/main/application/setting.html#setting_section-guest_mark" title="guest_mark"><code class="xref mahjong mahjong-setting_section docutils literal notranslate"><span class="pre">guest_mark</span></code></a> が追加される</p></li>
 </ul>
 </li>
@@ -261,7 +263,7 @@
     <ul>
 <li><a class="reference internal" href="#">オプション</a><ul>
 <li><a class="reference internal" href="#id2">内容説明</a></li>
-<li><a class="reference internal" href="#id3">オプション処理ロジック</a></li>
+<li><a class="reference internal" href="#option-logic">オプション処理ロジック</a></li>
 </ul>
 </li>
 </ul>
@@ -359,7 +361,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.10.
-      Last updated on 2026-07-19.
+      Last updated on 2026-07-22.
     </div>
 
   </body>

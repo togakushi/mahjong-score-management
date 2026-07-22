@@ -66,7 +66,7 @@
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
 <li><a class="reference internal" href="#id2">内容説明</a></li>
-<li><a class="reference internal" href="#id3">コマンドルーティング</a></li>
+<li><a class="reference internal" href="#id3">コマンド処理ロジック</a></li>
 </ul>
 </li>
 </ul>
@@ -200,9 +200,22 @@
 </div>
 </section>
 <section id="id3">
-<h2>コマンドルーティング<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p>入力されたコマンドは以下の順序で評価され、出力される内容が決定される。</p>
-<ol class="arabic simple">
+<h2>コマンド処理ロジック<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>入力された文字列は以下の順序で評価され、出力される内容が決定される。</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../appendix/glossary.html#term-14"><code class="xref any std std-term docutils literal notranslate"><span class="pre">コマンド</span></code></a> 部分と <a class="reference internal" href="../appendix/glossary.html#term-16"><code class="xref any std std-term docutils literal notranslate"><span class="pre">オプション</span></code></a> 部分の分割</p>
+<p>スペース区切りで分割され、最初のブロックがコマンド、残りのブロックはすべてオプションとして扱われる</p>
+</li>
+<li><p>ショートカットの適応</p>
+<ul>
+<li><p>ショートカットが設定されていれば、コマンド部分とショートカットを置換する</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../admins/configuration/main/application/shortcut.html#shortcut-section"><span class="std std-ref">shortcutセクション</span></a></p>
+</div>
+</li>
+</ul>
+</li>
 <li><p>コマンド種別の判定</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="summary/index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p></li>
@@ -211,6 +224,7 @@
 </ul>
 </li>
 <li><p>ターゲットの判定</p>
+<p>ターゲットの指定方法とコマンド種別の組み合わせで出力内容が決定される</p>
 <ul class="simple">
 <li><p>未指定（任意）</p></li>
 <li><p>単独指定</p></li>
@@ -218,10 +232,10 @@
 </ul>
 </li>
 <li><p>オプションの評価</p>
-<ol class="arabic simple">
-<li><p>必須オプションの有無</p></li>
-<li><p>追加オプションの有無</p></li>
-</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../options/index.html#option-logic"><span class="std std-ref">オプション処理ロジック</span></a></p>
+</div>
 </li>
 </ol>
 </section>
@@ -239,7 +253,7 @@
     <ul>
 <li><a class="reference internal" href="#">成績管理</a><ul>
 <li><a class="reference internal" href="#id2">内容説明</a></li>
-<li><a class="reference internal" href="#id3">コマンドルーティング</a></li>
+<li><a class="reference internal" href="#id3">コマンド処理ロジック</a></li>
 </ul>
 </li>
 </ul>
@@ -335,7 +349,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.10.
-      Last updated on 2026-07-19.
+      Last updated on 2026-07-22.
     </div>
 
   </body>
