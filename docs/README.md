@@ -11,8 +11,10 @@ https://togakushi.github.io/mahjong-score-management/api/
 
 ```
 $ cd docs/manual/
-$ $ uv run sphinx-build -M html source build --conf-dir .
+$ uv run sphinx-build -M html source build --conf-dir .
 ```
+
+もしくは、
 
 ```
 $ make -f tests/Makefile docs-user
