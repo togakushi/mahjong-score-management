@@ -16,7 +16,7 @@ from libs.commands.summary import SummaryConfig
 from libs.domain.rule import RuleSet
 from libs.domain.section import AliasSection, BadgeDisplay, CommandClassType, SettingSection
 from libs.functions.lookup import read_memberslist
-from libs.types import CommandType, ServiceType
+from libs.types import ServiceType
 
 
 class AppConfig:
@@ -145,7 +145,7 @@ class AppConfig:
         """
         ルール設定、エイリアス、各種コマンドワードを集約したキーワードリストを生成する。
 
-        引数で指定された単語、麻雀ルールのマッピングキー、各サブコマンドの起動ワードや接尾辞、
+        引数で指定された単語、ルール、マッピングキー、各サブコマンドの起動ワード、
         および登録されているエイリアスをすべて統合し、重複と空文字を排除して返す。
 
         Args:
@@ -156,29 +156,27 @@ class AppConfig:
             list[str]: 統合・重複排除されたキーワード文字列のリスト。
 
         """
-        words: list[str] = []
-
-        if add_words:
-            words.extend(add_words)
-
-        words.extend(list(self.rule.keyword_mapping.keys()))
-        words.extend(self.rule.remarks_words)
-
-        for command_name in CommandType:
-            if hasattr(self, str(command_name)):
-                if (command := getattr(self, str(command_name))) and hasattr(command, "default_commandword"):
-                    words.append(command.default_commandword)
-                    words.extend(command.commandword)
-                    words.extend(command.command_suffix)
+        words: list[str] = (
+            self.rule.rule_list
+            + self.rule.remarks_words
+            + self.summary.commandwords_list()
+            + self.analysis.commandwords_list()
+            + self.help.commandwords_list()
+            + self.member.commandwords_list()
+            + self.team.commandwords_list()
+            + list(self.rule.keyword_mapping)
+            + list(self.shortcut)
+        )
 
         for k, v in self.alias.to_dict().items():
             if isinstance(v, list):
                 words.append(k)
                 words.extend(v)
 
-        words = [x for x in set(words) if x != ""]  # 重複排除/空文字削除
+        if add_words:
+            words.extend(add_words)
 
-        return words
+        return [x for x in set(words) if x != ""]  # 重複排除/空文字削除
 
     def overwrite(self, additional_config: Path, section_name: str) -> None:
         """
