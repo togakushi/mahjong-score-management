@@ -99,7 +99,7 @@ def other_words(word: str, m: "MessageParserProtocol") -> None:
             # 名前ブレ修正
             for k, p in score.to_dict().items():
                 if k.endswith("_name"):
-                    score.set(**{k: textutil.name_replace(str(p), not_replace=True)})
+                    score.set(**{k: textutil.name_replace(str(p), guest_replace=False)})
                     continue
 
             match m.data.status:
