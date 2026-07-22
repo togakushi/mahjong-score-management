@@ -28,17 +28,14 @@ class ConversionType(Enum):
     """カタカナをひらがなに変換"""
 
 
-def name_replace(target: str, add_mark: bool = False, not_replace: bool = False) -> str:
+def name_replace(target: str, add_mark: bool = False, guest_replace: bool = True) -> str:
     """
     表記ブレ修正(正規化)
 
     Args:
         target (str): 対象プレイヤー名
-        add_mark (bool, optional): ゲストマークを付与する. Defaults to False.
-        not_replace (bool, optional): ゲスト置換なし(強制/個人戦) Defaults to False.
-
-            - *True*: ゲストを置換しない
-            - *False*: ゲストを置換する
+        add_mark (bool, optional): ゲストマークを付与する。 Defaults to False.
+        guest_replace (bool, optional): 未登録メンバーをゲストに置換する。 Defaults to True.
 
     Returns:
         str: 表記ブレ修正後のプレイヤー名
@@ -59,7 +56,7 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
     ]
     chk_pattern = sorted(set(chk_pattern), key=chk_pattern.index)  # 順序を維持したまま重複排除
 
-    if g.params.individual or not_replace:
+    if g.params.individual or not guest_replace:
         for name in chk_pattern:
             if name in g.cfg.member.lists:  # メンバーリスト
                 return name
@@ -73,7 +70,7 @@ def name_replace(target: str, add_mark: bool = False, not_replace: bool = False)
 
     # リストに見つからない場合
     name = honor_remove(target)
-    if g.params.unregistered_replace and not not_replace:
+    if g.params.unregistered_replace and guest_replace:
         name = g.cfg.member.guest_name
     if name != g.cfg.member.guest_name and add_mark:
         name = f"{name}({g.cfg.setting.guest_mark})"

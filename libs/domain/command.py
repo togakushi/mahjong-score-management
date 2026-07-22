@@ -276,7 +276,7 @@ class CommandParser:
                     continue
                 break
             else:
-                unknown.append(textutil.name_replace(keyword, add_mark=False, not_replace=True))
+                unknown.append(textutil.name_replace(keyword, add_mark=False, guest_replace=False))
 
         return ParsedCommand(flags=ret, arguments=args, unknown=unknown, search_range=search_range)
 

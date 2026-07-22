@@ -257,7 +257,7 @@ def check_remarks(m: "MessageParserProtocol") -> None:
             remark: "RemarkDict" = {
                 "thread_ts": m.data.thread_ts,
                 "event_ts": m.data.event_ts,
-                "name": textutil.name_replace(name, not_replace=True),
+                "name": textutil.name_replace(name, guest_replace=False),
                 "matter": matter,
                 "source": m.status.source,
             }

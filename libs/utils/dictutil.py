@@ -133,7 +133,7 @@ def placeholder(subcom: CommandClassType, m: "MessageParserProtocol") -> Placeho
             if name in g.cfg.team.lists:  # チーム名がある場合は所属メンバーに展開
                 target_player.extend(g.cfg.team.member(name))
             else:
-                target_player.append(textutil.name_replace(name, not_replace=True))
+                target_player.append(textutil.name_replace(name, guest_replace=False))
     else:  # チーム名
         if params.all_player:
             check_list.extend(g.cfg.team.lists)
