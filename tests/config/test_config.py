@@ -26,7 +26,7 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
 
     # default alias
@@ -51,7 +51,7 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
 
     default = {

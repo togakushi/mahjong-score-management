@@ -58,7 +58,7 @@ def test_keyword_event(module: str, config: str, keyword: str, monkeypatch: pyte
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch(f"libs.commands.{module}") as mock_keyword_event,

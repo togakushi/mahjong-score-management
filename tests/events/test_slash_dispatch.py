@@ -57,7 +57,7 @@ def test_help(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> Non
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     import integrations.slack.events.slash
 
@@ -92,7 +92,7 @@ def test_check(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -> No
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.dispatcher.by_keyword") as mock_slash_check,  # fixme //stdには個別コマンドが登録されない
@@ -121,7 +121,7 @@ def test_download(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     m = _init()
     param_data.FAKE_BODY["event"].update(text=f"{keyword}")
@@ -157,7 +157,7 @@ def test_member_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.member.members_list") as mock_slash_member_list,
@@ -186,7 +186,7 @@ def test_member_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.member.append") as mock_slash_member_add,
@@ -215,7 +215,7 @@ def test_member_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.member.remove") as mock_slash_member_del,
@@ -244,7 +244,7 @@ def test_team_create(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.create") as mock_slash_team_create,
@@ -273,7 +273,7 @@ def test_team_del(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.delete") as mock_slash_team_del,
@@ -302,7 +302,7 @@ def test_team_add(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) ->
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.append") as mock_slash_team_add,
@@ -331,7 +331,7 @@ def test_team_remove(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch)
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.remove") as mock_slash_team_remove,
@@ -360,7 +360,7 @@ def test_team_list(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) -
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.team_list") as mock_slash_team_list,
@@ -389,7 +389,7 @@ def test_team_clear(config: str, keyword: str, monkeypatch: pytest.MonkeyPatch) 
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["app.py", "--service=std", f"--config=tests/test_data/{config}"])
 
     with (
         patch("libs.bootstrap.configuration.team.clear") as mock_slash_team_clear,

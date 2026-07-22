@@ -39,7 +39,7 @@ def test_score_report(
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
@@ -96,7 +96,7 @@ def test_point_calc_seat(
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)
@@ -152,7 +152,7 @@ def test_point_calc_division(
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/testdata/empty.ini"])
+    monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
     initialization.setup_resultdb(g.cfg.setting.database_file)

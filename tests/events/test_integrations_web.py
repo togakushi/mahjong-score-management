@@ -52,7 +52,7 @@ def client(request: pytest.FixtureRequest) -> Any:
 
     """
     config_path = request.param
-    sys.argv = ["app.py", "--service=web", f"--config=tests/testdata/{config_path}"]
+    sys.argv = ["app.py", "--service=web", f"--config=tests/test_data/{config_path}"]
     configuration.setup(init_db=False)
 
     adapter = factory.select_adapter(ServiceType.WEB, g.cfg)

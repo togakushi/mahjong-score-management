@@ -33,7 +33,7 @@ def test_dispatch_register(parameter: str, config: str, word: str, monkeypatch: 
         monkeypatch (pytest.MonkeyPatch): 実行時引数を差し替えるためのpytestフィクスチャ。
 
     """
-    monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/testdata/{config}"])
+    monkeypatch.setattr(sys, "argv", ["progname", f"--config=tests/test_data/{config}"])
     configuration.setup(init_db=False)
     g.cfg.initialization()
 

@@ -73,7 +73,7 @@ def check_namepattern(name: str, kind: Literal["member", "team"]) -> tuple[bool,
         ret_flg, ret_msg = False, "オプションに使用される単語では登録できません。"
 
     # コマンドチェック
-    if ret_flg and name in g.cfg.word_list(list(g.keyword_dispatcher) + list(g.command_dispatcher)):
+    if ret_flg and name in g.cfg.word_list():
         ret_flg, ret_msg = False, "コマンドに使用される単語では登録できません。"
 
     return (ret_flg, ret_msg)

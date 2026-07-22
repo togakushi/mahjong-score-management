@@ -280,7 +280,13 @@ def setup(init_db: bool = True) -> None:
     # キーワード重複チェック
     g.cfg.rule.check(
         chk_commands=set(
-            g.cfg.summary.commandword + g.cfg.analysis.commandword + g.cfg.help.commandword + g.cfg.rule.remarks_words + list(g.keyword_dispatcher)
+            g.cfg.rule.remarks_words
+            + g.cfg.summary.commandwords_list()
+            + g.cfg.analysis.commandwords_list()
+            + g.cfg.help.commandwords_list()
+            + g.cfg.member.commandwords_list()
+            + g.cfg.team.commandwords_list()
+            + list(g.cfg.shortcut)
         ),
         chk_members=set(lookup.enumeration_all_members()),
         default_rule=g.cfg.setting.default_rule,
