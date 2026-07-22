@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Any, Literal, Mapping
 from table2ascii import Alignment, PresetStyle, table2ascii
 
 from libs.domain.command import CommandParser
-from libs.utils import dbutil
+from libs.utils import dbutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -460,6 +460,13 @@ class RuleSet:
         """
         chk_word: str | RuleData
 
+        # チェックパターン生成
+        name_pattern: list[str] = []
+        for name in chk_members:
+            name_pattern.append(name)
+            name_pattern.append(textutil.str_conv(name, textutil.ConversionType.KtoH))  # ひらがな
+            name_pattern.append(textutil.str_conv(name, textutil.ConversionType.HtoK))  # カタカナ
+
         try:
             # ルール識別子チェック
             for chk_word in self.data.values():
@@ -469,7 +476,7 @@ class RuleSet:
                     raise RuntimeError(f"ルール識別子に検索範囲指定に使用される単語が使用されています。({chk_word.rule_version})")
                 if chk_word.rule_version in chk_commands:
                     raise RuntimeError(f"ルール識別子と定義済みコマンドに重複があります。({chk_word.rule_version})")
-                if chk_word.rule_version in chk_members:
+                if textutil.name_replace(chk_word.rule_version, not_replace=True) in set(name_pattern):
                     raise RuntimeError(f"ルール識別子と登録メンバー(チーム)に重複があります。({chk_word.rule_version})")
             # 成績記録キーワードチェック
             for chk_word in self.keyword_mapping.keys():
@@ -479,7 +486,7 @@ class RuleSet:
                     raise RuntimeError(f"成績記録キーワードに検索範囲指定に使用される単語が使用されています。({chk_word})")
                 if chk_word in chk_commands:
                     raise RuntimeError(f"成績記録キーワードと定義済みコマンドに重複があります。({chk_word})")
-                if chk_word in chk_members:
+                if textutil.name_replace(chk_word, not_replace=True) in set(name_pattern):
                     raise RuntimeError(f"成績記録キーワードと登録メンバー(チーム)に重複があります。({chk_word})")
             # デフォルトルールバージョンチェック
             if default_rule not in self.rule_list:
