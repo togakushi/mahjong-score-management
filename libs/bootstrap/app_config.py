@@ -159,11 +159,11 @@ class AppConfig:
         words: list[str] = (
             self.rule.rule_list
             + self.rule.remarks_words
-            + self.summary.commandwords_list()
-            + self.analysis.commandwords_list()
-            + self.help.commandwords_list()
-            + self.member.commandwords_list()
-            + self.team.commandwords_list()
+            + self.summary.commandwords_list
+            + self.analysis.commandwords_list
+            + self.help.commandwords_list
+            + self.member.commandwords_list
+            + self.team.commandwords_list
             + list(self.rule.keyword_mapping)
             + list(self.shortcut)
         )

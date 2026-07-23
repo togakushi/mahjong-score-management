@@ -30,8 +30,8 @@ def main(adapter: "ServiceAdapter") -> None:
     )
 
     app.config["padding"] = "0.25em 1.5em"
-    app.config["summary"] = g.cfg.summary.commandwords_list()[0]
-    app.config["analysis"] = g.cfg.analysis.commandwords_list()[0]
+    app.config["summary"] = g.cfg.summary.commandwords_list[0]
+    app.config["analysis"] = g.cfg.analysis.commandwords_list[0]
     app.config["players"] = g.cfg.member.lists
     app.register_blueprint(create_bp.index_bp(adapter))
     app.register_blueprint(create_bp.summary_bp(adapter))

@@ -39,4 +39,4 @@ def test_dispatch_register(parameter: str, config: str, word: str, monkeypatch: 
 
     conf = cast("CommandClassType", getattr(g.cfg, parameter, ""))
     print("-->", conf)
-    assert word in conf.commandwords_list()
+    assert word in conf.commandwords_list
