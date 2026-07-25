@@ -116,6 +116,11 @@ def help_message(m: "MessageParserProtocol") -> None:
     m.status.command_type = m.COMMAND_TYPE.HELP
     rule_version = lookup.get_current_rule_version(m, g.cfg.help.command_suffix)
 
+    # アプリケーション情報
+    project_data = lookup.get_toml_data()
+    app_version = str(project_data.get("version", ""))
+    app_description = str(project_data.get("description", ""))
+
     g.params.update_from_dict(
         {
             **g.cfg.rule.to_dict(rule_version),
@@ -230,8 +235,11 @@ def help_message(m: "MessageParserProtocol") -> None:
         デフォルトルール識別子：{g.params.rule_version}
         チャンネル個別設定：{channel_config.name if channel_config else "---"}
         セパレート機能：{"有効" if g.params.separate else "無効"}
+
+        {app_description}
+        Release Version: {app_version}
         """),
-        StyleOptions(title="チャンネル設定情報"),
+        StyleOptions(title="チャンネル設定情報", keep_blank=True),
     )
 
     # 非表示項目を削除

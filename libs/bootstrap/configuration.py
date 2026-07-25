@@ -4,7 +4,6 @@ libs/bootstrap/configuration.py
 
 import argparse
 import logging
-import os
 import shutil
 import sys
 from functools import partial
@@ -46,11 +45,16 @@ def arg_parser() -> Args:
         Args : ArgumentParserオブジェクト
 
     """
-    prog_name = os.path.basename(sys.argv[0])
+    prog_path = Path(sys.argv[0])
+    project_data = lookup.get_toml_data()
+    app_version = str(project_data.get("version", ""))
+    app_description = str(project_data.get("description", ""))
+
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         add_help=True,
         allow_abbrev=False,
+        description=f"{app_description}\nRelease Version: {app_version}",
     )
 
     p.add_argument(
@@ -108,7 +112,7 @@ def arg_parser() -> Args:
         help="ログフォーマットから日時を削除",
     )
 
-    match prog_name:
+    match prog_path.name:
         case "app.py":
             service_stdio = p.add_argument_group("Only allowed when --service=standard_io")
             service_stdio.add_argument(
@@ -193,7 +197,7 @@ def arg_parser() -> Args:
             )
 
     args, unknown = p.parse_known_args()
-    if unknown and prog_name in ["app.py", "dbtools.py"]:
+    if unknown and prog_path.name in ["app.py", "dbtools.py"]:
         p.print_usage()
         sys.exit(f"\ninvalid args: {unknown}")
 
