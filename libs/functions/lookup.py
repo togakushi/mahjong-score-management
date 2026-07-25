@@ -3,6 +3,7 @@ libs/functions/lookup.py
 """
 
 import logging
+import tomllib
 from configparser import ConfigParser
 from contextlib import closing
 from pathlib import Path
@@ -407,3 +408,17 @@ def enumeration_all_members() -> list[str]:
     ret_list.extend([team.get("team") for team in g.cfg.team.info])
 
     return list(set(ret_list))
+
+
+def get_toml_data() -> dict[str, Any]:
+    """
+    tomlの内容を読み込み辞書で返す。
+
+    Returns:
+        dict[str, Any]: tomlの内容
+    """
+    with open("pyproject.toml", mode="rb") as toml_file:
+        toml_data: dict[str, Any] = tomllib.load(toml_file)
+        project_data: dict[str, Any] = toml_data.get("project", {})
+
+    return project_data
