@@ -87,7 +87,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
             match x:
                 case "日時" | "playtime":
                     fmt.append("left")
-                case "プレイヤー名" | "name" | "team" | "player":
+                case "プレイヤー名" | "チーム名" | "name" | "team" | "player":
                     fmt.append("left")
                 case "内容" | "和了役" | "matter":
                     fmt.append("left")
