@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations import factory
-from libs.bootstrap import initialization
+from libs.bootstrap import setup
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.domain.datamodels import Args
@@ -277,7 +277,7 @@ def initialize(init_db: bool = True) -> None:
             sys.exit(str(err))
 
     # 初期化
-    initialization.main(init_db)
+    setup.main(init_db)
     lookup.read_memberslist()
     register()
 

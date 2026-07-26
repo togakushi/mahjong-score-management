@@ -6,7 +6,7 @@ import logging
 from typing import TYPE_CHECKING, TypedDict, cast
 
 import libs.global_value as g
-from libs.bootstrap import initialization
+from libs.bootstrap import setup
 from libs.commands.deliverables.text_assembly import get_team_list
 from libs.domain import modify
 from libs.domain.datamodels import SettingAttrs
@@ -351,7 +351,7 @@ def clear() -> str:
     resultdb.commit()
     resultdb.close()
 
-    initialization.resultdb(g.cfg.setting.database_file)
+    setup.resultdb(g.cfg.setting.database_file)
     g.cfg.member.info = g.cfg.member.get_info
     g.cfg.team.info = g.cfg.team.get_info
 

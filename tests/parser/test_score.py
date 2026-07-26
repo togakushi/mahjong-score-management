@@ -9,7 +9,7 @@ import pytest
 
 import libs.global_value as g
 from integrations import factory
-from libs.bootstrap import configuration, initialization
+from libs.bootstrap import configuration, setup
 from libs.domain.score import GameResult
 from libs.functions import validator
 from libs.types import ServiceType
@@ -42,7 +42,7 @@ def test_score_report(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.initialize(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.resultdb(g.cfg.setting.database_file)
+    setup.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
@@ -99,7 +99,7 @@ def test_point_calc_seat(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.initialize(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.resultdb(g.cfg.setting.database_file)
+    setup.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
@@ -155,7 +155,7 @@ def test_point_calc_division(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.initialize(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.resultdb(g.cfg.setting.database_file)
+    setup.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 

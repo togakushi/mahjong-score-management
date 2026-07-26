@@ -1,5 +1,5 @@
 """
-libs/bootstrap/initialization.py
+libs/bootstrap/setup.py
 """
 
 import json
