@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 
 
 if __name__ == "__main__":
-    configuration.setup()
+    configuration.initialize()
 
     match g.cfg.selected_service:
         case ServiceType.SLACK:

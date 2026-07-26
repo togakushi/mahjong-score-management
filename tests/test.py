@@ -78,10 +78,10 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
 
         """
-        deliverables.graph_summary.point_plot(m)
+        deliverables.graph_summary.rank_plot(m)
         pprint(
             [
-                "exec: deliverables.graph_summary.point_plot()",
+                "exec: deliverables.graph_summary.rank_plot()",
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
@@ -107,7 +107,7 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
         )
 
     # ---------------------------------------------------------------------------------------------
-    configuration.setup()
+    configuration.initialize()
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
     target_loop: list[str] = []
@@ -243,7 +243,7 @@ def main() -> None:
     g.args = arg_parser()
     assert isinstance(g.args.testcase, Path)
 
-    configuration.setup()
+    configuration.initialize()
     if g.cfg.setting.work_dir.is_dir():
         shutil.rmtree(g.cfg.setting.work_dir)
     g.cfg.setting.work_dir.mkdir()

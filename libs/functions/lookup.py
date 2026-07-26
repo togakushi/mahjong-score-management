@@ -417,8 +417,11 @@ def get_toml_data() -> dict[str, Any]:
     Returns:
         dict[str, Any]: tomlの内容
     """
-    with open("pyproject.toml", mode="rb") as toml_file:
-        toml_data: dict[str, Any] = tomllib.load(toml_file)
-        project_data: dict[str, Any] = toml_data.get("project", {})
+    for base_dir in [Path.cwd(), *Path.cwd().parents]:
+        toml_path = base_dir / "pyproject.toml"
+        if toml_path.is_file():
+            with open(toml_path, mode="rb") as toml_file:
+                toml_data: dict[str, Any] = tomllib.load(toml_file)
+                return toml_data.get("project", {})
 
-    return project_data
+    return {}

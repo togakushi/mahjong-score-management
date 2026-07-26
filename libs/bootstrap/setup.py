@@ -1,5 +1,5 @@
 """
-libs/bootstrap/initialization.py
+libs/bootstrap/setup.py
 """
 
 import json
@@ -25,14 +25,14 @@ def main(init_db: bool) -> None:
 
     """
     if init_db:
-        setup_resultdb(g.cfg.setting.database_file)  # DB初期化
+        resultdb(g.cfg.setting.database_file)  # DB初期化
 
-    setup_grade_table()  # 段位テーブル取り込み
-    setup_rule_data()  # ルールデータ取り込み
-    setup_regulations(g.cfg.setting.database_file)  # レギュレーション設定取り込み
+    grade_table()  # 段位テーブル取り込み
+    rule_data()  # ルールデータ取り込み
+    regulations(g.cfg.setting.database_file)  # レギュレーション設定取り込み
 
 
-def setup_resultdb(database_file: Union[str, Path]) -> None:
+def resultdb(database_file: Union[str, Path]) -> None:
     """
     DB初期化 & マイグレーション
 
@@ -113,7 +113,7 @@ def setup_resultdb(database_file: Union[str, Path]) -> None:
     memdb.close()
 
 
-def setup_rule_data() -> None:
+def rule_data() -> None:
     """ルールデータ取り込み"""
 
     # メイン設定ファイルから取り込み
@@ -169,7 +169,7 @@ def setup_rule_data() -> None:
     g.cfg.rule.register_to_database()
 
 
-def setup_regulations(database_file: Union[str, Path]) -> None:
+def regulations(database_file: Union[str, Path]) -> None:
     """
     レギュレーション設定取り込み
 
@@ -235,7 +235,7 @@ def setup_regulations(database_file: Union[str, Path]) -> None:
     resultdb.close()
 
 
-def setup_grade_table() -> None:
+def grade_table() -> None:
     """段位テーブル取り込み"""
     # テーブル選択
     match table_name := g.cfg.badge.grade.table_name:

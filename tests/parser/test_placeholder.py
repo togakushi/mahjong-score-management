@@ -36,7 +36,7 @@ def parser_instance() -> Generator[ServiceAdapter, Any, None]:
     old_argv = sys.argv[:]
     sys.argv = TEST_ARGS[:]
 
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
     lookup.read_memberslist()
 
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)

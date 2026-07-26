@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Any, cast
 
 import libs.global_value as g
 from integrations import factory
-from libs.bootstrap import initialization
+from libs.bootstrap import setup
 from libs.bootstrap.app_config import AppConfig
 from libs.commands.registry import member, team
 from libs.domain.datamodels import Args
@@ -21,20 +21,6 @@ from libs.types import ServiceType, StyleOptions
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
-
-
-def set_loglevel() -> None:
-    """ログレベル追加"""
-    # DEBUG : 10
-    # INFO : 20
-    # WARNING : 30
-    # ERROR : 40
-    # CRITICAL : 50
-
-    # TRACE
-    logging.TRACE = 5  # type: ignore
-    logging.trace = partial(logging.log, logging.TRACE)  # type: ignore
-    logging.addLevelName(logging.TRACE, "TRACE")  # type: ignore
 
 
 def arg_parser() -> Args:
@@ -204,15 +190,18 @@ def arg_parser() -> Args:
     return cast(Args, args)
 
 
-def setup(init_db: bool = True) -> None:
+def initialize(init_db: bool = True) -> None:
     """
-    設定ファイル読み込み処理
+    アプリケーション初期化処理
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
 
     """
-    set_loglevel()
+    # ログレベル追加(TRACE)
+    logging.TRACE = 5  # type: ignore[attr-defined]
+    logging.trace = partial(logging.log, logging.TRACE)  # type: ignore[attr-defined]
+    logging.addLevelName(logging.TRACE, "TRACE")  # type: ignore[attr-defined]
 
     g.args = arg_parser()
 
@@ -277,7 +266,7 @@ def setup(init_db: bool = True) -> None:
             sys.exit(str(err))
 
     # 初期化
-    initialization.main(init_db)
+    setup.main(init_db)
     lookup.read_memberslist()
     register()
 

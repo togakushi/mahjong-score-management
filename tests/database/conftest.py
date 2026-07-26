@@ -10,7 +10,7 @@ import pandas as pd
 import pytest
 
 import libs.global_value as g
-from libs.bootstrap import configuration, initialization
+from libs.bootstrap import configuration, setup
 from libs.bootstrap.app_config import AppConfig
 from libs.functions import lookup
 from libs.utils import dbutil
@@ -30,7 +30,7 @@ def database_connection() -> Generator["Connection", Any, None]:
         Generator[Connection, Any, None]: テストで共有するSQLite接続をyieldするジェネレータ。
 
     """
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
     g.cfg = AppConfig(Path("tests/test_data/empty.ini"))
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"
     conn = dbutil.connection(g.cfg.setting.database_file)
@@ -50,7 +50,7 @@ def initialize_database(database_connection: Any) -> None:
 
     """
     _ = database_connection  # pylint (W0613: Unused argument)
-    initialization.setup_resultdb(g.cfg.setting.database_file)
+    setup.resultdb(g.cfg.setting.database_file)
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:
         pd.read_csv("tests/test_data/saki_member.csv").to_sql(
             name="member",

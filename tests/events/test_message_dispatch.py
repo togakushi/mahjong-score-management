@@ -32,7 +32,7 @@ def _init() -> "MessageParserProtocol":
         MessageParserProtocol: 初期化済みのメッセージパーサ。
 
     """
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     m = adapter.parser()
     m.status.command_flg = True

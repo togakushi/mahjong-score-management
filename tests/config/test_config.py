@@ -27,7 +27,7 @@ def test_empty_config(monkeypatch: pytest.MonkeyPatch) -> None:
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
 
     # default alias
     assert "summary" in g.cfg.alias.summary
@@ -52,7 +52,7 @@ def test_subcommand_default(input_args: str, monkeypatch: pytest.MonkeyPatch) ->
 
     """
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
 
     default = {
         "section": input_args,

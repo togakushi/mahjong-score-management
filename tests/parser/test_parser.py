@@ -37,7 +37,7 @@ def parser_instance() -> Generator[ServiceAdapter, Any, None]:
     old_argv = sys.argv[:]
     sys.argv = TEST_ARGS[:]
 
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
 
     adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
 
@@ -137,7 +137,7 @@ def test_command_unknown_str(input_args: str, expected_flags: list[str], monkeyp
 
     """
     monkeypatch.setattr(sys, "argv", TEST_ARGS)
-    configuration.setup()
+    configuration.initialize()
 
     parser = CommandParser()
     g.params.unregistered_replace = False
