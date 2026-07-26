@@ -78,10 +78,10 @@ def test_pattern(flag: dict[str, Any], test_case: str, sec: str, pattern: str, a
             m (MessageParserProtocol): 描画対象の入力情報を保持するメッセージパーサ。
 
         """
-        deliverables.graph_summary.point_plot(m)
+        deliverables.graph_summary.rank_plot(m)
         pprint(
             [
-                "exec: deliverables.graph_summary.point_plot()",
+                "exec: deliverables.graph_summary.rank_plot()",
                 f"{g.params=}" if flag.get("dump") else "g.params={...}",
             ],
             width=120,
