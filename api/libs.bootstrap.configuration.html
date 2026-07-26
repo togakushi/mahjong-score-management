@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=8689ae74"></script>
+    <script src="_static/documentation_options.js?v=2bd9deb8"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libs.bootstrap.initialization module" href="libs.bootstrap.initialization.html" />
+    <link rel="next" title="libs.bootstrap.setup module" href="libs.bootstrap.setup.html" />
     <link rel="prev" title="libs.bootstrap.app_config module" href="libs.bootstrap.app_config.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
@@ -64,9 +64,8 @@
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.bootstrap.configuration module</a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.configuration.set_loglevel"><code class="docutils literal notranslate"><span class="pre">set_loglevel()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.configuration.arg_parser"><code class="docutils literal notranslate"><span class="pre">arg_parser()</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.configuration.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.configuration.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.configuration.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
 </ul>
 </li>
@@ -80,8 +79,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.bootstrap.initialization.html"
-                          title="next chapter">libs.bootstrap.initialization module</a></p>
+    <p class="topless"><a href="libs.bootstrap.setup.html"
+                          title="next chapter">libs.bootstrap.setup module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -105,7 +104,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.bootstrap.initialization.html" title="libs.bootstrap.initialization module"
+          <a href="libs.bootstrap.setup.html" title="libs.bootstrap.setup module"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="libs.bootstrap.app_config.html" title="libs.bootstrap.app_config module"
@@ -156,17 +155,6 @@
 <span id="libs-bootstrap-configuration-module"></span><h1>libs.bootstrap.configuration module<a class="headerlink" href="#module-libs.bootstrap.configuration" title="Link to this heading">¶</a></h1>
 <p>libs/bootstrap/configuration.py</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.bootstrap.configuration.set_loglevel">
-<span class="sig-prename descclassname"><span class="pre">libs.bootstrap.configuration.</span></span><span class="sig-name descname"><span class="pre">set_loglevel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.configuration.set_loglevel" title="Link to this definition">¶</a></dt>
-<dd><p>ログレベル追加</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="libs.bootstrap.configuration.arg_parser">
 <span class="sig-prename descclassname"><span class="pre">libs.bootstrap.configuration.</span></span><span class="sig-name descname"><span class="pre">arg_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.configuration.arg_parser" title="Link to this definition">¶</a></dt>
 <dd><p>コマンドライン解析</p>
@@ -181,9 +169,9 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.bootstrap.configuration.setup">
-<span class="sig-prename descclassname"><span class="pre">libs.bootstrap.configuration.</span></span><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.configuration.setup" title="Link to this definition">¶</a></dt>
-<dd><p>設定ファイル読み込み処理</p>
+<dt class="sig sig-object py" id="libs.bootstrap.configuration.initialize">
+<span class="sig-prename descclassname"><span class="pre">libs.bootstrap.configuration.</span></span><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.configuration.initialize" title="Link to this definition">¶</a></dt>
+<dd><p>アプリケーション初期化処理</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>init_db</strong> (<em>bool</em><em>, </em><em>optional</em>) – resultdbの初期化処理を行う Defaults to True.</p>
@@ -218,9 +206,8 @@
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">libs.bootstrap.configuration module</a><ul>
-<li><a class="reference internal" href="#libs.bootstrap.configuration.set_loglevel"><code class="docutils literal notranslate"><span class="pre">set_loglevel()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.configuration.arg_parser"><code class="docutils literal notranslate"><span class="pre">arg_parser()</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.configuration.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.configuration.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.configuration.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
 </ul>
 </li>
@@ -234,8 +221,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="libs.bootstrap.initialization.html"
-                          title="next chapter">libs.bootstrap.initialization module</a></p>
+    <p class="topless"><a href="libs.bootstrap.setup.html"
+                          title="next chapter">libs.bootstrap.setup module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -259,7 +246,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="libs.bootstrap.initialization.html" title="libs.bootstrap.initialization module"
+          <a href="libs.bootstrap.setup.html" title="libs.bootstrap.setup module"
              >next</a> |</li>
         <li class="right" >
           <a href="libs.bootstrap.app_config.html" title="libs.bootstrap.app_config module"
@@ -301,8 +288,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.17.11.
-      Last updated on 2026-07-25.
+      Release Version: 0.17.12.
+      Last updated on 2026-07-26.
     </div>
 
   </body>

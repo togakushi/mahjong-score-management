@@ -49,7 +49,7 @@
 .. code-block:: text
    :caption: 使用データベースファイル
 
-   [DEBUG][initialization:setup_resultdb] /path/to/mahjong-score-management/mahjong.db
+   [DEBUG][initialization:resultdb] /path/to/mahjong-score-management/mahjong.db
 
 .. code-block:: text
    :caption: 呼び出しキーワード
