@@ -23,20 +23,6 @@ if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
 
 
-def set_loglevel() -> None:
-    """ログレベル追加"""
-    # DEBUG : 10
-    # INFO : 20
-    # WARNING : 30
-    # ERROR : 40
-    # CRITICAL : 50
-
-    # TRACE
-    logging.TRACE = 5  # type: ignore
-    logging.trace = partial(logging.log, logging.TRACE)  # type: ignore
-    logging.addLevelName(logging.TRACE, "TRACE")  # type: ignore
-
-
 def arg_parser() -> Args:
     """
     コマンドライン解析
@@ -212,7 +198,10 @@ def initialize(init_db: bool = True) -> None:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
 
     """
-    set_loglevel()
+    # ログレベル追加(TRACE)
+    logging.TRACE = 5  # type: ignore[attr-defined]
+    logging.trace = partial(logging.log, logging.TRACE)  # type: ignore[attr-defined]
+    logging.addLevelName(logging.TRACE, "TRACE")  # type: ignore[attr-defined]
 
     g.args = arg_parser()
 
