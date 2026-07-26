@@ -39,7 +39,7 @@ def initialize() -> None:
         "--config=tests/test_data/saki.ini",
     ]
 
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
 
 
 @pytest.mark.parametrize(

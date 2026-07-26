@@ -45,7 +45,7 @@ from libs.bootstrap import configuration
 from libs.functions.tools import comparison, gen_test_data, member, recalculation, unification, vacuum
 
 if __name__ == "__main__":
-    configuration.setup()
+    configuration.initialize()
 
     if g.args.compar:
         comparison.main()

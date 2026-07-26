@@ -31,7 +31,7 @@ def parser_instance() -> Generator[None, Any, None]:
     old_argv = sys.argv[:]
     sys.argv = TEST_ARGS[:]
 
-    configuration.setup(init_db=False)
+    configuration.initialize(init_db=False)
     lookup.read_memberslist()
 
     yield

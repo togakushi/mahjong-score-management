@@ -204,9 +204,9 @@ def arg_parser() -> Args:
     return cast(Args, args)
 
 
-def setup(init_db: bool = True) -> None:
+def initialize(init_db: bool = True) -> None:
     """
-    設定ファイル読み込み処理
+    アプリケーション初期化処理
 
     Args:
         init_db (bool, optional): resultdbの初期化処理を行う Defaults to True.
