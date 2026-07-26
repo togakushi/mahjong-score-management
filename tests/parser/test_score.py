@@ -42,7 +42,7 @@ def test_score_report(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
@@ -99,7 +99,7 @@ def test_point_calc_seat(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 
@@ -155,7 +155,7 @@ def test_point_calc_division(
     monkeypatch.setattr(sys, "argv", ["progname", "--config=tests/test_data/empty.ini"])
     configuration.setup(init_db=False)
     g.cfg.setting.database_file = "memdb1?mode=memory&cache=shared"  # DB差し替え
-    initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.resultdb(g.cfg.setting.database_file)
     g.adapter = factory.select_adapter(ServiceType.STANDARD_IO, g.cfg)
     g.cfg.selected_service = ServiceType.STANDARD_IO
 

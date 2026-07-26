@@ -351,7 +351,7 @@ def clear() -> str:
     resultdb.commit()
     resultdb.close()
 
-    initialization.setup_resultdb(g.cfg.setting.database_file)
+    initialization.resultdb(g.cfg.setting.database_file)
     g.cfg.member.info = g.cfg.member.get_info
     g.cfg.team.info = g.cfg.team.get_info
 
