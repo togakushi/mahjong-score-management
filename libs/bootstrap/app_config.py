@@ -141,9 +141,9 @@ class AppConfig:
         if self.main_parser.has_section("shortcut"):
             self.shortcut = dict(self.main_parser.items("shortcut"))
 
-    def word_list(self, add_words: Optional[list[str]] = None) -> list[str]:
+    def to_list(self, add_words: Optional[list[str]] = None) -> list[str]:
         """
-        ルール設定、エイリアス、各種コマンドワードを集約したキーワードリストを生成する。
+        ルール設定、エイリアス、各種コマンドワードを集約したキーワードのリストを生成する。
 
         引数で指定された単語、ルール、マッピングキー、各サブコマンドの起動ワード、
         および登録されているエイリアスをすべて統合し、重複と空文字を排除して返す。

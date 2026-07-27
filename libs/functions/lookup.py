@@ -422,6 +422,6 @@ def get_toml_data() -> dict[str, Any]:
         if toml_path.is_file():
             with open(toml_path, mode="rb") as toml_file:
                 toml_data: dict[str, Any] = tomllib.load(toml_file)
-                return toml_data.get("project", {})
+                return cast(dict[str, Any], toml_data.get("project", {}))
 
     return {}

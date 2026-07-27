@@ -21,7 +21,7 @@ def main(init_db: bool) -> None:
     初期化処理
 
     Args:
-        init_db (bool): setup処理の実行有無
+        init_db (bool): DB初期化処理の実行有無
 
     """
     if init_db:
