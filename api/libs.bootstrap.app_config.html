@@ -81,7 +81,7 @@
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.analysis"><code class="docutils literal notranslate"><span class="pre">AppConfig.analysis</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.rule"><code class="docutils literal notranslate"><span class="pre">AppConfig.rule</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.initialization"><code class="docutils literal notranslate"><span class="pre">AppConfig.initialization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.word_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.word_list()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.to_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.overwrite"><code class="docutils literal notranslate"><span class="pre">AppConfig.overwrite()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.read_channel_config"><code class="docutils literal notranslate"><span class="pre">AppConfig.read_channel_config()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id"><code class="docutils literal notranslate"><span class="pre">AppConfig.resolve_channel_id()</span></code></a></li>
@@ -298,9 +298,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.word_list">
-<span class="sig-name descname"><span class="pre">word_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">add_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.word_list" title="Link to this definition">¶</a></dt>
-<dd><p>ルール設定、エイリアス、各種コマンドワードを集約したキーワードリストを生成する。</p>
+<dt class="sig sig-object py" id="libs.bootstrap.app_config.AppConfig.to_list">
+<span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">add_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.bootstrap.app_config.AppConfig.to_list" title="Link to this definition">¶</a></dt>
+<dd><p>ルール設定、エイリアス、各種コマンドワードを集約したキーワードのリストを生成する。</p>
 <p>引数で指定された単語、ルール、マッピングキー、各サブコマンドの起動ワード、
 および登録されているエイリアスをすべて統合し、重複と空文字を排除して返す。</p>
 <dl class="field-list simple">
@@ -420,7 +420,7 @@
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.analysis"><code class="docutils literal notranslate"><span class="pre">AppConfig.analysis</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.rule"><code class="docutils literal notranslate"><span class="pre">AppConfig.rule</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.initialization"><code class="docutils literal notranslate"><span class="pre">AppConfig.initialization()</span></code></a></li>
-<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.word_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.word_list()</span></code></a></li>
+<li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.to_list"><code class="docutils literal notranslate"><span class="pre">AppConfig.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.overwrite"><code class="docutils literal notranslate"><span class="pre">AppConfig.overwrite()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.read_channel_config"><code class="docutils literal notranslate"><span class="pre">AppConfig.read_channel_config()</span></code></a></li>
 <li><a class="reference internal" href="#libs.bootstrap.app_config.AppConfig.resolve_channel_id"><code class="docutils literal notranslate"><span class="pre">AppConfig.resolve_channel_id()</span></code></a></li>
@@ -506,7 +506,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.17.12.
-      Last updated on 2026-07-26.
+      Last updated on 2026-07-27.
     </div>
 
   </body>
