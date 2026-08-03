@@ -1,0 +1,39 @@
+.main-menu {
+  display: flex;
+  list-style: none;
+  margin: 0rem;
+  padding: 0rem;
+  position: fixed;
+}
+
+a.top_menu::before {
+    content: "\1F000\1F001\1F002\1F003";
+}
+.main-menu li {
+  position: relative; /* 子メニューの絶対配置の基準 */
+  padding-right: 1rem;
+  margin-bottom: 0;
+}
+
+.main-menu a {
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-menu .child-menu {
+  display: none; /* 普段は非表示 */
+  position: absolute; /* 親を基準に配置 */
+  top: 100%; /* 親メニューの真下に配置 */
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 150px;
+  z-index: 100;
+}
+
+/* ホバー時に子メニューを表示 */
+.main-menu .has-child:hover .child-menu {
+  display: block;
+}
