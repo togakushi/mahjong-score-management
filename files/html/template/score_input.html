@@ -6,6 +6,7 @@
 <body>
   <div class="header_menu">{% include "ui_parts/menu_bar.html" %}</div>
   {% block content %}
+  <br>
   <h1>{{ playtime }}</h1>
   <form id="player_select" method="POST" action="">
     <div class="form_item">
@@ -75,7 +76,6 @@
   <script src="/static/score_check.js" charset="utf-8"></script>
 
   <p><a href="/score">スコア一覧に戻る</a></p>
-  <div class="footer_menu">{% include "ui_parts/menu_bar.html" %}</div>
   <div id="app" data-origin-point="{{ origin_point }}"></div>
 </body>
 </html>

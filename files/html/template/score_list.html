@@ -5,6 +5,7 @@
 </head>
 <body>
   <div class="header_menu">{% include "ui_parts/menu_bar.html" %}</div>
+  <br>
   <h1>スコア管理</h1>
   {% block content %}
   <form method="POST" action="" onsubmit="return handleSubmit(event);">
@@ -31,9 +32,6 @@
   }
   </script>
   {% endblock %}
-
   {% include "form_items/result.html" %}
-
-  <div class="footer_menu">{% include "ui_parts/menu_bar.html" %}</div>
 </body>
 </html>

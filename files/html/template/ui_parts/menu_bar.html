@@ -1,10 +1,22 @@
-  <div class="menu_bar">
-    [
-    <a href="/">メニュー</a>
-    {% if view_summary %} / <a href="/summary">成績サマリ</a>{% endif %}
-    {% if view_graph %} / <a href="/graph">グラフ</a>{% endif %}
-    {% if view_ranking %} / <a href="/ranking">ランキング</a>{% endif %}
-    {% if view_summary %} / <a href="/detail">成績詳細</a>{% endif %}
-    {% if view_report %} / <a href="/report">レポート</a>{% endif %}
-    ]
-  </div>
+<nav class="menu-bar">
+  <ul class="main-menu">
+    <li><a class="top_menu" href="/">メニュー</a></li>
+    <li class="has-child">
+      <a href="#">成績集計 ▼</a>
+      <ul class="child-menu">
+        <li><a href="/summary">成績サマリ</a></li>
+        <li><a href="/graph">成績グラフ</a></li>
+        <li><a href="/detail">個人・チーム成績詳細</a></li>
+      </ul>
+    </li>
+    <li class="has-child">
+      <a href="#">成績分析 ▼</a>
+      <ul class="child-menu">
+        <li><a href="/ranking">ランキング</a></li>
+        <li><a href="/ranking/?text=レート">レーティング</a></li>
+        <li><a href="/ranking/?text=対戦">対局対戦マトリクス</a></li>
+        <li><a href="/ranking/?text=素点">素点分析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
