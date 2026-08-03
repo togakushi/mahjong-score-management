@@ -48,11 +48,15 @@ def ranking_bp(adapter: "ServiceAdapter") -> Blueprint:
         _, message = adapter.functions.header_message(m)
 
         for data, options in m.post.message:
-            if options.title:
+            if options.title and options.key_title:
                 message += f"<h2>{options.title}</h2>\n"
 
             if isinstance(data, pd.DataFrame):
-                show_index = options.show_index
+                if options.data_kind == StyleOptions.DataKind.SCORE_ANALYSIS:
+                    data.reset_index(inplace=True)
+                    show_index = False
+                else:
+                    show_index = options.show_index
                 data = adjusting.add_units(data)
                 data.rename(
                     columns=dictutil.rename_dicts(
