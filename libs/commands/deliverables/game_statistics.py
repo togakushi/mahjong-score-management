@@ -44,9 +44,10 @@ def plot(m: "MessageParserProtocol") -> None:
     options = StyleOptions(
         title=title,
         key_title=False,
-        data_kind=StyleOptions.DataKind.POINTS_TOTAL,
+        data_kind=StyleOptions.DataKind.GAME_STATISTICS,
         rename_type=StyleOptions.RenameType.SHORT,
         codeblock=True,
+        summarize=False,
         base_name=str(m.status.command_type),
     )
 

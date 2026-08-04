@@ -159,6 +159,8 @@ class StyleOptions:
         """ランキングデータ"""
         RATING = auto()
         """レーティングデータ"""
+        GAME_STATISTICS = auto()
+        """ゲーム統計表"""
 
         # メモ
         REMARKS_REGULATION = auto()
