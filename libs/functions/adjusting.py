@@ -196,6 +196,9 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                     df.rename(columns={column_name: "平均\n順位"}, inplace=True)
             case x if x == "rank" or x.endswith("_rank"):
                 df[column_name] = [format_cell(v, "位", False, 1) for v in df[column_name]]
+            # レコード
+            case x if x.endswith("_max"):
+                df[column_name] = [format_cell(v, "連続", False, 0) for v in df[column_name]]
             # その他
             case "playtime":
                 df[column_name] = df[column_name].map(lambda v: str(v).replace("-", "/"))

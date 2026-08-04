@@ -159,15 +159,19 @@ class SvcFunctions(FunctionsInterface):
             "text",
         ]
 
+        cookie_data = initial_value
+        cookie_data.update(req.cookies)
+        cookie_data = req.form.to_dict()
+
+        if get_data := req.args.get("text"):
+            new_text = set("{} {}".format(req.form.get("text", ""), get_data).split())
+            cookie_data["text"] = " ".join(new_text)
+
         if req.method == "POST":
-            cookie_data = req.form.to_dict()
             if req.form.get("action") == "reset":
                 cookie_data = initial_value
             else:
                 cookie_data.pop("action")
-        else:
-            cookie_data = initial_value
-            cookie_data.update(req.cookies)
 
         return {k: v for k, v in cookie_data.items() if k in target_keys}
 

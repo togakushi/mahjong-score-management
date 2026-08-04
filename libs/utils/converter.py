@@ -479,7 +479,7 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                     [
                         f"{x.rank}:",
                         x.name,
-                        f"{x.top1_max}連続 / {x.count}G",
+                        f"{x.top1_max} / {x.count}G",
                     ]
                 )
         case "連続連対":
@@ -489,7 +489,7 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                     [
                         f"{x.rank}:",
                         x.name,
-                        f"{x.top2_max}連続 / {x.count}G",
+                        f"{x.top2_max} / {x.count}G",
                     ]
                 )
         case "連続ラス回避":
@@ -499,7 +499,7 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                     [
                         f"{x.rank}:",
                         x.name,
-                        f"{x.top3_max}連続 / {x.count}G",
+                        f"{x.top3_max} / {x.count}G",
                     ]
                 )
         case "総合ランキング":
@@ -512,7 +512,6 @@ def df_to_ranking(df: pd.DataFrame, title: str, step: int = 40) -> dict[str, str
                         f"（評価点 {x.evaluation}）",
                     ]
                 )
-
         case _:
             return {}
 

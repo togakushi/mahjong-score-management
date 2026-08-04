@@ -27,6 +27,7 @@ div.player_name {
 a {
     display: inline-block;
     color: #4a3220;
+    text-decoration: none;
     margin-inline-start: 1rem;
     margin-inline-end: 1rem;
 }
