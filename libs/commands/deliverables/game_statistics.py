@@ -26,9 +26,13 @@ def plot(m: "MessageParserProtocol") -> None:
     m.status.command_type = m.COMMAND_TYPE.GAME_STATISTICS
 
     # ヘッダ情報
-    title: str = "月間ゲーム統計"
-    if g.params.collection == "yearly":
-        title = "年間ゲーム統計"
+    match g.params.collection:
+        case "all":
+            title = "ゲーム統計"
+        case "yearly":
+            title = "年間ゲーム統計"
+        case _:
+            title = "月間ゲーム統計"
 
     # データ収集
     game_info = GameInfo()
