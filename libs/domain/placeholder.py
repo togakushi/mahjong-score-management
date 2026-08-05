@@ -283,10 +283,8 @@ class PlaceholderBuilder(ParameterData):
             case "all":
                 query = query.replace("--[collection_all] ", "")
                 query = query.replace("--[collection] ", "")
-                query = query.replace("--[monthly] ", "")  # 月次集約のみ
             case _:
                 query = query.replace("--[not_collection] ", "")
-                query = query.replace("--[monthly] ", "")  # 月次集約のみ
 
         # 集計対象ルール
         if self.rule_list:
