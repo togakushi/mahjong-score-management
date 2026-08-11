@@ -103,13 +103,6 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
 
     @property
     def in_thread(self) -> bool:
-        """
-        スレッド内のメッセージか判定する。
-
-        Returns:
-            bool: スレッド返信であればTrue、そうでなければFalse。
-
-        """
         if self.data.thread_ts == "0":
             return False
         if self.data.event_ts == self.data.thread_ts:

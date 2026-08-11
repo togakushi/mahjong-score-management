@@ -46,10 +46,12 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         リプライメッセージか判定
 
         Returns:
-            bool: 真偽値
+            bool:
+                - *True*: リプライメッセージ
+                - *False*: 通常メッセージ
 
         Note:
-            slackに合わせてプロパティ名に `in_thread` を使う
+            slackに合わせてプロパティ名に ``in_thread`` を使う
 
         """
         if self.status.command_flg:

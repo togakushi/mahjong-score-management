@@ -160,8 +160,11 @@ class MessageParserDataMixin:
     """メッセージ解析共通処理"""
 
     data: "MsgData"
+    """入力情報管理クラス"""
     post: "PostData"
+    """出力情報管理クラス"""
     status: "StatusData"
+    """処理状態管理クラス"""
 
     def reset(self) -> None:
         """初期化"""
@@ -215,8 +218,11 @@ class MessageParserInterface(ABC):
     """メッセージ解析インターフェース"""
 
     data: "MsgData"
+    """入力情報管理クラス"""
     post: "PostData"
+    """出力情報管理クラス"""
     status: "StatusData"
+    """処理状態管理クラス"""
 
     COMMAND_TYPE: type["CommandType"]
 
@@ -237,10 +243,9 @@ class MessageParserInterface(ABC):
         元メッセージへのリプライとなっているか
 
         Returns:
-            bool: 真偽値
-
-            - *True*: リプライの形（リプライ／スレッドなど）
-            - *False*: 通常メッセージ
+            bool:
+                - *True*: リプライの形（リプライ／スレッドなど）
+                - *False*: 通常メッセージ
 
         """
 
@@ -251,10 +256,9 @@ class MessageParserInterface(ABC):
         botのポストかチェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: botのポスト
-            - *False*: ユーザのポスト
+            bool:
+                - *True*: botのポスト
+                - *False*: ユーザのポスト
 
         """
 
@@ -265,10 +269,9 @@ class MessageParserInterface(ABC):
         DB操作の許可チェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: 許可
-            - *False*: 禁止
+            bool:
+                - *True*: 許可
+                - *False*: 禁止
 
         """
 
@@ -279,10 +282,9 @@ class MessageParserInterface(ABC):
         ignore_useridに存在するユーザかチェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: 存在する(操作禁止ユーザ)
-            - *False*: 存在しない
+            bool:
+                - *True*: 存在する(操作禁止ユーザ)
+                - *False*: 存在しない
 
         """
 
@@ -292,10 +294,9 @@ class MessageParserInterface(ABC):
         コマンドで実行されているかチェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: コマンド実行
-            - *False*: 非コマンド(キーワード呼び出し)
+            bool:
+                - *True*: コマンド実行
+                - *False*: 非コマンド(キーワード呼び出し)
 
         """
         return self.status.command_flg

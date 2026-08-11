@@ -17,6 +17,7 @@ if TYPE_CHECKING:
 
 MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
 """メッセージ型
+
 - *None*: 空データ(なにもしない)
 - *str*: 文字列型データ(そのまま表示)
 - *Path*: ファイルパス(アップロード処理)
@@ -182,31 +183,37 @@ class StyleOptions:
 
     codeblock: bool = False
     """MessageTypeがstr型ならcodeblock化
+
     - *True*: codeblock化
     - *False*: 何もしない
     """
     show_index: bool = False
     """MessageTypeがDataFrame型なら表にIndexに含める
+
     - *True*: Indexを含める
     - *False*: Indexを含めない
     """
     use_comment: bool = False
     """ファイルアップロード時のinitial_commentを有効にする
+
     - *True*: initial_commentを使う
     - *False*: initial_commentを使わない
     """
     header_hidden: bool = False
     """ヘッダ文を非表示にする
+
     - *True*: 非表示
     - *False*: 表示
     """
     key_title: bool = True
     """小見出しに辞書のキーを使う
+
     - *True*: 表示
     - *False*: 非表示
     """
     summarize: bool = True
     """MessageTypeがstr型のとき後続の要素を集約する
+
     - *True*: 可能な限り複数の要素をひとつにまとめる
     - *False*: 要素単位でデータを処理する
     """
@@ -214,11 +221,13 @@ class StyleOptions:
     """出力時に付与するインデント数(TAB)"""
     keep_blank: bool = False
     """空行の削除
+
     - *True*: 削除しない
     - *False*: 削除する
     """
     keep_indent: bool = False
     """保存されているメッセージのdedentの取り扱い
+
     - *True*: 維持する
     - *False*: 削除する
     """
@@ -371,6 +380,7 @@ class RankTableDict(TypedDict):
     """獲得ポイント(順位)"""
     demote: bool
     """降格フラグ
+
     - *True*: 降格する(省略時デフォルト)
     - *False*: 降格しない
     """
