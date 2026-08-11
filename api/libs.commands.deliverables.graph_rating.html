@@ -65,11 +65,30 @@
     <ul>
 <li><a class="reference internal" href="#">libs.commands.deliverables.graph_rating module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.graph_rating.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_generation"><code class="docutils literal notranslate"><span class="pre">_graph_generation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_generation_plotly"><code class="docutils literal notranslate"><span class="pre">_graph_generation_plotly()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_title"><code class="docutils literal notranslate"><span class="pre">_graph_title()</span></code></a></li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -170,65 +189,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.graph_rating._graph_generation">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_rating.</span></span><span class="sig-name descname"><span class="pre">_graph_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_rating._graph_generation" title="Link to this definition">¶</a></dt>
-<dd><p>レーティング推移グラフ生成(matplotlib)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – ゲーム情報</p></li>
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – 描写データ</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – 保存先デフォルトファイル名</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>保存先ファイル名</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Path</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.graph_rating._graph_generation_plotly">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_rating.</span></span><span class="sig-name descname"><span class="pre">_graph_generation_plotly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_rating._graph_generation_plotly" title="Link to this definition">¶</a></dt>
-<dd><p>レーティング推移グラフ生成(plotly)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – ゲーム情報</p></li>
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – 描写データ</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – 保存先デフォルトファイル名</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>保存先ファイル名</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Path</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.commands.deliverables.graph_rating._graph_title">
-<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.graph_rating.</span></span><span class="sig-name descname"><span class="pre">_graph_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.graph_rating._graph_title" title="Link to this definition">¶</a></dt>
-<dd><p>グラフタイトル/ラベル生成</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>game_info</strong> (<a class="reference internal" href="libs.domain.datamodels.html#libs.domain.datamodels.GameInfo" title="libs.domain.datamodels.GameInfo"><em>GameInfo</em></a>) – ゲームデータ</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>タイトル文字列</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[str, str]</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -243,11 +203,30 @@
     <ul>
 <li><a class="reference internal" href="#">libs.commands.deliverables.graph_rating module</a><ul>
 <li><a class="reference internal" href="#libs.commands.deliverables.graph_rating.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_generation"><code class="docutils literal notranslate"><span class="pre">_graph_generation()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_generation_plotly"><code class="docutils literal notranslate"><span class="pre">_graph_generation_plotly()</span></code></a></li>
-<li><a class="reference internal" href="#libs.commands.deliverables.graph_rating._graph_title"><code class="docutils literal notranslate"><span class="pre">_graph_title()</span></code></a></li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -327,7 +306,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-05.
+      Last updated on 2026-08-11.
     </div>
 
   </body>

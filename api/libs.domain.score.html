@@ -100,14 +100,33 @@
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_text"><code class="docutils literal notranslate"><span class="pre">GameResult.to_text()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_list"><code class="docutils literal notranslate"><span class="pre">GameResult.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.calc"><code class="docutils literal notranslate"><span class="pre">GameResult.calc()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._normalized_expression"><code class="docutils literal notranslate"><span class="pre">GameResult._normalized_expression()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point3"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point3()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point4"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point4()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">GameResult.rpoint_sum</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -240,7 +259,11 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dd><p>有効なデータを持っているかチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>初期状態（空）でなければ True、それ以外は False。</p>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>True</em>: データ格納済み</p></li>
+<li><p><em>False</em>: 初期状態（空）</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -404,10 +427,10 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dd><p>オブジェクトの真偽値を評価する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>全プレイヤーの名前と素点文字列が入力されている場合は True、</dt><dd><p>いずれかが欠けている場合は False。</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>True</em>: 全プレイヤーの名前と素点文字列が入力されている</p></li>
+<li><p><em>False</em>: いずれかが欠けている</p></li>
+</ul>
 </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -420,15 +443,16 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.__eq__">
 <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult.__eq__" title="Link to this definition">¶</a></dt>
 <dd><p>他の GameResult オブジェクトと等価性を比較する。</p>
+<p>モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、ルール、コメント、ソースの値を比較して真偽を返す。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Any</em>) – 比較対象のオブジェクト。</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、</dt><dd><p>ルール、コメント、ソースがすべて一致する場合は True、それ以外は False。</p>
-</dd>
-</dl>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>True</em>: すべての値が一致</p></li>
+<li><p><em>False</em>: 不一致の値がある</p></li>
+</ul>
 </p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -561,51 +585,6 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.score.GameResult._normalized_expression">
-<span class="sig-name descname"><span class="pre">_normalized_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._normalized_expression" title="Link to this definition">¶</a></dt>
-<dd><p>入力文字列を式として評価し、計算結果を返す</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>expr</strong> (<em>str</em>) – 入力式</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>計算結果</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.score.GameResult._calculation_point3">
-<span class="sig-name descname"><span class="pre">_calculation_point3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._calculation_point3" title="Link to this definition">¶</a></dt>
-<dd><p>獲得ポイントと順位を計算する(三人打ち)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>更新用辞書(順位と獲得ポイントのデータ)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict[str, Any]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.domain.score.GameResult._calculation_point4">
-<span class="sig-name descname"><span class="pre">_calculation_point4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.score.GameResult._calculation_point4" title="Link to this definition">¶</a></dt>
-<dd><p>獲得ポイントと順位を計算する(四人打ち)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>更新用辞書(順位と獲得ポイントのデータ)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict[str, Any]</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="libs.domain.score.GameResult.rpoint_sum">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rpoint_sum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#libs.domain.score.GameResult.rpoint_sum" title="Link to this definition">¶</a></dt>
@@ -671,14 +650,33 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_text"><code class="docutils literal notranslate"><span class="pre">GameResult.to_text()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.to_list"><code class="docutils literal notranslate"><span class="pre">GameResult.to_list()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.calc"><code class="docutils literal notranslate"><span class="pre">GameResult.calc()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._normalized_expression"><code class="docutils literal notranslate"><span class="pre">GameResult._normalized_expression()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point3"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point3()</span></code></a></li>
-<li><a class="reference internal" href="#libs.domain.score.GameResult._calculation_point4"><code class="docutils literal notranslate"><span class="pre">GameResult._calculation_point4()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.score.GameResult.rpoint_sum"><code class="docutils literal notranslate"><span class="pre">GameResult.rpoint_sum</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -757,7 +755,7 @@ DBテーブルのカラム名 ( <code class="docutils literal notranslate"><span
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-05.
+      Last updated on 2026-08-11.
     </div>
 
   </body>

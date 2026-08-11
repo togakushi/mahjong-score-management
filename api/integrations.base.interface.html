@@ -127,6 +127,28 @@
 </ul>
 
   </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="integrations.base.html"
@@ -448,17 +470,20 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserDataMixin.data">
 <span class="sig-name descname"><span class="pre">data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData" title="integrations.protocols.MsgData"><span class="pre">MsgData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserDataMixin.data" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>入力情報管理クラス</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserDataMixin.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData" title="integrations.protocols.PostData"><span class="pre">PostData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserDataMixin.post" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>出力情報管理クラス</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserDataMixin.status">
 <span class="sig-name descname"><span class="pre">status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData" title="integrations.protocols.StatusData"><span class="pre">StatusData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserDataMixin.status" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>処理状態管理クラス</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserDataMixin.reset">
@@ -529,17 +554,20 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserInterface.data">
 <span class="sig-name descname"><span class="pre">data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.MsgData" title="integrations.protocols.MsgData"><span class="pre">MsgData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserInterface.data" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>入力情報管理クラス</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserInterface.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.PostData" title="integrations.protocols.PostData"><span class="pre">PostData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserInterface.post" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>出力情報管理クラス</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserInterface.status">
 <span class="sig-name descname"><span class="pre">status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="integrations.protocols.html#integrations.protocols.StatusData" title="integrations.protocols.StatusData"><span class="pre">StatusData</span></a></span><a class="headerlink" href="#integrations.base.interface.MessageParserInterface.status" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>処理状態管理クラス</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="integrations.base.interface.MessageParserInterface.COMMAND_TYPE">
@@ -566,8 +594,7 @@
 <dd><p>元メッセージへのリプライとなっているか</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>真偽値</p>
-<ul class="simple">
+<dd class="field-odd"><p><ul class="simple">
 <li><p><em>True</em>: リプライの形（リプライ／スレッドなど）</p></li>
 <li><p><em>False</em>: 通常メッセージ</p></li>
 </ul>
@@ -585,8 +612,7 @@
 <dd><p>botのポストかチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>真偽値</p>
-<ul class="simple">
+<dd class="field-odd"><p><ul class="simple">
 <li><p><em>True</em>: botのポスト</p></li>
 <li><p><em>False</em>: ユーザのポスト</p></li>
 </ul>
@@ -604,8 +630,7 @@
 <dd><p>DB操作の許可チェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>真偽値</p>
-<ul class="simple">
+<dd class="field-odd"><p><ul class="simple">
 <li><p><em>True</em>: 許可</p></li>
 <li><p><em>False</em>: 禁止</p></li>
 </ul>
@@ -623,8 +648,7 @@
 <dd><p>ignore_useridに存在するユーザかチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>真偽値</p>
-<ul class="simple">
+<dd class="field-odd"><p><ul class="simple">
 <li><p><em>True</em>: 存在する(操作禁止ユーザ)</p></li>
 <li><p><em>False</em>: 存在しない</p></li>
 </ul>
@@ -642,8 +666,7 @@
 <dd><p>コマンドで実行されているかチェック</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><p>真偽値</p>
-<ul class="simple">
+<dd class="field-odd"><p><ul class="simple">
 <li><p><em>True</em>: コマンド実行</p></li>
 <li><p><em>False</em>: 非コマンド(キーワード呼び出し)</p></li>
 </ul>
@@ -775,6 +798,28 @@
 </ul>
 
   </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="integrations.base.html"
@@ -850,7 +895,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-05.
+      Last updated on 2026-08-11.
     </div>
 
   </body>

@@ -19,6 +19,8 @@
 
    architecture
    algorithm
+   dispatcher
+   logging
    message_parser
 
 

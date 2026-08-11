@@ -69,12 +69,32 @@
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.webclient"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.webclient</span></code></a></li>
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.__init__"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.post"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.post()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.slack.api.AdapterAPI._call_chat_post_message"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._call_chat_post_message()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.slack.api.AdapterAPI._call_files_upload"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._call_files_upload()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -202,40 +222,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="integrations.slack.api.AdapterAPI._call_chat_post_message">
-<span class="sig-name descname"><span class="pre">_call_chat_post_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.api.AdapterAPI._call_chat_post_message" title="Link to this definition">¶</a></dt>
-<dd><p>slackにメッセージをポストする</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – Slack API chat_postMessage に渡す可変キーワード引数。</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>API response</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SlackResponse</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="integrations.slack.api.AdapterAPI._call_files_upload">
-<span class="sig-name descname"><span class="pre">_call_files_upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.slack.api.AdapterAPI._call_files_upload" title="Link to this definition">¶</a></dt>
-<dd><p>slackにファイルをアップロードする</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – Slack API files_upload_v2 に渡す可変キーワード引数。</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>API response</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SlackResponse | Any</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -256,12 +242,32 @@
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.webclient"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.webclient</span></code></a></li>
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.__init__"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.slack.api.AdapterAPI.post"><code class="docutils literal notranslate"><span class="pre">AdapterAPI.post()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.slack.api.AdapterAPI._call_chat_post_message"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._call_chat_post_message()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.slack.api.AdapterAPI._call_files_upload"><code class="docutils literal notranslate"><span class="pre">AdapterAPI._call_files_upload()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
@@ -340,7 +346,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-05.
+      Last updated on 2026-08-11.
     </div>
 
   </body>

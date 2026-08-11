@@ -71,7 +71,6 @@
 <li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.MessageStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">MessageStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -79,7 +78,6 @@
 <li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ActionStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ActionStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -90,7 +88,6 @@
 <li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ChannelType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ChannelType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -110,7 +107,6 @@
 <li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -120,7 +116,6 @@
 <li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ServiceType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ServiceType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -237,6 +232,26 @@
 </ul>
 
   </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.dispatcher.html">libs.dispatcher module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.global_value.html">libs.global_value module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libs.types module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="libs.global_value.html"
@@ -321,11 +336,13 @@
 <dl class="py data">
 <dt class="sig sig-object py" id="libs.types.MessageType">
 <span class="sig-prename descclassname"><span class="pre">libs.types.</span></span><span class="sig-name descname"><span class="pre">MessageType</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TypeAlias</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">ForwardRef('Path')</span> <span class="pre">|</span> <span class="pre">ForwardRef('pd.DataFrame')</span></span><a class="headerlink" href="#libs.types.MessageType" title="Link to this definition">¶</a></dt>
-<dd><p>メッセージ型
-- <em>None</em>: 空データ(なにもしない)
-- <em>str</em>: 文字列型データ(そのまま表示)
-- <em>Path</em>: ファイルパス(アップロード処理)
-- <em>DataFrame</em>: 表データ</p>
+<dd><p>メッセージ型</p>
+<ul class="simple">
+<li><p><em>None</em>: 空データ(なにもしない)</p></li>
+<li><p><em>str</em>: 文字列型データ(そのまま表示)</p></li>
+<li><p><em>Path</em>: ファイルパス(アップロード処理)</p></li>
+<li><p><em>DataFrame</em>: 表データ</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py class">
@@ -364,12 +381,6 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="libs.types.MessageStatus._generate_next_value_">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.MessageStatus._generate_next_value_" title="Link to this definition">¶</a></dt>
-<dd><p>Return the lower-cased version of the member name.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="libs.types.MessageStatus.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.MessageStatus.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -397,12 +408,6 @@
 <dt class="sig sig-object py" id="libs.types.ActionStatus.NOTHING">
 <span class="sig-name descname"><span class="pre">NOTHING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nothing'</span></span><a class="headerlink" href="#libs.types.ActionStatus.NOTHING" title="Link to this definition">¶</a></dt>
 <dd><p>何もしてない</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.types.ActionStatus._generate_next_value_">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ActionStatus._generate_next_value_" title="Link to this definition">¶</a></dt>
-<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -451,12 +456,6 @@
 <dt class="sig sig-object py" id="libs.types.ChannelType.UNDETERMINED">
 <span class="sig-name descname"><span class="pre">UNDETERMINED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'undetermined'</span></span><a class="headerlink" href="#libs.types.ChannelType.UNDETERMINED" title="Link to this definition">¶</a></dt>
 <dd><p>未定義状態</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.types.ChannelType._generate_next_value_">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ChannelType._generate_next_value_" title="Link to this definition">¶</a></dt>
-<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -627,12 +626,6 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="libs.types.CommandType._generate_next_value_">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.CommandType._generate_next_value_" title="Link to this definition">¶</a></dt>
-<dd><p>Return the lower-cased version of the member name.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="libs.types.CommandType.__new__">
 <span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.CommandType.__new__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -672,12 +665,6 @@
 <dt class="sig sig-object py" id="libs.types.ServiceType.UNKNOWN">
 <span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></span><a class="headerlink" href="#libs.types.ServiceType.UNKNOWN" title="Link to this definition">¶</a></dt>
 <dd><p>unknown</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="libs.types.ServiceType._generate_next_value_">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.types.ServiceType._generate_next_value_" title="Link to this definition">¶</a></dt>
-<dd><p>Return the lower-cased version of the member name.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -835,33 +822,41 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.codeblock">
 <span class="sig-name descname"><span class="pre">codeblock</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.codeblock" title="Link to this definition">¶</a></dt>
-<dd><p>MessageTypeがstr型ならcodeblock化
-- <em>True</em>: codeblock化
-- <em>False</em>: 何もしない</p>
+<dd><p>MessageTypeがstr型ならcodeblock化</p>
+<ul class="simple">
+<li><p><em>True</em>: codeblock化</p></li>
+<li><p><em>False</em>: 何もしない</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.show_index">
 <span class="sig-name descname"><span class="pre">show_index</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.show_index" title="Link to this definition">¶</a></dt>
-<dd><p>MessageTypeがDataFrame型なら表にIndexに含める
-- <em>True</em>: Indexを含める
-- <em>False</em>: Indexを含めない</p>
+<dd><p>MessageTypeがDataFrame型なら表にIndexに含める</p>
+<ul class="simple">
+<li><p><em>True</em>: Indexを含める</p></li>
+<li><p><em>False</em>: Indexを含めない</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.use_comment">
 <span class="sig-name descname"><span class="pre">use_comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.use_comment" title="Link to this definition">¶</a></dt>
-<dd><p>ファイルアップロード時のinitial_commentを有効にする
-- <em>True</em>: initial_commentを使う
-- <em>False</em>: initial_commentを使わない</p>
+<dd><p>ファイルアップロード時のinitial_commentを有効にする</p>
+<ul class="simple">
+<li><p><em>True</em>: initial_commentを使う</p></li>
+<li><p><em>False</em>: initial_commentを使わない</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.header_hidden">
 <span class="sig-name descname"><span class="pre">header_hidden</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.header_hidden" title="Link to this definition">¶</a></dt>
-<dd><p>ヘッダ文を非表示にする
-- <em>True</em>: 非表示
-- <em>False</em>: 表示</p>
+<dd><p>ヘッダ文を非表示にする</p>
+<ul class="simple">
+<li><p><em>True</em>: 非表示</p></li>
+<li><p><em>False</em>: 表示</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -897,17 +892,21 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.key_title">
 <span class="sig-name descname"><span class="pre">key_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.key_title" title="Link to this definition">¶</a></dt>
-<dd><p>小見出しに辞書のキーを使う
-- <em>True</em>: 表示
-- <em>False</em>: 非表示</p>
+<dd><p>小見出しに辞書のキーを使う</p>
+<ul class="simple">
+<li><p><em>True</em>: 表示</p></li>
+<li><p><em>False</em>: 非表示</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.summarize">
 <span class="sig-name descname"><span class="pre">summarize</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.types.StyleOptions.summarize" title="Link to this definition">¶</a></dt>
-<dd><p>MessageTypeがstr型のとき後続の要素を集約する
-- <em>True</em>: 可能な限り複数の要素をひとつにまとめる
-- <em>False</em>: 要素単位でデータを処理する</p>
+<dd><p>MessageTypeがstr型のとき後続の要素を集約する</p>
+<ul class="simple">
+<li><p><em>True</em>: 可能な限り複数の要素をひとつにまとめる</p></li>
+<li><p><em>False</em>: 要素単位でデータを処理する</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -919,17 +918,21 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.keep_blank">
 <span class="sig-name descname"><span class="pre">keep_blank</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.keep_blank" title="Link to this definition">¶</a></dt>
-<dd><p>空行の削除
-- <em>True</em>: 削除しない
-- <em>False</em>: 削除する</p>
+<dd><p>空行の削除</p>
+<ul class="simple">
+<li><p><em>True</em>: 削除しない</p></li>
+<li><p><em>False</em>: 削除する</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.StyleOptions.keep_indent">
 <span class="sig-name descname"><span class="pre">keep_indent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.types.StyleOptions.keep_indent" title="Link to this definition">¶</a></dt>
-<dd><p>保存されているメッセージのdedentの取り扱い
-- <em>True</em>: 維持する
-- <em>False</em>: 削除する</p>
+<dd><p>保存されているメッセージのdedentの取り扱い</p>
+<ul class="simple">
+<li><p><em>True</em>: 維持する</p></li>
+<li><p><em>False</em>: 削除する</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1265,9 +1268,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="libs.types.RankTableDict.demote">
 <span class="sig-name descname"><span class="pre">demote</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#libs.types.RankTableDict.demote" title="Link to this definition">¶</a></dt>
-<dd><p>降格フラグ
-- <em>True</em>: 降格する(省略時デフォルト)
-- <em>False</em>: 降格しない</p>
+<dd><p>降格フラグ</p>
+<ul class="simple">
+<li><p><em>True</em>: 降格する(省略時デフォルト)</p></li>
+<li><p><em>False</em>: 降格しない</p></li>
+</ul>
 </dd></dl>
 
 </dd></dl>
@@ -1317,7 +1322,6 @@
 <li><a class="reference internal" href="#libs.types.MessageStatus.DELETED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DELETED</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.DO_NOTHING"><code class="docutils literal notranslate"><span class="pre">MessageStatus.DO_NOTHING</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">MessageStatus.UNDETERMINED</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.MessageStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">MessageStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.MessageStatus.__new__"><code class="docutils literal notranslate"><span class="pre">MessageStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1325,7 +1329,6 @@
 <li><a class="reference internal" href="#libs.types.ActionStatus.CHANGE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.CHANGE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.DELETE"><code class="docutils literal notranslate"><span class="pre">ActionStatus.DELETE</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.NOTHING"><code class="docutils literal notranslate"><span class="pre">ActionStatus.NOTHING</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ActionStatus._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ActionStatus._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ActionStatus.__new__"><code class="docutils literal notranslate"><span class="pre">ActionStatus.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1336,7 +1339,6 @@
 <li><a class="reference internal" href="#libs.types.ChannelType.HOME_APP"><code class="docutils literal notranslate"><span class="pre">ChannelType.HOME_APP</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.SEARCH"><code class="docutils literal notranslate"><span class="pre">ChannelType.SEARCH</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.UNDETERMINED"><code class="docutils literal notranslate"><span class="pre">ChannelType.UNDETERMINED</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ChannelType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ChannelType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ChannelType.__new__"><code class="docutils literal notranslate"><span class="pre">ChannelType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1356,7 +1358,6 @@
 <li><a class="reference internal" href="#libs.types.CommandType.TEAM_LIST"><code class="docutils literal notranslate"><span class="pre">CommandType.TEAM_LIST</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.COMPARISON"><code class="docutils literal notranslate"><span class="pre">CommandType.COMPARISON</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">CommandType.UNKNOWN</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.CommandType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">CommandType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.CommandType.__new__"><code class="docutils literal notranslate"><span class="pre">CommandType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1366,7 +1367,6 @@
 <li><a class="reference internal" href="#libs.types.ServiceType.WEB"><code class="docutils literal notranslate"><span class="pre">ServiceType.WEB</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.STANDARD_IO"><code class="docutils literal notranslate"><span class="pre">ServiceType.STANDARD_IO</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ServiceType.UNKNOWN</span></code></a></li>
-<li><a class="reference internal" href="#libs.types.ServiceType._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">ServiceType._generate_next_value_()</span></code></a></li>
 <li><a class="reference internal" href="#libs.types.ServiceType.__new__"><code class="docutils literal notranslate"><span class="pre">ServiceType.__new__()</span></code></a></li>
 </ul>
 </li>
@@ -1483,6 +1483,26 @@
 </ul>
 
   </div>
+  <div class="sidebar-toc">
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.dispatcher.html">libs.dispatcher module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.global_value.html">libs.global_value module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libs.types module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="libs.global_value.html"
@@ -1557,7 +1577,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-05.
+      Last updated on 2026-08-11.
     </div>
 
   </body>
