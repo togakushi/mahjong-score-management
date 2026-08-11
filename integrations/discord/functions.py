@@ -146,7 +146,9 @@ class SvcFunctions(FunctionsInterface):
             message (Message): discordオブジェクト
 
         Returns:
-            bool: 真偽
+            bool:
+                - *True*: 削除済み
+                - *False*: 未削除
 
         """
         try:

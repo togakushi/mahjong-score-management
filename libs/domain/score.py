@@ -40,7 +40,9 @@ class Score:
         有効なデータを持っているかチェック
 
         Returns:
-            bool: 初期状態（空）でなければ True、それ以外は False。
+            bool:
+                - *True*: データ格納済み
+                - *False*: 初期状態（空）
 
         """
         return self != Score()
@@ -131,8 +133,9 @@ class GameResult:
         オブジェクトの真偽値を評価する。
 
         Returns:
-            bool: 全プレイヤーの名前と素点文字列が入力されている場合は True、
-                いずれかが欠けている場合は False。
+            bool:
+                - *True*: 全プレイヤーの名前と素点文字列が入力されている
+                - *False*: いずれかが欠けている
 
         """
         return all(self.to_list("name") + self.to_list("str"))
@@ -141,12 +144,15 @@ class GameResult:
         """
         他の GameResult オブジェクトと等価性を比較する。
 
+        モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、ルール、コメント、ソースの値を比較して真偽を返す。
+
         Args:
             other (Any): 比較対象のオブジェクト。
 
         Returns:
-            bool: モード、タイムスタンプ、各プレイヤーの名前と素点（rpoint）、
-                ルール、コメント、ソースがすべて一致する場合は True、それ以外は False。
+            bool:
+                - *True*: すべての値が一致
+                - *False*: 不一致の値がある
 
         """
         if not isinstance(other, GameResult):

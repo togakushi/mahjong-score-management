@@ -30,7 +30,7 @@ class DataMixin:
 
 @dataclass
 class MsgData(DataMixin):
-    """ポストされたメッセージデータ"""
+    """入力情報管理クラス"""
 
     text: str = field(default=str())
     """本文"""
@@ -62,7 +62,7 @@ class MsgData(DataMixin):
 
 @dataclass
 class PostData(DataMixin):
-    """ポストするデータ"""
+    """出力情報管理クラス"""
 
     headline: Optional[tuple["MessageType", "StyleOptions"]] = field(default=None)
     """ヘッダメッセージ"""
@@ -78,7 +78,7 @@ class PostData(DataMixin):
 
 @dataclass
 class StatusData(DataMixin):
-    """処理した結果"""
+    """処理状態管理クラス"""
 
     command_type: CommandType = field(default=CommandType.UNKNOWN)
     """実行(する/した)コマンド"""
@@ -132,23 +132,24 @@ class MessageParserProtocol(Protocol):
     @property
     def in_thread(self) -> bool:
         """
-        スレッド内のメッセージか判定する。
+        元メッセージへのリプライとなっているか
 
         Returns:
-            bool: スレッド返信であればTrue、そうでなければFalse。
+            bool:
+                - *True*: リプライの形（リプライ／スレッドなど）
+                - *False*: 通常メッセージ
 
         """
 
     @property
     def is_command(self) -> bool:
         """
-        コマンドとして実行されたかチェック
+        コマンドで実行されているかチェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: スラッシュコマンド
-            - *False*: チャンネル内呼び出しキーワード
+            bool:
+                - *True*: コマンド実行
+                - *False*: 非コマンド(キーワード呼び出し)
 
         """
 
@@ -158,10 +159,9 @@ class MessageParserProtocol(Protocol):
         botによる操作かチェック
 
         Returns:
-            bool: 真偽値
-
-            - *True*: botが操作
-            - *False*: ユーザが操作
+            bool:
+                - *True*: botが操作
+                - *False*: ユーザが操作
 
         """
 
@@ -201,17 +201,21 @@ class MessageParserProtocol(Protocol):
         DB更新可能チャンネルか判定する。
 
         Returns:
-            bool: 更新可能ならTrue、不可ならFalse。
+            bool:
+                - *True*: 更新可能
+                - *False*: 更新不可
 
         """
 
     @property
     def ignore_user(self) -> bool:
         """
-        コマンドを拒否するユーザか判定する。
+        ignore_useridに存在するユーザかチェック
 
         Returns:
-            bool: 拒否対象ユーザならTrue、対象外ならFalse。
+            bool:
+                - *True*: 存在する(操作禁止ユーザ)
+                - *False*: 存在しない
 
         """
 
