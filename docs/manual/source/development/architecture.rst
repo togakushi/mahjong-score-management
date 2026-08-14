@@ -110,14 +110,14 @@ APIInterface
 ------------
 
 | 指定サービスに対して出力を行う。
-| 出力する内容は ``MessageParser`` の ``post`` データクラスが保持している。
+| 出力する内容は `MessageParser <integrations.base.interface.MessageParserInterface>` の `post <integrations.base.interface.MessageParserInterface.post>` データクラスが保持している。
 
 
 FunctionsInterface
 ------------------
 
 | 指定サービスに対するサービス専用の関数群。
-| ``APIInterface`` 、 ``MessageParser`` から利用される。
+| `APIInterface <integrations.base.interface.APIInterface>` 、 `MessageParser <integrations.base.interface.MessageParserInterface>` から利用される。
 
 
 MessageParser

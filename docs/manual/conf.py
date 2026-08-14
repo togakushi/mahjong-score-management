@@ -26,6 +26,7 @@ primary_domain = "mahjong"
 # -- General configuration ---------------------------------------------------
 extensions = [
     "sphinx.ext.githubpages",
+    "sphinx.ext.intersphinx",
     "sphinxcontrib.mermaid",
     "linuxdoc.rstFlatTable",
     "mahjong_domain",
@@ -62,8 +63,14 @@ html_sidebars = {
     "**": [
         "localtoc.html",
         "globaltoc.html",
-        # "relations.html",
-        # "sourcelink.html",
         "links.html",
     ],
+}
+
+# -- Options for intersphinx -------------------------------------------------
+intersphinx_mapping = {
+    "api": (
+        "../../../api/build/html/",
+        (str(Path(__file__).parent / "../api/build/html/objects.inv"), None),
+    ),
 }
