@@ -69,8 +69,5 @@ html_sidebars = {
 
 # -- Options for intersphinx -------------------------------------------------
 intersphinx_mapping = {
-    "api": (
-        "../../../api/build/html/",
-        (str(Path(__file__).parent / "../api/build/html/objects.inv"), None),
-    ),
+    "api": ("https://togakushi.github.io/mahjong-score-management/api/", None),
 }
