@@ -170,11 +170,11 @@
 </ul>
 </dd>
 <dt>動作概要</dt><dd><ol class="arabic simple">
-<li><p>連携サービスの入力イベント(ポスト/編集など)をトリガーに <code class="xref any docutils literal notranslate"><span class="pre">parser()</span></code> を呼び出す</p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">parser()</span></code> は発生イベントの内容を解析し、結果を <code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code> に格納する</p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">dispatcher.by_keyword()</span></code> が呼び出され、 <code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code> の内容に従い処理を振り分ける</p></li>
-<li><p>各処理の結果は <code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code> に格納される</p></li>
-<li><p><code class="xref any docutils literal notranslate"><span class="pre">APIInterface.post()</span></code> が呼び出され、 <code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code> の内容を連携サービスで出力する</p></li>
+<li><p>連携サービスの入力イベント(ポスト/編集など)をトリガーに <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface.parser" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">parser()</span></code></a> を呼び出す</p></li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface.parser" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">parser()</span></code></a> は発生イベントの内容を解析し、結果を <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MsgData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code></a> に格納する</p></li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/libs.dispatcher.html#libs.dispatcher.by_keyword" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">dispatcher.by_keyword()</span></code></a> が呼び出され、 <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MsgData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code></a> の内容に従い処理を振り分ける</p></li>
+<li><p>各処理の結果は <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.PostData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code></a> に格納される</p></li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.APIInterface.post" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">APIInterface.post()</span></code></a> が呼び出され、 <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.PostData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code></a> の内容を連携サービスで出力する</p></li>
 </ol>
 </dd>
 </dl>
@@ -189,14 +189,14 @@
 <h2>PostData<a class="headerlink" href="#postdata" title="Link to this heading">¶</a></h2>
 <dl>
 <dt>headline</dt><dd><p>ヘッダメッセージとして返す内容。</p>
-<p><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_headline()</span></code> を用いて値をセットする。</p>
+<p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_headline" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_headline()</span></code></a> を用いて値をセットする。</p>
 </dd>
 <dt>message</dt><dd><div class="line-block">
 <div class="line">本文メッセージとして返す内容。</div>
 <div class="line">リスト型になっており、複数の結果を保存可能。</div>
 <div class="line">連携サービスへはリストの先頭から渡される。</div>
 </div>
-<p><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_message()</span></code> を用いて値をセットする。</p>
+<p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_message" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_message()</span></code></a> を用いて値をセットする。</p>
 </dd>
 </dl>
 </section>
@@ -316,7 +316,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-14.
+      Last updated on 2026-08-15.
     </div>
 
   </body>
