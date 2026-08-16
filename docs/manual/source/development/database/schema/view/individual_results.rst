@@ -80,10 +80,11 @@ individual_results
      - チームメモすべて(type= ``0`` , ``1`` , ``2`` , ``3`` のワード)
    * - collection_daily
      -
-     - 集計対象年月日(YYYY-MM-DD)
+     - | 集計対象年月日(YYYY-MM-DD)
+       | ``playtime`` から :setting_section:`time_adjust` を引いた日時
    * - rule_version
      - result.rule_version
-     - *ルール識別子* を示す文字列
+     - `ルール識別子` を示す文字列
    * - comment
      - result.comment
      - ゲームコメント
