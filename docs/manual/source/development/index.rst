@@ -17,11 +17,10 @@
 .. toctree::
    :maxdepth: 2
 
-   architecture
+   architecture/index
    algorithm
    dispatcher
    logging
-   message_parser
 
 
 テスト
