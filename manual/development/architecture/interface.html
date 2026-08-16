@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="../">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>インターフェース &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css?v=5349f25f" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=67a6116b" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?v=eb97cc3c" />
-    <link rel="stylesheet" type="text/css" href="../_static/user_doc.css?v=bc29bd85" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
     
-    <script src="../_static/documentation_options.js?v=cbfb3150"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/documentation_options.js?v=cbfb3150"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
 
 
@@ -373,15 +373,15 @@ mermaid.initialize(
 window.addEventListener("load", load);
 window.runMermaid = runMermaid;</script>
     
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="アルゴリズム" href="algorithm.html" />
-    <link rel="prev" title="サンプルSQL" href="database/sample_sql.html" /><link rel="stylesheet" href="../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
-    <link rel="shortcut icon" type="image/png" href="../_static/ma-jan_pai.png">
-            <script type="text/javascript" src="../_static/copybutton.js"></script>
-            <script type="text/javascript" src="../_static/menu.js"></script>
-            <script type="text/javascript" src="../_static/search-focus.js"></script>
-            <script type="text/javascript" src="../_static/themetoggle.js"></script> 
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="アダプタ" href="adapter.html" />
+    <link rel="prev" title="アーキテクチャ" href="index.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
   </head>
 <body>
 <div class="mobile-nav">
@@ -393,10 +393,10 @@ window.runMermaid = runMermaid;</script>
         </label>
         <span class="nav-items-wrapper">
             <a href="" class="nav-logo">
-                <img src="../_static/ma-jan_pai.png" alt="Python logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
             </a>
             <span class="version_switcher_placeholder"></span>
-            <form role="search" class="search" action="../search.html" method="get">
+            <form role="search" class="search" action="../../search.html" method="get">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
                     <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                 </svg>
@@ -418,48 +418,34 @@ window.runMermaid = runMermaid;</script>
     </select>
 </label>
   <div class="sidebar-toc">
-    <h3><a href="../index.html">Page of Contents</a></h3>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">インターフェース</a></li>
-<li><a class="reference internal" href="#id2">アダプタ</a><ul>
-<li><a class="reference internal" href="#integrationsconfig">IntegrationsConfig</a></li>
-<li><a class="reference internal" href="#apiinterface">APIInterface</a></li>
-<li><a class="reference internal" href="#functionsinterface">FunctionsInterface</a></li>
-<li><a class="reference internal" href="#messageparser">MessageParser</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div class="sidebar-toc">
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li class="toctree-l1"><a class="reference internal" href="../users/index.html">利用者向けマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../admins/index.html">管理者向けマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発用メモ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#id2">データベース関連資料</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">処理アルゴリズム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#id4">テスト</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">データベース関連資料</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#id3">処理アルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id4">テスト</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../commandline_tool/index.html">コマンドラインツール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
 
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
-      <li><a href="../genindex.html">Index</a></li>
+      <li><a href="../../genindex.html">Index</a></li>
       <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
       <br>
-      <li></li><a href="../_sources/development/architecture.rst.txt" rel="nofollow">Show Source</a></li>
+      <li></li><a href="../../_sources/development/architecture/interface.rst.txt" rel="nofollow">Show Source</a></li>
     </ul>
 </div>
         </nav>
@@ -470,31 +456,32 @@ window.runMermaid = runMermaid;</script>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="algorithm.html" title="アルゴリズム"
+          <a href="adapter.html" title="アダプタ"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="database/sample_sql.html" title="サンプルSQL"
+          <a href="index.html" title="アーキテクチャ"
              accesskey="P">previous</a> |</li>
-          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
             <div class="version_switcher_placeholder"></div>
           </li>
           <li>
               
-              <a href="../index.html">User's Manual</a> &#187;
+              <a href="../../index.html">User's Manual</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">アーキテクチャ</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">インターフェース</a></li>
                 <li class="right">
                     
 
     <div class="inline-search" role="search">
-        <form class="inline-search" action="../search.html" method="get">
+        <form class="inline-search" action="../../search.html" method="get">
           <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
           <input type="submit" value="Go">
         </form>
@@ -524,7 +511,7 @@ window.runMermaid = runMermaid;</script>
 <pre  class="mermaid">
         flowchart TB
     event(event handler);
-    m1[[&quot;MessageParser(data)&quot;]];
+    m1[[&quot;MessageParser(MsgData)&quot;]];
 
     event --&gt; m1 --&gt; d[&quot;dispatcher()&quot;] --&gt; f1 &amp; f2 &amp; f3;
 
@@ -534,7 +521,7 @@ window.runMermaid = runMermaid;</script>
         sc1(summary) --&gt; cp1[[CommandParser]] --&gt; p1(aggregation);
         sc2(analysis) --&gt; cp2[[CommandParser]] --&gt; p2(aggregation);
         sc3(help) --&gt; cp3[[CommandParser]] --&gt; p3(text generation);
-        p1 &amp; p2 &amp; p3 --&gt; mp1[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+        p1 &amp; p2 &amp; p3 --&gt; mp1[[&quot;MessageParser(PostData)&lt;br&gt;MessageParser(StatusData)&quot;]];
     end
 
     subgraph f2[Results record]
@@ -542,7 +529,7 @@ window.runMermaid = runMermaid;</script>
         r2([record]);
         r2 --&gt; a1(score) --&gt; results[(results)];
         r2 --&gt; a2(remark) --&gt; remarks[(remarks)];
-        results &amp; remarks --&gt; pp2[&quot;post_processing()&quot;] --&gt; mp2[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+        results &amp; remarks --&gt; pp2[&quot;post_processing()&quot;] --&gt; mp2[[&quot;MessageParser(PostData)&lt;br&gt;MessageParser(StatusData)&quot;]];
     end
 
     subgraph f3[Member management]
@@ -551,125 +538,11 @@ window.runMermaid = runMermaid;</script>
         r1 --&gt; a4(team) --&gt; db2[(team)] &amp; db1;
         r1 --&gt; a3(member) --&gt; db1[(member)] &amp; db3[(alias)];
         r1 --&gt; a5(alias) --&gt; db3;
-        db1 &amp; db2 &amp; db3  --&gt; mp3[[&quot;MessageParser(post)&lt;br&gt;MessageParser(status)&quot;]];
+        db1 &amp; db2 &amp; db3  --&gt; mp3[[&quot;MessageParser(PostData)&lt;br&gt;MessageParser(StatusData)&quot;]];
     end
 
     f1 &amp; f2 &amp; f3 --&gt; post[&quot;post()&lt;br&gt;(API Interface)&quot;];
     </pre></section>
-<section id="id2">
-<h1>アダプタ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h1>
-<div class="line-block">
-<div class="line">アプリ起動時に指定されたサービスのアダプタが設定される。</div>
-<div class="line">アダプタは以下のクラスを含む抽象化されたクラスである。</div>
-</div>
-<ul class="simple">
-<li><p>IntegrationsConfig</p></li>
-<li><p>APIInterface</p></li>
-<li><p>FunctionsInterface</p></li>
-<li><p>MessageParser</p></li>
-</ul>
-<details class="admonition- admonition">
-<summary class="admonition-title">関係図</summary>
-<pre  class="mermaid">
-        classDiagram
-    class ServiceAdapter
-        ServiceAdapter : interface_type
-        ServiceAdapter --* IntegrationsConfig
-        ServiceAdapter --* APIInterface
-        ServiceAdapter --* FunctionsInterface
-        ServiceAdapter --* MessageParser
-
-    class IntegrationsConfig
-        IntegrationsConfig : config_file
-        IntegrationsConfig : slash_command
-        IntegrationsConfig : badge_degree
-        IntegrationsConfig : badge_status
-        IntegrationsConfig : badge_grade
-        IntegrationsConfig : plotting_backend
-        IntegrationsConfig : read_file()
-
-    class APIInterface
-        APIInterface : post()
-
-    class FunctionsInterface
-        FunctionsInterface : post_processing()
-        FunctionsInterface : get_conversations()
-
-    class MessageParser
-        MessageParser : data
-        MessageParser : post
-        MessageParser : status
-        MessageParser : parser()
-
-    class MessageParserDataMixin
-        MessageParserDataMixin &lt;|-- MessageParser
-        MessageParserDataMixin : data
-        MessageParserDataMixin : post
-        MessageParserDataMixin : status
-        MessageParserDataMixin : reset()
-        MessageParserDataMixin : get_remarks()
-    </pre></details>
-<section id="integrationsconfig">
-<h2>IntegrationsConfig<a class="headerlink" href="#integrationsconfig" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">指定サービスのみで利用する設定値を保存する。</div>
-<div class="line">設定値は設定ファイルのサービス名と同じセクションに記述する。</div>
-</div>
-</section>
-<section id="apiinterface">
-<h2>APIInterface<a class="headerlink" href="#apiinterface" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">指定サービスに対して出力を行う。</div>
-<div class="line">出力する内容は <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser</span></code></a> の <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface.post" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">post</span></code></a> データクラスが保持している。</div>
-</div>
-</section>
-<section id="functionsinterface">
-<h2>FunctionsInterface<a class="headerlink" href="#functionsinterface" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">指定サービスに対するサービス専用の関数群。</div>
-<div class="line"><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.APIInterface" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">APIInterface</span></code></a> 、 <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser</span></code></a> から利用される。</div>
-</div>
-</section>
-<section id="messageparser">
-<h2>MessageParser<a class="headerlink" href="#messageparser" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line">MessageParserは指定サービスから入力されたテキストデータをコマンドと引数に分ける役割を担う。</div>
-<div class="line">状態を保持するためのデータクラスを3つ持つ。</div>
-</div>
-<ul class="simple">
-<li><p>data</p></li>
-<li><p>post</p></li>
-<li><p>status</p></li>
-</ul>
-<dl class="simple">
-<dt>data</dt><dd><p>入力されたテキストデータの情報を保持する。</p>
-<ul class="simple">
-<li><p>入力テキスト</p></li>
-<li><p>イベント発生タイムスタンプ</p></li>
-<li><p>その他</p></li>
-</ul>
-</dd>
-<dt>post</dt><dd><p>各機能で集計した結果など、出力するデータを保持する。</p>
-<ul class="simple">
-<li><p>集計結果</p></li>
-<li><p>生成ファイル</p></li>
-<li><p>メッセージデータ
-- 集計期間などの補助情報</p></li>
-<li><p>その他</p></li>
-</ul>
-</dd>
-<dt>status</dt><dd><p>各機能の最終的なステータス情報を保持する。</p>
-<ul class="simple">
-<li><p>DBに対する操作</p></li>
-<li><p>更新したデータの状態
-- 矛盾したデータで更新した、など</p></li>
-<li><p>処理結果</p></li>
-<li><p>その他</p></li>
-</ul>
-</dd>
-</dl>
-</section>
-</section>
 
 
             <div class="clearer"></div>
@@ -679,48 +552,34 @@ window.runMermaid = runMermaid;</script>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div class="sidebar-toc">
-    <h3><a href="../index.html">Page of Contents</a></h3>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">インターフェース</a></li>
-<li><a class="reference internal" href="#id2">アダプタ</a><ul>
-<li><a class="reference internal" href="#integrationsconfig">IntegrationsConfig</a></li>
-<li><a class="reference internal" href="#apiinterface">APIInterface</a></li>
-<li><a class="reference internal" href="#functionsinterface">FunctionsInterface</a></li>
-<li><a class="reference internal" href="#messageparser">MessageParser</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div class="sidebar-toc">
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li class="toctree-l1"><a class="reference internal" href="../users/index.html">利用者向けマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../admins/index.html">管理者向けマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発用メモ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#id2">データベース関連資料</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">処理アルゴリズム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#id4">テスト</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">データベース関連資料</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#id3">処理アルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id4">テスト</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../commandline_tool/index.html">コマンドラインツール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
 </ul>
 
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
-      <li><a href="../genindex.html">Index</a></li>
+      <li><a href="../../genindex.html">Index</a></li>
       <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
       <br>
-      <li></li><a href="../_sources/development/architecture.rst.txt" rel="nofollow">Show Source</a></li>
+      <li></li><a href="../../_sources/development/architecture/interface.rst.txt" rel="nofollow">Show Source</a></li>
     </ul>
 </div>
         </div>
@@ -731,31 +590,32 @@ window.runMermaid = runMermaid;</script>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="algorithm.html" title="アルゴリズム"
+          <a href="adapter.html" title="アダプタ"
              >next</a> |</li>
         <li class="right" >
-          <a href="database/sample_sql.html" title="サンプルSQL"
+          <a href="index.html" title="アーキテクチャ"
              >previous</a> |</li>
-          <li><img src="../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
             <div class="language_switcher_placeholder"></div>
             <div class="version_switcher_placeholder"></div>
           </li>
           <li>
               
-              <a href="../index.html">User's Manual</a> &#187;
+              <a href="../../index.html">User's Manual</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="index.html" >開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >アーキテクチャ</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">インターフェース</a></li>
                 <li class="right">
                     
 
     <div class="inline-search" role="search">
-        <form class="inline-search" action="../search.html" method="get">
+        <form class="inline-search" action="../../search.html" method="get">
           <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
           <input type="submit" value="Go">
         </form>
@@ -776,7 +636,7 @@ window.runMermaid = runMermaid;</script>
     </div>  
     <div class="footer">
       Release Version: 0.19.0.
-      Last updated on 2026-08-15.
+      Last updated on 2026-08-16.
     </div>
 
   </body>

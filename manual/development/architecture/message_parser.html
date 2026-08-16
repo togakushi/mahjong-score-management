@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MessageParser &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=5349f25f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=eb97cc3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/user_doc.css?v=bc29bd85" />
+    
+    <script src="../../_static/documentation_options.js?v=cbfb3150"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="アルゴリズム" href="../algorithm.html" />
+    <link rel="prev" title="FunctionsInterface" href="functions_interface.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/ma-jan_pai.png">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="" class="nav-logo">
+                <img src="../../_static/ma-jan_pai.png" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div class="sidebar-toc">
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">MessageParser</a><ul>
+<li><a class="reference internal" href="#msgdata">MsgDataクラス</a></li>
+<li><a class="reference internal" href="#postdata">PostDataクラス</a></li>
+<li><a class="reference internal" href="#statusdata">StatusDataクラス</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">データベース関連資料</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#id3">処理アルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id4">テスト</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
+</ul>
+
+  </div><div class="custom-link" aria-label="custom link">
+  <h3>Links</h3>
+    <ul>
+      <li><a href="../../genindex.html">Index</a></li>
+      <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+      <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
+      <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+      <br>
+      <li></li><a href="../../_sources/development/architecture/message_parser.rst.txt" rel="nofollow">Show Source</a></li>
+    </ul>
+</div>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../algorithm.html" title="アルゴリズム"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functions_interface.html" title="FunctionsInterface"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >アーキテクチャ</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="adapter.html" accesskey="U">アダプタ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">MessageParser</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="messageparser">
+<h1>MessageParser<a class="headerlink" href="#messageparser" title="Link to this heading">¶</a></h1>
+<dl>
+<dt>役割</dt><dd><div class="line-block">
+<div class="line">MessageParserは指定サービスから入力されたテキストデータをコマンドと引数に分ける役割を担う。</div>
+<div class="line">状態を保持するためのデータクラスを3つ持つ。</div>
+</div>
+<ul class="simple">
+<li><p>MsgData</p></li>
+<li><p>PostData</p></li>
+<li><p>StatusData</p></li>
+</ul>
+</dd>
+<dt>動作概要</dt><dd><ol class="arabic simple">
+<li><p>連携サービスの入力イベント(ポスト/編集など)を <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MsgData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code></a> に格納する</p></li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.MessageParserInterface.parser" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParserInterface.parser()</span></code></a> で入力イベントの内容を解析する</p></li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/libs.dispatcher.html#libs.dispatcher.by_keyword" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">libs.dispatcher.by_keyword()</span></code></a> が呼び出され、解析した <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MsgData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MsgData</span></code></a> の内容に従い処理を振り分ける</p></li>
+<li><p>コマンド処理の場合</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/libs.domain.command.html#libs.domain.command.CommandParser.analysis_argument" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">CommandParser.analysis_argument()</span></code></a> が呼び出され、パラメータの内容を解析する</p></li>
+<li><p>各処理の結果は <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.PostData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code></a> に格納される</p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.base.interface.html#integrations.base.interface.APIInterface.post" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">APIInterface.post()</span></code></a> が呼び出され、 <a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.PostData" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">PostData</span></code></a> の内容を連携サービスで出力する</p></li>
+</ol>
+</dd>
+</dl>
+<section id="msgdata">
+<h2>MsgDataクラス<a class="headerlink" href="#msgdata" title="Link to this heading">¶</a></h2>
+<p>入力されたテキストデータの情報を保持する。</p>
+<ul class="simple">
+<li><p>入力テキスト</p></li>
+<li><p>イベント発生タイムスタンプ</p></li>
+<li><p>その他</p></li>
+</ul>
+<dl class="simple">
+<dt>text</dt><dd><p>入力されたテキスト全体を保存。</p>
+</dd>
+</dl>
+</section>
+<section id="postdata">
+<h2>PostDataクラス<a class="headerlink" href="#postdata" title="Link to this heading">¶</a></h2>
+<p>各機能で集計した結果など、出力するデータを保持する。</p>
+<ul class="simple">
+<li><p>集計結果</p></li>
+<li><p>生成ファイル</p></li>
+<li><p>メッセージデータ
+- 集計期間などの補助情報</p></li>
+<li><p>その他</p></li>
+</ul>
+<dl>
+<dt>headline</dt><dd><p>ヘッダメッセージとして返す内容。</p>
+<p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_headline" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_headline()</span></code></a> を用いて値をセットする。</p>
+</dd>
+<dt>message</dt><dd><div class="line-block">
+<div class="line">本文メッセージとして返す内容。</div>
+<div class="line">リスト型になっており、複数の結果を保存可能。</div>
+<div class="line">連携サービスへはリストの先頭から渡される。</div>
+</div>
+<p><a class="reference external" href="https://togakushi.github.io/mahjong-score-management/api/integrations.protocols.html#integrations.protocols.MessageParserProtocol.set_message" title="(in API Reference v0.19.0)"><code class="xref any docutils literal notranslate"><span class="pre">MessageParser.set_message()</span></code></a> を用いて値をセットする。</p>
+</dd>
+</dl>
+</section>
+<section id="statusdata">
+<h2>StatusDataクラス<a class="headerlink" href="#statusdata" title="Link to this heading">¶</a></h2>
+<p>各機能の最終的なステータス情報を保持する。</p>
+<ul class="simple">
+<li><p>DBに対する操作</p></li>
+<li><p>更新したデータの状態
+- 矛盾したデータで更新した、など</p></li>
+<li><p>処理結果</p></li>
+<li><p>その他</p></li>
+</ul>
+<dl class="simple">
+<dt>reaction</dt><dd><p>入力元のイベントに対してリアクション文字を付与する際のフラグ。</p>
+</dd>
+<dt>action</dt><dd><p>DBに対して発生した操作を示すフラグ。</p>
+</dd>
+<dt>result</dt><dd><p>処理結果の状態。</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div class="sidebar-toc">
+    <h3><a href="../../index.html">Page of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">MessageParser</a><ul>
+<li><a class="reference internal" href="#msgdata">MsgDataクラス</a></li>
+<li><a class="reference internal" href="#postdata">PostDataクラス</a></li>
+<li><a class="reference internal" href="#statusdata">StatusDataクラス</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sidebar-toc">
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../users/index.html">利用者向けマニュアル</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../admins/index.html">管理者向けマニュアル</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発用メモ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">データベース関連資料</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#id3">処理アルゴリズム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id4">テスト</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../commandline_tool/index.html">コマンドラインツール</a></li>
+</ul>
+
+  </div><div class="custom-link" aria-label="custom link">
+  <h3>Links</h3>
+    <ul>
+      <li><a href="../../genindex.html">Index</a></li>
+      <li><a href="https://github.com/togakushi/mahjong-score-management/">Github Repository</a></li>
+      <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
+      <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
+      <br>
+      <li></li><a href="../../_sources/development/architecture/message_parser.rst.txt" rel="nofollow">Show Source</a></li>
+    </ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../algorithm.html" title="アルゴリズム"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="functions_interface.html" title="FunctionsInterface"
+             >previous</a> |</li>
+          <li><img src="../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">User's Manual</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >開発用メモ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >アーキテクチャ</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="adapter.html" >アダプタ</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">MessageParser</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+      Release Version: 0.19.0.
+      Last updated on 2026-08-16.
+    </div>
+
+  </body>
+</html>
