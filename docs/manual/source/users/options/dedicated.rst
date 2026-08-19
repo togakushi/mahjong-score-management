@@ -102,7 +102,7 @@
      - .. tip::
           `option-analysis` と共用のため、:summary:`差分` / :summary:`点差` の指定時も `deliverables-results_list` が表示される
    * - :rspan:`1`  個別
-     - .. analysis:: トップ, top
+     - .. analysis:: ベスト, トップ, 上位, best, top
      - 指定した順位までの出力に制限する
 
        - `deliverables-ranking`

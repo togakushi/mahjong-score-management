@@ -105,7 +105,7 @@ COMMANDS: CommandsDict = {
         "action": lambda _: {"report": True},
     },  # --- 集計条件
     "ranked": {
-        "match": [r"^(トップ|上位|top)(\d*)$"],
+        "match": [r"^(ベスト|トップ|上位|best|top)(\d*)$"],
         "action": lambda w: {"ranked": w},
     },
     "stipulated": {
