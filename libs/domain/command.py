@@ -103,10 +103,15 @@ COMMANDS: CommandsDict = {
     "report": {  # レポート生成
         "match": [r"^report$", r"^レポート$"],
         "action": lambda _: {"report": True},
-    },  # --- 集計条件
-    "ranked": {
+    },
+    # --- 集計条件
+    "best": {
         "match": [r"^(ベスト|トップ|上位|best|top)(\d*)$"],
-        "action": lambda w: {"ranked": w},
+        "action": lambda w: {"ranked": w, "reverse": False},
+    },
+    "worst": {
+        "match": [r"^(ワースト|下位|worst)(\d*)$"],
+        "action": lambda w: {"ranked": w, "reverse": True},
     },
     "stipulated": {
         "match": [r"^(規定数|規定打数)(\d*)$"],
@@ -115,6 +120,10 @@ COMMANDS: CommandsDict = {
     "interval": {
         "match": [r"^(期間|区間|区切リ?|interval)(\d*)$"],
         "action": lambda w: {"interval": w},
+    },
+    "chain": {
+        "match": [r"^(連続|chain)(\d*)$"],
+        "action": lambda w: {"chain": w, "consecutive": True},
     },
     # --- 集約 / 検索条件
     "daily": {
