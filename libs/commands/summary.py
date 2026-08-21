@@ -46,6 +46,11 @@ COMMAND_DISPATCHER = [
         deliverables.versus.aggregation,
     ),
     DispatchRule(
+        "連続戦結果",
+        lambda: g.params.consecutive,
+        deliverables.results_consecutive.aggregation,
+    ),
+    DispatchRule(
         "成績サマリ表（差分）",
         lambda: g.params.comparisons,
         deliverables.results_summary.difference,
