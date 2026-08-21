@@ -123,6 +123,7 @@ def query(keyword: str) -> str:
         "SUMMARY_DETAILS": "summary/details.sql",
         "SUMMARY_DETAILS2": "summary/details2.sql",
         "SUMMARY_RESULTS": "summary/results.sql",
+        "SUMMARY_CONSECUTIVE": "summary/consecutive.sql",
         "SUMMARY_TOTAL": "summary/total.sql",
         "SUMMARY_VERSUS_MATRIX": "summary/versus_matrix.sql",
         "RANKING_RESULTS": "ranking/results.sql",
