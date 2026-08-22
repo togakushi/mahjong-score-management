@@ -16,6 +16,11 @@ if TYPE_CHECKING:
 
 COMMAND_DISPATCHER = [
     DispatchRule(
+        "連続戦結果",
+        lambda: g.params.consecutive,
+        deliverables.results_consecutive.aggregation,
+    ),
+    DispatchRule(
         "成績グラフ",
         lambda: len(g.params.player_list) == 1 and g.params.graph,
         deliverables.graph_personal.plot,
@@ -44,11 +49,6 @@ COMMAND_DISPATCHER = [
         "直接対戦結果",
         lambda: bool(g.params.competition_list) and bool(g.params.player_list) and g.params.versus,
         deliverables.versus.aggregation,
-    ),
-    DispatchRule(
-        "連続戦結果",
-        lambda: g.params.consecutive,
-        deliverables.results_consecutive.aggregation,
     ),
     DispatchRule(
         "成績サマリ表（差分）",
