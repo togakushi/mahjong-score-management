@@ -19,7 +19,7 @@ with rolling_tbl as (
             order by results.playtime asc
             rows between :chain - 1 preceding and current row
         ) as rolling_point,
-        group_concat(round(point, 1)) over (
+        group_concat(round(point, 1), ' ') over (
             partition by name
             order by results.playtime asc
             rows between :chain - 1 preceding and current row
