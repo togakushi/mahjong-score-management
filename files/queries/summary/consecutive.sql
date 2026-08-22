@@ -19,12 +19,12 @@ with rolling_tbl as (
             order by results.playtime asc
             rows between :chain - 1 preceding and current row
         ) as rolling_point,
-        group_concat(round(point, 1), ' ') over (
+        group_concat(round(point, 1)) over (
             partition by name
             order by results.playtime asc
             rows between :chain - 1 preceding and current row
         ) as consecutive_record,
-        group_concat(rank, ' ') over (
+        group_concat(rank) over (
             partition by name
             order by results.playtime asc
             rows between :chain - 1 preceding and current row
