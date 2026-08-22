@@ -12,6 +12,7 @@ from libs.utils import converter
 
 if TYPE_CHECKING:
     from integrations.protocols import MessageParserProtocol
+    from libs.types import MessageType
 
 
 def aggregation(m: "MessageParserProtocol") -> None:
@@ -32,6 +33,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         headline_title = "連続戦成績"
 
     # データ収集
+    data: "MessageType"
     game_info = GameInfo()
     m.set_headline(message.header(game_info, m), StyleOptions(title=headline_title))
     if not g.params.chain:
