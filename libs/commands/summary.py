@@ -16,14 +16,14 @@ if TYPE_CHECKING:
 
 COMMAND_DISPATCHER = [
     DispatchRule(
-        "連続戦結果",
-        lambda: g.params.consecutive,
-        deliverables.results_consecutive.aggregation,
-    ),
-    DispatchRule(
         "成績グラフ",
         lambda: len(g.params.player_list) == 1 and g.params.graph,
         deliverables.graph_personal.plot,
+    ),
+    DispatchRule(
+        "連続戦結果",
+        lambda: g.params.consecutive,
+        deliverables.results_consecutive.aggregation,
     ),
     DispatchRule(
         "成績詳細",
