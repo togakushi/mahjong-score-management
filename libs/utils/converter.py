@@ -125,7 +125,7 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
         match col:
             case "名前" | "プレイヤー名" | "チーム" | "チーム名":
                 alignments.append(Alignment.LEFT)
-            case "順位分布" | "獲得ポイント":
+            case "順位分布":
                 alignments.append(Alignment.LEFT)
             case _:
                 alignments.append(Alignment.RIGHT)
