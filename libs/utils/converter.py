@@ -125,7 +125,7 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
         match col:
             case "名前" | "プレイヤー名" | "チーム" | "チーム名":
                 alignments.append(Alignment.LEFT)
-            case "順位分布":
+            case "順位分布" | "獲得ポイント":
                 alignments.append(Alignment.LEFT)
             case _:
                 alignments.append(Alignment.RIGHT)
@@ -139,7 +139,7 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
             if options.show_index:
                 data.append("")
             match k:
-                case "通算" | "平均":
+                case "通算" | "平均" | "合計ポイント":
                     data.append(f" {v:+.1f}".replace(" -", "▲"))
                 case k if str(k).endswith(("位偏差", "平均素点")):
                     if pd.isna(v):
@@ -152,6 +152,9 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
                     data.append(f"{v:.1f}")
                 case "順位偏差" | "得点偏差":
                     data.append(f"{v:.0f}")
+                case "獲得ポイント":
+                    point = [f"{float(pt):+.1f}".replace("-", "▲") for pt in str(v).split()]
+                    data.append(" ".join(point))
                 case _:
                     data.append(str(v).replace("nan", "*****"))
         body.append(data.copy())
