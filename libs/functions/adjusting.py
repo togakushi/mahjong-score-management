@@ -177,8 +177,8 @@ def add_units(df: pd.DataFrame, compact: bool = False) -> pd.DataFrame:
                 df[column_name] = [format_cell(v, "pt", False, 1, negative_symbol=True) for v in df[column_name]]
             case "consecutive_record":
                 for idx, record in df["consecutive_record"].items():
-                    point = [format_cell(float(pt), "pt", True, 1) for pt in str(record).split()]
-                    df.at[idx, column_name] = " ".join(point)
+                    point = [format_cell(float(pt), "pt", True, 1) for pt in str(record).split(",")]
+                    df.at[idx, column_name] = ",".join(point)
             # 素点
             case x if x in ["rpoint_avg", "avg_balance"] or x.endswith("_avg_diff"):
                 df[column_name] = [format_cell(v, "点", True, 1) for v in df[column_name]]
