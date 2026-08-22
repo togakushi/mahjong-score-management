@@ -153,8 +153,8 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
                 case "順位偏差" | "得点偏差":
                     data.append(f"{v:.0f}")
                 case "獲得ポイント":
-                    point = [f"{float(pt):+.1f}".replace("-", "▲") for pt in str(v).split()]
-                    data.append(" ".join(point))
+                    point = [f"{float(pt):+.1f}".replace("-", "▲") for pt in str(v).split(",")]
+                    data.append(",".join(point))
                 case _:
                     data.append(str(v).replace("nan", "*****"))
         body.append(data.copy())
