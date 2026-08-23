@@ -251,6 +251,10 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
         "pt_diff": "差分",
         "diff_from_above": "順位差",
         "diff_from_top": "トップ差",
+        "consecutive_record": "獲得ポイント",
+        "acquisition_rank": "獲得順位",
+        "total_game": "総対戦数",
+        "end_time": f"{g.params.chain}戦目",
         #
         "rank1_rate-count": "1位率(回)",
         "rank1_rate": "1位率",
@@ -428,6 +432,16 @@ def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
                         rename_dict[x] = "内容"
                     case _:
                         rename_dict[x] = "内容"
+            case "rolling_point":
+                if g.params.chain == 1:
+                    rename_dict[x] = "獲得ポイント"
+                else:
+                    rename_dict[x] = "合計ポイント"
+            case "start_time":
+                if g.params.chain == 1:
+                    rename_dict[x] = "対戦日時"
+                else:
+                    rename_dict[x] = "1戦目"
 
     if not g.params.individual:
         rename_dict.update(name="チーム" if short else "チーム名")

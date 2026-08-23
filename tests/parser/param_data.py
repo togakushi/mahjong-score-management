@@ -32,22 +32,26 @@ flag_test_case_01: dict[str, tuple[Any, ...]] = {
 
 # 数値引数
 flag_test_case_02: dict[str, tuple[Any, ...]] = {
-    "ranked 0 (kata)": ("トップ0", {"ranked": 0}),
-    "ranked 5 (kan)": ("上位5", {"ranked": 5}),
-    "ranked 10 (alp)": ("top10", {"ranked": 10}),
-    "ranked NaN": ("top", {}),
+    "best 0 (kata)": ("トップ0", {"ranked": 0, "reverse": False}),
+    "best 3 (kata)": ("ベスト3", {"ranked": 3, "reverse": False}),
+    "best 5 (kan)": ("上位5", {"ranked": 5, "reverse": False}),
+    "best 10 (alp)": ("top10", {"ranked": 10, "reverse": False}),
+    "best NaN": ("top", {"reverse": False}),
+    "worst 3 (kata)": ("ワースト3", {"ranked": 3, "reverse": True}),
+    "worst 5 (kan)": ("下位5", {"ranked": 5, "reverse": True}),
     "stipulated 0": ("規定数0", {"stipulated": 0}),
     "stipulated 10": ("規定打数10", {"stipulated": 10}),
     "target_count 0": ("直近0", {"target_count": 0}),
     "target_count 10": ("直近10", {"target_count": 10}),
-    "stipulated & ranked": (
+    "stipulated & best": (
         "上位3 規定数20",
         {
             "stipulated": 20,
             "ranked": 3,
+            "reverse": False,
         },
     ),
-    "over ride": ("top10 top20 top30", {"ranked": 30}),
+    "over ride": ("top10 top20 top30", {"ranked": 30, "reverse": False}),
     "interval 25": ("区切25", {"interval": 25}),
 }
 

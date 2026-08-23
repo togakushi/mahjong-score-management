@@ -354,14 +354,24 @@ class ParameterData(ParameterMethodMixin):
     - *True*: チーム同卓ゲームを集計(同じチームのポイントは合算される)
     - *False*: チーム同卓ゲームを集計対象外にする
     """
+    chain: int = field(default=3)
+    """連続戦集計"""
 
     # 動作変更フラグ
     statistics: bool = field(default=False)
     """統計情報表示"""
+    consecutive: bool = field(default=False)
+    """連続戦成績表示"""
 
     # 表示情報変更フラグ
     ranked: int = field(default=3)
     """ランキング/レーティングで表示する順位"""
+    reverse: bool = field(default=False)
+    """昇順/降順フラグ
+
+    - *True*: 昇順表示
+    - *False*: 降順表示
+    """
     stipulated: int = field(default=0)
     """規定打数指定"""
     stipulated_rate: float = field(default=0.05)

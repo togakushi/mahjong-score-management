@@ -1,0 +1,16 @@
+【最高獲得ポイント】
+    検索範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
+    特記事項：集計対象ルール xxx
+
+名前       獲得ポイント 獲得順位            対戦日時
+---------- ------------ -------- -------------------
+Player_006       +102.7        1 yyyy-mm-dd HH:MM:SS
+Player_001       +100.2        1 yyyy-mm-dd HH:MM:SS
+Player_000        +98.5        1 yyyy-mm-dd HH:MM:SS
+Player_005        +97.2        1 yyyy-mm-dd HH:MM:SS
+Player_003        +95.0        1 yyyy-mm-dd HH:MM:SS
+Player_002        +92.0        1 yyyy-mm-dd HH:MM:SS
+Player_004        +83.0        1 2026-mm-dd HH:MM:SS
+Player_003        +80.1        1 yyyy-mm-dd HH:MM:SS
+Player_006        +79.8        1 yyyy-mm-dd HH:MM:SS
+Player_002        +78.7        1 yyyy-mm-dd HH:MM:SS

@@ -3,6 +3,7 @@
 
 - :doc:`libs.commands.deliverables.results_detail`: 個人/チーム成績詳細を集計
 - :doc:`libs.commands.deliverables.results_summary`: 成績サマリを集計
+- :doc:`libs.commands.deliverables.results_consecutive`: 連続戦の集計
 - :doc:`libs.commands.deliverables.versus`: 直接対戦成績を集計
 - :doc:`libs.commands.deliverables.ranking_calc`: ランキングを集計
 - :doc:`libs.commands.deliverables.rating_calc`: レーティングを集計
@@ -27,6 +28,7 @@ from . import (
     matrix,
     ranking_calc,
     rating_calc,
+    results_consecutive,
     results_detail,
     results_summary,
     score_deviation,
@@ -45,6 +47,7 @@ __all__ = [
     "matrix",
     "ranking_calc",
     "rating_calc",
+    "results_consecutive",
     "results_detail",
     "results_summary",
     "score_deviation",

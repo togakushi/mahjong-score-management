@@ -142,6 +142,7 @@ class PlaceholderBuilder(ParameterData):
     """順位フラグ"""
     rating: bool = field(default=False)
     """レーティング表示フラグ"""
+
     raw_score: bool = field(default=False)
     """素点分析表示"""
     anonymous: bool = field(default=False)
@@ -370,6 +371,12 @@ class PlaceholderBuilder(ParameterData):
                     query = query.replace("<<where_string>>", "and (words.type = 1 or words.type = 2)")
         else:
             query = query.replace(":undefined_word", "1")
+
+        # 昇順/降順
+        if self.reverse:
+            query = query.replace("--[ascending] ", "")
+        else:
+            query = query.replace("--[descending] ", "")
 
         # queryコメント削除
         query = re.sub(r"^ *--\[.*$", "", query, flags=re.MULTILINE)

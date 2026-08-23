@@ -79,7 +79,7 @@ class CommandType(StrEnum):
     RECORD_GRAPH = "成績グラフ"
     """集計コマンド: 通算ポイント推移グラフ / 順位変動グラフ"""
     GAME_RESULTS = "対戦結果"
-    """集計コマンド: 直接対戦結果"""
+    """集計コマンド: 直接対戦結果 / 連続戦集計"""
 
     # 分析コマンド
     RANKING = "ランキング"
@@ -143,7 +143,7 @@ class StyleOptions:
         GENERAL = auto()
         """通常データ"""
         POINTS_TOTAL = auto()
-        """成績サマリ(通算ポイント)"""
+        """成績サマリ(通算ポイント/連続戦ポイント)"""
         POINTS_DIFF = auto()
         """成績サマリ(ポイント差分)"""
         SCORE_ANALYSIS = auto()

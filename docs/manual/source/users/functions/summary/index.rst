@@ -12,6 +12,7 @@
    results_graph
    results_table_all
    results_table_diff
+   results_consecutive
    winner
    point_transition
    ranking_change
