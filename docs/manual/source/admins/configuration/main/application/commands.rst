@@ -156,10 +156,22 @@
      - 出力される順位制限
      - 数値(int)
      - 3
-     -
+     - |:/:|
      - |:/:|
      -
-     - `deliverables-ranking` / `deliverables-rating_table` で使用する
+     - 定義セクションによって制限対象が異なる
+
+       :summary: `deliverables-results_consecutive`
+       :analysis: `deliverables-ranking` / `deliverables-rating_table`
+   * - .. sub_commands_section:: reverse
+     - `deliverables-results_consecutive` の出力順の指定
+     - 真偽値
+     - False
+     - |:/:|
+     -
+     -
+     - :True: 昇順表示（:summary:`ワースト` 指定時にセット）
+       :False: 降順表示（:summary:`ベスト` 指定時にセット）
    * - .. sub_commands_section:: interval
      - 集計範囲の区切り指定
      - 数値(int)

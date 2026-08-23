@@ -18,7 +18,7 @@
      - キーワード
      - 内容
      - 備考
-   * - :rspan:`2` 出力切替
+   * - :rspan:`3` 出力切替
      - .. summary:: グラフ
      - ポイント集計、順位集計の表を折れ線グラフの表示に切り替える
      - `ターゲット` の指定状況で動作が変化する
@@ -33,27 +33,53 @@
        :あり: `deliverables-ranking_change`
        :なし: `deliverables-winner`
 
+   * - .. summary:: 連続
+     - `deliverables-results_consecutive` を表示する
+     -
+       :指定例: 連続5
+       :デフォルト: 3
+
    * - .. summary:: 比較, 差分, 点差
      - `deliverables-results_table_diff` を表示する
      - `deliverables-results_table_all` から切り替わる
-   * - | 出力切替
-       | 個別
+   * - :rspan:`3` 追加表示
      - .. summary:: 対戦, 対戦結果
      - 対戦相手とのゲーム結果を表示する
      - `ターゲット` の指定状況で動作が変化する
 
        :任意: `deliverables-direct_match` の表示
        :単独: `deliverables-results_details` にゲーム同卓者との対戦結果を追加表示
-   * - :rspan:`2` 個別
-     - .. summary:: 統計
+   * - .. summary:: 統計
      - `deliverables-results_details` に統計情報を追加表示する
      - 座席データ、 `ベストレコード` 、 `ワーストレコード` 、収支情報の追加表示
    * - .. summary:: 戦績
-     - `deliverables-results_details` に戦績データを追加表示する
-     - ゲーム単位の素点、順位、獲得ポイントの追加表示
+     - 戦績データを追加表示する
+     - :`deliverables-results_details`: ゲーム単位の素点、順位、獲得ポイントを追加表示
+       :`deliverables-results_consecutive`: ポイント合計の内訳と総対戦数を追加表示
    * - .. summary:: 詳細
-     - 戦績データを4人分表示する
-     - :summary:`戦績` 同時指定した場合のみ有効
+     - 戦績データを詳細化する
+     - :`deliverables-results_details`: 戦績データを4人分の表示にする（:summary:`戦績` と同時指定した場合のみ有効）
+       :`deliverables-results_consecutive`: 集計対象の初戦と最終戦の日時と総対戦数を追加表示
+   * - :rspan:`1` 専用
+     - .. summary:: ベスト, トップ, 上位, best, top
+     - | ポイントの多い順に表示する
+       | :sub_commands_section:`ranked` に指定値をセットし、 :sub_commands_section:`reverse` を ``False`` にする
+     - `deliverables-results_consecutive` 専用オプション
+
+       :指定例: ベスト5
+       :デフォルト: 3
+
+       デフォルト値の変更は `summaryセクション <results_management>` の :sub_commands_section:`ranked` で行う
+
+   * - .. summary:: ワースト, 下位, worst
+     - | ポイントの少ない順に表示する
+       | :sub_commands_section:`ranked` に指定値をセットし、 :sub_commands_section:`reverse` を ``True`` にする
+     - `deliverables-results_consecutive` 専用オプション
+
+       :指定例: ワースト5
+       :デフォルト: 3
+
+       デフォルト値の変更は `summaryセクション <results_management>` の :sub_commands_section:`ranked` で行う
 ..
 .. seealso:: `オプション組み合わせ表 - 集計コマンド <summary_option_combination>`
 
@@ -101,7 +127,12 @@
      - `deliverables-results_list` を表示する
      - .. tip::
           `option-analysis` と共用のため、:summary:`差分` / :summary:`点差` の指定時も `deliverables-results_list` が表示される
-   * - :rspan:`1`  個別
+   * - 追加表示
+     - .. analysis:: 詳細
+     - `deliverables-results_list` に詳細情報を追加表示する
+     - 収支情報、 `ベストレコード` 、 `ワーストレコード` の追加表示
+
+   * - :rspan:`1`  専用
      - .. analysis:: ベスト, トップ, 上位, best, top
      - 指定した順位までの出力に制限する
 
@@ -113,9 +144,10 @@
        :デフォルト: 3
 
        デフォルト値の変更は `analysisセクション <results_management>` の :sub_commands_section:`ranked` で行う
-   * - .. analysis:: 詳細
-     - `deliverables-results_list` に詳細情報を追加表示する
-     - 収支情報、 `ベストレコード` 、 `ワーストレコード` の追加表示
+   * - .. analysis:: ワースト, 下位, worst
+     - 未使用
+     -
+
 ..
 .. seealso:: `オプション組み合わせ表 - 分析コマンド <analysis_option_combination>`
 
