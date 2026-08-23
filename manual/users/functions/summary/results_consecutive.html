@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>直接対戦結果 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>連続戦集計 &#8212; User&#39;s Manual</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../_static/pygments_dark.css?v=0fc419ee" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="分析コマンド" href="../analysis/index.html" />
-    <link rel="prev" title="順位変動グラフ" href="ranking_change.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="成績上位者" href="winner.html" />
+    <link rel="prev" title="成績サマリ表（差分）" href="results_table_diff.html" /><link rel="stylesheet" href="../../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="../../../_static/ma-jan_pai.png">
             <script type="text/javascript" src="../../../_static/copybutton.js"></script>
             <script type="text/javascript" src="../../../_static/menu.js"></script>
@@ -64,10 +64,9 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">直接対戦結果</a><ul>
+<li><a class="reference internal" href="#">連続戦集計</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id3">項目説明</a></li>
-<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +106,7 @@
       <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
       <br>
-      <li></li><a href="../../../_sources/users/functions/summary/direct_match.rst.txt" rel="nofollow">Show Source</a></li>
+      <li></li><a href="../../../_sources/users/functions/summary/results_consecutive.rst.txt" rel="nofollow">Show Source</a></li>
     </ul>
 </div>
         </nav>
@@ -121,10 +120,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../analysis/index.html" title="分析コマンド"
+          <a href="winner.html" title="成績上位者"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="ranking_change.html" title="順位変動グラフ"
+          <a href="results_table_diff.html" title="成績サマリ表（差分）"
              accesskey="P">previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -139,7 +138,7 @@
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">集計コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">直接対戦結果</a></li>
+        <li class="nav-item nav-item-this"><a href="">連続戦集計</a></li>
                 <li class="right">
                     
 
@@ -169,21 +168,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="deliverables-direct-match">
-<span id="id1"></span><h1>直接対戦結果<a class="headerlink" href="#deliverables-direct-match" title="Link to this heading">¶</a></h1>
-<p>指定した対戦相手と同卓したゲームの内容について集計する。</p>
+  <section id="deliverables-results-consecutive">
+<span id="id1"></span><h1>連続戦集計<a class="headerlink" href="#deliverables-results-consecutive" title="Link to this heading">¶</a></h1>
+<p>集計範囲内の連続した結果を指定された対戦数に区切って集計する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">コマンドタイプ<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="index.html#function-summary"><span class="std std-ref">集計コマンド</span></a></p>
 </dd>
 <dt class="field-even">必須オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">対戦</span></code> or <code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">対戦結果</span></code></p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#summary-連続" title="連続"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">連続</span></code></a></p>
 </dd>
 <dt class="field-odd">ターゲット指定<span class="colon">:</span></dt>
-<dd class="field-odd"><p>複数</p>
+<dd class="field-odd"><p>任意</p>
 </dd>
 <dt class="field-even">個別オプション<span class="colon">:</span></dt>
-<dd class="field-even"><p>なし</p>
+<dd class="field-even"><p><a class="reference internal" href="../../options/dedicated.html#option-summary"><span class="std std-ref">あり</span></a></p>
+</dd>
+</dl>
+<dl>
+<dt>集計例（集計範囲に10戦分の対戦結果があり、回数が5と指定された場合）</dt><dd><p>以下の6通りを算出し、合計値の大小で順位を付ける。</p>
+<ul class="simple">
+<li><p>1戦目～5戦目の合計</p></li>
+<li><p>2戦目～6戦目の合計</p></li>
+<li><p>(中略)</p></li>
+<li><p>6戦目～10回目の合計</p></li>
+</ul>
+<p>集計範囲に含まれるすべてのプレイヤー/チームに対して同様の集計を行う。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>総対戦数が多い方が算出される結果が多くなるため有利になる。</p>
+</div>
 </dd>
 </dl>
 <section id="id2">
@@ -201,94 +215,113 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td rowspan="3"><p> 共通オプション</p></td>
+<tr class="row-even"><td><p>必須オプション</p></td>
+<td><p><a class="reference internal" href="../../options/dedicated.html#summary-連続" title="連続"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">連続</span></code></a></p></td>
+<td><p>集計する対戦数（区切り数）の指定。<code class="docutils literal notranslate"><span class="pre">1</span></code> 以上の値を指定する。</p>
+<dl class="field-list simple">
+<dt class="field-odd">指定例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>連続5</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p> 共通オプション</p></td>
 <td><div class="line-block">
 <div class="line">プレイヤー名</div>
 <div class="line">チーム名</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line"><a class="reference internal" href="../../appendix/glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定。2名(2チーム)以上を指定する。</div>
-<div class="line">最初に指定されたプレイヤー/チームを対象に、それ以降のプレイヤー/チームとの対戦結果をそれぞれ集計する。</div>
-</div>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>対戦相手として <a class="reference internal" href="../../options/target.html#common-全員" title="全員"><code class="xref mahjong mahjong-common docutils literal notranslate"><span class="pre">全員</span></code></a> を指定するとレギュラーメンバー全員/登録チームすべてとの対戦結果が集計される。</p>
+<div class="line"><a class="reference internal" href="../../appendix/glossary.html#term-15"><code class="xref any std std-term docutils literal notranslate"><span class="pre">ターゲット</span></code></a> の指定。</div>
+<div class="line">指定プレイヤー/チームのみに絞って集計する。</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>集計範囲指定</p></td>
+<tr class="row-even"><td><p>集計範囲指定</p></td>
 <td><p><a class="reference internal" href="../../options/search_scope.html#date-specification"><span class="std std-ref">日付指定オプション</span></a> を参照。</p></td>
 </tr>
-<tr class="row-even"><td><p>その他のオプション</p></td>
+<tr class="row-odd"><td><p>その他のオプション</p></td>
 <td><p><a class="reference internal" href="../../options/common.html#common-options"><span class="std std-ref">その他の共通オプション</span></a> を参照。</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p> 個別オプション</p></td>
+<td><p><a class="reference internal" href="../../options/dedicated.html#summary-ベスト" title="ベスト"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">ベスト</span></code></a></p></td>
+<td><p>集計結果を上位から指定数までを表示。</p>
+<dl class="field-list simple">
+<dt class="field-odd">指定例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ベスト10</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../options/dedicated.html#summary-ワースト" title="ワースト"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">ワースト</span></code></a></p></td>
+<td><p>集計結果を下位から指定数までを表示。</p>
+<dl class="field-list simple">
+<dt class="field-odd">指定例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ワースト10</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../options/dedicated.html#summary-戦績" title="戦績"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">戦績</span></code></a></p></td>
+<td><p>ポイント合計の内訳と総対戦数の追加表示。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../options/dedicated.html#summary-詳細" title="詳細"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">詳細</span></code></a></p></td>
+<td><p>集計対象の初戦と最終戦の日時と総対戦数の追加表示。</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../../options/dedicated.html#summary-ベスト" title="ベスト"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">ベスト</span></code></a> / <a class="reference internal" href="../../options/dedicated.html#summary-ワースト" title="ワースト"><code class="xref mahjong mahjong-summary docutils literal notranslate"><span class="pre">ワースト</span></code></a> の指定が省略された場合、デフォルト値として以下の設定が使用される。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../admins/configuration/main/application/commands.html#sub_commands_section-ranked" title="ranked"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">ranked</span></code></a> までの順位</p></li>
+<li><p><a class="reference internal" href="../../../admins/configuration/main/application/commands.html#sub_commands_section-reverse" title="reverse"><code class="xref mahjong mahjong-sub_commands_section docutils literal notranslate"><span class="pre">reverse</span></code></a> で指定されている順序（昇順/降順）</p></li>
+</ul>
+</div>
 </section>
 <section id="id3">
-<h2>項目説明<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<dl>
-<dt>対戦数</dt><dd><p>集計期間の対戦数</p>
-<dl class="field-list simple">
-<dt class="field-odd">勝<span class="colon">:</span></dt>
-<dd class="field-odd"><p>対戦相手より着順が上のゲーム数</p>
-</dd>
-<dt class="field-even">敗<span class="colon">:</span></dt>
-<dd class="field-even"><p>対戦相手より着順が下のゲーム数</p>
-</dd>
-<dt class="field-odd">分<span class="colon">:</span></dt>
-<dd class="field-odd"><p>対戦相手と着順が同じゲーム数</p>
-</dd>
-</dl>
-</dd>
-<dt>平均素点差</dt><dd><p>対戦相手の平均素点との差分</p>
-</dd>
-<dt>獲得ポイント合計(自分/相手)</dt><dd><p>集計対象ゲームで獲得したポイントの合計値。</p>
-</dd>
-<dt>順位分布(自分/相手)</dt><dd><div class="line-block">
-<div class="line">獲得した順位の回数と平均順位。</div>
-<div class="line">以下の形式で表現される。</div>
+<h2>出力サンプル<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">連続戦集計サンプル（連続5戦）</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【連続戦成績】
+    検索範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
+    集計条件：連続5ゲーム / ベスト10
+    特記事項：集計対象ルール xxx
+
+名前       合計ポイント                  獲得ポイント  獲得順位 トビ数 総対戦数
+---------- ------------ ----------------------------- --------- ------ --------
+Player_000       +198.5 +49.9,+41.7,+64.1,▲14.0,+56.8 1,1,1,3,1      0      157
+Player_002       +191.3 +55.1,+55.4,+53.0,+12.5,+15.3 1,1,1,2,2      0      164
+Player_000       +187.9  +45.9,+6.2,+49.6,+64.9,+21.3 1,2,1,1,2      0      157
+Player_000       +187.3  +64.1,▲14.0,+56.8,+3.2,+77.2 1,3,1,2,1      0      157
+Player_000       +176.6   +7.3,+55.6,+68.0,▲6.1,+51.8 2,1,1,2,1      0      157
+Player_001       +175.6 +50.9,▲18.4,+43.7,+51.8,+47.6 1,3,1,1,1      0      121
+Player_001       +174.8 +46.8,+50.9,▲18.4,+43.7,+51.8 1,1,3,1,1      0      121
+Player_000       +174.5 +48.4,+14.0,▲13.4,+60.3,+65.2 1,2,3,1,1      0      157
+Player_000       +172.4  +60.3,+65.2,▲16.1,+55.2,+7.8 1,1,3,1,2      0      157
+Player_000       +171.1  +52.3,+6.6,+14.8,+55.9,+41.5 1,2,2,1,1      0      157
+</pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">1位回数</span> <span class="pre">+</span> <span class="pre">2位回数</span> <span class="pre">+</span> <span class="pre">3位回数</span> <span class="pre">+</span> <span class="pre">4位回数</span> <span class="pre">=</span> <span class="pre">トータルゲーム数（平均順位）</span></code></p>
-</dd>
-</dl>
-</section>
-<section id="id4">
-<h2>出力サンプル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">連続1</span></code> が指定された場合、過去成績のランキングとなる。</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">直接対戦結果</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【直接対戦】
-    プレイヤー名：Player_007
-    対戦相手：全員
-    集計範囲：yyyy/mm/dd HH:MM ～ yyyy/mm/dd HH:MM
-    特記事項：ゲスト置換なし(*：未登録プレイヤー)、2ゲスト戦の結果を含む
+<div class="code-block-caption"><span class="caption-text">連続戦集計サンプル（連続1戦）</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【最高獲得ポイント】
+    検索範囲：yyyy/mm/dd HH:MM:SS ～ yyyy/mm/dd HH:MM:SS
+    特記事項：集計対象ルール xxx
 
-【Player_007 vs Player_027】
-    対戦数：1 戦 1 勝 0 敗 (100.00%)
-    平均素点差：+37200 点
-    獲得ポイント合計(自分)：+61.0pt
-    獲得ポイント合計(相手)：▲26.2pt
-    順位分布(自分)：1-0-0-0 (1.00)
-    順位分布(相手)：0-0-1-0 (3.00)
-
-【Player_007 vs Player_019】
-    対戦数：22 戦 15 勝 7 敗 (68.18%)
-    平均素点差：+13200 点
-    獲得ポイント合計(自分)：+285.8pt
-    獲得ポイント合計(相手)：▲334.6pt
-    順位分布(自分)：8-8-1-5 (2.14)
-    順位分布(相手)：4-3-6-9 (2.91)
-
-【Player_007 vs Player_016】
-    対戦数：1 戦 0 勝 1 敗 (0.00%)
-    平均素点差：▲12200 点
-    獲得ポイント合計(自分)：▲43.7pt
-    獲得ポイント合計(相手)：▲21.5pt
-    順位分布(自分)：0-0-0-1 (4.00)
-    順位分布(相手)：0-0-1-0 (3.00)
-
-... 以下略 ...
+名前       獲得ポイント 獲得順位            対戦日時
+---------- ------------ -------- -------------------
+Player_006       +102.7        1 yyyy-mm-dd HH:MM:SS
+Player_001       +100.2        1 yyyy-mm-dd HH:MM:SS
+Player_000        +98.5        1 yyyy-mm-dd HH:MM:SS
+Player_005        +97.2        1 yyyy-mm-dd HH:MM:SS
+Player_003        +95.0        1 yyyy-mm-dd HH:MM:SS
+Player_002        +92.0        1 yyyy-mm-dd HH:MM:SS
+Player_004        +83.0        1 2026-mm-dd HH:MM:SS
+Player_003        +80.1        1 yyyy-mm-dd HH:MM:SS
+Player_006        +79.8        1 yyyy-mm-dd HH:MM:SS
+Player_002        +78.7        1 yyyy-mm-dd HH:MM:SS
 </pre></div>
 </div>
 </div>
@@ -305,10 +338,9 @@
   <div class="sidebar-toc">
     <h3><a href="../../../index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">直接対戦結果</a><ul>
+<li><a class="reference internal" href="#">連続戦集計</a><ul>
 <li><a class="reference internal" href="#id2">オプション</a></li>
-<li><a class="reference internal" href="#id3">項目説明</a></li>
-<li><a class="reference internal" href="#id4">出力サンプル</a></li>
+<li><a class="reference internal" href="#id3">出力サンプル</a></li>
 </ul>
 </li>
 </ul>
@@ -348,7 +380,7 @@
       <li><a href="https://togakushi.github.io/mahjong-score-management/manual/">User's Manual</a></li>
       <li><a href="https://togakushi.github.io/mahjong-score-management/api/">API Reference</a></li>
       <br>
-      <li></li><a href="../../../_sources/users/functions/summary/direct_match.rst.txt" rel="nofollow">Show Source</a></li>
+      <li></li><a href="../../../_sources/users/functions/summary/results_consecutive.rst.txt" rel="nofollow">Show Source</a></li>
     </ul>
 </div>
         </div>
@@ -362,10 +394,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../analysis/index.html" title="分析コマンド"
+          <a href="winner.html" title="成績上位者"
              >next</a> |</li>
         <li class="right" >
-          <a href="ranking_change.html" title="順位変動グラフ"
+          <a href="results_table_diff.html" title="成績サマリ表（差分）"
              >previous</a> |</li>
           <li><img src="../../../_static/ma-jan_pai.png" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -380,7 +412,7 @@
           <li class="nav-item nav-item-1"><a href="../../index.html" >利用者向けマニュアル</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >成績管理</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="index.html" >集計コマンド</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">直接対戦結果</a></li>
+        <li class="nav-item nav-item-this"><a href="">連続戦集計</a></li>
                 <li class="right">
                     
 

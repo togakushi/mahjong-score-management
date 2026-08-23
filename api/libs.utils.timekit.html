@@ -8,11 +8,11 @@
     <title>libs.utils.timekit module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=e201715b"></script>
+    <script src="_static/documentation_options.js?v=ba17ea1a"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -248,35 +248,35 @@
 </ul>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">cls.timekit</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtendedDatetime</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ExtendedDatetime</span><span class="p">(</span><span class="s2">&quot;2025-04-19 12:34:56&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;ymdhm&quot;</span><span class="p">)</span>
-<span class="go">&#39;2025/04/19 12:34&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ExtendedDatetime</span><span class="p">(</span><span class="s2">"2025-04-19 12:34:56"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"ymdhm"</span><span class="p">)</span>
+<span class="go">'2025/04/19 12:34'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;2025-05-01 00:00:00&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;sql&quot;</span><span class="p">)</span>
-<span class="go">&#39;2025-05-01 00:00:00.000000&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"2025-05-01 00:00:00"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"sql"</span><span class="p">)</span>
+<span class="go">'2025-05-01 00:00:00.000000'</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">93</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;ymd&quot;</span><span class="p">)</span>
-<span class="go">&#39;2025/08/02&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"ymd"</span><span class="p">)</span>
+<span class="go">'2025/08/02'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">+</span> <span class="p">{</span><span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;months&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">+</span> <span class="p">{</span><span class="s2">"days"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"months"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 <span class="go">2025-07-02 00:00:00.000000</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">&quot;今月&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;ymdhm&quot;</span><span class="p">)</span>
-<span class="go">[&#39;2025/04/01 00:00&#39;, &#39;2025/04/30 23:59&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"今月"</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"ymdhm"</span><span class="p">)</span>
+<span class="go">['2025/04/01 00:00', '2025/04/30 23:59']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">&quot;今月&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dict_format</span><span class="p">(</span><span class="s2">&quot;ymd&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">)</span>
-<span class="go">{&#39;start&#39;: &#39;2025年04月01日&#39;, &#39;end&#39;: &#39;2025年04月30日&#39;}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"今月"</span><span class="p">)</span><span class="o">.</span><span class="n">dict_format</span><span class="p">(</span><span class="s2">"ymd"</span><span class="p">,</span> <span class="s2">"ja"</span><span class="p">)</span>
+<span class="go">{'start': '2025年04月01日', 'end': '2025年04月30日'}</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="p">(</span><span class="s2">&quot;2025-01-01 01:23:45&quot;</span><span class="p">,</span> <span class="n">hours</span><span class="o">=-</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">&quot;今年&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExtendedDatetime</span><span class="p">(</span><span class="s2">"2025-01-01 01:23:45"</span><span class="p">,</span> <span class="n">hours</span><span class="o">=-</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"今年"</span><span class="p">)</span>
 <span class="go">[2024-01-01 00:00:00.000000, 2024-12-31 23:59:59.999999]</span>
 </pre></div>
 </div>
@@ -950,8 +950,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.19.0.
-      Last updated on 2026-08-16.
+      Release Version: 0.20.0.
+      Last updated on 2026-08-23.
     </div>
 
   </body>

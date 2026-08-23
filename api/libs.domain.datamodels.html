@@ -8,11 +8,11 @@
     <title>libs.domain.datamodels module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=5349f25f" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=e201715b"></script>
+    <script src="_static/documentation_options.js?v=ba17ea1a"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -128,14 +128,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.friendly_fire"><code class="docutils literal notranslate"><span class="pre">ParameterData.friendly_fire</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.chain"><code class="docutils literal notranslate"><span class="pre">ParameterData.chain</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.statistics"><code class="docutils literal notranslate"><span class="pre">ParameterData.statistics</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.consecutive"><code class="docutils literal notranslate"><span class="pre">ParameterData.consecutive</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.ranked"><code class="docutils literal notranslate"><span class="pre">ParameterData.ranked</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.reverse"><code class="docutils literal notranslate"><span class="pre">ParameterData.reverse</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated_rate"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated_rate</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.interval"><code class="docutils literal notranslate"><span class="pre">ParameterData.interval</span></code></a></li>
@@ -730,9 +733,19 @@
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">libs.domain.datamodels.</span></span><span class="sig-name descname"><span class="pre">ParameterData</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#libs.domain.datamodels.ParameterMethodMixin" title="libs.domain.datamodels.ParameterMethodMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterMethodMixin</span></code></a></p>
 <p>コマンド動作パラメータ</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.individual">
+<span class="sig-name descname"><span class="pre">individual</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.individual" title="Link to this definition">¶</a></dt>
+<dd><p>個人/チーム集計切替フラグ</p>
+<ul class="simple">
+<li><p><em>True</em>: 個人集計</p></li>
+<li><p><em>False</em>: チーム集計</p></li>
+</ul>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.__init__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consecutive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.__init__" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -741,8 +754,11 @@
 <li><p><strong>guest_skip2</strong> (<em>bool</em>)</p></li>
 <li><p><strong>unregistered_replace</strong> (<em>bool</em>)</p></li>
 <li><p><strong>friendly_fire</strong> (<em>bool</em>)</p></li>
+<li><p><strong>chain</strong> (<em>int</em>)</p></li>
 <li><p><strong>statistics</strong> (<em>bool</em>)</p></li>
+<li><p><strong>consecutive</strong> (<em>bool</em>)</p></li>
 <li><p><strong>ranked</strong> (<em>int</em>)</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>)</p></li>
 <li><p><strong>stipulated</strong> (<em>int</em>)</p></li>
 <li><p><strong>stipulated_rate</strong> (<em>float</em>)</p></li>
 <li><p><strong>interval</strong> (<em>int</em>)</p></li>
@@ -754,16 +770,6 @@
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.individual">
-<span class="sig-name descname"><span class="pre">individual</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.individual" title="Link to this definition">¶</a></dt>
-<dd><p>個人/チーム集計切替フラグ</p>
-<ul class="simple">
-<li><p><em>True</em>: 個人集計</p></li>
-<li><p><em>False</em>: チーム集計</p></li>
-</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -799,15 +805,37 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.chain">
+<span class="sig-name descname"><span class="pre">chain</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.chain" title="Link to this definition">¶</a></dt>
+<dd><p>連続戦集計</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.statistics">
 <span class="sig-name descname"><span class="pre">statistics</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.statistics" title="Link to this definition">¶</a></dt>
 <dd><p>統計情報表示</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.consecutive">
+<span class="sig-name descname"><span class="pre">consecutive</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.consecutive" title="Link to this definition">¶</a></dt>
+<dd><p>連続戦成績表示</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.ranked">
 <span class="sig-name descname"><span class="pre">ranked</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.ranked" title="Link to this definition">¶</a></dt>
 <dd><p>ランキング/レーティングで表示する順位</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libs.domain.datamodels.ParameterData.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#libs.domain.datamodels.ParameterData.reverse" title="Link to this definition">¶</a></dt>
+<dd><p>昇順/降順フラグ</p>
+<ul class="simple">
+<li><p><em>True</em>: 昇順表示</p></li>
+<li><p><em>False</em>: 降順表示</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py attribute">
@@ -936,7 +964,7 @@
 <p>コマンド設定追加パラメータ</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="libs.domain.datamodels.CommandAttrs.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_commandword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commandword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropitems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'当日'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_argument</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.__init__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_commandword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commandword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropitems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest_skip2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unregistered_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friendly_fire</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consecutive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stipulated_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_word</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'当日'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_argument</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.domain.datamodels.CommandAttrs.__init__" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -950,8 +978,11 @@
 <li><p><strong>guest_skip2</strong> (<em>bool</em>)</p></li>
 <li><p><strong>unregistered_replace</strong> (<em>bool</em>)</p></li>
 <li><p><strong>friendly_fire</strong> (<em>bool</em>)</p></li>
+<li><p><strong>chain</strong> (<em>int</em>)</p></li>
 <li><p><strong>statistics</strong> (<em>bool</em>)</p></li>
+<li><p><strong>consecutive</strong> (<em>bool</em>)</p></li>
 <li><p><strong>ranked</strong> (<em>int</em>)</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>)</p></li>
 <li><p><strong>stipulated</strong> (<em>int</em>)</p></li>
 <li><p><strong>stipulated_rate</strong> (<em>float</em>)</p></li>
 <li><p><strong>interval</strong> (<em>int</em>)</p></li>
@@ -1075,14 +1106,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData"><code class="docutils literal notranslate"><span class="pre">ParameterData</span></code></a><ul>
-<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.individual"><code class="docutils literal notranslate"><span class="pre">ParameterData.individual</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.__init__"><code class="docutils literal notranslate"><span class="pre">ParameterData.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.guest_skip2"><code class="docutils literal notranslate"><span class="pre">ParameterData.guest_skip2</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.unregistered_replace"><code class="docutils literal notranslate"><span class="pre">ParameterData.unregistered_replace</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.friendly_fire"><code class="docutils literal notranslate"><span class="pre">ParameterData.friendly_fire</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.chain"><code class="docutils literal notranslate"><span class="pre">ParameterData.chain</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.statistics"><code class="docutils literal notranslate"><span class="pre">ParameterData.statistics</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.consecutive"><code class="docutils literal notranslate"><span class="pre">ParameterData.consecutive</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.ranked"><code class="docutils literal notranslate"><span class="pre">ParameterData.ranked</span></code></a></li>
+<li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.reverse"><code class="docutils literal notranslate"><span class="pre">ParameterData.reverse</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.stipulated_rate"><code class="docutils literal notranslate"><span class="pre">ParameterData.stipulated_rate</span></code></a></li>
 <li><a class="reference internal" href="#libs.domain.datamodels.ParameterData.interval"><code class="docutils literal notranslate"><span class="pre">ParameterData.interval</span></code></a></li>
@@ -1209,8 +1243,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.19.0.
-      Last updated on 2026-08-16.
+      Release Version: 0.20.0.
+      Last updated on 2026-08-23.
     </div>
 
   </body>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>integrations.web.events.create_bp.score module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libs.commands.deliverables.results_consecutive module &#8212; API Reference</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=0fc419ee" />
@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="integrations.web.events.create_bp.summary module" href="integrations.web.events.create_bp.summary.html" />
-    <link rel="prev" title="integrations.web.events.create_bp.report module" href="integrations.web.events.create_bp.report.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="next" title="libs.commands.deliverables.results_detail module" href="libs.commands.deliverables.results_detail.html" />
+    <link rel="prev" title="libs.commands.deliverables.rating_calc module" href="libs.commands.deliverables.rating_calc.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
     <link rel="shortcut icon" type="image/png" href="_static/py.svg">
             <script type="text/javascript" src="_static/copybutton.js"></script>
             <script type="text/javascript" src="_static/menu.js"></script>
@@ -63,8 +63,8 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">integrations.web.events.create_bp.score module</a><ul>
-<li><a class="reference internal" href="#integrations.web.events.create_bp.score.score_bp"><code class="docutils literal notranslate"><span class="pre">score_bp()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.results_consecutive module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_consecutive.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -75,32 +75,32 @@
     <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.report.html"
-                          title="previous chapter">integrations.web.events.create_bp.report module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.rating_calc.html"
+                          title="previous chapter">libs.commands.deliverables.rating_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.summary.html"
-                          title="next chapter">integrations.web.events.create_bp.summary module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results_detail.html"
+                          title="next chapter">libs.commands.deliverables.results_detail module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -124,10 +124,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.summary.html" title="integrations.web.events.create_bp.summary module"
+          <a href="libs.commands.deliverables.results_detail.html" title="libs.commands.deliverables.results_detail module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.report.html" title="integrations.web.events.create_bp.report module"
+          <a href="libs.commands.deliverables.rating_calc.html" title="libs.commands.deliverables.rating_calc module"
              accesskey="P">previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -139,11 +139,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" >integrations.web.events package</a> &#187;</li>
-          <li class="nav-item nav-item-4"><a href="integrations.web.events.create_bp.html" accesskey="U">integrations.web.events.create_bp package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">integrations.web.events.create_bp.score module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" accesskey="U">libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.results_consecutive module</a></li>
                 <li class="right">
                     
 
@@ -173,22 +172,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-integrations.web.events.create_bp.score">
-<span id="integrations-web-events-create-bp-score-module"></span><h1>integrations.web.events.create_bp.score module<a class="headerlink" href="#module-integrations.web.events.create_bp.score" title="Link to this heading">¶</a></h1>
-<p>integrations/web/events/score.py</p>
+  <section id="module-libs.commands.deliverables.results_consecutive">
+<span id="libs-commands-deliverables-results-consecutive-module"></span><h1>libs.commands.deliverables.results_consecutive module<a class="headerlink" href="#module-libs.commands.deliverables.results_consecutive" title="Link to this heading">¶</a></h1>
+<p>連続戦集計</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="integrations.web.events.create_bp.score.score_bp">
-<span class="sig-prename descclassname"><span class="pre">integrations.web.events.create_bp.score.</span></span><span class="sig-name descname"><span class="pre">score_bp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.web.events.create_bp.score.score_bp" title="Link to this definition">¶</a></dt>
-<dd><p>スコア管理ページ用Blueprint</p>
+<dt class="sig sig-object py" id="libs.commands.deliverables.results_consecutive.aggregation">
+<span class="sig-prename descclassname"><span class="pre">libs.commands.deliverables.results_consecutive.</span></span><span class="sig-name descname"><span class="pre">aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.commands.deliverables.results_consecutive.aggregation" title="Link to this definition">¶</a></dt>
+<dd><p>連続戦の結果を集計</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>adapter</strong> (<a class="reference internal" href="integrations.discord.adapter.html#integrations.discord.adapter.ServiceAdapter" title="integrations.discord.adapter.ServiceAdapter"><em>ServiceAdapter</em></a>) – web用アダプタ</p>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="integrations.protocols.html#integrations.protocols.MessageParserProtocol" title="integrations.protocols.MessageParserProtocol"><em>MessageParserProtocol</em></a>) – メッセージデータ</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Blueprint</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Blueprint</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,8 +201,8 @@
   <div class="sidebar-toc">
     <h3><a href="index.html">Page of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">integrations.web.events.create_bp.score module</a><ul>
-<li><a class="reference internal" href="#integrations.web.events.create_bp.score.score_bp"><code class="docutils literal notranslate"><span class="pre">score_bp()</span></code></a></li>
+<li><a class="reference internal" href="#">libs.commands.deliverables.results_consecutive module</a><ul>
+<li><a class="reference internal" href="#libs.commands.deliverables.results_consecutive.aggregation"><code class="docutils literal notranslate"><span class="pre">aggregation()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -217,32 +213,32 @@
     <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="app.html">app module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dbtools.html">dbtools module</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="integrations.html">integrations package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="integrations.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="integrations.base.html">integrations.base package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.discord.html">integrations.discord package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.slack.html">integrations.slack package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="integrations.standard_io.html">integrations.standard_io package</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="integrations.web.html">integrations.web package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations.html">integrations package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libs.html">libs package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libs.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libs.bootstrap.html">libs.bootstrap package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libs.commands.html">libs.commands package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.domain.html">libs.domain package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.functions.html">libs.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libs.utils.html">libs.utils package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="integrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libs.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="libs.html">libs package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tests.html">tests package</a></li>
 </ul>
 
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.report.html"
-                          title="previous chapter">integrations.web.events.create_bp.report module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.rating_calc.html"
+                          title="previous chapter">libs.commands.deliverables.rating_calc module</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="integrations.web.events.create_bp.summary.html"
-                          title="next chapter">integrations.web.events.create_bp.summary module</a></p>
+    <p class="topless"><a href="libs.commands.deliverables.results_detail.html"
+                          title="next chapter">libs.commands.deliverables.results_detail module</a></p>
   </div><div class="custom-link" aria-label="custom link">
   <h3>Links</h3>
     <ul>
@@ -266,10 +262,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.summary.html" title="integrations.web.events.create_bp.summary module"
+          <a href="libs.commands.deliverables.results_detail.html" title="libs.commands.deliverables.results_detail module"
              >next</a> |</li>
         <li class="right" >
-          <a href="integrations.web.events.create_bp.report.html" title="integrations.web.events.create_bp.report module"
+          <a href="libs.commands.deliverables.rating_calc.html" title="libs.commands.deliverables.rating_calc module"
              >previous</a> |</li>
           <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
           <li class="switchers">
@@ -281,11 +277,10 @@
               <a href="index.html">API Reference</a> &#187;
               
           </li>
-          <li class="nav-item nav-item-1"><a href="integrations.html" >integrations package</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="integrations.web.html" >integrations.web package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="integrations.web.events.html" >integrations.web.events package</a> &#187;</li>
-          <li class="nav-item nav-item-4"><a href="integrations.web.events.create_bp.html" >integrations.web.events.create_bp package</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">integrations.web.events.create_bp.score module</a></li>
+          <li class="nav-item nav-item-1"><a href="libs.html" >libs package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="libs.commands.html" >libs.commands package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="libs.commands.deliverables.html" >libs.commands.deliverables package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">libs.commands.deliverables.results_consecutive module</a></li>
                 <li class="right">
                     
 
