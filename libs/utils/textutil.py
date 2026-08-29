@@ -9,6 +9,8 @@ from enum import Enum, auto
 from math import ceil, floor
 from typing import TYPE_CHECKING, Any
 
+import pandas as pd
+
 import libs.global_value as g
 
 if TYPE_CHECKING:
@@ -365,3 +367,136 @@ def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
     result = [str(x).replace("\n\n\t", "\n\t") for x in result]
 
     return result
+
+
+def split_markdown_rows(
+    df: pd.DataFrame,
+    max_chars: int,
+    index: bool = True,
+) -> list[tuple[int, int]]:
+    """
+    DataFrameをMarkdownテーブルの文字数制限に合わせて分割する。
+
+    Args:
+        df: 分割対象のDataFrame。
+        max_chars: 1テーブルあたりの最大文字数。
+        index: MarkdownテーブルにDataFrameのindexを含めるか。
+
+    Raises:
+        ValueError: max_charsが0以下の場合。
+        ValueError: 1行だけでも文字数制限を超える場合。
+        RuntimeError: 最小分割数で解なしの場合。
+
+    Returns:
+        list[tuple[int, int]]: 各テーブルの開始行番号と終了番号のペア
+
+    """
+    if max_chars <= 0:
+        raise ValueError("max_chars must be greater than 0")
+
+    n = len(df)
+
+    if n == 0:
+        return [1]
+
+    # 各範囲の文字数キャッシュ / (start, end): start <= row < end
+    cache: dict[tuple[int, int], int] = {}
+
+    def markdown_length(start: int, end: int) -> int:
+        key = (start, end)
+
+        if key not in cache:
+            cache[key] = len(
+                df.iloc[start:end].to_markdown(
+                    index=index,
+                    tablefmt="simple",
+                )
+            )
+
+        return cache[key]
+
+    # ------------------------------------------------------------
+    # 1. 最小分割数を求める
+    # ------------------------------------------------------------
+    boundaries = [0]
+    start = 0
+
+    while start < n:
+        end = start + 1
+
+        if markdown_length(start, end) > max_chars:
+            raise ValueError(f"row {start + 1} cannot fit within max_chars={max_chars}")
+
+        # 入る限り行を追加する。
+        while end < n and markdown_length(start, end + 1) <= max_chars:
+            end += 1
+
+        boundaries.append(end)
+        start = end
+
+    block_count = len(boundaries) - 1
+
+    if block_count == 1:
+        return [1]
+
+    # ------------------------------------------------------------
+    # 2. 最小分割数を維持しつつ、文字数を均等化する
+    # ------------------------------------------------------------
+    #
+    # 各ブロックの文字数の二乗和を最小化する。
+    #
+    #   a^2 + b^2 + c^2
+    #
+    # は、合計が一定なら a, b, c が均等になるほど小さくなる。
+    #
+    # dp[k][end] =
+    #   end行目までをk個のテーブルに分割したときの
+    #   文字数二乗和の最小値
+    #
+    # ------------------------------------------------------------
+    dp: dict[tuple[int, int], tuple[int, int | None]] = {(0, 0): (0, None)}
+
+    for k in range(1, block_count + 1):
+        # k個のブロックでendまで分割する。
+        for end in range(k, n + 1):
+            best: tuple[int, int] | None = None
+            for start in range(k - 1, end):
+                previous = dp.get((k - 1, start))
+
+                if previous is None:
+                    continue
+
+                length = markdown_length(start, end)
+
+                if length > max_chars:
+                    continue
+
+                cost = previous[0] + length**2
+
+                if best is None or cost < best[0]:
+                    best = (cost, start)
+
+            if best is not None:
+                dp[(k, end)] = best
+
+    # 最小分割数で解が存在することを確認。
+    if (block_count, n) not in dp:
+        raise RuntimeError("failed to find a valid partition")
+
+    # ------------------------------------------------------------
+    # 3. 分割位置を復元
+    # ------------------------------------------------------------
+    ranges: list[tuple[int, int]] = []
+    end = n
+
+    for k in range(block_count, 0, -1):
+        _, start = dp[(k, end)]
+
+        assert start is not None
+
+        ranges.append((start, end))
+        end = start
+
+    ranges.reverse()
+
+    return ranges
