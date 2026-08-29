@@ -143,9 +143,11 @@ class StyleOptions:
         GENERAL = auto()
         """通常データ"""
         POINTS_TOTAL = auto()
-        """成績サマリ(通算ポイント/連続戦ポイント)"""
+        """成績サマリ(通算ポイント)"""
         POINTS_DIFF = auto()
         """成績サマリ(ポイント差分)"""
+        POINTS_CONSECUTIVE = auto()
+        """成績サマリ(連続戦ポイント)"""
         SCORE_ANALYSIS = auto()
         """成績サマリ(素点分析)"""
         STATS_LIST = auto()

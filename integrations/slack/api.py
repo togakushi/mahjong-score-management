@@ -117,6 +117,9 @@ class AdapterAPI(APIInterface):
                 match options.data_kind:
                     case StyleOptions.DataKind.POINTS_TOTAL | StyleOptions.DataKind.POINTS_DIFF:
                         post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))
+                    case StyleOptions.DataKind.POINTS_CONSECUTIVE:
+                        options.summarize = False
+                        post_msg.extend(converter.df_to_text_table1(data, options, max_chars=3900))
                     case StyleOptions.DataKind.SCORE_ANALYSIS | StyleOptions.DataKind.GAME_STATISTICS:
                         post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))
                     case StyleOptions.DataKind.REMARKS_YAKUMAN | StyleOptions.DataKind.REMARKS_REGULATION | StyleOptions.DataKind.REMARKS_OTHER:

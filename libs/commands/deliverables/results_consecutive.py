@@ -68,7 +68,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         format_type=g.params.format,
         base_name="summary",
         rename_type=StyleOptions.RenameType.SHORT,
-        data_kind=StyleOptions.DataKind.POINTS_TOTAL,
+        data_kind=StyleOptions.DataKind.POINTS_CONSECUTIVE,
     )
     match g.params.format:
         case "csv":
