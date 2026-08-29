@@ -93,9 +93,9 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
                     fmt.append("left")
                 case "段位" | "grade":
                     fmt.append("left")
-                case "順位分布" | "rank_distr" | "rank_distr4":
+                case "順位分布" | "rank_distr" | "rank_distr1" | "rank_distr2" | "rank_distr3" | "rank_distr4":
                     fmt.append("left")
-                case "平均順位" | "rank_avg":
+                case "平均順位" | "獲得順位" | "rank_avg" | "acquisition_rank":
                     fmt.append("center")
                 case _:
                     fmt.append("right")
