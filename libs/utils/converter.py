@@ -180,6 +180,39 @@ def df_to_text_table(df: pd.DataFrame, options: StyleOptions, step: int = 40) ->
     return table_data
 
 
+def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, max_chars: int = 2000) -> list[str]:
+    """
+    DataFrameからテキストテーブルの生成
+
+    Args:
+        df (pd.DataFrame): 対象データ
+        options (StyleOptions): 表示フラグ
+        max_chars (int, optional): テーブルに含める最大文字数. Defaults to 2000.
+
+    Returns:
+        list[str]: 生成テーブル
+    """
+    df = adjusting.add_units(df)
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), options), inplace=True)
+
+    ret: list[str] = []
+
+    if options.key_title:
+        ret.append("{}\n".format(options.print_title))
+
+    for start, end in textutil.split_markdown_rows(df, max_chars, options.show_index):
+        tbl = df[start:end].to_markdown(
+            tablefmt="simple",
+            index=options.show_index,
+            floatfmt=adjusting.floatfmt(df, index=options.show_index),
+            headersalign=adjusting.column_alignment(df, header=True, index=options.show_index),
+            colalign=adjusting.column_alignment(df, header=False, index=options.show_index),
+        )
+        ret.append(f"```\n{tbl}\n```" if options.codeblock else tbl)
+
+    return ret
+
+
 def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> dict[str, str]:
     """
     DataFrameからテキストテーブルの生成(縦横変換)
