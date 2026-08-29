@@ -77,10 +77,11 @@ class AdapterAPI(APIInterface):
                     disp = x.rename(
                         columns=dictutil.rename_dicts(x.columns.to_list(), options),
                     ).to_markdown(
-                        index=options.show_index,
                         tablefmt="simple_outline",
+                        index=options.show_index,
                         floatfmt=adjusting.floatfmt(x, index=options.show_index),
-                        colalign=adjusting.column_alignment(x, index=options.show_index),
+                        headersalign=adjusting.column_alignment(x, header=True, index=options.show_index),
+                        colalign=adjusting.column_alignment(x, header=False, index=options.show_index),
                     )
                     print(disp)
                 case x if isinstance(x, Path):
