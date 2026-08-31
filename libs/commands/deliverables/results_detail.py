@@ -126,10 +126,10 @@ def aggregation(m: "MessageParserProtocol") -> None:
     )
 
     if g.params.statistics:
-        m.set_message(seat_data, StyleOptions(title="座席データ", data_kind=StyleOptions.DataKind.SEAT_DATA))
-        m.set_message(textwrap.indent(game_info.stats.seat0.best_record(), "\t"), StyleOptions(title="ベストレコード"))
-        m.set_message(textwrap.indent(game_info.stats.seat0.worst_record(), "\t"), StyleOptions(title="ワーストレコード"))
-        m.set_message(textwrap.indent(balance_data.strip(), "\t"), StyleOptions(title="平均収支"))
+        m.set_message(df_to_seat_data(seat_data), StyleOptions(title="座席データ", indent=1))
+        m.set_message(game_info.stats.seat0.best_record(), StyleOptions(title="ベストレコード", indent=1))
+        m.set_message(game_info.stats.seat0.worst_record(), StyleOptions(title="ワーストレコード", indent=1))
+        m.set_message(balance_data.strip(), StyleOptions(title="平均収支", indent=1))
 
     # レギュレーション
     remarks_df = g.params.read_data("REMARKS_INFO")
@@ -138,18 +138,18 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     if "役満和了" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 0").filter(items=["matter", "matter_count"])
-        m.set_message(work_df, StyleOptions(title="役満和了", data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
+        m.set_message(work_df, StyleOptions(title="役満和了", indent=1, data_kind=StyleOptions.DataKind.REMARKS_YAKUMAN))
 
     if "卓外清算" not in dictutil.dropitems_list():
         if g.params.individual:
             work_df = count_df.query("type == 2").filter(items=["matter", "matter_count", "ex_total"])
         else:
             work_df = count_df.query("type == 2 or type == 3").filter(items=["matter", "matter_count", "ex_total"])
-        m.set_message(work_df, StyleOptions(title="卓外清算", data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
+        m.set_message(work_df, StyleOptions(title="卓外清算", indent=1, data_kind=StyleOptions.DataKind.REMARKS_REGULATION))
 
     if "その他" not in dictutil.dropitems_list():
         work_df = count_df.query("type == 1").filter(items=["matter", "matter_count"])
-        m.set_message(work_df, StyleOptions(title="その他", data_kind=StyleOptions.DataKind.REMARKS_OTHER))
+        m.set_message(work_df, StyleOptions(title="その他", indent=1, data_kind=StyleOptions.DataKind.REMARKS_OTHER))
 
     # 対戦結果
     if g.params.versus:
@@ -442,6 +442,39 @@ def results_details() -> pd.DataFrame:
     df_data = df_data.drop(columns=["guest_count", "same_team"])
 
     return df_data
+
+
+def df_to_seat_data(df: pd.DataFrame) -> str:
+    """
+    座席データ生成
+
+    Args:
+        df (pd.DataFrame): 対象データ
+
+    Returns:
+        str: 整形テキスト
+
+    """
+    df.rename(columns=dictutil.rename_dicts(df.columns.to_list()), inplace=True)
+
+    # 表示加工
+    df["席"] = df.apply(lambda x: f"{x['席']}：", axis=1)
+    df["順位分布(平均順位)"] = df.apply(lambda x: f"{x['順位分布']} ({x['平均順位']})", axis=1)
+    if "トビ" in df.columns:
+        df["トビ"] = df.apply(lambda x: f"/ {x['トビ']:3d}", axis=1)
+    if "役満和了" in df.columns:
+        df["役満和了"] = df.apply(lambda x: f"/ {x['役満和了']:3d}", axis=1)
+
+    #
+    if g.cfg.rule.get_draw_split(g.params.rule_version):
+        filter_items = ["席", "平均順位", "トビ", "役満和了"]
+    else:
+        filter_items = ["席", "順位分布(平均順位)", "トビ", "役満和了"]
+    df = df.filter(items=filter_items).rename(columns={"席": "# 席：", "トビ": "/ トビ", "役満和了": "/ 役満 #"})
+
+    #
+    tbl = df.to_markdown(tablefmt="tsv", index=False).replace("0.00", "-.--").replace(" \t", "")
+    return f"{tbl}\n"
 
 
 def versus_data() -> str:
