@@ -6,8 +6,7 @@ import os
 import random
 import re
 from enum import Enum, auto
-from math import ceil, floor
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 import pandas as pd
 
@@ -189,57 +188,6 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
     return file_path
 
 
-def split_balanced(data: list[list[Any]], target_size: int, tolerance: float = 0.15) -> list[list[Any]]:
-    """
-    リストデータを指定個数で分割
-
-    Args:
-        data (list[list[Any]]): 対象データ
-        target_size (int): 分割サイズ
-        tolerance (float, optional): 個数誤差. Defaults to 0.15.
-
-    Returns:
-        list[list[Any]]: 分割したリスト
-
-    """
-    # 分割サイズに0が指定されている場合は何もしない
-    if not target_size:
-        return data
-
-    n = len(data)
-    if n == 0:
-        return []
-
-    min_size = int(target_size * (1 - tolerance))
-    max_size = int(target_size * (1 + tolerance))
-
-    # 最小ブロック数の候補を計算
-    min_blocks = ceil(n / max_size)
-    max_blocks = floor(n / min_size)
-
-    # 許容範囲内でブロック数を決める（なるべく少ない）
-    for num_blocks in range(min_blocks, max_blocks + 1):
-        size = n / num_blocks
-        if min_size <= size <= max_size:
-            break
-    else:
-        # 条件を満たすブロック数がない場合は単純均等割り
-        num_blocks = ceil(n / target_size)
-
-    # 実際の分割処理
-    base_size = n // num_blocks
-    remainder = n % num_blocks
-
-    result: list[list[Any]] = []
-    start = 0
-    for i in range(num_blocks):
-        end = start + base_size + (1 if i < remainder else 0)
-        result.append(data[start:end])
-        start = end
-
-    return result
-
-
 def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
     """
     指定文字数でテキストを行単位で分割してリストにする
@@ -397,7 +345,7 @@ def split_markdown_rows(
     n = len(df)
 
     if n == 0:
-        return [1]
+        return [(0, 0)]
 
     # 各範囲の文字数キャッシュ / (start, end): start <= row < end
     cache: dict[tuple[int, int], int] = {}
@@ -416,7 +364,7 @@ def split_markdown_rows(
         return cache[key]
 
     # ------------------------------------------------------------
-    # 1. 最小分割数を求める
+    # 最小分割数
     # ------------------------------------------------------------
     boundaries = [0]
     start = 0
@@ -427,7 +375,6 @@ def split_markdown_rows(
         if markdown_length(start, end) > max_chars:
             raise ValueError(f"row {start + 1} cannot fit within max_chars={max_chars}")
 
-        # 入る限り行を追加する。
         while end < n and markdown_length(start, end + 1) <= max_chars:
             end += 1
 
@@ -437,22 +384,10 @@ def split_markdown_rows(
     block_count = len(boundaries) - 1
 
     if block_count == 1:
-        return [1]
+        return [(0, n)]
 
     # ------------------------------------------------------------
-    # 2. 最小分割数を維持しつつ、文字数を均等化する
-    # ------------------------------------------------------------
-    #
-    # 各ブロックの文字数の二乗和を最小化する。
-    #
-    #   a^2 + b^2 + c^2
-    #
-    # は、合計が一定なら a, b, c が均等になるほど小さくなる。
-    #
-    # dp[k][end] =
-    #   end行目までをk個のテーブルに分割したときの
-    #   文字数二乗和の最小値
-    #
+    # 均等化
     # ------------------------------------------------------------
     dp: dict[tuple[int, int], tuple[int, int | None]] = {(0, 0): (0, None)}
 
@@ -484,19 +419,111 @@ def split_markdown_rows(
         raise RuntimeError("failed to find a valid partition")
 
     # ------------------------------------------------------------
-    # 3. 分割位置を復元
+    # 分割位置を復元
     # ------------------------------------------------------------
     ranges: list[tuple[int, int]] = []
     end = n
 
     for k in range(block_count, 0, -1):
-        _, start = dp[(k, end)]
+        _, split_start = dp[(k, end)]
 
-        assert start is not None
+        assert split_start is not None
 
-        ranges.append((start, end))
-        end = start
+        ranges.append((split_start, end))
+        end = split_start
 
     ranges.reverse()
 
     return ranges
+
+
+def join_strings(strings: list[str], max_chars: int = 2000) -> list[str]:
+    """
+    文字列を改行で連結し、文字数制限に応じて分割する。
+
+    Args:
+        strings: 連結対象の文字列。
+        max_chars: 1ブロックあたりの最大文字数。
+
+    Returns:
+        連結後の文字列のリスト。
+
+    Raises:
+        ValueError: max_charsが0以下の場合。
+    """
+    if max_chars <= 0:
+        raise ValueError("max_chars must be greater than 0")
+
+    if not strings:
+        return []
+
+    # 各文字列単体の長さ
+    lengths = [len(s) for s in strings]
+
+    # 文字列を1つ以上含むブロックの文字数(start:end の文字列を "\n".join() した長さ)
+    def block_length(start: int, end: int) -> int:
+        return sum(lengths[start:end]) + (end - start - 1)
+
+    n = len(strings)
+
+    # ------------------------------------------------------------
+    # 最小ブロック数
+    # ------------------------------------------------------------
+    dp = [float("inf")] * (n + 1)
+    dp[0] = 0
+
+    for end in range(1, n + 1):
+        for start in range(end):
+            length = block_length(start, end)
+            if length <= max_chars or start == end - 1:
+                dp[end] = min(dp[end], dp[start] + 1)
+
+    block_count = int(dp[n])
+
+    # ------------------------------------------------------------
+    # 均等化
+    # ------------------------------------------------------------
+    dp2: dict[tuple[int, int], tuple[int, int | None]] = {
+        (0, 0): (0, None),
+    }
+
+    for count in range(1, block_count + 1):
+        for end in range(count, n + 1):
+            best: tuple[int, int] | None = None
+
+            for start in range(count - 1, end):
+                previous = dp2.get((count - 1, start))
+
+                if previous is None:
+                    continue
+
+                length = block_length(start, end)
+
+                if length > max_chars and start != end - 1:
+                    continue
+
+                cost = previous[0] + length**2
+
+                if best is None or cost < best[0]:
+                    best = (cost, start)
+
+            if best is not None:
+                dp2[(count, end)] = best
+
+    # ------------------------------------------------------------
+    # 分割位置を復元
+    # ------------------------------------------------------------
+    ranges: list[tuple[int, int]] = []
+    end = n
+
+    for count in range(block_count, 0, -1):
+        _, split_start = dp2[(count, end)]
+
+        assert split_start is not None
+
+        ranges.append((split_start, end))
+        end = split_start
+
+    ranges.reverse()
+
+    return ["\n".join(strings[start:end]) for start, end in ranges]
