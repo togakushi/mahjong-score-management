@@ -102,7 +102,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
         rename_type=StyleOptions.RenameType.SHORT,
         base_name="rating",
         format_type="default",
-        summarize=False,
         codeblock=True,
     )
 
@@ -131,20 +130,19 @@ def calculation_rating() -> pd.DataFrame:
     """
     # データ収集
     df_results = g.params.read_data("RANKING_RATINGS", False).set_index("playtime")
-    df_ratings = pd.DataFrame(index=["initial_rating"] + df_results.index.to_list())  # 記録用
-    last_ratings: dict[str, float] = {}  # 最終値格納用
+    rating_index = ["initial_rating"] + df_results.index.to_list()
+
+    # 参加者列を先に一括で確保して断片化を防ぐ
+    players = pd.unique(df_results[["p1_name", "p2_name", "p3_name", "p4_name"]].astype(str).to_numpy().ravel())
+    df_ratings = pd.DataFrame(np.nan, index=rating_index, columns=players)  # 記録用
+    df_ratings.loc["initial_rating", :] = 1500.0
+    last_ratings: dict[str, float] = {player: 1500.0 for player in players}  # 最終値格納用
 
     # 獲得スコア
     score_mapping = {"1.0": 30.0, "1.5": 20.0, "2.0": 10.0, "2.5": 0.0, "3.0": -10.0, "3.5": -20.0, "4.0": -30.0}
 
     for x in df_results.itertuples():
         player_list = (str(x.p1_name), str(x.p2_name), str(x.p3_name), str(x.p4_name))
-        for player in player_list:
-            if player not in df_ratings.columns:
-                last_ratings[player] = 1500.0
-                df_ratings[player] = np.nan
-                df_ratings.loc["initial_rating", player] = 1500.0
-                df_ratings = df_ratings
 
         # 天鳳計算式 (https://tenhou.net/man/#RATING)
         rank_list = (x.p1_rank, x.p2_rank, x.p3_rank, x.p4_rank)
