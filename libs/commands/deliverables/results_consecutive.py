@@ -63,7 +63,6 @@ def aggregation(m: "MessageParserProtocol") -> None:
     options = StyleOptions(
         title=headline_title,
         codeblock=True,
-        summarize=True,
         key_title=False,
         format_type=g.params.format,
         base_name="summary",
