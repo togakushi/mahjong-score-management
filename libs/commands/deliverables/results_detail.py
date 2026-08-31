@@ -160,12 +160,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
         if g.params.verbose:
             m.set_message(
                 results_details(),
-                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA_ALL, codeblock=False),
+                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.GAME_RESULTS_ALL, codeblock=False),
             )
         else:
             m.set_message(
                 results_simple(),
-                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.RECORD_DATA, codeblock=False),
+                StyleOptions(title="戦績", data_kind=StyleOptions.DataKind.GAME_RESULTS, codeblock=False),
             )
 
 
