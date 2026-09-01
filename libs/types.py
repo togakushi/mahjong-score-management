@@ -154,9 +154,9 @@ class StyleOptions:
         """成績詳細一覧"""
         SEAT_DATA = auto()
         """座席データ"""
-        RECORD_DATA = auto()
+        GAME_RESULTS = auto()
         """戦績データ(簡易版)"""
-        RECORD_DATA_ALL = auto()
+        GAME_RESULTS_ALL = auto()
         """戦績データ(詳細版)"""
         RANKING = auto()
         """ランキングデータ"""

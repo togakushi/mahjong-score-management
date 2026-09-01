@@ -207,7 +207,7 @@ def merge_dicts(dict1: dict[Any, Any], dict2: dict[Any, Any]) -> dict[Any, Any]:
     return merged
 
 
-def rename_dicts(columns: list[str], options: StyleOptions) -> dict[str, str]:
+def rename_dicts(columns: list[str], options: StyleOptions = StyleOptions()) -> dict[str, str]:
     """
     カラムリネーム用辞書の生成
 

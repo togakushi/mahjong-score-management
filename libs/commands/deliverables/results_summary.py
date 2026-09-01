@@ -113,8 +113,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # メモ(役満和了)
     if "役満和了" not in dictutil.dropitems_list():
         options.data_kind = StyleOptions.DataKind.REMARKS_YAKUMAN
+        options.indent = 1
         df_yakuman = df_remarks.query("type == 0").drop(columns=["type", "ex_point"])
-
         if options.format_type == "default":
             options.title = "役満和了"
             options.codeblock = False
@@ -128,12 +128,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # メモ(卓外清算)
     if "卓外清算" not in dictutil.dropitems_list():
         options.data_kind = StyleOptions.DataKind.REMARKS_REGULATION
+        options.indent = 1
 
         if g.params.individual:  # 個人集計
             df_regulations = df_remarks.query("type == 2").drop(columns=["type"])
         else:  # チーム集計
             df_regulations = df_remarks.query("type == 2 or type == 3").drop(columns=["type"])
-
         if options.format_type == "default":
             options.title = "卓外清算"
             options.codeblock = False
@@ -147,8 +147,8 @@ def aggregation(m: "MessageParserProtocol") -> None:
     # メモ(その他)
     if "その他" not in dictutil.dropitems_list():
         options.data_kind = StyleOptions.DataKind.REMARKS_OTHER
+        options.indent = 1
         df_others = df_remarks.query("type == 1").drop(columns=set(df_remarks.columns) & {"type", "ex_point"})
-
         if options.format_type == "default":
             options.title = "その他"
             options.codeblock = False
@@ -208,7 +208,6 @@ def difference(m: "MessageParserProtocol") -> None:
         title="通算ポイント(差分)",
         base_name="summary",
         codeblock=True,
-        summarize=True,
         rename_type=StyleOptions.RenameType.SHORT,
         data_kind=StyleOptions.DataKind.POINTS_DIFF,
     )

@@ -13,7 +13,7 @@ from table2ascii import PresetStyle, table2ascii
 
 import integrations.discord.events.audioop as _audioop
 from integrations.base.interface import APIInterface
-from libs.types import CommandType, StyleOptions
+from libs.types import StyleOptions
 from libs.utils import converter, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
@@ -64,19 +64,6 @@ class AdapterAPI(APIInterface):
         """
         self.response = cast("Message", self.response)
 
-        def _table_data(data: dict[str, str]) -> list[str]:
-            ret_list: list[str] = []
-            text_data = iter(data.values())
-            # 先頭ブロックの処理(ヘッダ追加)
-            v = next(text_data)
-
-            ret_list.append(f"{header}\n```\n{v}\n```\n" if options.codeblock else f"{header}\n{v}\n")
-            # 残りのブロック
-            for v in text_data:
-                ret_list.append(f"```\n{v}\n```\n" if options.codeblock else f"{v}\n")
-
-            return ret_list
-
         if not m.in_thread:
             m.post.thread = False
 
@@ -123,39 +110,20 @@ class AdapterAPI(APIInterface):
                 if options.key_title and (options.title != header_title):
                     header = f"** {options.print_title} **"
                 match options.data_kind:
-                    case StyleOptions.DataKind.POINTS_TOTAL | StyleOptions.DataKind.POINTS_DIFF:
-                        post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))
-                    case StyleOptions.DataKind.POINTS_CONSECUTIVE:
-                        post_msg.extend(converter.df_to_text_table1(data, options, max_chars=1900))
-                    case StyleOptions.DataKind.SCORE_ANALYSIS | StyleOptions.DataKind.GAME_STATISTICS:
-                        post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=40)))
                     case StyleOptions.DataKind.REMARKS_YAKUMAN | StyleOptions.DataKind.REMARKS_REGULATION | StyleOptions.DataKind.REMARKS_OTHER:
-                        options.indent = 1
-                        post_msg.extend(_table_data(converter.df_to_remarks(data, options)))
+                        post_msg.extend(converter.df_to_remarks(data, options, limit=1500))
                     case StyleOptions.DataKind.STATS_LIST:
-                        post_msg.extend(_table_data(converter.df_to_text_table2(data, options, limit=2000)))
-                    case StyleOptions.DataKind.SEAT_DATA:
-                        options.indent = 1
-                        post_msg.extend(_table_data(converter.df_to_seat_data(data, options)))
-                    case StyleOptions.DataKind.RECORD_DATA:
-                        options.summarize = False
-                        post_msg.extend(_table_data(converter.df_to_results_simple(data, options, limit=1200)))
-                    case StyleOptions.DataKind.RECORD_DATA_ALL:
-                        options.summarize = False
-                        post_msg.extend(_table_data(converter.df_to_results_details(data, options, limit=1200)))
+                        post_msg.extend(converter.df_to_text_table2(data, options, limit=2000))
+                    case StyleOptions.DataKind.GAME_RESULTS:
+                        post_msg.extend(converter.df_to_results_simple(data, options, limit=1200))
+                    case StyleOptions.DataKind.GAME_RESULTS_ALL:
+                        post_msg.extend(converter.df_to_results_details(data, options, limit=1200))
                     case StyleOptions.DataKind.RANKING:
-                        post_msg.extend(_table_data(converter.df_to_ranking(data, options.title, step=0)))
-                    case StyleOptions.DataKind.RATING:
-                        post_msg.extend(_table_data(converter.df_to_text_table(data, options, step=20)))
+                        post_msg.extend(converter.df_to_ranking(data, options, limit=1800))
                     case _:
-                        pass
+                        post_msg.extend(converter.df_to_text_table1(data, options, max_chars=1900))
 
-        if options.summarize:
-            if m.status.command_type == CommandType.RANKING:
-                post_msg = textutil.split_text_blocks("".join(post_msg), 1900)
-            else:
-                post_msg = textutil.group_strings(post_msg, limit=1800)
-
+        post_msg = textutil.join_strings(post_msg, max_chars=1900)
         if thread_msg and m.post.thread:
             date_suffix = ExtDt(float(m.data.event_ts)).format(ExtDt.FMT.YMDHMS, ExtDt.DEM.SLASH)
             if not m.post.thread_title.isnumeric() and m.post.thread_title:
