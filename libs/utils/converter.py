@@ -241,7 +241,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
             cell_padding=0,
             first_col_heading=True,
             alignments=[Alignment.LEFT, Alignment.LEFT, Alignment.RIGHT, Alignment.RIGHT, Alignment.RIGHT, Alignment.LEFT],
-        )
+        ).replace("：：", "：")
         data_list.append(f"{k.replace('-', '/')} {v['備考']}\n" + output + "\n")
 
     return textutil.join_strings(data_list, limit)

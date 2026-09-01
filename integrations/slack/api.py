@@ -3,6 +3,7 @@ integrations/slack/api.py
 """
 
 import logging
+import re
 import textwrap
 from pathlib import PosixPath
 from typing import TYPE_CHECKING, Any, cast
@@ -118,7 +119,7 @@ class AdapterAPI(APIInterface):
         for msg in post_msg:
             self._call_chat_post_message(
                 channel=m.data.channel_id,
-                text=msg.rstrip(),
+                text=re.sub(r"\n\n+", "\n\n", msg.rstrip()),
                 thread_ts=m.reply_ts,
             )
 
