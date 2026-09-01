@@ -343,25 +343,15 @@ def split_markdown_rows(
         raise ValueError("max_chars must be greater than 0")
 
     n = len(df)
-
     if n == 0:
         return [(0, 0)]
 
-    # 各範囲の文字数キャッシュ / (start, end): start <= row < end
-    cache: dict[tuple[int, int], int] = {}
+    # 表の最大幅
+    lines = df.to_markdown(index=index).splitlines()[0]
 
     def markdown_length(start: int, end: int) -> int:
-        key = (start, end)
-
-        if key not in cache:
-            cache[key] = len(
-                df.iloc[start:end].to_markdown(
-                    index=index,
-                    tablefmt="simple",
-                )
-            )
-
-        return cache[key]
+        row_count = end - start  # データの行数
+        return lines * (row_count + 2)  # ヘッダ+セパレータ
 
     # ------------------------------------------------------------
     # 最小分割数
