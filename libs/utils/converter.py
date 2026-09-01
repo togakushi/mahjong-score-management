@@ -472,7 +472,7 @@ def df_to_ranking(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) ->
                     ]
                 )
         case _:
-            return {}
+            return []
 
     # 整形/分割
     ret: list[str] = []

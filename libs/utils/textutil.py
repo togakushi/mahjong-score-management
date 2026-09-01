@@ -347,7 +347,7 @@ def split_markdown_rows(
         return [(0, 0)]
 
     # 表の最大幅
-    lines = df.to_markdown(index=index).splitlines()[0]
+    lines = len(df.to_markdown(index=index).splitlines()[0])
 
     def markdown_length(start: int, end: int) -> int:
         row_count = end - start  # データの行数
