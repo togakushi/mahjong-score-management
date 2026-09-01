@@ -129,7 +129,7 @@ def aggregation(m: "MessageParserProtocol") -> None:
         m.set_message(df_to_seat_data(seat_data), StyleOptions(title="座席データ", indent=1))
         m.set_message(game_info.stats.seat0.best_record(), StyleOptions(title="ベストレコード", indent=1))
         m.set_message(game_info.stats.seat0.worst_record(), StyleOptions(title="ワーストレコード", indent=1))
-        m.set_message(balance_data.strip(), StyleOptions(title="平均収支", indent=1))
+        m.set_message(balance_data.rstrip(), StyleOptions(title="平均収支", indent=1))
 
     # レギュレーション
     remarks_df = g.params.read_data("REMARKS_INFO")
