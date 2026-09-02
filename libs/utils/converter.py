@@ -110,7 +110,7 @@ def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
 
     ret: list[str] = []
 
-    for start, end in textutil.split_markdown_rows(df, limit, options.show_index):
+    for start, end in textutil.split_markdown(df, limit, options.show_index):
         tbl = df[start:end].to_markdown(
             tablefmt="simple",
             index=options.show_index,
