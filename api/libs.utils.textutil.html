@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=17479ad6"></script>
+    <script src="_static/documentation_options.js?v=f259ad4b"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -76,11 +76,9 @@
 <li><a class="reference internal" href="#libs.utils.textutil.anonymous_mapping"><code class="docutils literal notranslate"><span class="pre">anonymous_mapping()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.group_strings"><code class="docutils literal notranslate"><span class="pre">group_strings()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_markdown_rows"><code class="docutils literal notranslate"><span class="pre">split_markdown_rows()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.join_strings"><code class="docutils literal notranslate"><span class="pre">join_strings()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_markdown"><code class="docutils literal notranslate"><span class="pre">split_markdown()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -320,21 +318,24 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.textutil.split_text_blocks">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_text_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_text_blocks" title="Link to this definition">¶</a></dt>
-<dd><p>指定文字数でテキストを行単位で分割してリストにする</p>
+<dt class="sig sig-object py" id="libs.utils.textutil.join_strings">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">join_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.join_strings" title="Link to this definition">¶</a></dt>
+<dd><p>文字列を改行で連結し、文字数制限に応じて分割する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – 対象文字列</p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – 分割文字数. Defaults to 2000.</p></li>
+<li><p><strong>strings</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 連結対象の文字列。</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – 1ブロックあたりの最大文字数。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>分割リスト</p>
+<dd class="field-even"><p>連結後の文字列のリスト。</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – limitが0以下の場合。</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -360,40 +361,20 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.textutil.group_strings">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">group_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.group_strings" title="Link to this definition">¶</a></dt>
-<dd><p>指定文字数まで改行で連結</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lines</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 連結対象</p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – 制限値. Defaults to 3000.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>連結結果</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.textutil.split_markdown_rows">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_markdown_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_chars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_markdown_rows" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="libs.utils.textutil.split_markdown">
+<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">split_markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.split_markdown" title="Link to this definition">¶</a></dt>
 <dd><p>DataFrameをMarkdownテーブルの文字数制限に合わせて分割する。</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>DataFrame</em>) – 分割対象のDataFrame。</p></li>
-<li><p><strong>max_chars</strong> (<em>int</em>) – 1テーブルあたりの最大文字数。</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – 1テーブルあたりの最大文字数。</p></li>
 <li><p><strong>index</strong> (<em>bool</em>) – MarkdownテーブルにDataFrameのindexを含めるか。</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – max_charsが0以下の場合。</p></li>
+<li><p><strong>ValueError</strong> – limitが0以下の場合。</p></li>
 <li><p><strong>ValueError</strong> – 1行だけでも文字数制限を超える場合。</p></li>
 <li><p><strong>RuntimeError</strong> – 最小分割数で解なしの場合。</p></li>
 </ul>
@@ -403,29 +384,6 @@
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[tuple[int, int]]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="libs.utils.textutil.join_strings">
-<span class="sig-prename descclassname"><span class="pre">libs.utils.textutil.</span></span><span class="sig-name descname"><span class="pre">join_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libs.utils.textutil.join_strings" title="Link to this definition">¶</a></dt>
-<dd><p>文字列を改行で連結し、文字数制限に応じて分割する。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>strings</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – 連結対象の文字列。</p></li>
-<li><p><strong>max_chars</strong> (<em>int</em>) – 1ブロックあたりの最大文字数。</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>連結後の文字列のリスト。</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – max_charsが0以下の場合。</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list[str]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -455,11 +413,9 @@
 <li><a class="reference internal" href="#libs.utils.textutil.anonymous_mapping"><code class="docutils literal notranslate"><span class="pre">anonymous_mapping()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.str_conv"><code class="docutils literal notranslate"><span class="pre">str_conv()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.save_file_path"><code class="docutils literal notranslate"><span class="pre">save_file_path()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_text_blocks"><code class="docutils literal notranslate"><span class="pre">split_text_blocks()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.group_strings"><code class="docutils literal notranslate"><span class="pre">group_strings()</span></code></a></li>
-<li><a class="reference internal" href="#libs.utils.textutil.split_markdown_rows"><code class="docutils literal notranslate"><span class="pre">split_markdown_rows()</span></code></a></li>
 <li><a class="reference internal" href="#libs.utils.textutil.join_strings"><code class="docutils literal notranslate"><span class="pre">join_strings()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_strings"><code class="docutils literal notranslate"><span class="pre">split_strings()</span></code></a></li>
+<li><a class="reference internal" href="#libs.utils.textutil.split_markdown"><code class="docutils literal notranslate"><span class="pre">split_markdown()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -561,8 +517,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.20.3.
-      Last updated on 2026-09-01.
+      Release Version: 0.20.4.
+      Last updated on 2026-09-02.
     </div>
 
   </body>
