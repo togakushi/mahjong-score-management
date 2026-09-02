@@ -43,6 +43,12 @@ def aggregation(m: "MessageParserProtocol") -> None:
 
     df = g.params.read_data("SUMMARY_CONSECUTIVE")
 
+    if df.empty:
+        game_info.count = 0
+        m.status.result = False
+        m.set_headline(message.header(game_info, m), StyleOptions(title=headline_title))
+        return
+
     # 表示調整
     items: list[str] = ["name", "rolling_point", "acquisition_rank"]
     if g.params.verbose:
