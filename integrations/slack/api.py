@@ -113,9 +113,9 @@ class AdapterAPI(APIInterface):
                     case StyleOptions.DataKind.RANKING:
                         post_msg.extend(converter.df_to_ranking(data, options, limit=2800))
                     case _:
-                        post_msg.extend(converter.df_to_text_table1(data, options, max_chars=2900))
+                        post_msg.extend(converter.df_to_text_table1(data, options, limit=2900))
 
-        post_msg = textutil.join_strings(post_msg, max_chars=2900)
+        post_msg = textutil.join_strings(post_msg, limit=2900)
         for msg in post_msg:
             self._call_chat_post_message(
                 channel=m.data.channel_id,

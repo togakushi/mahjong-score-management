@@ -93,14 +93,14 @@ def save_output(
     return save_file
 
 
-def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, max_chars: int = 2000) -> list[str]:
+def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) -> list[str]:
     """
     DataFrameからテキストテーブルの生成
 
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        max_chars (int, optional): テーブルに含める最大文字数. Defaults to 2000.
+        limit (int, optional): テーブルに含める最大文字数. Defaults to 2000.
 
     Returns:
         list[str]: 生成テーブル
@@ -110,7 +110,7 @@ def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, max_chars: int = 
 
     ret: list[str] = []
 
-    for start, end in textutil.split_markdown_rows(df, max_chars, options.show_index):
+    for start, end in textutil.split_markdown(df, limit, options.show_index):
         tbl = df[start:end].to_markdown(
             tablefmt="simple",
             index=options.show_index,

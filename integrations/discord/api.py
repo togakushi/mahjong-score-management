@@ -121,9 +121,9 @@ class AdapterAPI(APIInterface):
                     case StyleOptions.DataKind.RANKING:
                         post_msg.extend(converter.df_to_ranking(data, options, limit=1800))
                     case _:
-                        post_msg.extend(converter.df_to_text_table1(data, options, max_chars=1900))
+                        post_msg.extend(converter.df_to_text_table1(data, options, limit=1900))
 
-        post_msg = textutil.join_strings(post_msg, max_chars=1900)
+        post_msg = textutil.join_strings(post_msg, limit=1900)
         if thread_msg and m.post.thread:
             date_suffix = ExtDt(float(m.data.event_ts)).format(ExtDt.FMT.YMDHMS, ExtDt.DEM.SLASH)
             if not m.post.thread_title.isnumeric() and m.post.thread_title:
