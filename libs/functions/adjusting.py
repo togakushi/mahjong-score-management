@@ -13,7 +13,7 @@ def floatfmt(df: pd.DataFrame, index: bool = False) -> list[str]:
 
     Args:
         df (pd.DataFrame): チェックするデータ
-        index (bool, optional): リストにIndexを含める. Defaults to False.
+        index (bool, optional): リストにIndexを含める。 Defaults to False.
 
     Returns:
         list[str]: floatfmtに指定するリスト
@@ -66,7 +66,7 @@ def column_alignment(df: pd.DataFrame, header: bool = False, index: bool = False
     Args:
         df (pd.DataFrame): チェックするデータ
         header (bool, optional): ヘッダを対象にする
-        index (bool, optional): リストにIndexを含める. Defaults to False.
+        index (bool, optional): リストにIndexを含める。 Defaults to False.
 
     Returns:
         list[str]: colalignに指定するリスト

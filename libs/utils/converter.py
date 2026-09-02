@@ -32,8 +32,8 @@ def save_output(
     Args:
         df (pd.DataFrame): 保存対象データ
         options (StyleOptions): 詳細オプション
-        headline (tuple[MessageType, StyleOptions], optional): ヘッダコメント. Defaults to None.
-        suffix (str, optional): 保存ファイル名に追加する文字列. Defaults to None.
+        headline (tuple[MessageType, StyleOptions], optional): ヘッダコメント。 Defaults to None.
+        suffix (str, optional): 保存ファイル名に追加する文字列。 Defaults to None.
 
     Returns:
         Union[Path, None]: 保存状態
@@ -100,7 +100,7 @@ def df_to_text_table1(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): テーブルに含める最大文字数. Defaults to 2000.
+        limit (int, optional): テーブルに含める最大文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 生成テーブル
@@ -136,7 +136,7 @@ def df_to_text_table2(df: pd.DataFrame, options: StyleOptions, limit: int = 2000
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): 分割文字数. Defaults to 2000.
+        limit (int, optional): 分割文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 生成テーブル
@@ -203,7 +203,7 @@ def df_to_results_details(df: pd.DataFrame, options: StyleOptions, limit: int = 
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): 分割文字数. Defaults to 2000.
+        limit (int, optional): 分割文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 整形テキスト
@@ -254,7 +254,7 @@ def df_to_results_simple(df: pd.DataFrame, options: StyleOptions, limit: int = 2
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): 分割文字数. Defaults to 2000.
+        limit (int, optional): 分割文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 整形テキスト
@@ -286,7 +286,7 @@ def df_to_ranking(df: pd.DataFrame, options: StyleOptions, limit: int = 2000) ->
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): 分割文字数. Defaults to 2000.
+        limit (int, optional): 分割文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 整形テキスト
@@ -501,7 +501,7 @@ def df_to_remarks(df: pd.DataFrame, options: StyleOptions, limit: int = 3000) ->
     Args:
         df (pd.DataFrame): 対象データ
         options (StyleOptions): 表示フラグ
-        limit (int, optional): 分割文字数. Defaults to 3000.
+        limit (int, optional): 分割文字数。 Defaults to 3000.
 
     Returns:
         list[str]: 整形テキスト

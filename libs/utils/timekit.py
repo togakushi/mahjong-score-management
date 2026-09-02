@@ -219,7 +219,7 @@ class ExtendedDatetime:
         ExtendedDatetimeの初期化
 
         Args:
-            value (AcceptedType, optional): 引数. Defaults to None.
+            value (AcceptedType, optional): 引数。 Defaults to None.
 
                 - None: 現在時刻( ``datetime.now()`` )で初期化
 
@@ -597,8 +597,8 @@ class ExtendedDatetimeList(list):  # type: ignore[type-arg]
         全要素にformatを適用した文字列リストを返す
 
         Args:
-            fmt (Format, optional): フォーマット変換. Defaults to "sql".
-            delimiter (Delimiter, optional): 区切り記号指定. Defaults to None.
+            fmt (Format, optional): フォーマット変換。 Defaults to "sql".
+            delimiter (Delimiter, optional): 区切り記号指定。 Defaults to None.
 
         Returns:
             list[str]: 生成したリスト
@@ -611,8 +611,8 @@ class ExtendedDatetimeList(list):  # type: ignore[type-arg]
         全要素にformatを適用し、最小日付と最大日付を辞書で返す
 
         Args:
-            fmt (Format, optional): フォーマット変換. Defaults to "sql".
-            delimiter (Delimiter, optional): 区切り記号指定. Defaults to None.
+            fmt (Format, optional): フォーマット変換。 Defaults to "sql".
+            delimiter (Delimiter, optional): 区切り記号指定。 Defaults to None.
 
         Returns:
             dict[str, str]: 生成した辞書

@@ -408,7 +408,7 @@ class PlaceholderBuilder(ParameterData):
         プレースホルダ用辞書出力
 
         Args:
-            game_count (int, optional): 規定打数調整用対戦数. Defaults to None.
+            game_count (int, optional): 規定打数調整用対戦数。 Defaults to None.
 
         Returns:
             dict[str, Any]: プレースホルダ
