@@ -53,7 +53,7 @@ def header(adapter: "ServiceAdapter", text: str = "dummy") -> None:
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-        text (str, optional): ヘッダテキスト. Defaults to "dummy".
+        text (str, optional): ヘッダテキスト。 Defaults to "dummy".
 
     """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "header", "text": {}})
@@ -69,7 +69,7 @@ def button(adapter: "ServiceAdapter", text: str, action_id: str, style: str | bo
         adapter (ServiceAdapter): アダプタインターフェース
         text (str, optional): 表示テキスト
         action_id (str): action_id
-        style (str | bool, optional): 表示スタイル. Defaults to False.
+        style (str | bool, optional): 表示スタイル。 Defaults to False.
 
     """
     adapter.conf.tab_var["view"]["blocks"].append({"type": "actions", "elements": [{}]})
@@ -127,8 +127,8 @@ def checkboxes(
         adapter (ServiceAdapter): アダプタインターフェース
         id_suffix (str): block_id, action_id
         title (str): 表示タイトル
-        flag (Optional[dict[str, Any]): 表示する選択項目. Defaults to None.
-        initial (Optional[list[str]]): チェック済み項目. Defaults to None.
+        flag (Optional[dict[str, Any]): 表示する選択項目。 Defaults to None.
+        initial (Optional[list[str]]): チェック済み項目。 Defaults to None.
 
     """
     if flag is None:
@@ -164,8 +164,8 @@ def user_select_pulldown(
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-        text (str, optional): 表示テキスト. Defaults to "dummy".
-        add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
+        text (str, optional): 表示テキスト。 Defaults to "dummy".
+        add_list (Optional[list[str]]): プレイヤーリスト。 Defaults to None.
 
     """
     read_memberslist()
@@ -205,8 +205,8 @@ def multi_select_pulldown(
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-        text (str, optional): 表示テキスト. Defaults to "dummy".
-        add_list (Optional[list[str]]): プレイヤーリスト. Defaults to None.
+        text (str, optional): 表示テキスト。 Defaults to "dummy".
+        add_list (Optional[list[str]]): プレイヤーリスト。 Defaults to None.
 
     """
     read_memberslist()
@@ -242,7 +242,7 @@ def input_ranked(adapter: "ServiceAdapter", block_id: str | bool = False) -> Non
 
     Args:
         adapter (ServiceAdapter): アダプタインターフェース
-        block_id (str | bool, optional): block_id. Defaults to False.
+        block_id (str | bool, optional): block_id。 Defaults to False.
 
     """
     if block_id:

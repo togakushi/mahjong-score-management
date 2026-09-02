@@ -94,7 +94,7 @@ def get_config_value(
         section (str): セクション名
         name (str): 項目名
         val_type (type): 取り込む値の型 (bool, int, float, str, list[Any])
-        fallback (Union[bool, int, float, str, list[Any]], optional): 項目が見つからない場合に返す値. Defaults to None
+        fallback (Union[bool, int, float, str, list[Any]], optional): 項目が見つからない場合に返す値。 Defaults to None
 
     Returns:
         Any: 取得した値
@@ -244,7 +244,7 @@ def regulation_list(word_type: int = 0, rule_version: str | None = None) -> list
     登録済みワードリストを取得する
 
     Args:
-        word_type (int, optional): 取得するタイプ. Defaults to 0.
+        word_type (int, optional): 取得するタイプ。 Defaults to 0.
         rule_version (str, optional): ルール識別子
 
     Returns:

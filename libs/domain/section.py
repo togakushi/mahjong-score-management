@@ -254,7 +254,7 @@ class BaseSection(CommonMethodMixin):
         必要なパラメータを辞書型で返す
 
         Args:
-            drop_items (list[str], optional): 返却に含めないキーリスト. Defaults to None.
+            drop_items (list[str], optional): 返却に含めないキーリスト。 Defaults to None.
 
         Returns:
              dict[str, str]: 返却値

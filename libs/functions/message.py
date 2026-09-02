@@ -94,7 +94,7 @@ def search_word(headword: bool = False) -> str:
     キーワード検索条件を返す
 
     Args:
-        headword (bool, optional): 見出しを付ける. Defaults to False.
+        headword (bool, optional): 見出しを付ける。 Defaults to False.
 
     Returns:
         str: 条件をまとめた文字列
@@ -121,8 +121,8 @@ def header(game_info: "GameInfo", m: "MessageParserProtocol", add_text: str = ""
     Args:
         game_info (GameInfo): 集計範囲のゲーム情報
         m (MessageParserProtocol): メッセージデータ
-        add_text (str, optional): 追加表示するテキスト. Defaults to "".
-        indent (int, optional): 先頭のタブ数. Defaults to 1.
+        add_text (str, optional): 追加表示するテキスト。 Defaults to "".
+        indent (int, optional): 先頭のタブ数。 Defaults to 1.
 
     Returns:
         str: 生成した見出し
@@ -228,7 +228,7 @@ def remarks(headword: bool = False, deliverables: Optional[CommandType] = None) 
     引数で指定された集計方法を注記にまとめる
 
     Args:
-        headword (bool, optional): 見出しを付ける. Defaults to False.
+        headword (bool, optional): 見出しを付ける。 Defaults to False.
         deliverables (CommandType, optional): コマンドタイプ
 
     Returns:

@@ -104,7 +104,7 @@ def anonymous_mapping(name_list: list[str], initial: int = 0) -> dict[str, str]:
 
     Args:
         name_list (list[str]): 名前リスト
-        initial (int, optional): インデックス初期値. Defaults to 0.
+        initial (int, optional): インデックス初期値。 Defaults to 0.
 
     Returns:
         dict[str, str]: マッピング用辞書
@@ -172,7 +172,7 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
 
     Args:
         filename (str): デフォルトファイル名
-        delete (bool, optional): 生成済みファイルを削除. Defaults to False.
+        delete (bool, optional): 生成済みファイルを削除。 Defaults to False.
 
     Returns:
         Path: 保存ファイルパス
@@ -286,7 +286,7 @@ def split_strings(strings: str, limit: int = 2000) -> list[str]:
 
     Args:
         strings (str): 分割対象
-        limit (int, optional): 分割文字数. Defaults to 2000.
+        limit (int, optional): 分割文字数。 Defaults to 2000.
 
     Returns:
         list[str]: 分割結果

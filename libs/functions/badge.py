@@ -12,7 +12,7 @@ def degree(game_count: int = 0) -> str:
     対戦数に対して表示される称号を返す
 
     Args:
-        game_count (int, optional): 対戦数. Defaults to 0.
+        game_count (int, optional): 対戦数。 Defaults to 0.
 
     Returns:
         str: 表示する称号
@@ -39,8 +39,8 @@ def status(game_count: int = 0, win: int = 0) -> str:
     勝率に対して付く調子バッジを返す
 
     Args:
-        game_count (int, optional): 対戦数. Defaults to 0.
-        win (int, optional): 勝ち数. Defaults to 0.
+        game_count (int, optional): 対戦数。 Defaults to 0.
+        win (int, optional): 勝ち数。 Defaults to 0.
 
     Returns:
         str: 表示する称号
@@ -79,7 +79,7 @@ def grade(name: str, detail: bool = True) -> str:
 
     Args:
         name (str): 対象プレイヤー名
-        detail (bool, optional): 昇段ポイントの表示. Defaults to True.
+        detail (bool, optional): 昇段ポイントの表示。 Defaults to True.
 
     Returns:
         str: 称号

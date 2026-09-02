@@ -135,8 +135,8 @@ def date_range(
 
     Args:
         kind (Format): ExtendedDatetimeのformatメソッドに渡す引数
-        prefix_a (str, optional): 単独で返った時の接頭辞. Defaults to None.
-        prefix_b (str, optional): 範囲で返った時の接頭辞. Defaults to None.
+        prefix_a (str, optional): 単独で返った時の接頭辞。 Defaults to None.
+        prefix_b (str, optional): 範囲で返った時の接頭辞。 Defaults to None.
 
     Returns:
         str: 生成文字列
