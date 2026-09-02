@@ -228,17 +228,17 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     return [msg]
 
 
-def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) -> list[tuple[int, int]]:
+def split_markdown_rows(df: pd.DataFrame, limit: int, index: bool = True) -> list[tuple[int, int]]:
     """
     DataFrameをMarkdownテーブルの文字数制限に合わせて分割する。
 
     Args:
         df: 分割対象のDataFrame。
-        max_chars: 1テーブルあたりの最大文字数。
+        limit: 1テーブルあたりの最大文字数。
         index: MarkdownテーブルにDataFrameのindexを含めるか。
 
     Raises:
-        ValueError: max_charsが0以下の場合。
+        ValueError: limitが0以下の場合。
         ValueError: 1行だけでも文字数制限を超える場合。
         RuntimeError: 最小分割数で解なしの場合。
 
@@ -246,8 +246,8 @@ def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) ->
         list[tuple[int, int]]: 各テーブルの開始行番号と終了番号のペア
 
     """
-    if max_chars <= 0:
-        raise ValueError("max_chars must be greater than 0")
+    if limit <= 0:
+        raise ValueError("limit must be greater than 0")
 
     n = len(df)
     if n == 0:
@@ -269,10 +269,10 @@ def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) ->
     while start < n:
         end = start + 1
 
-        if markdown_length(start, end) > max_chars:
-            raise ValueError(f"row {start + 1} cannot fit within max_chars={max_chars}")
+        if markdown_length(start, end) > limit:
+            raise ValueError(f"row {start + 1} cannot fit within limit={limit}")
 
-        while end < n and markdown_length(start, end + 1) <= max_chars:
+        while end < n and markdown_length(start, end + 1) <= limit:
             end += 1
 
         boundaries.append(end)
@@ -300,7 +300,7 @@ def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) ->
 
                 length = markdown_length(start, end)
 
-                if length > max_chars:
+                if length > limit:
                     continue
 
                 cost = previous[0] + length**2
@@ -334,22 +334,22 @@ def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) ->
     return ranges
 
 
-def join_strings(strings: list[str], max_chars: int = 2000) -> list[str]:
+def join_strings(strings: list[str], limit: int = 2000) -> list[str]:
     """
     文字列を改行で連結し、文字数制限に応じて分割する。
 
     Args:
         strings: 連結対象の文字列。
-        max_chars: 1ブロックあたりの最大文字数。
+        limit: 1ブロックあたりの最大文字数。
 
     Returns:
         連結後の文字列のリスト。
 
     Raises:
-        ValueError: max_charsが0以下の場合。
+        ValueError: limitが0以下の場合。
     """
-    if max_chars <= 0:
-        raise ValueError("max_chars must be greater than 0")
+    if limit <= 0:
+        raise ValueError("limit must be greater than 0")
 
     if not strings:
         return []
@@ -372,7 +372,7 @@ def join_strings(strings: list[str], max_chars: int = 2000) -> list[str]:
     for end in range(1, n + 1):
         for start in range(end):
             length = block_length(start, end)
-            if length <= max_chars or start == end - 1:
+            if length <= limit or start == end - 1:
                 dp[end] = min(dp[end], dp[start] + 1)
 
     block_count = int(dp[n])
@@ -396,7 +396,7 @@ def join_strings(strings: list[str], max_chars: int = 2000) -> list[str]:
 
                 length = block_length(start, end)
 
-                if length > max_chars and start != end - 1:
+                if length > limit and start != end - 1:
                     continue
 
                 cost = previous[0] + length**2
