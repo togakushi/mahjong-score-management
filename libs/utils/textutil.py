@@ -188,55 +188,6 @@ def save_file_path(filename: str, delete: bool = False) -> "Path":
     return file_path
 
 
-def split_text_blocks(text: str, limit: int = 2000) -> list[str]:
-    """
-    指定文字数でテキストを行単位で分割してリストにする
-
-    Args:
-        text (str): 対象文字列
-        limit (int, optional): 分割文字数. Defaults to 2000.
-
-    Returns:
-        list[str]: 分割リスト
-
-    """
-    blocks: list[str] = []
-    current_data = ""
-    buffer_data = ""
-    in_code = False
-    min_gap_after_code_start = 10
-    lines_count = 0
-
-    for _, line in enumerate(text.splitlines(keepends=True)):
-        stripped = line.strip()
-        buffer_data += line
-
-        # --- コードブロック開始／終了検出 ---
-        if stripped.startswith("```"):
-            in_code = not in_code
-            if not in_code:
-                current_data += buffer_data
-                buffer_data = ""
-            continue
-
-        lines_count += 1 if in_code else 0
-
-        # --- 文字数チェック ---
-        if len(current_data + buffer_data) > limit:
-            if lines_count > min_gap_after_code_start:
-                if in_code:
-                    blocks.append(current_data + buffer_data + "```\n")
-                    buffer_data = "```\n"
-                else:
-                    blocks.append(current_data + buffer_data)
-                    buffer_data = ""
-            else:
-                blocks.append(current_data)  # 先頭の改行は削除されてしまう
-            current_data = ""
-
-    return blocks
-
-
 def split_strings(msg: str, limit: int = 3000) -> list[str]:
     """
     指定文字数で分割
@@ -277,51 +228,7 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     return [msg]
 
 
-def group_strings(lines: list[str], limit: int = 3000) -> list[str]:
-    """
-    指定文字数まで改行で連結
-
-    Args:
-        lines (list[str]): 連結対象
-        limit (int, optional): 制限値. Defaults to 3000.
-
-    Returns:
-        list[str]: 連結結果
-
-    """
-    result: list[str] = []
-    buffer: list[str] = []
-
-    for i, line in enumerate(lines):
-        is_last = i == len(lines) - 1  # 最終ブロック判定
-        max_char = limit * 1.5 if is_last else limit  # 1ブロックの最大値
-
-        # 仮に追加したときの文字列長を計算
-        temp = buffer + [line]
-        total_len = len("".join(temp))
-
-        if total_len <= max_char:
-            buffer.append(line)
-        else:
-            if buffer:
-                result.append("\n".join(buffer))
-            buffer = [line]
-
-    if buffer:
-        result.append("\n".join(buffer))
-
-    # 改行の集約
-    result = [str(x).replace("\n```\n\n```\n", "\n```\n```\n") for x in result]
-    result = [str(x).replace("\n\n\t", "\n\t") for x in result]
-
-    return result
-
-
-def split_markdown_rows(
-    df: pd.DataFrame,
-    max_chars: int,
-    index: bool = True,
-) -> list[tuple[int, int]]:
+def split_markdown_rows(df: pd.DataFrame, max_chars: int, index: bool = True) -> list[tuple[int, int]]:
     """
     DataFrameをMarkdownテーブルの文字数制限に合わせて分割する。
 
