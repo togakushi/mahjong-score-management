@@ -280,13 +280,13 @@ def join_strings(strings: list[str], limit: int = 2000) -> list[str]:
     return ["\n".join(strings[start:end]) for start, end in ranges]
 
 
-def split_strings(msg: str, limit: int = 3000) -> list[str]:
+def split_strings(strings: str, limit: int = 2000) -> list[str]:
     """
-    指定文字数で分割
+    文字列を指定文字数で分割する。
 
     Args:
-        msg (str): 分割対象
-        limit (int, optional): 分割文字数. Defaults to 3000.
+        strings (str): 分割対象
+        limit (int, optional): 分割文字数. Defaults to 2000.
 
     Returns:
         list[str]: 分割結果
@@ -296,7 +296,7 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
     buffer: list[str] = []
     codeblock: bool = False
 
-    for line in msg.splitlines(keepends=True):
+    for line in strings.splitlines(keepends=True):
         # 仮に追加したときの文字列長を計算
         temp = buffer + [line]
         total_len = len("".join(temp))
@@ -317,7 +317,7 @@ def split_strings(msg: str, limit: int = 3000) -> list[str]:
 
     if result:
         return result
-    return [msg]
+    return [strings]
 
 
 def split_markdown(df: pd.DataFrame, limit: int, index: bool = True) -> list[tuple[int, int]]:
