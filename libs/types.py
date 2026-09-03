@@ -279,15 +279,6 @@ class DispatchRule:
     """実行関数"""
 
 
-class MessageTypeDict(TypedDict):
-    """メッセージ格納辞書"""
-
-    data: MessageType
-    """内容"""
-    options: StyleOptions
-    """表示オプション"""
-
-
 class ScoreDict(TypedDict, total=False):
     """スコアデータ格納用辞書"""
 
