@@ -174,9 +174,19 @@ class StyleOptions:
         """メモ(その他)"""
 
     title: str = ""
-    """出力タイトル"""
+    """タイトル文字列の指定"""
+    key_title: bool = True
+    """タイトルを小見出しとして表示する
+
+    - *True*: 表示
+    - *False*: 非表示
+    """
     sub_title: bool = False
-    """サブタイトル化"""
+    """サブタイトル化
+
+    - *True*: タイトルの後にコロンを追加する
+    - *False*: タイトルを墨付き括弧で括る
+    """
     format_type: Literal["default", "csv", "txt"] = "default"
     """出力フォーマット"""
 
@@ -207,26 +217,8 @@ class StyleOptions:
     - *True*: 非表示
     - *False*: 表示
     """
-    key_title: bool = True
-    """小見出しに辞書のキーを使う
-
-    - *True*: 表示
-    - *False*: 非表示
-    """
     indent: int = 0
     """出力時に付与するインデント数(TAB)"""
-    keep_blank: bool = False
-    """空行の削除
-
-    - *True*: 削除しない
-    - *False*: 削除する
-    """
-    keep_indent: bool = False
-    """保存されているメッセージのdedentの取り扱い
-
-    - *True*: 維持する
-    - *False*: 削除する
-    """
     transpose: bool = False
     """MessageTypeがDataFrameのとき表の縦横を変換する"""
     rename_type: RenameType = field(default=RenameType.NORMAL)
@@ -237,7 +229,9 @@ class StyleOptions:
     @property
     def print_title(self) -> str:
         """
-        タイトル表示
+        タイトル文字列を返す
+
+        sub_titleの真偽で表示形式を変える
 
         Returns:
             str: タイトル文字列
@@ -277,15 +271,6 @@ class DispatchRule:
     """オプション状態"""
     handler: Callable[["MessageParserProtocol"], None]
     """実行関数"""
-
-
-class MessageTypeDict(TypedDict):
-    """メッセージ格納辞書"""
-
-    data: MessageType
-    """内容"""
-    options: StyleOptions
-    """表示オプション"""
 
 
 class ScoreDict(TypedDict, total=False):
