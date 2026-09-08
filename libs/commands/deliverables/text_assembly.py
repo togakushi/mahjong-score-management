@@ -165,7 +165,7 @@ def help_message(m: "MessageParserProtocol") -> None:
     # 検索範囲
     m.set_message(
         ExtDt.print_range(),
-        StyleOptions(title="検索範囲に指定できるワード", keep_indent=True),
+        StyleOptions(title="検索範囲に指定できるワード"),
     )
 
     # メモ機能
@@ -201,7 +201,7 @@ def help_message(m: "MessageParserProtocol") -> None:
             {remarks_type1}
             {remarks_type0}
             """),
-            StyleOptions(title="メモ機能", keep_blank=True),
+            StyleOptions(title="メモ機能"),
         )
 
     # ルールセット
@@ -225,7 +225,7 @@ def help_message(m: "MessageParserProtocol") -> None:
                 regulation += f"\t{word}\n"
             regulation += "\n"
         if regulation:
-            m.set_message(regulation, StyleOptions(title="レギュレーション", keep_blank=True, keep_indent=True))
+            m.set_message(regulation, StyleOptions(title="レギュレーション"))
 
     # その他
     channel_config = g.params.channel_config
@@ -239,7 +239,7 @@ def help_message(m: "MessageParserProtocol") -> None:
         {app_description}
         Release Version: {app_version}
         """),
-        StyleOptions(title="チャンネル設定情報", keep_blank=True),
+        StyleOptions(title="チャンネル設定情報"),
     )
 
     # 非表示項目を削除

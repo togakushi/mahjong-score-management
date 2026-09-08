@@ -35,10 +35,7 @@ class AdapterAPI(APIInterface):
         ret: str = ""
         for line in text.splitlines():
             line = line.replace("<@>", "")
-            if not style.keep_indent:
-                line = textwrap.dedent(line)
-            if line or style.keep_blank:
-                ret += textwrap.indent(f"{line}\n", "\t" * style.indent)
+            ret += textwrap.indent(f"{line}\n", "\t" * style.indent)
         return ret.rstrip()
 
     def post(self, m: "MessageParserProtocol") -> None:
