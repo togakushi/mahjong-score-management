@@ -231,5 +231,16 @@ class MessageParserProtocol(Protocol):
     def parser(self, body: Any) -> None:
         """メッセージ解析メソッド"""
 
+    def check_reply(self, flg: bool) -> bool:
+        """
+        スレッド/リプライ型のメッセージを処理するか判定する。
+
+        Args:
+            flg (bool): 設定ファイルパラメータ(thread_report)
+
+        Returns:
+            bool: 判定結果
+        """
+
     def reset(self) -> None:
         """状態リセット"""

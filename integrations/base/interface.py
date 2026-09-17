@@ -236,6 +236,9 @@ class MessageParserInterface(ABC):
 
         """
 
+    @abstractmethod
+    def check_reply(self, flg: bool) -> bool: ...
+
     @property
     @abstractmethod
     def is_reply(self) -> bool:

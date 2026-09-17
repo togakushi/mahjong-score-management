@@ -6,7 +6,6 @@ import logging
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from integrations import factory
 from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.functions import lookup, message, validator
@@ -124,12 +123,14 @@ def message_append(detection: GameResult, m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    if _thread_check(m):
-        modify.db_insert(detection, m)
-    else:
-        m.post.ts = m.data.event_ts
-        m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
-        logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+    if hasattr(g.adapter.conf, "thread_report"):
+        if not m.check_reply(g.adapter.conf.thread_report):
+            m.post.ts = m.data.event_ts
+            m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
+            logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+            return
+
+    modify.db_insert(detection, m)
 
 
 def message_changed(detection: GameResult, m: "MessageParserProtocol") -> None:
@@ -148,11 +149,12 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol") -> None:
         return
 
     # スレッド内チェック → 処理対象外なら終了
-    if not _thread_check(m):
-        m.post.ts = m.data.event_ts
-        m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
-        logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
-        return
+    if hasattr(g.adapter.conf, "thread_report"):
+        if not m.check_reply(g.adapter.conf.thread_report):
+            m.post.ts = m.data.event_ts
+            m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
+            logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+            return
 
     # 既存データなし → 新規挿入
     if not record_data.has_valid_data():
@@ -176,12 +178,3 @@ def message_deleted(m: "MessageParserProtocol") -> None:
         modify.remarks_delete(m)
     else:
         modify.db_delete(m)
-
-
-def _thread_check(m: "MessageParserProtocol") -> bool:
-    """スレッド内判定関数"""
-    if isinstance(g.adapter, factory.slack_adapter):  # type: ignore[attr-defined]
-        if not m.is_reply or (m.is_reply == g.adapter.conf.thread_report):
-            return True
-        return False
-    return not m.is_reply
