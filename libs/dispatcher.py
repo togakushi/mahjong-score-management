@@ -33,11 +33,11 @@ def by_keyword(m: "MessageParserProtocol") -> None:
 
     logging.debug("keyword=%s, argument=%s, source=%s", m.keyword, m.argument, m.status.source)
     logging.debug(
-        "status=%s, event_ts=%s, thread_ts=%s, in_thread=%s, is_command=%s, user_id=%s,",
+        "status=%s, event_ts=%s, thread_ts=%s, is_reply=%s, is_command=%s, user_id=%s,",
         m.data.status.value,
         m.data.event_ts,
         m.data.thread_ts,
-        m.in_thread,
+        m.is_reply,
         m.is_command,
         m.data.user_id,
     )
@@ -90,7 +90,7 @@ def other_words(word: str, m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    if word in g.cfg.rule.remarks_words and m.in_thread:  # 追加メモ
+    if word in g.cfg.rule.remarks_words and m.is_reply:  # 追加メモ
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
     else:  # スコア登録
@@ -181,7 +181,7 @@ def message_deleted(m: "MessageParserProtocol") -> None:
 def _thread_check(m: "MessageParserProtocol") -> bool:
     """スレッド内判定関数"""
     if isinstance(g.adapter, factory.slack_adapter):  # type: ignore[attr-defined]
-        if not m.in_thread or (m.in_thread == g.adapter.conf.thread_report):
+        if not m.is_reply or (m.is_reply == g.adapter.conf.thread_report):
             return True
         return False
-    return not m.in_thread
+    return not m.is_reply

@@ -64,7 +64,7 @@ class AdapterAPI(APIInterface):
         """
         self.response = cast("Message", self.response)
 
-        if not m.in_thread:
+        if not m.is_reply:
             m.post.thread = False
 
         # 見出しポスト

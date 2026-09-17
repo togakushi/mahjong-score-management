@@ -130,7 +130,7 @@ class MessageParserProtocol(Protocol):
     """コマンドタイプ"""
 
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         """
         元メッセージへのリプライとなっているか
 

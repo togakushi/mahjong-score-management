@@ -30,7 +30,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         _ = body
 
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         return False
 
     @property

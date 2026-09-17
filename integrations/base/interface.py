@@ -238,7 +238,7 @@ class MessageParserInterface(ABC):
 
     @property
     @abstractmethod
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         """
         元メッセージへのリプライとなっているか
 
@@ -343,10 +343,10 @@ class MessageParserInterface(ABC):
             return self.post.ts
 
         # スレッドに返すか
-        if self.post.thread and self.in_thread:  # スレッド内
+        if self.post.thread and self.is_reply:  # スレッド内
             if self.data.thread_ts != "undetermined":
                 ret_ts = self.data.thread_ts
-        elif self.post.thread and not self.in_thread:  # スレッド外
+        elif self.post.thread and not self.is_reply:  # スレッド外
             ret_ts = self.data.event_ts
 
         return ret_ts

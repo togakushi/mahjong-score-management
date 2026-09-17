@@ -102,7 +102,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
         logging.debug(self.data)
 
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         if self.data.thread_ts == "0":
             return False
         if self.data.event_ts == self.data.thread_ts:

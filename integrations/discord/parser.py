@@ -41,7 +41,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
                 self.data.thread_ts = str(self.discord_msg.reference.resolved.created_at.timestamp())
 
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         """
         リプライメッセージか判定
 
@@ -51,7 +51,7 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
                 - *False*: 通常メッセージ
 
         Note:
-            slackに合わせてプロパティ名に ``in_thread`` を使う
+            slackに合わせてプロパティ名に ``is_reply`` を使う
 
         """
         if self.status.command_flg:
