@@ -16,7 +16,8 @@ if TYPE_CHECKING:
 
 
 MessageType: TypeAlias = Union[None, str, "Path", "pd.DataFrame"]
-"""メッセージ型
+"""
+メッセージ型
 
 - *None*: 空データ(なにもしない)
 - *str*: 文字列型データ(そのまま表示)
