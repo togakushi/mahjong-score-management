@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=eb97cc3c" />
     
-    <script src="_static/documentation_options.js?v=5f09dd87"></script>
+    <script src="_static/documentation_options.js?v=2a8b64b8"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     
@@ -67,7 +67,8 @@
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser"><code class="docutils literal notranslate"><span class="pre">MessageParser</span></code></a><ul>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.__init__"><code class="docutils literal notranslate"><span class="pre">MessageParser.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.parser"><code class="docutils literal notranslate"><span class="pre">MessageParser.parser()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParser.in_thread</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.check_reply"><code class="docutils literal notranslate"><span class="pre">MessageParser.check_reply()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.is_reply"><code class="docutils literal notranslate"><span class="pre">MessageParser.is_reply</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParser.is_bot</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.check_updatable"><code class="docutils literal notranslate"><span class="pre">MessageParser.check_updatable</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.ignore_user"><code class="docutils literal notranslate"><span class="pre">MessageParser.ignore_user</span></code></a></li>
@@ -212,14 +213,27 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="integrations.discord.parser.MessageParser.check_reply">
+<span class="sig-name descname"><span class="pre">check_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integrations.discord.parser.MessageParser.check_reply" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flg</strong> (<em>bool</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
-<dt class="sig sig-object py" id="integrations.discord.parser.MessageParser.in_thread">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">in_thread</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#integrations.discord.parser.MessageParser.in_thread" title="Link to this definition">¶</a></dt>
-<dd><p>リプライメッセージか判定</p>
+<dt class="sig sig-object py" id="integrations.discord.parser.MessageParser.is_reply">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_reply</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#integrations.discord.parser.MessageParser.is_reply" title="Link to this definition">¶</a></dt>
+<dd><p>元メッセージへのリプライとなっているか</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>True</em>: リプライメッセージ</p></li>
+<li><p><em>True</em>: リプライの形（リプライ／スレッドなど）</p></li>
 <li><p><em>False</em>: 通常メッセージ</p></li>
 </ul>
 </p>
@@ -228,10 +242,6 @@
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>slackに合わせてプロパティ名に <code class="docutils literal notranslate"><span class="pre">in_thread</span></code> を使う</p>
-</div>
 </dd></dl>
 
 <dl class="py property">
@@ -306,7 +316,8 @@
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser"><code class="docutils literal notranslate"><span class="pre">MessageParser</span></code></a><ul>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.__init__"><code class="docutils literal notranslate"><span class="pre">MessageParser.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.parser"><code class="docutils literal notranslate"><span class="pre">MessageParser.parser()</span></code></a></li>
-<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.in_thread"><code class="docutils literal notranslate"><span class="pre">MessageParser.in_thread</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.check_reply"><code class="docutils literal notranslate"><span class="pre">MessageParser.check_reply()</span></code></a></li>
+<li><a class="reference internal" href="#integrations.discord.parser.MessageParser.is_reply"><code class="docutils literal notranslate"><span class="pre">MessageParser.is_reply</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.is_bot"><code class="docutils literal notranslate"><span class="pre">MessageParser.is_bot</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.check_updatable"><code class="docutils literal notranslate"><span class="pre">MessageParser.check_updatable</span></code></a></li>
 <li><a class="reference internal" href="#integrations.discord.parser.MessageParser.ignore_user"><code class="docutils literal notranslate"><span class="pre">MessageParser.ignore_user</span></code></a></li>
@@ -413,8 +424,8 @@
       </ul>
     </div>  
     <div class="footer">
-      Release Version: 0.20.7.
-      Last updated on 2026-09-08.
+      Release Version: 0.20.8.
+      Last updated on 2026-09-17.
     </div>
 
   </body>
