@@ -29,8 +29,11 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
     def parser(self, body: dict[str, Any]) -> None:
         _ = body
 
+    def check_reply(self, flg: bool) -> bool:
+        return True
+
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         return False
 
     @property

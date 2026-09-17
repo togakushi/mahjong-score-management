@@ -59,7 +59,7 @@ class AdapterAPI(APIInterface):
             if res and res.status_code == 200:  # 見出しがある場合はスレッドにする
                 m.post.ts = res.get("ts", "undetermined")
 
-        if not m.in_thread:
+        if not m.is_reply:
             m.post.thread = False
 
         # 見出しポスト

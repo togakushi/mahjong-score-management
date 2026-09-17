@@ -6,7 +6,6 @@ import logging
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
-from integrations import factory
 from libs.domain import modify
 from libs.domain.score import GameResult
 from libs.functions import lookup, message, validator
@@ -33,11 +32,11 @@ def by_keyword(m: "MessageParserProtocol") -> None:
 
     logging.debug("keyword=%s, argument=%s, source=%s", m.keyword, m.argument, m.status.source)
     logging.debug(
-        "status=%s, event_ts=%s, thread_ts=%s, in_thread=%s, is_command=%s, user_id=%s,",
+        "status=%s, event_ts=%s, thread_ts=%s, is_reply=%s, is_command=%s, user_id=%s,",
         m.data.status.value,
         m.data.event_ts,
         m.data.thread_ts,
-        m.in_thread,
+        m.is_reply,
         m.is_command,
         m.data.user_id,
     )
@@ -90,7 +89,7 @@ def other_words(word: str, m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    if word in g.cfg.rule.remarks_words and m.in_thread:  # 追加メモ
+    if word in g.cfg.rule.remarks_words and m.is_reply:  # 追加メモ
         if lookup.exsist_record(m.data.thread_ts).has_valid_data():
             modify.check_remarks(m)
     else:  # スコア登録
@@ -124,12 +123,14 @@ def message_append(detection: GameResult, m: "MessageParserProtocol") -> None:
         m (MessageParserProtocol): メッセージデータ
 
     """
-    if _thread_check(m):
-        modify.db_insert(detection, m)
-    else:
-        m.post.ts = m.data.event_ts
-        m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
-        logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+    if hasattr(g.adapter.conf, "thread_report"):
+        if not m.check_reply(g.adapter.conf.thread_report):
+            m.post.ts = m.data.event_ts
+            m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
+            logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+            return
+
+    modify.db_insert(detection, m)
 
 
 def message_changed(detection: GameResult, m: "MessageParserProtocol") -> None:
@@ -148,11 +149,12 @@ def message_changed(detection: GameResult, m: "MessageParserProtocol") -> None:
         return
 
     # スレッド内チェック → 処理対象外なら終了
-    if not _thread_check(m):
-        m.post.ts = m.data.event_ts
-        m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
-        logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
-        return
+    if hasattr(g.adapter.conf, "thread_report"):
+        if not m.check_reply(g.adapter.conf.thread_report):
+            m.post.ts = m.data.event_ts
+            m.set_message(message.random_reply(m, "inside_thread"), StyleOptions(key_title=False))
+            logging.debug("skip (inside thread). event_ts=%s, thread_ts=%s", m.data.event_ts, m.data.thread_ts)
+            return
 
     # 既存データなし → 新規挿入
     if not record_data.has_valid_data():
@@ -176,12 +178,3 @@ def message_deleted(m: "MessageParserProtocol") -> None:
         modify.remarks_delete(m)
     else:
         modify.db_delete(m)
-
-
-def _thread_check(m: "MessageParserProtocol") -> bool:
-    """スレッド内判定関数"""
-    if isinstance(g.adapter, factory.slack_adapter):  # type: ignore[attr-defined]
-        if not m.in_thread or (m.in_thread == g.adapter.conf.thread_report):
-            return True
-        return False
-    return not m.in_thread

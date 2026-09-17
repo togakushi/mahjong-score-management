@@ -41,8 +41,11 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
             self.data.channel_type = ChannelType.DIRECT_MESSAGE
             self.data.channel_id = body.get("channel_id", "")
 
+    def check_reply(self, flg: bool) -> bool:
+        return True
+
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         return False
 
     @property

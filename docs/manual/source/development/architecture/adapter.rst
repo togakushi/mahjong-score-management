@@ -46,6 +46,8 @@
            MessageParser : post
            MessageParser : status
            MessageParser : parser()
+           MessageParser : check_reply()
+
 
        class MessageParserDataMixin
            MessageParserDataMixin <|-- MessageParser

@@ -101,8 +101,13 @@ class MessageParser(MessageParserDataMixin, MessageParserInterface):
 
         logging.debug(self.data)
 
+    def check_reply(self, flg: bool) -> bool:
+        if not self.is_reply or (self.is_reply == flg):
+            return True
+        return False
+
     @property
-    def in_thread(self) -> bool:
+    def is_reply(self) -> bool:
         if self.data.thread_ts == "0":
             return False
         if self.data.event_ts == self.data.thread_ts:
