@@ -396,8 +396,6 @@ class GameResult:
                 ret_list = [self.p1.rpoint, self.p2.rpoint, self.p3.rpoint, self.p4.rpoint]
             case "point":
                 ret_list = [self.p1.point, self.p2.point, self.p3.point, self.p4.point]
-            case "point":
-                ret_list = [self.p1.point, self.p2.point, self.p3.point, self.p4.point]
             case "rank":
                 ret_list = [self.p1.rank, self.p2.rank, self.p3.rank, self.p4.rank]
 
