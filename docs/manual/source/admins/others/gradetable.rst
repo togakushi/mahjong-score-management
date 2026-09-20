@@ -3,7 +3,9 @@
 段位システム
 ============
 
-| 定義ファイルはJSON形式で記述する。
+:integrations_section:`badge_grade` が ``True`` に設定されている場合、段位が表示される。
+
+| 段位システムに使用する定義ファイルはJSON形式で記述する。
 | フォーマットチェックを通過しないJSONは読み込まれず、段位の表示が無効になる。
 
 .. list-table::
@@ -83,8 +85,8 @@
 
 #. ゲーム終了時点の順位と素点から獲得ポイントを求める
 
-   - 素点を ``addition_expression`` で評価する
    - 順位に応じた獲得ポイントを ``acquisition`` から取得する
+   - 素点を ``addition_expression`` で評価し、獲得ポイントに加算する
 
 #. 昇段ポイントに獲得ポイントを加算する
 
@@ -126,3 +128,9 @@
            { "grade": "魂天", "point": [0, 0], "acquisition": [0, 0, 0, 0], "demote": false }
        ]
    }
+
+定義済み設定ファイル
+++++++++++++++++++++
+
+- :manpage:`雀魂風 <gradetable/mahjongsoul.json>`
+- :manpage:`天鳳風 <gradetable/tenho.json>`
