@@ -117,130 +117,52 @@ class StatusData(DataMixin):
 
 
 class MessageParserProtocol(Protocol):
-    """メッセージ解析クラス"""
+    """
+    メッセージ解析クラスプロトコル
+
+    .. seealso::
+       :doc:`integrations.base.interface`
+
+    """
 
     data: MsgData
-    """受け取ったメッセージデータ"""
     post: PostData
-    """送信する内容"""
     status: StatusData
-    """処理した結果"""
 
     COMMAND_TYPE: type[CommandType]
-    """コマンドタイプ"""
 
     @property
-    def is_reply(self) -> bool:
-        """
-        元メッセージへのリプライとなっているか
-
-        Returns:
-            bool:
-                - *True*: リプライの形（リプライ／スレッドなど）
-                - *False*: 通常メッセージ
-
-        """
+    def is_reply(self) -> bool: ...
 
     @property
-    def is_command(self) -> bool:
-        """
-        コマンドで実行されているかチェック
-
-        Returns:
-            bool:
-                - *True*: コマンド実行
-                - *False*: 非コマンド(キーワード呼び出し)
-
-        """
+    def is_command(self) -> bool: ...
 
     @property
-    def is_bot(self) -> bool:
-        """
-        botによる操作かチェック
-
-        Returns:
-            bool:
-                - *True*: botが操作
-                - *False*: ユーザが操作
-
-        """
+    def is_bot(self) -> bool: ...
 
     @property
-    def keyword(self) -> str:
-        """
-        コマンドとして認識している文字列を返す。
-
-        Returns:
-            str: 認識済みのコマンドキーワード。
-
-        """
+    def keyword(self) -> str: ...
 
     @property
-    def argument(self) -> list[str]:
-        """
-        コマンド引数として認識しているオプションを返す。
-
-        Returns:
-            list[str]: 認識済みのオプション文字列リスト。
-
-        """
+    def argument(self) -> list[str]: ...
 
     @property
-    def reply_ts(self) -> str:
-        """
-        リプライ先のタイムスタンプを返す。
-
-        Returns:
-            str: 返信先メッセージのタイムスタンプ。
-
-        """
+    def reply_ts(self) -> str: ...
 
     @property
-    def check_updatable(self) -> bool:
-        """
-        DB更新可能チャンネルか判定する。
-
-        Returns:
-            bool:
-                - *True*: 更新可能
-                - *False*: 更新不可
-
-        """
+    def check_updatable(self) -> bool: ...
 
     @property
-    def ignore_user(self) -> bool:
-        """
-        ignore_useridに存在するユーザかチェック
+    def ignore_user(self) -> bool: ...
 
-        Returns:
-            bool:
-                - *True*: 存在する(操作禁止ユーザ)
-                - *False*: 存在しない
+    def set_headline(self, data: "MessageType", options: "StyleOptions") -> None: ...
 
-        """
+    def set_message(self, data: "MessageType", options: "StyleOptions") -> None: ...
 
-    def set_headline(self, data: "MessageType", options: "StyleOptions") -> None:
-        """ヘッドラインメッセージをセット"""
+    def delete_items(self, items: list[str]) -> None: ...
 
-    def set_message(self, data: "MessageType", options: "StyleOptions") -> None:
-        """本文メッセージをセット"""
+    def parser(self, body: Any) -> None: ...
 
-    def delete_items(self, items: list[str]) -> None:
-        """指定項目の削除"""
+    def check_reply(self, flg: bool) -> bool: ...
 
-    def parser(self, body: Any) -> None:
-        """メッセージ解析メソッド"""
-
-    def check_reply(self, flg: bool) -> bool:
-        """
-        スレッド/リプライ型のメッセージを処理するか判定する。
-
-        Args:
-            flg (bool): 設定ファイルパラメータ(thread_report)
-
-        Returns:
-            bool: 判定結果
-        """
-
-    def reset(self) -> None:
-        """状態リセット"""
+    def reset(self) -> None: ...

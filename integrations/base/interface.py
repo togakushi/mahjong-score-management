@@ -167,7 +167,7 @@ class MessageParserDataMixin:
     """処理状態管理クラス"""
 
     def reset(self) -> None:
-        """初期化"""
+        """管理クラスの状態を初期化する。"""
         self.data.reset()
         self.post.reset()
         self.status.reset()
@@ -237,7 +237,16 @@ class MessageParserInterface(ABC):
         """
 
     @abstractmethod
-    def check_reply(self, flg: bool) -> bool: ...
+    def check_reply(self, flg: bool) -> bool:
+        """
+        スレッド/リプライ型のメッセージを処理するか判定する。
+
+        Args:
+            flg (bool): 設定ファイルパラメータ(thread_report)
+
+        Returns:
+            bool: 判定結果
+        """
 
     @property
     @abstractmethod

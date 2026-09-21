@@ -87,7 +87,7 @@ class MemberConfig(BaseSection, SettingAttrs):
         別名からメンバー名を逆引き
 
         Args:
-            name (str): 変換する名前
+            name (str): 検索する名前
 
         Returns:
             str: メンバー名(見つからない場合は空欄)
