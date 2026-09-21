@@ -68,8 +68,9 @@
 <li><a class="reference internal" href="#id2">登録/削除</a></li>
 <li><a class="reference internal" href="#id3">レギュラーメンバー（登録済みプレイヤー）</a></li>
 <li><a class="reference internal" href="#id4">ゲストメンバー（未登録プレイヤー）</a></li>
-<li><a class="reference internal" href="#id5">プレイヤー名の敬称の取り扱い</a></li>
-<li><a class="reference internal" href="#id6">メンバー探索順序</a></li>
+<li><a class="reference internal" href="#id5">敬称の取り扱い</a></li>
+<li><a class="reference internal" href="#id6">ひらがな・カタカナの取り扱い</a></li>
+<li><a class="reference internal" href="#id7">表記揺れの吸収</a></li>
 </ul>
 </li>
 </ul>
@@ -211,26 +212,36 @@
 <div class="line">メンバーとして登録されているプレイヤーは別名（ニックネーム）を定義できる。</div>
 <div class="line">スコア記録や成績サマリを出力する際に、別名で記載されていても登録したプレイヤー名に置き換えられる。</div>
 </div>
+<p>メンバーから削除されると記録された成績はそのままでゲスト扱いになる。</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>禁則文字</p>
+<p>メンバー名として使用できない文字、文字列がある。</p>
+<ul class="simple">
+<li><p>コマンドとして認識される文字列</p></li>
+<li><p>他のプレイヤー名、別名、チーム名と一致する文字列</p></li>
+<li><p>半角記号</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>別名登録時の注意点</p>
+<p>別名が登録されたタイミングでデータベース上で見つかった別名はすべてプレイヤー名に書き換えられる。</p>
+</div>
 </section>
 <section id="id4">
 <h2>ゲストメンバー（未登録プレイヤー）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">メンバー登録されていないプレイヤーは、スコア記録時に入力されたプレイヤー名で記録される。</div>
-<div class="line">成績表示など、名前が表示される場合はゲスト（設定ファイルで定義）に置換される。</div>
+<div class="line">成績表示など、名前が表示される場合は設定ファイルで定義された名前（ <a class="reference internal" href="../configuration/main/management/member.html#member_section-guest_name" title="guest_name"><code class="xref mahjong mahjong-member_section docutils literal notranslate"><span class="pre">guest_name</span></code></a> ）に置換される。</div>
 </div>
-<p>ゲストでも個別の名前で記録しておくことで、あとからメンバー登録しても成績を追従できる。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ゲストからレギュラーに変更する際の注意点</p>
-<p>別名を登録したタイミングで、データベース上で見つかった別名はすべてプレイヤー名に書き換えられる。</p>
-<div class="line-block">
-<div class="line">レギュラーからゲストに変更されたプレイヤーと同じ名前を使用した場合、名前がすべて置き換えられてしまう。</div>
-<div class="line">登録、削除の順番次第ではデータが使い物にならなくなるので注意すること。</div>
-</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>ゲストでも個別の名前で記録しておくことで、あとからメンバー登録した際に成績を追従できる。</p>
 </div>
 </section>
 <section id="id5">
-<h2>プレイヤー名の敬称の取り扱い<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<h2>敬称の取り扱い<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <p>「Aさん」など、敬称が付いた状態で記述されているプレイヤーの敬称は削除されて処理される。</p>
 <p>削除対象の敬称は以下</p>
 <ul class="simple">
@@ -249,14 +260,20 @@
 </ul>
 </section>
 <section id="id6">
-<h2>メンバー探索順序<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
-<p>以下の順序で入力された名前をメンバーリストから探索し、一致した場合にレギュラーメンバーとして処理される。</p>
-<ol class="arabic simple">
-<li><p>入力された文字列を加工せずに登録されている名前/別名と比較して一致した場合</p></li>
-<li><p>入力された文字列から敬称を削除し、登録されている名前/別名と比較して一致した場合</p></li>
-<li><p>敬称の削除後、カタカナ部分をひらがなに変換し、登録されている名前/別名と比較して一致した場合</p></li>
-<li><p>敬称の削除後、ひらがな部分をカタカナに変換し、登録されている名前/別名と比較して一致した場合</p></li>
-</ol>
+<h2>ひらがな・カタカナの取り扱い<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>すべての処理はひらがな・カタカナの区別をしない（同じ名前として扱われる）。</p>
+</section>
+<section id="id7">
+<h2>表記揺れの吸収<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>入力された名前は以下の条件で名前のリストが生成され、生成された名前が登録済みプレイヤーとして存在すればレギュラーメンバーとして処理される。</p>
+<ul class="simple">
+<li><p>入力された名前をそのまま（無加工）</p></li>
+<li><p>無加工の名前のひらがな部分をすべてカタカナに変換</p></li>
+<li><p>無加工の名前のカタカナ部分をすべてひらがなに変換</p></li>
+<li><p>敬称を削除した名前</p></li>
+<li><p>敬称を削除した名前のひらがな部分をすべてカタカナに変換</p></li>
+<li><p>敬称を削除した名前のカタカナ部分をすべてひらがなに変換</p></li>
+</ul>
 </section>
 </section>
 
@@ -274,8 +291,9 @@
 <li><a class="reference internal" href="#id2">登録/削除</a></li>
 <li><a class="reference internal" href="#id3">レギュラーメンバー（登録済みプレイヤー）</a></li>
 <li><a class="reference internal" href="#id4">ゲストメンバー（未登録プレイヤー）</a></li>
-<li><a class="reference internal" href="#id5">プレイヤー名の敬称の取り扱い</a></li>
-<li><a class="reference internal" href="#id6">メンバー探索順序</a></li>
+<li><a class="reference internal" href="#id5">敬称の取り扱い</a></li>
+<li><a class="reference internal" href="#id6">ひらがな・カタカナの取り扱い</a></li>
+<li><a class="reference internal" href="#id7">表記揺れの吸収</a></li>
 </ul>
 </li>
 </ul>
@@ -372,7 +390,7 @@
     </div>  
     <div class="footer">
       Release Version: 0.20.8.
-      Last updated on 2026-09-17.
+      Last updated on 2026-09-21.
     </div>
 
   </body>
