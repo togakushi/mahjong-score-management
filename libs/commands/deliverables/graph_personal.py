@@ -16,7 +16,7 @@ import libs.global_value as g
 from libs.domain.datamodels import GameInfo
 from libs.functions import message
 from libs.types import StyleOptions
-from libs.utils import dictutil, graphutil, textutil
+from libs.utils import graphutil, textutil
 from libs.utils.timekit import ExtendedDatetime as ExtDt
 
 if TYPE_CHECKING:
@@ -60,16 +60,7 @@ def plot(m: "MessageParserProtocol") -> None:
         title_range = f"(直近 {len(df)} ゲーム)"
     else:
         title_range = f"({ExtDt(g.params.starttime).format(ExtDt.FMT.YMDHM)} - {ExtDt(g.params.endtime).format(ExtDt.FMT.YMDHM)})"
-
     m.set_headline(message.header(game_info, m), StyleOptions(title=title_text))
-    m.set_message(
-        df.drop(
-            columns=["count", "name"],
-        ).rename(
-            columns=dictutil.rename_dicts(df.drop(columns=["count", "name"]).columns.to_list(), StyleOptions()),
-        ),
-        StyleOptions(title="個人成績", header_hidden=True, key_title=False),
-    )
 
     # --- グラフ生成
     graphutil.setup()
