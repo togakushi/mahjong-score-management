@@ -421,7 +421,7 @@ class PlaceholderBuilder(ParameterData):
             if game_count is None:
                 ret_dict.update({"stipulated": 1})
             else:
-                ret_dict.update({"stipulated": int(ceil(game_count * self.stipulated_rate) + 1)})
+                ret_dict.update({"stipulated": ceil(game_count * self.stipulated_rate) + 1})
 
         if self.player_list:
             ret_dict.update({f"player_{idx}": x for idx, x in enumerate(self.player_list)})

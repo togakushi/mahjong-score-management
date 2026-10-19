@@ -292,7 +292,7 @@ def reprocessing_remarks(m: "MessageParserProtocol") -> None:
         m.data.thread_ts = str(cast(dict[str, Any], msg[0]).get("ts"))
 
         for x in range(1, reply_count + 1):
-            m.data.text = str(cast(dict[str, str], msg[x]).get("text", ""))
+            m.data.text = cast(dict[str, str], msg[x]).get("text", "")
             if m.data.text:
                 m.data.event_ts = str(cast(dict[str, Any], msg[x]).get("ts"))
                 logging.debug(

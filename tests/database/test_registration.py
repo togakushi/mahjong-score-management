@@ -44,7 +44,7 @@ def test_member_add(user_name: str, ret_meg: str, registered: bool) -> None:
         registered (bool): 登録結果として期待するDB反映可否。
 
     """
-    ret = member.append(str(user_name).split())
+    ret = member.append(user_name.split())
     print(ret)
     assert ret_meg in ret
 
@@ -76,7 +76,7 @@ def test_team_create(team_name: str, ret_meg: str, registered: bool) -> None:
         registered (bool): 登録結果として期待するDB反映可否。
 
     """
-    ret = team.create(str(team_name).split())
+    ret = team.create(team_name.split())
     assert ret_meg in ret
 
     with closing(dbutil.connection(g.cfg.setting.database_file)) as conn:

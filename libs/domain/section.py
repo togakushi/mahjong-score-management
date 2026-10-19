@@ -198,7 +198,7 @@ class BaseSection(CommonMethodMixin):
         self.initialization(self.main_parser[self.section])
 
     def __repr__(self) -> str:
-        return str({k: v for k, v in vars(self).items() if not str(k).startswith("_")})
+        return str({k: v for k, v in vars(self).items() if not k.startswith("_")})
 
     def initialization(self, section_proxy: "SectionProxy") -> None:
         """

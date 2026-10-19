@@ -619,12 +619,12 @@ def sectional_aggregate(style: dict[str, Any], target_info: dict[str, Any]) -> l
             # 順位分布
             df = pd.DataFrame(
                 {
-                    "1位率": [float(str(data[x + 1][6]).replace("%", "")) for x in range(len(data) - 1)],
-                    "2位率": [float(str(data[x + 1][8]).replace("%", "")) for x in range(len(data) - 1)],
-                    "3位率": [float(str(data[x + 1][10]).replace("%", "")) for x in range(len(data) - 1)],
-                    "4位率": [float(str(data[x + 1][12]).replace("%", "")) for x in range(len(data) - 1)],
+                    "1位率": [float(data[x + 1][6].replace("%", "")) for x in range(len(data) - 1)],
+                    "2位率": [float(data[x + 1][8].replace("%", "")) for x in range(len(data) - 1)],
+                    "3位率": [float(data[x + 1][10].replace("%", "")) for x in range(len(data) - 1)],
+                    "4位率": [float(data[x + 1][12].replace("%", "")) for x in range(len(data) - 1)],
                 },
-                index=[f"{str(data[x + 1][0])} - {str(data[x + 1][1])}" for x in range(len(data) - 1)],
+                index=[f"{data[x + 1][0]} - {data[x + 1][1]}" for x in range(len(data) - 1)],
             )
 
             imgdata = graphing_rank_distribution(df, f"順位分布 （ 区間 {title} ）")

@@ -263,9 +263,9 @@ class SvcFunctions(FunctionsInterface):
 
         try:
             res: SlackResponse = self.api.appclient.reactions_add(
-                channel=str(ch),
+                channel=ch,
                 name=icon,
-                timestamp=str(ts),
+                timestamp=ts,
             )
             logging.debug("ts=%s, ch=%s, icon=%s, %s", ts, ch, icon, res.validate())  # type: ignore[no-untyped-call]
         except self.slack_api_error as err:

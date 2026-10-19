@@ -294,13 +294,13 @@ class GameResult:
         if "ts" in kwargs and isinstance(kwargs["ts"], str):
             self.ts = kwargs["ts"]
         if "rule_version" in kwargs and isinstance(kwargs["rule_version"], str):
-            self.rule_version = str(kwargs["rule_version"])
+            self.rule_version = kwargs["rule_version"]
         if "deposit" in kwargs and isinstance(kwargs["deposit"], int):
-            self.deposit = int(kwargs["deposit"])
+            self.deposit = kwargs["deposit"]
         if "origin_point" in kwargs and isinstance(kwargs["origin_point"], int):
-            self.origin_point = int(kwargs["origin_point"])
+            self.origin_point = kwargs["origin_point"]
         if "return_point" in kwargs and isinstance(kwargs["return_point"], int):
-            self.return_point = int(kwargs["return_point"])
+            self.return_point = kwargs["return_point"]
         if "rank_point" in kwargs and isinstance(kwargs["rank_point"], list):
             self.rank_point = kwargs["rank_point"]
         if "draw_split" in kwargs and isinstance(kwargs["draw_split"], bool):
