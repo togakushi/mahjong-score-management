@@ -91,7 +91,7 @@ def plot(m: "MessageParserProtocol") -> None:
             for _, val in results.items():
                 line_count += 1
                 cell_param.append([val[y] for y in column_labels])
-                if int(line_count % 2):
+                if line_count % 2:
                     cell_color.append([line_color1 for i in column_labels])
                 else:
                     cell_color.append([line_color2 for i in column_labels])

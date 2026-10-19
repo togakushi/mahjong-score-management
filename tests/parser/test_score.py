@@ -56,8 +56,8 @@ def test_score_report(
     print(vars(result))
     chk_dict: dict[str, Any] = {}
     if result.has_valid_data():
-        chk_dict.update({k: v for k, v in result.to_dict().items() if str(k).endswith("_name")})
-        chk_dict.update({k: v for k, v in result.to_dict().items() if str(k).endswith("_str")})
+        chk_dict.update({k: v for k, v in result.to_dict().items() if k.endswith("_name")})
+        chk_dict.update({k: v for k, v in result.to_dict().items() if k.endswith("_str")})
         chk_dict.update({"comment": result.comment})
     print("in:", input_str)
     print("score data:", chk_dict, "->", result_dict)
@@ -121,8 +121,8 @@ def test_point_calc_seat(
     )
     result.calc()
 
-    ret_point = {k: v for k, v in result.to_dict().items() if str(k).endswith("_point")}
-    ret_rank = {k: v for k, v in result.to_dict().items() if str(k).endswith("_rank")}
+    ret_point = {k: v for k, v in result.to_dict().items() if k.endswith("_point")}
+    ret_rank = {k: v for k, v in result.to_dict().items() if k.endswith("_rank")}
 
     assert ret_point == point_dict
     assert ret_rank == rank_dict
@@ -177,8 +177,8 @@ def test_point_calc_division(
     )
     result.calc()
 
-    ret_point = {k: v for k, v in result.to_dict().items() if str(k).endswith("_point")}
-    ret_rank = {k: v for k, v in result.to_dict().items() if str(k).endswith("_rank")}
+    ret_point = {k: v for k, v in result.to_dict().items() if k.endswith("_point")}
+    ret_rank = {k: v for k, v in result.to_dict().items() if k.endswith("_rank")}
 
     assert ret_point == point_dict
     assert ret_rank == rank_dict

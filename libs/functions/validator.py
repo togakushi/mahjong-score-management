@@ -157,9 +157,9 @@ def check_score(m: "MessageParserProtocol") -> dict[str, Any]:
 
         for k, p in position.items():
             if isinstance(p, int):
-                ret.update({str(k): str(msg[p])})
+                ret.update({k: str(msg[p])})
             else:
-                ret.update({str(k): p})
+                ret.update({k: p})
 
         ret.update(
             source=g.cfg.resolve_channel_id(m.status.source),

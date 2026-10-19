@@ -70,18 +70,16 @@ def random_reply(m: "MessageParserProtocol", message_type: str) -> str:
     else:
         keyword = list(g.cfg.rule.keyword_mapping.keys())[0]
 
-    try:
-        msg = str(
-            # 文字列置き換え
-            msg.format(
-                user_id=m.data.user_id,
-                keyword=keyword,
-                start=ExtDt(g.params.starttime).format(ExtDt.FMT.YMD),
-                end=ExtDt(g.params.onday).format(ExtDt.FMT.YMD),
-                rpoint_diff=rpoint_diff * 100,
-                rpoint_sum=m.status.rpoint_sum * 100,
-            )
+    try:  # 文字列置き換え
+        msg = msg.format(
+            user_id=m.data.user_id,
+            keyword=keyword,
+            start=ExtDt(g.params.starttime).format(ExtDt.FMT.YMD),
+            end=ExtDt(g.params.onday).format(ExtDt.FMT.YMD),
+            rpoint_diff=rpoint_diff * 100,
+            rpoint_sum=m.status.rpoint_sum * 100,
         )
+
     except KeyError as err:
         logging.warning("[unknown keywords] %s: %s", err, msg)
         msg = msg.replace("{user_id}", m.data.user_id)

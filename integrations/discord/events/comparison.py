@@ -115,7 +115,7 @@ async def check_omission(results: ComparisonResults, messages_list: list["Messag
         if detection := validator.check_score(work_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             discord_score.append(score)
             results.score_list.update({work_m.data.event_ts: work_m})
@@ -172,7 +172,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
         if detection := validator.check_score(loop_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             score_list.update({loop_m.data.event_ts: score})
 
@@ -183,7 +183,7 @@ async def check_remarks(results: ComparisonResults, messages_list: list["Message
                     continue  # リプライになっていない
                 if loop_m.data.thread_ts not in score_list:
                     continue  # ゲーム結果に紐付かない
-                pname = textutil.name_replace(str(name), guest_replace=False)
+                pname = textutil.name_replace(name, guest_replace=False)
                 if pname not in score_list[loop_m.data.thread_ts].to_list("name"):
                     continue  # ゲーム結果に名前がない
 
@@ -235,7 +235,7 @@ async def check_total_score(results: ComparisonResults, messages_list: list["Mes
         if detection := validator.check_score(work_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             if score.deposit:
                 results.invalid_score.append(score)

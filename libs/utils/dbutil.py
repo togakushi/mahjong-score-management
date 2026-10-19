@@ -153,7 +153,7 @@ def query(keyword: str) -> str:
 
     if query_path := sql_tables.get(keyword):
         with open(str(files("files.queries").joinpath(query_path)), "r", encoding="utf-8") as queryfile:
-            return str(queryfile.read()).strip()
+            return queryfile.read().strip()
     else:
         raise ValueError(f"Unknown keyword: {keyword}")
 

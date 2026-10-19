@@ -469,4 +469,4 @@ class CommandAttrs(ParameterData, SettingAttrs):
             int: 規定対戦数
 
         """
-        return int(ceil(game_count * self.stipulated_rate) + 1)
+        return ceil(game_count * self.stipulated_rate) + 1

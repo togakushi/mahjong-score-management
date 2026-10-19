@@ -100,16 +100,16 @@ def grade(name: str, detail: bool = True) -> str:
 
         """
         tbl_data = g.cfg.badge.grade.table["table"]
-        new_point = point + int(tbl_data[grade_level]["acquisition"][rank - 1])
+        new_point = point + tbl_data[grade_level]["acquisition"][rank - 1]
 
-        if new_point >= int(tbl_data[grade_level]["point"][1]):  # level up
+        if new_point >= tbl_data[grade_level]["point"][1]:  # level up
             grade_level = min(grade_level + 1, len(tbl_data) - 1)
-            new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
+            new_point = tbl_data[grade_level]["point"][0]  # 初期値
         elif new_point < 0:  # level down
             new_point = int(0)
             if tbl_data[grade_level]["demote"]:
                 grade_level = max(grade_level - 1, 0)
-                new_point = int(tbl_data[grade_level]["point"][0])  # 初期値
+                new_point = tbl_data[grade_level]["point"][0]  # 初期値
 
         return (new_point, grade_level)
 

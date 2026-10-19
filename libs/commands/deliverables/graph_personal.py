@@ -182,7 +182,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
     stats_df = pd.DataFrame(rpoint_stats)
     stats_df.loc[total_index] = pd.Series(
         {
-            "対戦数": int(player_df["rpoint"].count()),
+            "対戦数": player_df["rpoint"].count(),
             "平均値(x)": float(round(player_df["rpoint"].mean(), 1)),
             "最小値": int(player_df["rpoint"].min()),
             "第一四分位数": int(player_df["rpoint"].quantile(0.25)),
@@ -191,7 +191,7 @@ def statistics_plot(m: "MessageParserProtocol") -> None:
             "最大値": int(player_df["rpoint"].max()),
         }
     )
-    stats_df = stats_df.apply(lambda col: col.map(lambda x: f"{int(x)}" if isinstance(x, int) else f"{x:.1f}"))
+    stats_df = stats_df.apply(lambda col: col.map(lambda x: f"{x}" if isinstance(x, int) else f"{x:.1f}"))
 
     count_stats = {
         "対戦数": rank_df.count().astype("int"),
