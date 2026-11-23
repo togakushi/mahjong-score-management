@@ -61,7 +61,7 @@ def score_bp(adapter: "ServiceAdapter") -> Blueprint:
                 """,
                 con=dbutil.connection(g.cfg.setting.database_file),
             )
-            df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()), inplace=True)
+            df = df.rename(columns=dictutil.rename_dicts(df.columns.to_list(), StyleOptions()))
 
             if not isinstance(df.columns, pd.MultiIndex):
                 new_columns = [tuple(col.split(" ")) if " " in col else ("", col) for col in df.columns]

@@ -70,12 +70,11 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
             data.update(member_table="<p>登録済みメンバーはいません。</p>")
         else:
             member_df = adjusting.add_units(member_df)
-            member_df.rename(
+            member_df = member_df.rename(
                 columns=dictutil.rename_dicts(
                     member_df.columns.to_list(),
                     StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
-                ),
-                inplace=True,
+                )
             )
             data.update(member_table=adapter.functions.to_styled_html(member_df.drop(columns=["id"]), padding))
 
@@ -83,12 +82,11 @@ def member_bp(adapter: "ServiceAdapter") -> Blueprint:
         if team_df.empty:
             data.update(team_table="<p>登録済みチームはありません。</p>")
         else:
-            team_df.rename(
+            team_df = team_df.rename(
                 columns=dictutil.rename_dicts(
                     team_df.columns.to_list(),
                     StyleOptions(rename_type=StyleOptions.RenameType.NORMAL),
-                ),
-                inplace=True,
+                )
             )
             data.update(team_table=adapter.functions.to_styled_html(team_df.drop(columns=["id"]), padding))
 
