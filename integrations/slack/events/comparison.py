@@ -86,7 +86,7 @@ def check_omission(results: ComparisonResults) -> None:
         if detection := validator.check_score(work_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             # 保留チェック
             if check_pending(work_m):
@@ -150,7 +150,7 @@ def check_remarks(results: ComparisonResults) -> None:
         if detection := validator.check_score(loop_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             score_list.update({loop_m.data.event_ts: score})
 
@@ -161,7 +161,7 @@ def check_remarks(results: ComparisonResults) -> None:
                 continue  # リプライになっていない
             if loop_m.data.thread_ts not in score_list:
                 continue  # ゲーム結果に紐付かない
-            pname = textutil.name_replace(str(name), guest_replace=False)
+            pname = textutil.name_replace(name, guest_replace=False)
             if pname not in score_list[loop_m.data.thread_ts].to_list("name"):
                 continue  # ゲーム結果に名前がない
             if loop_m.data.thread_ts in [x.ts for x in results.pending]:
@@ -218,7 +218,7 @@ def check_total_score(results: ComparisonResults) -> None:
         if detection := validator.check_score(loop_m):
             score = GameResult(**detection)
             for k, v in score.to_dict().items():  # 名前の正規化
-                if str(k).endswith("_name"):
+                if k.endswith("_name"):
                     score.set(**{k: textutil.name_replace(str(v), guest_replace=False)})
             if score.deposit:
                 results.invalid_score.append(score)

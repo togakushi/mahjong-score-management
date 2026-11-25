@@ -152,10 +152,6 @@ def placeholder(subcom: CommandClassType, m: "MessageParserProtocol") -> Placeho
         params.player_list = target_player
         params.competition_list = target_player[1:]
 
-    # 出力タイプ
-    if not params.format:
-        params.format = "default"
-
     # 規定打数設定
     if params.mixed and not params.stipulated:  # 横断集計&規定数制限なし
         if target_player:
