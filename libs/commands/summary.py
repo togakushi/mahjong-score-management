@@ -2,6 +2,7 @@
 libs/commands/summary.py
 """
 
+import logging
 from typing import TYPE_CHECKING
 
 import libs.global_value as g
@@ -109,5 +110,7 @@ def main(m: "MessageParserProtocol") -> None:
     g.params = dictutil.placeholder(g.cfg.summary, m)
     for command in COMMAND_DISPATCHER:
         if command.condition():
+            if g.args.debug:
+                logging.debug("command_name=%s, %s", command.name, g.params)
             command.handler(m)
             break
