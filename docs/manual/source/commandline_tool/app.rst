@@ -29,7 +29,13 @@ app.py
    :省略時: config.ini
    :備考: 相対パス指定時は ``app.py`` が起点になる
 
-.. option:: --service=SERVICE_NAME
+.. option:: --no-cleanup
+
+   :内容: 作業ディレクトリの内容を削除しない
+   :省略時: 作業ディレクトリの内容を削除する
+   :備考: 作業ディレクトリは設定ファイルの `work_dir` で指定する
+
+.. option:: -s SERVICE_NAME, --service=SERVICE_NAME
 
    :内容: 連携先サービス
    :省略時: slack
@@ -89,10 +95,10 @@ app.py
 
    :内容: 起動するアドレス
    :省略時: 127.0.0.1
-   :備考:
+   :備考: 設定ファイルの `host` で指定可能
 
 .. option:: --port
 
    :内容: 起動するポート
    :省略時: 8000
-   :備考:
+   :備考: 設定ファイルの `port` で指定可能

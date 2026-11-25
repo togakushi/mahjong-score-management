@@ -18,14 +18,14 @@ webセクション
    * - .. integrations_section:: host
           :category: web section
 
-     -
+     - 起動するアドレス
      - 文字列
      - 127.0.0.1
      -
    * - .. integrations_section:: port
           :category: web section
 
-     -
+     - 起動するポート
      - 数値
      - 8000
      -
