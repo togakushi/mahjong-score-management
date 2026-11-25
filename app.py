@@ -10,6 +10,8 @@ help:
             show this help message and exit
         -c CONFIG, --config=CONFIG
             設定ファイル(default: config.ini)
+        --no-cleanup
+            作業ディレクトリの内容を削除しない
         -s SERVICE, --service=SERVICE
             連携先サービス(slack, discord, standard_io, std, web, flask)
 
@@ -29,7 +31,7 @@ help:
 
     Only allowed when --service=web:
         --host HOST
-            listen  address(default: 127.0.0.1)
+            listen address(default: 127.0.0.1)
         --port PORT
             bind port(default: 8000)
 """

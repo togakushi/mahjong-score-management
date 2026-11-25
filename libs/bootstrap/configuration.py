@@ -111,7 +111,7 @@ def arg_parser() -> Args:
                 "--host",
                 type=str,
                 default="127.0.0.1",
-                help="listen  address(default: %(default)s)",
+                help="listen address(default: %(default)s)",
             )
             service_web.add_argument(
                 "--port",
